@@ -44,7 +44,7 @@ format: html
 
 **Lab:**
 
--   **Lab00:** Refresher of Programming, and an Intro to Quarto [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} [<a href="https://google.com" target="_blank">.qmd</a>]{.badge .bg-primary} <br /> ***Optional Lab; not collected; NO SECTIONS during Week 1***
+-   **Lab00:** Refresher of Programming, and an Intro to Quarto  <br /> ***Optional Lab; not collected; NO SECTIONS during Week 1***
 
 
 
