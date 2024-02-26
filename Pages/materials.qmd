@@ -1,0 +1,179 @@
+---
+title: "PSTAT 100: Data Science Concepts and Analysis"
+subtitle: "Course Material"
+author:
+  - name: "Ethan Marzban"
+    affiliations:
+      - name: "Spring 2024"
+author-title: "Instructor"
+affiliation-title: "Quarter"
+format: html
+---
+
+***Acknowledgements***: Special thanks to Dr. Trevor Ruiz and Dr. Laura Baracaldo for graciously providing material for this course.
+
+\
+
+::: panel-tabset
+## Week 1 (4/1 - 4/7)
+
+**Readings:**
+
+-   For Tuesday:
+    -   R4DS Chapter 2: <a href="https://r4ds.hadley.nz/workflow-basics" target="_blank">Workflow: basics</a>
+    -   R4DS Chapter 27: <a href="https://r4ds.hadley.nz/base-r" target="_blank">A field guide to base R</a>
+
+-   For Thursday:
+    -   Hadley Wickham <a href="https://vita.had.co.nz/papers/tidy-data.pdf" target="_blank">*Tidy Data*</a>, *Journal of Statistical Software* (2014)
+    -   R4DS Chapter 5: <a href="https://r4ds.hadley.nz/data-tidy" target="_blank">Data tidying</a>
+    -   R4DS Chapter 3: <a href="https://r4ds.hadley.nz/data-transform" target="_blank">Data transformation</a>\
+    -   R4DS Chapter 19: <a href="https://r4ds.hadley.nz/joins" target="_blank">Joins</a>
+
+**Optional Reading:**
+
+-   I2R, Chapter 2: <a href="https://intro2r.com/basics_r.html" target="_blank">Some R basics</a>
+-   I2R, Chapter 3: <a href="https://intro2r.com/data_r.html" target="_blank">Data in R</a>
+-   LDS Chapter 2: <a href="https://learningds.org/ch/02/data_scope_intro.html" target="_blank">Questions and Data Scope</a>
+-   <a href="https://www.tidyverse.org/packages/" target="_blank">Tidyverse Official Site</a>
+
+**Lectures:**
+
+-   [Tues.]{.badge .rounded-pill .bg-info} **Lecture 1:** Course Introduction; Intro to Data [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+-   [Thurs.]{.badge .rounded-pill .bg-success} **Lecture 2:** Data, Part II [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+**Lab:**
+
+-   **Lab00:** Refresher of Programming, and an Intro to Quarto [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} [<a href="https://google.com" target="_blank">.qmd</a>]{.badge .bg-primary} <br /> ***Optional Lab; not collected; NO SECTIONS during Week 1***
+
+## Week 2 (4/8 - 4/14)
+
+**Readings:**
+
+-   R4DS Chapter 1: <a href="https://r4ds.hadley.nz/data-visualize" target="_blank">Data visualization</a>
+-   R4DS Chapter 9: <a href="https://r4ds.hadley.nz/layers" target="_blank">Layers</a>
+-   Wilke, <a href="https://clauswilke.com/dataviz/" target="_blank">Fundamentals of Data Visualization</a>, Chapters 2 - 5
+
+**Optional/Suggested Readings:**
+
+-   Hadley Wickham <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">*A Layered Grammar of Graphics*</a>, *Journal of Computational and Graphical Statistics* (2010)
+-   LDS Chapter 11.1: <a href="https://learningds.org/ch/11/viz_scale.html" target="_blank">Choosing Scale to Reveal Structure</a> (you can ignore the Python code; focus more on the concepts being discussed)
+
+**Lectures:**
+
+-   [Tues.]{.badge .rounded-pill .bg-info} **Lecture 3:** Statistical Graphics, Part I [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+-   [Thurs.]{.badge .rounded-pill .bg-success} **Lecture 4:** Statistical Graphics, Part II [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+**Lab:**
+
+-   [Mon]{.badge .rounded-pill .bg-danger} **Lab01:** Topic [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} [<a href="https://google.com" target="_blank">.qmd</a>]{.badge .bg-primary}
+
+
+
+**Homework 01:**
+
+-   [Sun]{.badge .rounded-pill .bg-warning} **Homework 01** [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} (Please see the Course Server for homework files)
+
+    -   _**Due by 11:59pm on Sunday April 14, 2024!!!**_
+
+
+## Week 3 (4/15 - 4/21)
+
+**Readings:**
+
+-   R4DS Chapter 14: <a href="https://r4ds.hadley.nz/strings" target="_blank">Strings</a>
+-   R4DS Chapter 15: <a href="https://r4ds.hadley.nz/regexps" target="_blank">Regular expressions</a>
+-   R4DS Chapter 10: <a href="https://r4ds.hadley.nz/eda" target="_blank">Exploratory Data Analysis</a>
+
+**Lectures:**
+
+-   [Tues.]{.badge .rounded-pill .bg-info} **Lecture 5:** Regular Expressions, and Cleaning Data [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+-   [Thurs.]{.badge .rounded-pill .bg-success} **Lecture 6:** Exploratory Data Analysis [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+**Lab:**
+
+-   [Mon]{.badge .rounded-pill .bg-danger} **Lab02:** Topic [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} [<a href="https://google.com" target="_blank">.qmd</a>]{.badge .bg-primary}
+
+
+**Mini-Project 1:**
+
+-   [Sun]{.badge .rounded-pill .bg-warning} **Mini-Project 01:** Trees [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} (Please see the Course Server for project files)
+
+    -   _**Due by 11:59pm on Sunday April 21, 2024!!!**_
+
+
+## Week 4 (4/22 - 4/28)
+
+**Readings:**
+
+-   One
+-   Two
+-   Three
+
+**Lectures:**
+
+-   [Tues.]{.badge .rounded-pill .bg-info} **Lecture 7:** Topic [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+-   [Thurs.]{.badge .rounded-pill .bg-success} _**IN-CLASS ASSESSMENT 1**_
+
+**Lab:**
+
+-   [Mon]{.badge .rounded-pill .bg-danger} **Lab03:** Topic [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} [<a href="https://google.com" target="_blank">.qmd</a>]{.badge .bg-primary}
+
+
+## Week 5 (4/29 - 5/5)
+
+**Readings:**
+
+-   Sections 8.1 - 8.3 of *Nonparametric Curve Estimation: Methods, Theory, and Applications* by Sam Efromovich. <a href="https://link.springer.com/book/10.1007/b97679" target="blank">Link to Book</a> (free PDF download available for UCSB students)
+-   Two
+-   Three
+
+**Lectures:**
+
+-   [Tues.]{.badge .rounded-pill .bg-info} **Lecture 9:** Topic [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+-   [Thurs.]{.badge .rounded-pill .bg-success} **Lecture 10:** Topic [<a href="https://google.com" target="_blank">slides</a>]{.badge .bg-primary}
+
+**Lab:**
+
+-   [Mon]{.badge .rounded-pill .bg-danger} **Lab04:** Topic [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} [<a href="https://google.com" target="_blank">.qmd</a>]{.badge .bg-primary}
+
+
+**Homework 02:**
+
+-   [Sun]{.badge .rounded-pill .bg-warning} **Homework 02** [<a href="https://google.com" target="_blank">handout</a>]{.badge .bg-primary} (Please see the Course Server for homework files)
+
+    -   _**Due by 11:59pm on Sunday May 5, 2024!!!**_
+
+
+
+:::
+
+\
+
+### Textbook Abbreviations
+
+-   R4DS: R for Data Science
+-   LDS: Learning Data Science
+-   I2R: An Introduction to R
+
+| Week | Topic                                                     | Lab | Homework | Project     |
+|------|-----------------------------------------------------------|-----|----------|-------------|
+| 1    | Introduction to Data                                      |     |          |             |
+| 2    | Statistical Graphics                                      | L1  | HW01     |             |
+| 3    | Exploring and Cleaning Data                               | L2  |          | MP01        |
+| 4    | Sampling Techniques                                       | L3  |          |             |
+| 5    | Missingness, and KDE                                      | L4  | HW02     |             |
+| 6    | Principal Components Analysis, and an Intro to Statistics | L5  |          | MP02        |
+| 7    | Introduction to Statistical Modeling                      | L6  | HW03     |             |
+| 8    | Regression                                                | L7  |          |             |
+| 9    | More Regression                                           |     |          | MP03        |
+| 10   | Classification and Clustering                             | L8  |          |             |
+| 11   | Finals                                                    |     |          | Final Proj. |
+
+-   L: lab
+-   HW: Homework
+-   MP: Mini-Project

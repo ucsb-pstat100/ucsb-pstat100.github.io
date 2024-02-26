@@ -1,0 +1,36 @@
+/*-- scss:defaults --*/
+$h2-font-size:          1.6rem !default;
+$headings-font-weight:  500 !default;
+$callout-icon-scale:    100%;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
+
+/*-- scss:rules --*/
+// h1, h2, h3, h4, h5, h6 {
+//   text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
+// }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.15rem;
+}
+
+.callout.callout-style-default .callout-body {
+  font-size: 1.1rem;
+}
+
+.callout.callout-style-default>div.callout-header {
+  font-size: 1.1rem;
+}
+
+.callout.callout-style-default .callout-icon::before {
+  height: 1.1rem;
+  width: 1.1rem;
+  display: inline-block;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 1.1rem 1.1rem;
+}

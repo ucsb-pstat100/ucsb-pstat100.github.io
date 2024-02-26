@@ -1,0 +1,14 @@
+:::{style="text-align:center"}
+
+
+[**PSTAT 100**]{style="font-size:3rem"} \
+[Data Science Concepts and Analysis]{style="font-size:2rem"} \
+[Spring 2024; Instructor: Ethan P. Marzban]{style="font-size:2rem"}
+
+![](Images/Logos_Icons/hex_second_pass.svg){width="50%"}
+
+:::
+
+Welcome to the official course site for PSTAT 100, Spring 2024 with instructor Ethan P. Marzban. Here, you will find all relevant course material including lecture material, homework, labs, projects, and additional resources.
+
+The instructor would like to acknowledge Drs. Alexander Franks, Trevor Ruiz, and Laura Baracaldo for graciously providing material for this course.

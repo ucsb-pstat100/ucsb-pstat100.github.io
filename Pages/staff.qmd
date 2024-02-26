@@ -1,0 +1,66 @@
+---
+title: "PSTAT 100: Data Science Concepts and Analysis"
+subtitle: "Course Staff"
+author:
+  - name: "Ethan Marzban"
+    affiliations:
+      - name: "Spring 2024"
+author-title: "Instructor"
+affiliation-title: "Quarter"
+format: html
+---
+
+::: {.panel-tabset}
+
+## Instructor
+
+::::{.columns}
+
+:::{.column width="70%"}
+-   **Ethan P. Marzban** (he/him)
+    -   **Email:** epmarzban@pstat.ucsb.edu (for emergencies only, please)
+    -   **Office Hours:** TBD
+:::
+
+:::{.column width="30%"}
+![](../Images/Profiles/Ethan.jpg){width="50%"}
+:::
+
+::::
+
+## Teaching Assistants
+
+::::{.columns}
+
+:::{.column width="70%"}
+-   **TBD** (TBD/TBD)
+    -   **Email:** TBD
+    -   **Office Hours:** TBD
+:::
+
+:::{.column width="30%"}
+![](../Images/Profiles/placeholder2.png){width="50%"}
+:::
+
+::::
+
+
+::::{.columns}
+
+:::{.column width="70%"}
+-   **TBD** (TBD/TBD)
+    -   **Email:** TBD
+    -   **Office Hours:** TBD
+:::
+
+:::{.column width="30%"}
+![](../Images/Profiles/placeholder2.png){width="50%"}
+:::
+
+::::
+
+## Undergraduate Learning Assistant
+
+Hello!
+
+:::

@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "PSTAT 100: Spring 2024"
+  sidebar: 
+    style: "docked"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: Pages/policies.qmd
+        text: Policies
+      - href: Pages/materials.qmd
+        text: Materials
+      - href: Pages/staff.qmd
+        text: Course Staff
+    logo: "Images/Logos_Icons/hex_second_pass.svg"
+    title: "PSTAT 100: Spring 2024"
+
+format:
+  html:
+    theme:
+      light: [sandstone, custom.scss]
+      dark: [darkly, custom.scss]
+    css: styles.css
+    toc: true
+
+
+
