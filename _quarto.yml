@@ -4,6 +4,7 @@ project:
 
 website:
   title: "PSTAT 100: Spring 2024"
+  favicon: "Images/Logos_Icons/hex_second_pass.svg"
   sidebar: 
     style: "docked"
     search: true
