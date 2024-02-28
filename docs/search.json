@@ -84,6 +84,69 @@
     "text": "Disclaimer\nThe instructor reserves the right to modify this syllabus if he deems such modifications academically advisable. Such modifications, should they occur, will be announced publicly."
   },
   {
+    "objectID": "Labs/Lab00/df_basics.html",
+    "href": "Labs/Lab00/df_basics.html",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "",
+    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#a-note-on-the-autograder",
+    "href": "Labs/Lab00/df_basics.html#a-note-on-the-autograder",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "A Note on the Autograder",
+    "text": "A Note on the Autograder\nI’ve included an autograder in this lab (through the package ottr), mainly so you can check yourself and your knowledge. As s rule-of-thumb, you should make sure that your code is passing all test cases, as this will be something we look for in future labs (which will be graded and count toward your overall course grade, unlike this one)."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
+    "href": "Labs/Lab00/df_basics.html#lab-objectives",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Lab Objectives",
+    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Relevant Textbook Chapters/Sections:",
+    "text": "Relevant Textbook Chapters/Sections:\n\nTBD"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Slicing/Indexing",
+    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
+    "href": "Labs/Lab00/df_basics.html#using-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Column Names",
+    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Updating/Replacing Values",
+    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
+    "href": "Labs/Lab00/df_basics.html#adding-columns",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Adding Columns",
+    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
+    "href": "Labs/Lab00/df_basics.html#changing-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Changing Column Names",
+    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
+  },
+  {
     "objectID": "Labs/Lab00/intro2r.html",
     "href": "Labs/Lab00/intro2r.html",
     "title": "Lab 00: Introduction to R",
@@ -179,6 +242,6 @@
     "href": "Pages/materials.html",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Acknowledgements: Special thanks to previous instructors Dr. Trevor Ruiz, Dr. Alex Franks, and Dr. Laura Baracaldo for graciously providing material and guidance for this course.\n\n\n\nWeek 1 (4/1 - 4/7)\n\n\nReadings:\n\nFor Tuesday:\n\nR4DS Chapter 2: Workflow: basics\nR4DS Chapter 27: A field guide to base R\n\nFor Thursday:\n\nHadley Wickham Tidy Data, Journal of Statistical Software (2014)\nR4DS Chapter 5: Data tidying\nR4DS Chapter 3: Data transformation\n\nR4DS Chapter 19: Joins\n\n\nOptional Reading:\n\nI2R, Chapter 2: Some R basics\nI2R, Chapter 3: Data in R\nLDS Chapter 2: Questions and Data Scope\nTidyverse Official Site\n\nLectures:\n\nTues. Lecture 1: Course Introduction; Intro to Data\nThurs. Lecture 2: Data, Part II\n\nLab:\nThere is no required lab for this week, as we will not be having any Sections on Monday. However, please keep in mind the following:\n\nIf you have never programmed in R before, please read Chapter 2: Some R basics and Chapter 3: Data in R, from “An Introduction to R”, and Chapters 2 and 27 from R4DS.\n\nThis Lab provides a summary of important information about the basics of programming in R.\n\nIf you have some exposure to programming in R (or have already read Chapters 2 and 3 from I2R), but would like more practice with dataframes, we encourage you to complete the following lab: [lab coming soon]\n\nPlease note that, by virtue of being prerequisite, these concepts and topics are potentially testable on In-Class Assignments (and are also crucial for success in our future PSTAT 100 endeavors!).\n\n\n\n\n\n\nTextbook Abbreviations\n\nR4DS: R for Data Science\nLDS: Learning Data Science\nI2R: An Introduction to R\n\n\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nLab\nHomework\nProject\n\n\n\n\n1\nIntroduction to Data\n\n\n\n\n\n2\nStatistical Graphics\nL1\nHW01\n\n\n\n3\nExploring and Cleaning Data\nL2\n\nMP01\n\n\n4\nSampling Techniques\nL3\n\n\n\n\n5\nMissingness, and KDE\nL4\nHW02\n\n\n\n6\nPrincipal Components Analysis, and an Intro to Statistics\nL5\n\nMP02\n\n\n7\nIntroduction to Statistical Modeling\nL6\nHW03\n\n\n\n8\nRegression\nL7\n\n\n\n\n9\nMore Regression\n\n\nMP03\n\n\n10\nClassification and Clustering\nL8\n\n\n\n\n11\nFinals\n\n\nFinal Proj.\n\n\n\n\nL: lab\nHW: Homework\nMP: Mini-Project"
+    "text": "Acknowledgements: Special thanks to previous instructors Dr. Trevor Ruiz, Dr. Alex Franks, and Dr. Laura Baracaldo for graciously providing material and guidance for this course.\n\n\n\nWeek 1 (4/1 - 4/7)\n\n\nReadings:\n\nFor Tuesday:\n\nR4DS Chapter 2: Workflow: basics\nR4DS Chapter 27: A field guide to base R\n\nFor Thursday:\n\nHadley Wickham Tidy Data, Journal of Statistical Software (2014)\nR4DS Chapter 5: Data tidying\nR4DS Chapter 3: Data transformation\n\nR4DS Chapter 19: Joins\n\n\nOptional Reading:\n\nI2R, Chapter 2: Some R basics\nI2R, Chapter 3: Data in R\nLDS Chapter 2: Questions and Data Scope\nTidyverse Official Site\n\nLectures:\n\nTues. Lecture 1: Course Introduction; Intro to Data\nThurs. Lecture 2: Data, Part II\n\nLab:\nThere is no required lab for this week, as we will not be having any Sections on Monday. However, please keep in mind the following:\n\nIf you have never programmed in R before, please read Chapter 2: Some R basics and Chapter 3: Data in R, from “An Introduction to R”, and Chapters 2 and 27 from R4DS.\n\nThis Lab provides a summary of important information about the basics of programming in R.\n\nIf you have some exposure to programming in R (or have already read Chapters 2 and 3 from I2R), but would like more practice with dataframes, we encourage you to complete the following lab: [Click Here]\n\nPlease note that, by virtue of being prerequisite, these concepts and topics are potentially testable on In-Class Assignments (and are also crucial for success in our future PSTAT 100 endeavors!).\n\n\n\n\n\n\nTextbook Abbreviations\n\nR4DS: R for Data Science\nLDS: Learning Data Science\nI2R: An Introduction to R\n\n\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nLab\nHomework\nProject\n\n\n\n\n1\nIntroduction to Data\n\n\n\n\n\n2\nStatistical Graphics\nL1\nHW01\n\n\n\n3\nExploring and Cleaning Data\nL2\n\nMP01\n\n\n4\nSampling Techniques\nL3\n\n\n\n\n5\nMissingness, and KDE\nL4\nHW02\n\n\n\n6\nPrincipal Components Analysis, and an Intro to Statistics\nL5\n\nMP02\n\n\n7\nIntroduction to Statistical Modeling\nL6\nHW03\n\n\n\n8\nRegression\nL7\n\n\n\n\n9\nMore Regression\n\n\nMP03\n\n\n10\nClassification and Clustering\nL8\n\n\n\n\n11\nFinals\n\n\nFinal Proj.\n\n\n\n\nL: lab\nHW: Homework\nMP: Mini-Project"
   }
 ]

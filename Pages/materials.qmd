@@ -50,7 +50,7 @@ There is **no** required lab for this week, as we will not be having any Section
 
     -   <a href="../Labs/Lab00/intro2r.qmd" target="_blank">This Lab</a> provides a summary of important information about the basics of programming in `R`.
 
--   If you have some exposure to programming in `R` (or have already read Chapters 2 and 3 from I2R), but would like more practice with dataframes, we encourage you to complete the following lab: [lab coming soon]
+-   If you have some exposure to programming in `R` (or have already read Chapters 2 and 3 from I2R), but would like more practice with dataframes, we encourage you to complete the following lab: <a href="../Labs/Lab00/df_basics.qmd" target="_blank">[Click Here]</a>
 
 Please note that, by virtue of being prerequisite, these concepts and topics are potentially testable on In-Class Assignments (and are also crucial for success in our future PSTAT 100 endeavors!).
 

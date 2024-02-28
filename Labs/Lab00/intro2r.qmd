@@ -2,7 +2,7 @@
 title: "Lab 00: Introduction to `R`"
 subtitle: "PSTAT 100: Spring 2024 (Instructor: Ethan P. Marzban)"
 author:
-  - YOUR NAME (your NetID)
+  - Ethan P. Marzban
 date: "`r Sys.Date()`"
 date-format: long
 format:

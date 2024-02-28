@@ -21,6 +21,8 @@ website:
             contents:
               - href: Labs/Lab00/intro2r.qmd
                 text: "Intro to `R`"
+              - href: Labs/Lab00/df_basics.qmd
+                text: "Dataframe Basics"
       - href: Pages/staff.qmd
         text: Course Staff
     logo: "Images/Logos_Icons/hex_second_pass.svg"
