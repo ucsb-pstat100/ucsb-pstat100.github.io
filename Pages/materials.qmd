@@ -44,9 +44,13 @@ format: html
 
 **Lab:**
 
--   **Lab00:** Refresher of Programming, and an Intro to Quarto  <br /> ***Optional Lab; not collected; NO SECTIONS during Week 1***
+There is **no** required lab for this week, as we will not be having any Sections on Monday. However, please keep in mind the following:
 
+-   If you have never programmed in `R` before, please read <a href="https://intro2r.com/basics_r.html" target="_blank">Chapter 2: Some `R` basics</a> and <a href="https://intro2r.com/data_r.html" target="_blank">Chapter 3: Data in `R`</a>, from "An Introduction to R".
 
+-   If you have some exposure to programming in `R` (or have already read Chapters 2 and 3 from I2R), but would like more practice with dataframes, we encourage you to complete the following lab: [lab coming soon]
+
+Please note that, by virtue of being prerequisite, these concepts and topics are potentially testable on In-Class Assignments (and are also crucial for success in our future PSTAT 100 endeavors!).
 
 :::
 
