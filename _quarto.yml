@@ -15,6 +15,12 @@ website:
         text: Policies
       - href: Pages/materials.qmd
         text: Materials
+      - section: "Labs"
+        contents:
+          - section: "Lab00"
+            contents:
+              - href: Labs/Lab00/intro2r.qmd
+                text: "Intro to `R`"
       - href: Pages/staff.qmd
         text: Course Staff
     logo: "Images/Logos_Icons/hex_second_pass.svg"
