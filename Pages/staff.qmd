@@ -10,57 +10,32 @@ affiliation-title: "Quarter"
 format: html
 ---
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## Instructor
 
-::::{.columns}
+[**INSTRUCTOR:** Ethan P. Marzban (He/Him)]{style="font-size:30px"}
 
-:::{.column width="70%"}
--   **Ethan P. Marzban** (he/him)
-    -   **Email:** epmarzban@pstat.ucsb.edu (for emergencies only, please)
-    -   **Office Hours:** TBD
-:::
+![](../Images/Profiles/Ethan.jpg){style="float:right;padding: 0 0 0 10px;" width="200"}
 
-:::{.column width="30%"}
-![](../Images/Profiles/Ethan.jpg){width="50%"}
-:::
+Hello! My name is **Ethan P. Marzban** (he/him), and I'm currently a PhD student in the Department of Statistics here at UCSB. My research interests span a variety of topics, including Bayesian techniques, mathematical statistics, and statistics and data science education. In my free time, I enjoy playing the piano, drinking boba, and talking about cats. I'm super excited to be your instructor this quarter!
 
-::::
+| Office hours | Location |
+|--------------|----------|
+| TBD          | TBD      |
+| TBD          | Zoom     |
 
 ## Teaching Assistants
 
-::::{.columns}
+|                                          |               |              |        |
+|------------------|------------------|------------------|-------------------|
+|                                          | **Name**      | **Sections** | **OH** |
+| ![](../Images/Profiles/placeholder2.png) | TBD (TBD/TBD) | TBD          | TBD    |
+| ![](../Images/Profiles/placeholder2.png) | TBD (TBD/TBD) | TBD          | TBD    |
 
-:::{.column width="70%"}
--   **TBD** (TBD/TBD)
-    -   **Email:** TBD
-    -   **Office Hours:** TBD
-:::
-
-:::{.column width="30%"}
-![](../Images/Profiles/placeholder2.png){width="50%"}
-:::
-
-::::
-
-
-::::{.columns}
-
-:::{.column width="70%"}
--   **TBD** (TBD/TBD)
-    -   **Email:** TBD
-    -   **Office Hours:** TBD
-:::
-
-:::{.column width="30%"}
-![](../Images/Profiles/placeholder2.png){width="50%"}
-:::
-
-::::
+: {tbl-colwidths="\[15,25,30,30\]"}
 
 ## Undergraduate Learning Assistant
 
-Hello!
+_TBD_
 
 :::
