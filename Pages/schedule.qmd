@@ -10,7 +10,28 @@ affiliation-title: "Quarter"
 format: html
 ---
 
-_**Shh... this page is still under construction!**_
+:::{.callout-warning}
+## **Note**
+
+_**This page will be updated as we progress through the quarter; please check back regularly for updates!**_
+:::
+
+
+:::{.callout-tip}
+## **Note**
+
+Please try to complete the readings before coming to the specified lecture/starting the specified lab.
+:::
+
+:::{.callout-note}
+## **Textbook Abbreviations and Emoji Meanings**
+-   R4DS = [R for Data Science](https://r4ds.hadley.nz/)
+-   I2R = [An Introduction to R](https://intro2r.com/)
+-   💻 = Lab
+-   🧑‍🏫 = Lecture
+-   📖 = Textbook Reading
+-   📄 = Paper Reading
+:::
 
 ```{r setup, include = F}
 library(googlesheets4)
