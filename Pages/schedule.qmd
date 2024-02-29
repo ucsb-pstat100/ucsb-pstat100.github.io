@@ -55,7 +55,7 @@ temp_sheet %>%
     columns = c(Materials)
   ) %>%
   fmt_markdown(
-    columns = c(Reading, Topic)
+    columns = c(Reading, Topic, Materials)
   ) %>%
   cols_width(
     Week ~ pct(7),
