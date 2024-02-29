@@ -1,0 +1,75 @@
+---
+title: "PSTAT 100: Data Science Concepts and Analysis"
+subtitle: "Course Schedule"
+author:
+  - name: "Ethan Marzban"
+    affiliations:
+      - name: "Spring 2024"
+author-title: "Instructor"
+affiliation-title: "Quarter"
+format: html
+---
+
+_**Shh... this page is still under construction!**_
+
+```{r setup, include = F}
+library(googlesheets4)
+library(gt)
+library(tidyverse)
+
+gs4_deauth()
+
+temp_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1v61p7nR9_P2yA6ERZi14EHFZcny8ulj0BvRPaccvkYQ/edit?usp=sharing")
+```
+
+```{r}
+#| echo: False
+
+temp_sheet %>%
+  filter(!is.na(Type)) %>%
+  select(-Admin_Notes, -Type, -Day) %>%
+  mutate(Date = as.Date(Date)) %>%
+  gt() %>%
+  fmt_date(Date, date_style = 31) %>%
+  sub_missing(columns = c(Week, Reading, Topic, Materials), missing_text = "") %>%
+  tab_style(
+    style = cell_borders(
+      sides = "right",
+      color = "#D3D3D3",
+      style = "solid"
+    ),
+    locations = cells_body(
+      columns = c(Date, Topic, Reading, Materials)
+    )
+  ) %>%
+  cols_align(
+    align = "center", 
+    columns = c(Week)
+  ) %>%
+  cols_align(
+    align = "right", 
+    columns = c(Date)
+  ) %>%
+  cols_align(
+    align = "left", 
+    columns = c(Materials)
+  ) %>%
+  fmt_markdown(
+    columns = c(Reading, Topic)
+  ) %>%
+  cols_width(
+    Week ~ pct(7),
+    Date ~ pct(13), 
+    Reading ~ pct(35),
+    Topic ~ pct(30),
+    Materials ~ pct(15)
+  ) %>%
+  cols_label_with(fn = function(x) {
+      janitor::make_clean_names(x, case = "title") %>%
+        toupper() %>%
+        stringr::str_replace_all("^|$", "**") %>%
+        md()
+    }) %>%
+  tab_options(table.font.size = 16) %>%
+  opt_row_striping()
+```

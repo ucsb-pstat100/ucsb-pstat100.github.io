@@ -1,150 +1,24 @@
 [
   {
-    "objectID": "Pages/staff.html",
-    "href": "Pages/staff.html",
+    "objectID": "Pages/schedule.html",
+    "href": "Pages/schedule.html",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "InstructorTeaching AssistantsUndergraduate Learning Assistant\n\n\n\n\n\nEthan P. Marzban (he/him)\n\nEmail: epmarzban@pstat.ucsb.edu (for emergencies only, please)\nOffice Hours: TBD\n\n\n\n\n\n\n\n\n\n\n\nTBD (TBD/TBD)\n\nEmail: TBD\nOffice Hours: TBD\n\n\n\n\n\n\n\n\n\nTBD (TBD/TBD)\n\nEmail: TBD\nOffice Hours: TBD\n\n\n\n\n\n\n\n\nHello!"
+    "text": "Shh… this page is still under construction!\n\n\n\n\n\n\n  \n    \n    \n    \n    \n    \n  \n  \n    \n      WEEK\n      DATE\n      READING\n      TOPIC\n      MATERIALS\n    \n  \n  \n    1\nMon, Apr 1\n📖 R4DS, Chapter 2: Workflow basics \n📖 R4DS, Chapter 27: A field guide to base R \n📖 I2R, Chapter 2: Some R Basics \n📖 I2R, Chapter 3: Data in R \n\n💻 Lab00: Intro to R and Dataframes\n\n\n    \nTue, Apr 2\n\n🧑‍🏫 Lec01: Intro to Datascience\n\n\n    \nThu, Apr 4\n📖 R4DS, Chapter 5: Data tidying \n📖 R4DS, Chapter 3: Data transformation \n📄 Hadley Wichkam Tidy Data, Journal of Statistical Software (2014) \n\n🧑‍🏫 Lec02: Tidy Data\n\n\n    2\nMon, Apr 8\n📖 R4DS, Chapter 19: Joins \n\n💻 Lab01: Tidy Data and Databases\n\n\n    \nTue, Apr 9\n📖 R4DS, Chapter 1: Data visualization \n📖 R4DS, Chapter 9: Layers \n📄 Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \n\n🧑‍🏫 Lec03: Graphics, Part I\n\n\n    \nThu, Apr 11\n📖 R4DS, Chapter 11: Communication \n📖 Chapters 2 - 5 of Fundamentals of Data Visualization, by Claus Wilke \n\n🧑‍🏫 Lec04: Graphics, Part II\n\n\n    3\nMon, Apr 15\n\n💻 Lab02: Statistical Visualizations\n\n\n    \nTue, Apr 16\n\n🧑‍🏫 Lec05: Regular Expressions\n\n\n    \nThu, Apr 18\n\n🧑‍🏫 Lec06: Exploratory Data Analysis"
   },
   {
-    "objectID": "Pages/policies.html",
-    "href": "Pages/policies.html",
+    "objectID": "Pages/materials.html",
+    "href": "Pages/materials.html",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Welcome to PSTAT 100: Data Science Concepts and Analysis! I am very excited to join you as your instructor this quarter. Our journey together will take us through the basics of Data Science, and aims to prepare you for your future endeavors in the field, whether they be in classes, industry, or academia. Here’s to a great quarter!     – Ethan"
+    "text": "Acknowledgements: Special thanks to previous instructors Dr. Trevor Ruiz, Dr. Alex Franks, and Dr. Laura Baracaldo for graciously providing material and guidance for this course.\n\n\n\nWeek 1 (4/1 - 4/7)\n\n\nReadings:\n\nFor Tuesday:\n\nR4DS Chapter 2: Workflow: basics\nR4DS Chapter 27: A field guide to base R\n\nFor Thursday:\n\nHadley Wickham Tidy Data, Journal of Statistical Software (2014)\nR4DS Chapter 5: Data tidying\nR4DS Chapter 3: Data transformation\n\nR4DS Chapter 19: Joins\n\n\nOptional Reading:\n\nI2R, Chapter 2: Some R basics\nI2R, Chapter 3: Data in R\nLDS Chapter 2: Questions and Data Scope\nTidyverse Official Site\n\nLectures:\n\nTues. Lecture 1: Course Introduction; Intro to Data\nThurs. Lecture 2: Data, Part II\n\nLab:\nThere is no required lab for this week, as we will not be having any Sections on Monday. However, please keep in mind the following:\n\nIf you have never programmed in R before, please read Chapter 2: Some R basics and Chapter 3: Data in R, from “An Introduction to R”, and Chapters 2 and 27 from R4DS.\n\nThis Lab provides a summary of important information about the basics of programming in R.\n\nIf you have some exposure to programming in R (or have already read Chapters 2 and 3 from I2R), but would like more practice with dataframes, we encourage you to complete the following lab: [Click Here]\n\nPlease note that, by virtue of being prerequisite, these concepts and topics are potentially testable on In-Class Assignments (and are also crucial for success in our future PSTAT 100 endeavors!).\n\n\n\n\n\n\nTextbook Abbreviations\n\nR4DS: R for Data Science\nLDS: Learning Data Science\nI2R: An Introduction to R\n\n\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nLab\nHomework\nProject\n\n\n\n\n1\nIntroduction to Data\n\n\n\n\n\n2\nStatistical Graphics\nL1\nHW01\n\n\n\n3\nExploring and Cleaning Data\nL2\n\nMP01\n\n\n4\nSampling Techniques\nL3\n\n\n\n\n5\nMissingness, and KDE\nL4\nHW02\n\n\n\n6\nPrincipal Components Analysis, and an Intro to Statistics\nL5\n\nMP02\n\n\n7\nIntroduction to Statistical Modeling\nL6\nHW03\n\n\n\n8\nRegression\nL7\n\n\n\n\n9\nMore Regression\n\n\nMP03\n\n\n10\nClassification and Clustering\nL8\n\n\n\n\n11\nFinals\n\n\nFinal Proj.\n\n\n\n\nL: lab\nHW: Homework\nMP: Mini-Project"
   },
   {
-    "objectID": "Pages/policies.html#course-staff-and-lecture-logistics",
-    "href": "Pages/policies.html#course-staff-and-lecture-logistics",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Course Staff and Lecture Logistics",
-    "text": "Course Staff and Lecture Logistics\nInstructor: Ethan P. Marzban (he/him)\n\n\n\n\n\n\nLecture Times and Location\n\n\n\nT, R from 9:30am - 10:45am, in BUCHN 1940.\n\n\nTeaching Assistants: TBD, TBD\nSections:\n\nM 2 - 2:50pm in PHELPS 1518 (TBD)\nM 3 - 3:50pm in PHELPS 1518 (TBD)\nM 4 - 4:50pm in PHELPS 1517 (TBD)\nM 5 - 5:50pm in PHELPS 1513 (TBD)"
-  },
-  {
-    "objectID": "Pages/policies.html#course-description",
-    "href": "Pages/policies.html#course-description",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Course Description",
-    "text": "Course Description\nAs stated in the catalog description:\n\nOverview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\nIndeed, this course is designed to be a hands-on introduction to Data Science for intermediate-level students with some exposure to probability and basic computation skills, but with few or no upper-division courses in statistics."
-  },
-  {
-    "objectID": "Pages/policies.html#prerequisites",
-    "href": "Pages/policies.html#prerequisites",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Prerequisites:",
-    "text": "Prerequisites:\n\nPSTAT 120A (Probability at a calculus-based level)\nMATH 4A (a first pass at Linear Algebra)\nPrior experience with a programming language (e.g. Python through CMPSC 9 or CMPSC 16).\n\nNote on Programming: the primary programming language of this course will be R, though you are not expected to necessarily have prior experience coding with R (so long as you have experience coding in another language, e.g. Python, Julia, etc.)"
-  },
-  {
-    "objectID": "Pages/policies.html#textbooksreadings",
-    "href": "Pages/policies.html#textbooksreadings",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Textbooks/Readings",
-    "text": "Textbooks/Readings\nThere are two “required” textbooks this quarter (required in the sense that readings will be assigned from them), both of which are freely available at the links below courtesy of the authors:\n\nR for Data Science (2e), by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund\nLearning Data Science, by Sam Lau, Joey Gonzalez, and Deb Nolan\n\nIf you are new to programming in R, you may also find this textbook useful:\n\nAn Introduction to R, by Alex Douglas, Deon Roos, Francesca Mancini, Ana Couto & David Lusseau\n\nThere will also be a handful of articles which will be assigned as reading. All required reading can be found in the Weekly tabs of the Materials page."
-  },
-  {
-    "objectID": "Pages/policies.html#learning-outcomes",
-    "href": "Pages/policies.html#learning-outcomes",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Learning Outcomes",
-    "text": "Learning Outcomes\nBy the end of this course, you should be able to:\n\ncritically assess data quality and sampling design\nretrieve, inspect, and clean raw data\nunderstand the basics of exploratory, descriptive, visual, and inferential techniques\ninterpret and communicate results in context"
-  },
-  {
-    "objectID": "Pages/policies.html#assessments",
-    "href": "Pages/policies.html#assessments",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Assessments",
-    "text": "Assessments\n\nLabs: short, structured coding assignments designed to introduce programming concepts and skills. Labs will be assigned weekly, and are designed to be mostly completed during Section on Monday but won’t be due until 11:59pm on Wednesdays.\nHomeworks: slightly larger in scope than labs; will contain both programming and theoretical/conceptual concepts. We will have a total of 3 homework assignments released throughout the quarter; typically you will have 1-2 weeks to work on the homeworks and you are encouraged to start as early as possible!\nMini Projects: more open-ended than homeworks and labs, and are designed to more closely simulate real-world data science projects and endeavors. We will have a total of 3 mini projects (released in non-exam weeks where there are no homeworks due) throughout the quarter, and you are encouraged to work collaboratively.\nFinal Project: a final, comprehensive project that will be due during finals week. You will be required to work in teams on the Final Project.\n\n\n\n\n\n\n\nFinal Project\n\n\n\nThe final project will be due by 11:59pm on Tuesday, June 11.\n\n\n\n2 In-Class Assessments (ICAs) will be administered (see below for dates). I hesitate to call these “exams” because they are not intended to be as high-stakes as exams, however they are designed to test your retention of course material. More information will be released as we approach the date of the first ICA.\n\n\n\n\n\n\n\nAssessment Dates\n\n\n\n\nIn-Class Assessment 1: Thursday, April 25, 2024 in BUCHN 1940 (our Lecture classroom) starting at 9:30 (our regular class time)\nIn-Class Assessment 2: Thursday, May 23, 2024 in BUCHN 1940 (our Lecture classroom) starting at 9:30 (our regular class time)\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThere will be no ICAs offered at alternate times, for any reasons. So, please plan accordingly!\n\n\n\nFinal Course Grades\nYour final course grade will be computed according to the following weights:\n\n\n\nAssessment\nWeight\n\n\n\n\nLabs\n10%\n\n\nHW\n15%\n\n\nMini Projects\n20%\n\n\nFinal Project\n25%\n\n\nIn-Class Assessments\n30%\n\n\n\nYour final letter grade will be issued according to the following scheme (cutoffs between plusses and minuses will be calculated at the end of the quarter):\n\nA- – A+: 90 – 100%\nB– – B+: 80 – 89.99%\nC– – C+: 70 – 79.99%\nD– – D+ : 60 – 69.99%\nF: 0 – 59.99%\n\nI have elected to adopt an uncurved grading scheme to eliminate any sense of “competition” among students; I highly encourage you all to collaborate with and uplift each other. Having said that, I will certainly consider adjusting the cutoffs at the end of the quarter if necessary."
-  },
-  {
-    "objectID": "Pages/policies.html#policies",
-    "href": "Pages/policies.html#policies",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Policies",
-    "text": "Policies\n\nLate Submissions\nYou are allowed two late submissions across homeworks and labs (so, 2 in total; not 2 each), that must be submitted within 48 hours of the original deadline. No work will be accepted beyond 48 hours after the original deadline. Additionally, because projects may/will be collaborative, late project submissions will not be accepted.\n\n\nCommunication\nThere are two primary means of communication outside of scheduled class meetings: office hours and a Discord Server. If you are unsure of how to reach out to appropriate parties, please consult the following table:\n\n\n\nTopic\nRedirect to…\n\n\n\n\nTroubleshooting codes\nDiscord\n\n\nChecking answers\nOffice hours or Discord\n\n\nClarifying assignment content\nOffice hours or Discord\n\n\nAssignment submission\nGradescope\n\n\nRe-evaluation request\nGradescope\n\n\nQuestion about missing grades\nFill Out This Form\n\n\n\nSome additional comments:\n\nPlease note that we (the course staff) request you refrain from emailing us except in case of extreme emergency (it is up to you to decide what is an ‘emergency’). Please bring all of your questions to the course staff during either Office Hours or after Lecture/Section. (Also, please note that DMs [Direct Messages] sent to the course staff through Discord will be ignored. Additionally, non-emergency emails [e.g. about content, missing grades, etc.] will be ignored.) Thank you!\nIf you have questions or concerns about missing grades, please use the form linked in the table above. You are allowed to submit the form multiple times, but we ask that you please wait at least 48 business hours before submitting follow-ups. Thank you!\n\n\n\nCollaboration and Academic Integrity\nData Science (as we will see) is an inherently collaborative field. As such, you are not only allowed but also encouraged to collaborate on assignments (be they lab, homework, or project). However, there are limitations to collaboration:\n\ncollaboration on the ICAs is strictly prohibited\ndo not copy other people’s work and try to pass it off as your own\nif/when you work in groups, include the names of all group members on the assignment\n\nAnyone found guilty of academic misconduct will be reported to the Academic Senate, and will receive at minimum a failing grade on the assignment in question; further actions may also include failing the course, and marks being made on permanent records. Depending on the severity of the infraction, expulsion is also a possibility.\nBasically, don’t cheat- please! If you’re ever struggling with course material, please come talk to me or the TA’s. We are truly here for you, and want only the best for you.\n\n\nSection Switching\nLab Sections take place in special “Collaborate Classrooms” which are equipped with laptops. There are only a fixed number of seats and laptops in these classrooms, meaning we cannot under any circumstance over-enroll sections. Therefore, if you want to switch section unofficially (we do not have the ability to switch your official enrollment through GOLD), please follow the steps at this link. Any requests to switch sections that do not adhere to the guidelines posted at that link will be ignored."
-  },
-  {
-    "objectID": "Pages/policies.html#disabled-students-program-dsp",
-    "href": "Pages/policies.html#disabled-students-program-dsp",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Disabled Students Program (DSP)",
-    "text": "Disabled Students Program (DSP)\nIf you have a disability, or otherwise require accommodations for the exams and/or quizzes please reach out to the Disabled Students Program (DSP) ASAP to ensure your request(s) for accommodation can be processed. We ask that all requests be logged at least a week in advance, to ensure the system enough time to process. Please note that we cannot grant any requests for accommodations unless they come to us from DSP directly."
-  },
-  {
-    "objectID": "Pages/policies.html#technology-needs",
-    "href": "Pages/policies.html#technology-needs",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Technology Needs",
-    "text": "Technology Needs\nAs a part of this course, you will be required to program in R. Though the Lab Sections take place in specially designed classrooms that come equipped with computers, your homework and quizzes may cover R-related questions, which means we expect you to have access to a laptop capable of connecting to the internet. If you do not currently possess such a laptop, please check out UCSB’s Basic Needs Resource page on Technology Resources to try and acquire one."
-  },
-  {
-    "objectID": "Pages/policies.html#disclaimer",
-    "href": "Pages/policies.html#disclaimer",
-    "title": "PSTAT 100: Data Science Concepts and Analysis",
-    "section": "Disclaimer",
-    "text": "Disclaimer\nThe instructor reserves the right to modify this syllabus if he deems such modifications academically advisable. Such modifications, should they occur, will be announced publicly."
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html",
-    "href": "Labs/Lab00/df_basics.html",
-    "title": "Lab 00: Dataframe Basics",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSTAT 100: Spring 2024",
     "section": "",
-    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#a-note-on-the-autograder",
-    "href": "Labs/Lab00/df_basics.html#a-note-on-the-autograder",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "A Note on the Autograder",
-    "text": "A Note on the Autograder\nI’ve included an autograder in this lab (through the package ottr), mainly so you can check yourself and your knowledge. As s rule-of-thumb, you should make sure that your code is passing all test cases, as this will be something we look for in future labs (which will be graded and count toward your overall course grade, unlike this one)."
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
-    "href": "Labs/Lab00/df_basics.html#lab-objectives",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Lab Objectives",
-    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
-    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Relevant Textbook Chapters/Sections:",
-    "text": "Relevant Textbook Chapters/Sections:\n\nTBD"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
-    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Using Slicing/Indexing",
-    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
-    "href": "Labs/Lab00/df_basics.html#using-column-names",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Using Column Names",
-    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
-    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Updating/Replacing Values",
-    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
-    "href": "Labs/Lab00/df_basics.html#adding-columns",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Adding Columns",
-    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
-    "href": "Labs/Lab00/df_basics.html#changing-column-names",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Changing Column Names",
-    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
+    "text": "PSTAT 100\nData Science Concepts and Analysis\nSpring 2024; Instructor: Ethan P. Marzban\n\n\nWelcome to the official course site for PSTAT 100, Spring 2024 with instructor Ethan P. Marzban. Here, you will find all relevant course material including lecture material, homework, labs, projects, and additional resources.\nThe instructor would like to acknowledge Drs. Alexander Franks, Trevor Ruiz, and Laura Baracaldo for graciously providing material for this course."
   },
   {
     "objectID": "Labs/Lab00/intro2r.html",
@@ -231,17 +105,150 @@
     "text": "Footnotes\n\n\nactually, this is a lie- there does exist a closed form expression for the nth Fibonacci number, but for the purposes of this exercise we are going to ignore that fact↩︎"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSTAT 100: Spring 2024",
+    "objectID": "Labs/Lab00/df_basics.html",
+    "href": "Labs/Lab00/df_basics.html",
+    "title": "Lab 00: Dataframe Basics",
     "section": "",
-    "text": "PSTAT 100\nData Science Concepts and Analysis\nSpring 2024; Instructor: Ethan P. Marzban\n\n\nWelcome to the official course site for PSTAT 100, Spring 2024 with instructor Ethan P. Marzban. Here, you will find all relevant course material including lecture material, homework, labs, projects, and additional resources.\nThe instructor would like to acknowledge Drs. Alexander Franks, Trevor Ruiz, and Laura Baracaldo for graciously providing material for this course."
+    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
   },
   {
-    "objectID": "Pages/materials.html",
-    "href": "Pages/materials.html",
+    "objectID": "Labs/Lab00/df_basics.html#a-note-on-the-autograder",
+    "href": "Labs/Lab00/df_basics.html#a-note-on-the-autograder",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "A Note on the Autograder",
+    "text": "A Note on the Autograder\nI’ve included an autograder in this lab (through the package ottr), mainly so you can check yourself and your knowledge. As s rule-of-thumb, you should make sure that your code is passing all test cases, as this will be something we look for in future labs (which will be graded and count toward your overall course grade, unlike this one)."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
+    "href": "Labs/Lab00/df_basics.html#lab-objectives",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Lab Objectives",
+    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Relevant Textbook Chapters/Sections:",
+    "text": "Relevant Textbook Chapters/Sections:\n\nTBD"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Slicing/Indexing",
+    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
+    "href": "Labs/Lab00/df_basics.html#using-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Column Names",
+    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Updating/Replacing Values",
+    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
+    "href": "Labs/Lab00/df_basics.html#adding-columns",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Adding Columns",
+    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
+    "href": "Labs/Lab00/df_basics.html#changing-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Changing Column Names",
+    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
+  },
+  {
+    "objectID": "Pages/policies.html",
+    "href": "Pages/policies.html",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Acknowledgements: Special thanks to previous instructors Dr. Trevor Ruiz, Dr. Alex Franks, and Dr. Laura Baracaldo for graciously providing material and guidance for this course.\n\n\n\nWeek 1 (4/1 - 4/7)\n\n\nReadings:\n\nFor Tuesday:\n\nR4DS Chapter 2: Workflow: basics\nR4DS Chapter 27: A field guide to base R\n\nFor Thursday:\n\nHadley Wickham Tidy Data, Journal of Statistical Software (2014)\nR4DS Chapter 5: Data tidying\nR4DS Chapter 3: Data transformation\n\nR4DS Chapter 19: Joins\n\n\nOptional Reading:\n\nI2R, Chapter 2: Some R basics\nI2R, Chapter 3: Data in R\nLDS Chapter 2: Questions and Data Scope\nTidyverse Official Site\n\nLectures:\n\nTues. Lecture 1: Course Introduction; Intro to Data\nThurs. Lecture 2: Data, Part II\n\nLab:\nThere is no required lab for this week, as we will not be having any Sections on Monday. However, please keep in mind the following:\n\nIf you have never programmed in R before, please read Chapter 2: Some R basics and Chapter 3: Data in R, from “An Introduction to R”, and Chapters 2 and 27 from R4DS.\n\nThis Lab provides a summary of important information about the basics of programming in R.\n\nIf you have some exposure to programming in R (or have already read Chapters 2 and 3 from I2R), but would like more practice with dataframes, we encourage you to complete the following lab: [Click Here]\n\nPlease note that, by virtue of being prerequisite, these concepts and topics are potentially testable on In-Class Assignments (and are also crucial for success in our future PSTAT 100 endeavors!).\n\n\n\n\n\n\nTextbook Abbreviations\n\nR4DS: R for Data Science\nLDS: Learning Data Science\nI2R: An Introduction to R\n\n\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nLab\nHomework\nProject\n\n\n\n\n1\nIntroduction to Data\n\n\n\n\n\n2\nStatistical Graphics\nL1\nHW01\n\n\n\n3\nExploring and Cleaning Data\nL2\n\nMP01\n\n\n4\nSampling Techniques\nL3\n\n\n\n\n5\nMissingness, and KDE\nL4\nHW02\n\n\n\n6\nPrincipal Components Analysis, and an Intro to Statistics\nL5\n\nMP02\n\n\n7\nIntroduction to Statistical Modeling\nL6\nHW03\n\n\n\n8\nRegression\nL7\n\n\n\n\n9\nMore Regression\n\n\nMP03\n\n\n10\nClassification and Clustering\nL8\n\n\n\n\n11\nFinals\n\n\nFinal Proj.\n\n\n\n\nL: lab\nHW: Homework\nMP: Mini-Project"
+    "text": "Welcome to PSTAT 100: Data Science Concepts and Analysis! I am very excited to join you as your instructor this quarter. Our journey together will take us through the basics of Data Science, and aims to prepare you for your future endeavors in the field, whether they be in classes, industry, or academia. Here’s to a great quarter!     – Ethan"
+  },
+  {
+    "objectID": "Pages/policies.html#course-staff-and-lecture-logistics",
+    "href": "Pages/policies.html#course-staff-and-lecture-logistics",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Course Staff and Lecture Logistics",
+    "text": "Course Staff and Lecture Logistics\nInstructor: Ethan P. Marzban (he/him)\n\n\n\n\n\n\nLecture Times and Location\n\n\n\nT, R from 9:30am - 10:45am, in BUCHN 1940.\n\n\nTeaching Assistants: TBD, TBD\nSections:\n\nM 2 - 2:50pm in PHELPS 1518 (TBD)\nM 3 - 3:50pm in PHELPS 1518 (TBD)\nM 4 - 4:50pm in PHELPS 1517 (TBD)\nM 5 - 5:50pm in PHELPS 1513 (TBD)"
+  },
+  {
+    "objectID": "Pages/policies.html#course-description",
+    "href": "Pages/policies.html#course-description",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Course Description",
+    "text": "Course Description\nAs stated in the catalog description:\n\nOverview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\nIndeed, this course is designed to be a hands-on introduction to Data Science for intermediate-level students with some exposure to probability and basic computation skills, but with few or no upper-division courses in statistics."
+  },
+  {
+    "objectID": "Pages/policies.html#prerequisites",
+    "href": "Pages/policies.html#prerequisites",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Prerequisites:",
+    "text": "Prerequisites:\n\nPSTAT 120A (Probability at a calculus-based level)\nMATH 4A (a first pass at Linear Algebra)\nPrior experience with a programming language (e.g. Python through CMPSC 9 or CMPSC 16).\n\nNote on Programming: the primary programming language of this course will be R, though you are not expected to necessarily have prior experience coding with R (so long as you have experience coding in another language, e.g. Python, Julia, etc.)"
+  },
+  {
+    "objectID": "Pages/policies.html#textbooksreadings",
+    "href": "Pages/policies.html#textbooksreadings",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Textbooks/Readings",
+    "text": "Textbooks/Readings\nThere are two “required” textbooks this quarter (required in the sense that readings will be assigned from them), both of which are freely available at the links below courtesy of the authors:\n\nR for Data Science (2e), by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund\nLearning Data Science, by Sam Lau, Joey Gonzalez, and Deb Nolan\n\nIf you are new to programming in R, you may also find this textbook useful:\n\nAn Introduction to R, by Alex Douglas, Deon Roos, Francesca Mancini, Ana Couto & David Lusseau\n\nThere will also be a handful of articles which will be assigned as reading. All required reading can be found in the Weekly tabs of the Materials page."
+  },
+  {
+    "objectID": "Pages/policies.html#learning-outcomes",
+    "href": "Pages/policies.html#learning-outcomes",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nBy the end of this course, you should be able to:\n\ncritically assess data quality and sampling design\nretrieve, inspect, and clean raw data\nunderstand the basics of exploratory, descriptive, visual, and inferential techniques\ninterpret and communicate results in context"
+  },
+  {
+    "objectID": "Pages/policies.html#assessments",
+    "href": "Pages/policies.html#assessments",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Assessments",
+    "text": "Assessments\n\nLabs: short, structured coding assignments designed to introduce programming concepts and skills. Labs will be assigned weekly, and are designed to be mostly completed during Section on Monday but won’t be due until 11:59pm on Wednesdays.\nHomeworks: slightly larger in scope than labs; will contain both programming and theoretical/conceptual concepts. We will have a total of 3 homework assignments released throughout the quarter; typically you will have 1-2 weeks to work on the homeworks and you are encouraged to start as early as possible!\nMini Projects: more open-ended than homeworks and labs, and are designed to more closely simulate real-world data science projects and endeavors. We will have a total of 3 mini projects (released in non-exam weeks where there are no homeworks due) throughout the quarter, and you are encouraged to work collaboratively.\nFinal Project: a final, comprehensive project that will be due during finals week. You will be required to work in teams on the Final Project.\n\n\n\n\n\n\n\nFinal Project\n\n\n\nThe final project will be due by 11:59pm on Tuesday, June 11.\n\n\n\n2 In-Class Assessments (ICAs) will be administered (see below for dates). I hesitate to call these “exams” because they are not intended to be as high-stakes as exams, however they are designed to test your retention of course material. More information will be released as we approach the date of the first ICA.\n\n\n\n\n\n\n\nAssessment Dates\n\n\n\n\nIn-Class Assessment 1: Thursday, April 25, 2024 in BUCHN 1940 (our Lecture classroom) starting at 9:30 (our regular class time)\nIn-Class Assessment 2: Thursday, May 23, 2024 in BUCHN 1940 (our Lecture classroom) starting at 9:30 (our regular class time)\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThere will be no ICAs offered at alternate times, for any reasons. So, please plan accordingly!\n\n\n\nFinal Course Grades\nYour final course grade will be computed according to the following weights:\n\n\n\nAssessment\nWeight\n\n\n\n\nLabs\n10%\n\n\nHW\n15%\n\n\nMini Projects\n20%\n\n\nFinal Project\n25%\n\n\nIn-Class Assessments\n30%\n\n\n\nYour final letter grade will be issued according to the following scheme (cutoffs between plusses and minuses will be calculated at the end of the quarter):\n\nA- – A+: 90 – 100%\nB– – B+: 80 – 89.99%\nC– – C+: 70 – 79.99%\nD– – D+ : 60 – 69.99%\nF: 0 – 59.99%\n\nI have elected to adopt an uncurved grading scheme to eliminate any sense of “competition” among students; I highly encourage you all to collaborate with and uplift each other. Having said that, I will certainly consider adjusting the cutoffs at the end of the quarter if necessary."
+  },
+  {
+    "objectID": "Pages/policies.html#policies",
+    "href": "Pages/policies.html#policies",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Policies",
+    "text": "Policies\n\nLate Submissions\nYou are allowed two late submissions across homeworks and labs (so, 2 in total; not 2 each), that must be submitted within 48 hours of the original deadline. No work will be accepted beyond 48 hours after the original deadline. Additionally, because projects may/will be collaborative, late project submissions will not be accepted.\n\n\nCommunication\nThere are two primary means of communication outside of scheduled class meetings: office hours and a Discord Server. If you are unsure of how to reach out to appropriate parties, please consult the following table:\n\n\n\nTopic\nRedirect to…\n\n\n\n\nTroubleshooting codes\nDiscord\n\n\nChecking answers\nOffice hours or Discord\n\n\nClarifying assignment content\nOffice hours or Discord\n\n\nAssignment submission\nGradescope\n\n\nRe-evaluation request\nGradescope\n\n\nQuestion about missing grades\nFill Out This Form\n\n\n\nSome additional comments:\n\nPlease note that we (the course staff) request you refrain from emailing us except in case of extreme emergency (it is up to you to decide what is an ‘emergency’). Please bring all of your questions to the course staff during either Office Hours or after Lecture/Section. (Also, please note that DMs [Direct Messages] sent to the course staff through Discord will be ignored. Additionally, non-emergency emails [e.g. about content, missing grades, etc.] will be ignored.) Thank you!\nIf you have questions or concerns about missing grades, please use the form linked in the table above. You are allowed to submit the form multiple times, but we ask that you please wait at least 48 business hours before submitting follow-ups. Thank you!\n\n\n\nCollaboration and Academic Integrity\nData Science (as we will see) is an inherently collaborative field. As such, you are not only allowed but also encouraged to collaborate on assignments (be they lab, homework, or project). However, there are limitations to collaboration:\n\ncollaboration on the ICAs is strictly prohibited\ndo not copy other people’s work and try to pass it off as your own\nif/when you work in groups, include the names of all group members on the assignment\n\nAnyone found guilty of academic misconduct will be reported to the Academic Senate, and will receive at minimum a failing grade on the assignment in question; further actions may also include failing the course, and marks being made on permanent records. Depending on the severity of the infraction, expulsion is also a possibility.\nBasically, don’t cheat- please! If you’re ever struggling with course material, please come talk to me or the TA’s. We are truly here for you, and want only the best for you.\n\n\nSection Switching\nLab Sections take place in special “Collaborate Classrooms” which are equipped with laptops. There are only a fixed number of seats and laptops in these classrooms, meaning we cannot under any circumstance over-enroll sections. Therefore, if you want to switch section unofficially (we do not have the ability to switch your official enrollment through GOLD), please follow the steps at this link. Any requests to switch sections that do not adhere to the guidelines posted at that link will be ignored."
+  },
+  {
+    "objectID": "Pages/policies.html#disabled-students-program-dsp",
+    "href": "Pages/policies.html#disabled-students-program-dsp",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Disabled Students Program (DSP)",
+    "text": "Disabled Students Program (DSP)\nIf you have a disability, or otherwise require accommodations for the exams and/or quizzes please reach out to the Disabled Students Program (DSP) ASAP to ensure your request(s) for accommodation can be processed. We ask that all requests be logged at least a week in advance, to ensure the system enough time to process. Please note that we cannot grant any requests for accommodations unless they come to us from DSP directly."
+  },
+  {
+    "objectID": "Pages/policies.html#technology-needs",
+    "href": "Pages/policies.html#technology-needs",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Technology Needs",
+    "text": "Technology Needs\nAs a part of this course, you will be required to program in R. Though the Lab Sections take place in specially designed classrooms that come equipped with computers, your homework and quizzes may cover R-related questions, which means we expect you to have access to a laptop capable of connecting to the internet. If you do not currently possess such a laptop, please check out UCSB’s Basic Needs Resource page on Technology Resources to try and acquire one."
+  },
+  {
+    "objectID": "Pages/policies.html#disclaimer",
+    "href": "Pages/policies.html#disclaimer",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "Disclaimer",
+    "text": "Disclaimer\nThe instructor reserves the right to modify this syllabus if he deems such modifications academically advisable. Such modifications, should they occur, will be announced publicly."
+  },
+  {
+    "objectID": "Pages/staff.html",
+    "href": "Pages/staff.html",
+    "title": "PSTAT 100: Data Science Concepts and Analysis",
+    "section": "",
+    "text": "InstructorTeaching AssistantsUndergraduate Learning Assistant\n\n\n\n\n\nEthan P. Marzban (he/him)\n\nEmail: epmarzban@pstat.ucsb.edu (for emergencies only, please)\nOffice Hours: TBD\n\n\n\n\n\n\n\n\n\n\n\nTBD (TBD/TBD)\n\nEmail: TBD\nOffice Hours: TBD\n\n\n\n\n\n\n\n\n\nTBD (TBD/TBD)\n\nEmail: TBD\nOffice Hours: TBD\n\n\n\n\n\n\n\n\nHello!"
   }
 ]
