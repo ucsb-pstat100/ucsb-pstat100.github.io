@@ -12,6 +12,23 @@ format: html
 
 Welcome to PSTAT 100: Data Science Concepts and Analysis! I am very excited to join you as your instructor this quarter. Our journey together will take us through the basics of Data Science, and aims to prepare you for your future endeavors in the field, whether they be in classes, industry, or academia. Here's to a great quarter! \ \ \ \ -- Ethan \
 
+# Graphical Syllabus
+
+<style>
+.myclass {
+  max-width: 100%;
+  width: 800px;
+  height: 700px;
+  border: 10px solid rgba(250, 196, 120, 0.2);
+  margin: 0;
+}
+</style>
+
+{{< pdf ../Files/Misc/100_SP24_Syll.pdf class=myclass >}}
+
+
+# Course Policies
+
 ## Course Staff and Lecture Logistics
 
 **Instructor:** Ethan P. Marzban (he/him)
