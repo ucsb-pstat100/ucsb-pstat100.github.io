@@ -73,6 +73,10 @@ There are two "required" textbooks this quarter (required in the sense that read
 
 -   [**R for Data Science (2e)**](https://r4ds.hadley.nz/), by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund
 
+-   [**Introduction to Modern Statistics, 2nd Ed.**](https://openintro-ims2.netlify.app/), by Mine Çetinkaya-Rundel and Johanna Hardin
+
+Another good resource for those of you very interested in Data Science (keep in mind this book is written primarily with the Python programming language in mind, which is why I will not be assigning reading from it):
+
 -   [**Learning Data Science**](https://learningds.org/intro.html), by Sam Lau, Joey Gonzalez, and Deb Nolan
 
 If you are new to programming in `R`, you may also find this textbook useful:

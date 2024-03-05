@@ -27,6 +27,7 @@ Please try to complete the readings before coming to the specified lecture/start
 ## **Textbook Abbreviations and Emoji Meanings**
 -   R4DS = [R for Data Science](https://r4ds.hadley.nz/)
 -   I2R = [An Introduction to R](https://intro2r.com/)
+-   IMS = [Introduction to Modern Statistics, 2nd Ed.](https://openintro-ims2.netlify.app/)
 -   💻 = Lab
 -   🧑‍🏫 = Lecture
 -   📖 = Textbook Reading
@@ -76,7 +77,7 @@ temp_sheet %>%
     columns = c(Materials)
   ) %>%
   fmt_markdown(
-    columns = c(Reading, Topic, Materials)
+    columns = c(Week, Reading, Topic, Materials)
   ) %>%
   cols_width(
     Week ~ pct(7),
