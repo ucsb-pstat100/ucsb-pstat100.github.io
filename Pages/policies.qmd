@@ -204,3 +204,7 @@ As a part of this course, you will be required to program in `R`. Though the Lab
 ## Disclaimer
 
 The instructor reserves the right to modify this syllabus if he deems such modifications academically advisable. Such modifications, should they occur, will be announced publicly.
+
+## Faculty Mentor
+
+The faculty mentor for this course is Dr. Drew Carter. They can be reached at [carter@pstat.ucsb.edu](mailto:carter@pstat.ucsb.edu). Please note that Dr. Carter will not be able to authorize regrades or accommodations/extensions for the course; for such inquiries, please utilize the communications channels listed above. Thank you!
