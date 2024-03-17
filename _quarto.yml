@@ -13,8 +13,6 @@ website:
         text: Home
       - href: Pages/policies.qmd
         text: Policies
-      - href: Pages/materials.qmd
-        text: Materials
       - href: Pages/schedule.qmd
         text: Course Schedule
       - section: "Labs"
