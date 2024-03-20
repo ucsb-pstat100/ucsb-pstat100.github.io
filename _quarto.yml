@@ -14,7 +14,7 @@ website:
       - href: Pages/policies.qmd
         text: Policies
       - href: Pages/schedule.qmd
-        text: Course Schedule
+        text: Course Schedule/Calendar
       - section: "Labs"
         contents:
           - section: "Lab00"

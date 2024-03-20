@@ -1,6 +1,6 @@
 ---
 title: "PSTAT 100: Data Science Concepts and Analysis"
-subtitle: "Course Schedule"
+subtitle: "Course Schedule and Calendar"
 author:
   - name: "Ethan Marzban"
     affiliations:
@@ -9,6 +9,8 @@ author-title: "Instructor"
 affiliation-title: "Quarter"
 format: html
 ---
+
+## Course Schedule 
 
 :::{.callout-warning}
 ## **Note**
@@ -95,3 +97,7 @@ temp_sheet %>%
   tab_options(table.font.size = 16) %>%
   opt_row_striping()
 ```
+
+## Course Calendar
+
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&bgcolor=%23ffffff&src=dWNzYi5wc3RhdDEwMEBnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%2333B679&color=%230B8043" style="border:solid 1px #777" width="900" height="600" frameborder="0" scrolling="no"></iframe>

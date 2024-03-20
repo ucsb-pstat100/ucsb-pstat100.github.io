@@ -1,0 +1,31 @@
+---
+title: "PSTAT 100: Data Science Concepts and Analysis"
+subtitle: "Course Calendar"
+author:
+  - name: "Ethan Marzban"
+    affiliations:
+      - name: "Spring 2024"
+author-title: "Instructor"
+affiliation-title: "Quarter"
+format: html
+---
+
+
+## Course Calendar
+
+***Please note that Office Hours during Week 1 are different that Office Hours taking place throughout the rest of the quarter!***
+
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&bgcolor=%23E67C73&src=dWNzYi5wc3RhdDEwMEBnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%2333B679&color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+## Weekly Office Hours
+
+-   **Ethan:**
+
+    -   Tuesdays, 4:30pm - 5:30pm over <a href="https://ucsb.zoom.us/j/85861759961?pwd=czZwdzZwZjcxbVZ2MkVaRjBtS1U3UT09" target="_blank">Zoom</a>
+    -   Fridays, 2 - 3:30pm in ARTS 1349
+
+
+-   **Ethan:**
+
+    -   Tuesdays, 4:30pm - 5:30pm over <a href="https://ucsb.zoom.us/j/85861759961?pwd=czZwdzZwZjcxbVZ2MkVaRjBtS1U3UT09" target="_blank">Zoom</a>
+    -   Fridays, 2 - 3:30pm in ARTS 1349

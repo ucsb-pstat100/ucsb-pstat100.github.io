@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ethan Marzban">
 
-<title>PSTAT 100: Spring 2024</title>
+<title>PSTAT 100: Spring 2024 - PSTAT 100: Data Science Concepts and Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./Images/Logos_Icons/hex_second_pass.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Images/Logos_Icons/hex_second_pass.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -64,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -76,7 +77,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      PSTAT 100: Spring 2024
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -90,11 +93,11 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./Images/Logos_Icons/hex_second_pass.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../Images/Logos_Icons/hex_second_pass.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">PSTAT 100: Spring 2024</a> 
+      <a href="../">PSTAT 100: Spring 2024</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -109,19 +112,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Pages/policies.html" class="sidebar-item-text sidebar-link">
+  <a href="../Pages/policies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policies</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Pages/schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../Pages/schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule/Calendar</span></a>
   </div>
 </li>
@@ -145,13 +148,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Labs/Lab00/intro2r.html" class="sidebar-item-text sidebar-link">
+  <a href="../Labs/Lab00/intro2r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to <code>R</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Labs/Lab00/df_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../Labs/Lab00/df_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataframe Basics</span></a>
   </div>
 </li>
@@ -161,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Pages/staff.html" class="sidebar-item-text sidebar-link">
+  <a href="../Pages/staff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Staff</span></a>
   </div>
 </li>
@@ -171,23 +174,72 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-calendar" id="toc-course-calendar" class="nav-link active" data-scroll-target="#course-calendar">Course Calendar</a></li>
+  <li><a href="#weekly-office-hours" id="toc-weekly-office-hours" class="nav-link" data-scroll-target="#weekly-office-hours">Weekly Office Hours</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-
-
-<div style="text-align:center">
-<p><span style="font-size:3rem"><strong>PSTAT 100</strong></span><br>
-<span style="font-size:2rem">Data Science Concepts and Analysis</span><br>
-<span style="font-size:2rem">Spring 2024; Instructor: Ethan P. Marzban</span></p>
-<p><img src="Images/Logos_Icons/hex_second_pass.svg" class="img-fluid" style="width:50.0%"></p>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PSTAT 100: Data Science Concepts and Analysis</h1>
+<p class="subtitle lead">Course Calendar</p>
 </div>
-<p>Welcome to the official course site for PSTAT 100, Spring 2024 with instructor Ethan P. Marzban. Here, you will find all relevant course material including lecture material, homework, labs, projects, and additional resources.</p>
-<p>The instructor would like to acknowledge Drs. Alexander Franks, Trevor Ruiz, and Laura Baracaldo for graciously providing material for this course.</p>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Instructor</div>
+  <div class="quarto-title-meta-heading">Quarter</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Ethan Marzban </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Spring 2024
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="course-calendar" class="level2">
+<h2 class="anchored" data-anchor-id="course-calendar">Course Calendar</h2>
+<p><strong><em>Please note that Office Hours during Week 1 are different that Office Hours taking place throughout the rest of the quarter!</em></strong></p>
+<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;ctz=America%2FLos_Angeles&amp;bgcolor=%23E67C73&amp;src=dWNzYi5wc3RhdDEwMEBnbWFpbC5jb20&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no">
+</iframe>
+</section>
+<section id="weekly-office-hours" class="level2">
+<h2 class="anchored" data-anchor-id="weekly-office-hours">Weekly Office Hours</h2>
+<ul>
+<li><p><strong>Ethan:</strong></p>
+<ul>
+<li>Tuesdays, 4:30pm - 5:30pm over <a href="https://ucsb.zoom.us/j/85861759961?pwd=czZwdzZwZjcxbVZ2MkVaRjBtS1U3UT09" target="_blank">Zoom</a></li>
+<li>Fridays, 2 - 3:30pm in ARTS 1349</li>
+</ul></li>
+<li><p><strong>Ethan:</strong></p>
+<ul>
+<li>Tuesdays, 4:30pm - 5:30pm over <a href="https://ucsb.zoom.us/j/85861759961?pwd=czZwdzZwZjcxbVZ2MkVaRjBtS1U3UT09" target="_blank">Zoom</a></li>
+<li>Fridays, 2 - 3:30pm in ARTS 1349</li>
+</ul></li>
+</ul>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

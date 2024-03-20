@@ -17,12 +17,12 @@ format: html
 
 ![](../Images/Profiles/Ethan.jpg){style="float:right;padding: 0 0 0 10px;" width="200"}
 
-Hello! My name is **Ethan P. Marzban** (he/him), and I'm currently a PhD student in the Department of Statistics here at UCSB. My research interests span a variety of topics, including Bayesian techniques, mathematical statistics, and statistics and data science education. In my free time, I enjoy playing the piano, drinking boba, and talking about cats. I'm super excited to be your instructor this quarter!
+Hello! My name is **Ethan P. Marzban** (he/him), and I'm currently a PhD student in the Department of Statistics here at UCSB. My research interests span a variety of topics, including mathematical statistics, Bayesian statistics, and Stats/Data Science Education. In my free time, I enjoy playing the piano, drinking boba, and talking about cats. I'm super excited to be your instructor this quarter!
 
 | Office hours | Location |
 |--------------|----------|
-| Fridays, 2 - 3:30pm   | <a href="https://www.map.ucsb.edu/?id=1982#!m/618873?s/arts" target="_blank">ARTS 1349</a>      |
-| TBD          | Zoom     |
+| Tuesdays, 4:30pm - 5:30pm (PDT) | <a href="https://ucsb.zoom.us/j/85861759961?pwd=czZwdzZwZjcxbVZ2MkVaRjBtS1U3UT09" target="_blank">Zoom (Click for Link)</a> |
+| Fridays, 2 - 3:30pm (PDT)  | <a href="https://www.map.ucsb.edu/?id=1982#!m/618873?s/arts" target="_blank">ARTS 1349</a>      |
 
 ## Teaching Assistants
 
