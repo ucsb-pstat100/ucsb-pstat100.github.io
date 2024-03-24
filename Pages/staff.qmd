@@ -1,6 +1,6 @@
 ---
 title: "PSTAT 100: Data Science Concepts and Analysis"
-subtitle: "Course Staff"
+subtitle: "Course Staff and Office Hours"
 author:
   - name: "Ethan Marzban"
     affiliations:
@@ -9,6 +9,10 @@ author-title: "Instructor"
 affiliation-title: "Quarter"
 format: html
 ---
+
+
+_**Please see the <a href="https://ucsb-pstat100.github.io/Pages/schedule.html#course-calendar" target="_blank">Calendar</a> for a weekly schedule of Office Hours (including Week 1 office hours)**_
+
 
 ::: panel-tabset
 ## Instructor
@@ -19,7 +23,7 @@ format: html
 
 Hello! My name is **Ethan P. Marzban** (he/him), and I'm currently a PhD student in the Department of Statistics here at UCSB. My research interests span a variety of topics, including mathematical statistics, Bayesian statistics, and Stats/Data Science Education. In my free time, I enjoy playing the piano, drinking boba, and talking about cats. I'm super excited to be your instructor this quarter!
 
-| Office hours | Location |
+| Office hours (Beginning Week 2) | Location |
 |--------------|----------|
 | Tuesdays, 4:30pm - 5:30pm (PDT) | <a href="https://ucsb.zoom.us/j/85861759961?pwd=czZwdzZwZjcxbVZ2MkVaRjBtS1U3UT09" target="_blank">Zoom (Click for Link)</a> |
 | Fridays, 2 - 3:30pm (PDT)  | <a href="https://www.map.ucsb.edu/?id=1982#!m/618873?s/arts" target="_blank">ARTS 1349</a>      |
@@ -28,7 +32,7 @@ Hello! My name is **Ethan P. Marzban** (he/him), and I'm currently a PhD student
 
 |                                          |               |              |        |
 |------------------|------------------|------------------|-------------------|
-|                                          | **Name**      | **Sections** | **OH** |
+|                                          | **Name**      | **Sections** | **OH (Beginning Week 2)** |
 | ![](../Images/Profiles/placeholder2.png) | TBD (TBD/TBD) | TBD          | TBD    |
 | ![](../Images/Profiles/placeholder2.png) | TBD (TBD/TBD) | TBD          | TBD    |
 
