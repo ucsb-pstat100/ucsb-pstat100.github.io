@@ -157,20 +157,20 @@ You are allowed **two** late submissions across homeworks and labs (so, 2 in tot
 
 ### Communication
 
-There are two primary means of communication outside of scheduled class meetings: office hours and a <a href="https://discord.gg/kYN4DNANRn" target="_blank">Discord Server</a>. If you are unsure of how to reach out to appropriate parties, please consult the following table:
+There are two primary means of communication outside of scheduled class meetings: office hours and an <a href="https://edstem.org/us/courses/57485/discussion/" target="_blank">EdStem Discussion Forum</a>. If you are unsure of how to reach out to appropriate parties, please consult the following table:
 
 | Topic                         | Redirect to...          |
 |-------------------------------|-------------------------|
-| Troubleshooting codes         | Discord                 |
-| Checking answers              | Office hours or Discord |
-| Clarifying assignment content | Office hours or Discord |
+| Troubleshooting codes         | EdStem                 |
+| Checking answers              | Office hours or EdStem |
+| Clarifying assignment content | Office hours or EdStem |
 | Assignment submission         | Gradescope              |
 | Re-evaluation request         | Gradescope              |
 | Question about missing grades | [Fill Out This Form](https://forms.gle/14AGxhdakbUiTfcT8)               |
 
 Some additional comments:
 
--   Please note that we (the course staff) request you **refrain from emailing us except in case of extreme emergency** (it is up to you to decide what is an 'emergency'). Please bring all of your questions to the course staff during either Office Hours or after Lecture/Section. (Also, please note that DMs [Direct Messages] sent to the course staff through Discord will be ignored. Additionally, non-emergency emails [e.g. about content, missing grades, etc.] will be ignored.) Thank you!
+-   Please note that we (the course staff) request you **refrain from emailing us except in case of extreme emergency** (it is up to you to decide what is an 'emergency'). Please bring all of your questions to the course staff during either Office Hours or after Lecture/Section. Thank you!
 
 -   If you have questions or concerns about missing grades, please use the form linked in the table above. You are allowed to submit the form multiple times, but we ask that you please wait at least 48 business hours before submitting follow-ups. Thank you!
 
