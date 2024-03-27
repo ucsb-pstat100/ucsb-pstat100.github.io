@@ -35,10 +35,6 @@ bfcolor <- function(x, color) {
 This lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed.
 :::
 
-## A Note on the Autograder
-
-I've included an autograder in this lab (through the package `ottr`), mainly so you can check yourself and your knowledge. As s rule-of-thumb, you should make sure that your code is passing all test cases, as this will be something we look for in future labs (which will be graded and count toward your overall course grade, unlike this one).
-
 # Required Packages
 
 ```{r, message = F, warning = F}

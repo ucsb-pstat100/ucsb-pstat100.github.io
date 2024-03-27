@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ethan P. Marzban">
-<meta name="dcterms.date" content="2024-03-25">
+<meta name="dcterms.date" content="2024-03-27">
 
 <title>PSTAT 100: Spring 2024 - Lab 00: Introduction to R</title>
 <style>
@@ -213,8 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-note-on-the-autograder" id="toc-a-note-on-the-autograder" class="nav-link active" data-scroll-target="#a-note-on-the-autograder">A Note on the Autograder</a></li>
-  <li><a href="#required-packages" id="toc-required-packages" class="nav-link" data-scroll-target="#required-packages">Required Packages</a>
+  <li><a href="#required-packages" id="toc-required-packages" class="nav-link active" data-scroll-target="#required-packages">Required Packages</a>
   <ul class="collapse">
   <li><a href="#lab-objectives" id="toc-lab-objectives" class="nav-link" data-scroll-target="#lab-objectives">Lab Objectives</a></li>
   <li><a href="#relevant-textbook-chapterssections" id="toc-relevant-textbook-chapterssections" class="nav-link" data-scroll-target="#relevant-textbook-chapterssections">Relevant Textbook Chapters/Sections:</a></li>
@@ -230,11 +229,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   <li><a href="#comparisons-and-control" id="toc-comparisons-and-control" class="nav-link" data-scroll-target="#comparisons-and-control">Comparisons and Control</a></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops">Loops</a>
+  <ul class="collapse">
+  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><code>for</code>-loops</a></li>
+  <li><a href="#while--and-repeat-loops" id="toc-while--and-repeat-loops" class="nav-link" data-scroll-target="#while--and-repeat-loops"><code>while</code>- and <code>repeat</code>-loops</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#other-concepts" id="toc-other-concepts" class="nav-link" data-scroll-target="#other-concepts">Other Concepts</a>
   <ul class="collapse">
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#the-vectorization-of-r" id="toc-the-vectorization-of-r" class="nav-link" data-scroll-target="#the-vectorization-of-r">The Vectorization of <code>R</code></a></li>
+  <li><a href="#the-vectorization-of-r" id="toc-the-vectorization-of-r" class="nav-link" data-scroll-target="#the-vectorization-of-r">The Vectorization of <code>R</code></a>
+  <ul class="collapse">
+  <li><a href="#leveraging-vectorization-to-bypass-loops" id="toc-leveraging-vectorization-to-bypass-loops" class="nav-link" data-scroll-target="#leveraging-vectorization-to-bypass-loops">Leveraging Vectorization to Bypass Loops</a></li>
+  </ul></li>
+  <li><a href="#custom-error-messages-in-functions" id="toc-custom-error-messages-in-functions" class="nav-link" data-scroll-target="#custom-error-messages-in-functions">Custom Error Messages in Functions</a></li>
   <li><a href="#recursion" id="toc-recursion" class="nav-link" data-scroll-target="#recursion">Recursion</a></li>
   </ul></li>
   <li><a href="#some-selected-exercises" id="toc-some-selected-exercises" class="nav-link" data-scroll-target="#some-selected-exercises">Some Selected Exercises</a></li>
@@ -264,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 25, 2024</p>
+      <p class="date">March 27, 2024</p>
     </div>
   </div>
   
@@ -287,14 +295,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed.</p>
 </div>
 </div>
-<section id="a-note-on-the-autograder" class="level2">
-<h2 class="anchored" data-anchor-id="a-note-on-the-autograder">A Note on the Autograder</h2>
-<p>I’ve included an autograder in this lab (through the package <code>ottr</code>), mainly so you can check yourself and your knowledge. As s rule-of-thumb, you should make sure that your code is passing all test cases, as this will be something we look for in future labs (which will be graded and count toward your overall course grade, unlike this one).</p>
-</section>
 <section id="required-packages" class="level1">
 <h1>Required Packages</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ottr)        <span class="co"># for checking test cases (i.e. autograding)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no required packages for this lab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="lab-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="lab-objectives">Lab Objectives</h2>
@@ -481,7 +485,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There are actually two more data types in <code>R</code>: <code>"complex"</code> and <code>"raw"</code>. You may want to familiarize yourself with the <code>"complex"</code> type (which deals with complex numbers), but I almost guarantee you will never encounter the <code>"raw"</code> type in the wild.</p>
+<p>There are actually two more data types in <code>R</code>: <code>"complex"</code> and <code>"raw"</code>. You may want to familiarize yourself with the <code>"complex"</code> type (which deals with complex numbers), but it is highly unlikely you will ever encounter the <code>"raw"</code> type in the wild.</p>
 </div>
 </div>
 <p>Individual <code>R</code> objects can be collectively arranged into larger, more complex <strong>data structures</strong>. There are 6 main data structures in <code>R</code>:</p>
@@ -604,7 +608,7 @@ row1    1 hello
 row2    2 world</code></pre>
 </div>
 </div>
-<p>We’ve posted a separate lab covering even more operations on dataframes, which can be accessed <a href="google.com">here</a>.</p>
+<p>We’ve posted a separate lab covering even more operations on dataframes, which can be accessed <a href="../../Labs/Lab00/df_basics.html">here</a>.</p>
 </section>
 <section id="factors" class="level3">
 <h3 class="anchored" data-anchor-id="factors">Factors</h3>
@@ -806,6 +810,77 @@ Levels: A+ &lt; A &lt; A-</code></pre>
 </div>
 </div>
 </section>
+<section id="loops" class="level2">
+<h2 class="anchored" data-anchor-id="loops">Loops</h2>
+<p>In <code>R</code>, there are three types of loops: <code>for</code> loops, <code>while</code> loops, and <code>repeat</code> loops. Since I hope you have already been exposed to loops I’ll bypass a detailed discussion of how they work, opting instead to simply highlight the <code>R</code> syntax of loops.</p>
+<section id="for-loops" class="level3">
+<h3 class="anchored" data-anchor-id="for-loops"><code>for</code>-loops</h3>
+<p>A <code>for</code> loops is ideal when you want to repeat a task a fixed number of times. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(k)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2
+[1] 3
+[1] 4</code></pre>
+</div>
+</div>
+<p>We […]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) {</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(k <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(k, <span class="st">"is even"</span>))</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(k, <span class="st">"is odd"</span>))</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1 is odd"
+[1] "2 is even"
+[1] "3 is odd"
+[1] "4 is even"
+[1] "5 is odd"
+[1] "6 is even"</code></pre>
+</div>
+</div>
+</section>
+<section id="while--and-repeat-loops" class="level3">
+<h3 class="anchored" data-anchor-id="while--and-repeat-loops"><code>while</code>- and <code>repeat</code>-loops</h3>
+<p>The remaining two types of loops in <code>R</code> (<code>while</code> and <code>repeat</code> loops) aren’t used as frequently as <code>for</code> loops, but I feel it prudent to at least mention their existence. Unlike <code>for</code> loops, <code>while</code> and <code>repeat</code> loops do not (necessarily) run for a fixed number of iterations - rather, they continue looping until a condition is met.<br>
+</p>
+<p>For example, to convert the first <code>for</code> loop above to a <code>while</code> loop, we could use</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(k <span class="sc">&lt;=</span> <span class="dv">4</span>) {</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(k)</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2
+[1] 3
+[1] 4</code></pre>
+</div>
+</div>
+<p>We could also convert the loop above to a <code>repeat</code> loop:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(k <span class="sc">&gt;</span> <span class="dv">4</span>) {</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(k)</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2
+[1] 3
+[1] 4</code></pre>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="other-concepts" class="level1">
 <h1>Other Concepts</h1>
@@ -814,12 +889,12 @@ Levels: A+ &lt; A &lt; A-</code></pre>
 <p>In <code>R</code>, we use the term <strong>packages</strong> to refer to collections of functions and objects stored under a common name. (This is the equivalent of what is often referred to as a <em>module</em>, in Python).</p>
 <p>To install a package in <code>R</code>, we use the syntax</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"&lt;package_name&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"&lt;package_name&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you try to install a package you have already installed, <code>R</code> will give you a warning message prompting you to either update the package or cancel your command.</p>
 <p>To <strong>load</strong> a package into a document or working environment, use the <code>library()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="sc">&lt;</span>package_name<span class="sc">&gt;</span>) <span class="co"># note the LACK of quotation marks!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="sc">&lt;</span>package_name<span class="sc">&gt;</span>) <span class="co"># note the LACK of quotation marks!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As an example, you’ll notice a code chunk at the start of this lab with the command <code>library(ottr)</code>- this command loads the <code>ottr</code> package into our environment (which in turn gives us access to various autograder-related functionality).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -841,86 +916,162 @@ Levels: A+ &lt; A &lt; A-</code></pre>
 <p>It is often stated that <code>R</code> is <strong>vectorized</strong>. Effectively, this means that the fundamental object in <code>R</code> is a vector, and most functions, when applied to vectors, are applied element-wise.</p>
 <p>For instance:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 4</code></pre>
 </div>
 </div>
 <p>is equivalent to</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 4</code></pre>
 </div>
 </div>
+<p>Since columns and rows of matrices are effectively stored as vectors, this makes adding a scalar to each element of a matrix fairly easy:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> T)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    2
+[2,]    3    4
+[3,]    5    6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>M <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    3    4
+[2,]    5    6
+[3,]    7    8</code></pre>
+</div>
+</div>
 <p>Most functions are also vectorized; i.e.&nbsp;allow for vector-valued inputs. If you want to make a user-defined function vectorized, you can wrap your function in a call to the <code>Vectorize()</code> function. For example, consider the following implementation of the sign function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>sgn_non_vectorized <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"negative"</span>)</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(x <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"zero"</span>)</span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"positive"</span>)</span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>sgn_non_vectorized <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"negative"</span>)</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(x <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"zero"</span>)</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"positive"</span>)</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Calling <code>sgn_non_vectorized(-1)</code> is fine:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sgn_non_vectorized</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sgn_non_vectorized</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "negative"</code></pre>
 </div>
 </div>
 <p>however calling <code>sgn_non_vectorized(c(-1, 1))</code> causes problems:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sgn_non_vectorized</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sgn_non_vectorized</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in if (x &lt; 0) {: the condition has length &gt; 1</code></pre>
 </div>
 </div>
 <p>We can fix this using the <code>Vectorize()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>sgn_vectorized <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x){<span class="fu">sgn_non_vectorized</span>(x)}</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sgn_vectorized</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>sgn_vectorized <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x){<span class="fu">sgn_non_vectorized</span>(x)}</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sgn_vectorized</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "negative" "positive"</code></pre>
 </div>
 </div>
 <p>By the way, note that the above example also demonstrates the following: unlike in Python, you do not need to explicitly include a <code>return</code> statement in the body of an <code>R</code> function. By default, <code>R</code> will return whatever the final non-assignment step of your code is.</p>
+<section id="leveraging-vectorization-to-bypass-loops" class="level3">
+<h3 class="anchored" data-anchor-id="leveraging-vectorization-to-bypass-loops">Leveraging Vectorization to Bypass Loops</h3>
+<p>An interesting consequence of the vectorized nature of <code>R</code> is that we can actually bypass loops in certain contexts. Functions that help us do this include (but are not limited to):</p>
+<ul>
+<li><p><code>apply()</code>: applies a function to either rows or columns (or both) of an array or matrix</p></li>
+<li><p><code>lapply()</code> and <code>sapply()</code>: applies a function across a list (differences between the functions largely boil down to the data type/structure of output)</p></li>
+</ul>
+<p>As an example, consider the following matrix <code>M</code> (which we encountered above)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    2
+[2,]    3    4
+[3,]    5    6</code></pre>
+</div>
+</div>
+<p>To compute row averages (i.e.&nbsp;averages across rows), we could use a <code>for</code> loop:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>row_avgs <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(M)) {</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  row_avgs <span class="ot">&lt;-</span> <span class="fu">c</span>(row_avgs, <span class="fu">mean</span>(M[k,]))</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>row_avgs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.5 3.5 5.5</code></pre>
+</div>
+</div>
+<p>Alternatively, we could use the <code>apply()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(M, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.5 3.5 5.5</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="custom-error-messages-in-functions" class="level2">
+<h2 class="anchored" data-anchor-id="custom-error-messages-in-functions">Custom Error Messages in Functions</h2>
+<p>If we like, we can build in descriptive errors into a function. For example, say we want to define a function called <code>add_2()</code> which takes in a single <em>numerical</em> input <code>x</code> and outputs the value of <code>x</code> + 2. Further suppose we’d like our function to return an error message stating <code>"Input must be of type 'double' or 'integer'"</code> if the input is not numerical (i.e.&nbsp;neither an integer nor a double). We can do so by using the <code>stop()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>add_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span>(<span class="fu">typeof</span>(x) <span class="sc">==</span> <span class="st">"double"</span>) <span class="sc">&amp;</span> <span class="sc">!</span>(<span class="fu">typeof</span>(x) <span class="sc">==</span> <span class="st">"integer"</span>)) {</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Input must be of type 'double' or 'integer'"</span>)</span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x <span class="sc">+</span> <span class="dv">2</span>)</span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-9"><a href="#cb85-9" aria-hidden="true" tabindex="-1"></a><span class="fu">add_2</span>(<span class="fl">4.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_2</span>(<span class="st">"hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in add_2("hello"): Input must be of type 'double' or 'integer'</code></pre>
+</div>
+</div>
 </section>
 <section id="recursion" class="level2">
 <h2 class="anchored" data-anchor-id="recursion">Recursion</h2>
-<p>Since most of you have likely taken at least one programming course before, you are probably familiar with the notion of <strong>recursion</strong>. Loosely speaking, in computer science, we us the term recursion to describe a situation in which the current computational step depends on one or more computational steps that were completed in the past.</p>
+<p>You have likely encountered the notion of <strong>recursion</strong> before, either in its mathematical or computing context. Loosely speaking, in computer science, we us the term recursion to describe a situation in which the current computational step depends on one or more computational steps that were completed in the past.</p>
 <p>A simple mathematical example of recursion is the <strong>Fibonacci Numbers</strong>, which is a sequence <span class="math inline">\(\{a_n\}\)</span> of numbers defined through the recursive relationship <span class="math display">\[ a_0 = 0, \quad a_1 = 1, \quad a_{n} = a_{n - 1} + a_{n - 2} \ (\forall n \geq 2) \]</span> For instance, the first 7 Fibonacci numbers are <span class="math inline">\(\{0, 1, 1, 2, 3, 5, 8\}\)</span>.</p>
 <p>Let’s say we want to create a function <code>fib()</code> that takes in a single integer input <em>n</em> and outputs the <em>n</em><sup>th</sup> Fibonacci number. Firstly, this is not as simple as the examples we’ve seen before because there isn’t a closed-form formula for the <em>n</em><sup>th</sup> Fibonacci number<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.<br>
 </p>
 <p>However, we can think of defining this function recursively. The key is to note that, if we have configured our <code>fib()</code> function correctly, we have that</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(n) <span class="ot">=</span> <span class="fu">fib</span>(n) <span class="sc">+</span> <span class="fu">fib</span>(n <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(n) <span class="ot">=</span> <span class="fu">fib</span>(n) <span class="sc">+</span> <span class="fu">fib</span>(n <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We also know that</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(<span class="dv">0</span>) <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(<span class="dv">1</span>) <span class="ot">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(<span class="dv">0</span>) <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(<span class="dv">1</span>) <span class="ot">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This motivates us to define our <code>fib()</code> function as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>fib <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="cf">function</span>(n) {</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(n <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (n <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">1</span>)</span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>( <span class="fu">fib</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">fib</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
-<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>fib <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="cf">function</span>(n) {</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(n <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (n <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">1</span>)</span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>( <span class="fu">fib</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">fib</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As an example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  1  2  3  5  8 13</code></pre>
 </div>
@@ -935,7 +1086,8 @@ Levels: A+ &lt; A &lt; A-</code></pre>
 <li><p>In statistics, the <strong>mean absolute deviation</strong> (MAD) of a list of numbers <span class="math inline">\(\vec{x} = \{x_1, \cdots, x_n\}\)</span> is defined to be <span class="math display">\[ \mathrm{MAD}(\vec{x}) := \frac{1}{n} \sum_{i=1}^{n} |x_i - \overline{x}_n | \]</span> where <span class="math inline">\(\overline{x}_n := n^{-1} \sum_{i=1}^{n} x_i\)</span> denotes the sample mean. Write a function <code>my_mad()</code> that computes the MAD of a single input vector <code>x</code>. (Yes, there is a built-in function called <code>mad()</code> in <code>R</code>, but for practice try not to use this function!)</p></li>
 </ol>
 <ol start="3" type="1">
-<li>Write a function <code>sum1()</code> that takes in a single integer input <em>n</em> and returns the value of <span class="math display">\[\displaystyle \sum_{k=1}^{n} (k+ 3k^2 - 4k^3)\]</span></li>
+<li><p>Write a function <code>sum1()</code> that takes in a single integer input <em>n</em> and returns the value of <span class="math display">\[\displaystyle \sum_{k=1}^{n} (k+ 3k^2 - 4k^3)\]</span></p></li>
+<li><p>Define a matrix, and then compute column means using (a) each of the three different types of loops, and (b) the <code>apply()</code> function.</p></li>
 </ol>
 
 

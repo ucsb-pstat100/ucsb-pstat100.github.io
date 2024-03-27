@@ -35,14 +35,10 @@ bfcolor <- function(x, color) {
 This lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed.
 :::
 
-## A Note on the Autograder
-
-I've included an autograder in this lab (through the package `ottr`), mainly so you can check yourself and your knowledge. As s rule-of-thumb, you should make sure that your code is passing all test cases, as this will be something we look for in future labs (which will be graded and count toward your overall course grade, unlike this one).
-
 # Required Packages
 
 ```{r, message = F, warning = F}
-library(ottr)        # for checking test cases (i.e. autograding)
+# no required packages for this lab
 ```
 
 ## Lab Objectives
@@ -163,7 +159,7 @@ typeof(TRUE)
 A note on booleans: in `R`, there are only two logical objects: `TRUE` (which is equivalent to `T`) and `FALSE` (which is equivalent to `F`). Pay close attention to the capitalization: `True` is NOT a valid logical type object in `R` (even though it is in Python)!
 
 ::: callout-note
-There are actually two more data types in `R`: `"complex"` and `"raw"`. You may want to familiarize yourself with the `"complex"` type (which deals with complex numbers), but I almost guarantee you will never encounter the `"raw"` type in the wild.
+There are actually two more data types in `R`: `"complex"` and `"raw"`. You may want to familiarize yourself with the `"complex"` type (which deals with complex numbers), but it is highly unlikely you will ever encounter the `"raw"` type in the wild.
 :::
 
 Individual `R` objects can be collectively arranged into larger, more complex **data structures**. There are 6 main data structures in `R`:
@@ -250,7 +246,7 @@ data.frame(
 )
 ```
 
-We've posted a separate lab covering even more operations on dataframes, which can be accessed [here](google.com).
+We've posted a separate lab covering even more operations on dataframes, which can be accessed [here](df_basics.qmd).
 
 ### Factors
 
@@ -314,6 +310,7 @@ new_function <- function(x, y = 1) {
 new_function(1, 2)  # should return 1^2 + 2^2; i.e. 5
 new_function(1)     # should return 1^2 + 1^2; i.e. 2
 ```
+
 
 ## Comparisons and Control
 
@@ -384,6 +381,60 @@ x <- c(2, 3, 4, 5, 6)
 ifelse(x %% 2 == 0, "even", "odd")
 ```
 
+## Loops
+
+In `R`, there are three types of loops: `for` loops, `while` loops, and `repeat` loops. Since I hope you have already been exposed to loops I'll bypass a detailed discussion of how they work, opting instead to simply highlight the `R` syntax of loops.
+
+### `for`-loops
+
+A `for` loops is ideal when you want to repeat a task a fixed number of times. For example:
+
+```{r}
+for(k in 2:4) {
+  print(k)
+}
+```
+
+We [...]
+
+```{r}
+for( k in 1:6) {
+  if(k %% 2 == 0) {
+    print(paste(k, "is even"))
+  } else {
+    print(paste(k, "is odd"))
+  }
+}
+```
+
+### `while`- and `repeat`-loops
+
+The remaining two types of loops in `R` (`while` and `repeat` loops) aren't used as frequently as `for` loops, but I feel it prudent to at least mention their existence. Unlike `for` loops, `while` and `repeat` loops do not (necessarily) run for a fixed number of iterations - rather, they continue looping until a condition is met. \
+
+For example, to convert the first `for` loop above to a `while` loop, we could use
+
+```{r}
+k <- 2
+while(k <= 4) {
+  print(k)
+  k <- k + 1
+}
+```
+
+We could also convert the loop above to a `repeat` loop:
+
+```{r}
+k <- 2
+repeat {
+  if(k > 4) {
+    break
+  } else {
+    print(k)
+    k <- k + 1
+  }
+}
+```
+
 # Other Concepts
 
 ## Packages
@@ -420,6 +471,14 @@ is equivalent to
 ```{r}
 c(1, 2, 3) + 1
 ```
+
+Since columns and rows of matrices are effectively stored as vectors, this makes adding a scalar to each element of a matrix fairly easy:
+
+```{r}
+M <- matrix(1:6, nrow = 3, byrow = T)
+M
+M + 2
+```
 Most functions are also vectorized; i.e. allow for vector-valued inputs. If you want to make a user-defined function vectorized, you can wrap your function in a call to the `Vectorize()` function. For example, consider the following implementation of the sign function:
 ```{r}
 sgn_non_vectorized <- function(x) {
@@ -449,9 +508,58 @@ sgn_vectorized(c(-1, 1))
 ```
 By the way, note that the above example also demonstrates the following: unlike in Python, you do not need to explicitly include a `return` statement in the body of an `R` function. By default, `R` will return whatever the final non-assignment step of your code is.
 
+### Leveraging Vectorization to Bypass Loops
+
+An interesting consequence of the vectorized nature of `R` is that we can actually bypass loops in certain contexts. Functions that help us do this include (but are not limited to):
+
+-   `apply()`: applies a function to either rows or columns (or both) of an array or matrix
+
+-   `lapply()` and `sapply()`: applies a function across a list (differences between the functions largely boil down to the data type/structure of output)
+
+
+As an example, consider the following matrix `M` (which we encountered above)
+
+```{r}
+M
+```
+
+To compute row averages (i.e. averages across rows), we could use a `for` loop:
+
+```{r}
+row_avgs <- c()
+for(k in 1:nrow(M)) {
+  row_avgs <- c(row_avgs, mean(M[k,]))
+}
+row_avgs
+```
+
+Alternatively, we could use the `apply()` function:
+
+```{r}
+apply(M, MARGIN = 1, FUN = mean)
+```
+
+## Custom Error Messages in Functions
+
+If we like, we can build in descriptive errors into a function. For example, say we want to define a function called `add_2()` which takes in a single _numerical_ input `x` and outputs the value of `x` + 2. Further suppose we'd like our function to return an error message stating `"Input must be of type 'double' or 'integer'"` if the input is not numerical (i.e. neither an integer nor a double). We can do so by using the `stop()` function:
+
+```{r, error = T}
+add_2 <- function(x) {
+  if(!(typeof(x) == "double") & !(typeof(x) == "integer")) {
+    stop("Input must be of type 'double' or 'integer'")
+  } else {
+    return(x + 2)
+  }
+}
+
+add_2(4.2)
+
+add_2("hello")
+```
+
 ## Recursion
 
-Since most of you have likely taken at least one programming course before, you are probably familiar with the notion of **recursion**. Loosely speaking, in computer science, we us the term recursion to describe a situation in which the current computational step depends on one or more computational steps that were completed in the past. 
+You have likely encountered the notion of **recursion** before, either in its mathematical or computing context. Loosely speaking, in computer science, we us the term recursion to describe a situation in which the current computational step depends on one or more computational steps that were completed in the past. 
 
 A simple mathematical example of recursion is the **Fibonacci Numbers**, which is a sequence $\{a_n\}$ of numbers defined through the recursive relationship
 $$ a_0 = 0, \quad a_1 = 1, \quad a_{n} = a_{n - 1} + a_{n - 2} \ (\forall n \geq 2) $$
@@ -497,3 +605,6 @@ $$ \mathrm{MAD}(\vec{x}) := \frac{1}{n} \sum_{i=1}^{n} |x_i - \overline{x}_n | $
 where $\overline{x}_n := n^{-1} \sum_{i=1}^{n} x_i$ denotes the sample mean. Write a function `my_mad()` that computes the MAD of a single input vector `x`. (Yes, there is a built-in function called `mad()` in `R`, but for practice try not to use this function!)
 
 3.    Write a function `sum1()` that takes in a single integer input _n_ and returns the value of $$\displaystyle \sum_{k=1}^{n} (k+ 3k^2 - 4k^3)$$
+
+
+4.    Define a matrix, and then compute column means using (a) each of the three different types of loops, and (b) the `apply()` function.
