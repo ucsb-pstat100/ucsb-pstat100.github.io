@@ -34,7 +34,7 @@ Hello! My name is **Ethan P. Marzban** (he/him), and I'm currently a PhD student
 |------------------|------------------|------------------|-------------------|
 |                                          | **Name**      | **Sections** | **OH (Beginning Week 2)** |
 | ![](../Images/Profiles/placeholder2.png) | Qiqi Li (TBD/TBD) | TBD          | TBD    |
-| ![](../Images/Profiles/placeholder2.png) | Yuting Ma (They/She) | TBD          | TBD    |
+| ![](../Images/Profiles/placeholder2.png) | Yuting Ma (TBD/TBD) | TBD          | TBD    |
 
 : {tbl-colwidths="\[15,25,30,30\]"}
 
