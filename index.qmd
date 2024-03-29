@@ -52,4 +52,4 @@ ul>li {
 
 
 
-The instructor would like to acknowledge Drs. Alexander Franks, Trevor Ruiz, and Laura Baracaldo for graciously providing material for this course.
+The instructor would like to acknowledge Drs. Trevor Ruiz, Alexander Franks, and Laura Baracaldo for graciously providing material and support for this course.

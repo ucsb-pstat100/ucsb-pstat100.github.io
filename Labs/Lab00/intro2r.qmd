@@ -49,9 +49,9 @@ This lab covers the following topics:
 
 ## Relevant Textbook Chapters/Sections:
 
--   R4DS, [Chapter 27: A field guide to base R](https://r4ds.hadley.nz/base-r)
-
-    -   Please make sure to have read this before starting this lab!
+-   Various chapters of [I2R](https://intro2r.com/)
+-   Portions of [Chapter 2 in R4DS](https://r4ds.hadley.nz/workflow-basics)
+-   Portions of [Chapter 27 in R4DS](https://r4ds.hadley.nz/base-r)
 
 ------------------------------------------------------------------------
 

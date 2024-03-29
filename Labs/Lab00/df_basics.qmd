@@ -38,7 +38,6 @@ This lab is long! Use the floating table of contents (at the top-right of the sc
 # Required Packages
 
 ```{r, message = F, warning = F}
-library(ottr)        # for checking test cases (i.e. autograding)
 library(tidyverse)   
 ```
 
@@ -50,7 +49,7 @@ This lab covers the following topics:
 
 ## Relevant Textbook Chapters/Sections:
 
--   TBD
+-   Portions of [Chapter 27 in R4DS](https://r4ds.hadley.nz/base-r)
 
 ------------------------------------------------------------------------
 

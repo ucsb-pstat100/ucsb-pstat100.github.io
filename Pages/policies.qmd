@@ -157,7 +157,7 @@ You are allowed **two** late submissions across homeworks and labs (so, 2 in tot
 
 ### Communication
 
-There are two primary means of communication outside of scheduled class meetings: office hours and an <a href="https://edstem.org/us/courses/57485/discussion/" target="_blank">EdStem Discussion Forum</a>. If you are unsure of how to reach out to appropriate parties, please consult the following table:
+There are two primary means of communication outside of scheduled class meetings: office hours and an <a href="https://edstem.org/us/courses/57485/discussion/" target="_blank">EdStem Discussion Forum</a> (please see Canvas for a join link; for security purposes, we are only allowing currently-enrolled students join the discussion forum). If you are unsure of how to reach out to appropriate parties, please consult the following table:
 
 | Topic                         | Redirect to...          |
 |-------------------------------|-------------------------|
