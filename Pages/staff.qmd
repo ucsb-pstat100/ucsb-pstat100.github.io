@@ -10,9 +10,7 @@ affiliation-title: "Quarter"
 format: html
 ---
 
-
-_**Please see the <a href="https://ucsb-pstat100.github.io/Pages/schedule.html#course-calendar" target="_blank">Calendar</a> for a weekly schedule of Office Hours (including Week 1 office hours)**_
-
+***Please see the*** <a href="https://ucsb-pstat100.github.io/Pages/schedule.html#course-calendar" target="_blank">Calendar</a> for a weekly schedule of Office Hours (including Week 1 office hours)
 
 ::: panel-tabset
 ## Instructor
@@ -23,23 +21,22 @@ _**Please see the <a href="https://ucsb-pstat100.github.io/Pages/schedule.html#c
 
 Hello! My name is **Ethan P. Marzban** (he/him), and I'm currently a PhD student in the Department of Statistics here at UCSB. My research interests span a variety of topics, including mathematical statistics, Bayesian statistics, and Stats/Data Science Education. In my free time, I enjoy playing the piano, drinking boba, and talking about cats. I'm super excited to be your instructor this quarter!
 
-| Office hours (Beginning Week 2) | Location |
-|--------------|----------|
+| Office hours (Beginning Week 2) | Location                                                                                                                    |
+|------------------------------------------|------------------------------|
 | Tuesdays, 4:30pm - 5:30pm (PDT) | <a href="https://ucsb.zoom.us/j/85861759961?pwd=czZwdzZwZjcxbVZ2MkVaRjBtS1U3UT09" target="_blank">Zoom (Click for Link)</a> |
-| Fridays, 2 - 3:30pm (PDT)  | <a href="https://www.map.ucsb.edu/?id=1982#!m/618873?s/arts" target="_blank">ARTS 1349</a>      |
+| Fridays, 2 - 3:30pm (PDT)       | <a href="https://www.map.ucsb.edu/?id=1982#!m/618873?s/arts" target="_blank">ARTS 1349</a>                                  |
 
 ## Teaching Assistants
 
-|                                          |               |              |        |
-|------------------|------------------|------------------|-------------------|
-|                                          | **Name**      | **Sections** | **OH (Beginning Week 2)** |
-| ![](../Images/Profiles/placeholder2.png) | Qiqi Li (TBD/TBD) | TBD          | TBD    |
-| ![](../Images/Profiles/placeholder2.png) | Yuting Ma (TBD/TBD) | TBD          | TBD    |
+|                                          |           |                                                             |                                                                              |
+|------------------|------------|------------------|---------------------------|
+|                                          | **Name**  | **Sections**                                                | **OH (Beginning Week 1)**                                                    |
+| ![](../Images/Profiles/placeholder2.png) | Qiqi Li   | 2 - 2:50 pm (PHELPS 1518) <br / > 3 - 3:50 pm (PHELPS 1518) | Tuesdays, 1 - 3pm (SH 5421)                                                  |
+| ![](../Images/Profiles/placeholder2.png) | Yuting Ma | 4 - 4:50 pm (PHELPS 1517) <br / > 5 - 5:50 pm (PHELPS 1513) | Tuesdays, 11am - 12 pm ([B434](https://www.map.ucsb.edu/?id=1982#!m/618823?s/building%20434), 113) <br /> Thursdays, 1 - 2 pm ([B434](https://www.map.ucsb.edu/?id=1982#!m/618823?s/building%20434), 113) |
 
-: {tbl-colwidths="\[15,25,30,30\]"}
+: {tbl-colwidths="\[10,20,30,40\]"}
 
 ## Undergraduate Learning Assistant
 
-_TBD_
-
+*TBD*
 :::
