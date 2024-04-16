@@ -15,6 +15,10 @@ website:
         text: Policies
       - href: Pages/schedule.qmd
         text: Course Schedule/Calendar
+      - section: "Mini-Projects"
+        contents:
+          - href: Projects/MP01.qmd
+            text: "Mini-Project 01"
       - section: "Labs"
         contents:
           - section: "Lab00"
