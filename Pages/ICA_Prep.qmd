@@ -1,0 +1,15 @@
+---
+title: "PSTAT 100: Data Science Concepts and Analysis"
+subtitle: "Preparatory Material for In-Class Assessments "
+author:
+  - name: "Ethan Marzban"
+    affiliations:
+      - name: "Spring 2024"
+author-title: "Instructor"
+affiliation-title: "Quarter"
+format: html
+---
+
+## ICA01
+
+**Information Document (PLEASE READ)**: <a href="../Files/Misc/Topics_for_ICA1.pdf" target="_blank"><button type="button" class="btn btn-primary">.pdf</button></a>
