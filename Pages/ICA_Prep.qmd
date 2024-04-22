@@ -13,3 +13,5 @@ format: html
 ## ICA01
 
 **Information Document (PLEASE READ)**: <a href="../Files/Misc/Topics_for_ICA1.pdf" target="_blank"><button type="button" class="btn btn-primary">.pdf</button></a>
+
+**Some Practice Problems** (the actual ICA will be longer, between 20 and 40 questions): <a href="../Files/Misc/ICA PracProb.pdf" target="_blank"><button type="button" class="btn btn-primary">.pdf</button></a>
