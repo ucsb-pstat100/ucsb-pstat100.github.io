@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ethan Marzban">
+<meta name="author" content="PSTAT 100, with Ethan Marzban">
 
-<title>PSTAT 100: Spring 2024 - PSTAT 100: Data Science Concepts and Analysis</title>
+<title>PSTAT 100: Spring 2024 - Mini-Project 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -77,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Pages/policies.html">Policies</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projects/MP01.html">Mini-Projects</a></li><li class="breadcrumb-item"><a href="../Projects/MP02.html">Mini-Project 02</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -87,7 +121,37 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Mini-Project 2</h1>
+            <p class="subtitle lead">A Trip to the Movies</p>
+                      </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Course</div>
+    <div class="quarto-title-meta-heading">Quarter</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">PSTAT 100, with Ethan Marzban </p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Spring 2024
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
@@ -116,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pages/policies.html" class="sidebar-item-text sidebar-link active">
+  <a href="../Pages/policies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policies</span></a>
   </div>
 </li>
@@ -149,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Projects/MP02.html" class="sidebar-item-text sidebar-link">
+  <a href="../Projects/MP02.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Mini-Project 02</span></a>
   </div>
 </li>
@@ -205,336 +269,172 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#graphical-syllabus" id="toc-graphical-syllabus" class="nav-link active" data-scroll-target="#graphical-syllabus">Graphical Syllabus</a></li>
-  <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies">Course Policies</a>
-  <ul class="collapse">
-  <li><a href="#course-staff-and-lecture-logistics" id="toc-course-staff-and-lecture-logistics" class="nav-link" data-scroll-target="#course-staff-and-lecture-logistics">Course Staff and Lecture Logistics</a></li>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description">Course Description</a></li>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites:</a></li>
-  <li><a href="#textbooksreadings" id="toc-textbooksreadings" class="nav-link" data-scroll-target="#textbooksreadings">Textbooks/Readings</a></li>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
-  <li><a href="#assessments" id="toc-assessments" class="nav-link" data-scroll-target="#assessments">Assessments</a>
-  <ul class="collapse">
-  <li><a href="#final-course-grades" id="toc-final-course-grades" class="nav-link" data-scroll-target="#final-course-grades">Final Course Grades</a></li>
-  </ul></li>
-  <li><a href="#policies" id="toc-policies" class="nav-link" data-scroll-target="#policies">Policies</a>
-  <ul class="collapse">
-  <li><a href="#late-submissions" id="toc-late-submissions" class="nav-link" data-scroll-target="#late-submissions">Late Submissions</a></li>
-  <li><a href="#communication" id="toc-communication" class="nav-link" data-scroll-target="#communication">Communication</a></li>
-  <li><a href="#collaboration-and-academic-integrity" id="toc-collaboration-and-academic-integrity" class="nav-link" data-scroll-target="#collaboration-and-academic-integrity">Collaboration and Academic Integrity</a></li>
-  <li><a href="#section-switching" id="toc-section-switching" class="nav-link" data-scroll-target="#section-switching">Section Switching</a></li>
-  </ul></li>
-  <li><a href="#disabled-students-program-dsp" id="toc-disabled-students-program-dsp" class="nav-link" data-scroll-target="#disabled-students-program-dsp">Disabled Students Program (DSP)</a></li>
-  <li><a href="#technology-needs" id="toc-technology-needs" class="nav-link" data-scroll-target="#technology-needs">Technology Needs</a></li>
-  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
-  <li><a href="#faculty-mentor" id="toc-faculty-mentor" class="nav-link" data-scroll-target="#faculty-mentor">Faculty Mentor</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data Overview</a></li>
+  <li><a href="#part-i-data-preprocessing" id="toc-part-i-data-preprocessing" class="nav-link" data-scroll-target="#part-i-data-preprocessing">Part I: Data Preprocessing</a></li>
+  <li><a href="#part-ii-report-questions" id="toc-part-ii-report-questions" class="nav-link" data-scroll-target="#part-ii-report-questions">Part II: Report Questions</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">PSTAT 100: Data Science Concepts and Analysis</h1>
-<p class="subtitle lead">Course Policies</p>
+
+
+
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-
-
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Instructor</div>
-  <div class="quarto-title-meta-heading">Quarter</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Ethan Marzban </p>
-  </div>
-    <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Spring 2024
-          </p>
-      </div>
-    </div>
-
-<div class="quarto-title-meta">
-
-      
-  
-    
-  </div>
-  
-
-</header>
-
-<p>Welcome to PSTAT 100: Data Science Concepts and Analysis! I am very excited to join you as your instructor this quarter. Our journey together will take us through the basics of Data Science, and aims to prepare you for your future endeavors in the field, whether they be in classes, industry, or academia. Here’s to a great quarter! &nbsp;&nbsp;&nbsp;&nbsp;– Ethan<br>
+<div class="callout-title-container flex-fill">
+<strong>Note</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Since we’ve gained quite a bit of experience playing around with data and examining statistical questions, this project is a little bit less cut-and-dry than Mini-Project 01.<br>
 </p>
-<section id="graphical-syllabus" class="level1">
-<h1>Graphical Syllabus</h1>
-<style>
-.myclass {
-  max-width: 100%;
-  width: 800px;
-  height: 700px;
-  border: 10px solid rgba(250, 196, 120, 0.2);
-  margin: 0;
-}
-</style>
-<p><object data="../Files/Misc/100_SP24_Syll.pdf" type="application/pdf" class="myclass"><iframe src="../Files/Misc/100_SP24_Syll.pdf" class="myclass">This browser does not support PDFs. Please download the PDF to view it: <a href="../Files/Misc/100_SP24_Syll.pdf">Download PDF</a></iframe></object></p>
+<p>Specifically, there are just a few broad questions posed later in this document. You should seek to answer these questions through a combination of plots and/or formal statistical tests.<br>
+</p>
+<p>As always, be as detailed as possible when answering questions. A simple “yes/no” answer with no supporting justification will not be satisfactory. Rather, justify your answers with either a plot or two, a statistical test, or possibly both. Keep in mind:</p>
+<ul>
+<li><p>Make sure you comment on all of the plots you generate. No “floating” plots!</p></li>
+<li><p>Make sure you comment on the validity of any statistical tests you run. For example, if you conduct an ANOVA, check normality. If the assumptions of a given test are violated, make note of that.</p></li>
+</ul>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The Internet Movie Database (IMdB) is a leading source of film- and media-related statistics. In this mini-project, we will explore various aspects about films (e.g.&nbsp;runtimes, ratings, etc.) and compare and contrast across several different characteristics.</p>
 </section>
-<section id="course-policies" class="level1">
-<h1>Course Policies</h1>
-<section id="course-staff-and-lecture-logistics" class="level2">
-<h2 class="anchored" data-anchor-id="course-staff-and-lecture-logistics">Course Staff and Lecture Logistics</h2>
-<p><strong>Instructor:</strong> Ethan P. Marzban (he/him)</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="data-overview" class="level1">
+<h1>Data Overview</h1>
+<p>There are two main data files associated with this project: one named <code>basics.csv</code> and the other named <code>ratings.csv</code>. The <code>basics</code> data frame contains the following variables:</p>
+<ul>
+<li><code>tconst</code> (string) - alphanumeric unique identifier of the title</li>
+<li><code>titleType</code> (string) – the type/format of the title (e.g.&nbsp;movie, short, tvseries, tvepisode, video, etc)</li>
+<li><code>primaryTitle</code> (string) – the more popular title / the title used by the filmmakers on promotional materials at the point of release</li>
+<li><code>originalTitle</code> (string) - original title, in the original language</li>
+<li><code>isAdult</code> (boolean) - 0: non-adult title; 1: adult title</li>
+<li><code>startYear</code> (YYYY) – represents the release year of a title. In the case of TV Series, it is the series start year</li>
+<li><code>endYear</code> (YYYY) – TV Series end year. ‘’ for all other title types</li>
+<li><code>runtimeMinutes</code> – primary runtime of the title, in minutes</li>
+<li><code>genres</code> (string array) – includes up to three genres associated with the title</li>
+</ul>
+<p>The <code>ratings</code> dataframe contains the following variables:</p>
+<ul>
+<li><code>tconst</code> (string) - alphanumeric unique identifier of the title</li>
+<li><code>averageRating</code> – weighted average of all the individual user ratings</li>
+<li><code>numVotes</code> - number of votes the title has received</li>
+</ul>
+</section>
+<section id="part-i-data-preprocessing" class="level1">
+<h1>Part I: Data Preprocessing</h1>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>Lecture Times and Location</strong>
+<strong>Important</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>T, R from 9:30am - 10:45am, in BUCHN 1940.</p>
+<p>Note that much of the work done in this section is “internal”. What I mean by that is there is not any output from this section, meaning none of the work you do in this section will appear on your report. Rather, the work done in this section is meant to manipulate and reformat the data into a format that is more appropriate for the analyses we will perform later.</p>
 </div>
 </div>
-<p><strong>Teaching Assistants:</strong> TBD, TBD</p>
-<p><strong>Sections:</strong></p>
-<ul>
-<li>M 2 - 2:50pm in PHELPS 1518 (TBD)</li>
-<li>M 3 - 3:50pm in PHELPS 1518 (TBD)</li>
-<li>M 4 - 4:50pm in PHELPS 1517 (TBD)</li>
-<li>M 5 - 5:50pm in PHELPS 1513 (TBD)</li>
-</ul>
-</section>
-<section id="course-description" class="level2">
-<h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
-<p>As stated in the <a href="https://google.com">catalog description</a>:</p>
-<blockquote class="blockquote">
-<p>Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.</p>
-</blockquote>
-<p>Indeed, this course is designed to be a hands-on introduction to Data Science for intermediate-level students with some exposure to probability and basic computation skills, but with few or no upper-division courses in statistics.</p>
-</section>
-<section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites:</h2>
-<ul>
-<li><p>PSTAT 120A (Probability at a calculus-based level)</p></li>
-<li><p>MATH 4A (a first pass at Linear Algebra)</p></li>
-<li><p>Prior experience with a programming language (e.g.&nbsp;Python through CMPSC 9 or CMPSC 16).</p></li>
-</ul>
-<p><strong>Note on Programming:</strong> the primary programming language of this course will be <code>R</code>, though you are not expected to necessarily have prior experience coding with <code>R</code> (so long as you have experience coding in another language, e.g.&nbsp;Python, Julia, etc.)</p>
-</section>
-<section id="textbooksreadings" class="level2">
-<h2 class="anchored" data-anchor-id="textbooksreadings">Textbooks/Readings</h2>
-<p>There are two “required” textbooks this quarter (required in the sense that readings will be assigned from them), both of which are freely available at the links below courtesy of the authors:</p>
-<ul>
-<li><p><a href="https://r4ds.hadley.nz/"><strong>R for Data Science (2e)</strong></a>, by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund</p></li>
-<li><p><a href="https://openintro-ims2.netlify.app/"><strong>Introduction to Modern Statistics, 2nd Ed.</strong></a>, by Mine Çetinkaya-Rundel and Johanna Hardin</p></li>
-</ul>
-<p>Another good resource for those of you very interested in Data Science (keep in mind this book is written primarily with the Python programming language in mind, which is why I will not be assigning reading from it):</p>
-<ul>
-<li><a href="https://learningds.org/intro.html"><strong>Learning Data Science</strong></a>, by Sam Lau, Joey Gonzalez, and Deb Nolan</li>
-</ul>
-<p>If you are new to programming in <code>R</code>, you may also find this textbook useful:</p>
-<ul>
-<li><a href="https://intro2r.com/"><strong>An Introduction to R</strong></a>, by Alex Douglas, Deon Roos, Francesca Mancini, Ana Couto &amp; David Lusseau</li>
-</ul>
-<p>There will also be a handful of articles which will be assigned as reading. All required reading can be found in the Weekly tabs of the <a href="materials.html">Materials</a> page.</p>
-</section>
-<section id="learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
-<p>By the end of this course, you should be able to:</p>
-<ul>
-<li><p>critically assess data quality and sampling design</p></li>
-<li><p>retrieve, inspect, and clean raw data</p></li>
-<li><p>understand the basics of exploratory, descriptive, visual, and inferential techniques</p></li>
-<li><p>interpret and communicate results in context</p></li>
-</ul>
-</section>
-<section id="assessments" class="level2">
-<h2 class="anchored" data-anchor-id="assessments">Assessments</h2>
-<ul>
-<li><p><strong>Labs:</strong> short, structured coding assignments designed to introduce programming concepts and skills. Labs will be assigned weekly, and are designed to be mostly completed during Section on Monday but won’t be due until 11:59pm on Wednesdays.</p></li>
-<li><p><strong>Homeworks:</strong> slightly larger in scope than labs; will contain both programming <em>and</em> theoretical/conceptual concepts. We will have a total of 3 homework assignments released throughout the quarter; typically you will have 1-2 weeks to work on the homeworks and you are encouraged to start as early as possible!</p></li>
-<li><p><strong>Mini Projects:</strong> more open-ended than homeworks and labs, and are designed to more closely simulate real-world data science projects and endeavors. We will have a total of 3 mini projects (released in non-exam weeks where there are no homeworks due) throughout the quarter, and you are encouraged to work collaboratively.</p></li>
-<li><p><strong>Final Project:</strong> a final, comprehensive project that will be due during finals week. You will be required to work in teams on the Final Project.</p></li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled" style="font-size:50px">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<strong>Final Project</strong>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The final project will be due by 11:59pm on Tuesday, June 11.</p>
-</div>
-</div>
-<ul>
-<li><strong>2 In-Class Assessments</strong> (ICAs) will be administered (see below for dates). I hesitate to call these “exams” because they are not intended to be as high-stakes as exams, however they are designed to test your retention of course material. More information will be released as we approach the date of the first ICA.</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled" style="font-size:50px">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<strong>Assessment Dates</strong>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>In-Class Assessment 1</strong>: Thursday, April 25, 2024 in BUCHN 1940 (our Lecture classroom) starting at 9:30 (our regular class time)</li>
-<li><strong>In-Class Assessment 2</strong>: Thursday, May 23, 2024 in BUCHN 1940 (our Lecture classroom) starting at 9:30 (our regular class time)</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled" style="font-size:50px">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>There will be no ICAs offered at alternate times, for any reasons. So, please plan accordingly!</p>
-</div>
-</div>
-<section id="final-course-grades" class="level3">
-<h3 class="anchored" data-anchor-id="final-course-grades">Final Course Grades</h3>
-<p>Your final course grade will be computed according to the following weights:</p>
+<p>Note that each title<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> has the potential to contain multiple genres. For example, the film “Fast &amp; Furious” is classified with three genres: Action, Crime, and Thriller. The way that the <code>basics</code> dataframe indicates this, however, is a little annoying: the <code>genres</code> value of the “Fast &amp; Furious” record is listed as “Action,Crime,Thriller”; i.e.&nbsp;all three genres are listed in the same entry.<br>
+</p>
+<p>The reason this is annoying is because it makes trying to make comparisons across genres difficult. What would be better is to have each genre listed in a separate line.<br>
+</p>
+<p><strong>Split the rows corresponding to multi-genre titles based on the genre values</strong>. For example, rather than</p>
 <table class="table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Assessment</th>
-<th style="text-align: center;">Weight</th>
+<th style="text-align: center;"><code>tconst</code></th>
+<th style="text-align: center;"><code>titleType</code></th>
+<th style="text-align: center;"><code>primaryTitle</code></th>
+<th style="text-align: center;">…</th>
+<th style="text-align: center;"><code>genres</code></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Labs</td>
-<td style="text-align: center;">10%</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">HW</td>
-<td style="text-align: center;">15%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Mini Projects</td>
-<td style="text-align: center;">20%</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Final Project</td>
-<td style="text-align: center;">25%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">In-Class Assessments</td>
-<td style="text-align: center;">30%</td>
+<td style="text-align: center;">tt1013752</td>
+<td style="text-align: center;">movie</td>
+<td style="text-align: center;">Fast &amp; Furious</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">Action,Crime,Thriller</td>
 </tr>
 </tbody>
 </table>
-<p>Your final letter grade will be issued according to the following scheme (cutoffs between plusses and minuses will be calculated at the end of the quarter):</p>
-<ul>
-<li>A<sup>-</sup> – A<sup>+</sup>: 90 – 100%</li>
-<li>B<sup>–</sup> – B<sup>+</sup>: 80 – 89.99%</li>
-<li>C<sup>–</sup> – C<sup>+</sup>: 70 – 79.99%</li>
-<li>D<sup>–</sup> – D<sup>+</sup> : 60 – 69.99%</li>
-<li>F: 0 – 59.99%</li>
-</ul>
-<p>I have elected to adopt an uncurved grading scheme to eliminate any sense of “competition” among students; I highly encourage you all to collaborate with and uplift each other. Having said that, I will certainly consider adjusting the cutoffs at the end of the quarter if necessary.</p>
-</section>
-</section>
-<section id="policies" class="level2">
-<h2 class="anchored" data-anchor-id="policies">Policies</h2>
-<section id="late-submissions" class="level3">
-<h3 class="anchored" data-anchor-id="late-submissions">Late Submissions</h3>
-<p>You are allowed <strong>two</strong> late submissions across homeworks and labs (so, 2 in total; <em>not</em> 2 each), that must be submitted within 48 hours of the original deadline. No work will be accepted beyond 48 hours after the original deadline. Additionally, because projects may/will be collaborative, late project submissions will not be accepted.</p>
-</section>
-<section id="communication" class="level3">
-<h3 class="anchored" data-anchor-id="communication">Communication</h3>
-<p>There are two primary means of communication outside of scheduled class meetings: office hours and an <a href="https://edstem.org/us/courses/57485/discussion/" target="_blank">EdStem Discussion Forum</a> (please see Canvas for a join link; for security purposes, we are only allowing currently-enrolled students join the discussion forum). If you are unsure of how to reach out to appropriate parties, please consult the following table:</p>
+<p>we would like to have</p>
 <table class="table">
 <thead>
 <tr class="header">
-<th>Topic</th>
-<th>Redirect to…</th>
+<th style="text-align: center;"><code>tconst</code></th>
+<th style="text-align: center;"><code>titleType</code></th>
+<th style="text-align: center;"><code>primaryTitle</code></th>
+<th style="text-align: center;">…</th>
+<th style="text-align: center;"><code>genres</code></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Troubleshooting codes</td>
-<td>EdStem</td>
+<td style="text-align: center;">tt1013752</td>
+<td style="text-align: center;">movie</td>
+<td style="text-align: center;">Fast &amp; Furious</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">Action</td>
 </tr>
 <tr class="even">
-<td>Checking answers</td>
-<td>Office hours or EdStem</td>
+<td style="text-align: center;">tt1013752</td>
+<td style="text-align: center;">movie</td>
+<td style="text-align: center;">Fast &amp; Furious</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">Crime</td>
 </tr>
 <tr class="odd">
-<td>Clarifying assignment content</td>
-<td>Office hours or EdStem</td>
-</tr>
-<tr class="even">
-<td>Assignment submission</td>
-<td>Gradescope</td>
-</tr>
-<tr class="odd">
-<td>Re-evaluation request</td>
-<td>Gradescope</td>
-</tr>
-<tr class="even">
-<td>Question about missing grades</td>
-<td><a href="https://forms.gle/14AGxhdakbUiTfcT8">Fill Out This Form</a></td>
+<td style="text-align: center;">tt1013752</td>
+<td style="text-align: center;">movie</td>
+<td style="text-align: center;">Fast &amp; Furious</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">Thriller</td>
 </tr>
 </tbody>
 </table>
-<p>Some additional comments:</p>
+<p>As a hint: here is some skeleton code you can adapt:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>df name<span class="sc">&gt;</span> <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genres =</span> <span class="fu">strsplit</span>(<span class="fu">as.character</span>(genres), <span class="st">","</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="sc">&lt;</span>fill this <span class="cf">in</span><span class="sc">&gt;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="part-ii-report-questions" class="level1">
+<h1>Part II: Report Questions</h1>
 <ul>
-<li><p>Please note that we (the course staff) request you <strong>refrain from emailing us except in case of extreme emergency</strong> (it is up to you to decide what is an ‘emergency’). Please bring all of your questions to the course staff during either Office Hours or after Lecture/Section. Thank you!</p></li>
-<li><p>If you have questions or concerns about missing grades, please use the form linked in the table above. You are allowed to submit the form multiple times, but we ask that you please wait at least 48 business hours before submitting follow-ups. Thank you!</p></li>
+<li><p>Does there appear to be a significant difference between average ratings across different genres? (Check a few pairs of genres, as well as a few groups [more than 2] genres.)</p></li>
+<li><p>Does there appear to be a significant difference between average ratings <em>within</em> genres over years? (You can pick a few genres to focus on, rather than focusing on all genres.)</p></li>
+<li><p>Does the average runtime of movies seem to have changed over time?</p></li>
+<li><p>Do episode lengths (of TV Series) appear to have gotten longer over time? (Note: the <code>runtime</code> of a title with <code>titleType</code> equal to <code>tvSeries</code> is the runtime of a typical episode, in minutes).</p></li>
+<li><p>Formulate an additional question of your own, and answer it.</p></li>
 </ul>
 </section>
-<section id="collaboration-and-academic-integrity" class="level3">
-<h3 class="anchored" data-anchor-id="collaboration-and-academic-integrity">Collaboration and Academic Integrity</h3>
-<p>Data Science (as we will see) is an inherently collaborative field. As such, you are not only allowed but also <em>encouraged</em> to collaborate on assignments (be they lab, homework, or project). However, there are limitations to collaboration:</p>
-<ul>
-<li>collaboration on the ICAs is strictly prohibited</li>
-<li>do not copy other people’s work and try to pass it off as your own</li>
-<li>if/when you work in groups, include the names of <strong>all</strong> group members on the assignment</li>
-</ul>
-<p>Anyone found guilty of academic misconduct will be reported to the Academic Senate, and will receive at minimum a failing grade on the assignment in question; further actions may also include failing the course, and marks being made on permanent records. Depending on the severity of the infraction, expulsion is also a possibility.</p>
-<p>Basically, don’t cheat- please! If you’re ever struggling with course material, please come talk to me or the TA’s. We are truly here for you, and want only the best for you.</p>
-</section>
-<section id="section-switching" class="level3">
-<h3 class="anchored" data-anchor-id="section-switching">Section Switching</h3>
-<p>Lab Sections take place in special “Collaborate Classrooms” which are equipped with laptops. There are only a fixed number of seats and laptops in these classrooms, meaning we cannot under any circumstance over-enroll sections. Therefore, if you want to switch section unofficially (we do not have the ability to switch your official enrollment through GOLD), please follow the steps at <a href="https://docs.google.com/spreadsheets/d/1B90BIjZdup2VAFWJMuBd6DPTrCf8A4BQwyV_4t480FM/" target="_blank">this</a> link. Any requests to switch sections that do not adhere to the guidelines posted at that link will be ignored.</p>
-</section>
-</section>
-<section id="disabled-students-program-dsp" class="level2">
-<h2 class="anchored" data-anchor-id="disabled-students-program-dsp">Disabled Students Program (DSP)</h2>
-<p>If you have a disability, or otherwise require accommodations for the exams and/or quizzes please reach out to the Disabled Students Program (DSP) ASAP to ensure your request(s) for accommodation can be processed. We ask that all requests be logged at least a week in advance, to ensure the system enough time to process. Please note that we cannot grant any requests for accommodations unless they come to us from DSP directly.</p>
-</section>
-<section id="technology-needs" class="level2">
-<h2 class="anchored" data-anchor-id="technology-needs">Technology Needs</h2>
-<p>As a part of this course, you will be required to program in <code>R</code>. Though the Lab Sections take place in specially designed classrooms that come equipped with computers, your homework and quizzes may cover <code>R</code>-related questions, which means we expect you to have access to a laptop capable of connecting to the internet. If you do not currently possess such a laptop, please check out UCSB’s Basic Needs Resource page on Technology Resources to try and acquire one.</p>
-</section>
-<section id="disclaimer" class="level2">
-<h2 class="anchored" data-anchor-id="disclaimer">Disclaimer</h2>
-<p>The instructor reserves the right to modify this syllabus if he deems such modifications academically advisable. Such modifications, should they occur, will be announced publicly.</p>
-</section>
-<section id="faculty-mentor" class="level2">
-<h2 class="anchored" data-anchor-id="faculty-mentor">Faculty Mentor</h2>
-<p>The faculty mentor for this course is Dr.&nbsp;Drew Carter. They can be reached at <a href="mailto:carter@pstat.ucsb.edu">carter@pstat.ucsb.edu</a>. Please note that Dr.&nbsp;Carter will not be able to authorize regrades or accommodations/extensions for the course; for such inquiries, please utilize the communications channels listed above. Thank you!</p>
+<section id="acknowledgments" class="level1">
+<h1>Acknowledgments</h1>
+<p>Data dictionaries were taken from the official <a href="https://developer.imdb.com/non-commercial-datasets/">IMdB Documentation</a>, and datasets were sourced from <a href="https://datasets.imdbws.com/">https://datasets.imdbws.com/</a>.</p>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>here, “title” means “film/tv-show title”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

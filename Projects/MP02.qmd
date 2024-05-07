@@ -1,0 +1,103 @@
+---
+title: "Mini-Project 2"
+subtitle: "A Trip to the Movies"
+author:
+  - name: "PSTAT 100, with Ethan Marzban"
+    affiliations:
+      - name: "Spring 2024"
+author-title: "Course"
+affiliation-title: "Quarter"
+format:
+  html:
+    page-layout: full
+title-block-banner: TRUE
+toc: TRUE
+---
+
+:::{.callout-tip}
+## **Note**
+
+Since we've gained quite a bit of experience playing around with data and examining statistical questions, this project is a little bit less cut-and-dry than Mini-Project 01. \
+
+Specifically, there are just a few broad questions posed later in this document. You should seek to answer these questions through a combination of plots and/or formal statistical tests. \
+
+As always, be as detailed as possible when answering questions. A simple "yes/no" answer with no supporting justification will not be satisfactory. Rather, justify your answers with either a plot or two, a statistical test, or possibly both. Keep in mind:
+
+-   Make sure you comment on all of the plots you generate. No "floating" plots!
+
+-   Make sure you comment on the validity of any statistical tests you run. For example, if you conduct an ANOVA, check normality. If the assumptions of a given test are violated, make note of that.
+:::
+
+# Introduction
+
+The Internet Movie Database (IMdB) is a leading source of film- and media-related statistics. In this mini-project, we will explore various aspects about films (e.g. runtimes, ratings, etc.) and compare and contrast across several different characteristics.
+
+# Data Overview
+
+There are two main data files associated with this project: one named `basics.csv` and the other named `ratings.csv`. The `basics` data frame contains the following variables: 
+
+-   `tconst` (string) - alphanumeric unique identifier of the title
+-   `titleType` (string) – the type/format of the title (e.g. movie, short, tvseries, tvepisode, video, etc)
+-   `primaryTitle` (string) – the more popular title / the title used by the filmmakers on promotional materials at the point of release
+-   `originalTitle` (string) - original title, in the original language
+-   `isAdult` (boolean) - 0: non-adult title; 1: adult title
+-   `startYear` (YYYY) – represents the release year of a title. In the case of TV Series, it is the series start year
+-   `endYear` (YYYY) – TV Series end year. ‘\N’ for all other title types
+-   `runtimeMinutes` – primary runtime of the title, in minutes
+-   `genres` (string array) – includes up to three genres associated with the title
+
+The `ratings` dataframe contains the following variables:
+
+-   `tconst` (string) - alphanumeric unique identifier of the title
+-   `averageRating` – weighted average of all the individual user ratings
+-   `numVotes` - number of votes the title has received
+
+# Part I: Data Preprocessing
+
+:::{.callout-important}
+## **Important**
+
+Note that much of the work done in this section is "internal". What I mean by that is there is not any output from this section, meaning none of the work you do in this section will appear on your report. Rather, the work done in this section is meant to manipulate and reformat the data into a format that is more appropriate for the analyses we will perform later.
+:::
+
+Note that each title^[here, "title" means "film/tv-show title"] has the potential to contain multiple genres. For example, the film "Fast & Furious" is classified with three genres: Action, Crime, and Thriller. The way that the `basics` dataframe indicates this, however, is a little annoying: the `genres` value of the "Fast & Furious" record is listed as "Action,Crime,Thriller"; i.e. all three genres are listed in the same entry. \
+
+The reason this is annoying is because it makes trying to make comparisons across genres difficult. What would be better is to have each genre listed in a separate line. \
+
+**Split the rows corresponding to multi-genre titles based on the genre values**. For example, rather than
+
+| `tconst` | `titleType` | `primaryTitle` | ... | `genres` |
+|:------:|:------:|:-------:|:-------:|:-------:|
+| tt1013752 | movie | Fast & Furious | ... | Action,Crime,Thriller |
+
+we would like to have
+
+| `tconst` | `titleType` | `primaryTitle` | ... | `genres` |
+|:------:|:------:|:-------:|:-------:|:-------:|
+| tt1013752 | movie | Fast & Furious | ... | Action |
+| tt1013752 | movie | Fast & Furious | ... | Crime |
+| tt1013752 | movie | Fast & Furious | ... | Thriller |
+
+As a hint: here is some skeleton code you can adapt:
+
+```{r, eval = F}
+<df name> %>%
+  mutate(genres = strsplit(as.character(genres), ",")) %>%
+  unnest(<fill this in>)
+```
+
+# Part II: Report Questions
+
+-   Does there appear to be a significant difference between average ratings across different genres? (Check a few pairs of genres, as well as a few groups [more than 2] genres.)
+
+-   Does there appear to be a significant difference between average ratings *within* genres over years? (You can pick a few genres to focus on, rather than focusing on all genres.)
+
+-   Does the average runtime of movies seem to have changed over time?
+
+-   Do episode lengths (of TV Series) appear to have gotten longer over time? (Note: the `runtime` of a title with `titleType` equal to `tvSeries` is the runtime of a typical episode, in minutes).
+
+-   Formulate an additional question of your own, and answer it.
+
+# Acknowledgments 
+
+Data dictionaries were taken from the official [IMdB Documentation](https://developer.imdb.com/non-commercial-datasets/), and datasets were sourced from [https://datasets.imdbws.com/](https://datasets.imdbws.com/).
