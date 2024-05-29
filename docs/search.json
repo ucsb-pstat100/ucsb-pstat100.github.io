@@ -70,6 +70,62 @@
     "text": "Footnotes\n\n\nhere, “title” means “film/tv-show title”↩︎"
   },
   {
+    "objectID": "Labs/Lab00/df_basics.html",
+    "href": "Labs/Lab00/df_basics.html",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "",
+    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
+    "href": "Labs/Lab00/df_basics.html#lab-objectives",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Lab Objectives",
+    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Relevant Textbook Chapters/Sections:",
+    "text": "Relevant Textbook Chapters/Sections:\n\nPortions of Chapter 27 in R4DS"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Slicing/Indexing",
+    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
+    "href": "Labs/Lab00/df_basics.html#using-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Column Names",
+    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Updating/Replacing Values",
+    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
+    "href": "Labs/Lab00/df_basics.html#adding-columns",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Adding Columns",
+    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
+    "href": "Labs/Lab00/df_basics.html#changing-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Changing Column Names",
+    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
+  },
+  {
     "objectID": "Labs/Lab00/intro2r.html",
     "href": "Labs/Lab00/intro2r.html",
     "title": "Lab 00: Introduction to R",
@@ -161,60 +217,95 @@
     "text": "Footnotes\n\n\nactually, this is a lie- there does exist a closed form expression for the nth Fibonacci number, but for the purposes of this exercise we are going to ignore that fact↩︎"
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html",
-    "href": "Labs/Lab00/df_basics.html",
-    "title": "Lab 00: Dataframe Basics",
+    "objectID": "Projects/MP03.html",
+    "href": "Projects/MP03.html",
+    "title": "Mini-Project 3",
     "section": "",
-    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
+    "text": "IMPORTANT\n\n\n\n\nThis mini-project must be submitted in groups of 3-4; unfortunately, we cannot make exceptions for smaller or larger groups.\nWhen submitting on Gradescope, only one member needs to submit (there will be a way to indicate group members on Gradescope itself).\nPlease submit a .zip file of the folder you create, containing your app.R file along with the data subfolder."
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
-    "href": "Labs/Lab00/df_basics.html#lab-objectives",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Lab Objectives",
-    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
+    "objectID": "Projects/MP03.html#overview",
+    "href": "Projects/MP03.html#overview",
+    "title": "Mini-Project 3",
+    "section": "Overview",
+    "text": "Overview\nA major part of Data Science is the ability to present your results in a coherent and effective manner. Thankfully, we live in an era where many tools exist to help us present our findings! One such tool is that of a Shiny App, an interactive application which can be created using either R or Python. (We will be focusing on the R version of Shiny Apps for this project.) You can read more about shiny apps here: https://shiny.posit.co/.\n\nOur goal in this project will be to build up a small shiny app based on the MNIST dataset (introduced during Lecture on Tuesday, May 28). Specifically, we’ll build an app that allows users to pick which row of the MNIST dataset to generate an image from, and also how many dimension to use when compressing the image via PCA. Our final app will look something like this:\n\n\n\n\n\n\n\nImportant\n\n\n\nI recommend waiting until after Lecture on Tuesday, May 28 before starting this project (as we will be covering some important code during that lecture which may prove useful for completing this project)."
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
-    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Relevant Textbook Chapters/Sections:",
-    "text": "Relevant Textbook Chapters/Sections:\n\nPortions of Chapter 27 in R4DS"
+    "objectID": "Projects/MP03.html#step-1",
+    "href": "Projects/MP03.html#step-1",
+    "title": "Mini-Project 3",
+    "section": "Step 1",
+    "text": "Step 1\nWe’ll start off by creating a blank shiny app. Navigate to File &gt; New File &gt; Shiny Web App, which should then trigger the following popup:\n\nGive the file an appropriate name, and select an appropriate destination in which to create your app; then, click “Create”.\n\n\n\n\n\n\nImportant\n\n\n\nDo NOT create your app in the MP03 that was provided by the course; doing so might mess up the synchronizing between your server instance and the course GitHub page. Instead, create a new subfolder in your “local” working directory in which to create your app."
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
-    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Using Slicing/Indexing",
-    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
+    "objectID": "Projects/MP03.html#step-2",
+    "href": "Projects/MP03.html#step-2",
+    "title": "Mini-Project 3",
+    "section": "Step 2",
+    "text": "Step 2\nCompleting step 1 should trigger the creation (in your specified directory) of a file called app.R, whose contents should look like the following:\n\nIf you would like, you’re welcome to click the “Run App” button at the top-right corner of your console, but you do not need to as our next step is going to be deleting the contents of this file, and replacing it with only the following lines:\n\nlibrary(shiny)\n\n# Run the application \nshinyApp(ui = ui, server = server)\n\nSo, when you’re done, your file should now look like this:"
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
-    "href": "Labs/Lab00/df_basics.html#using-column-names",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Using Column Names",
-    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
+    "objectID": "Projects/MP03.html#step-3",
+    "href": "Projects/MP03.html#step-3",
+    "title": "Mini-Project 3",
+    "section": "Step 3",
+    "text": "Step 3\nBefore we start adding some interactive content to our app, we should quickly discuss how R generates a Shiny App from our code. In general, a Shiny App is comprised of three things:\n\na user interface (UI) object\na server function\na call to the shinyApp() function.\n\nThe UI object controls the layout, appearance, and aesthetics of the app, whereas the server function contains the information our computer uses to actually build the app. The shinyApp() function essentially weaves the UI and server objects together, to produce a fully-functional (and interactive) application.\nRight now our app contains a call to shinyApp, but has no UI or server function. Let’s fix that!"
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
-    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Updating/Replacing Values",
-    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
+    "objectID": "Projects/MP03.html#step-4",
+    "href": "Projects/MP03.html#step-4",
+    "title": "Mini-Project 3",
+    "section": "Step 4",
+    "text": "Step 4\nWe’ll start by adding in a server function. The server function needs to be a function on two arguments, called input and output. This is due to the way the shinyApp() function works; it expects an input and output argument in order to work. After library(shiny) but before # Run the application, add the following code:\n\nserver &lt;- function(input, output) {\n  \n}\n\nNow, just for fun, try clicking the “Run App” button. R should return an error- indeed, that’s because we haven’t defined a UI object! Let’s fix that."
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
-    "href": "Labs/Lab00/df_basics.html#adding-columns",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Adding Columns",
-    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
+    "objectID": "Projects/MP03.html#step-5",
+    "href": "Projects/MP03.html#step-5",
+    "title": "Mini-Project 3",
+    "section": "Step 5",
+    "text": "Step 5\nIn order to get our app to look right, we’ll actually need to load another package. Load the bslib package right after loading the shiny package.\nThen, right before the line where you defined the server function, insert the following code:\n\nui &lt;- page_sidebar(\n  \n)\n\nYour overall document should now look like this:\n\nClick the “Run App” button. Depending on your settings, a window will either pop up in a new tab or a new window (or possibly even in the RStudio viewer). Congratulations - we’ve made an app!"
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
-    "href": "Labs/Lab00/df_basics.html#changing-column-names",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Changing Column Names",
-    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
+    "objectID": "Projects/MP03.html#step-6",
+    "href": "Projects/MP03.html#step-6",
+    "title": "Mini-Project 3",
+    "section": "Step 6",
+    "text": "Step 6\nOkay, we’ve made an app… but have we really? Right now, our app is just a blank page. Booooring. Let’s add some stuff!\nNow, keep in mind that pretty much everything we add at this point will be inside the call to page_sidebar().\nWe’ll start off by adding a title. Add the following code to your call to page_sidebar():\n\ntitle = \"PSTAT 100, MP03\",\nsidebar = sidebar(\"sidebar\"),\n\"main contents\"\n\nClick “Run App”, and check that your app looks something like this:\n\nTo make things a little easier to read, I recommend clicking the “Open in Browser” button, which should trigger the app to open in a new window (or tab, depending on your settings) in your default browser. My default browser is Google Chrome, and my settings are such that the app will open in a new tab, so clicking “Open in Browser” would, for me, produce the following:\n\n\nTaking Stock\nOk, so from what we just did, it should hopefully be clear that:\n\nthe title argument of panel_sidebar() controls the title of the app\nthe sidebar argument of panel_sidebar() creates a sidebar (i.e. content that appears in a collapsible bar at the side of the screen)."
+  },
+  {
+    "objectID": "Projects/MP03.html#step-7",
+    "href": "Projects/MP03.html#step-7",
+    "title": "Mini-Project 3",
+    "section": "Step 7",
+    "text": "Step 7\nAlright, cool! But things still aren’t quite interactive. This is where widgets come into play. A widget is essentially a tool that users can use to specify inputs to the app. Shiny comes equipped with the following widgets (this table has been copied from https://shiny.posit.co/r/getstarted/shiny-basics/lesson3/; all rights reserved to the original author):\n\n\n\nfunction\nwidget\n\n\n\n\nactionButton\nAction Button\n\n\ncheckboxGroupInput\nA group of check boxes\n\n\ncheckboxInput\nA single check box\n\n\ndateInput\nA calendar to aid date selection\n\n\ndateRangeInput\nA pair of calendars for selecting a date range\n\n\nfileInput\nA file upload control wizard\n\n\nhelpText\nHelp text that can be added to an input form\n\n\nnumericInput\nA field to enter numbers\n\n\nradioButtons\nA set of radio buttons\n\n\nselectInput\nA box with choices to select from\n\n\nsliderInput\nA slider bar\n\n\nsubmitButton\nA submit button\n\n\ntextInput\nA field to enter text\n\n\n\nAdditionally, Shiny understands the following markdown-adjacent functions:\n\n\n\nfunction\noutput\n\n\n\n\nh1()\nFirst-level header text\n\n\nh2()\nSecond-level header text\n\n\n…\n…\n\n\np()\nParagraph text\n\n\nb()\nBoldfaced text\n\n\n\nHere’s your task: play around with the different functions and inputs to sidebar() to get your sidebar to look like the following:\n\nSome things to note:\n\nthe default value of the “Number of Dimensions” slider should be 2\nthe default value of the “Which Row?” slider should be 1.\n\n\n\n\n\n\n\nIMPORTANT\n\n\n\nThis is part of how we will grade your mini-projects (please see the rubric below for more details).\n\n\nAlso, keep in mind that you will need to create an inputId for each widget. The inputId is what we will use to reference each widget in the output of our app later. For now, just imagine that the inputId of a given widget is like a variable name for that widget."
+  },
+  {
+    "objectID": "Projects/MP03.html#step-8",
+    "href": "Projects/MP03.html#step-8",
+    "title": "Mini-Project 3",
+    "section": "Step 8",
+    "text": "Step 8\nLet’s add some cards to our app. Replace the “main contents” with two calls to the card() function, leaving the arguments blank (for now). When you’re done, running your app should produce the following:\n\nNow, notice how this isn’t quite what the final output of our app is supposed to look like - specifically, we’d like our two cards to be adjacent to one another in the same row. We can fix this by wrapping our calls to card() into a call to layout_columns(). When you’re done (and after running your app), you should get something that looks like this:"
+  },
+  {
+    "objectID": "Projects/MP03.html#step-9",
+    "href": "Projects/MP03.html#step-9",
+    "title": "Mini-Project 3",
+    "section": "Step 9",
+    "text": "Step 9\nOkay, we’re almost there! It’s now time to start adding some interactivity. Let’s start off by adding in the text that says “The number displayed is X”.\nCopy the following code into your second call to card():\n\ncard_header(\"True Classification\"),\ntextOutput(\"verb\")\n\nThen, inside your server function, add the line\n\noutput$verb &lt;- renderText({ paste0(\"The number displayed is \", \n                                     &lt;FILL THIS IN&gt;)\n  })\n\nwhere you should replace &lt;FILL THIS IN&gt; with appropriate code to extract out the digit.\n\n\n\n\n\n\nThinking Broadly\n\n\n\nRemember, the user is supposed to be able to specify which row of the MNIST dataset to examine. What we are doing in this step is allowing the user to specify a row of the MNIST dataset, and then see exactly what number is supposed to be displayed.\n\n\nCheck that your app, when run, looks like this:\n\nAlso check that changing the “Which Row?” input changes the text that is displayed.\nSome Hints:\n\nStart off by reading in the MNIST dataset, and assigning it to a variable name. You can do this at the very top of your code, right below the line library(bslib).\nSomewhere in the &lt;FILL THIS IN&gt; code that you need to write, you’ll need to reference both the name of the variable used to store the MNIST data, and also input$&lt;something&gt; where you replace &lt;something&gt; with the labelID of your numericInput widget.\n\nSo, for example, if I’ve labeled my numericInput widget which_row, I’ll need to use the code input$which_row to extract the value of which_row that the user of the app has specified."
+  },
+  {
+    "objectID": "Projects/MP03.html#step-10",
+    "href": "Projects/MP03.html#step-10",
+    "title": "Mini-Project 3",
+    "section": "Step 10",
+    "text": "Step 10\nAlright, we’re almost there! Our last task will be to populate the middle card with an image, obtained by a row of the MNIST dataset that is specified by the user.\n\nRe-examine the code from Lecture 17, Demo 3. Then, copy-paste it into your server function, and modify it as necessary to ensure that:\n\nthe image generated is generated from the row of the MNIST dataset that is specified in the “Which Row?” widget\nchanging the number of dimensions (using the “Number of dimensions” slider) actually changes the resolution of the image.\n\nYour app, when run, should look something like this:\n\nThe code for your app should look something like this:\n\nlibrary(shiny)\nlibrary(tidyverse)\nlibrary(bslib)\n\nmnist &lt;- read.csv(\"data/mnist.csv\")\n\nui &lt;- page_sidebar(\n  title = \"PSTAT 100, MP03\",\n  sidebar = sidebar(\n    &lt;some stuff here&gt;\n  ),\n  layout_columns(\n    &lt;some stuff here involving cards&gt;\n  )\n)\n\nserver &lt;- function(input, output) {\n  output$verb &lt;- renderText({ paste0(\"The number displayed is \", \n                                     &lt;something here from step 9&gt;\n  })\n  \n  output$distPlot &lt;- renderPlot({\n    &lt;modified code from the Lecture 17 Demo&gt;\n  })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "Projects/MP03.html#step-11",
+    "href": "Projects/MP03.html#step-11",
+    "title": "Mini-Project 3",
+    "section": "Step 11",
+    "text": "Step 11\nOur last step is to add some theming! Right after you open your call to page_sidebar(), include the following line:\n\ntheme = bs_theme(version = 5, bootswatch = \"minty\"),\n\nSo, the first few lines of your definition of ui should look like\n\nui &lt;- page_sidebar(\n  theme = bs_theme(version = 5, bootswatch = \"minty\"),\n  \n  &lt;other stuff&gt;\n)\n\nCheck that your app now looks like this:\n\nNotice how some of the colors and fonts have changed. Pretty neat, huh? Now, take a look through this website, which lists common themes that come equipped with Shiny. Pick one (other than minty!) to use for your app, by replacing \"minty\" with the name of your selected theme in the call to bs_theme() we just added."
   },
   {
     "objectID": "Projects/MP01.html",
