@@ -1,0 +1,87 @@
+---
+title: "Final Project"
+author:
+  - name: "PSTAT 100, with Ethan Marzban"
+    affiliations:
+      - name: "Spring 2024"
+author-title: "Course"
+affiliation-title: "Quarter"
+format:
+  html:
+    page-layout: full
+title-block-banner: TRUE
+toc: TRUE
+---
+
+_**Major attribution to Dr. Trevor Ruiz for large portions of this project!**_
+
+:::{.callout-important}
+## **IMPORTANT**
+
+-   **This mini-project must be submitted in groups of 3-4**; unfortunately, we cannot make exceptions for smaller or larger groups.
+
+    -   It's up to you and your groupmates on how you want to divide up the work. Just be sure you include the names of all of your group members on both the report and the shiny app.
+    
+-   The final project is now due by 11:59pm on **Friday, June 14, 2024**. No late submissions will be accepted for any reasons.
+:::
+
+## Overview
+
+It's time to put everything we've learned together, and practice running through the Data Science Lifecycle all the way through! You will be given the choice to work with one of two datasets:
+
+-   ClimateWatch historical emissions data: greenhouse gas emissions by U.S. state 1990-present
+
+-   World Happiness Report 2023: indices related to happiness and wellbeing by country 2008-present
+
+Additionally, you will be tasked with producing two deliverables for this project:
+
+-   A report that answers a question of your choice (pertaining to the dataset you choose)
+
+-   A Shiny App showcasing some interesting aspects of the dataset.
+
+## The Report
+
+For the report, you should both **formulate** and **answer** a question of your choosing. A good question is one that you want to answer. It should be a question with contextual meaning, not a purely technical matter. It should be clear enough to answer, but not so specific or narrow that your analysis is a single line of code. It should require you to do some nontrivial exploratory analysis, descriptive analysis, and possibly some statistical modeling. You aren’t required to use any specific methods, but it should take a bit of work to answer the question. There may be multiple answers or approaches to contrast based on different ways of interpreting the question or different ways of analyzing the data. If your question is answerable in under 15 minutes, or your answer only takes a few sentences to explain, the question probably isn’t nuanced enough.
+
+Your report should take the form of a full "formal" report, including:
+
+1)    An **abstract**, in which you provide a brief outline of your report
+
+2)    An **introduction**, in which you introduce the dataset you are working with along with the question/s you want to answer. You should also describe the data as best you can; cover the sampling if applicable and data semantics, but focus on providing high-level context and not technical details. Don’t report preprocessing steps or describe tabular layouts, etc.
+
+3)    A series of **explorations** and **analyses** as you see fit (e.g. a section for EDA, a section where you carry out some tests, etc.) Provide a walkthrough with commentary of the steps you took to investigate and answer the question. This section can and should include code cells and text cells, but you should try to focus on presenting the analysis clearly by organizing cells according to the high-level steps in your analysis so that it is easy to skim. For example, if you fit a regression model, include formulating the explanatory variable matrix and response, fitting the model, extracting coefficients, and perhaps even visualization all in one cell; don’t separate these into 5-6 substeps.
+
+4)    A **conclusion**, in which you restate the answer to your question and summarize your report.
+
+
+## The Shiny App
+
+You should, in addition to your report, generate a Shiny App that showcases at least one or two interesting parts of your dataset. For example, you could consider doing something similar to Mini Project 03 and include some PCA-related analyses in the app. Or, you could opt for a more visualizations-based app, allowing the user to add aesthetics to encode additional information on variables. It's really up to you! Having said that, your app should, above all, be **interactive** - don't just display a static plot in a Shiny App and call that your "app".  
+
+## Evaluation
+
+Your report will be evaluated on the following criteria:
+
+1)    Thoughtfulness: does your question reflect some thoughtful consideration of the dataset and its nuances, or is it more superficial? **0 - 3 points**
+
+2)    Thoroughness: is your analysis an end-to-end exploration, or are there a lot of loose ends or unexplained choices? **0 - 3 points**
+
+3)    Mistakes or oversights: is your work free from obvious errors or omissions, or are there mistakes and things you’ve overlooked? **0 - 3 points**
+
+4)    Clarity of write-up: is your report well-organized with commented codes and clear writing, or does it require substantial effort to follow? **0 - 3 points**
+
+Your Shiny App will be evaluated on the following criteria:
+
+1)    Interactiveness: is your app interactive? Does the interactivity contribute to the overall app, and understanding of the data? **0 - 3 points**
+
+2)    Aesthetics/Ease-of-use: is your app easy to use? Have you gone beyond the simple default themes? Are you using appropriate widgets for the different inputs? **0 - 3 points**
+
+## What to Submit
+
+There are two separate upload portals on Gradescope- one for your report, and one for your shiny app.
+
+-   When submitting the report, submit only a PDF. Again, only one member in your group needs to submit - they will then need to indicate, on Gradescope, which members were a part of your group.
+
+-   When submitting the Shiny App, submit a `.zip` folder (just like the one you submitted for Mini-Project 03).
+
+Please ensure your report is readable, and your zip file opens and your app runs correctly. Again, the graders will not be sifting through your code - if your app doesn't run or your PDF doesn't open, you will receive a zero on the related grading parts. Thank you for understanding!

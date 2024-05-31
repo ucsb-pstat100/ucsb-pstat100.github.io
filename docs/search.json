@@ -70,60 +70,46 @@
     "text": "Footnotes\n\n\nhere, “title” means “film/tv-show title”↩︎"
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html",
-    "href": "Labs/Lab00/df_basics.html",
-    "title": "Lab 00: Dataframe Basics",
+    "objectID": "Projects/FinalProj.html",
+    "href": "Projects/FinalProj.html",
+    "title": "Final Project",
     "section": "",
-    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
+    "text": "Major attribution to Dr. Trevor Ruiz for large portions of this project!"
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
-    "href": "Labs/Lab00/df_basics.html#lab-objectives",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Lab Objectives",
-    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
+    "objectID": "Projects/FinalProj.html#overview",
+    "href": "Projects/FinalProj.html#overview",
+    "title": "Final Project",
+    "section": "Overview",
+    "text": "Overview\nIt’s time to put everything we’ve learned together, and practice running through the Data Science Lifecycle all the way through! You will be given the choice to work with one of two datasets:\n\nClimateWatch historical emissions data: greenhouse gas emissions by U.S. state 1990-present\nWorld Happiness Report 2023: indices related to happiness and wellbeing by country 2008-present\n\nAdditionally, you will be tasked with producing two deliverables for this project:\n\nA report that answers a question of your choice (pertaining to the dataset you choose)\nA Shiny App showcasing some interesting aspects of the dataset."
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
-    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Relevant Textbook Chapters/Sections:",
-    "text": "Relevant Textbook Chapters/Sections:\n\nPortions of Chapter 27 in R4DS"
+    "objectID": "Projects/FinalProj.html#the-report",
+    "href": "Projects/FinalProj.html#the-report",
+    "title": "Final Project",
+    "section": "The Report",
+    "text": "The Report\nFor the report, you should both formulate and answer a question of your choosing. A good question is one that you want to answer. It should be a question with contextual meaning, not a purely technical matter. It should be clear enough to answer, but not so specific or narrow that your analysis is a single line of code. It should require you to do some nontrivial exploratory analysis, descriptive analysis, and possibly some statistical modeling. You aren’t required to use any specific methods, but it should take a bit of work to answer the question. There may be multiple answers or approaches to contrast based on different ways of interpreting the question or different ways of analyzing the data. If your question is answerable in under 15 minutes, or your answer only takes a few sentences to explain, the question probably isn’t nuanced enough.\nYour report should take the form of a full “formal” report, including:\n\nAn abstract, in which you provide a brief outline of your report\nAn introduction, in which you introduce the dataset you are working with along with the question/s you want to answer. You should also describe the data as best you can; cover the sampling if applicable and data semantics, but focus on providing high-level context and not technical details. Don’t report preprocessing steps or describe tabular layouts, etc.\nA series of explorations and analyses as you see fit (e.g. a section for EDA, a section where you carry out some tests, etc.) Provide a walkthrough with commentary of the steps you took to investigate and answer the question. This section can and should include code cells and text cells, but you should try to focus on presenting the analysis clearly by organizing cells according to the high-level steps in your analysis so that it is easy to skim. For example, if you fit a regression model, include formulating the explanatory variable matrix and response, fitting the model, extracting coefficients, and perhaps even visualization all in one cell; don’t separate these into 5-6 substeps.\nA conclusion, in which you restate the answer to your question and summarize your report."
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
-    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Using Slicing/Indexing",
-    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
+    "objectID": "Projects/FinalProj.html#the-shiny-app",
+    "href": "Projects/FinalProj.html#the-shiny-app",
+    "title": "Final Project",
+    "section": "The Shiny App",
+    "text": "The Shiny App\nYou should, in addition to your report, generate a Shiny App that showcases at least one or two interesting parts of your dataset. For example, you could consider doing something similar to Mini Project 03 and include some PCA-related analyses in the app. Or, you could opt for a more visualizations-based app, allowing the user to add aesthetics to encode additional information on variables. It’s really up to you! Having said that, your app should, above all, be interactive - don’t just display a static plot in a Shiny App and call that your “app”."
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
-    "href": "Labs/Lab00/df_basics.html#using-column-names",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Using Column Names",
-    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
+    "objectID": "Projects/FinalProj.html#evaluation",
+    "href": "Projects/FinalProj.html#evaluation",
+    "title": "Final Project",
+    "section": "Evaluation",
+    "text": "Evaluation\nYour report will be evaluated on the following criteria:\n\nThoughtfulness: does your question reflect some thoughtful consideration of the dataset and its nuances, or is it more superficial? 0 - 3 points\nThoroughness: is your analysis an end-to-end exploration, or are there a lot of loose ends or unexplained choices? 0 - 3 points\nMistakes or oversights: is your work free from obvious errors or omissions, or are there mistakes and things you’ve overlooked? 0 - 3 points\nClarity of write-up: is your report well-organized with commented codes and clear writing, or does it require substantial effort to follow? 0 - 3 points\n\nYour Shiny App will be evaluated on the following criteria:\n\nInteractiveness: is your app interactive? Does the interactivity contribute to the overall app, and understanding of the data? 0 - 3 points\nAesthetics/Ease-of-use: is your app easy to use? Have you gone beyond the simple default themes? Are you using appropriate widgets for the different inputs? 0 - 3 points"
   },
   {
-    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
-    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Updating/Replacing Values",
-    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
-    "href": "Labs/Lab00/df_basics.html#adding-columns",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Adding Columns",
-    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
-    "href": "Labs/Lab00/df_basics.html#changing-column-names",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Changing Column Names",
-    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
+    "objectID": "Projects/FinalProj.html#what-to-submit",
+    "href": "Projects/FinalProj.html#what-to-submit",
+    "title": "Final Project",
+    "section": "What to Submit",
+    "text": "What to Submit\nThere are two separate upload portals on Gradescope- one for your report, and one for your shiny app.\n\nWhen submitting the report, submit only a PDF. Again, only one member in your group needs to submit - they will then need to indicate, on Gradescope, which members were a part of your group.\nWhen submitting the Shiny App, submit a .zip folder (just like the one you submitted for Mini-Project 03).\n\nPlease ensure your report is readable, and your zip file opens and your app runs correctly. Again, the graders will not be sifting through your code - if your app doesn’t run or your PDF doesn’t open, you will receive a zero on the related grading parts. Thank you for understanding!"
   },
   {
     "objectID": "Labs/Lab00/intro2r.html",
@@ -215,6 +201,62 @@
     "title": "Lab 00: Introduction to R",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nactually, this is a lie- there does exist a closed form expression for the nth Fibonacci number, but for the purposes of this exercise we are going to ignore that fact↩︎"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html",
+    "href": "Labs/Lab00/df_basics.html",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "",
+    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
+    "href": "Labs/Lab00/df_basics.html#lab-objectives",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Lab Objectives",
+    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Relevant Textbook Chapters/Sections:",
+    "text": "Relevant Textbook Chapters/Sections:\n\nPortions of Chapter 27 in R4DS"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Slicing/Indexing",
+    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
+    "href": "Labs/Lab00/df_basics.html#using-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Column Names",
+    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Updating/Replacing Values",
+    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
+    "href": "Labs/Lab00/df_basics.html#adding-columns",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Adding Columns",
+    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
+    "href": "Labs/Lab00/df_basics.html#changing-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Changing Column Names",
+    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
   },
   {
     "objectID": "Projects/MP03.html",

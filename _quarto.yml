@@ -25,6 +25,8 @@ website:
             text: "Mini-Project 02"
           - href: Projects/MP03.qmd
             text: "Mini-Project 03"
+      - href: Projects/FinalProj.qmd
+        text: Final Project
       - section: "Labs"
         contents:
           - section: "Lab00"
