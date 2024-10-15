@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ethan Marzban">
+<meta name="author" content="Ethan P. Marzban">
+<meta name="dcterms.date" content="2024-10-15">
 
-<title>PSTAT 100: Spring 2024 - PSTAT 100: Data Science Concepts and Analysis</title>
+<title>PSTAT 100: Spring 2024 - Solutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,9 +78,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      PSTAT 100: Spring 2024
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Pages/solns.html">Selected Solutions</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -89,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
@@ -211,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pages/solns.html" class="sidebar-item-text sidebar-link">
+  <a href="../Pages/solns.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Selected Solutions</span></a>
   </div>
 </li>
@@ -225,37 +224,37 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#textbook-abbreviations" id="toc-textbook-abbreviations" class="nav-link active" data-scroll-target="#textbook-abbreviations">Textbook Abbreviations</a></li>
+  <li><a href="#lab-solutions" id="toc-lab-solutions" class="nav-link active" data-scroll-target="#lab-solutions">Lab Solutions</a></li>
+  <li><a href="#hw-solutions" id="toc-hw-solutions" class="nav-link" data-scroll-target="#hw-solutions">HW Solutions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PSTAT 100: Data Science Concepts and Analysis</h1>
-<p class="subtitle lead">Course Material</p>
+<h1 class="title">Solutions</h1>
+<p class="subtitle lead">PSTAT 100: Spring 2024 (Instructor: Ethan P. Marzban)</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Instructor</div>
-  <div class="quarto-title-meta-heading">Quarter</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Ethan Marzban </p>
-  </div>
-    <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Spring 2024
-          </p>
-      </div>
-    </div>
 
 <div class="quarto-title-meta">
 
-      
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ethan P. Marzban </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 15, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -263,165 +262,18 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><strong><em>Acknowledgements</em></strong>: Special thanks to previous instructors Dr.&nbsp;Trevor Ruiz, Dr.&nbsp;Alex Franks, and Dr.&nbsp;Laura Baracaldo for graciously providing material and guidance for this course.</p>
-<p><br>
-</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Week 1 (4/1 - 4/7)</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p><strong>Readings:</strong></p>
+<p>Below are solutions to the labs and homework assignments I gave when I taught this course. Some things to keep in mind:</p>
 <ul>
-<li>For Tuesday:
-<ul>
-<li>R4DS Chapter 2: <a href="https://r4ds.hadley.nz/workflow-basics" target="_blank">Workflow: basics</a></li>
-<li>R4DS Chapter 27: <a href="https://r4ds.hadley.nz/base-r" target="_blank">A field guide to base R</a></li>
-</ul></li>
-<li>For Thursday:
-<ul>
-<li>Hadley Wickham <a href="https://vita.had.co.nz/papers/tidy-data.pdf" target="_blank"><em>Tidy Data</em></a>, <em>Journal of Statistical Software</em> (2014)</li>
-<li>R4DS Chapter 5: <a href="https://r4ds.hadley.nz/data-tidy" target="_blank">Data tidying</a></li>
-<li>R4DS Chapter 3: <a href="https://r4ds.hadley.nz/data-transform" target="_blank">Data transformation</a><br>
-</li>
-<li>R4DS Chapter 19: <a href="https://r4ds.hadley.nz/joins" target="_blank">Joins</a></li>
-</ul></li>
+<li>There may be typos, so please proceed with caution</li>
+<li>There are often many different ways to approach a problem, each of them “correct”! As such, if you work through a problem in a different way than the solutions that’s fine - your way is not necessarily wrong.</li>
 </ul>
-<p><strong>Optional Reading:</strong></p>
-<ul>
-<li>I2R, Chapter 2: <a href="https://intro2r.com/basics_r.html" target="_blank">Some R basics</a></li>
-<li>I2R, Chapter 3: <a href="https://intro2r.com/data_r.html" target="_blank">Data in R</a></li>
-<li>LDS Chapter 2: <a href="https://learningds.org/ch/02/data_scope_intro.html" target="_blank">Questions and Data Scope</a></li>
-<li><a href="https://www.tidyverse.org/packages/" target="_blank">Tidyverse Official Site</a></li>
-</ul>
-<p><strong>Lectures:</strong></p>
-<ul>
-<li><p><span class="badge rounded-pill bg-info">Tues.</span> <strong>Lecture 1:</strong> Course Introduction; Intro to Data</p></li>
-<li><p><span class="badge rounded-pill bg-success">Thurs.</span> <strong>Lecture 2:</strong> Data, Part II</p></li>
-</ul>
-<p><strong>Lab:</strong></p>
-<p>There is <strong>no</strong> required lab for this week, as we will not be having any Sections on Monday. However, please keep in mind the following:</p>
-<ul>
-<li><p>If you have never programmed in <code>R</code> before, please read <a href="https://intro2r.com/basics_r.html" target="_blank">Chapter 2: Some <code>R</code> basics</a> and <a href="https://intro2r.com/data_r.html" target="_blank">Chapter 3: Data in <code>R</code></a>, from “An Introduction to R”, and Chapters 2 and 27 from R4DS.</p>
-<ul>
-<li><a href="../Labs/Lab00/intro2r.html" target="_blank">This Lab</a> provides a summary of important information about the basics of programming in <code>R</code>.</li>
-</ul></li>
-<li><p>If you have some exposure to programming in <code>R</code> (or have already read Chapters 2 and 3 from I2R), but would like more practice with dataframes, we encourage you to complete the following lab: <a href="../Labs/Lab00/df_basics.html" target="_blank">[Click Here]</a></p></li>
-</ul>
-<p>Please note that, by virtue of being prerequisite, these concepts and topics are potentially testable on In-Class Assignments (and are also crucial for success in our future PSTAT 100 endeavors!).</p>
-</div>
-</div>
-</div>
-<p><br>
-</p>
-<section id="textbook-abbreviations" class="level3">
-<h3 class="anchored" data-anchor-id="textbook-abbreviations">Textbook Abbreviations</h3>
-<ul>
-<li>R4DS: R for Data Science</li>
-<li>LDS: Learning Data Science</li>
-<li>I2R: An Introduction to R</li>
-</ul>
-<table class="table">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 63%">
-<col style="width: 5%">
-<col style="width: 10%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Week</th>
-<th>Topic</th>
-<th>Lab</th>
-<th>Homework</th>
-<th>Project</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Introduction to Data</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Statistical Graphics</td>
-<td>L1</td>
-<td>HW01</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Exploring and Cleaning Data</td>
-<td>L2</td>
-<td></td>
-<td>MP01</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Sampling Techniques</td>
-<td>L3</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>Missingness, and KDE</td>
-<td>L4</td>
-<td>HW02</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>Principal Components Analysis, and an Intro to Statistics</td>
-<td>L5</td>
-<td></td>
-<td>MP02</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>Introduction to Statistical Modeling</td>
-<td>L6</td>
-<td>HW03</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>Regression</td>
-<td>L7</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>More Regression</td>
-<td></td>
-<td></td>
-<td>MP03</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>Classification and Clustering</td>
-<td>L8</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>Finals</td>
-<td></td>
-<td></td>
-<td>Final Proj.</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>L: lab</li>
-<li>HW: Homework</li>
-<li>MP: Mini-Project</li>
-</ul>
+<section id="lab-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="lab-solutions">Lab Solutions</h2>
+<p><a href="../Files/LabSolns/Lab01_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab01 Solns</button></a> <a href="../Files/LabSolns/Lab02_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab02 Solns</button></a> <a href="../Files/LabSolns/Lab03_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab03 Solns</button></a> <a href="../Files/LabSolns/Lab04_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab04 Solns</button></a> <a href="../Files/LabSolns/Lab05_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab05 Solns</button></a></p>
+</section>
+<section id="hw-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="hw-solutions">HW Solutions</h2>
+<p><a href="../Files/HWSolns/HW01_Theoretical_Solutions.pdf" target="_blank"><button type="button" class="btn btn-primary">HW01, Theoretical Solutions</button></a> <a href="../Files/HWSolns/HW01_Coding_Solutions.pdf" target="_blank"><button type="button" class="btn btn-primary">HW01, Computing Solutions</button></a> <a href="../Files/HWSolns/HW02_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">HW02 Solutions</button></a></p>
 
 
 </section>

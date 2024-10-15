@@ -49,214 +49,74 @@
     "text": "Weekly Office Hours\n\nEthan:\n\nTuesdays, 4:30pm - 5:30pm over Zoom\nFridays, 2 - 3:30pm in ARTS 1349\n\nEthan:\n\nTuesdays, 4:30pm - 5:30pm over Zoom\nFridays, 2 - 3:30pm in ARTS 1349"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSTAT 100: Spring 2024",
+    "objectID": "Pages/solns.html",
+    "href": "Pages/solns.html",
+    "title": "Solutions",
     "section": "",
-    "text": "PSTAT 100\nData Science Concepts and Analysis\nSpring 2024; Instructor: Ethan P. Marzban\n\n\nWelcome to the official course site for PSTAT 100, Spring 2024 with instructor Ethan P. Marzban. Here, you will find all relevant course material including lecture material, homework, labs, projects, and additional resources.\n\n\n\nQuick Navigation\n\n\n\nFor the syllabus and important course policies; navigate to the Policies page\nFor a calendar of all weekly course happenings (including lectures, sections, and Office Hours), along with the Weekly Course Schedule (containing links to all readings), navigate to the Course Schedule/Calendar page\nFor information on the Course Staff (including information about office hours beginning in week 2) navigate to the Course Staff page\n\n\n\nThe instructor would like to acknowledge Drs. Trevor Ruiz, Alexander Franks, and Laura Baracaldo for graciously providing material and support for this course."
+    "text": "Below are solutions to the labs and homework assignments I gave when I taught this course. Some things to keep in mind:"
   },
   {
-    "objectID": "Projects/MP02.html",
-    "href": "Projects/MP02.html",
-    "title": "Mini-Project 2",
-    "section": "",
-    "text": "Note\n\n\n\nSince we’ve gained quite a bit of experience playing around with data and examining statistical questions, this project is a little bit less cut-and-dry than Mini-Project 01.\n\nSpecifically, there are just a few broad questions posed later in this document. You should seek to answer these questions through a combination of plots and/or formal statistical tests.\n\nAs always, be as detailed as possible when answering questions. A simple “yes/no” answer with no supporting justification will not be satisfactory. Rather, justify your answers with either a plot or two, a statistical test, or possibly both. Keep in mind:\n\nMake sure you comment on all of the plots you generate. No “floating” plots!\nMake sure you comment on the validity of any statistical tests you run. For example, if you conduct an ANOVA, check normality. If the assumptions of a given test are violated, make note of that."
+    "objectID": "Pages/solns.html#lab-solutions",
+    "href": "Pages/solns.html#lab-solutions",
+    "title": "Solutions",
+    "section": "Lab Solutions",
+    "text": "Lab Solutions\nLab01 Solns Lab02 Solns Lab03 Solns Lab04 Solns Lab05 Solns"
   },
   {
-    "objectID": "Projects/MP02.html#footnotes",
-    "href": "Projects/MP02.html#footnotes",
-    "title": "Mini-Project 2",
+    "objectID": "Pages/solns.html#hw-solutions",
+    "href": "Pages/solns.html#hw-solutions",
+    "title": "Solutions",
+    "section": "HW Solutions",
+    "text": "HW Solutions\nHW01, Theoretical Solutions HW01, Computing Solutions HW02 Solutions"
+  },
+  {
+    "objectID": "Projects/MP01.html",
+    "href": "Projects/MP01.html",
+    "title": "Mini-Project 1",
+    "section": "",
+    "text": "Welcome to the first PSTAT 100 Mini-Project! Please keep in mind that mini-projects will be (intentionally) a bit open-ended. This is because most “real-world” data science projects - whether they be in industry or in academia - are also open-ended. Instead of having a set series of questions that can be answered with only one or two methods, project-type questions can often be answered in many different ways, using many different techniques.\nWe do expect your final product to be more akin to a report than a homework set, though we will not necessarily expect all of the formality of an academic paper (we’re saving that for the final project). Having said that, here are some things to keep in mind:"
+  },
+  {
+    "objectID": "Projects/MP01.html#background",
+    "href": "Projects/MP01.html#background",
+    "title": "Mini-Project 1",
+    "section": "Background",
+    "text": "Background\nAs a part of this project, you will be asked with generating a handful of maps. In the cartographic1 world, objects are typically identified by a pair of points called a coordinate. Geographical coordinates consist of a latitude and longitude value, which can be thought of like x- and y-coordinates in a Cartesian coordinate system, respectively.\n\n\n\n\n\nDepiction of Latitude and Longitude; source: https://cdn.britannica.com/07/64907-050-7ACA69C8/Facts-parallels-Lines-of-Latitude-angles-direction.jpg"
+  },
+  {
+    "objectID": "Projects/MP01.html#data-description",
+    "href": "Projects/MP01.html#data-description",
+    "title": "Mini-Project 1",
+    "section": "Data Description",
+    "text": "Data Description\nThe data for this project is spread across several files (which is fairly common in data science projects);\n\na series of 12 files containing flight informations for each of the 12 months in 2023 (these files all have the name CA_Flights_&lt;month&gt;, where &lt;month&gt; represents the month represented in the file)\na file called Carrier_Codes.csv, which includes the full names for the various airline carriers included in the dataset\na filed called Airport_Info.csv, which contains geographical information about major US airports.\n\nEach of the CA_flights_&lt;month&gt;.csv files contain the following column names (and their description):\n\n\n\n\n\n\n\nVariable Name\nDescription\n\n\n\n\nyear\nthe year of observation\n\n\nmonth\nthe month of observation\n\n\nday_of_month\nthe day of month of observation\n\n\nop_unique_carrier\nthe airline carrier associated with the observation\n\n\norigin\nthe airport code of the origin (i.e. point-of-departure) of the observation\n\n\ndest\nthe airport code of the destination\n\n\ncrs_dep_time\nthe scheduled departure time\n\n\ndep_time\nthe actual departure time\n\n\ndep_delay\nthe amount of delay in departure; i.e. actual departure minus schedule departure (flights that departed early have a negative dep_delay value)\n\n\ncrs_arr_time\nthe scheduled arrival time\n\n\narr_time\nthe actual arrival time\n\n\narr_delay\nthe amount of delay in arrival; i.e. actual arrival minus schedule arrival (flights that arrived early have a negative dep_delay value)\n\n\ncrs_elapsed_time\nthe scheduled flight duration (in minutes)\n\n\nactual_elapsed_time\nthe actual flight duration (in minutes)\n\n\n\nAdditionally, all times are listed in the local time zone.\n\n\n\n\n\n\nNote\n\n\n\nIt is up to you to determine whether or not to use the Carrier_Codes.csv file."
+  },
+  {
+    "objectID": "Projects/MP01.html#section-1-data-cleaning-and-eda",
+    "href": "Projects/MP01.html#section-1-data-cleaning-and-eda",
+    "title": "Mini-Project 1",
+    "section": "Section 1: Data Cleaning and EDA",
+    "text": "Section 1: Data Cleaning and EDA\nMost projects will begin with cleaning, merging, and exploring the datasets of interest. For instance, it’s a bit annoying that the data is spread across several files. Eventually, we’d like to make comparisons across time which is difficult to do with the current structure of our data.\n\nCombine all 12 months’ worth of data into a single data frame.\n\nYou can always read each monthly file into a separate variable, and then combine them together using a function like bind_rows(). (In the real world this is typically frowned upon since it is a little inefficient, however for the purposes of this mini-project it’ll be find if you do it this way.)\nAnother way is to:\n\nDefine a (vector) variable listing all of the filenames of the files you want to read in\nUse the lapply() function to apply the read.csv() function to each of the elements in your filename vector, thereby creating a list with 12 layers (each layer corresponding to one of the monthly data files)\nUse bind_rows() to effectively “collapse” your list of data frames into a single dataframe\n\n\nWhat are the observational units and variables in this dataset? How many of each are there?\nHow are missing values encoded? How can you tell?\n\n\n\n\n\n\n\nTip:\n\n\n\nRemember, your final PDF should have no code chunks showing. It’s fine if you leave some of your code output displayed, so long as you describe/analyze it right after. If you find yourself not referencing a particular output of code, simply hide the output.\nAs a reminder, to get a code chunk to run but not display you can change your code chunk header from ```{r} to ```{r, echo = F}.\n\n\nNow, our dataframe consisting of all observations does have origin and destination airports included, however the values of these variables are simply the airport abbreviations. It would be much nicer if we could translate those abbreviations into full airport names as well as latitude and longitude values. Thankfully, the airport_info.csv file does contain this information. However, it also contains information on more airports than we really need. The way we’ll pinpoint only the information we need is by utilizing a join.\nStart off by importing the airport_info.csv file, and store assign this to a variable.\nNow, we need to think a little bit about what information we want to include in our dataframe. Specifically, note that we have both origin and destination airports to keep track of. Hence, it makes sense to actually include six additional columns to our Part I dataframe: three indicating origin airport name, latitude, and longitude, and three indicating destination airport name, latitude, and longitude. For consistency, give these new columns the following names:\n\nORIGIN_ARPT_NAME\nlat_origin\nlon_origin\nDEST_ARPT_NAME\nlat_dest\nlon_dest\n\n\n\n\n\n\n\nNote\n\n\n\nAs we will see later in the course, this naming scheme is actually not typically considered to be a good one - specifically, mixing allcaps variable names with lowercase or mixed-case names is usually frowned upon. But, for now, we won’t worry about that too much.\n\n\nYou can, if you like, do this in two separate joins (one joining on origin airport information and another joining on destination airport information), but, if you like, you can actually do this in one command (making heavy use of the pipe operator). Here is some skeleton code you can use to accomplish the desired join (replace the ...s with your code):\n\nleft_join(\n  ...,\n  by = join_by(...)\n) %&gt;%\n  rename(\n    ...\n  ) %&gt;%\n  left_join(\n    ...\n    by = join_by(...)\n  ) %&gt;%\n  rename(\n    ...\n  )\n\nYou should also take this time to ensure that variables are encoded using the appropriate type (e.g. check that ordinal variables are stored as ordered factors, numerical variables are stored with the data type numeric, etc.). Also, make sure that months have descriptive names (e.g. don’t use 1 for January; instead, use Jan or January, etc.)."
+  },
+  {
+    "objectID": "Projects/MP01.html#section-2-santa-barbara-airport",
+    "href": "Projects/MP01.html#section-2-santa-barbara-airport",
+    "title": "Mini-Project 1",
+    "section": "Section 2: Santa Barbara Airport",
+    "text": "Section 2: Santa Barbara Airport\nWe’ll start off by restricting our considerations to flights routing through Santa Barbara Airport (SBA). Keep in mind that this refers to flights both originating from and arriving at SBA.\n\nGeographic Considerations\n\nHow many airports have flights that connect with Santa Barbara? What are the names of these airports? (Include full airport names, not just airport abbreviations!)\nMake a map that displays the geographic locations of these airports. Also, clearly indicate the location of SBA on your map.\n\n\nAside: Maps\nHere is some code to get you started on the mapmaking portion:\n\nlibrary(tidyverse)\n\nstates &lt;- map_data(\"state\")\n\nggplot() +\n  geom_polygon(data = states,\n               aes(x = long, y = lat, group = group),\n               fill = \"grey90\",\n               colour = \"grey50\") +\n  coord_quickmap() +\n  theme_minimal()\n\n\n\n\n\n\n\nExploring Flights\nIt’s time to make some statistical visualizations!\n\nGenerate a line graph that visualizes the total number of monthly flights that route through SBA. Here, when we say “route through”, we mean either originate from or land in SBA. Use this graph to identify the “high” and “low” seasons for travel to and from Santa Barbara.\nNow, reproduce your graphic from the above step but facet based on whether the flights are departing from or landing in SBA. Are there any differences between the peaks and troughs in the originating-from and landing-in graphs?\nAre there any months in which the number of flights landing in SBA differs from the number of flights leaving SBA? You can answer this using either a graph, or by producing a table.\nNow, generate a doubly-grouped side-by-side boxplot that displays the distribution of flight durations for flights departing from and arriving in SBA. That is, you should have several pairs of boxplots (one pair for each of the airports served by SBA), with each pair consisting of a distribution of SBA-bound flight durations and SBA-departing flight durations. Use this graph to describe if there are any differences in the distribution of flight durations to and from SBA. As an example of what we mean by “doubly-grouped side-by-side boxplot” (as applied to a completely fictitious dataset containing response measurements resp on three difference dosages and three different genders):\n\n\nset.seed(123)\n\ndata.frame(\n  resp = rnorm(100, 10, 4),\n  dosage = c(rep(\"A\", 30), rep(\"B\", 20), rep(\"C\", 50)),\n  gender = c(rep(c(\"Male\", \"Female\", \"NonBinary\"), 33), \"Female\")\n) %&gt;%\n  ggplot(aes(x = dosage,\n             y = resp,\n             fill = gender)) +\n  geom_boxplot(staplewidth = 0.5) +\n  theme_minimal(base_size = 12) +\n  ggtitle(\n    \"Simulated Dataset\",\n    subtitle = \"Grouped by dosage and gender\"\n  )\n\n\n\n\n\n\nInvestigating Delays\nNow that we have a decent feel for the airports and flight durations included in the dataset, let’s start to investigate the delays. Again, we’ll (for now) only consider flights that route through SBA (i.e. have SBA as either their point-of-origin or their destination).\n\nGenerate a boxplot of departure delays across airlines. For this part, use the xlim() and ylim() functions to play around with your axis limits to focus on the “box” portion of the boxplot” Comment on whether, on average, airlines had flights that departed before or after their scheduled departure times, and also comment on differences in average (median) departure delays across airlines.\nNow, generate a doubly-grouped boxplot that displays delay times across airlines, but color based on whether the delay is a departure delay or an arrival delay. Comment on your plot.\nFor flights departing from SBA, is there an association between the scheduled departure time and the length of delay? Be sure to include a plot that effectively displays any potential changes to this relationship across destination airports (hint: is color really the best aesthetic to change here?)"
+  },
+  {
+    "objectID": "Projects/MP01.html#section-3-branching-out",
+    "href": "Projects/MP01.html#section-3-branching-out",
+    "title": "Mini-Project 1",
+    "section": "Section 3: Branching Out",
+    "text": "Section 3: Branching Out\nAlright, let’s broaden our scope and stop focusing solely on flights routing through SBA.\n\nWhat does the distribution of departure times look like? Are there peaks and troughs throughout the day (i.e. are there period of times with very high and/or very low departure counts)?\nWhat does the distribution of arrival times look like? Are there peaks and troughs throughout the day (i.e. are there period of times with very high and/or very low arrival counts)? If there are peaks and troughs, do these correspond with the peaks and troughs in departure counts?\nAre there months that have higher/lower average (median) departure delays? What about arrival delays? (There are several justifications you could give, including either a plot or a table. Take your pick!)\n\nIt’s also important to think critically about the scope of inference2 of our dataset. For example, the graph below (which is analogous to one of the graphs you should have made somewhere above) marks the airports served by the Seattle-Tacoma International Airport:\n\nWe happen to know, from prior knowledge, that there exists a direct flight from Seattle to Newark Airport (near New York City). How come this flight isn’t included in this dataset? In other words, will filtering solely based on arrival or departure airport give us information about all flights (regardless of origin and destimation) routing through that airport?"
+  },
+  {
+    "objectID": "Projects/MP01.html#footnotes",
+    "href": "Projects/MP01.html#footnotes",
+    "title": "Mini-Project 1",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nhere, “title” means “film/tv-show title”↩︎"
-  },
-  {
-    "objectID": "Projects/FinalProj.html",
-    "href": "Projects/FinalProj.html",
-    "title": "Final Project",
-    "section": "",
-    "text": "Major attribution to Dr. Trevor Ruiz for large portions of this project!"
-  },
-  {
-    "objectID": "Projects/FinalProj.html#overview",
-    "href": "Projects/FinalProj.html#overview",
-    "title": "Final Project",
-    "section": "Overview",
-    "text": "Overview\nIt’s time to put everything we’ve learned together, and practice running through the Data Science Lifecycle all the way through! You will be given the choice to work with one of two datasets:\n\nClimateWatch historical emissions data: greenhouse gas emissions by U.S. state 1990-present\nWorld Happiness Report 2023: indices related to happiness and wellbeing by country 2008-present\n\nAdditionally, you will be tasked with producing two deliverables for this project:\n\nA report that answers a question of your choice (pertaining to the dataset you choose)\nA Shiny App showcasing some interesting aspects of the dataset."
-  },
-  {
-    "objectID": "Projects/FinalProj.html#the-report",
-    "href": "Projects/FinalProj.html#the-report",
-    "title": "Final Project",
-    "section": "The Report",
-    "text": "The Report\nFor the report, you should both formulate and answer a question of your choosing. A good question is one that you want to answer. It should be a question with contextual meaning, not a purely technical matter. It should be clear enough to answer, but not so specific or narrow that your analysis is a single line of code. It should require you to do some nontrivial exploratory analysis, descriptive analysis, and possibly some statistical modeling. You aren’t required to use any specific methods, but it should take a bit of work to answer the question. There may be multiple answers or approaches to contrast based on different ways of interpreting the question or different ways of analyzing the data. If your question is answerable in under 15 minutes, or your answer only takes a few sentences to explain, the question probably isn’t nuanced enough.\nYour report should take the form of a full “formal” report, including:\n\nAn abstract, in which you provide a brief outline of your report\nAn introduction, in which you introduce the dataset you are working with along with the question/s you want to answer. You should also describe the data as best you can; cover the sampling if applicable and data semantics, but focus on providing high-level context and not technical details. Don’t report preprocessing steps or describe tabular layouts, etc.\nA series of explorations and analyses as you see fit (e.g. a section for EDA, a section where you carry out some tests, etc.) Provide a walkthrough with commentary of the steps you took to investigate and answer the question. This section can and should include code cells and text cells, but you should try to focus on presenting the analysis clearly by organizing cells according to the high-level steps in your analysis so that it is easy to skim. For example, if you fit a regression model, include formulating the explanatory variable matrix and response, fitting the model, extracting coefficients, and perhaps even visualization all in one cell; don’t separate these into 5-6 substeps.\nA conclusion, in which you restate the answer to your question and summarize your report."
-  },
-  {
-    "objectID": "Projects/FinalProj.html#the-shiny-app",
-    "href": "Projects/FinalProj.html#the-shiny-app",
-    "title": "Final Project",
-    "section": "The Shiny App",
-    "text": "The Shiny App\nYou should, in addition to your report, generate a Shiny App that showcases at least one or two interesting parts of your dataset. For example, you could consider doing something similar to Mini Project 03 and include some PCA-related analyses in the app. Or, you could opt for a more visualizations-based app, allowing the user to add aesthetics to encode additional information on variables. It’s really up to you! Having said that, your app should, above all, be interactive - don’t just display a static plot in a Shiny App and call that your “app”."
-  },
-  {
-    "objectID": "Projects/FinalProj.html#evaluation",
-    "href": "Projects/FinalProj.html#evaluation",
-    "title": "Final Project",
-    "section": "Evaluation",
-    "text": "Evaluation\nYour report will be evaluated on the following criteria:\n\nThoughtfulness: does your question reflect some thoughtful consideration of the dataset and its nuances, or is it more superficial? 0 - 3 points\nThoroughness: is your analysis an end-to-end exploration, or are there a lot of loose ends or unexplained choices? 0 - 3 points\nMistakes or oversights: is your work free from obvious errors or omissions, or are there mistakes and things you’ve overlooked? 0 - 3 points\nClarity of write-up: is your report well-organized with commented codes and clear writing, or does it require substantial effort to follow? 0 - 3 points\n\nYour Shiny App will be evaluated on the following criteria:\n\nInteractiveness: is your app interactive? Does the interactivity contribute to the overall app, and understanding of the data? 0 - 3 points\nAesthetics/Ease-of-use: is your app easy to use? Have you gone beyond the simple default themes? Are you using appropriate widgets for the different inputs? 0 - 3 points"
-  },
-  {
-    "objectID": "Projects/FinalProj.html#what-to-submit",
-    "href": "Projects/FinalProj.html#what-to-submit",
-    "title": "Final Project",
-    "section": "What to Submit",
-    "text": "What to Submit\nThere are two separate upload portals on Gradescope- one for your report, and one for your shiny app.\n\nWhen submitting the report, submit only a PDF. Again, only one member in your group needs to submit - they will then need to indicate, on Gradescope, which members were a part of your group.\nWhen submitting the Shiny App, submit a .zip folder (just like the one you submitted for Mini-Project 03).\n\nPlease ensure your report is readable, and your zip file opens and your app runs correctly. Again, the graders will not be sifting through your code - if your app doesn’t run or your PDF doesn’t open, you will receive a zero on the related grading parts. Thank you for understanding!"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html",
-    "href": "Labs/Lab00/intro2r.html",
-    "title": "Lab 00: Introduction to R",
-    "section": "",
-    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#lab-objectives",
-    "href": "Labs/Lab00/intro2r.html#lab-objectives",
-    "title": "Lab 00: Introduction to R",
-    "section": "Lab Objectives",
-    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of coding in R"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#relevant-textbook-chapterssections",
-    "href": "Labs/Lab00/intro2r.html#relevant-textbook-chapterssections",
-    "title": "Lab 00: Introduction to R",
-    "section": "Relevant Textbook Chapters/Sections:",
-    "text": "Relevant Textbook Chapters/Sections:\n\nVarious chapters of I2R\nPortions of Chapter 2 in R4DS\nPortions of Chapter 27 in R4DS"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#r-basics",
-    "href": "Labs/Lab00/intro2r.html#r-basics",
-    "title": "Lab 00: Introduction to R",
-    "section": "R Basics",
-    "text": "R Basics\nA mentioned previously, the programming language we will be using this quarter is R. Developed in the 1990s at Bell Labs, it was built upon the S language, with the crucial benefit of being freely available to the public.\nR understand many of the basic mathematical operations we use on paper:\n\n\n\nOperation\nR Symbol\nExample\n\n\n\n\nAddition\n+\n2 + 3\n\n\nSubtraction\n-\n2 - 3\n\n\nMultiplication\n*\n2 * 3\n\n\nExponentiation\n^\n2 ^ 3\n\n\nDivision\n/\n2 / 3\n\n\n\nFor example:\n\n((2 + 3) / 4) ^ 5\n\n[1] 3.051758\n\n\nNote: like most programming languages, R obeys the order of operations:\n\nParentheses\nExponentiation\nMultiplication\nDivision\nAddition\nSubtraction\n\nThe variable assignment operator in R (i.e. the symbol we use to assign a value to a variable) is &lt;-:\n\nx &lt;- 2\nx\n\n[1] 2\n\n\n\n\n\n\n\n\nTip\n\n\n\nTechnically, using = will also work for variable assignment:\n\ny = 2\ny\n\n[1] 2\n\n\nHowever, when programming in R, it is customary to use the &lt;- operator instead.\n\n\nThere are a couple of restrictions on what we can name variables in R:\n\nVariable names cannot start with a number (but they can contain numbers). So 2var is not a valid variable name, whereas var2 is.\nVariable names cannot start with a period (but they can contain periods). So .my_var is not a valid variable name but my.var is.\nVariable names cannot include special characters (e.g. +, *, etc.) anywhere. For instance, *myvar is not a valid variable name.\n\n\n\n\n\n\n\nNote for Python Users\n\n\n\nIf you are a Python user, you might not be used to using periods in variable names (since, in Python, periods typically deliniate the start of a method). In R, periods do not have any correspondence with methods or functions, so feel free to use them in your variable names!"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#data-types-and-data-structures",
-    "href": "Labs/Lab00/intro2r.html#data-types-and-data-structures",
-    "title": "Lab 00: Introduction to R",
-    "section": "Data Types and Data Structures",
-    "text": "Data Types and Data Structures\nWe can think of data types as the fundamental classes to which objects belong. There are 4 main data types in R:\n\ndouble (aka numeric; refers to real numbers)\ninteger\ncharacter (aka string)\nlogical (aka boolean)\n\nWe can extract the particular data type of an object using the typeof() function:\n\ntypeof(1)\n\n[1] \"double\"\n\ntypeof(1L)\n\n[1] \"integer\"\n\ntypeof(\"hello world\")\n\n[1] \"character\"\n\ntypeof(TRUE)\n\n[1] \"logical\"\n\n\nA note on booleans: in R, there are only two logical objects: TRUE (which is equivalent to T) and FALSE (which is equivalent to F). Pay close attention to the capitalization: True is NOT a valid logical type object in R (even though it is in Python)!\n\n\n\n\n\n\nNote\n\n\n\nThere are actually two more data types in R: \"complex\" and \"raw\". You may want to familiarize yourself with the \"complex\" type (which deals with complex numbers), but it is highly unlikely you will ever encounter the \"raw\" type in the wild.\n\n\nIndividual R objects can be collectively arranged into larger, more complex data structures. There are 6 main data structures in R:\n\nscalars: scalar values (i.e. single values)\nvectors: sequence of values, that must all be of the same type\nmatrices: rows and columns of values\narrays: rows, columns, and layers of values (you can think of these as essentially matrices stacked on top of each other, or, more mathematically, as akin to tensors), all of the same type\nlists: rows, columns, and layers of values, potentially of different types\nfactors: sequences of categorical values\ndataframes: rows and columns of values, potentially of different types\n\nAs you can see, there are some pairs of data structures that appear similar, but differ in the key aspect of whether or not they allow different data types. We will revisit this notion in a bit.\n\nVectors and Matrices\nFirst, let’s talk about how to create vectors in R. (In many ways, vectors form the fundamental unit in R.) The easiest way is to use the combine function, c():\n\nc(1, 2, \"hello\", \"world\")\n\n[1] \"1\"     \"2\"     \"hello\" \"world\"\n\n\n\n\n\n\n\n\nImportant\n\n\n\nDon’t forget the c when creating vectors! Simply listing the elements of a vector within a set of parentheses in R will result in an error:\n\n(1, 2, \"hello\", \"world\")\n\nError: &lt;text&gt;:1:3: unexpected ','\n1: (1,\n      ^\n\n\n\n\nTo create a matrix, we use the matrix() function:\n\nmatrix(c(1, 2, 3, 4), \n       nrow = 2,\n       byrow = T)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nNote the specification of byrow = T: this simply tells R to populate the elements of the matrix by rows. In contrast, we could have specified byrow = F:\n\nmatrix(c(1, 2, 3, 4), \n       nrow = 2,\n       byrow = F)\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n\nNow, let’s demonstrate what is meant by the fact that all objects in a matrix must be of the same type. Specifically, let’s try and create a matrix from the elements 1, 2, \"hello\", \"world\":\n\nmatrix(c(1, 2, \"hello\", \"world\"),\n       nrow = 2,\n       byrow = F)\n\n     [,1] [,2]   \n[1,] \"1\"  \"hello\"\n[2,] \"2\"  \"world\"\n\n\nNotice that R has automatically coerced all of the elements to be characters (even though the numbers 1 and 2 were originally specified using the double type)!\n\n\nDataframes\nIndeed, this is one of the motivating factors for using dataframes, instead of matrices. To create a dataframe from scratch, we use the data.frame() function, and specify the columns of the data frame:\n\ndata.frame(\n  c(1, 2),\n  c(\"hello\", \"world\")\n)\n\n  c.1..2. c..hello....world..\n1       1               hello\n2       2               world\n\n\nA couple of things to note:\n\nWe’ve managed to preserve the original data types of our objects.\nBy default, dataframes have column names (and the default names that R creates are pretty sucky…)\n\nLet’s explicitly specify our column names:\n\ndata.frame(\n  col1 = c(1, 2),\n  col2 = c(\"hello\", \"world\")\n)\n\n  col1  col2\n1    1 hello\n2    2 world\n\n\nIf we really wanted to, we could even specify row names:\n\ndata.frame(\n  col1 = c(1, 2),\n  col2 = c(\"hello\", \"world\"),\n  row.names = c(\"row1\", \"row2\")\n)\n\n     col1  col2\nrow1    1 hello\nrow2    2 world\n\n\nWe’ve posted a separate lab covering even more operations on dataframes, which can be accessed here.\n\n\nFactors\nAs mentioned above, factors are ideal when encoding categorical data. Recall (from Lecture 01) that categorical variables can be further subdivided into nominal and ordinal variables; analagously, R has factors and ordered factors.\nAs a simple example:\n\nfav_cols &lt;- factor(\n  c(\"red\", \"green\", \"blue\", \"green\", \"yellow\")\n)\nfav_cols\n\n[1] red    green  blue   green  yellow\nLevels: blue green red yellow\n\n\nTo extract the levels of a factor (i.e. the categories), we use the levels() function:\n\nlevels(fav_cols)\n\n[1] \"blue\"   \"green\"  \"red\"    \"yellow\"\n\n\nIf we wanted to create an ordered factor, we can still use the factor() function but now pass in an additional argument that states ordered = T:\n\nmy_grades &lt;- factor(\n  c(\"A+\", \"A-\", \"A\", \"A-\"),\n  ordered = T,\n  levels = c(\"A+\", \"A\", \"A-\")\n)\n\nmy_grades\n\n[1] A+ A- A  A-\nLevels: A+ &lt; A &lt; A-"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#functions",
-    "href": "Labs/Lab00/intro2r.html#functions",
-    "title": "Lab 00: Introduction to R",
-    "section": "Functions",
-    "text": "Functions\nThe syntax of a function call in R is of the form:\n\nfunc_name(arg1, arg2, ...)\n\nFor example, to compute the sum of a vector we can use the sum() function:\n\nsum(c(1, 3, 5, 7))\n\n[1] 16\n\n\n\n\n\n\n\n\nTip\n\n\n\nTo access the help file for a function func_name, type ?func_name (replacing func_name with the actual name of the function) in an R console.\n\n\nTo define a function in R, we use the syntax\n\nfunc_name &lt;- function(arg1 = default1, arg2 = default2, ...) {\n  &lt;body of function&gt;\n}\n\nNote that we do not need to specify defaults for any of the arguments of a function. For example:\n\nnew_function &lt;- function(x, y = 1) {\n  return(x^2 + y^2)\n}\n\nnew_function(1, 2)  # should return 1^2 + 2^2; i.e. 5\n\n[1] 5\n\nnew_function(1)     # should return 1^2 + 1^2; i.e. 2\n\n[1] 2"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#comparisons-and-control",
-    "href": "Labs/Lab00/intro2r.html#comparisons-and-control",
-    "title": "Lab 00: Introduction to R",
-    "section": "Comparisons and Control",
-    "text": "Comparisons and Control\nWe can use any of our standard mathematical comparisons in R.\n\n\n\nSymbol\nExample\nMeaning\n\n\n\n\n==\na == b\nIs a equal to b?\n\n\n&lt;=\na &lt;= b\nIs a less than or equal to b?\n\n\n&gt;=\na &lt;= b\nIs a greater than or equal to b?\n\n\n&lt;\na &lt; b\nIs a less than b?\n\n\n&gt;\na &gt; b\nIs a greater than b?\n\n\n!\n!p\nNegation of p\n\n\n|\np | q\nVectorized ‘or’: p or q\n\n\n&\np & q\nVectorized ‘and’: p and q\n\n\n\nNote that the result of a comparison is a vector of logicals, with TRUE in positions where the comparison holds and FALSE in positions where the comparison does not hold. For example:\n\nx &lt;- c(1, 2, 3)\ny &lt;- c(2, 1, 4)\n\nThe way we interpret this output is:\n\nThe first element of x was less than or equal to the first element of y\nThe second element of x was not less than or equal to the second element of y\nThe third element of x was less than or equal to the third element of y\n\nWe most often use the result of comparisons in conditional statements (aka control flow). Conditional statements in R are structured as follows:\n\nif(cond1) {\n  &lt;executes if cond1 is true&gt;\n} else if(cond2) {\n  &lt;executes if cond2 is true&gt;\n} ... else {\n  &lt;executes if none of the previous conditions are true&gt;\n}\n\nFor example:\n\nx &lt;- 15\n\nif(x &lt;= 10) {\n  print(\"x is small\")\n} else if (x &lt;= 20) {\n  print(\"x is moderate\")\n} else {\n  return(\"x is massive!\")\n}\n\n[1] \"x is moderate\"\n\n\nOne thing to note is that each of the conditions must be a scalar of length 1:\n\nx &lt;- c(15, 15)\n\nif(x &lt;= 10) {\n  print(\"x is small\")\n} else if (x &lt;= 20) {\n  print(\"x is moderate\")\n} else {\n  return(\"x is massive!\")\n}\n\nError in if (x &lt;= 10) {: the condition has length &gt; 1\n\n\nIf we want to control based on vector conditions, and we have only two cases to consider, we can use the ifelse() function. For example:\n\nx &lt;- c(2, 3, 4, 5, 6) \n\nifelse(x %% 2 == 0, \"even\", \"odd\")\n\n[1] \"even\" \"odd\"  \"even\" \"odd\"  \"even\""
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#loops",
-    "href": "Labs/Lab00/intro2r.html#loops",
-    "title": "Lab 00: Introduction to R",
-    "section": "Loops",
-    "text": "Loops\nIn R, there are three types of loops: for loops, while loops, and repeat loops. Since I hope you have already been exposed to loops I’ll bypass a detailed discussion of how they work, opting instead to simply highlight the R syntax of loops.\n\nfor-loops\nA for loops is ideal when you want to repeat a task a fixed number of times. For example:\n\nfor(k in 2:4) {\n  print(k)\n}\n\n[1] 2\n[1] 3\n[1] 4\n\n\nWe […]\n\nfor( k in 1:6) {\n  if(k %% 2 == 0) {\n    print(paste(k, \"is even\"))\n  } else {\n    print(paste(k, \"is odd\"))\n  }\n}\n\n[1] \"1 is odd\"\n[1] \"2 is even\"\n[1] \"3 is odd\"\n[1] \"4 is even\"\n[1] \"5 is odd\"\n[1] \"6 is even\"\n\n\n\n\nwhile- and repeat-loops\nThe remaining two types of loops in R (while and repeat loops) aren’t used as frequently as for loops, but I feel it prudent to at least mention their existence. Unlike for loops, while and repeat loops do not (necessarily) run for a fixed number of iterations - rather, they continue looping until a condition is met.\n\nFor example, to convert the first for loop above to a while loop, we could use\n\nk &lt;- 2\nwhile(k &lt;= 4) {\n  print(k)\n  k &lt;- k + 1\n}\n\n[1] 2\n[1] 3\n[1] 4\n\n\nWe could also convert the loop above to a repeat loop:\n\nk &lt;- 2\nrepeat {\n  if(k &gt; 4) {\n    break\n  } else {\n    print(k)\n    k &lt;- k + 1\n  }\n}\n\n[1] 2\n[1] 3\n[1] 4"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#packages",
-    "href": "Labs/Lab00/intro2r.html#packages",
-    "title": "Lab 00: Introduction to R",
-    "section": "Packages",
-    "text": "Packages\nIn R, we use the term packages to refer to collections of functions and objects stored under a common name. (This is the equivalent of what is often referred to as a module, in Python).\nTo install a package in R, we use the syntax\n\ninstall.packages(\"&lt;package_name&gt;\")\n\nIf you try to install a package you have already installed, R will give you a warning message prompting you to either update the package or cancel your command.\nTo load a package into a document or working environment, use the library() function:\n\nlibrary(&lt;package_name&gt;) # note the LACK of quotation marks!\n\nAs an example, you’ll notice a code chunk at the start of this lab with the command library(ottr)- this command loads the ottr package into our environment (which in turn gives us access to various autograder-related functionality).\n\n\n\n\n\n\nTip\n\n\n\nFor more information about R packages, consult this resource."
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#the-vectorization-of-r",
-    "href": "Labs/Lab00/intro2r.html#the-vectorization-of-r",
-    "title": "Lab 00: Introduction to R",
-    "section": "The Vectorization of R",
-    "text": "The Vectorization of R\nIt is often stated that R is vectorized. Effectively, this means that the fundamental object in R is a vector, and most functions, when applied to vectors, are applied element-wise.\nFor instance:\n\nc(1, 2, 3) + c(1, 1, 1)\n\n[1] 2 3 4\n\n\nis equivalent to\n\nc(1, 2, 3) + 1\n\n[1] 2 3 4\n\n\nSince columns and rows of matrices are effectively stored as vectors, this makes adding a scalar to each element of a matrix fairly easy:\n\nM &lt;- matrix(1:6, nrow = 3, byrow = T)\nM\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6\n\nM + 2\n\n     [,1] [,2]\n[1,]    3    4\n[2,]    5    6\n[3,]    7    8\n\n\nMost functions are also vectorized; i.e. allow for vector-valued inputs. If you want to make a user-defined function vectorized, you can wrap your function in a call to the Vectorize() function. For example, consider the following implementation of the sign function:\n\nsgn_non_vectorized &lt;- function(x) {\n  if(x &lt; 0) {\n    return(\"negative\")\n  } else if(x == 0) {\n    return(\"zero\")\n  } else {\n    return(\"positive\")\n  }\n}\n\nCalling sgn_non_vectorized(-1) is fine:\n\nsgn_non_vectorized(-1)\n\n[1] \"negative\"\n\n\nhowever calling sgn_non_vectorized(c(-1, 1)) causes problems:\n\nsgn_non_vectorized(c(-1, 1))\n\nError in if (x &lt; 0) {: the condition has length &gt; 1\n\n\nWe can fix this using the Vectorize() function:\n\nsgn_vectorized &lt;- Vectorize(\n  function(x){sgn_non_vectorized(x)}\n)\nsgn_vectorized(c(-1, 1))\n\n[1] \"negative\" \"positive\"\n\n\nBy the way, note that the above example also demonstrates the following: unlike in Python, you do not need to explicitly include a return statement in the body of an R function. By default, R will return whatever the final non-assignment step of your code is.\n\nLeveraging Vectorization to Bypass Loops\nAn interesting consequence of the vectorized nature of R is that we can actually bypass loops in certain contexts. Functions that help us do this include (but are not limited to):\n\napply(): applies a function to either rows or columns (or both) of an array or matrix\nlapply() and sapply(): applies a function across a list (differences between the functions largely boil down to the data type/structure of output)\n\nAs an example, consider the following matrix M (which we encountered above)\n\nM\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6\n\n\nTo compute row averages (i.e. averages across rows), we could use a for loop:\n\nrow_avgs &lt;- c()\nfor(k in 1:nrow(M)) {\n  row_avgs &lt;- c(row_avgs, mean(M[k,]))\n}\nrow_avgs\n\n[1] 1.5 3.5 5.5\n\n\nAlternatively, we could use the apply() function:\n\napply(M, MARGIN = 1, FUN = mean)\n\n[1] 1.5 3.5 5.5"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#custom-error-messages-in-functions",
-    "href": "Labs/Lab00/intro2r.html#custom-error-messages-in-functions",
-    "title": "Lab 00: Introduction to R",
-    "section": "Custom Error Messages in Functions",
-    "text": "Custom Error Messages in Functions\nIf we like, we can build in descriptive errors into a function. For example, say we want to define a function called add_2() which takes in a single numerical input x and outputs the value of x + 2. Further suppose we’d like our function to return an error message stating \"Input must be of type 'double' or 'integer'\" if the input is not numerical (i.e. neither an integer nor a double). We can do so by using the stop() function:\n\nadd_2 &lt;- function(x) {\n  if(!(typeof(x) == \"double\") & !(typeof(x) == \"integer\")) {\n    stop(\"Input must be of type 'double' or 'integer'\")\n  } else {\n    return(x + 2)\n  }\n}\n\nadd_2(4.2)\n\n[1] 6.2\n\nadd_2(\"hello\")\n\nError in add_2(\"hello\"): Input must be of type 'double' or 'integer'"
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#recursion",
-    "href": "Labs/Lab00/intro2r.html#recursion",
-    "title": "Lab 00: Introduction to R",
-    "section": "Recursion",
-    "text": "Recursion\nYou have likely encountered the notion of recursion before, either in its mathematical or computing context. Loosely speaking, in computer science, we us the term recursion to describe a situation in which the current computational step depends on one or more computational steps that were completed in the past.\nA simple mathematical example of recursion is the Fibonacci Numbers, which is a sequence \\(\\{a_n\\}\\) of numbers defined through the recursive relationship \\[ a_0 = 0, \\quad a_1 = 1, \\quad a_{n} = a_{n - 1} + a_{n - 2} \\ (\\forall n \\geq 2) \\] For instance, the first 7 Fibonacci numbers are \\(\\{0, 1, 1, 2, 3, 5, 8\\}\\).\nLet’s say we want to create a function fib() that takes in a single integer input n and outputs the nth Fibonacci number. Firstly, this is not as simple as the examples we’ve seen before because there isn’t a closed-form formula for the nth Fibonacci number1.\n\nHowever, we can think of defining this function recursively. The key is to note that, if we have configured our fib() function correctly, we have that\n\nfib(n) = fib(n) + fib(n - 1)\n\nWe also know that\n\nfib(0) = 0\nfib(1) = 1\n\nThis motivates us to define our fib() function as follows:\n\nfib &lt;- Vectorize(function(n) {\n  if(n == 0) {\n    return(0)\n  } else if (n == 1) {\n    return(1)\n  } else {\n    return( fib(n - 1) + fib(n - 2))\n  }\n})\n\nAs an example:\n\nfib(1:7)\n\n[1]  1  1  2  3  5  8 13\n\n\nwhich matches what we computed “by hand”, above."
-  },
-  {
-    "objectID": "Labs/Lab00/intro2r.html#footnotes",
-    "href": "Labs/Lab00/intro2r.html#footnotes",
-    "title": "Lab 00: Introduction to R",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nactually, this is a lie- there does exist a closed form expression for the nth Fibonacci number, but for the purposes of this exercise we are going to ignore that fact↩︎"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html",
-    "href": "Labs/Lab00/df_basics.html",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "",
-    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
-    "href": "Labs/Lab00/df_basics.html#lab-objectives",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Lab Objectives",
-    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
-    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Relevant Textbook Chapters/Sections:",
-    "text": "Relevant Textbook Chapters/Sections:\n\nPortions of Chapter 27 in R4DS"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
-    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Using Slicing/Indexing",
-    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
-    "href": "Labs/Lab00/df_basics.html#using-column-names",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Using Column Names",
-    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
-    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Updating/Replacing Values",
-    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
-    "href": "Labs/Lab00/df_basics.html#adding-columns",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Adding Columns",
-    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
-  },
-  {
-    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
-    "href": "Labs/Lab00/df_basics.html#changing-column-names",
-    "title": "Lab 00: Dataframe Basics",
-    "section": "Changing Column Names",
-    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
+    "text": "Footnotes\n\n\nof or relating to maps↩︎\nthis is a term we’ll return to periodically throughout the course. For now, you can think of this question as analogous to asking “what are some limitations about our dataset?”↩︎"
   },
   {
     "objectID": "Projects/MP03.html",
@@ -350,53 +210,214 @@
     "text": "Step 11\nOur last step is to add some theming! Right after you open your call to page_sidebar(), include the following line:\n\ntheme = bs_theme(version = 5, bootswatch = \"minty\"),\n\nSo, the first few lines of your definition of ui should look like\n\nui &lt;- page_sidebar(\n  theme = bs_theme(version = 5, bootswatch = \"minty\"),\n  \n  &lt;other stuff&gt;\n)\n\nCheck that your app now looks like this:\n\nNotice how some of the colors and fonts have changed. Pretty neat, huh? Now, take a look through this website, which lists common themes that come equipped with Shiny. Pick one (other than minty!) to use for your app, by replacing \"minty\" with the name of your selected theme in the call to bs_theme() we just added."
   },
   {
-    "objectID": "Projects/MP01.html",
-    "href": "Projects/MP01.html",
-    "title": "Mini-Project 1",
+    "objectID": "Labs/Lab00/df_basics.html",
+    "href": "Labs/Lab00/df_basics.html",
+    "title": "Lab 00: Dataframe Basics",
     "section": "",
-    "text": "Welcome to the first PSTAT 100 Mini-Project! Please keep in mind that mini-projects will be (intentionally) a bit open-ended. This is because most “real-world” data science projects - whether they be in industry or in academia - are also open-ended. Instead of having a set series of questions that can be answered with only one or two methods, project-type questions can often be answered in many different ways, using many different techniques.\nWe do expect your final product to be more akin to a report than a homework set, though we will not necessarily expect all of the formality of an academic paper (we’re saving that for the final project). Having said that, here are some things to keep in mind:"
+    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
   },
   {
-    "objectID": "Projects/MP01.html#background",
-    "href": "Projects/MP01.html#background",
-    "title": "Mini-Project 1",
-    "section": "Background",
-    "text": "Background\nAs a part of this project, you will be asked with generating a handful of maps. In the cartographic1 world, objects are typically identified by a pair of points called a coordinate. Geographical coordinates consist of a latitude and longitude value, which can be thought of like x- and y-coordinates in a Cartesian coordinate system, respectively.\n\n\n\n\n\nDepiction of Latitude and Longitude; source: https://cdn.britannica.com/07/64907-050-7ACA69C8/Facts-parallels-Lines-of-Latitude-angles-direction.jpg"
+    "objectID": "Labs/Lab00/df_basics.html#lab-objectives",
+    "href": "Labs/Lab00/df_basics.html#lab-objectives",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Lab Objectives",
+    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of dataframes in R"
   },
   {
-    "objectID": "Projects/MP01.html#data-description",
-    "href": "Projects/MP01.html#data-description",
-    "title": "Mini-Project 1",
-    "section": "Data Description",
-    "text": "Data Description\nThe data for this project is spread across several files (which is fairly common in data science projects);\n\na series of 12 files containing flight informations for each of the 12 months in 2023 (these files all have the name CA_Flights_&lt;month&gt;, where &lt;month&gt; represents the month represented in the file)\na file called Carrier_Codes.csv, which includes the full names for the various airline carriers included in the dataset\na filed called Airport_Info.csv, which contains geographical information about major US airports.\n\nEach of the CA_flights_&lt;month&gt;.csv files contain the following column names (and their description):\n\n\n\n\n\n\n\nVariable Name\nDescription\n\n\n\n\nyear\nthe year of observation\n\n\nmonth\nthe month of observation\n\n\nday_of_month\nthe day of month of observation\n\n\nop_unique_carrier\nthe airline carrier associated with the observation\n\n\norigin\nthe airport code of the origin (i.e. point-of-departure) of the observation\n\n\ndest\nthe airport code of the destination\n\n\ncrs_dep_time\nthe scheduled departure time\n\n\ndep_time\nthe actual departure time\n\n\ndep_delay\nthe amount of delay in departure; i.e. actual departure minus schedule departure (flights that departed early have a negative dep_delay value)\n\n\ncrs_arr_time\nthe scheduled arrival time\n\n\narr_time\nthe actual arrival time\n\n\narr_delay\nthe amount of delay in arrival; i.e. actual arrival minus schedule arrival (flights that arrived early have a negative dep_delay value)\n\n\ncrs_elapsed_time\nthe scheduled flight duration (in minutes)\n\n\nactual_elapsed_time\nthe actual flight duration (in minutes)\n\n\n\nAdditionally, all times are listed in the local time zone.\n\n\n\n\n\n\nNote\n\n\n\nIt is up to you to determine whether or not to use the Carrier_Codes.csv file."
+    "objectID": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "href": "Labs/Lab00/df_basics.html#relevant-textbook-chapterssections",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Relevant Textbook Chapters/Sections:",
+    "text": "Relevant Textbook Chapters/Sections:\n\nPortions of Chapter 27 in R4DS"
   },
   {
-    "objectID": "Projects/MP01.html#section-1-data-cleaning-and-eda",
-    "href": "Projects/MP01.html#section-1-data-cleaning-and-eda",
-    "title": "Mini-Project 1",
-    "section": "Section 1: Data Cleaning and EDA",
-    "text": "Section 1: Data Cleaning and EDA\nMost projects will begin with cleaning, merging, and exploring the datasets of interest. For instance, it’s a bit annoying that the data is spread across several files. Eventually, we’d like to make comparisons across time which is difficult to do with the current structure of our data.\n\nCombine all 12 months’ worth of data into a single data frame.\n\nYou can always read each monthly file into a separate variable, and then combine them together using a function like bind_rows(). (In the real world this is typically frowned upon since it is a little inefficient, however for the purposes of this mini-project it’ll be find if you do it this way.)\nAnother way is to:\n\nDefine a (vector) variable listing all of the filenames of the files you want to read in\nUse the lapply() function to apply the read.csv() function to each of the elements in your filename vector, thereby creating a list with 12 layers (each layer corresponding to one of the monthly data files)\nUse bind_rows() to effectively “collapse” your list of data frames into a single dataframe\n\n\nWhat are the observational units and variables in this dataset? How many of each are there?\nHow are missing values encoded? How can you tell?\n\n\n\n\n\n\n\nTip:\n\n\n\nRemember, your final PDF should have no code chunks showing. It’s fine if you leave some of your code output displayed, so long as you describe/analyze it right after. If you find yourself not referencing a particular output of code, simply hide the output.\nAs a reminder, to get a code chunk to run but not display you can change your code chunk header from ```{r} to ```{r, echo = F}.\n\n\nNow, our dataframe consisting of all observations does have origin and destination airports included, however the values of these variables are simply the airport abbreviations. It would be much nicer if we could translate those abbreviations into full airport names as well as latitude and longitude values. Thankfully, the airport_info.csv file does contain this information. However, it also contains information on more airports than we really need. The way we’ll pinpoint only the information we need is by utilizing a join.\nStart off by importing the airport_info.csv file, and store assign this to a variable.\nNow, we need to think a little bit about what information we want to include in our dataframe. Specifically, note that we have both origin and destination airports to keep track of. Hence, it makes sense to actually include six additional columns to our Part I dataframe: three indicating origin airport name, latitude, and longitude, and three indicating destination airport name, latitude, and longitude. For consistency, give these new columns the following names:\n\nORIGIN_ARPT_NAME\nlat_origin\nlon_origin\nDEST_ARPT_NAME\nlat_dest\nlon_dest\n\n\n\n\n\n\n\nNote\n\n\n\nAs we will see later in the course, this naming scheme is actually not typically considered to be a good one - specifically, mixing allcaps variable names with lowercase or mixed-case names is usually frowned upon. But, for now, we won’t worry about that too much.\n\n\nYou can, if you like, do this in two separate joins (one joining on origin airport information and another joining on destination airport information), but, if you like, you can actually do this in one command (making heavy use of the pipe operator). Here is some skeleton code you can use to accomplish the desired join (replace the ...s with your code):\n\nleft_join(\n  ...,\n  by = join_by(...)\n) %&gt;%\n  rename(\n    ...\n  ) %&gt;%\n  left_join(\n    ...\n    by = join_by(...)\n  ) %&gt;%\n  rename(\n    ...\n  )\n\nYou should also take this time to ensure that variables are encoded using the appropriate type (e.g. check that ordinal variables are stored as ordered factors, numerical variables are stored with the data type numeric, etc.). Also, make sure that months have descriptive names (e.g. don’t use 1 for January; instead, use Jan or January, etc.)."
+    "objectID": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "href": "Labs/Lab00/df_basics.html#using-slicingindexing",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Slicing/Indexing",
+    "text": "Using Slicing/Indexing\nIf we have a dataframe called df, the command df[i, j] extracts the entry at the ith row and the jth column. For example:\n\nmy_df[1, 2]\n\n[1] \"hello\"\n\n\nWe can select multiple columns and/or rows by passing in a vector of values on either side of the comma:\n\nmy_df[c(1, 2), 2]\n\n[1] \"hello\" \"happy\"\n\n\nIf we want to extract all elements of row i, we can simply leave the column index blank:\n\nmy_df[1, ]\n\n  col1  col2\n1    2 hello\n\n\nIf we want to extract all elements of column j, we can simply leave the row index blank:\n\nmy_df[, 2]\n\n[1] \"hello\" \"happy\" \"world\"\n\n\n\n\n\n\n\n\nNote\n\n\n\nIt is important to note that rows and/or columns extracted from dataframes are stored as vectors:\n\nis.vector(my_df[,2])\n\n[1] TRUE\n\n\n\n\nA useful thing to note is that the synax a:b, where a and b are integers satisfying a &lt; b, generates the set of consecutive integers starting at a and ending at b:\n\n3:10\n\n[1]  3  4  5  6  7  8  9 10\n\n\nAnother way to generate sequences in R is to use the seq() function, which allows you to specify a start value, a stop value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:\n\nseq(0, 1, by = 0.1)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 11)\n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\nseq(0, 1, length = 10)\n\n [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667\n [8] 0.7777778 0.8888889 1.0000000"
   },
   {
-    "objectID": "Projects/MP01.html#section-2-santa-barbara-airport",
-    "href": "Projects/MP01.html#section-2-santa-barbara-airport",
-    "title": "Mini-Project 1",
-    "section": "Section 2: Santa Barbara Airport",
-    "text": "Section 2: Santa Barbara Airport\nWe’ll start off by restricting our considerations to flights routing through Santa Barbara Airport (SBA). Keep in mind that this refers to flights both originating from and arriving at SBA.\n\nGeographic Considerations\n\nHow many airports have flights that connect with Santa Barbara? What are the names of these airports? (Include full airport names, not just airport abbreviations!)\nMake a map that displays the geographic locations of these airports. Also, clearly indicate the location of SBA on your map.\n\n\nAside: Maps\nHere is some code to get you started on the mapmaking portion:\n\nlibrary(tidyverse)\n\nstates &lt;- map_data(\"state\")\n\nggplot() +\n  geom_polygon(data = states,\n               aes(x = long, y = lat, group = group),\n               fill = \"grey90\",\n               colour = \"grey50\") +\n  coord_quickmap() +\n  theme_minimal()\n\n\n\n\n\n\n\nExploring Flights\nIt’s time to make some statistical visualizations!\n\nGenerate a line graph that visualizes the total number of monthly flights that route through SBA. Here, when we say “route through”, we mean either originate from or land in SBA. Use this graph to identify the “high” and “low” seasons for travel to and from Santa Barbara.\nNow, reproduce your graphic from the above step but facet based on whether the flights are departing from or landing in SBA. Are there any differences between the peaks and troughs in the originating-from and landing-in graphs?\nAre there any months in which the number of flights landing in SBA differs from the number of flights leaving SBA? You can answer this using either a graph, or by producing a table.\nNow, generate a doubly-grouped side-by-side boxplot that displays the distribution of flight durations for flights departing from and arriving in SBA. That is, you should have several pairs of boxplots (one pair for each of the airports served by SBA), with each pair consisting of a distribution of SBA-bound flight durations and SBA-departing flight durations. Use this graph to describe if there are any differences in the distribution of flight durations to and from SBA. As an example of what we mean by “doubly-grouped side-by-side boxplot” (as applied to a completely fictitious dataset containing response measurements resp on three difference dosages and three different genders):\n\n\nset.seed(123)\n\ndata.frame(\n  resp = rnorm(100, 10, 4),\n  dosage = c(rep(\"A\", 30), rep(\"B\", 20), rep(\"C\", 50)),\n  gender = c(rep(c(\"Male\", \"Female\", \"NonBinary\"), 33), \"Female\")\n) %&gt;%\n  ggplot(aes(x = dosage,\n             y = resp,\n             fill = gender)) +\n  geom_boxplot(staplewidth = 0.5) +\n  theme_minimal(base_size = 12) +\n  ggtitle(\n    \"Simulated Dataset\",\n    subtitle = \"Grouped by dosage and gender\"\n  )\n\n\n\n\n\n\nInvestigating Delays\nNow that we have a decent feel for the airports and flight durations included in the dataset, let’s start to investigate the delays. Again, we’ll (for now) only consider flights that route through SBA (i.e. have SBA as either their point-of-origin or their destination).\n\nGenerate a boxplot of departure delays across airlines. For this part, use the xlim() and ylim() functions to play around with your axis limits to focus on the “box” portion of the boxplot” Comment on whether, on average, airlines had flights that departed before or after their scheduled departure times, and also comment on differences in average (median) departure delays across airlines.\nNow, generate a doubly-grouped boxplot that displays delay times across airlines, but color based on whether the delay is a departure delay or an arrival delay. Comment on your plot.\nFor flights departing from SBA, is there an association between the scheduled departure time and the length of delay? Be sure to include a plot that effectively displays any potential changes to this relationship across destination airports (hint: is color really the best aesthetic to change here?)"
+    "objectID": "Labs/Lab00/df_basics.html#using-column-names",
+    "href": "Labs/Lab00/df_basics.html#using-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Using Column Names",
+    "text": "Using Column Names\nWe can also access individual columns of a dataframe by using the $ operator, followed by the name of the column. For example:\n\nmy_df$col1\n\n[1] 2 4 6\n\n\nWe can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):\n\nmy_df$col1[2:3]\n\n[1] 4 6\n\n\nIf we want to select multiple columns by name, we cannot use the $ operator but must instead use the select() function from the dplyr package (contained in the tidyverse):\n\nselect(my_df, c(col1, col2))\n\n  col1  col2\n1    2 hello\n2    4 happy\n3    6 world"
   },
   {
-    "objectID": "Projects/MP01.html#section-3-branching-out",
-    "href": "Projects/MP01.html#section-3-branching-out",
-    "title": "Mini-Project 1",
-    "section": "Section 3: Branching Out",
-    "text": "Section 3: Branching Out\nAlright, let’s broaden our scope and stop focusing solely on flights routing through SBA.\n\nWhat does the distribution of departure times look like? Are there peaks and troughs throughout the day (i.e. are there period of times with very high and/or very low departure counts)?\nWhat does the distribution of arrival times look like? Are there peaks and troughs throughout the day (i.e. are there period of times with very high and/or very low arrival counts)? If there are peaks and troughs, do these correspond with the peaks and troughs in departure counts?\nAre there months that have higher/lower average (median) departure delays? What about arrival delays? (There are several justifications you could give, including either a plot or a table. Take your pick!)\n\nIt’s also important to think critically about the scope of inference2 of our dataset. For example, the graph below (which is analogous to one of the graphs you should have made somewhere above) marks the airports served by the Seattle-Tacoma International Airport:\n\nWe happen to know, from prior knowledge, that there exists a direct flight from Seattle to Newark Airport (near New York City). How come this flight isn’t included in this dataset? In other words, will filtering solely based on arrival or departure airport give us information about all flights (regardless of origin and destimation) routing through that airport?"
+    "objectID": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "href": "Labs/Lab00/df_basics.html#updatingreplacing-values",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Updating/Replacing Values",
+    "text": "Updating/Replacing Values\nTo replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (&lt;-) to overwrite the previous value. For example:\n\nmy_df[1, 2] &lt;- \"greetings\"\nmy_df\n\n  col1      col2\n1    2 greetings\n2    4     happy\n3    6     world"
   },
   {
-    "objectID": "Projects/MP01.html#footnotes",
-    "href": "Projects/MP01.html#footnotes",
-    "title": "Mini-Project 1",
+    "objectID": "Labs/Lab00/df_basics.html#adding-columns",
+    "href": "Labs/Lab00/df_basics.html#adding-columns",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Adding Columns",
+    "text": "Adding Columns\nTo add a column, simply use the $ syntax to pretend you were accessing the column (even though it doesn’t exist yet), and then use the variable assignment operator to pass in a set of values:\n\nmy_df$col3 &lt;- c(\"red\", \"green\", \"blue\")\nmy_df\n\n  col1      col2  col3\n1    2 greetings   red\n2    4     happy green\n3    6     world  blue\n\n\nWhat happens if we try and add a column that has more values than rows in our dataframe? Well, let’s see:\n\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\n\nError in `$&lt;-.data.frame`(`*tmp*`, col4, value = c(TRUE, FALSE, TRUE, : replacement has 4 rows, data has 3\n\n\nSo, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe.\nSay we really wanted to add a fourth colunmn to our my_df dataframe, with the values c(TRUE, FALSE, TRUE, FALSE). We could simply add a fourth row of missing values (NA) to the already-existing dataframe, and then append the column:\n\nmy_df[4,] &lt;- c(NA, NA, NA)\nmy_df$col4 &lt;- c(TRUE, FALSE, TRUE, FALSE)\nmy_df\n\n  col1      col2  col3  col4\n1    2 greetings   red  TRUE\n2    4     happy green FALSE\n3    6     world  blue  TRUE\n4   NA      &lt;NA&gt;  &lt;NA&gt; FALSE\n\n\n\n\n\n\n\n\nCaution\n\n\n\nThere are pros and cons to doing this. On the one hand, we’ve successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this."
+  },
+  {
+    "objectID": "Labs/Lab00/df_basics.html#changing-column-names",
+    "href": "Labs/Lab00/df_basics.html#changing-column-names",
+    "title": "Lab 00: Dataframe Basics",
+    "section": "Changing Column Names",
+    "text": "Changing Column Names\nThe column names of our my_df dataframe are pretty uninformative. Let’s see if we can give the columns more interesting names!\nTo access the column names of a dataframe, we can use either names() or colnames():\n\ncolnames(my_df)\n\n[1] \"col1\" \"col2\" \"col3\" \"col4\"\n\n\nTo rename our columns, we can simply assign (using the variable assignment operator) a new list of names:\n\ncolnames(my_df) &lt;- c(\"numbers\", \"words\", \"colors\", \"booleans\")\nmy_df\n\n  numbers     words colors booleans\n1       2 greetings    red     TRUE\n2       4     happy  green    FALSE\n3       6     world   blue     TRUE\n4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE\n\n\nWe can, if we like, do something similar to assign names to the rows of our dataframe:\n\nrownames(my_df) &lt;- c(\"row1\", \"row2\", \"row3\", \"row4\")\nmy_df\n\n     numbers     words colors booleans\nrow1       2 greetings    red     TRUE\nrow2       4     happy  green    FALSE\nrow3       6     world   blue     TRUE\nrow4      NA      &lt;NA&gt;   &lt;NA&gt;    FALSE"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html",
+    "href": "Labs/Lab00/intro2r.html",
+    "title": "Lab 00: Introduction to R",
+    "section": "",
+    "text": "Tip\n\n\n\nThis lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed."
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#lab-objectives",
+    "href": "Labs/Lab00/intro2r.html#lab-objectives",
+    "title": "Lab 00: Introduction to R",
+    "section": "Lab Objectives",
+    "text": "Lab Objectives\nThis lab covers the following topics:\n\nBasics of coding in R"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#relevant-textbook-chapterssections",
+    "href": "Labs/Lab00/intro2r.html#relevant-textbook-chapterssections",
+    "title": "Lab 00: Introduction to R",
+    "section": "Relevant Textbook Chapters/Sections:",
+    "text": "Relevant Textbook Chapters/Sections:\n\nVarious chapters of I2R\nPortions of Chapter 2 in R4DS\nPortions of Chapter 27 in R4DS"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#r-basics",
+    "href": "Labs/Lab00/intro2r.html#r-basics",
+    "title": "Lab 00: Introduction to R",
+    "section": "R Basics",
+    "text": "R Basics\nA mentioned previously, the programming language we will be using this quarter is R. Developed in the 1990s at Bell Labs, it was built upon the S language, with the crucial benefit of being freely available to the public.\nR understand many of the basic mathematical operations we use on paper:\n\n\n\nOperation\nR Symbol\nExample\n\n\n\n\nAddition\n+\n2 + 3\n\n\nSubtraction\n-\n2 - 3\n\n\nMultiplication\n*\n2 * 3\n\n\nExponentiation\n^\n2 ^ 3\n\n\nDivision\n/\n2 / 3\n\n\n\nFor example:\n\n((2 + 3) / 4) ^ 5\n\n[1] 3.051758\n\n\nNote: like most programming languages, R obeys the order of operations:\n\nParentheses\nExponentiation\nMultiplication\nDivision\nAddition\nSubtraction\n\nThe variable assignment operator in R (i.e. the symbol we use to assign a value to a variable) is &lt;-:\n\nx &lt;- 2\nx\n\n[1] 2\n\n\n\n\n\n\n\n\nTip\n\n\n\nTechnically, using = will also work for variable assignment:\n\ny = 2\ny\n\n[1] 2\n\n\nHowever, when programming in R, it is customary to use the &lt;- operator instead.\n\n\nThere are a couple of restrictions on what we can name variables in R:\n\nVariable names cannot start with a number (but they can contain numbers). So 2var is not a valid variable name, whereas var2 is.\nVariable names cannot start with a period (but they can contain periods). So .my_var is not a valid variable name but my.var is.\nVariable names cannot include special characters (e.g. +, *, etc.) anywhere. For instance, *myvar is not a valid variable name.\n\n\n\n\n\n\n\nNote for Python Users\n\n\n\nIf you are a Python user, you might not be used to using periods in variable names (since, in Python, periods typically deliniate the start of a method). In R, periods do not have any correspondence with methods or functions, so feel free to use them in your variable names!"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#data-types-and-data-structures",
+    "href": "Labs/Lab00/intro2r.html#data-types-and-data-structures",
+    "title": "Lab 00: Introduction to R",
+    "section": "Data Types and Data Structures",
+    "text": "Data Types and Data Structures\nWe can think of data types as the fundamental classes to which objects belong. There are 4 main data types in R:\n\ndouble (aka numeric; refers to real numbers)\ninteger\ncharacter (aka string)\nlogical (aka boolean)\n\nWe can extract the particular data type of an object using the typeof() function:\n\ntypeof(1)\n\n[1] \"double\"\n\ntypeof(1L)\n\n[1] \"integer\"\n\ntypeof(\"hello world\")\n\n[1] \"character\"\n\ntypeof(TRUE)\n\n[1] \"logical\"\n\n\nA note on booleans: in R, there are only two logical objects: TRUE (which is equivalent to T) and FALSE (which is equivalent to F). Pay close attention to the capitalization: True is NOT a valid logical type object in R (even though it is in Python)!\n\n\n\n\n\n\nNote\n\n\n\nThere are actually two more data types in R: \"complex\" and \"raw\". You may want to familiarize yourself with the \"complex\" type (which deals with complex numbers), but it is highly unlikely you will ever encounter the \"raw\" type in the wild.\n\n\nIndividual R objects can be collectively arranged into larger, more complex data structures. There are 6 main data structures in R:\n\nscalars: scalar values (i.e. single values)\nvectors: sequence of values, that must all be of the same type\nmatrices: rows and columns of values\narrays: rows, columns, and layers of values (you can think of these as essentially matrices stacked on top of each other, or, more mathematically, as akin to tensors), all of the same type\nlists: rows, columns, and layers of values, potentially of different types\nfactors: sequences of categorical values\ndataframes: rows and columns of values, potentially of different types\n\nAs you can see, there are some pairs of data structures that appear similar, but differ in the key aspect of whether or not they allow different data types. We will revisit this notion in a bit.\n\nVectors and Matrices\nFirst, let’s talk about how to create vectors in R. (In many ways, vectors form the fundamental unit in R.) The easiest way is to use the combine function, c():\n\nc(1, 2, \"hello\", \"world\")\n\n[1] \"1\"     \"2\"     \"hello\" \"world\"\n\n\n\n\n\n\n\n\nImportant\n\n\n\nDon’t forget the c when creating vectors! Simply listing the elements of a vector within a set of parentheses in R will result in an error:\n\n(1, 2, \"hello\", \"world\")\n\nError: &lt;text&gt;:1:3: unexpected ','\n1: (1,\n      ^\n\n\n\n\nTo create a matrix, we use the matrix() function:\n\nmatrix(c(1, 2, 3, 4), \n       nrow = 2,\n       byrow = T)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nNote the specification of byrow = T: this simply tells R to populate the elements of the matrix by rows. In contrast, we could have specified byrow = F:\n\nmatrix(c(1, 2, 3, 4), \n       nrow = 2,\n       byrow = F)\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n\nNow, let’s demonstrate what is meant by the fact that all objects in a matrix must be of the same type. Specifically, let’s try and create a matrix from the elements 1, 2, \"hello\", \"world\":\n\nmatrix(c(1, 2, \"hello\", \"world\"),\n       nrow = 2,\n       byrow = F)\n\n     [,1] [,2]   \n[1,] \"1\"  \"hello\"\n[2,] \"2\"  \"world\"\n\n\nNotice that R has automatically coerced all of the elements to be characters (even though the numbers 1 and 2 were originally specified using the double type)!\n\n\nDataframes\nIndeed, this is one of the motivating factors for using dataframes, instead of matrices. To create a dataframe from scratch, we use the data.frame() function, and specify the columns of the data frame:\n\ndata.frame(\n  c(1, 2),\n  c(\"hello\", \"world\")\n)\n\n  c.1..2. c..hello....world..\n1       1               hello\n2       2               world\n\n\nA couple of things to note:\n\nWe’ve managed to preserve the original data types of our objects.\nBy default, dataframes have column names (and the default names that R creates are pretty sucky…)\n\nLet’s explicitly specify our column names:\n\ndata.frame(\n  col1 = c(1, 2),\n  col2 = c(\"hello\", \"world\")\n)\n\n  col1  col2\n1    1 hello\n2    2 world\n\n\nIf we really wanted to, we could even specify row names:\n\ndata.frame(\n  col1 = c(1, 2),\n  col2 = c(\"hello\", \"world\"),\n  row.names = c(\"row1\", \"row2\")\n)\n\n     col1  col2\nrow1    1 hello\nrow2    2 world\n\n\nWe’ve posted a separate lab covering even more operations on dataframes, which can be accessed here.\n\n\nFactors\nAs mentioned above, factors are ideal when encoding categorical data. Recall (from Lecture 01) that categorical variables can be further subdivided into nominal and ordinal variables; analagously, R has factors and ordered factors.\nAs a simple example:\n\nfav_cols &lt;- factor(\n  c(\"red\", \"green\", \"blue\", \"green\", \"yellow\")\n)\nfav_cols\n\n[1] red    green  blue   green  yellow\nLevels: blue green red yellow\n\n\nTo extract the levels of a factor (i.e. the categories), we use the levels() function:\n\nlevels(fav_cols)\n\n[1] \"blue\"   \"green\"  \"red\"    \"yellow\"\n\n\nIf we wanted to create an ordered factor, we can still use the factor() function but now pass in an additional argument that states ordered = T:\n\nmy_grades &lt;- factor(\n  c(\"A+\", \"A-\", \"A\", \"A-\"),\n  ordered = T,\n  levels = c(\"A+\", \"A\", \"A-\")\n)\n\nmy_grades\n\n[1] A+ A- A  A-\nLevels: A+ &lt; A &lt; A-"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#functions",
+    "href": "Labs/Lab00/intro2r.html#functions",
+    "title": "Lab 00: Introduction to R",
+    "section": "Functions",
+    "text": "Functions\nThe syntax of a function call in R is of the form:\n\nfunc_name(arg1, arg2, ...)\n\nFor example, to compute the sum of a vector we can use the sum() function:\n\nsum(c(1, 3, 5, 7))\n\n[1] 16\n\n\n\n\n\n\n\n\nTip\n\n\n\nTo access the help file for a function func_name, type ?func_name (replacing func_name with the actual name of the function) in an R console.\n\n\nTo define a function in R, we use the syntax\n\nfunc_name &lt;- function(arg1 = default1, arg2 = default2, ...) {\n  &lt;body of function&gt;\n}\n\nNote that we do not need to specify defaults for any of the arguments of a function. For example:\n\nnew_function &lt;- function(x, y = 1) {\n  return(x^2 + y^2)\n}\n\nnew_function(1, 2)  # should return 1^2 + 2^2; i.e. 5\n\n[1] 5\n\nnew_function(1)     # should return 1^2 + 1^2; i.e. 2\n\n[1] 2"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#comparisons-and-control",
+    "href": "Labs/Lab00/intro2r.html#comparisons-and-control",
+    "title": "Lab 00: Introduction to R",
+    "section": "Comparisons and Control",
+    "text": "Comparisons and Control\nWe can use any of our standard mathematical comparisons in R.\n\n\n\nSymbol\nExample\nMeaning\n\n\n\n\n==\na == b\nIs a equal to b?\n\n\n&lt;=\na &lt;= b\nIs a less than or equal to b?\n\n\n&gt;=\na &lt;= b\nIs a greater than or equal to b?\n\n\n&lt;\na &lt; b\nIs a less than b?\n\n\n&gt;\na &gt; b\nIs a greater than b?\n\n\n!\n!p\nNegation of p\n\n\n|\np | q\nVectorized ‘or’: p or q\n\n\n&\np & q\nVectorized ‘and’: p and q\n\n\n\nNote that the result of a comparison is a vector of logicals, with TRUE in positions where the comparison holds and FALSE in positions where the comparison does not hold. For example:\n\nx &lt;- c(1, 2, 3)\ny &lt;- c(2, 1, 4)\n\nThe way we interpret this output is:\n\nThe first element of x was less than or equal to the first element of y\nThe second element of x was not less than or equal to the second element of y\nThe third element of x was less than or equal to the third element of y\n\nWe most often use the result of comparisons in conditional statements (aka control flow). Conditional statements in R are structured as follows:\n\nif(cond1) {\n  &lt;executes if cond1 is true&gt;\n} else if(cond2) {\n  &lt;executes if cond2 is true&gt;\n} ... else {\n  &lt;executes if none of the previous conditions are true&gt;\n}\n\nFor example:\n\nx &lt;- 15\n\nif(x &lt;= 10) {\n  print(\"x is small\")\n} else if (x &lt;= 20) {\n  print(\"x is moderate\")\n} else {\n  return(\"x is massive!\")\n}\n\n[1] \"x is moderate\"\n\n\nOne thing to note is that each of the conditions must be a scalar of length 1:\n\nx &lt;- c(15, 15)\n\nif(x &lt;= 10) {\n  print(\"x is small\")\n} else if (x &lt;= 20) {\n  print(\"x is moderate\")\n} else {\n  return(\"x is massive!\")\n}\n\nError in if (x &lt;= 10) {: the condition has length &gt; 1\n\n\nIf we want to control based on vector conditions, and we have only two cases to consider, we can use the ifelse() function. For example:\n\nx &lt;- c(2, 3, 4, 5, 6) \n\nifelse(x %% 2 == 0, \"even\", \"odd\")\n\n[1] \"even\" \"odd\"  \"even\" \"odd\"  \"even\""
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#loops",
+    "href": "Labs/Lab00/intro2r.html#loops",
+    "title": "Lab 00: Introduction to R",
+    "section": "Loops",
+    "text": "Loops\nIn R, there are three types of loops: for loops, while loops, and repeat loops. Since I hope you have already been exposed to loops I’ll bypass a detailed discussion of how they work, opting instead to simply highlight the R syntax of loops.\n\nfor-loops\nA for loops is ideal when you want to repeat a task a fixed number of times. For example:\n\nfor(k in 2:4) {\n  print(k)\n}\n\n[1] 2\n[1] 3\n[1] 4\n\n\nWe […]\n\nfor( k in 1:6) {\n  if(k %% 2 == 0) {\n    print(paste(k, \"is even\"))\n  } else {\n    print(paste(k, \"is odd\"))\n  }\n}\n\n[1] \"1 is odd\"\n[1] \"2 is even\"\n[1] \"3 is odd\"\n[1] \"4 is even\"\n[1] \"5 is odd\"\n[1] \"6 is even\"\n\n\n\n\nwhile- and repeat-loops\nThe remaining two types of loops in R (while and repeat loops) aren’t used as frequently as for loops, but I feel it prudent to at least mention their existence. Unlike for loops, while and repeat loops do not (necessarily) run for a fixed number of iterations - rather, they continue looping until a condition is met.\n\nFor example, to convert the first for loop above to a while loop, we could use\n\nk &lt;- 2\nwhile(k &lt;= 4) {\n  print(k)\n  k &lt;- k + 1\n}\n\n[1] 2\n[1] 3\n[1] 4\n\n\nWe could also convert the loop above to a repeat loop:\n\nk &lt;- 2\nrepeat {\n  if(k &gt; 4) {\n    break\n  } else {\n    print(k)\n    k &lt;- k + 1\n  }\n}\n\n[1] 2\n[1] 3\n[1] 4"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#packages",
+    "href": "Labs/Lab00/intro2r.html#packages",
+    "title": "Lab 00: Introduction to R",
+    "section": "Packages",
+    "text": "Packages\nIn R, we use the term packages to refer to collections of functions and objects stored under a common name. (This is the equivalent of what is often referred to as a module, in Python).\nTo install a package in R, we use the syntax\n\ninstall.packages(\"&lt;package_name&gt;\")\n\nIf you try to install a package you have already installed, R will give you a warning message prompting you to either update the package or cancel your command.\nTo load a package into a document or working environment, use the library() function:\n\nlibrary(&lt;package_name&gt;) # note the LACK of quotation marks!\n\nAs an example, you’ll notice a code chunk at the start of this lab with the command library(ottr)- this command loads the ottr package into our environment (which in turn gives us access to various autograder-related functionality).\n\n\n\n\n\n\nTip\n\n\n\nFor more information about R packages, consult this resource."
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#the-vectorization-of-r",
+    "href": "Labs/Lab00/intro2r.html#the-vectorization-of-r",
+    "title": "Lab 00: Introduction to R",
+    "section": "The Vectorization of R",
+    "text": "The Vectorization of R\nIt is often stated that R is vectorized. Effectively, this means that the fundamental object in R is a vector, and most functions, when applied to vectors, are applied element-wise.\nFor instance:\n\nc(1, 2, 3) + c(1, 1, 1)\n\n[1] 2 3 4\n\n\nis equivalent to\n\nc(1, 2, 3) + 1\n\n[1] 2 3 4\n\n\nSince columns and rows of matrices are effectively stored as vectors, this makes adding a scalar to each element of a matrix fairly easy:\n\nM &lt;- matrix(1:6, nrow = 3, byrow = T)\nM\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6\n\nM + 2\n\n     [,1] [,2]\n[1,]    3    4\n[2,]    5    6\n[3,]    7    8\n\n\nMost functions are also vectorized; i.e. allow for vector-valued inputs. If you want to make a user-defined function vectorized, you can wrap your function in a call to the Vectorize() function. For example, consider the following implementation of the sign function:\n\nsgn_non_vectorized &lt;- function(x) {\n  if(x &lt; 0) {\n    return(\"negative\")\n  } else if(x == 0) {\n    return(\"zero\")\n  } else {\n    return(\"positive\")\n  }\n}\n\nCalling sgn_non_vectorized(-1) is fine:\n\nsgn_non_vectorized(-1)\n\n[1] \"negative\"\n\n\nhowever calling sgn_non_vectorized(c(-1, 1)) causes problems:\n\nsgn_non_vectorized(c(-1, 1))\n\nError in if (x &lt; 0) {: the condition has length &gt; 1\n\n\nWe can fix this using the Vectorize() function:\n\nsgn_vectorized &lt;- Vectorize(\n  function(x){sgn_non_vectorized(x)}\n)\nsgn_vectorized(c(-1, 1))\n\n[1] \"negative\" \"positive\"\n\n\nBy the way, note that the above example also demonstrates the following: unlike in Python, you do not need to explicitly include a return statement in the body of an R function. By default, R will return whatever the final non-assignment step of your code is.\n\nLeveraging Vectorization to Bypass Loops\nAn interesting consequence of the vectorized nature of R is that we can actually bypass loops in certain contexts. Functions that help us do this include (but are not limited to):\n\napply(): applies a function to either rows or columns (or both) of an array or matrix\nlapply() and sapply(): applies a function across a list (differences between the functions largely boil down to the data type/structure of output)\n\nAs an example, consider the following matrix M (which we encountered above)\n\nM\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6\n\n\nTo compute row averages (i.e. averages across rows), we could use a for loop:\n\nrow_avgs &lt;- c()\nfor(k in 1:nrow(M)) {\n  row_avgs &lt;- c(row_avgs, mean(M[k,]))\n}\nrow_avgs\n\n[1] 1.5 3.5 5.5\n\n\nAlternatively, we could use the apply() function:\n\napply(M, MARGIN = 1, FUN = mean)\n\n[1] 1.5 3.5 5.5"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#custom-error-messages-in-functions",
+    "href": "Labs/Lab00/intro2r.html#custom-error-messages-in-functions",
+    "title": "Lab 00: Introduction to R",
+    "section": "Custom Error Messages in Functions",
+    "text": "Custom Error Messages in Functions\nIf we like, we can build in descriptive errors into a function. For example, say we want to define a function called add_2() which takes in a single numerical input x and outputs the value of x + 2. Further suppose we’d like our function to return an error message stating \"Input must be of type 'double' or 'integer'\" if the input is not numerical (i.e. neither an integer nor a double). We can do so by using the stop() function:\n\nadd_2 &lt;- function(x) {\n  if(!(typeof(x) == \"double\") & !(typeof(x) == \"integer\")) {\n    stop(\"Input must be of type 'double' or 'integer'\")\n  } else {\n    return(x + 2)\n  }\n}\n\nadd_2(4.2)\n\n[1] 6.2\n\nadd_2(\"hello\")\n\nError in add_2(\"hello\"): Input must be of type 'double' or 'integer'"
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#recursion",
+    "href": "Labs/Lab00/intro2r.html#recursion",
+    "title": "Lab 00: Introduction to R",
+    "section": "Recursion",
+    "text": "Recursion\nYou have likely encountered the notion of recursion before, either in its mathematical or computing context. Loosely speaking, in computer science, we us the term recursion to describe a situation in which the current computational step depends on one or more computational steps that were completed in the past.\nA simple mathematical example of recursion is the Fibonacci Numbers, which is a sequence \\(\\{a_n\\}\\) of numbers defined through the recursive relationship \\[ a_0 = 0, \\quad a_1 = 1, \\quad a_{n} = a_{n - 1} + a_{n - 2} \\ (\\forall n \\geq 2) \\] For instance, the first 7 Fibonacci numbers are \\(\\{0, 1, 1, 2, 3, 5, 8\\}\\).\nLet’s say we want to create a function fib() that takes in a single integer input n and outputs the nth Fibonacci number. Firstly, this is not as simple as the examples we’ve seen before because there isn’t a closed-form formula for the nth Fibonacci number1.\n\nHowever, we can think of defining this function recursively. The key is to note that, if we have configured our fib() function correctly, we have that\n\nfib(n) = fib(n) + fib(n - 1)\n\nWe also know that\n\nfib(0) = 0\nfib(1) = 1\n\nThis motivates us to define our fib() function as follows:\n\nfib &lt;- Vectorize(function(n) {\n  if(n == 0) {\n    return(0)\n  } else if (n == 1) {\n    return(1)\n  } else {\n    return( fib(n - 1) + fib(n - 2))\n  }\n})\n\nAs an example:\n\nfib(1:7)\n\n[1]  1  1  2  3  5  8 13\n\n\nwhich matches what we computed “by hand”, above."
+  },
+  {
+    "objectID": "Labs/Lab00/intro2r.html#footnotes",
+    "href": "Labs/Lab00/intro2r.html#footnotes",
+    "title": "Lab 00: Introduction to R",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nof or relating to maps↩︎\nthis is a term we’ll return to periodically throughout the course. For now, you can think of this question as analogous to asking “what are some limitations about our dataset?”↩︎"
+    "text": "Footnotes\n\n\nactually, this is a lie- there does exist a closed form expression for the nth Fibonacci number, but for the purposes of this exercise we are going to ignore that fact↩︎"
+  },
+  {
+    "objectID": "Projects/FinalProj.html",
+    "href": "Projects/FinalProj.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "Major attribution to Dr. Trevor Ruiz for large portions of this project!"
+  },
+  {
+    "objectID": "Projects/FinalProj.html#overview",
+    "href": "Projects/FinalProj.html#overview",
+    "title": "Final Project",
+    "section": "Overview",
+    "text": "Overview\nIt’s time to put everything we’ve learned together, and practice running through the Data Science Lifecycle all the way through! You will be given the choice to work with one of two datasets:\n\nClimateWatch historical emissions data: greenhouse gas emissions by U.S. state 1990-present\nWorld Happiness Report 2023: indices related to happiness and wellbeing by country 2008-present\n\nAdditionally, you will be tasked with producing two deliverables for this project:\n\nA report that answers a question of your choice (pertaining to the dataset you choose)\nA Shiny App showcasing some interesting aspects of the dataset."
+  },
+  {
+    "objectID": "Projects/FinalProj.html#the-report",
+    "href": "Projects/FinalProj.html#the-report",
+    "title": "Final Project",
+    "section": "The Report",
+    "text": "The Report\nFor the report, you should both formulate and answer a question of your choosing. A good question is one that you want to answer. It should be a question with contextual meaning, not a purely technical matter. It should be clear enough to answer, but not so specific or narrow that your analysis is a single line of code. It should require you to do some nontrivial exploratory analysis, descriptive analysis, and possibly some statistical modeling. You aren’t required to use any specific methods, but it should take a bit of work to answer the question. There may be multiple answers or approaches to contrast based on different ways of interpreting the question or different ways of analyzing the data. If your question is answerable in under 15 minutes, or your answer only takes a few sentences to explain, the question probably isn’t nuanced enough.\nYour report should take the form of a full “formal” report, including:\n\nAn abstract, in which you provide a brief outline of your report\nAn introduction, in which you introduce the dataset you are working with along with the question/s you want to answer. You should also describe the data as best you can; cover the sampling if applicable and data semantics, but focus on providing high-level context and not technical details. Don’t report preprocessing steps or describe tabular layouts, etc.\nA series of explorations and analyses as you see fit (e.g. a section for EDA, a section where you carry out some tests, etc.) Provide a walkthrough with commentary of the steps you took to investigate and answer the question. This section can and should include code cells and text cells, but you should try to focus on presenting the analysis clearly by organizing cells according to the high-level steps in your analysis so that it is easy to skim. For example, if you fit a regression model, include formulating the explanatory variable matrix and response, fitting the model, extracting coefficients, and perhaps even visualization all in one cell; don’t separate these into 5-6 substeps.\nA conclusion, in which you restate the answer to your question and summarize your report."
+  },
+  {
+    "objectID": "Projects/FinalProj.html#the-shiny-app",
+    "href": "Projects/FinalProj.html#the-shiny-app",
+    "title": "Final Project",
+    "section": "The Shiny App",
+    "text": "The Shiny App\nYou should, in addition to your report, generate a Shiny App that showcases at least one or two interesting parts of your dataset. For example, you could consider doing something similar to Mini Project 03 and include some PCA-related analyses in the app. Or, you could opt for a more visualizations-based app, allowing the user to add aesthetics to encode additional information on variables. It’s really up to you! Having said that, your app should, above all, be interactive - don’t just display a static plot in a Shiny App and call that your “app”."
+  },
+  {
+    "objectID": "Projects/FinalProj.html#evaluation",
+    "href": "Projects/FinalProj.html#evaluation",
+    "title": "Final Project",
+    "section": "Evaluation",
+    "text": "Evaluation\nYour report will be evaluated on the following criteria:\n\nThoughtfulness: does your question reflect some thoughtful consideration of the dataset and its nuances, or is it more superficial? 0 - 3 points\nThoroughness: is your analysis an end-to-end exploration, or are there a lot of loose ends or unexplained choices? 0 - 3 points\nMistakes or oversights: is your work free from obvious errors or omissions, or are there mistakes and things you’ve overlooked? 0 - 3 points\nClarity of write-up: is your report well-organized with commented codes and clear writing, or does it require substantial effort to follow? 0 - 3 points\n\nYour Shiny App will be evaluated on the following criteria:\n\nInteractiveness: is your app interactive? Does the interactivity contribute to the overall app, and understanding of the data? 0 - 3 points\nAesthetics/Ease-of-use: is your app easy to use? Have you gone beyond the simple default themes? Are you using appropriate widgets for the different inputs? 0 - 3 points"
+  },
+  {
+    "objectID": "Projects/FinalProj.html#what-to-submit",
+    "href": "Projects/FinalProj.html#what-to-submit",
+    "title": "Final Project",
+    "section": "What to Submit",
+    "text": "What to Submit\nThere are two separate upload portals on Gradescope- one for your report, and one for your shiny app.\n\nWhen submitting the report, submit only a PDF. Again, only one member in your group needs to submit - they will then need to indicate, on Gradescope, which members were a part of your group.\nWhen submitting the Shiny App, submit a .zip folder (just like the one you submitted for Mini-Project 03).\n\nPlease ensure your report is readable, and your zip file opens and your app runs correctly. Again, the graders will not be sifting through your code - if your app doesn’t run or your PDF doesn’t open, you will receive a zero on the related grading parts. Thank you for understanding!"
+  },
+  {
+    "objectID": "Projects/MP02.html",
+    "href": "Projects/MP02.html",
+    "title": "Mini-Project 2",
+    "section": "",
+    "text": "Note\n\n\n\nSince we’ve gained quite a bit of experience playing around with data and examining statistical questions, this project is a little bit less cut-and-dry than Mini-Project 01.\n\nSpecifically, there are just a few broad questions posed later in this document. You should seek to answer these questions through a combination of plots and/or formal statistical tests.\n\nAs always, be as detailed as possible when answering questions. A simple “yes/no” answer with no supporting justification will not be satisfactory. Rather, justify your answers with either a plot or two, a statistical test, or possibly both. Keep in mind:\n\nMake sure you comment on all of the plots you generate. No “floating” plots!\nMake sure you comment on the validity of any statistical tests you run. For example, if you conduct an ANOVA, check normality. If the assumptions of a given test are violated, make note of that."
+  },
+  {
+    "objectID": "Projects/MP02.html#footnotes",
+    "href": "Projects/MP02.html#footnotes",
+    "title": "Mini-Project 2",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhere, “title” means “film/tv-show title”↩︎"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSTAT 100: Spring 2024",
+    "section": "",
+    "text": "PSTAT 100\nData Science Concepts and Analysis\nSpring 2024; Instructor: Ethan P. Marzban\n\n\nWelcome to the official course site for PSTAT 100, Spring 2024 with instructor Ethan P. Marzban. Here, you will find all relevant course material including lecture material, homework, labs, projects, and additional resources.\n\n\n\nQuick Navigation\n\n\n\nFor the syllabus and important course policies; navigate to the Policies page\nFor a calendar of all weekly course happenings (including lectures, sections, and Office Hours), along with the Weekly Course Schedule (containing links to all readings), navigate to the Course Schedule/Calendar page\nFor information on the Course Staff (including information about office hours beginning in week 2) navigate to the Course Staff page\n\n\n\nThe instructor would like to acknowledge Drs. Trevor Ruiz, Alexander Franks, and Laura Baracaldo for graciously providing material and support for this course."
   },
   {
     "objectID": "Pages/ICA_Prep.html",

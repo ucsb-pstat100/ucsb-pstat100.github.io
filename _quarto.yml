@@ -37,6 +37,8 @@ website:
                 text: "Dataframe Basics"
       - href: Pages/staff.qmd
         text: Course Staff
+      - href: Pages/solns.qmd
+        text: Selected Solutions
     logo: "Images/Logos_Icons/hex_second_pass.svg"
     title: "PSTAT 100: Spring 2024"
 

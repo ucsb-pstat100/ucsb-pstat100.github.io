@@ -1,0 +1,51 @@
+---
+title: "Solutions"
+subtitle: "PSTAT 100: Spring 2024 (Instructor: Ethan P. Marzban)"
+author:
+  - Ethan P. Marzban
+date: "`r Sys.Date()`"
+date-format: long
+format:
+  html:
+    page-layout: full
+    toc: TRUE
+---
+
+```{r setup, echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = F}
+## optional code chunk;
+## gives shortcut for boldface colored text,
+## able to be rendered in both PDF and HTML
+
+bfcolor <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{\\textbf{%s}}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'><b>%s</b></span>", color, x)
+  } else x
+}
+```
+
+Below are solutions to the labs and homework assignments I gave when I taught this course. Some things to keep in mind:
+
+-   There may be typos, so please proceed with caution
+-   There are often many different ways to approach a problem, each of them "correct"! As such, if you work through a problem in a different way than the solutions that's fine - your way is not necessarily wrong.
+
+## Lab Solutions
+
+<a href="../Files/LabSolns/Lab01_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab01 Solns</button></a> 
+<a href="../Files/LabSolns/Lab02_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab02 Solns</button></a> 
+<a href="../Files/LabSolns/Lab03_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab03 Solns</button></a>
+<a href="../Files/LabSolns/Lab04_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab04 Solns</button></a>
+<a href="../Files/LabSolns/Lab05_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab05 Solns</button></a>
+
+
+
+## HW Solutions
+
+<a href="../Files/HWSolns/HW01_Theoretical_Solutions.pdf" target="_blank"><button type="button" class="btn btn-primary">HW01, Theoretical Solutions</button></a> 
+<a href="../Files/HWSolns/HW01_Coding_Solutions.pdf" target="_blank"><button type="button" class="btn btn-primary">HW01, Computing Solutions</button></a>
+<a href="../Files/HWSolns/HW02_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">HW02 Solutions</button></a>
