@@ -3,51 +3,37 @@ project:
   output-dir: docs
 
 website:
-  title: "PSTAT 100: Spring 2024"
-  favicon: "Images/Logos_Icons/hex_second_pass.svg"
-  sidebar: 
-    style: "docked"
-    search: true
-    contents:
+  title: "PSTAT 100: Summer Session A 2025"
+  favicon: "Images/Logos_Icons/hex.svg"
+  navbar:
+    background: light
+    left:
       - href: index.qmd
-        text: Home
-      - href: Pages/policies.qmd
-        text: Policies
-      - href: Pages/schedule.qmd
-        text: Course Schedule/Calendar
-      - href: Pages/ICA_Prep.qmd
-        text: Info About ICAs
-      - section: "Mini-Projects"
-        contents:
-          - href: Projects/MP01.qmd
-            text: "Mini-Project 01"
-          - href: Projects/MP02.qmd
-            text: "Mini-Project 02"
-          - href: Projects/MP03.qmd
-            text: "Mini-Project 03"
-      - href: Projects/FinalProj.qmd
-        text: Final Project
-      - section: "Labs"
-        contents:
-          - section: "Lab00"
-            contents:
-              - href: Labs/Lab00/intro2r.qmd
-                text: "Intro to `R`"
-              - href: Labs/Lab00/df_basics.qmd
-                text: "Dataframe Basics"
-      - href: Pages/staff.qmd
-        text: Course Staff
-      - href: Pages/solns.qmd
-        text: Selected Solutions
-    logo: "Images/Logos_Icons/hex_second_pass.svg"
-    title: "PSTAT 100: Spring 2024"
+        text: "{{< fa house >}} Home"
+      - text: "{{< fa circle-info >}} Course Info"
+        menu:
+          - href: "Pages/Info/policies.qmd"
+            text: "{{< fa gavel >}} Policies"
+          - href: "Pages/Info/staff.qmd"
+            text: "{{< fa people-group >}} Course Staff"
+      - href: "Pages/schedule.qmd"
+        text: "{{< fa calendar-days >}} Schedule"
+      - text: "{{< fa laptop >}} Lab 00"
+        menu:
+          - href: "Pages/Lab00/intro2r.qmd"
+            text: "{{< fa code >}} Intro to R"
+          - href: "Pages/Lab00/df_basics.qmd"
+            text: "{{< fa table >}} Dataframe Basics"
+          - href: "Pages/Lab00/quarto.qmd"
+            text: "{{< fa file >}} Intro to Quarto"
+      - href: "Pages/ICAs.qmd"
+        text: "{{< fa pencil >}} ICA Info"
+      - href: "Pages/projects.qmd"
+        text: "{{< fa folder-open >}} Projects"
 
 format:
   html:
-    theme:
-      light: [sandstone, custom.scss]
-      dark: [darkly, custom.scss]
-    css: styles.css
+    theme: [minty, styles.scss]
     toc: true
 
 

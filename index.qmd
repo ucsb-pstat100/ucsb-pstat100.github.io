@@ -1,55 +1,87 @@
-:::{style="text-align:center"}
-
-
-[**PSTAT 100**]{style="font-size:3rem"} \
-[Data Science Concepts and Analysis]{style="font-size:2rem"} \
-[Spring 2024; Instructor: Ethan P. Marzban]{style="font-size:2rem"}
-
-![](Images/Logos_Icons/hex_second_pass.svg){width="50%"}
-
-:::
-
-Welcome to the official course site for PSTAT 100, Spring 2024 with instructor Ethan P. Marzban. Here, you will find all relevant course material including lecture material, homework, labs, projects, and additional resources.
-
+---
+toc: False
+fontsize: 14pt
+page-layout: full
+---
 <style>
-.bg-primary {
-    background-color: #325d88 !important;
-}
-
-.card-header {
-    background-color: #98ceed;
-    font-weight: bold;
-}
-
-p.card-text {
-    color: white;
-    padding-left: 15px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-ul>li {
-  padding-left: 10px;
-  padding-right: 25px;
+.navbar-toggler-icon::before {
+  font-family: FontAwesome;
+  content: "\f0c9"; /* fa-bars, fa-navicon */
 }
 </style>
 
-<div class="card text-white bg-primary mb-3" style="max-width: 50rem;">
-<div class="card-header">Quick Navigation</div>
-<p class="card-text">
+:::: {.columns}
 
--   For the syllabus and important course policies; navigate to the [Policies](https://ucsb-pstat100.github.io/Pages/policies.html) page
+::: {.column width="40%"}
+![](Images/Logos_Icons/hex.svg)
+:::
 
--   For a calendar of all weekly course happenings (including lectures, sections, and Office Hours), along with the Weekly Course Schedule (containing links to all readings), navigate to the [Course Schedule/Calendar](https://ucsb-pstat100.github.io/Pages/schedule.html) page
+::: {.column width = "5%"}
+<!-- spacer -->
+:::
 
+::: {.column width = "55%"}
+<p style="font-size:1.95rem"><b>PSTAT 100 - Data Science: Concepts and Analysis</b></p>
 
--   For information on the Course Staff (including information about office hours beginning in week 2) navigate to the [Course Staff](https://ucsb-pstat100.github.io/Pages/staff.html) page
+|**Instructor**: | Ethan P. Marzban (He/Him) |
+|----:|:----|
+|**Quarter**: | Summer Session A, 2025 |
 
+**Course Description:** Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical "traps", and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.
+:::
 
-</p>
+::::
+
+\
+
+**Welcome to PSTAT 100!** This is the official course page for the Summer Session A, 2025 iteration of the course - the Spring 2024 iteration has been moved to [ucsb-pstat100-archives.github.io](https://ucsb-pstat100-archives.github.io).
+
+Lecture slides can be found on the [Schedule](Pages/schedule.qmd); labs and project datasets can be found on our Course Computing Server, a link to which can be found on our course Canvas page. Please note, for security purposes, we can only share the link to the server with students who are currently enrolled in the course.
+
+```{=html}
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+
+<div class="container mt-5 mb-5">
+	<div class="row">
+		<div class="col-md-10 offset-md-0">
+			<h4>Important Course Assessments/Deadlines</h4>
+			<ul class="timeline">
+				<li>
+					<a style="color:blue">Homework 1</a>
+					<a style="color:blue" class="float-right">Week 1 | Sunday, June 29, 2025</a>
+				</li>
+				<li>
+					<a style="color:blue">In-Class Assessment 1</a>
+					<a style="color:blue" class="float-right">Week 2 | Thursday, July 3, 2025</a>
+				</li>
+				<li>
+					<a style="color:blue">Mid-Quarter Project</a>
+					<a style="color:blue" class="float-right">Week 3 | Sunday, July 13, 2025</a>
+				</li>
+				<li>
+					<a style="color:blue">Homework 2</a>
+					<a style="color:blue" class="float-right">Week 4 | Sunday, July 20, 2025</a>
+				</li>
+				<li>
+					<a style="color:blue">In-Class Assessment 2</a>
+					<a style="color:blue" class="float-right">Week 5 | Thursday, July 24, 2025</a>
+				</li>
+				<li>
+					<a style="color:blue">Final Project</a>
+					<a style="color:blue" class="float-right">Week 6 | Friday, August 8, 2025</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
+```
 
-
-
-The instructor would like to acknowledge Drs. Trevor Ruiz, Alexander Franks, and Laura Baracaldo for graciously providing material and support for this course.
+:::{.callout-important}
+## **Important**
+In addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods.
+:::

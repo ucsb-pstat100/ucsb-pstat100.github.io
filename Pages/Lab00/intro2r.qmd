@@ -1,0 +1,611 @@
+---
+title: "Lab 00: Introduction to `R`"
+subtitle: "PSTAT 100: Summer Session A 2025 (Instructor: Ethan P. Marzban)"
+author:
+  - Ethan P. Marzban
+date: "June 23, 2025"
+date-format: long
+format:
+  html:
+    page-layout: full
+    toc: TRUE
+fontsize: 14pt
+---
+
+```{r setup, echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = F}
+## optional code chunk;
+## gives shortcut for boldface colored text,
+## able to be rendered in both PDF and HTML
+
+bfcolor <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{\\textbf{%s}}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'><b>%s</b></span>", color, x)
+  } else x
+}
+```
+
+::: callout-tip
+## **Tip**
+
+This lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed.
+:::
+
+# Required Packages
+
+```{r, message = F, warning = F}
+# no required packages for this lab
+```
+
+## Lab Objectives
+
+This lab covers the following topics:
+
+-   Basics of coding in `R`
+
+## Relevant Textbook Chapters/Sections:
+
+-   Various chapters of [I2R](https://intro2r.com/)
+-   Portions of [Chapter 2 in R4DS](https://r4ds.hadley.nz/workflow-basics)
+-   Portions of [Chapter 27 in R4DS](https://r4ds.hadley.nz/base-r)
+
+------------------------------------------------------------------------
+
+# Recap of Programming Fundamentals
+
+One of the prerequisites for this class is some basic familiarity in a programming language. So, hopefully you remember that a **programming language** can be thought of as a language (i.e. set of semantics, syntax, and grammar) we use to interface with computers. In addition to **high-level** programming languages like `R`, `Python`, `Julia`, etc., we also have **low-level** programming languages like `Assembly` and `Machine Code`. (Recall that high-level languages are "high-level" in the sense of more closely resembling human languages.) We also have **markup languages** (i.e. languages whose primary purpose is to format and typeset, as opposed to compute) like `Markdown`, and also **typesetting languages** like LaTeX.
+
+The primary programming language we will use this quarter is `R`. `R` is based off of the `S` programming languages, and was initially developed at Bell Laboratories by John Chambers and a few others (source: <https://www.r-project.org/about.html>). There are several reasons why Data Scientists often prefer to work with `R`:
+
+-   it is highly **open-source** (with new packages being added and updated nearly every week)
+
+-   it has an *extremely* sophisticated and user-friendly **graphics** package (called `ggplot2`), built upon the so-called **grammar of graphics** (which we will discuss in Lab03)
+
+Recall that programming languages can be run through various **interfaces**. For instance, if you have programmed with `Python` before, you likely used either `Jupyter` or `VSCode`. By far the most popular interface for `R` is called **`RStudio`** (though the app is still called `RStudio Desktop`, the parent company has since rebranded to `Posit` so as to be more inclusive of other programming languages).
+
+In this course, we will primarily be using an online server set up by LSIT (Letters and Sciences Information Technology) here at UCSB, which can be accessed at <https://pstat100.lsit.ucsb.edu>. This means that you can technically get through this entire course without ever having to download `R` or `RStudio`. However, I *highly* encourage you to download `RStudio` onto your machine, as it will prove an invaluable resource in your future. To learn more about how to download `R` and `RStudio`, please check out the following link: <https://posit.co/download/rstudio-desktop/>.
+
+::: callout-tip
+## **Highlight: Hadley Wickham**
+
+If you've done this week's reading, you've most likely heard the name **Hadley Wickham** (as he is one of the authors of our textbook!). Dr. Wickham has made innumerable contributions to `R` and `RStudio`, and his name is one I guarantee you will encounter in your future data science studies. His website can be found at <https://hadley.nz/>.
+:::
+
+## `R` Basics
+
+A mentioned previously, the programming language we will be using this quarter is `R`. Developed in the 1990s at Bell Labs, it was built upon the `S` language, with the crucial benefit of being freely available to the public.
+
+`R` understand many of the basic mathematical operations we use on paper:
+
+|   Operation    | `R` Symbol | Example |
+|:--------------:|:----------:|:-------:|
+|    Addition    |    `+`     | `2 + 3` |
+|  Subtraction   |    `-`     | `2 - 3` |
+| Multiplication |    `*`     | `2 * 3` |
+| Exponentiation |    `^`     | `2 ^ 3` |
+|    Division    |    `/`     | `2 / 3` |
+
+For example:
+
+```{r}
+((2 + 3) / 4) ^ 5
+```
+
+Note: like most programming languages, `R` obeys the **order of operations**:
+
+-   Parentheses
+-   Exponentiation
+-   Multiplication
+-   Division
+-   Addition
+-   Subtraction
+
+The **variable assignment** operator in `R` (i.e. the symbol we use to assign a value to a variable) is `<-`:
+
+```{r}
+x <- 2
+x
+```
+
+::: callout-tip
+## **Tip**
+
+Technically, using `=` will also work for variable assignment:
+
+```{r}
+y = 2
+y
+```
+
+However, when programming in `R`, it is customary to use the `<-` operator instead.
+:::
+
+There are a couple of restrictions on what we can name variables in `R`:
+
+-   Variable names cannot start with a number (but they can contain numbers). So `2var` is not a valid variable name, whereas `var2` is.
+
+-   Variable names cannot start with a period (but they can contain periods). So `.my_var` is not a valid variable name but `my.var` is.
+
+-   Variable names cannot include special characters (e.g. `+`, `*`, etc.) anywhere. For instance, `*myvar` is not a valid variable name.
+
+::: callout-tip
+## **Note for Python Users**
+
+If you are a Python user, you might not be used to using periods in variable names (since, in Python, periods typically deliniate the start of a method). In `R`, periods do *not* have any correspondence with methods or functions, so feel free to use them in your variable names!
+:::
+
+## Data Types and Data Structures
+
+We can think of **data types** as the fundamental classes to which objects belong. There are 4 main data types in `R`:
+
+-   **double** (aka **numeric**; refers to real numbers)
+-   **integer**
+-   **character** (aka **string**)
+-   **logical** (aka **boolean**)
+
+We can extract the particular data type of an object using the `typeof()` function:
+
+```{r}
+typeof(1)
+typeof(1L)
+typeof("hello world")
+typeof(TRUE)
+```
+
+A note on booleans: in `R`, there are only two logical objects: `TRUE` (which is equivalent to `T`) and `FALSE` (which is equivalent to `F`). Pay close attention to the capitalization: `True` is NOT a valid logical type object in `R` (even though it is in Python)!
+
+::: callout-note
+There are actually two more data types in `R`: `"complex"` and `"raw"`. You may want to familiarize yourself with the `"complex"` type (which deals with complex numbers), but it is highly unlikely you will ever encounter the `"raw"` type in the wild.
+:::
+
+Individual `R` objects can be collectively arranged into larger, more complex **data structures**. There are 6 main data structures in `R`:
+
+-   **scalars**: scalar values (i.e. single values)
+-   **vectors**: sequence of values, that must all be of the same type
+-   **matrices**: rows and columns of values
+-   **arrays**: rows, columns, and *layers* of values (you can think of these as essentially matrices stacked on top of each other, or, more mathematically, as akin to tensors), all of the same type
+-   **lists**: rows, columns, and layers of values, potentially of different types
+-   **factors**: sequences of categorical values
+-   **dataframes**: rows and columns of values, potentially of different types
+
+As you can see, there are some pairs of data structures that appear similar, but differ in the key aspect of whether or not they allow different data types. We will revisit this notion in a bit.
+
+### Vectors and Matrices
+
+First, let's talk about how to create vectors in `R`. (In many ways, vectors form the fundamental unit in `R`.) The easiest way is to use the **combine** function, `c()`:
+
+```{r}
+c(1, 2, "hello", "world")
+```
+
+::: callout-important
+## **Important**
+
+Don't forget the `c` when creating vectors! Simply listing the elements of a vector within a set of parentheses in `R` will result in an error:
+
+```{r, error = T}
+(1, 2, "hello", "world")
+```
+:::
+
+To create a matrix, we use the `matrix()` function:
+
+```{r}
+matrix(c(1, 2, 3, 4), 
+       nrow = 2,
+       byrow = T)
+```
+
+Note the specification of `byrow = T`: this simply tells `R` to populate the elements of the matrix *by rows*. In contrast, we could have specified `byrow = F`:
+
+```{r}
+matrix(c(1, 2, 3, 4), 
+       nrow = 2,
+       byrow = F)
+```
+
+Now, let's demonstrate what is meant by the fact that all objects in a matrix must be of the same type. Specifically, let's try and create a matrix from the elements `1`, `2`, `"hello"`, `"world"`:
+```{r}
+matrix(c(1, 2, "hello", "world"),
+       nrow = 2,
+       byrow = F)
+```
+Notice that `R` has automatically **coerced** all of the elements to be characters (even though the numbers `1` and `2` were originally specified using the `double` type)! 
+
+### Dataframes
+
+Indeed, this is one of the motivating factors for using _dataframes_, instead of matrices. To create a dataframe from scratch, we use the `data.frame()` function, and specify the _columns_ of the data frame:
+```{r}
+data.frame(
+  c(1, 2),
+  c("hello", "world")
+)
+```
+A couple of things to note:
+
+-   We've managed to preserve the original data types of our objects.
+-   By default, dataframes have column names (and the default names that `R` creates are pretty sucky...)
+
+Let's explicitly specify our column names:
+```{r}
+data.frame(
+  col1 = c(1, 2),
+  col2 = c("hello", "world")
+)
+```
+If we really wanted to, we could even specify row names:
+```{r}
+data.frame(
+  col1 = c(1, 2),
+  col2 = c("hello", "world"),
+  row.names = c("row1", "row2")
+)
+```
+
+We've posted a separate lab covering even more operations on dataframes, which can be accessed [here](df_basics.qmd).
+
+### Factors
+
+As mentioned above, factors are ideal when encoding categorical data. Recall (from Lecture 01) that categorical variables can be further subdivided into **nominal** and **ordinal** variables; analagously, `R` has **factors** and **ordered factors**.
+
+As a simple example:
+```{r}
+fav_cols <- factor(
+  c("red", "green", "blue", "green", "yellow")
+)
+fav_cols
+```
+
+To extract the **levels** of a factor (i.e. the categories), we use the `levels()` function:
+```{r}
+levels(fav_cols)
+```
+
+If we wanted to create an ordered factor, we can still use the `factor()` function but now pass in an additional argument that states `ordered = T`:
+```{r}
+my_grades <- factor(
+  c("A+", "A-", "A", "A-"),
+  ordered = T,
+  levels = c("A+", "A", "A-")
+)
+
+my_grades
+```
+
+## Functions
+
+The syntax of a function call in `R` is of the form:
+
+```{r, eval = F}
+func_name(arg1, arg2, ...)
+```
+
+For example, to compute the sum of a vector we can use the `sum()` function:
+```{r}
+sum(c(1, 3, 5, 7))
+```
+
+:::{.callout-tip}
+## **Tip**
+
+To access the help file for a function `func_name`, type `?func_name` (replacing `func_name` with the actual name of the function) in an `R` console.
+:::
+
+To define a function in `R`, we use the syntax
+```{r, eval = F}
+func_name <- function(arg1 = default1, arg2 = default2, ...) {
+  <body of function>
+}
+```
+Note that we do not _need_ to specify defaults for any of the arguments of a function. For example:
+```{r}
+new_function <- function(x, y = 1) {
+  return(x^2 + y^2)
+}
+
+new_function(1, 2)  # should return 1^2 + 2^2; i.e. 5
+new_function(1)     # should return 1^2 + 1^2; i.e. 2
+```
+
+
+## Comparisons and Control
+
+We can use any of our standard mathematical comparisons in `R`.
+
+| **Symbol** | **Example** | **Meaning** |
+|:-------:|:-------:|:--------:|
+| `==` | `a == b` | Is `a` equal to `b`? |
+| `<=` | `a <= b` | Is `a` less than or equal to `b`? |
+| `>=` | `a <= b` | Is `a` greater than or equal to `b`? |
+| `<` | `a < b` | Is `a` less than `b`? |
+| `>` | `a > b` | Is `a` greater than `b`? |
+| `!` | `!p` | Negation of `p` |
+| `|` | `p | q` | **Vectorized 'or'**: `p` or `q` |
+| `&` | `p & q` | **Vectorized 'and'**: `p` and `q` |
+
+Note that the result of a comparison is a vector of logicals, with `TRUE` in positions where the comparison holds and `FALSE` in positions where the comparison does not hold. For example:
+```{r}
+x <- c(1, 2, 3)
+y <- c(2, 1, 4)
+```
+The way we interpret this output is:
+
+-   The first element of `x` was less than or equal to the first element of `y`
+-   The second element of `x` was not less than or equal to the second element of `y`
+-   The third element of `x` was less than or equal to the third element of `y`
+
+We most often use the result of comparisons in **conditional statements** (aka **control flow**). Conditional statements in `R` are structured as follows:
+```{r, eval = F}
+if(cond1) {
+  <executes if cond1 is true>
+} else if(cond2) {
+  <executes if cond2 is true>
+} ... else {
+  <executes if none of the previous conditions are true>
+}
+```
+
+For example:
+```{r}
+x <- 15
+
+if(x <= 10) {
+  print("x is small")
+} else if (x <= 20) {
+  print("x is moderate")
+} else {
+  return("x is massive!")
+}
+```
+
+One thing to note is that each of the conditions must be a scalar of length 1:
+```{r, error = T}
+x <- c(15, 15)
+
+if(x <= 10) {
+  print("x is small")
+} else if (x <= 20) {
+  print("x is moderate")
+} else {
+  return("x is massive!")
+}
+```
+If we want to control based on vector conditions, and we have only two cases to consider, we can use the `ifelse()` function. For example:
+```{r}
+x <- c(2, 3, 4, 5, 6) 
+
+ifelse(x %% 2 == 0, "even", "odd")
+```
+
+## Loops
+
+In `R`, there are three types of loops: `for` loops, `while` loops, and `repeat` loops. Since I hope you have already been exposed to loops I'll bypass a detailed discussion of how they work, opting instead to simply highlight the `R` syntax of loops.
+
+### `for`-loops
+
+A `for` loops is ideal when you want to repeat a task a fixed number of times. For example:
+
+```{r}
+for(k in 2:4) {
+  print(k)
+}
+```
+
+We [...]
+
+```{r}
+for( k in 1:6) {
+  if(k %% 2 == 0) {
+    print(paste(k, "is even"))
+  } else {
+    print(paste(k, "is odd"))
+  }
+}
+```
+
+### `while`- and `repeat`-loops
+
+The remaining two types of loops in `R` (`while` and `repeat` loops) aren't used as frequently as `for` loops, but I feel it prudent to at least mention their existence. Unlike `for` loops, `while` and `repeat` loops do not (necessarily) run for a fixed number of iterations - rather, they continue looping until a condition is met. \
+
+For example, to convert the first `for` loop above to a `while` loop, we could use
+
+```{r}
+k <- 2
+while(k <= 4) {
+  print(k)
+  k <- k + 1
+}
+```
+
+We could also convert the loop above to a `repeat` loop:
+
+```{r}
+k <- 2
+repeat {
+  if(k > 4) {
+    break
+  } else {
+    print(k)
+    k <- k + 1
+  }
+}
+```
+
+# Other Concepts
+
+## Packages
+
+In `R`, we use the term **packages** to refer to collections of functions and objects stored under a common name. (This is the equivalent of what is often referred to as a _module_, in Python). 
+
+To install a package in `R`, we use the syntax
+```{r, eval = F}
+install.packages("<package_name>")
+```
+If you try to install a package you have already installed, `R` will give you a warning message prompting you to either update the package or cancel your command. 
+
+To **load** a package into a document or working environment, use the `library()` function:
+```{r, eval = F}
+library(<package_name>) # note the LACK of quotation marks!
+```
+As an example, you'll notice a code chunk at the start of this lab with the command `library(ottr)`- this command loads the `ottr` package into our environment (which in turn gives us access to various autograder-related functionality).
+
+:::{.callout-tip}
+## **Tip**
+
+For more information about `R` packages, consult <a href="https://cran.r-project.org/web/packages/index.html" target="_blank">this</a> resource.
+:::
+
+## The Vectorization of `R`
+
+It is often stated that `R` is **vectorized**. Effectively, this means that the fundamental object in `R` is a vector, and most functions, when applied to vectors, are applied element-wise. 
+
+For instance:
+```{r}
+c(1, 2, 3) + c(1, 1, 1)
+```
+is equivalent to 
+```{r}
+c(1, 2, 3) + 1
+```
+
+Since columns and rows of matrices are effectively stored as vectors, this makes adding a scalar to each element of a matrix fairly easy:
+
+```{r}
+M <- matrix(1:6, nrow = 3, byrow = T)
+M
+M + 2
+```
+Most functions are also vectorized; i.e. allow for vector-valued inputs. If you want to make a user-defined function vectorized, you can wrap your function in a call to the `Vectorize()` function. For example, consider the following implementation of the sign function:
+```{r}
+sgn_non_vectorized <- function(x) {
+  if(x < 0) {
+    return("negative")
+  } else if(x == 0) {
+    return("zero")
+  } else {
+    return("positive")
+  }
+}
+```
+Calling `sgn_non_vectorized(-1)` is fine:
+```{r}
+sgn_non_vectorized(-1)
+```
+however calling `sgn_non_vectorized(c(-1, 1))` causes problems:
+```{r, error = T}
+sgn_non_vectorized(c(-1, 1))
+```
+We can fix this using the `Vectorize()` function:
+```{r}
+sgn_vectorized <- Vectorize(
+  function(x){sgn_non_vectorized(x)}
+)
+sgn_vectorized(c(-1, 1))
+```
+By the way, note that the above example also demonstrates the following: unlike in Python, you do not need to explicitly include a `return` statement in the body of an `R` function. By default, `R` will return whatever the final non-assignment step of your code is.
+
+### Leveraging Vectorization to Bypass Loops
+
+An interesting consequence of the vectorized nature of `R` is that we can actually bypass loops in certain contexts. Functions that help us do this include (but are not limited to):
+
+-   `apply()`: applies a function to either rows or columns (or both) of an array or matrix
+
+-   `lapply()` and `sapply()`: applies a function across a list (differences between the functions largely boil down to the data type/structure of output)
+
+
+As an example, consider the following matrix `M` (which we encountered above)
+
+```{r}
+M
+```
+
+To compute row averages (i.e. averages across rows), we could use a `for` loop:
+
+```{r}
+row_avgs <- c()
+for(k in 1:nrow(M)) {
+  row_avgs <- c(row_avgs, mean(M[k,]))
+}
+row_avgs
+```
+
+Alternatively, we could use the `apply()` function:
+
+```{r}
+apply(M, MARGIN = 1, FUN = mean)
+```
+
+## Custom Error Messages in Functions
+
+If we like, we can build in descriptive errors into a function. For example, say we want to define a function called `add_2()` which takes in a single _numerical_ input `x` and outputs the value of `x` + 2. Further suppose we'd like our function to return an error message stating `"Input must be of type 'double' or 'integer'"` if the input is not numerical (i.e. neither an integer nor a double). We can do so by using the `stop()` function:
+
+```{r, error = T}
+add_2 <- function(x) {
+  if(!(typeof(x) == "double") & !(typeof(x) == "integer")) {
+    stop("Input must be of type 'double' or 'integer'")
+  } else {
+    return(x + 2)
+  }
+}
+
+add_2(4.2)
+
+add_2("hello")
+```
+
+## Recursion
+
+You have likely encountered the notion of **recursion** before, either in its mathematical or computing context. Loosely speaking, in computer science, we us the term recursion to describe a situation in which the current computational step depends on one or more computational steps that were completed in the past. 
+
+A simple mathematical example of recursion is the **Fibonacci Numbers**, which is a sequence $\{a_n\}$ of numbers defined through the recursive relationship
+$$ a_0 = 0, \quad a_1 = 1, \quad a_{n} = a_{n - 1} + a_{n - 2} \ (\forall n \geq 2) $$
+For instance, the first 7 Fibonacci numbers are $\{0, 1, 1, 2, 3, 5, 8\}$. 
+
+Let's say we want to create a function `fib()` that takes in a single integer input _n_ and outputs the _n_^th^ Fibonacci number. Firstly, this is not as simple as the examples we've seen before because there isn't a closed-form formula for the _n_^th^ Fibonacci number^[actually, this is a lie- there does exist a closed form expression for the _n_^th^ Fibonacci number, but for the purposes of this exercise we are going to ignore that fact]. \
+
+However, we can think of defining this function recursively. The key is to note that, if we have configured our `fib()` function correctly, we have that
+```{r, eval = F}
+fib(n) = fib(n) + fib(n - 1)
+```
+We also know that
+```{r, eval = F}
+fib(0) = 0
+fib(1) = 1
+```
+
+This motivates us to define our `fib()` function as follows:
+```{r}
+fib <- Vectorize(function(n) {
+  if(n == 0) {
+    return(0)
+  } else if (n == 1) {
+    return(1)
+  } else {
+    return( fib(n - 1) + fib(n - 2))
+  }
+})
+```
+
+As an example:
+```{r}
+fib(1:7)
+```
+which matches what we computed "by hand", above.
+
+# Some Selected Exercises
+
+1)    Write a function `cube()` that takes in a single vector input `x` and outputs the vector consisting of the cubes of the elements of `x`. Test that `cube(c(-1, 1, -1))` returns `c(-1, 1, -1)`.
+
+2)    In statistics, the **mean absolute deviation** (MAD) of a list of numbers $\vec{x} = \{x_1, \cdots, x_n\}$ is defined to be
+$$ \mathrm{MAD}(\vec{x}) := \frac{1}{n} \sum_{i=1}^{n} |x_i - \overline{x}_n | $$
+where $\overline{x}_n := n^{-1} \sum_{i=1}^{n} x_i$ denotes the sample mean. Write a function `my_mad()` that computes the MAD of a single input vector `x`. (Yes, there is a built-in function called `mad()` in `R`, but for practice try not to use this function!)
+
+3.    Write a function `sum1()` that takes in a single integer input _n_ and returns the value of $$\displaystyle \sum_{k=1}^{n} (k+ 3k^2 - 4k^3)$$
+
+
+4.    Define a matrix, and then compute column means using (a) each of the three different types of loops, and (b) the `apply()` function.

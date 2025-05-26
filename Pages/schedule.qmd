@@ -4,10 +4,12 @@ subtitle: "Course Schedule and Calendar"
 author:
   - name: "Ethan Marzban"
     affiliations:
-      - name: "Spring 2024"
+      - name: "Summer Session A, 2025"
 author-title: "Instructor"
 affiliation-title: "Quarter"
 format: html
+page-layout: full
+fontsize: 14pt
 ---
 
 ## Course Schedule 
@@ -19,21 +21,16 @@ _**This page will be updated as we progress through the quarter; please check ba
 :::
 
 
-:::{.callout-tip}
-## **Note**
-
-Please try to complete the readings before coming to the specified lecture/starting the specified lab.
-:::
-
 :::{.callout-note}
-## **Textbook Abbreviations and Emoji Meanings**
--   R4DS = [R for Data Science](https://r4ds.hadley.nz/)
--   I2R = [An Introduction to R](https://intro2r.com/)
+## **Textbook Abbreviations and Icon Meanings**
+-   MDSR = [Modern Data Science with R](https://mdsr-book.github.io/mdsr2e/)
 -   IMS = [Introduction to Modern Statistics, 2nd Ed.](https://openintro-ims2.netlify.app/)
--   💻 = Lab
--   🧑‍🏫 = Lecture
--   📖 = Textbook Reading
--   📄 = Paper Reading
+-   R4DS = [R for Data Science](https://r4ds.hadley.nz/)
+-   ISL = [An Introduction to Statistical Learning with Applications in `R`](https://www.statlearning.com/)
+-   AMAW = [All Models are Wrong](http://allmodelsarewrong.github.io/)
+-   <i class="fa-solid fa-person-chalkboard"></i> = Lecture
+-   <i class="fa-solid fa-laptop"></i> = Lab
+-   <i class="fa-solid fa-file"></i> = Paper
 :::
 
 ```{r setup, include = F}
@@ -43,13 +40,13 @@ library(tidyverse)
 
 gs4_deauth()
 
-temp_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1v61p7nR9_P2yA6ERZi14EHFZcny8ulj0BvRPaccvkYQ/edit?usp=sharing")
+google_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/13UosNz75xSGDUQvBV8wzEnkyn0Bd_SHRs7x8Lx1xv7A/edit?usp=sharing")
 ```
 
 ```{r}
 #| echo: False
 
-temp_sheet %>%
+google_sheet %>%
   filter(!is.na(Type)) %>%
   select(-Admin_Notes, -Type, -Day) %>%
   mutate(Date = as.Date(Date)) %>%
@@ -84,9 +81,9 @@ temp_sheet %>%
   cols_width(
     Week ~ pct(7),
     Date ~ pct(13), 
-    Reading ~ pct(35),
+    Reading ~ pct(27),
     Topic ~ pct(30),
-    Materials ~ pct(15)
+    Materials ~ pct(23)
   ) %>%
   cols_label_with(fn = function(x) {
       janitor::make_clean_names(x, case = "title") %>%
@@ -94,7 +91,8 @@ temp_sheet %>%
         stringr::str_replace_all("^|$", "**") %>%
         md()
     }) %>%
-  tab_options(table.font.size = 16) %>%
+  tab_options(
+    table.font.size = 16) %>%
   opt_row_striping()
 ```
 

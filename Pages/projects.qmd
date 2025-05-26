@@ -1,0 +1,20 @@
+---
+title: "Information about Course Projects"
+page-layout: full
+fontsize: 14pt
+---
+
+## Mid-Quarter Project
+
+### Group Formation
+
+**_More Information will be posted here during Week 1._**
+
+<!-- As has been stated a few times before, the **Mid-Quarter Project** this quarter **must be submitted in groups**. To ensure you have ample time to work on a project as a group, I am asking that you finalize your group members by no later than **11:59 pm on Monday June 30, 2025**. A corresponding Gradescope assignment has been posted as well. -->
+
+<!-- [**<i class="fa-solid fa-file-pdf"></i> Click Here for Further Instructions**](../Files/Projects/Mid_Quarter_Project_Group_Signups.pdf) -->
+
+### Project Information
+
+
+**_More Information will be posted here during Week 1._**

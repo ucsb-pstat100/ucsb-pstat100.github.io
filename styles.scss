@@ -1,0 +1,69 @@
+/*-- scss:defaults --*/
+$h2-font-size:          1.6rem !default;
+$h3-font-size:          1.2rem !default;
+$headings-font-weight:  500 !default;
+$callout-icon-scale:    100%;
+$navbar-bg:  #003660;
+$nav-link-font-size: 1.1rem;
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+/* css styles */
+
+.quarto-container {
+  background-color: rgba(165, 176, 194, 0.25);
+  background-blend-mode: lighten;
+  background-repeat:        no-repeat;
+  background-attachment:    fixed;
+  background-size:          cover;
+  background-position:      center top;
+}
+
+.navbar-nav > li{
+  padding-left:10px;
+  padding-right:10px;
+}
+
+*{
+  font-family: "Roboto Flex", serif;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a.active {
+    color: #e56646 !important;
+    background-color: whitesmoke;
+    font-weight: bold;
+}
+
+/*~~TIMELINE; from https://bootsnipp.com/snippets/xrKXW, with modifications~~*/
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #22c0e8;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}

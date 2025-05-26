@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ethan Marzban">
 
-<title>PSTAT 100: Spring 2024 - PSTAT 100: Data Science Concepts and Analysis</title>
+<title>PSTAT 100: Data Science Concepts and Analysis – PSTAT 100: Summer Session A 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,25 +31,31 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../Images/Logos_Icons/hex_second_pass.svg" rel="icon" type="image/svg+xml">
+<link href="../Images/Logos_Icons/hex.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-1dcdf1185fd185e1ce18af4b7d3b258e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 20,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -58,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -65,158 +72,85 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Pages/schedule.html">Course Schedule/Calendar</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">PSTAT 100: Summer Session A 2025</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text"><i class="fa-solid fa-house" aria-label="house"></i> Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-circle-info--course-info" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-solid fa-circle-info" aria-label="circle-info"></i> Course Info</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-circle-info--course-info">    
+        <li>
+    <a class="dropdown-item" href="../Pages/Info/policies.html">
+ <span class="dropdown-text"><i class="fa-solid fa-gavel" aria-label="gavel"></i> Policies</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Pages/Info/staff.html">
+ <span class="dropdown-text"><i class="fa-solid fa-people-group" aria-label="people-group"></i> Course Staff</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="../Pages/schedule.html" aria-current="page"> 
+<span class="menu-text"><i class="fa-solid fa-calendar-days" aria-label="calendar-days"></i> Schedule</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-laptop--lab-00" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-solid fa-laptop" aria-label="laptop"></i> Lab 00</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-laptop--lab-00">    
+        <li>
+    <a class="dropdown-item" href="../Pages/Lab00/intro2r.html">
+ <span class="dropdown-text"><i class="fa-solid fa-code" aria-label="code"></i> Intro to R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Pages/Lab00/df_basics.html">
+ <span class="dropdown-text"><i class="fa-solid fa-table" aria-label="table"></i> Dataframe Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Pages/Lab00/quarto.html">
+ <span class="dropdown-text"><i class="fa-solid fa-file" aria-label="file"></i> Intro to Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../Pages/ICAs.html"> 
+<span class="menu-text"><i class="fa-solid fa-pencil" aria-label="pencil"></i> ICA Info</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pages/projects.html"> 
+<span class="menu-text"><i class="fa-solid fa-folder-open" aria-label="folder-open"></i> Projects</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../Images/Logos_Icons/hex_second_pass.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">PSTAT 100: Spring 2024</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Home</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pages/policies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Policies</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pages/schedule.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Course Schedule/Calendar</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pages/ICA_Prep.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Info About ICAs</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Mini-Projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Projects/MP01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mini-Project 01</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Projects/MP02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mini-Project 02</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Projects/MP03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mini-Project 03</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Projects/FinalProj.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Final Project</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Lab00</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Labs/Lab00/intro2r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro to <code>R</code></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Labs/Lab00/df_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataframe Basics</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pages/staff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Staff</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pages/solns.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Selected Solutions</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -229,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -238,21 +172,21 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-page-left">
   <div class="quarto-title-meta-heading">Instructor</div>
   <div class="quarto-title-meta-heading">Quarter</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Ethan Marzban </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            Spring 2024
+            Summer Session A, 2025
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
       
   
@@ -260,7 +194,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="course-schedule" class="level2">
 <h2 class="anchored" data-anchor-id="course-schedule">Course Schedule</h2>
@@ -277,60 +213,47 @@ ul.task-list li input[type="checkbox"] {
 <p><em><strong>This page will be updated as we progress through the quarter; please check back regularly for updates!</strong></em></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<strong>Note</strong>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Please try to complete the readings before coming to the specified lecture/starting the specified lab.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>Textbook Abbreviations and Emoji Meanings</strong>
+<strong>Textbook Abbreviations and Icon Meanings</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>R4DS = <a href="https://r4ds.hadley.nz/">R for Data Science</a></li>
-<li>I2R = <a href="https://intro2r.com/">An Introduction to R</a></li>
+<li>MDSR = <a href="https://mdsr-book.github.io/mdsr2e/">Modern Data Science with R</a></li>
 <li>IMS = <a href="https://openintro-ims2.netlify.app/">Introduction to Modern Statistics, 2nd Ed.</a></li>
-<li>💻 = Lab</li>
-<li>🧑‍🏫 = Lecture</li>
-<li>📖 = Textbook Reading</li>
-<li>📄 = Paper Reading</li>
+<li>R4DS = <a href="https://r4ds.hadley.nz/">R for Data Science</a></li>
+<li>ISL = <a href="https://www.statlearning.com/">An Introduction to Statistical Learning with Applications in <code>R</code></a></li>
+<li>AMAW = <a href="http://allmodelsarewrong.github.io/">All Models are Wrong</a></li>
+<li><i class="fa-solid fa-person-chalkboard"></i> = Lecture</li>
+<li><i class="fa-solid fa-laptop"></i> = Lab</li>
+<li><i class="fa-solid fa-file"></i> = Paper</li>
 </ul>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
-<div id="aqjbaxuryt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#aqjbaxuryt table {
+<div id="godwapyhhp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#godwapyhhp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#aqjbaxuryt thead, #aqjbaxuryt tbody, #aqjbaxuryt tfoot, #aqjbaxuryt tr, #aqjbaxuryt td, #aqjbaxuryt th {
+#godwapyhhp thead, #godwapyhhp tbody, #godwapyhhp tfoot, #godwapyhhp tr, #godwapyhhp td, #godwapyhhp th {
   border-style: none;
 }
 
-#aqjbaxuryt p {
+#godwapyhhp p {
   margin: 0;
   padding: 0;
 }
 
-#aqjbaxuryt .gt_table {
+#godwapyhhp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -356,12 +279,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_caption {
+#godwapyhhp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#aqjbaxuryt .gt_title {
+#godwapyhhp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -373,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#aqjbaxuryt .gt_subtitle {
+#godwapyhhp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -385,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#aqjbaxuryt .gt_heading {
+#godwapyhhp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -397,13 +320,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_bottom_border {
+#godwapyhhp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_col_headings {
+#godwapyhhp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -418,7 +341,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_col_heading {
+#godwapyhhp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -438,7 +361,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#aqjbaxuryt .gt_column_spanner_outer {
+#godwapyhhp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -450,15 +373,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#aqjbaxuryt .gt_column_spanner_outer:first-child {
+#godwapyhhp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#aqjbaxuryt .gt_column_spanner_outer:last-child {
+#godwapyhhp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#aqjbaxuryt .gt_column_spanner {
+#godwapyhhp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -470,11 +393,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#aqjbaxuryt .gt_spanner_row {
+#godwapyhhp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#aqjbaxuryt .gt_group_heading {
+#godwapyhhp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -500,7 +423,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#aqjbaxuryt .gt_empty_group_heading {
+#godwapyhhp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -515,15 +438,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#aqjbaxuryt .gt_from_md > :first-child {
+#godwapyhhp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#aqjbaxuryt .gt_from_md > :last-child {
+#godwapyhhp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#aqjbaxuryt .gt_row {
+#godwapyhhp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -542,7 +465,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#aqjbaxuryt .gt_stub {
+#godwapyhhp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -555,7 +478,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#aqjbaxuryt .gt_stub_row_group {
+#godwapyhhp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -569,15 +492,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#aqjbaxuryt .gt_row_group_first td {
+#godwapyhhp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#aqjbaxuryt .gt_row_group_first th {
+#godwapyhhp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#aqjbaxuryt .gt_summary_row {
+#godwapyhhp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -587,16 +510,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#aqjbaxuryt .gt_first_summary_row {
+#godwapyhhp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_first_summary_row.thick {
+#godwapyhhp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#aqjbaxuryt .gt_last_summary_row {
+#godwapyhhp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -606,7 +529,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_grand_summary_row {
+#godwapyhhp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -616,7 +539,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#aqjbaxuryt .gt_first_grand_summary_row {
+#godwapyhhp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -626,7 +549,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_last_grand_summary_row_top {
+#godwapyhhp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -636,11 +559,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_striped {
+#godwapyhhp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#aqjbaxuryt .gt_table_body {
+#godwapyhhp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -649,7 +572,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_footnotes {
+#godwapyhhp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -663,7 +586,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_footnote {
+#godwapyhhp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -672,7 +595,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#aqjbaxuryt .gt_sourcenotes {
+#godwapyhhp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -686,7 +609,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#aqjbaxuryt .gt_sourcenote {
+#godwapyhhp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -694,445 +617,327 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#aqjbaxuryt .gt_left {
+#godwapyhhp .gt_left {
   text-align: left;
 }
 
-#aqjbaxuryt .gt_center {
+#godwapyhhp .gt_center {
   text-align: center;
 }
 
-#aqjbaxuryt .gt_right {
+#godwapyhhp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#aqjbaxuryt .gt_font_normal {
+#godwapyhhp .gt_font_normal {
   font-weight: normal;
 }
 
-#aqjbaxuryt .gt_font_bold {
+#godwapyhhp .gt_font_bold {
   font-weight: bold;
 }
 
-#aqjbaxuryt .gt_font_italic {
+#godwapyhhp .gt_font_italic {
   font-style: italic;
 }
 
-#aqjbaxuryt .gt_super {
+#godwapyhhp .gt_super {
   font-size: 65%;
 }
 
-#aqjbaxuryt .gt_footnote_marks {
+#godwapyhhp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#aqjbaxuryt .gt_asterisk {
+#godwapyhhp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#aqjbaxuryt .gt_indent_1 {
+#godwapyhhp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#aqjbaxuryt .gt_indent_2 {
+#godwapyhhp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#aqjbaxuryt .gt_indent_3 {
+#godwapyhhp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#aqjbaxuryt .gt_indent_4 {
+#godwapyhhp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#aqjbaxuryt .gt_indent_5 {
+#godwapyhhp .gt_indent_5 {
   text-indent: 25px;
 }
+
+#godwapyhhp .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#godwapyhhp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 100%" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <colgroup>
-    <col style="width:7%;">
-    <col style="width:13%;">
-    <col style="width:35%;">
-    <col style="width:30%;">
-    <col style="width:15%;">
-  </colgroup>
-  <thead>
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>WEEK</strong>"><strong>WEEK</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<strong>DATE</strong>"><strong>DATE</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>READING</strong>"><strong>READING</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>TOPIC</strong>"><strong>TOPIC</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>MATERIALS</strong>"><strong>MATERIALS</strong></th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Week" class="gt_row gt_center"><div data-qmd="**1**"><div class="gt_from_md"><p><strong>1</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, Apr 1</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="_**Optional Reading:**_ <br/>
-📖 [**R4DS, Chapter 2: Workflow basics**](https://r4ds.hadley.nz/workflow-basics) <br />
-📖 [**R4DS, Chapter 27: A field guide to base R**](https://r4ds.hadley.nz/base-r) <br /> 
-📖 [**I2R, Chapter 2: Some R Basics**](https://intro2r.com/basics_r.html) <br /> 
-📖 [**I2R, Chapter 3: Data in R**](https://intro2r.com/data_r.html) <br />"><div class="gt_from_md"><p><em><strong>Optional Reading:</strong></em> <br>
-📖 <a href="https://r4ds.hadley.nz/workflow-basics"><strong>R4DS, Chapter 2: Workflow basics</strong></a> <br>
-📖 <a href="https://r4ds.hadley.nz/base-r"><strong>R4DS, Chapter 27: A field guide to base R</strong></a> <br>
-📖 <a href="https://intro2r.com/basics_r.html"><strong>I2R, Chapter 2: Some R Basics</strong></a> <br>
-📖 <a href="https://intro2r.com/data_r.html"><strong>I2R, Chapter 3: Data in R</strong></a> <br></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 **Lab00**: Intro to R and Dataframes"><div class="gt_from_md"><p>💻 <strong>Lab00</strong>: Intro to R and Dataframes</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="- Intro to R: [(click here)](../Labs/Lab00/intro2r.qmd) 
-- Intro to Dataframes: [(click here)](../Labs/Lab00/df_basics.qmd)"><div class="gt_from_md"><ul>
-<li>Intro to R: <a href="../Labs/Lab00/intro2r.html">(click here)</a></li>
-<li>Intro to Dataframes: <a href="../Labs/Lab00/df_basics.html">(click here)</a></li>
-</ul>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, Apr 2</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**R4DS, 1.2: First Steps**](https://r4ds.hadley.nz/data-visualize#first-steps) <br />
-📖 [**IMS, 1.2.2: Types of Variables**](https://openintro-ims2.netlify.app/01-data-hello#types-of-variables-variable-types) <br />"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/data-visualize#first-steps"><strong>R4DS, 1.2: First Steps</strong></a> <br>
-📖 <a href="https://openintro-ims2.netlify.app/01-data-hello#types-of-variables-variable-types"><strong>IMS, 1.2.2: Types of Variables</strong></a> <br></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec01**: Intro to Datascience"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec01</strong>: Intro to Datascience</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec00 Slides**](https://docs.google.com/presentation/d/1sDXv4g05MxVtoXZIjtbmcezpGv_k1EaJEU_DqH2nGOY/edit?usp=sharing)
-🛝 [**Lec01 Slides**](https://docs.google.com/presentation/d/1Azx2f9-pm7ayxTb8mBwwwjV-9C4_hvwg-jLAIKCXWVc/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1sDXv4g05MxVtoXZIjtbmcezpGv_k1EaJEU_DqH2nGOY/edit?usp=sharing"><strong>Lec00 Slides</strong></a>
-🛝 <a href="https://docs.google.com/presentation/d/1Azx2f9-pm7ayxTb8mBwwwjV-9C4_hvwg-jLAIKCXWVc/"><strong>Lec01 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, Apr 4</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**R4DS, Chapter 5: Data tidying**](https://r4ds.hadley.nz/data-tidy) <br />
-📖 [**R4DS, Chapter 3: Data transformation**](https://r4ds.hadley.nz/data-transform) <br /> 
-📄 Hadley Wichkam [_**Tidy Data**_](https://vita.had.co.nz/papers/tidy-data.pdf), _Journal of Statistical Software (2014)_ <br />"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/data-tidy"><strong>R4DS, Chapter 5: Data tidying</strong></a> <br>
-📖 <a href="https://r4ds.hadley.nz/data-transform"><strong>R4DS, Chapter 3: Data transformation</strong></a> <br>
-📄 Hadley Wichkam <a href="https://vita.had.co.nz/papers/tidy-data.pdf"><em><strong>Tidy Data</strong></em></a>, <em>Journal of Statistical Software (2014)</em> <br></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec02:** Tidy Data"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec02:</strong> Tidy Data</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec02 Slides**](https://docs.google.com/presentation/d/1KkmMN4qUMqdQaJyDZjYsgqoqqQhzehRCjdU9hpV5BvQ/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1KkmMN4qUMqdQaJyDZjYsgqoqqQhzehRCjdU9hpV5BvQ/"><strong>Lec02 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><div data-qmd="**2**"><div class="gt_from_md"><p><strong>2</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, Apr 8</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**R4DS, Chapter 19: Joins**](https://r4ds.hadley.nz/joins) <br />"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/joins"><strong>R4DS, Chapter 19: Joins</strong></a> <br></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 **Lab01:** Tidy Data and Databases"><div class="gt_from_md"><p>💻 <strong>Lab01:</strong> Tidy Data and Databases</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, Apr 9</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**R4DS, Chapter 1: Data visualization**](https://r4ds.hadley.nz/data-visualize) <br />
-📖 [**R4DS, Chapter 9: Layers**](https://r4ds.hadley.nz/layers) <br /> 
-📄 Hadley Wichkam [_**A Layered Grammar of Graphics**_](https://vita.had.co.nz/papers/layered-grammar.pdf), _Journal of Computational and Graphical Statistics (2010)_ <br />"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/data-visualize"><strong>R4DS, Chapter 1: Data visualization</strong></a> <br>
-📖 <a href="https://r4ds.hadley.nz/layers"><strong>R4DS, Chapter 9: Layers</strong></a> <br>
-📄 Hadley Wichkam <a href="https://vita.had.co.nz/papers/layered-grammar.pdf"><em><strong>A Layered Grammar of Graphics</strong></em></a>, <em>Journal of Computational and Graphical Statistics (2010)</em> <br></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec03:** Graphics, Part I"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec03:</strong> Graphics, Part I</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec03 Slides**](https://docs.google.com/presentation/d/1AEIZCi_rVXoakzDAIOY9SWCxn-X_kNP_I3PHuYBjLmc/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1AEIZCi_rVXoakzDAIOY9SWCxn-X_kNP_I3PHuYBjLmc/"><strong>Lec03 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, Apr 10</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="~~**Lab01 Due**~~ Extended to Friday"><div class="gt_from_md"><p><del><strong>Lab01 Due</strong></del> Extended to Friday</p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, Apr 11</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**R4DS, Chapter 11: Communication**](https://r4ds.hadley.nz/communication) <br />
-📖 Chapters 2 - 5 of [**Fundamentals of Data Visualization**](https://clauswilke.com/dataviz/), by Claus Wilke <br />
-📖  [**IMS, Chapter 6: Applications: Explore**](https://openintro-ims2.netlify.app/06-explore-applications)"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/communication"><strong>R4DS, Chapter 11: Communication</strong></a> <br>
-📖 Chapters 2 - 5 of <a href="https://clauswilke.com/dataviz/"><strong>Fundamentals of Data Visualization</strong></a>, by Claus Wilke <br>
-📖  <a href="https://openintro-ims2.netlify.app/06-explore-applications"><strong>IMS, Chapter 6: Applications: Explore</strong></a></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec04:** Graphics, Part II"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec04:</strong> Graphics, Part II</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec04 Slides**](https://docs.google.com/presentation/d/1093Tf7A5TZiXFvvyJ4rOZXCm2dKDuhRhOpluUiC094M)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1093Tf7A5TZiXFvvyJ4rOZXCm2dKDuhRhOpluUiC094M"><strong>Lec04 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Sun, Apr 14</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**Homework 01 Due**"><div class="gt_from_md"><p><strong>Homework 01 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><div data-qmd="**3**"><div class="gt_from_md"><p><strong>3</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, Apr 15</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 **Lab02:** Statistical Visualizations"><div class="gt_from_md"><p>💻 <strong>Lab02:</strong> Statistical Visualizations</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, Apr 16</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**R4DS, Chapter 10: Exploratory Data Analysis**](https://r4ds.hadley.nz/eda) <br />"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/eda"><strong>R4DS, Chapter 10: Exploratory Data Analysis</strong></a> <br></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec05:** Exploratory Data Analysis"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec05:</strong> Exploratory Data Analysis</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec05 Slides**](https://docs.google.com/presentation/d/1eojJGLfWHmYM7Qnr7GtDce77OH5fWLzw9d4bA3viC4w/)
-[**Lab02 Partial Walkthrough**](https://drive.google.com/file/d/1JdOHhxza4i9QnEGro6gprD6Cbq5ezq83/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1eojJGLfWHmYM7Qnr7GtDce77OH5fWLzw9d4bA3viC4w/"><strong>Lec05 Slides</strong></a>
-<a href="https://drive.google.com/file/d/1JdOHhxza4i9QnEGro6gprD6Cbq5ezq83/"><strong>Lab02 Partial Walkthrough</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, Apr 17</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="~~**Lab02 Due**~~ Extended to Friday"><div class="gt_from_md"><p><del><strong>Lab02 Due</strong></del> Extended to Friday</p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, Apr 18</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**IMS, Chapter 2: Study Design**](https://r4ds.hadley.nz/eda) <br />"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/eda"><strong>IMS, Chapter 2: Study Design</strong></a> <br></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec06:** Sampling Techniques and Study Design"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec06:</strong> Sampling Techniques and Study Design</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec06 Slides**](https://docs.google.com/presentation/d/1fzZ2U6C_aOVVc6kwS_nw56LcAOn7eu5KzUZoEC010os)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1fzZ2U6C_aOVVc6kwS_nw56LcAOn7eu5KzUZoEC010os"><strong>Lec06 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Sun, Apr 21</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**Mini-Project 01 Due**"><div class="gt_from_md"><p><strong>Mini-Project 01 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><div data-qmd="**4**"><div class="gt_from_md"><p><strong>4</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, Apr 22</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 Review for ICA01 (NOT TURNED IN)"><div class="gt_from_md"><p>💻 Review for ICA01 (NOT TURNED IN)</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, Apr 23</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec07:** ~~Regular Expressions~~ Prep for ICA01"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec07:</strong> <del>Regular Expressions</del> Prep for ICA01</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, Apr 24</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, Apr 25</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **In-Class Assessment 01**"><div class="gt_from_md"><p>🧑‍🏫 <strong>In-Class Assessment 01</strong></p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><div data-qmd="**5**"><div class="gt_from_md"><p><strong>5</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, Apr 29</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**R4DS, Chapter 14: Strings**](https://r4ds.hadley.nz/strings) <br />
-📖 [**R4DS, Chapter 15: Regular expressions**](https://r4ds.hadley.nz/regexps) <br />"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/strings"><strong>R4DS, Chapter 14: Strings</strong></a> <br>
-📖 <a href="https://r4ds.hadley.nz/regexps"><strong>R4DS, Chapter 15: Regular expressions</strong></a> <br></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 **Lab03:** RegEx"><div class="gt_from_md"><p>💻 <strong>Lab03:</strong> RegEx</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, Apr 30</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec09:** Statistics, Part I"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec09:</strong> Statistics, Part I</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec09 Slides**](https://docs.google.com/presentation/d/1OLO2urP47b179PWolJRmi1OwQluUv71AattpzZu76Eg/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1OLO2urP47b179PWolJRmi1OwQluUv71AattpzZu76Eg/"><strong>Lec09 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, May 1</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**Lab03 Due**"><div class="gt_from_md"><p><strong>Lab03 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, May 2</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 Selected Chapters from [**IMS: " statistical="" inference"**](https:="" openintro-ims2.netlify.app="" statistical-inference)"=""><div class="gt_from_md"><p>📖 Selected Chapters from <a href="https://openintro-ims2.netlify.app/statistical-inference"><strong>IMS: “Statistical Inference”</strong></a></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec10:** Statistics, Part II"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec10:</strong> Statistics, Part II</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec10 Slides**](https://docs.google.com/presentation/d/1a7MFttwO3ouyC6MebmPu5oU5tCELq9jPJaiROENPO44/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1a7MFttwO3ouyC6MebmPu5oU5tCELq9jPJaiROENPO44/"><strong>Lec10 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Sun, May 5</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**Homework 02 Due**"><div class="gt_from_md"><p><strong>Homework 02 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><div data-qmd="**6**"><div class="gt_from_md"><p><strong>6</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, May 6</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 **Lab04:** Two- and Multi-sample Tests"><div class="gt_from_md"><p>💻 <strong>Lab04:</strong> Two- and Multi-sample Tests</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, May 7</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 Selected Chapters from [**IMS: " regression="" modeling"**](https:="" openintro-ims2.netlify.app="" regression-modeling)"=""><div class="gt_from_md"><p>📖 Selected Chapters from <a href="https://openintro-ims2.netlify.app/regression-modeling"><strong>IMS: “Regression Modeling”</strong></a></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec11:** Introduction to Statistical Modeling and Regression"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec11:</strong> Introduction to Statistical Modeling and Regression</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec11 Slides**](https://docs.google.com/presentation/d/1sXH3XBEL6GA73enkr4nwVds6DTE3ND2nxQ70eH6OBnc/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1sXH3XBEL6GA73enkr4nwVds6DTE3ND2nxQ70eH6OBnc/"><strong>Lec11 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, May 8</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**Lab04 Due**"><div class="gt_from_md"><p><strong>Lab04 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, May 9</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 Selected Chapters from [**IMS: " regression="" modeling"**](https:="" openintro-ims2.netlify.app="" regression-modeling)"=""><div class="gt_from_md"><p>📖 Selected Chapters from <a href="https://openintro-ims2.netlify.app/regression-modeling"><strong>IMS: “Regression Modeling”</strong></a></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec12:** More Regression"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec12:</strong> More Regression</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec 12 Slides**](https://docs.google.com/presentation/d/1TMGtDEIo4f0fIfree6CWuL0wmYBqDMjIP4Fv4x2baWY/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1TMGtDEIo4f0fIfree6CWuL0wmYBqDMjIP4Fv4x2baWY/"><strong>Lec 12 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Sun, May 12</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**Mini-Project 02 Due**"><div class="gt_from_md"><p><strong>Mini-Project 02 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><div data-qmd="**7**"><div class="gt_from_md"><p><strong>7</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, May 13</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 **Lab05:** Regression"><div class="gt_from_md"><p>💻 <strong>Lab05:</strong> Regression</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, May 14</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 TBD"><div class="gt_from_md"><p>📖 TBD</p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec13:** Regression, Part III"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec13:</strong> Regression, Part III</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec 13 Slides**](https://docs.google.com/presentation/d/1brFUT5s_Asssg6XGV1FlBCOo0H1Yh7kKJ2LOqe6AkaE/)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1brFUT5s_Asssg6XGV1FlBCOo0H1Yh7kKJ2LOqe6AkaE/"><strong>Lec 13 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, May 15</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**Lab05 Due**"><div class="gt_from_md"><p><strong>Lab05 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, May 16</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 TBD"><div class="gt_from_md"><p>📖 TBD</p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec14:** PCA"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec14:</strong> PCA</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec 14 Slides**](https://docs.google.com/presentation/d/1n-MAp4XOKeXgGbVo2IPRHSetdQaLj-30WPGD7zMV7h0)"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1n-MAp4XOKeXgGbVo2IPRHSetdQaLj-30WPGD7zMV7h0"><strong>Lec 14 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Sun, May 19</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><div data-qmd="**8**"><div class="gt_from_md"><p><strong>8</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, May 20</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 **Lab06:** PCA/KDE, and Review for ICA02"><div class="gt_from_md"><p>💻 <strong>Lab06:</strong> PCA/KDE, and Review for ICA02</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, May 21</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 TBD"><div class="gt_from_md"><p>📖 TBD</p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec15:** Finishing up PCA; Review for ICA02"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec15:</strong> Finishing up PCA; Review for ICA02</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec 15 Slides**](https://docs.google.com/presentation/d/1mlL4ZjMN_owsBj_F2n7BxMGFANTheFJODI8msnBpWFk/) <br /> 
-**Homework 03 Due**"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1mlL4ZjMN_owsBj_F2n7BxMGFANTheFJODI8msnBpWFk/"><strong>Lec 15 Slides</strong></a> <br>
-<strong>Homework 03 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, May 22</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**No Lab Due**"><div class="gt_from_md"><p><strong>No Lab Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, May 23</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **In-Class Assessment 02**"><div class="gt_from_md"><p>🧑‍🏫 <strong>In-Class Assessment 02</strong></p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><div data-qmd="**9**"><div class="gt_from_md"><p><strong>9</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, May 27</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**HOLIDAY: No Lab or Sections**"><div class="gt_from_md"><p><strong>HOLIDAY: No Lab or Sections</strong></p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, May 28</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 TBD"><div class="gt_from_md"><p>📖 TBD</p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec17:** PCA, Part III"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec17:</strong> PCA, Part III</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec 17 Slides**](https://docs.google.com/presentation/d/1bOI9oqDxfh1HqvyF0pnu1htGkga2OuHKpkvsHYSkLGQ/) <br />
-MP03 Released"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1bOI9oqDxfh1HqvyF0pnu1htGkga2OuHKpkvsHYSkLGQ/"><strong>Lec 17 Slides</strong></a> <br>
-MP03 Released</p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, May 29</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, May 30</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 TBD"><div class="gt_from_md"><p>📖 TBD</p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec18:** Classification, and Nonparametrics"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec18:</strong> Classification, and Nonparametrics</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🛝 [**Lec 18 Slides**](https://docs.google.com/presentation/d/1wTK7SzKSGo8xJkR7Jtwh3sbs0SencOsZVAWkf7xIfIU/) <br />
-Final Project Released"><div class="gt_from_md"><p>🛝 <a href="https://docs.google.com/presentation/d/1wTK7SzKSGo8xJkR7Jtwh3sbs0SencOsZVAWkf7xIfIU/"><strong>Lec 18 Slides</strong></a> <br>
-Final Project Released</p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><div data-qmd="**10**"><div class="gt_from_md"><p><strong>10</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Mon, Jun 3</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="💻 **Lab07:** Open OH for MP03"><div class="gt_from_md"><p>💻 <strong>Lab07:</strong> Open OH for MP03</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, Jun 4</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 TBD"><div class="gt_from_md"><p>📖 TBD</p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec19:** KDE,  and Clustering"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec19:</strong> KDE,  and Clustering</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div 19="" data-qmd="" 🛝="" [**lec="" slides**](https:="" docs.google.com="" presentation="" d="" 1kl0_apbz2zk5skxdqk-wemnumcck3j53chkrn56tk5w="" )="" <br="">
-**Mini-Project 03 Due**"&gt;<div class="gt_from_md"><p>“🛝 <a href="https://docs.google.com/presentation/d/1Kl0_aPBz2zK5sKXdqK-WEmnuMCcK3j53ChKrn56Tk5w/"><strong>Lec 19 Slides</strong></a> <br>
-<strong>Mini-Project 03 Due</strong></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><br></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Wed, Jun 5</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="NO Lab 07 due; everyone will just receive a 100%"><div class="gt_from_md"><p>NO Lab 07 due; everyone will just receive a 100%</p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center gt_striped"><br></td>
-<td headers="Date" class="gt_row gt_right gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Thu, Jun 6</td>
-<td headers="Reading" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="📖 [**R4DS, Chapter 18: Missing Values**](https://r4ds.hadley.nz/missing-values) <br />
-_Additional Readings to be posted_"><div class="gt_from_md"><p>📖 <a href="https://r4ds.hadley.nz/missing-values"><strong>R4DS, Chapter 18: Missing Values</strong></a> <br>
-<em>Additional Readings to be posted</em></p>
-</div></div></td>
-<td headers="Topic" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="🧑‍🏫 **Lec20:** Classification, Clustering, and Missingness"><div class="gt_from_md"><p>🧑‍🏫 <strong>Lec20:</strong> Classification, Clustering, and Missingness</p>
-</div></div></td>
-<td headers="Materials" class="gt_row gt_left gt_striped" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div 20="" data-qmd="" 🛝="" [**lec="" slides**](https:="" docs.google.com="" presentation="" d="" 1bpnhcwrp_ykaxocsdpxq9n89tf0ux9zvzzkvmyjbiku="" edit?usp="sharing)&quot;"><div class="gt_from_md"><p>“🛝 <a href="https://docs.google.com/presentation/d/1bPNHCWRP_YkAxOcSDpxq9N89tf0ux9ZvZZKVMyjBikU/edit?usp=sharing"><strong>Lec 20 Slides</strong></a></p>
-</div></div></td></tr>
-    <tr><td headers="Week" class="gt_row gt_center"><div data-qmd="**Finals**"><div class="gt_from_md"><p><strong>Finals</strong></p>
-</div></div></td>
-<td headers="Date" class="gt_row gt_right" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;">Tue, Jun 11</td>
-<td headers="Reading" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Topic" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><br></td>
-<td headers="Materials" class="gt_row gt_left" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3;"><div data-qmd="**Final Project Due**"><div class="gt_from_md"><p><strong>Final Project Due</strong></p>
-</div></div></td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 27%">
+<col style="width: 30%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Week" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>WEEK</strong></th>
+<th id="Date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>DATE</strong></th>
+<th id="Reading" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>READING</strong></th>
+<th id="Topic" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>TOPIC</strong></th>
+<th id="Materials" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>MATERIALS</strong></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><strong>1</strong></td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Mon, Jun 23</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-prologue.html"><strong>MSDR, Chapter 1: Prologue: Why Data Science?</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://openintro-ims.netlify.app/data-hello#sec-variable-types"><strong>IMS, 1.2.2: Types of Variable</strong></a></td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Introduction to Data</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec01 Slides</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Tue, Jun 24</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://r4ds.hadley.nz/data-tidy"><strong>R4DS, Chapter 5: Data tidying</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://r4ds.hadley.nz/data-transform"><strong>R4DS, Chapter 3: Data transformation</strong></a> <br> <i class="fa-solid fa-file"></i> Hadley Wichkam <a href="https://vita.had.co.nz/papers/tidy-data.pdf"><em><strong>Tidy Data</strong></em></a>, <em>Journal of Statistical Software (2014)</em></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Data Structures and Tidy Data</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec02 Slides <br> <br> <i class="fa-solid fa-laptop"></i> Lab01: Welcome to the <code>tidyverse</code>!</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Jun 25</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-vizII.html"><strong>MDSR, Chapter 3: A Grammar for Graphics</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://r4ds.hadley.nz/layers"><strong>R4DS, Chapter 9: Layers</strong></a> <br> <i class="fa-solid fa-file"></i> Hadley Wichkam <a href="https://vita.had.co.nz/papers/layered-grammar.pdf"><em><strong>A Layered Grammar of Graphics</strong></em></a>, <em>Journal of Computational and Graphical Statistics (2010)</em> <br></td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Visualizations, Part I</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec03 Slides</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Thu, Jun 26</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://r4ds.hadley.nz/communication"><strong>R4DS, Chapter 11: Communication</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-vizI.html#ch:vizI"><strong>MDSR, Chapter 2: Data Visualization</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://openintro-ims.netlify.app/explore-applications"><strong>IMS, Chapter 6: Applications: Explore</strong></a></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Visualizations, Part II</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec04 Slides <br> <br> <i class="fa-solid fa-laptop"></i> Lab02: Bobabase (Databases and Joins)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Sun, Jun 29</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><strong><em>HOMEWORK 1 DUE</em></strong></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><strong>2</strong></td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Mon, Jun 30</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://allmodelsarewrong.github.io/duality.html"><strong>AMAW, Chapter 3: Geometric Duality</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-learningII.html#dimension-reduction"><strong>MDSR, Chapter 12.2: Dimension Reduction</strong></a> <br></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Geometry of Data</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec05 Slides</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Tue, Jul 1</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> Chapter 10 (Principal Components Analysis) of <a href="https://www.statlearning.com/"><strong>Introduction to Statistical Learning with Applications in <code>R</code></strong></a></td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">PCA</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec06 Slides <br> <br> <i class="fa-solid fa-laptop"></i> Lab03: Boots the House Down, Mama (PCA)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Jul 2</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Review/Catch-up</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec07 Slides</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Thu, Jul 3</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><strong><em>IN-CLASS ASSESSMENT 01</em></strong></td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-laptop"></i> Lab04</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><strong>3</strong></td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Mon, Jul 7</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-file"></i> Bhaskaran and Smeeth <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4121561/pdf/dyu080.pdf"><em><strong>What is the difference between missing completely at random and missing at random?</strong></em></a>, <em>International Journal of Epidemiology (2014)</em></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Sampling / Missing Data</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec08 Slides</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Tue, Jul 8</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://openintro-ims.netlify.app/data-design"><strong>IMS, Chapter 2: Study Design</strong></a> <br> <i class="fa-solid fa-book"></i> Selected Sections from IMS, <a href="https://openintro-ims.netlify.app/foundations-of-inference">“Foundations of Inference”</a> and <a href="https://openintro-ims.netlify.app/statistical-inference">“Statistical Inference”</a></td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Study Design / Sampling Distributions</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec09 Slides <br> <i class="fa-solid fa-laptop"></i> Lab05</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Jul 9</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-foundations.html#ch:foundations"><strong>MDSR, Chapter 9: Statistical Foundations</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://openintro-ims.netlify.app/foundations-bootstrapping.html"><strong>IMS, Chapter 12: Confidence Intervals with Bootstrapping</strong></a></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Estimation / Confidence Intervals</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec10 Slides</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Thu, Jul 10</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://openintro-ims.netlify.app/foundations-mathematical"><strong>IMS, Chapter 13: Inference with Mathematical Models</strong></a></td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Hypothesis Testing, I</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec11 Slides <br> <i class="fa-solid fa-laptop"></i> Lab06</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Sun, Jul 13</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><strong><em>MID-QUARTER PROJECT DUE</em></strong></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><strong>4</strong></td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Mon, Jul 14</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> Selected Sections from IMS, <a href="https://openintro-ims.netlify.app/foundations-of-inference">“Foundations of Inference”</a> and <a href="https://openintro-ims.netlify.app/statistical-inference">“Statistical Inference”</a></td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Hypothesis Testing, II</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec12 Slides</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Tue, Jul 15</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> Section 2.1 (What is Statistical Learning?) of <a href="https://www.statlearning.com/"><strong>Introduction to Statistical Learning with Applications in <code>R</code></strong></a></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Introduction to Statistical Modeling</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec13 Slides <br> <i class="fa-solid fa-laptop"></i> Lab07</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Jul 16</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-regression.html"><strong>MDSR, Appendix E: Regression Modeling</strong></a></td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Regression, Part I</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec14 Slides</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Thu, Jul 17</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-regression.html"><strong>MDSR, Appendix E: Regression Modeling</strong></a></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Regression, Part II</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-laptop"></i> Lab08</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Sun, Jul 20</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><strong><em>HOMEWORK 2 DUE</em></strong></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><strong>5</strong></td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Mon, Jul 21</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-regression.html"><strong>MDSR, Appendix E: Regression Modeling</strong></a></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Regression, Part III</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec15 Slides</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Tue, Jul 22</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> <a href="https://openintro-ims.netlify.app/foundations-mathematical"><strong>MDSR, Chapter 10: Predictive Modeling</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://openintro-ims.netlify.app/model-logistic"><strong>IMS, Chapter 9: Logistic Regression</strong></a> <br> <i class="fa-solid fa-book"></i> <a href="https://mdsr-book.github.io/mdsr2e/ch-learningI.html#non-regression-classifiers"><strong>MDSR, Chapter 11.1: Non-Regression Classifiers</strong></a></td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Classification</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec16 Slides <br> <i class="fa-solid fa-laptop"></i> Lab09</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Jul 23</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Review/Catch-Up</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec17 Slides</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Thu, Jul 24</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><strong><em>IN-CLASS ASSESSMENT 02</em></strong></td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-laptop"></i> Lab10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><strong>6</strong></td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Mon, Jul 28</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> Chapter 10 (Principal Components Analysis) of <a href="https://www.statlearning.com/"><strong>Introduction to Statistical Learning with Applications in <code>R</code></strong></a></td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Data Ethics</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec18 Slides</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Tue, Jul 29</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> TBD</td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Causal Inference</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec19 Slides <br> <i class="fa-solid fa-laptop"></i> Lab11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Jul 30</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> TBD</td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Neural Networks</td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-person-chalkboard"></i> Lec20 Slides</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Week"><br>
+</td>
+<td class="gt_row gt_right" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Thu, Jul 31</td>
+<td class="gt_row gt_left" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-book"></i> TBD</td>
+<td class="gt_row gt_left" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Closing Remarks</td>
+<td class="gt_row gt_left" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><i class="fa-solid fa-laptop"></i> Lab12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="Week"><br>
+</td>
+<td class="gt_row gt_right gt_striped" headers="Date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Fri, Aug 1</td>
+<td class="gt_row gt_left gt_striped" headers="Reading" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+<td class="gt_row gt_left gt_striped" headers="Topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><strong><em>FINAL PROJECT DUE</em></strong></td>
+<td class="gt_row gt_left gt_striped" headers="Materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1166,121 +971,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1296,18 +986,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1339,11 +1018,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1353,8 +1069,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1366,7 +1091,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1410,6 +1257,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1435,6 +1283,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1495,6 +1369,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

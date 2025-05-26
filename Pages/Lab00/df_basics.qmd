@@ -1,0 +1,208 @@
+---
+title: "Lab 00: Dataframe Basics"
+subtitle: "PSTAT 100: Summer Session A 2025 (Instructor: Ethan P. Marzban)"
+author:
+  - Ethan P. Marzban
+date: "June 23, 2025"
+date-format: long
+format:
+  html:
+    page-layout: full
+    toc: TRUE
+fontsize: 14pt
+---
+
+```{r setup, echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = F}
+## optional code chunk;
+## gives shortcut for boldface colored text,
+## able to be rendered in both PDF and HTML
+
+bfcolor <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{\\textbf{%s}}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'><b>%s</b></span>", color, x)
+  } else x
+}
+```
+
+::: callout-tip
+## **Tip**
+
+This lab is long! Use the floating table of contents (at the top-right of the screen) to jump to sections as needed.
+:::
+
+# Required Packages
+
+```{r, message = F, warning = F}
+library(tidyverse)   
+```
+
+## Lab Objectives
+
+This lab covers the following topics:
+
+-   Basics of dataframes in `R`
+
+## Relevant Textbook Chapters/Sections:
+
+-   Portions of [Chapter 27 in R4DS](https://r4ds.hadley.nz/base-r)
+
+------------------------------------------------------------------------
+
+# Recap of Dataframe Basics
+
+Recall that two of the **data structures** in `R` are **dataframes** and **tibbles**. (There are a few minor difference between tibbles and dataframes, but for the most part we can think of the two structures as equivalent.) 
+
+Loosely speaking, a dataframe is a tabular arrangement of values, consisting of rows and columns. We saw in the **Intro 2 R** lab that one way to create data frames is using the `data.frame()` function:
+```{r}
+my_df <- data.frame(
+  col1 = c(2, 4, 6),
+  col2 = c("hello", "happy", "world")
+)
+
+my_df
+```
+
+Note that data frames are created _by columns_, not by rows.
+
+# Accessing Values
+
+Once we have a dataframe created, we might like to access different elements of said dataframe. There are several ways to do this.
+
+## Using Slicing/Indexing
+
+If we have a dataframe called `df`, the command `df[i, j]` extracts the entry at the _i_^th^ row and the ^j^th column. For example:
+```{r}
+my_df[1, 2]
+```
+We can select multiple columns and/or rows by passing in a vector of values on either side of the comma:
+```{r}
+my_df[c(1, 2), 2]
+```
+If we want to extract _all_ elements of row _i_, we can simply leave the column index blank:
+```{r}
+my_df[1, ]
+```
+If we want to extract _all_ elements of column _j_, we can simply leave the row index blank:
+```{r}
+my_df[, 2]
+```
+
+:::{.callout-note}
+## **Note**
+
+It is important to note that rows and/or columns extracted from dataframes are stored as vectors:
+```{r}
+is.vector(my_df[,2])
+```
+:::
+
+A useful thing to note is that the synax `a:b`, where `a` and `b` are integers satisfying `a` < `b`, generates the set of consecutive integers starting at `a` and ending at `b`:
+```{r}
+3:10
+```
+Another way to generate sequences in `R` is to use the `seq()` function, which allows you to specify a `start` value, a `stop` value, and either the amount of space between successive values in the sequence or the number of elements to be included in the sequence:
+```{r}
+seq(0, 1, by = 0.1)
+seq(0, 1, length = 11)
+seq(0, 1, length = 10)
+```
+
+
+## Using Column Names
+
+We can also access individual columns of a dataframe by using the `$` operator, followed by the name of the column. For example:
+```{r}
+my_df$col1
+```
+We can further subset by indexing on the selected column (again, remember that columns extracted from a dataframe are stored as vectors):
+```{r}
+my_df$col1[2:3]
+```
+
+If we want to select multiple columns by name, we cannot use the `$` operator but must instead use the `select()` function from the `dplyr` package (contained in the `tidyverse`):
+```{r}
+select(my_df, c(col1, col2))
+```
+
+
+# Modifying Values
+
+## Updating/Replacing Values
+
+To replace an already-existing element in a dataframe with another value, we can access the value and the use the variable assignment operator (`<-`) to overwrite the previous value. For example:
+```{r}
+my_df[1, 2] <- "greetings"
+my_df
+```
+
+## Adding Columns
+
+To add a column, simply use the `$` syntax to pretend you were accessing the column (even though it doesn't exist yet), and then use the variable assignment operator to pass in a set of values:
+```{r}
+my_df$col3 <- c("red", "green", "blue")
+my_df
+```
+What happens if we try and add a column that has more values than rows in our dataframe? Well, let's see:
+```{r, error = T}
+my_df$col4 <- c(TRUE, FALSE, TRUE, FALSE)
+```
+So, this is something important to note: when adding a column to a dataframe, you must ensure that the number of values you are adding is the same as the number of rows in the dataframe. 
+
+Say we really wanted to add a fourth colunmn to our `my_df` dataframe, with the values `c(TRUE, FALSE, TRUE, FALSE)`. We _could_ simply add a fourth row of missing values (`NA`) to the already-existing dataframe, and then append the column:
+```{r}
+my_df[4,] <- c(NA, NA, NA)
+my_df$col4 <- c(TRUE, FALSE, TRUE, FALSE)
+my_df
+```
+
+:::{.callout-warning}
+## **Caution**
+
+There are pros and cons to doing this. On the one hand, we've successfully added all the values we wanted to into our new column. However, we have done so at the cost of injecting missingness into our data. Depending on what we plan to do with the dataframe this may or may not be a big deal- so, just think critically before doing something like this.
+:::
+
+
+## Changing Column Names
+
+The column names of our `my_df` dataframe are pretty uninformative. Let's see if we can give the columns more interesting names! 
+
+To access the column names of a dataframe, we can use either `names()` or `colnames()`:
+```{r}
+colnames(my_df)
+```
+To rename our columns, we can simply _assign_ (using the variable assignment operator) a new list of names:
+```{r}
+colnames(my_df) <- c("numbers", "words", "colors", "booleans")
+my_df
+```
+We can, if we like, do something similar to assign names to the _rows_ of our dataframe:
+```{r}
+rownames(my_df) <- c("row1", "row2", "row3", "row4")
+my_df
+```
+
+
+# Some Selected Exercises
+
+All problems refer to the following table, which is meant to represent a (fake) Ice Cream store's earnings:
+
+| `flavor` | `ppu` | `units_sold` |
+|:---:|:---:|:---:|
+| `chocolate` | 1.5 | 400 |
+| `vanilla` | 1.5 | 200 | 
+| `ube` | 2.0 | 250 |
+| `strawberry` | 1.5 | 300 |
+
+1)    Write a dataframe called `ice_cream_df` that stores the information in the table above.
+
+2)    Extract the second and third elements of the second and third columns.
+
+3)    Suppose that a flavor was originally missing from the dataset: the store actually also sold a `mint_cc` flavor which has a `ppu` (price per unit) value of 2.0, and sold 275 units. Update the `ice_cream_df` to incorporate this information.
+
+4)    Append a column called `money_earned`, which lists the amount of money earned from sales of each flavor. (Assume that the money earned is simply the product of the price per unit and the number of units sold.)
