@@ -8,19 +8,26 @@ page-layout: full
   font-family: FontAwesome;
   content: "\f0c9"; /* fa-bars, fa-navicon */
 }
+
+<style>
+  table {
+    table-layout: fixed;
+  }
+  @media all and (max-width:768px) {
+        .calculator tr {    display: table;  width:100%;    }
+        .calculator td {    display: table-row; }
+    }
 </style>
 
-:::: {.columns}
+</style>
 
-::: {.column width="40%"}
-![](Images/Logos_Icons/hex.svg)
-:::
-
-::: {.column width = "5%"}
-<!-- spacer -->
-:::
-
-::: {.column width = "55%"}
+<table class = "calculator" style="background-color: #a5b0c202;">
+  <tr>
+    <td>
+      <img src="Images/Logos_Icons/hex.svg" alt="Course Logo" width="350cm" style = "padding-right:10pt">
+    </td>
+    <td>
+      <div> 
 <p style="font-size:1.95rem"><b>PSTAT 100 - Data Science: Concepts and Analysis</b></p>
 
 |**Instructor**: | Ethan P. Marzban (He/Him) |
@@ -28,9 +35,14 @@ page-layout: full
 |**Quarter**: | Summer Session A, 2025 |
 
 **Course Description:** Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical "traps", and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.
-:::
+      </div>
+    </td>
+  </tr>
+</table>
 
-::::
+
+\
+
 
 \
 

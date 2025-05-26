@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "PSTAT 100: Summer Session A 2025"
+  title: "PSTAT 100: Summer 2025"
   favicon: "Images/Logos_Icons/hex.svg"
   navbar:
     background: light
