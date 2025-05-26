@@ -83,7 +83,7 @@ There are four main textbooks for this class (all of which are freely available 
 
 -   [**An Introduction to Statistical Learning with Applications in `R`**](https://www.statlearning.com/), by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani
 
-We will also read through a handful of articles; these will all appear in the [Course Schedule](schedule.qmd).
+We will also read through a handful of articles; these will all appear in the [Course Schedule](../schedule.qmd).
 
 ### Additional (Optional) Texts
 
@@ -195,7 +195,7 @@ There are two primary means of communication outside of scheduled class meetings
 | Clarifying assignment content | Office hours or EdStem |
 | Assignment submission         | [Gradescope](https://www.gradescope.com/courses/995844)              |
 | Re-evaluation request         | [Gradescope](https://www.gradescope.com/courses/995844)              |
-| Question about missing grades | [Fill Out This Form](/Users/epm/Desktop/Z_untitled folder/D3/Dump2/100_test/gdoc1.ai)       |
+| Question about missing grades | [Fill Out This Form](https://docs.google.com/forms/d/e/1FAIpQLSewjim8iR6ictOuCK-4i4pr9fyrLfWpplrOucXmUyqnMpCMHQ/viewform?usp=sharing&ouid=101137927782906125145)       |
 
 Some additional comments:
 
