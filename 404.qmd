@@ -1,0 +1,17 @@
+---
+title: "PSTAT 100 - Data Science: Concepts and Analysis"
+subtitle: "Error 404"
+author:
+  - name: "Ethan Marzban"
+    affiliations:
+      - name: "Summer Session A, 2025"
+author-title: "Instructor"
+affiliation-title: "Quarter"
+format: html
+---
+
+\
+
+<p style = "font-size:200%"><b><i>Uh-Oh; You've Navigated to a Page that Doesn't Exist!</i></b></p>
+
+<p style = "font-size:125%"><b><i>(Error 404: Page Not Found)</i></b></p>
