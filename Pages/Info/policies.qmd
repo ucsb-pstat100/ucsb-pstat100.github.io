@@ -217,7 +217,7 @@ Basically, don’t cheat- please! If you're ever struggling with course material
 
 ### Section Switching
 
-Lab Sections take place in special "Collaborate Classrooms" which are equipped with laptops. There are only a fixed number of seats and laptops in these classrooms, meaning we cannot under any circumstance over-enroll sections. Therefore, if you want to switch section unofficially (we do not have the ability to switch your official enrollment through GOLD), please follow the steps at <a href="https://docs.google.com/spreadsheets/d/1B90BIjZdup2VAFWJMuBd6DPTrCf8A4BQwyV_4t480FM/" target="_blank">this</a> link. Any requests to switch sections that do not adhere to the guidelines posted at that link will be ignored.
+Lab Sections take place in special "Collaborate Classrooms" which are equipped with laptops. There are only a fixed number of seats and laptops in these classrooms, meaning we cannot under any circumstance over-enroll sections. Therefore, if you want to switch section unofficially (we do not have the ability to switch your official enrollment through GOLD), please follow the steps at <a href="https://docs.google.com/spreadsheets/d/1wSqzd7_CbLbDRHP0qetMXbC0JxPkVQuxnbgbi9es_I0/" target="_blank">this</a> link. Any requests to switch sections that do not adhere to the guidelines posted at that link will be ignored.
 
 ### AI Policy
 
