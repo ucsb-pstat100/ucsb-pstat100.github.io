@@ -124,8 +124,8 @@ The final project will be due by 11:59pm on Friday, August 1, 2025.
 :::{.callout-important style="font-size:50px"}
 ## **Assessment Dates**
 
--   **In-Class Assessment 1**: Thursday, July 3, 2025 in TBD, during our regularly-scheduled lecture time
--   **In-Class Assessment 1**: Thursday, July 24, 2025 in TBD, during our regularly-scheduled lecture time
+-   **In-Class Assessment 1**: Thursday, July 3, 2025 in [Harold Frank Hall](https://map.ucsb.edu?id=1982#!ct/58207,60251,89899,90724?m/618898?s/harold%2520frank%2520hall?mc/34.41362000000001,-119.84120200000001?z/17.219333595234083?lvl/0?share) 1104, during our regularly-scheduled lecture time
+-   **In-Class Assessment 1**: Thursday, July 24, 2025 in [Harold Frank Hall](https://map.ucsb.edu?id=1982#!ct/58207,60251,89899,90724?m/618898?s/harold%2520frank%2520hall?mc/34.41362000000001,-119.84120200000001?z/17.219333595234083?lvl/0?share) 1104, during our regularly-scheduled lecture time
 :::
 
 :::{.callout-warning style="font-size:50px"}
