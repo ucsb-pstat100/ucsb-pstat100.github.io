@@ -22,9 +22,9 @@ Hello! My name is **Ethan P. Marzban** (he/him), and I'm currently a PhD student
 
 [**TEACHING ASSISTANT (TA):** Erika McPhillips (She/Her)]{style="font-size:30px"}
 
-![](../../Images/Profiles/placeholder.png){style="float:left;padding: 0 10px 0 10px;" width="200"}
+![](../../Images/Profiles/Erika.png){style="float:left;padding: 0 10px 0 10px;" width="200"}
 
-More information coming soon!
+Hello, my name is Erika McPhillips, and I'm a Statistics PhD student. My research focuses on creating and applying Gaussian process machine learning models to spatiotemporal data. I use these methods to make long-term forecasts of climate variables and crop yields, as well as to model magma movement and volcanic eruptions. As a TA, I've primarily supported Data Science courses at UCSB, especially the Data Science Capstone, which I've been involved with for the past four years. Outside of research and teaching, I enjoy spending time with my friends, family, and cats, working on side NLP projects, and working out at the gym. Feel free to reach out with any questions throughout the course. I'm looking forward to being your TA this summer!
 
 **Email**: <a href="mailto:elm00@pstat.ucsb.edu">elm00@pstat.ucsb.edu</a>
 
