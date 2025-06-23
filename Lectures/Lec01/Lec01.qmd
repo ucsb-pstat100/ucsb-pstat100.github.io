@@ -1,0 +1,800 @@
+---
+title: "PSTAT 100: Lecture 01"
+subtitle: An Introduction to Data
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/logo.svg"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/logo.svg"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+---
+
+## {visibility="hidden"}
+::: hidden
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\usepackage[makeroom]{cancel}
+$$
+:::
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+```
+
+## {{< fa network-wired >}} Introduction
+### Welcome to the Course!
+
+-   Welcome to PSTAT 100! I am so glad to be here on this journey with you.
+
+-   About me: Ethan P. Marzban (he/him); rising 6th-Year PhD Student in the PSTAT Department
+    
+-   I am incredibly thankful to have **Erika McPhillips** (she/her) as a TA for this course!
+
+::: {.fragment}
+<b>Office Hours</b> (subject to change):
+<table>
+	<thead>
+    	<tr>
+    	<td style="padding-right:50px">**Who?**</td>
+        <td>**When?**</td>
+        <td style="padding-left:50px">**Where?**</td>
+    </tr>
+    </thead>
+    <tbody>
+	<tr>
+    	<td rowspan="2">Ethan</td>
+        <td>Wednesdays, 3:30 - 4:30 pm</td>
+        <td style="padding-left:50px">GIRV 2123</td>
+    </tr>
+    <tr>
+        <td>Fridays, 9:00 - 10:30 am</td>
+        <td style="padding-left:50px">Zoom</td>
+    </tr>
+    <tr>
+    	<td rowspan="2" style="border-top: thin solid gray">Erika</td>
+        <td style="border-top: thin solid gray">Tuesdays, 4:15 - 5:15 pm</td>
+        <td style="padding-left:50px; border-top: thin solid gray">SH 5421</td>
+    </tr>
+    <tr>
+        <td>Thursdays, 4:15 - 5:15 pm</td>
+        <td style="padding-left:50px">SH 5421</td>
+    </tr>
+    </tbody>
+</table>
+:::
+  
+## {{< fa info >}} Course Logistics
+### Important Course Sites
+
+-   There are three important sites related to the course:
+
+    -   **Main Course Website:** <a href="https://ucsb-pstat100.github.io" target = "_blank">https://ucsb-pstat100.github.io</a> <br /> This is where lecture slides will be posted, along with the course policies and the course schedule
+    -   **Course Computing Server:** Please See Canvas <br /> This is where all labs, homeworks, and project files will be posted. Please make sure to use the `bit.ly` link every time you need to access the course computing server.
+    -   **Gradescope:** <a href="https://www.gradescope.com/courses/995844" target = "_blank">https://www.gradescope.com/courses/995844</a> <br /> This is where you will submit the majority of the assignments this quarter, and is also where you will be able to view your completed ICAs
+    
+    
+## {{< fa info >}} Course Logistics
+### Course Policies
+
+-   If you haven't already, please read through the <a href="https://ucsb-pstat100.github.io/Pages/Info/policies.html" target="_blank">Course Policies</a> fully.
+
+    -   They lay out policies surrounding late work, how your final grades will be computed, what constitutes allowable use of AI, and much more.
+    
+-   One highlight: you will be graded on labs, homeworks, projects, and in-class assessments.
+
+    -   The Course Policies provide further details on how these assignments differ, as well as how they factor in to your final course grade.
+    
+
+## {{< fa lightbulb >}} Some Tips for Success
+
+-   Create a weekly schedule for yourself, and allocate a bit of time for PSTAT 100 each day.
+    -   E.g. for working on homework/projects, working through practice problems, reviewing notes, etc.
+
+-   Take notes!
+    -   Course slides are somewhat comprehensive, _but not the full story_ - I'll often say things in class that are very important (and potentially testable on ICAs...)
+    
+-   Form Study Groups
+    -   Data Science is a highly collaborative field - get some practice forming these connections by connecting with your fellow classmates!
+    
+
+
+# What Is Data Science? {background-color="black" background-image="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGNlYzc2MTRoOGNmbTc5aXNzajh5M2pxMHFvc2EwN3oyZ2RqNGY2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/doXBzUFJRxpaUbuaqz/giphy.gif" background-size="fill"}
+
+**Not Necessarily a Rhetorical Question!**
+
+## {{< fa flask >}} Data Science
+### Your Thoughts, from the Google Form!
+
+::: {style="text-align:center"}
+![](Images/wc2.png)
+:::
+
+
+## {{< fa flask >}} Data Science
+### The First "Expert"
+
+:::: {.columns}
+::: {.column width=60%}
+![](Images/data_science_gpt_definition.png)
+:::
+
+::: {.column width=40%}
+-   [**Interdisciplinary**]{.alert}; emphasis on [**domain knowledge**]{.alert}
+
+    -   Draws from expertise and innovations from many fields
+
+-   [**Data-Driven**]{.alert}; collects, interprets, and uses data to say things about the world.
+
+:::
+
+
+::::
+
+
+
+## {{< fa flask >}} Data Science
+### The Second "Expert"
+
+![](Images/data_science_oed.png)
+
+## {{< fa flask >}} Data Science
+### Stats, Maths, and Computing
+
+-   Notice that these three fields (loosely) correspond to the three prerequisites for this course!
+
+:::: {.columns}
+
+::: {.column width="33.3333%"}
+::: {.fragment}
+**Stats** (PSTAT 120A)
+
+-   Data has _error_ and _randomness_; we need probability to be able to draw conclusions in the face of this randomness
+:::
+:::
+
+::: {.column width="33.3333%"}
+::: {.fragment}
+**Maths** (MATH 4A)
+
+-   Data is naturally expressible as matrices and vectors (more on this next week)
+:::
+:::
+
+::: {.column width="33.3333%"}
+::: {.fragment}
+**Computing** (CMPSC 9/16)
+
+-   Data is large, and often too complicated to handle by hand (without the aid of computing software)
+:::
+:::
+
+::::
+
+
+
+## {{< fa flask >}} Data Science
+### Still Very New!
+
+![](Images/data_science_merriam_webster.png)
+
+
+## {{< fa arrows-spin >}} Data Science Lifecycle
+### First Version
+
+:::: {.columns}
+
+::: {.column width=40%}
+![](Images/dsl_simple.svg)
+:::
+
+::: {.column width=60%}
+-   The [**Data Science Lifecycle**]{.alert} (DSL) seeks to describe the general _lifecycle_ of a typical data science project.
+
+-   Four main stages: [**questioning**]{.alert}, [**collecting**]{.alert}, [**analyzing**]{.alert}, and [**interpreting**]{.alert}.
+
+-   Lots of variations of the DSL, some with more steps than others.
+
+-   Main idea: data science projects are highly [**iterative**]{.alert}.
+:::
+
+::::
+
+
+## {{< fa arrows-spin >}} Data Science Lifecycle
+### Second Version
+
+:::: {.columns}
+
+::: {.column width=40%}
+![](Images/dsl_complex.svg)
+:::
+
+::: {.column width=60%}
+-   In my opinion, this is a much better representation of the DSL! (Though the graphic is certainly too complex.)
+
+-   Again, data science is a highly iterative field; we rarely proceed in a linear fashion from start to finish.
+
+    -   Rather, we start, analyze out data, realize we need more data, collect more data, analyze our new data, realize we need to revise our original question, etc.
+:::
+
+::::
+
+## {{< fa arrows-spin >}} Data Science Lifecycle
+### Starting the Cycle
+
+:::: {.columns}
+::: {.column width=40%}
+![](Images/DSL_question.svg)
+:::
+
+::: {.column width=60%}
+-   Sometimes we'll begin with a question we want to answer.
+
+-   E.g. "Has air quality in the US improved over time?"
+
+-   E.g. "How has the distribution of wealth and income changed since the economic recession of 2008?"
+:::
+
+::::
+
+
+## {{< fa arrows-spin >}} Data Science Lifecycle {transition="none"}
+### Starting the Cycle
+
+:::: {.columns}
+::: {.column width=40%}
+![](Images/DSL_question_collect.svg)
+:::
+
+::: {.column width=60%}
+-   In this case, our question will dictate what kind of data to collect
+    -   E.g. AQI data
+    -   E.g. Income Data; Federal Bank Data; etc.
+    
+-   In other cases, we'll _start_ with a dataset, which will then inform what question we want to ask.
+    -   Limitations in our dataset may also necessitate changes in our question; we'll return to this point in a few lectures.
+:::
+
+::::
+
+
+## {{< fa arrows-spin >}} Data Science Lifecycle {transition="none"}
+### Traveling Through the Cycle
+
+:::: {.columns}
+::: {.column width=40%}
+![](Images/DSL_question_collect_analyze.svg)
+:::
+
+::: {.column width=60%}
+-   Once we have our data, we need to analyze it.
+-   This might involve [**data cleaning**]{.alert} or [**data tidying**]{.alert}; this could also involve producing appropriate [**visualizations**]{.alert}.
+    -   At this stage, we may perform [**Exploratory Data Analysis**]{.alert} (EDA).
+    -   In certain cases, we may find it useful to apply techniques from [**maching learning**]{.alert} to better understand our dataset.
+:::
+
+::::
+
+
+
+## {{< fa arrows-spin >}} Data Science Lifecycle {transition="none"}
+### Traveling Through the Cycle
+
+:::: {.columns}
+::: {.column width=40%}
+![](Images/dsl_simple.svg)
+:::
+
+::: {.column width=60%}
+-   Finally, we need to understand what our data is saying.
+-   This will typically involve answering our question(s); oftentimes we'll take things a step further and see if we can use our data to make sense of the world.
+-   A key component of this stage of the DSL is producing some sort of a [**report**]{.alert} or [**presentation**]{.alert}.
+:::
+
+::::
+
+## {{< fa location-pin >}} PSTAT 100
+
+-   We'll be returning to the different stages of the DSL throughout this course (though not necessarily in order).
+    -   Consequently, I don't expect you to understand all of the jargon on the previous few slides!
+    
+-   Today, we'll start by addressing a question that is not explicitly part of the DSL, but implicitly forms the backbone of it: **_What is Data?_**
+
+# What Is Data? {background-color="black" background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWswMzhzbTZvbDRzdjBzdXNwMGk3emJvdzN0MWdmZmRha3BsOGx1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/V4NSR1NG2p0KeJJyr5/giphy.gif" background-size="100rem"}
+
+## <rect style="padding-right:0.17em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zm144 4c-24.3 0-44 19.7-44 44l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0zm-4 44c0-2.2 1.8-4 4-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48zm140-44c-11 0-20 9-20 20c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0zM132 296c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0c-11 0-20 9-20 20zm96 24l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0c-24.3 0-44 19.7-44 44zm44-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48c0-2.2 1.8-4 4-4z"/></g></g></svg></rect> What is Data?
+
+:::: {.columns}
+
+::: {.column width="60%"}
+![](Images/data1.png)
+:::
+
+
+::: {.column width="40%"}
+![](Images/2024_data.png)
+
+![](Images/apple2.png)
+:::
+
+::::
+
+
+## <rect style="padding-right:0.17em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zm144 4c-24.3 0-44 19.7-44 44l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0zm-4 44c0-2.2 1.8-4 4-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48zm140-44c-11 0-20 9-20 20c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0zM132 296c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0c-11 0-20 9-20 20zm96 24l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0c-24.3 0-44 19.7-44 44zm44-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48c0-2.2 1.8-4 4-4z"/></g></g></svg></rect> What is Data?
+
+-   According to Merriam-Webster ([source](https://www.merriam-webster.com/dictionary/data)), there are three definitions for **data**:
+
+1)  factual information (such as measurements or statistics) used as a basis for reasoning, discussion, or calculation
+
+2)  information in digital form that can be transmitted or processed
+
+3)  information output by a sensing device or organ that includes both useful and irrelevant or redundant information and must be processed to be meaningful
+
+-   I like the first definition, particularly the phrase "used as a basis for reasoning, discussion, or calculation."
+
+
+## <rect style="padding-right:0.17em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zm144 4c-24.3 0-44 19.7-44 44l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0zm-4 44c0-2.2 1.8-4 4-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48zm140-44c-11 0-20 9-20 20c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0zM132 296c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0c-11 0-20 9-20 20zm96 24l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0c-24.3 0-44 19.7-44 44zm44-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48c0-2.2 1.8-4 4-4z"/></g></g></svg></rect> What is Data?
+
+-   Raw data is often uninterpretable (and, in some cases, useless)
+
+-   It’s the job of a Data Scientist to interpret the data, and use it to assess beliefs.
+
+::: {.fragment}
+::: {.callout-note}
+## **Definition**
+
+[**Data Literacy:**]{.alert} "the ability to explore, understand, and communicate with data in a meaningful way." (_Tableau_; [ source](https://www.tableau.com/data-insights/data-literacy/what-is#definition))
+:::
+:::
+
+-   One of the goals of PSTAT 100 is to increase your _data literacy_.
+
+-   We'll develop a series of tools (that you will expound upon in your future PSTAT courses) in service of this goal.
+
+
+## {{< fa cat >}} A Dataset
+### Cats!
+
+-   Let's take a look at a concrete dataset.
+
+-   This particular dataset was collected in 2013 by a collection veterinarians at The Royal Veterinary College in the United Kingdom.
+
+    -   The primary goal of the study was to investigate the prevalence of epilepsy in cats; for today, we’ll only be considering the characteristics of the cats included in the study.
+
+-   Spend a few seconds taking in the dataset, and I'd like to know your initial reactions.
+
+
+## {{< fa cat >}} A Dataset
+### Cats!
+
+```{r, out.lines = 1000}
+#| class-output: hscroll
+#| echo: False
+#| eval: True
+
+options(max.print = 5000)
+cats <- read.csv("Data/cats_data_2019.csv") %>% 
+  select(c(!RSD)) %>% select(c(!Epilepsy)) %>% select(c(!Insured))
+print(as.data.frame(cats), row.names = FALSE)
+```
+
+## {{< fa cat >}} Cats Dataset
+### Initial Thoughts
+
+
+-   On the one hand, we could make some observations about _how the data is displayed_
+    -   For example, it's a _pretty big_ dataset (I even had to truncate the output so that it fits in this presentation!)
+    -   The entries are displayed _tabularly_ (sometimes called "rectangularly")
+
+-   On the other, we could make observations about _what the data is saying_
+    -   Each row represents information about a particular cat
+    -   From each cat, we have information on a series of attributes (sex, age, etc.)
+
+
+## {{< fa code-fork >}} Semantics vs. Structure
+
+-   In general, we distinguish between the [**semantics**]{.alert} and [**structure**]{.alert} of a particular dataset.
+
+-   The semantics of a dataset relate to the _meaning_ behind the data.
+    -   What is the data trying to tell us?
+
+-   The structure of a dataset pertains to how the data is _displayed_ or _organized_.
+    -   How is the data telling us what it is telling us?
+
+-   We'll focus on data semantics for today, and return to the topic of data structure tomorrow.
+
+## {{< fa spell-check >}} Data Semantics
+### Definition
+
+:::{.callout-note}
+## **Definition:** Data
+
+We define an [**observation**]{.alert} to be a collection of [**values**]{.alert} measured on certain [**attributes**]{.alert} (aka [**variables**]{.alert}). From a semantic standpoint, we define **data** to be a collection of observations collected on [**observational units**]{.alert}.
+:::
+
+::: {.fragment}
+![](Images/semantics.svg)
+:::
+
+
+## {{< fa cat >}} Cats Dataset
+### Semantics
+
+```{r}
+#| class-output: hscroll
+#| echo: False
+#| eval: True
+
+options(max.print = 20)
+print(as.data.frame(cats), row.names = FALSE)
+```
+
+::: {.fragment}
+Example Observation:
+
+> There was a 14.75154-year old Neutered Male Domestic Short Hair Cat, whose ID was 1.
+:::
+
+
+## {{< fa cat >}} Cats Dataset
+### Semantics
+
+> There was a cat whose **ID** was 1, whose **breed** was "Domestic Short hair", whose **age** was 14.75154, whose **sex** was "Male", and whose **Neutered status** was "Neutered".
+
+-   **Variables:** `ID`, `Breed`, `Age`, `Sex`, `Neutered Status`
+
+::: {.fragment}
+> There was a cat whose ID was **1**, whose breed was **"Domestic Short hair"**, whose age was **14.75154**, whose sex was **"Male"**, and whose Neutered status was **"Neutered"**.
+:::
+
+-   **Values:** (1, "Domestic Short hair", 14.75154, "Male", "Neutered")
+
+## {{< fa spell-check >}} Data Semantics
+### Observational Units
+
+-   When trying to identify the observational units of a particular dataset, I like to ask myself the question: "if I were to replicate this data (i.e. re-collect it myself), what object/item would I actually observe/take measurements on?"
+    -   For example, if I wanted to replicate the cats dataset, I would need to start by collecting a bunch of cats, on which I could take measurements of whatever attributes I want.
+
+-   Note that observational units aren't always living entities; we could imagine a dataset in which _countries_ are the observational units (e.g. we could measure various attributes - like GDP, life expectancy, etc. - about the different countries of the world)
+
+## {{< fa landmark >}} Another Dataset
+### Undergraduate PSTAT Course Enrollments
+
+
+```{r}
+#| class-output: hscroll
+#| echo: False
+#| eval: True
+
+options(max.print = 5000)
+enrollments <- read.csv("Data/enrollments.csv") 
+rownames(enrollments) <- NULL
+print(as.data.frame(enrollments), row.names = FALSE)
+```
+
+## {{< fa landmark >}} Another Dataset
+### Undergraduate PSTAT Course Enrollments
+
+-   **Observational Units:** UCSB Courses
+
+-   **An observation:** The enrollment for PSTAT 5A, titled "Understanding Data" was 167 in Spring 2025, 222 in Winter 2025, 213 in Fall 2024, etc.
+
+-   **Variables:** `Spring 2025`, `Winter 2025`, `Fall 2024`, etc,
+
+-   Is that right, though?
+    -   What is the value of `Spring 2025` - is it really 167? 
+    -   Isn't 167 the value of a `Course Enrollment` variable?
+    -   Isn't `Spring 2025` actually itself a _value_ of another variable (one we might call `Quarter`)?
+    
+
+## {{< fa landmark >}} Another Dataset
+### Undergraduate PSTAT Course Enrollments
+
+-   At this point, we find ourselves at a bit of a crossroads. 
+
+-   For now, let's adopt the following set of variables (tomorrow, we'll discuss whether or not this choice is unique - spoiler alert, it is not!)
+    -   `Course`: the course ID
+    -   `Course Title`: the course title
+    -   `Quarter`: the quarter in which the course was offered
+    -   `Enrollment`: the enrollment count of the particular course in a particular quarter
+    
+
+## {{< fa landmark >}} Another Dataset
+### Undergraduate PSTAT Course Enrollments
+
+::: {.panel-tabset}
+
+## Original Format
+
+```{r}
+#| class-output: hscroll4
+#| echo: False
+#| eval: True
+
+print(as.data.frame(enrollments), row.names = FALSE)
+```
+
+```{css echo = F}
+.hscroll4 {
+  height: 100% !important;
+  max-height: 475px !important;
+}
+```
+
+## New Format
+
+```{r}
+#| class-output: hscroll4
+#| echo: False
+#| eval: True
+
+enrollments %>%
+  melt(
+    id.vars = c('Course', 'Title'),
+    variable.name = 'Quarter',
+    value.name = 'Enrollment'
+  ) %>%
+  print.data.frame(
+    row.names = F
+  )
+```
+
+## {{< fa question >}} A Question
+
+-   Could we have instead used `Spring 2025 Enrollment`, `Winter 2025 Enrollment`, etc. as our variables?
+
+-   Well, we _could_... again, more on that during tomorrow's lecture. (Spoiler: it's not really a good idea.)
+
+:::
+
+## {{< fa landmark >}} Another Dataset
+### Undergraduate PSTAT Course Enrollments
+
+:::{.callout-important}
+## **Moral of the Story**
+
+It is not always the case that the variables in a dataset are the same as the column names.
+:::
+
+-   This starts to get into the _structure_ of a dataset, so we'll save a further discussion on this point for tomorrow's lecture.
+    -   For now, I simply encourage you to think critically when trying to identify the variables in a particular dataset.
+
+-   The good news is that, in many cases, the work is done for us: many datasets will come equipped with a [**data dictionary**]{.alert}, which is a specification of all the variables in the dataset and a brief description of what they represent.
+
+```{html}
+<style>
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.125em;
+    }
+  </style>
+```
+
+# Variable Classification {background-color="black" background-image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWI2cHJnZ21mbjYycWU3NTE5NzRuZm41eDExeXRhdG1oejd6dW01cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fXtGlVSI2ZB2E1JO0b/giphy.gif" background-size="50rem"}
+
+
+## <rect style="padding-right:0.31em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M80 32C53.5 32 32 53.5 32 80s21.5 48 48 48l152 0 0 40-48 48-56 0c-48.6 0-88 39.4-88 88l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-22.1 17.9-40 40-40l56 0 48 48 0 40-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-40 48-48 56 0c22.1 0 40 17.9 40 40l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-48.6-39.4-88-88-88l-56 0-48-48 0-40 152 0c26.5 0 48-21.5 48-48s-21.5-48-48-48L80 32z"/></g></g></svg></rect> Variable Classification
+### First Level
+
+-   Notice how in both of the datasets we explored today, there were a few different types of variables.
+
+-   For example, some variables have values that are numbers (e.g. the age of a cat; the enrollment total of a course; etc.) whereas others have values that are words (e.g. the species of a cat; the title of a course; etc.)
+
+-   Indeed, at the highest level, variables are classified as either [**numerical**]{.alert} or [**categorical**]{.alert}.
+
+    -   Numerical variables are those whose values are numbers; categorical variables are those whose values are categories.
+
+
+## <rect style="padding-right:0.31em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M80 32C53.5 32 32 53.5 32 80s21.5 48 48 48l152 0 0 40-48 48-56 0c-48.6 0-88 39.4-88 88l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-22.1 17.9-40 40-40l56 0 48 48 0 40-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-40 48-48 56 0c22.1 0 40 17.9 40 40l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-48.6-39.4-88-88-88l-56 0-48-48 0-40 152 0c26.5 0 48-21.5 48-48s-21.5-48-48-48L80 32z"/></g></g></svg></rect>Variable Classification
+### First Level
+
+::: {.callout-caution}
+## **Caution**
+It is a mistake to conclude that a variable is numerical solely because its _recorded_ values are numbers.
+:::
+
+-   For example, months can be encoded as either `January`, `February`, etc. or as `1`, `2`, `3`.
+    -   Just because we're using `1` to mean `January` doesn't mean that a `month` variable is numerical - its possible values are still only categories, and hence it is a categorical variable.
+    -   1 + 2 is 3, but `January` plus `February` is not `March`.
+
+-   The better check is whether sums/differences of values have interpretive meaning- if so, the variable is numerical. Otherwise, the variable is categorical.
+
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+Turn to your neighbors, and come up with a few examples of numerical variables and a few examples of categorical variables.
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 5L, font_size = "6rem")
+```
+
+## <rect style="padding-right:0.31em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M80 32C53.5 32 32 53.5 32 80s21.5 48 48 48l152 0 0 40-48 48-56 0c-48.6 0-88 39.4-88 88l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-22.1 17.9-40 40-40l56 0 48 48 0 40-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-40 48-48 56 0c22.1 0 40 17.9 40 40l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-48.6-39.4-88-88-88l-56 0-48-48 0-40 152 0c26.5 0 48-21.5 48-48s-21.5-48-48-48L80 32z"/></g></g></svg></rect>Variable Classification
+### Second Level
+
+-   Not all numerical variables are alike.
+
+-   For example, consider the following two: "number of accidents recorded along a highway", and "height of an individual."
+
+-   Both variables are numerical (sums/differences have interpretive meaning).
+
+-   However, most of us have an intuitive feeling that the set of all possible values associated with "number of accidents recorded along a highway" is more restrictive than the set of possible values associated with "height of an individual."
+
+
+## <rect style="padding-right:0.31em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M80 32C53.5 32 32 53.5 32 80s21.5 48 48 48l152 0 0 40-48 48-56 0c-48.6 0-88 39.4-88 88l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-22.1 17.9-40 40-40l56 0 48 48 0 40-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-40 48-48 56 0c22.1 0 40 17.9 40 40l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-48.6-39.4-88-88-88l-56 0-48-48 0-40 152 0c26.5 0 48-21.5 48-48s-21.5-48-48-48L80 32z"/></g></g></svg></rect>Variable Classification
+### Second Level
+
+::: {.callout-note}
+## **Definition**
+
+A numerical variable whose set of possible values is finite or countable is said to be [**discrete**]{.alert}; a numerical variable whose set of possible values is uncountable is said to be [**continuous**]{.alert}.
+:::
+
+
+-   Note how this mirrors the definition of discrete and continuous _random_ variables that you (hopefully) saw in PSTAT 120A!
+
+-   Even within categorical variables, there's a second level of classification. Consider: "letter grade" and "favorite color."
+
+-   A grade of `A+` is _better_ than a grade of `A`, which is _better_ than a grade of `A-`, etc. whereas `green` is not inherently better than `red`, which is not inherently better than `purple`, etc.
+
+
+## <rect style="padding-right:0.31em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M80 32C53.5 32 32 53.5 32 80s21.5 48 48 48l152 0 0 40-48 48-56 0c-48.6 0-88 39.4-88 88l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-22.1 17.9-40 40-40l56 0 48 48 0 40-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-40 48-48 56 0c22.1 0 40 17.9 40 40l0 48-8 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-8 0 0-48c0-48.6-39.4-88-88-88l-56 0-48-48 0-40 152 0c26.5 0 48-21.5 48-48s-21.5-48-48-48L80 32z"/></g></g></svg></rect>Variable Classification
+### Second Level
+
+::: {.callout-note}
+## **Definition**
+
+A categorical variable whose set of possible values has an intrinsic order is said to be [**ordinal**]{.alert}; a categorical variable whose set of possible values has no intrinsic order is said to be [**nominal**]{.alert}.
+:::
+
+::: {.fragment}
+
+```{dot}
+//| fig-width: 10
+//| fig-height: 4
+digraph data_classification {
+    layout = dot
+    rankdir = UD
+    splines = false
+    edge [arrowsize = 0.5, color = coral4]
+  
+subgraph cluster_main {
+  color = transparent
+  node [color=transparent, style = filled, fillcolor = cornsilk, shape = egg];
+  
+  Data [label = "Variable"]
+  
+  subgraph cluster_0 {
+   color = transparent
+    node [color=transparent, style = filled, fillcolor = aquamarine3, shape = egg];
+    
+    numerical [label = "Numerical"]
+    
+    subgraph cluster_1 {
+      color = transparent
+      node [color = transparent, style = filled, fillcolor = bisque1, shape = egg];
+      
+        continuous [label = "Continuous"]
+        discrete [label = "Discrete"]
+    }
+    
+    {numerical} -> continuous
+    {numerical} -> discrete
+  }
+  
+  subgraph cluster_2 {
+   color = transparent
+    node [color=transparent, style = filled, fillcolor = aquamarine3, shape = egg];
+    
+    categorical [label = "Categorical"]
+    
+    subgraph cluster_3 {
+      color = transparent
+      node [color = transparent, style = filled, fillcolor = bisque1, shape = egg];
+      
+        nominal [label = "Nominal"]
+        ordinal [label = "Ordinal"]
+    }
+    
+    {categorical} -> nominal
+    {categorical} -> ordinal
+  }
+  
+  
+  }
+  
+  {Data} -> numerical
+  {Data} -> categorical
+}
+```
+
+:::
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+For the variables you and your neighbor(s) came up with in the previous activity, classify them as discrete, continuous, ordinal, or nominal.
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 4L, font_size = "6rem")
+```
+
+
+## {{< fa forward-fast >}} Next Time
+
+-   We'll continue our discussion on data.
+    -   Specifically, we'll take a closer look at the _structure_ (as opposed to _semantics_) of a dataset
+    -   We'll then discuss a framework to unify the semantics and structure of a dataset.
+    
+-   **Reminder:** please start Homework 1 early!
+    -   Problem 1 is a Linear Algebra review, and Problem 2 combines Linear Algebra and PSTAT 120A (so you should be able to complete both problems already).
+    -   For problem 3, you'll need to wait until Thursday's lecture.
+
+-   If you are able, please bring your laptops to tomorrow's lecture.
