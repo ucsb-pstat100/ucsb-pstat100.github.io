@@ -1,0 +1,732 @@
+---
+title: "PSTAT 100: Lecture 02"
+subtitle: Data Structure, and Tidy Data
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/logo.svg"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/logo.svg"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+## {visibility="hidden"}
+::: hidden
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\usepackage[makeroom]{cancel}
+$$
+:::
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 10% !important;
+  max-height: 100px !important;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+```
+
+## {{< fa backward-fast >}} Review: Data Semantics
+### Definition
+
+:::{.callout-note}
+## **Definition:** Data
+
+We define an [**observation**]{.alert} to be a collection of [**values**]{.alert} measured on certain [**attributes**]{.alert} (aka [**variables**]{.alert}). From a semantic standpoint, we define **data** to be a collection of observations collected on [**observational units**]{.alert}.
+:::
+
+![](Images/semantics.svg)
+
+
+## {{< fa backward-fast >}} Review: Data Semantics
+### Another Illustration
+
+::: {style="text-align:center"}
+![](Images/semantics2.svg){width="65%"}
+:::
+
+## {{< fa backward-fast >}} Review: Course Enrollments Dataset
+### Some Sample Observations
+
+::: {.nonincremental style="font-size:28px"}
+-   The enrollment for PSTAT 5A, titled "Understanding Data," was 167 in Spring 2025
+-   The enrollment for PSTAT 5A, titled "Understanding Data," was 222 in Winter 2025
+-   The enrollment for PSTAT 5H, titled "Statistics," was 11 in Spring 2025
+:::
+
+::: {.panel-tabset}
+
+## Wide Layout
+
+```{r}
+#| class-output: hscroll4
+#| echo: False
+#| eval: True
+
+enrollments <- read.csv("Data/enrollments.csv") 
+print(as.data.frame(enrollments), row.names = FALSE)
+```
+
+## Long Layout
+
+```{r}
+#| class-output: hscroll4
+#| echo: False
+#| eval: True
+
+enrollments %>%
+  melt(
+    id.vars = c('Course', 'Title'),
+    variable.name = 'Quarter',
+    value.name = 'Enrollment'
+  ) %>%
+  print.data.frame(
+    row.names = F
+  )
+```
+
+:::
+
+```{css echo = F}
+.hscroll4 {
+  height: 100% !important;
+  max-height: 275px !important;
+}
+```
+
+
+## <rect style="padding-right:0.17em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zm144 4c-24.3 0-44 19.7-44 44l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0zm-4 44c0-2.2 1.8-4 4-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48zm140-44c-11 0-20 9-20 20c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0zM132 296c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0c-11 0-20 9-20 20zm96 24l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0c-24.3 0-44 19.7-44 44zm44-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48c0-2.2 1.8-4 4-4z"/></g></g></svg></rect> Data
+### Structure vs. Semantics
+
+::: {.callout-tip}
+## **Recap**
+
+Data has both semantics and structure (though when most people say "data" they are typically refering to the semantics).
+:::
+
+-   Both the wide and long layouts of the `enrollments` dataset contain the _semantics_, but have different _structures_. 
+
+-   Loosely speaking, the [**structure**]{.alert} of a given dataset refers to the way the values in the dataset are actually displayed.
+    -   Specification of rows, columns, and number of tables (yes, sometimes we need multiple tables to express a particular dataset!)
+    -   Decision of how to encode particular values (e.g. should we use `high`, `medium`, `low`, or `3`, `2`, `1`?)
+
+
+## <rect style="padding-right:0.17em;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em"><g transform="translate(0 40) "><g><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zm144 4c-24.3 0-44 19.7-44 44l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0zm-4 44c0-2.2 1.8-4 4-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48zm140-44c-11 0-20 9-20 20c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0zM132 296c0 9.7 6.9 17.7 16 19.6l0 76.4c0 11 9 20 20 20s20-9 20-20l0-96c0-11-9-20-20-20l-16 0c-11 0-20 9-20 20zm96 24l0 48c0 24.3 19.7 44 44 44l32 0c24.3 0 44-19.7 44-44l0-48c0-24.3-19.7-44-44-44l-32 0c-24.3 0-44 19.7-44 44zm44-4l32 0c2.2 0 4 1.8 4 4l0 48c0 2.2-1.8 4-4 4l-32 0c-2.2 0-4-1.8-4-4l0-48c0-2.2 1.8-4 4-4z"/></g></g></svg></rect> Data
+### Structure vs. Semantics
+
+-   There is some variability "in the wild" when it comes to the structure of datasets, and there isn't always a single "best" way to structure a given dataset.
+
+-   However, it is important to note that computer will only ever be able to understand the _structure_ of a dataset: it can only read rows, columns, and entries.
+
+-   So, how can we get a computer to understand the semantics of a dataset?
+
+-   **Idea:** use a structure that maps to the semantics in some way.
+    -   Indeed, one popular framework of structuring data that achieves this is the so-called [**Tidy**]{.alert} framework of data.
+    
+## {{< fa broom >}} Tidy Data
+### Definition
+
+::: {.fragment}
+::: {.callout-note}
+## **Definition**
+
+Developed by Hadley Wickham, the **tidy** standard of data seeks to map the semantics of a dataset to its structure, by proposing a series of structural constraints:
+
+1)    Each variable forms a column
+2)    Each observation forms a row
+3)    Each type of observational unit forms a table
+:::
+:::
+
+:::: {.columns}
+
+::: {.column width=33.33%}
+::: {.fragment}
+![](Images/tidy_1.svg)
+:::
+:::
+
+
+::: {.column width=33.33%}
+::: {.fragment}
+![](Images/tidy_2.svg)
+:::
+:::
+
+
+::: {.column width=33.33%}
+::: {.fragment}
+![](Images/tidy_3.svg)
+:::
+:::
+
+::::
+
+
+## {{< fa broom >}} Tidy or Not?
+### `Enrollments`: Wide Layout
+
+```{r}
+#| class-output: hscroll5
+#| echo: False
+#| eval: True
+
+enrollments <- read.csv("Data/enrollments.csv") 
+print(as.data.frame(enrollments), row.names = FALSE)
+```
+
+```{css echo = F}
+.hscroll5 {
+  height: 100% !important;
+  max-height: 200px !important;
+}
+```
+
+
+:::: {.columns}
+::: {.column width=50%}
+:::{.fragment}
+**Semantics**
+
+|  |  |
+|:-----|:------|
+| **Observations:** | Enrollment in a Course in a given Quarter |
+| **Variables:** |  Course number, title, quarter, and enrollment count |
+| **Observational Units:** | (UCSB PSTAT Undergrad) Courses |
+
+:::
+:::
+
+::: {.column width=50%}
+::: {.fragment}
+**Structure**
+
+|  |  |
+|:-----|:------|
+| **Rows:** | Course-by-Course Records |
+| **Columns:** |  Value of Quarter |
+| **\# of Tables:** | 1 |
+
+:::
+
+-   Rules 1 and 2 violated; [**not tidy**]{.bg style="--col: #f5e287"}
+:::
+
+::::
+
+
+
+## {{< fa broom >}} Tidy or Not?
+### `Enrollments`: Long Layout
+
+```{r}
+#| class-output: hscroll
+#| echo: False
+#| eval: True
+
+enrollments <- read.csv("Data/enrollments.csv") 
+enrollments_tidy <- enrollments %>%
+  melt(
+    id.vars = c('Course', 'Title'),
+    variable.name = 'Quarter',
+    value.name = 'Enrollment'
+  )
+print(data.frame(enrollments_tidy[1:3,]), row.names = F)
+```
+
+
+:::: {.columns}
+::: {.column width=50%}
+:::{.fragment}
+**Semantics**
+
+|  |  |
+|:-----|:------|
+| **Observations:** | Enrollment in a Course in a given Quarter |
+| **Variables:** |  Course number, title, quarter, and enrollment count |
+| **Observational Units:** | (UCSB PSTAT Undergrad) Courses |
+
+:::
+:::
+
+::: {.column width=50%}
+::: {.fragment}
+**Structure**
+
+|  |  |
+|:-----|:------|
+| **Rows:** | Enrollment in a Course in a given Quarter |
+| **Columns:** |  Course number, title, quarter, and enrollment count |
+| **\# of Tables:** | 1 |
+
+:::
+
+-   All rules satisfied; [**tidy**]{.bg style="--col: #f5e287"}
+:::
+
+::::
+
+## {{< fa broom >}} Tidy or Not?
+### A Brief Interlude
+
+-   Before we proceed, I'd like to admit that there's some subjectivity going on behind the scenes.
+
+-   For example, you might ask: with regards to the enrollments dataset, what if we adopted the following variables:
+    -   `Course`
+    -   `Title`
+    -   `Spring 2025 Enrollment`
+    -   `Winter 2025 Enrollment`
+    -   Etc.
+-   Now the wide layout becomes tidy - what's going on?!
+
+
+## {{< fa broom >}} Tidy or Not?
+### A Brief Interlude
+
+-   Firstly, I'll stress this again: I view the main point of the tidy framework as a way to link the semantics and the structure of a dataset.
+
+-   From that point of view, there is nothing inherently "incorrect" about modifying our variables and observations as we did on the previous slide to make the wide layout tidy.
+
+-   However, I believe it "puts the cart before the horse" - in the field, we typically _start_ with the semantics, and _then_ structure the data around the semantics. Changing the semantics to match the structure (though not incorrect) is a little backwards.
+
+
+
+## {{< fa broom >}}  Tidy or Not?
+### A Brief Interlude
+
+-   There's another reason adopting these second set of variables is not the best idea, and it has to do with the notion of _updating_ a data frame.
+
+-   Suppose we gain additional data, from Summer 2025. 
+    -   In the second set of semantics, we'd have to add an _entirely new variable_ to incorporate this new information.
+    -   In the first set of semantics (where we simply have a `Quarter` variable and an `Enrollment` variable), we can update out dataset by simply adding a new _observation_ (which is much more efficient.)
+
+::: {.fragment}
+> "[...] it is surprisingly difficult to precisely define variables and observations in general." -- _Wickham, 2004; page 4_
+:::
+
+
+
+## {{< fa broom >}} Tidy Data
+### Pros and Cons
+
+-   So, yes, there is some subjectivity regarding what we classify as variables.
+    -   But, to reiterate a point from yesterday: a **data dictionary** often takes the guesswork out of things.
+    
+-   Finally, I'd like to make another note: [**messy**]{.alert} (the opposite of tidy) datasets sometimes have their benefits!
+
+-   For example, messy datasets can actually appear (visually) more succinct than their tidy counterparts, which is why you'll sometimes see messy datasets presented in reports or presentations.
+
+-   But, tidy data is usually preferred in the analysis stage of the DSL, as computers are a bit better-equipped at handling tidy data than they are at handling messy data.
+
+
+
+## {{< fa broom >}} Tidy Data
+### Example: Blood Pressures
+
+**Data Description:** The systolic and diastolic blood pressures of 3 individuals was recorded. 
+
+::: {.panel-tabset }
+
+## Data Dictionary:
+::: {.nonincremental}
+-   `Name:` Name of the individual
+-   `Systolic BP`: Systolic blood pressure (in mm HG)
+-   `Diastolic BP`: Systolic blood pressure (in mm HG)
+:::
+
+## Data
+
+| **Name** | **Type** | **Measurement** |
+|:--------:|:--------:|:---------------:|
+| Anurag | Systolic | 100 |
+| Anurag | Diastolic | 70 |
+| Biyonka | Systolic | 101 |
+| Biyonka | Diastolic | 72 |
+| Chae | Systolic | 99 |
+| Chae | Diastolic | 68 |
+
+## Tidy Constraints
+::: {.nonincremental}
+1)    Each variable forms a column
+2)    Each observation forms a row
+3)    Each type of observational unit forms a table
+:::
+
+**Based on the provided data dictionary, is this data frame tidy?**
+
+:::
+
+# Tidying Data {background-color="black" background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHE5NGtsYWswbWM2d2xmMHZucjc4OXI5azk5YjJlaDA5Mjg5cjF1ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/95pCDbEGyLuUg/giphy.gif" background-size="100rem"}
+
+
+## {{< fa chart-line >}} Interlude
+### Line Plots
+
+-   I'd like to motivate our discussion on tidying data by way of [**statistical visualizations**]{.alert}
+    -   We'll talk more about these next lecture.
+    
+-   For now, I'd like to introduce the notion of a [**line plot**]{.alert}, which is a common plot used to display the change in a numerical quantity over time.
+    -   Time is represented on the horizontal axis, and the quantity in question is displayed on the vertical axis.
+
+## {{< fa chart-line >}} Interlude
+### Line Plots
+
+![](Images/trend2.png)
+
+**Source:** Google Trends
+
+## {{< fa chart-line >}} Interlude
+### Line Plots
+
+![](Images/lineplot2.png)
+
+[Source](https://projects.fivethirtyeight.com/biden-approval-rating/)
+
+## {{< fa chart-line >}} Line Plot
+### Enrollments Over Time
+
+-   Let's say we want to make a line graph, plotting how the different courses' enrollments changed over time (perhaps even using colors to separate the different courses).
+
+::: {.fragment}
+
+```{r}
+#| class-output: hscroll5
+#| echo: False
+#| eval: True
+
+print(as.data.frame(enrollments), row.names = FALSE, max = 70)
+```
+
+:::
+
+-   How do we tell `R` what to put on the _x_-axis, when the "time" values are embedded as _column headers_?
+
+
+## {{< fa chart-line >}} Line Plot
+### Enrollments Over Time
+
+-   We do not have this problem with the long (tidy) format:
+
+::: {.fragment}
+
+```{r}
+#| class-output: hscroll
+#| echo: False
+#| eval: True
+
+print(data.frame(enrollments_tidy), row.names = F, max = 20)
+```
+
+:::
+
+-   Now the `Quarter` variable clearly shows up as its own column, making it much easier to access using `R`. This is one of the benefits of tidiness.
+
+-   The question we now turn to is: how to we [**transform**]{.alert} the wide layout into the long layout?
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+-   The answer: an operation known as [**melting**]{.alert}.
+
+-   To illustrate the melting operation, let's consider a simpler mock dataset.
+
+-   We imagine 3 subjects were each administered two dosages of a drug. Their heart rate (in bpm) after each dose was recorded, and stored in a dataframe.
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+::: {.panel-tabset}
+
+## Original Dataframe
+```{r}
+library(pander)
+
+df1 <- data.frame(A = c(62, 71, 64), 
+                  B = c(65, 75, 70),
+                  row.names = c("Jane", "John", "Jack"))
+
+df1 %>% pander()
+```
+
+## Molten Dataframe
+```{r}
+library(pander)
+
+df1 <- data.frame(A = c(62, 71, 64), 
+                  B = c(65, 75, 70),
+                  Name = c("Jane", "John", "Jack"))
+
+df1 %>% 
+  melt(
+    id.vars = 'Name',
+    variable.name = 'Dosage',
+    value.name = 'Heartrate'
+  ) %>%
+  pander()
+```
+
+:::
+
+\
+
+-   The original dataframe is "wide" whereas the molten dataframe is "long".
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+![](Images/melt_1.svg)
+
+We still have a `Name` variable / column
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+![](Images/melt_2.svg)
+
+The values from previously separate columns have now been concatenated into a single column
+
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+![](Images/melt_3.svg)
+
+The old column headers (which were values!) now appear as values in a new column.
+
+
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+-   As such, we can think of melting as an operation parametrized by the following:
+    -   [[**Colvars**]{.alert} (i.e. columns that are already variables)]{style="opacity:1"}
+    -   [A new variable containing the concatenated data values from the previously separate columns]{style="opacity:1"}
+    -   [A new variable/column containing the old column headers
+]{style="opacity:1"}
+
+
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+::: {.nonincremental}
+-   As such, we can think of melting as an operation parametrized by the following:
+    -   [[**Colvars**]{.alert} (i.e. columns that are already variables)]{style="opacity:1"}
+    -   [A new variable containing the concatenated data values from the previously separate columns]{style="opacity:0.25"}
+    -   [A new variable/column containing the old column headers
+]{style="opacity:0.25"}
+:::
+
+![](Images/melt_comp_1.svg)
+
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+::: {.nonincremental}
+-   As such, we can think of melting as an operation parametrized by the following:
+    -   [[**Colvars**]{.alert} (i.e. columns that are already variables)]{style="opacity:0.25"}
+    -   [A new variable containing the concatenated data values from the previously separate columns]{style="opacity:1"}
+    -   [A new variable/column containing the old column headers
+]{style="opacity:0.25"}
+:::
+
+![](Images/melt_comp_2.svg)
+
+
+
+## {{< fa shapes >}} Dataframe Transformations
+### Melting
+
+::: {.nonincremental}
+-   As such, we can think of melting as an operation parametrized by the following:
+    -   [[**Colvars**]{.alert} (i.e. columns that are already variables)]{style="opacity:0.25"}
+    -   [A new variable containing the concatenated data values from the previously separate columns]{style="opacity:0.25"}
+    -   [A new variable/column containing the old column headers
+]{style="opacity:1"}
+:::
+
+![](Images/melt_comp_3.svg)
+
+## {{< fa ice-cream >}} Melting in `R`
+### Via the `reshape2::melt()` Function
+
+```{r}
+#| eval: False
+#| echo: True
+
+melt(
+  data,                           # <1>
+  id.vars,                        # <2>
+  measure.vars,                   # <3>
+  variable.name = "variable",     # <4>
+  ...,
+  na.rm = FALSE,
+  value.name = "value",
+  factorsAsStrings = TRUE
+)
+```
+1. The name of the dataframe
+2. The name of the colvars
+3. The name of the column whose values will be split post-melt
+4. An optional specification of what you want the new variable column to be called (e.g. Dosage, in our previous example)
+
+**_Hover over the bubbled numbers for a description of what each argument represents_**
+
+
+## {{< fa ice-cream >}} Melting in `R`
+### Via the `tidyverse::pivot_longer()` Function
+
+```{r}
+#| eval: False
+#| echo: True
+
+pivot_longer(
+  data,                  # <1>
+  cols,                  # <2>
+  ...,
+  names_to = "name",     # <3>
+  ...,
+  values_to = "value",   # <4> 
+  ...
+)
+```
+1. The name of the dataframe
+2. The name of the non-colvars
+3. The name of the new column containing old column names
+4. The name of the new column containing values post-split
+
+
+-   You'll likely see me use `melt()` more often than `pivot_longer()`, however that is mainly personal preference!
+
+## {{< fa ice-cream >}} Melting in `R`
+### Comparison
+
+::: {.panel-tabset}
+
+## Original Dataframe
+```{r}
+#| code-fold: True
+#| code-summary: "Expand Code"
+#| echo: True
+
+dosage_df <- data.frame(
+  Name = c("Jane", "John", "Jack"),
+  A = c(62, 71, 64),
+  B = c(65, 75, 70)
+)
+
+dosage_df %>% pander()
+```
+
+## Using `melt()`
+```{r}
+#| code-fold: True
+#| code-summary: "Expand Code"
+#| echo: True
+
+dosage_df %>%
+  melt(
+    id.vars = "Name",
+    variable.name = "Dosage",
+    value.name = "Heart_Rate"
+  ) %>% pander()
+```
+
+## Using `pivot_longer()`
+```{r}
+#| code-fold: True
+#| code-summary: "Expand Code"
+#| echo: True
+
+dosage_df %>%
+  pivot_longer(
+    cols = !c("Name"),
+    names_to = "Dosage",
+    values_to = "Heart_Rate",
+    cols_vary = "slowest"         ## optional
+  ) %>% pander()
+```
+
+:::
+
+-   The inverse of melting is called [**pivoting**]{.alert}, and will be discussed further in Lab 02.
+
+## {{< fa code >}} Live Demo!
+
+::: {.callout-important}
+## **Live Demo**
+
+Time for our first live demo! Feel free to boot up your laptops and follow along; I've uploaded the `enrollments` datset to our course computing server. In this demo we'll:
+
+:::{.nonincremental}
+-   Melt the `enrollments` dataset
+
+-   Generate a line graph displaying the change in enrollments over time within lower-division undergraduate PSTAT courses
+
+-   Interpret the results
+:::
+
+:::
+
+
+## {{< fa forward-fast >}} Next Time
+### And Coming Up
+
+-   Next lecture, we'll explore statistical visualizations further.
+
+-   During our first Lab session this afternoon, you'll get practice with some dataframe manipulation commands from the `tidyverse`
+    -   The last problem on the first homework will also give you a chance to practice some of these
+    
+-   Start thinking about who you want to work with on the Mid-Quarter Project!
+    -   As a reminder, you are required to work in groups of 3-5 on the project.
+    -   You must finalize (and submit) your groups by Monday of next week.
