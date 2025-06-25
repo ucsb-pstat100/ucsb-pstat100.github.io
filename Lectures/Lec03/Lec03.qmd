@@ -80,6 +80,16 @@ library(cowplot)
 library(ggridges)
 ```
 
+
+## {{< fa info >}} Important Lab01 Information
+
+-   Make sure you render your lab to a PDF, and submit the PDF to gradescope (I'll quickly show you how to do this on the server now).
+
+-   **FOLLOW THE INSTRUCTIONS ON THE LAB!** (I already see some Gradescope submissions that haven't followed all the instructions, especially when it comes to adding/removing names to your lab submission).
+    -   Please note: we'll be lenient for the first couple of labs, but starting next week the grader reserves the right to deduct points for failing to follow instructions stated on the lab assignment.
+
+-   Please also don't forget to submit by 11:59pm **tonight** (Wednesday) on Gradescope!
+
 ## {{< fa stairs >}} Leadup
 ### Summarizing Data
 
