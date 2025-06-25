@@ -1,0 +1,825 @@
+---
+title: "PSTAT 100: Lecture 03"
+subtitle: Statistical Visalizations, Part I
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/logo.svg"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/logo.svg"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+## {visibility="hidden"}
+::: hidden
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\usepackage[makeroom]{cancel}
+$$
+:::
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(ggridges)
+```
+
+## {{< fa stairs >}} Leadup
+### Summarizing Data
+
+-   Data can be highly informative.
+
+-   The information it provides, however, is oftentimes not immediately apparent.
+    -   Indeed, it is the job of the data scientist to be able to extract the meaning from the data
+    -   It is also the job of the data scientist to be able to effectively communicate this meaning to an audience.
+    
+-   One of the most important ways we can accomplish this is by producing appropriate [**summaries**]{.alert} of our data.
+    -   The branch of statistics known as [**descriptive statistics**]{.alert} is essentially dedicated to the craft of effectively _describing_ (i.e. _summarising_) data.
+
+
+## {{< fa stairs >}} Leadup
+### Summarizing Data
+
+-   Broadly speaking, there are two types of summaries we could produce: [**numerical**]{.alert} and [**visual**]{.alert}
+    -   We'll spend most of our time today and tomorrow talking about visual summaries, and then take a crack at numerical summaries next week
+    -   "Visual summaries" go by many different names - "graphs", "plots", "charts", etc.
+    
+-   Today, we'll talk about a few different _types_ of plots, and when they are appropriate to use
+    -   Tomorrow, we'll dive deeper into the mechanisms behind _creating_ plots, and some principles for effective visualization.
+
+## {{< fa backward-fast >}} Review: Variable Classification
+### Full Scheme
+
+```{dot}
+//| fig-width: 10
+//| fig-height: 4
+digraph data_classification {
+    layout = dot
+    rankdir = UD
+    splines = false
+    edge [arrowsize = 0.5, color = coral4]
+  
+subgraph cluster_main {
+  color = transparent
+  node [color=transparent, style = filled, fillcolor = cornsilk, shape = egg];
+  
+  Data [label = "Variable"]
+  
+  subgraph cluster_0 {
+   color = transparent
+    node [color=transparent, style = filled, fillcolor = aquamarine3, shape = egg];
+    
+    numerical [label = "Numerical"]
+    
+    subgraph cluster_1 {
+      color = transparent
+      node [color = transparent, style = filled, fillcolor = bisque1, shape = egg];
+      
+        continuous [label = "Continuous"]
+        discrete [label = "Discrete"]
+    }
+    
+    {numerical} -> continuous
+    {numerical} -> discrete
+  }
+  
+  subgraph cluster_2 {
+   color = transparent
+    node [color=transparent, style = filled, fillcolor = aquamarine3, shape = egg];
+    
+    categorical [label = "Categorical"]
+    
+    subgraph cluster_3 {
+      color = transparent
+      node [color = transparent, style = filled, fillcolor = bisque1, shape = egg];
+      
+        nominal [label = "Nominal"]
+        ordinal [label = "Ordinal"]
+    }
+    
+    {categorical} -> nominal
+    {categorical} -> ordinal
+  }
+  
+  
+  }
+  
+  {Data} -> numerical
+  {Data} -> categorical
+}
+```
+
+
+# Single-Variable Plots {background-color="black" background-image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDhreHd0bzl6em0yNWY1dTcxamN1Nm5yMTFqbHBzeTN3cmYwN3l1ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ov9kacqGycKQRH6Vy/giphy.gif" background-size="100rem"}
+
+## {{< fa school >}} Mock Dataset
+### Class Standing
+
+-   Let's consider another mock dataset, this one containing the standing (i.e. Freshman, Sophomore, Junior, or Senior) of a handful of (fictitious) students in a (fictitious) course:
+
+:::{.fragment}
+```{r}
+#| echo: True
+standings <- c( "Freshman", 	"Sophomore", 	"Freshman", 	"Junior",		"Sophomore",	"Freshman",
+                "Sophomore",	"Junior",		"Junior",		"Sophomore",	"Junior",		"Junior",
+                "Senior",		"Sophomore",	"Junior",		"Freshman",	    "Freshman",   "Senior" )
+```
+:::
+
+::: {.fragment}
+::: {.callout-tip}
+## **Check your Understanding**
+
+What type of variable is `standings` (i.e. what is its classification)?
+:::
+:::
+
+-   Even though this is a relatively small dataset, it's still difficult to make sense of the raw data.
+
+
+
+## {{< fa compress >}} Descriptive Statistics
+### Numerical Summaries
+
+-   So, we'd like to summarize this dataset in some way.
+    -   Enter, **descriptive statistics**.
+
+-   To start, it seems natural to tabulate the number of students in our dataset that belong to each class standing.
+    -   Such a table is called a [**frequency table**]{.alert}.
+
+::: {.fragment}
+```{r}
+standings <- factor(standings, 
+                    ordered = T,
+                    levels = c("Freshman", "Sophomore", "Junior", "Senior"))
+standings %>% table() %>% pander()
+```
+:::
+
+-   This is an example of a numerical summary.
+    -   Again, notice how much easier it was to extract information from the frequency table than it was to extract from the raw data!
+
+
+## {{< fa compress >}} Descriptive Statistics
+### Numerical Summaries
+
+-   How can we convert this to a _graphical_ summary?
+
+-   Here's one idea: draw four rectangles (i.e. "bars"), one for each of the four possible standings.
+
+-   We can make the height of each bar proportional to the corresponding frequency
+    -   For example, the height of the bar corresponding to Freshmen would be 5; the height of the bar corresponding to Sophomores would be 5; etc.
+    
+
+## {{< fa compress >}} Descriptive Statistics
+### `standings` Dataset
+
+```{r}
+data.frame(standings) %>% ggplot(aes(x = standings)) +
+  geom_bar(aes(y = after_stat(count)),
+           fill = "cornflowerblue") +
+  theme_bw(base_size = 16)
+```
+
+
+## {{< fa compress >}} Descriptive Statistics
+### Barplots/Bargraphs
+
+-   This type of plot is called a [**barplot**]{.alert} (or [**bargraph**]{.alert}), and is the ideal visualization for a categorical variable.
+
+-   In general, for a categorical variable with _k_ categories _C_~1~ through _C_~_k_~ with corresponding frequencies _f_~1~ through _f_~_k_~, the resulting barplot will have _k_ bars with the height of the _i_^th^ bar given by _f_~_i_~.
+
+::: {.fragment style="text-align:center"}
+![](Images/barplot.svg){width=35%}
+:::
+
+## {{< fa chart-pie >}} Pie Charts: RIP
+
+-   Perhaps you've heard of (or seen) **pie charts**
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+table(standings) %>% data.frame() %>%
+  ggplot(aes(x = "", y = Freq, fill = standings)) +
+  geom_col(col = "black") +
+  geom_label(aes(label = Freq),
+             col = "black",
+             position = position_stack(vjust = 0.5),
+             show.legend = FALSE,
+             size = 11) +
+  coord_polar(theta = "y") +
+  theme_minimal(base_size = 32) +
+  scale_fill_brewer(palette = "Pastel1") +
+  theme(axis.text.x = element_blank()) +
+  xlab("") + ylab("")
+```
+:::
+:::
+
+::: {.column width="50%"}
+-   Pie charts are practically **never used** within the statistical commmunity anymore.
+    -   Basically, areas of circular sectors can be misleading.
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+-   Stick with a barplot!
+
+-   If you really desire a desert-themed plot, consider a [**donut plot**]{.alert}:
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+hsize <- 3
+table(standings) %>% data.frame() %>% mutate(x = hsize) %>%
+  ggplot(aes(x = hsize, y = Freq, fill = standings)) +
+  geom_col() +
+  coord_polar(theta = "y")  +
+  xlim(c(0.2, hsize + 0.5)) +
+  theme_void(base_size = 32)
+```
+:::
+:::
+
+::::
+
+## {{< fa compress >}} Descriptive Statistics
+### Numerical Variable
+
+-   So, that takes care of what type of plot to make when we have a single categorical variable. What about when we have a single _numerical_ value?
+
+-   As another concrete example, consider the following mock dataset comprised of exam scores (reported as a percentage between 0 and 100):
+
+:::{.fragment}
+```{r}
+#| echo: True
+
+scores <- c(89.1,	87.1,	90.1,	97.4,	99.1,	100.0,	84.1,	89.4,
+            92.3,	99.4,	95.2,	91.0,	90.0,	87.4,	89.0,	92.4)
+```
+:::
+
+-   Does it make sense to generate a barplot? 
+    -   Not really; we'd have 16 bars, each with height 1. This doesn't summarize the data in any way- we might as well have just looked at the raw data!
+
+## {{< fa compress >}} Descriptive Statistics
+### Numerical Variable
+
+-   We can, however, "inject" categories into our data.
+    -   That is; though we do not expect to have two or more students with exactly the same score, it is plausible to have a great many students with scores within some specified range
+    
+-   To start, let's consider ranges of scores that are 5 points in width:
+
+::: {.fragment style="text-align:center"}
+![](Images/binwidth_5.svg){width=100%}
+:::
+
+
+
+## {{< fa compress >}} Descriptive Statistics
+### Numerical Variable
+
+-   There are different conventions for edge cases, but the most common is to have left-inclusive intervals.
+    -   For example, given the categories we had on the previous slide, and observation equal to 85 would fall in the second category and not the first (I have tried to make this clear by using interval notation in the category titles).
+    
+-   By the way, we no longer call this table a frequency table; instead we call it a [**distribution table**]{.alert}
+
+-   We can, however, treat the distribution table in a similar manner to a frequency table: construct as many bars as we have cells, with heights proportional to the counts within each cell.
+
+## {{< fa compress >}} Descriptive Statistics
+### Numerical Variable
+
+![](Images/histogram1.svg)
+
+-   The resulting plot is called a [**histogram**]{.alert}.
+
+
+
+## {{< fa compress >}} Descriptive Statistics
+### Binwidths
+
+![](Images/binwidth.svg)
+
+
+## {{< fa compress >}} Descriptive Statistics
+### Binwidths
+
+![](Images/binwidth_2.svg)
+
+
+
+## {{< fa compress >}} Descriptive Statistics {style="font-size:30px"}
+### Binwidths
+
+![](Images/binwidth_comp.svg)
+
+-   Notice the effect that changing the binwidth has on the overall shape of the histogram!
+    -   When creating your own histograms, pay attention to your binwidth.
+    -   In practice, there isn't a single ideal binwidth that should be used; instead, play around with a few different binwidths before settling on one you feel results in a histogram that best captures the distribution of your data.
+
+
+
+## {{< fa compress >}} Descriptive Statistics
+### Boxplots
+
+![](Images/boxplot.svg)
+
+## {{< fa compress >}} Descriptive Statistics
+### Boxplots and Histograms
+
+:::: {.columns}
+::: {.column width="60%"}
+```{r}
+#| fig-height: 8
+hist1 <- scores %>% data.frame() %>%
+  ggplot(aes(x = .)) +
+  geom_histogram(binwidth = 2,
+                 center = -1,
+                 closed = "left",
+                 col = "white",
+                 fill = "cornflowerblue",
+                 linewidth = 1.5) +
+  scale_x_continuous(breaks = seq(84, 100, by = 2)) +
+  theme_minimal(base_size = 18) +
+  theme(
+    panel.grid.minor.x = element_blank()
+  ) + xlab('scores')
+
+bp1 <- scores %>% data.frame() %>%
+  ggplot(aes(x = .)) +
+  geom_boxplot(staplewidth = 0.5,
+               fill = "cornflowerblue",
+               linewidth = 1.5) +
+  scale_x_continuous(breaks = seq(84, 100, by = 2)) +
+  theme_minimal(base_size = 18) +
+  theme(
+    panel.grid.minor.x = element_blank(),
+    axis.text.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank()
+  ) +
+  ylim(c(-1, 1)) + xlab('scores')
+
+cowplot::plot_grid(bp1, hist1, 
+                   ncol = 1, rel_heights = c(1.5, 1),
+                   align = 'v', axis = 'lr')  
+```
+::: 
+
+::: {.column width="40%"}
+-   Note that both plots indicate a sort of "skew" to the data that is pulling the average of scores to the left.
+    -   The skew is, however, not strong enough to introduce outliers into the dataset (how do we know that?)
+
+:::
+
+::::
+
+## {{< fa compress >}} Descriptive Statistics
+### Example: Boxplots
+
+**Example:** 100 people were asked to run one mile; their completion times (in minutes) were recorded, and the following boxplot was generated:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+set.seed(100)
+x <- rnorm(100, 9)
+data.frame(x) %>% ggplot(aes(x = x)) +
+  geom_boxplot(staplewidth = 0.5,
+               fill = "cornflowerblue",
+               linewidth = 1.5,
+               outlier.size = 5) +
+  theme_minimal(base_size = 32) +
+  theme(
+    panel.grid.minor.x = element_blank(),
+    axis.text.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank()
+  ) +
+  ylim(c(-1, 1)) + xlab('time (mins)') +
+  ggtitle("Boxplot of Completion Times")
+```
+:::
+
+::: {.column width="50%"}
+::: {.nonincremental}
+
+-   What were the slowest and fastest completion times?
+-   What was the median completion time?
+
+:::
+:::
+
+::::
+
+::: {.nonincremental}
+-   Anna ran a mile in around 8.5 minutes. Aproximately what percentage of runners were faster than her?
+:::
+
+
+
+## {{< fa clock >}} Quick Summary
+### Univariate Plots
+
+-   So, to quickly summarize:
+    -   Given a single categorical variable, use a barplot/bargraph.
+    -   Given a single numerical variable, you can use either a histogram or a boxplot.
+    
+-   If you have a discrete variable, you can consider generating a barplot as opposed to a histogram, but it's a bit context-dependent.
+
+
+# Two-Variable Plots {background-color="black" background-image="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXljdTVqcHY3b3p2eGhnNW5lbmRlZ3hwZTJwejRzaHo2aGUxamV1diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LedVYzRx24nkI/giphy.gif" background-size="100rem"}
+
+## {{< fa dice-two >}} Two-Variable Plots
+
+-   Most datasets are comprised of more than just one variable. As such, a common question among Data Scientists is: how do the different variables in a given dataset relate to one another?
+
+-   We'll tackle the case of comparing two variables today, and save our multivariate considerations for later.
+
+-   Even in the two-variable case, there are three subcases to consider:
+    -   Comparing two numerical variables
+    -   Comparing a numerical variable and a categorical variable
+    -   Comparing two categorical variables
+
+## {{< fa dice-two >}} Two Numerical Variables
+
+-   Let's consider (yet another) mock dataset; this one contains observations on five students' commute times (in minutes) and their commute distances (in miles).
+
+::: {.fragment}
+```{r}
+commute_times <- data.frame(
+  `Commute Dist.` = c(0.5, 1, 1.5, 2, 2.5),
+  `Commute Time` = c(3, 2, 4, 6, 8)
+)
+
+commute_times %>% pander()
+```
+:::
+
+-   Note that each row of this dataframe (which, since our data is tidy, is equivalent to each observation in the dataset) is a pair of numbers.
+    -   From our mathematical training, isn't it tempting to then plot these pairs of numbers on a Cartesian Coordinate system?
+    
+## {{< fa dice-two >}} Scatterplot
+
+-   Such a plot is called a [**scatterplot**]{.alert}.
+
+:::{.fragment style="text-align:center"}
+![](Images/scatter1.svg){width=80%}
+:::
+
+
+
+## {{< fa dice-two >}} Scatterplot
+### Trends
+
+-   When considering scatterplots, certain patterns may become apparent.
+    -   For example, notice that, on average, as commute distance increases, so does commute time.
+    
+-   Such patterns are called [**trends**]{.alert}.
+
+-   Most trends can be classified along two axes: positive/negative, and linear/nonlinear.
+
+-   A [**positive**]{.alert} trend is observed when as `x` increases so does `y`; a [**negative**]{.alert} trend is observed when as `x` increases `y` decreases.
+    
+-   A trend whose rate of change is constant is said to be [**linear**]{.alert}; a trend whose rate of change is nonconstant is said to be [**nonlinear**]{.alert}
+
+## {{< fa dice-two >}} Scatterplot
+### Trends
+
+![](Images/trends1.svg)
+
+
+## {{< fa dice-two >}} Scatterplot
+### Trends
+
+![](Images/no_trend.svg)
+
+-   Another way to describe the findings of a scatterplot is in terms of the [**association**]{.alert} between the variables being compared.
+    -   For instance, if the scatterplot of `y` vs. `x` displays a positive linear trend, we would say that `x` and `y` have a positive linear association, or that `x` and `y` are positively linearly associated.
+
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+Turn to your neighbor(s), and come up with an example of a pair of variables you believe would exhibit a positive association, a pair that you believe would exhibit a negative association, and a pair you believe would exhibit no association.
+
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 4L, font_size = "6rem")
+```
+
+
+## {{< fa dice-two >}} A Numerical and a Categorical Variable
+
+-   Suppose that a particular drug claims to reduce the effects of hypertension. To test these claims, suppose 8 people with hypertension were selected; four of them were assigned the drug (treatment group) and the other four were not (control group). The systolic blood pressures of all subjects were recorded:
+    
+:::{.fragment}
+```{r}
+bp_data <- data.frame(
+  ID = 1:8,
+  Group = c("Control", "Control", "Treatment", "Control", 
+            "Treatment", "Treatment", "Control", "Treatment") %>% factor(),
+  Syst_BP = c(145, 140, 120, 143, 115, 103, 146, 117)
+)
+
+bp_data %>% pander()
+```
+:::
+
+
+## {{< fa dice-two >}} A Numerical and a Categorical Variable
+
+-   Ignoring the `ID` variable, rows of our dataframe are once again pairs of objects.
+
+-   Now, however, these pairs are not pairs of numbers; hence, plotting them on a Cartesian Coordinate system doesn't make a whole lot of sense.
+    
+-   Nevertheless, if we so desire, we can generate something resembling a scatterplot, called a [**dotplot**]{.alert}:
+
+## {{< fa dice-two >}} A Numerical and a Categorical Variable
+### Dotplot
+
+```{r}
+bp_data %>%
+  ggplot(aes(x = Group, y = Syst_BP)) +
+  geom_point(size = 3) +
+  theme_bw(base_size = 16)
+```
+
+
+
+## {{< fa dice-two >}} A Numerical and a Categorical Variable
+### Side-by-Side Boxplot
+
+```{r}
+bp_data %>%
+  ggplot(aes(x = Group, y = Syst_BP)) +
+  geom_boxplot(staplewidth = 0.5,
+               fill = "cornflowerblue",
+               width = 0.5) +
+  theme_bw(base_size = 16)
+```
+
+
+## {{< fa dice-two >}} A Numerical and a Categorical Variable
+### Side-by-Side Boxplot
+
+-   This type of plot is called a [**side-by-side boxplot**]{.alert}.
+
+-   In general, a side-by-side boxplot has as many boxplots as categories, with the structure of each boxplot governed by the distribution of the numerical variable within each category.
+
+-   By the way, notice that we can still consider the notion of _trend_, even in a side-by-side boxplot!
+    -   For example, given the data we observed, does the drug appear affective in lowering systolic blood pressure? How can you tell?
+    
+    
+## {{< fa triangle-exclamation >}} A Word of Caution
+
+::: {.callout-caution}
+## **Caution**
+
+Association does not imply causation.
+:::
+
+-   In other words, just becase blood pressures within the treatment group appear, on average, lower than those within the control group, doesn't mean we can definitely concldue the drug _caused_ this difference.
+    -   For instance, what if, by chance, people in the treatment group happened to lead more active lifestyles - in this case, how do we know it wasn't the activeness of lifestyle that drove the drop in blood pressure and not the drug?
+    
+-   We'll talk about [**causation**]{.alert} toward the end of this course.
+
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+For each of the following scenarios, identify the type of graph you think is best.
+
+:::{.nonincremental}
+a)    Allison wants to know whether certain majors perform better on PSTAT 120A exams.
+b)    Tristan wants to know whether higher temperatures correspond to higher humidity levels.
+c)    Morgan has collected information on how long it takes a sample of 100 athletes to complete an obstacle course, and would like to visualize the distribution of completion times.
+:::
+
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 4L, font_size = "6rem")
+```
+
+## {{< fa dice-two >}} Two Categorical Variables
+
+-   Finally, we tackle the case of two categorical variables.
+
+-   Instead of simulated data... let's look at _y'all's_ data!
+
+::: {.fragment}
+```{r}
+#| echo: False
+
+survey_data <- read.csv("data/survey_resp.csv")
+survey_data %>% head(8) %>% pander()
+```
+:::
+
+## {{< fa dice-two >}} Two Categorical Variables
+### Animals and Numbers
+
+-   I asked you two questions: whether you prefer cats or dogs, and whether you prefer even or odd numbers.
+    -   Both of these variables (`Animal` and `Number`) are categorical.
+
+-   But what does it mean to compare these variables?
+
+-   We can't even really make a dotplot.
+    -   There are only four possible combinations: (`Cats`, `Even`), (`Cats`, `Odd`), (`Dogs`, `Even`), (`Dogs`, `Odd`).
+    -   So our dotplot would just have four points, with a bunch of points stacked on top of each other.
+
+
+## {{< fa dice-two >}} Two Categorical Variables
+### Animals and Numbers
+
+```{r}
+survey_data %>% ggplot(aes(x = Animal, y = Number)) + 
+  geom_point() +
+  theme_minimal(base_size = 18) + 
+  ggtitle("Dotplot of Survey Data")
+```
+
+## {{< fa dice-two >}} Two Categorical Variables
+### Animals and Numbers
+
+-   Sure, if some combinations of `Animal` and `Number` preferences were completely absent from the data, that would be something we could tell from the dotplot.
+
+-   That's not the case here, though; among all 25 points of data, all four combinations have been covered.
+
+-   But, remember: even though it _looks_ like there are only 4 plots on our dotplot, there are actually 25; many of them are stacked on top of each other.
+
+-   So, wouldn't it be nice to incorporate information on _how many points are stacked on top of each other_?
+
+## {{< fa dice-two >}} Two Categorical Variables
+### Animals and Numbers
+
+```{r}
+#| message: False
+
+survey_data %>% 
+  group_by(`Animal`, `Number`) %>%
+  summarise(count = n()) %>%
+  ggplot(aes(x = Animal, y = Number)) + 
+  geom_point(aes(size = count)) +
+  theme_minimal(base_size = 18) + 
+  ggtitle("Balloonplot of Survey Data")
+```
+
+## {{< fa dice-two >}} Two Categorical Variables
+### Animals and Numbers
+
+-   Among cat people, there seems to be a clear preference for even numbers over odd numbers
+    -   Among dog people, there seems to be a roughly even split between even- and odd-preferences
+    
+-   Among those who prefer even numbers, there is a relatively even split among cat and dog people
+    -   Among those who prefer odd numbers, there seems to be a prevalence of dog people
+
+
+## {{< fa dice-two >}} Two Categorical Variables
+### Some Comments
+
+-   Now, we "cheated" a bit.
+
+-   Specifically, we introduced information about the _number_ of observations corresponding to each (`Animal`, `Number`) combination.
+
+-   That is, in essence, we've included information on our plot _about a third variable_!
+
+-   This is one of the strange things about comparing two categorical variables: it is essentially _impossible_ to make such a comparison without resorting to including _cross-tabulated_ values.
+    -   This will segue us nicely into our discussion tomorrow on plots that incorporate information from three or more variables!
+
+
+## {{< fa compress >}} Extensions
+
+-   The plots we talked about today are just the basics! 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+**Violinplots**
+```{r}
+set.seed(100)
+x <- rchisq(100, 4)
+data.frame(x) %>% ggplot(aes(x = x)) +
+  geom_violin(aes(y = 0), bw = 2, fill = "#6f80ed") +
+  theme_minimal(base_size = 32) +
+  ggtitle("Example Violinplot")
+```
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+**Hexagonal Heatmaps**
+```{r} 
+d <- ggplot(diamonds, aes(carat, price))
+d + geom_hex(bins = 10) +
+  theme_minimal(base_size = 32)
+```
+:::
+:::
+
+
+::::
+
+## {{< fa compress >}} Extensions
+
+**Ridgeline Plot**:
+
+```{r}
+ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = Month, fill = stat(x))) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
+  scale_fill_viridis_c(name = "Temp. [F]", option = "C") +
+  labs(title = 'Temperatures in Lincoln NE in 2016') +
+  theme_minimal(base_size = 18)
+```
+
+## {{< fa forward-fast >}} Next Time
+
+-   In tomorrow's lecture, we'll introduce a framework for producing graphics using computer softwares.
+
+-   We'll also discuss some multivariate plots (i.e. plots that incorporate information from more than 2 variables).
+
+-   Finally, we'll talk a little bit about color theory, and some principles of good visualizations.
+
+-   Friendly Reminder: keep working on Homework 1!
+
+-   Another Friendly Reminder: don't forget to submit Lab 01 by 11:59pm tonight!
+
+-   Final Friendly Reminder: please submit all required DSP paperwork ASAP (no later than tomorrow to ensure they get processed in time for the first ICA next week)
