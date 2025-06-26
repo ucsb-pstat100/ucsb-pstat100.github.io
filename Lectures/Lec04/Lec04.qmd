@@ -1,0 +1,788 @@
+---
+title: "PSTAT 100: Lecture 04"
+subtitle: Statistical Visalizations, Part II
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/logo.svg"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/logo.svg"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+## {visibility="hidden"}
+::: hidden
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\usepackage[makeroom]{cancel}
+$$
+:::
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 10000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+```
+
+## {{< fa book >}} The Grammar of Graphics
+
+-   Most of us can probably make a graph pretty easily, with a pen, paper, and a ruler.
+
+-   But what are the actual components that go into a visualization?
+    -   This is an important question to answer in order to be able to make computers generate graphs and visualizations.
+
+-   Hopefully everyone had a chance to at least skim through the paper that was linked as reading for today, so you should all know that one answer to this question can be found in the so-called [**grammar of graphics**]{.alert}
+
+-   First proposed by Leland Wilkinson in 1999, and then modified by Hadley Wickham in the 2000s.
+
+## {{< fa book >}} The Grammar of Graphics
+
+-   First, we need _data_ (remember this from earlier this week?)
+
+-   Next, we need to specify [**axes**]{.alert} / a [**coordinate system**]{.alert}
+    -   What variable goes on the _x_-axis? What about the _y_-axis? Should we include a radial axis? Should we make a map?
+    
+-   Finally, we need [**geometric objects**]{.alert} (shortened to [**geoms**]{.alert})
+    -   Do we need bars or points? Lines or sectors? Etc.
+    
+-   [**Aesthetics**]{.alert} are additional attributes of the geoms, to which variables can be mapped (e.g. coordinates of points, heights of bars, etc.)
+    -   Be careful to distinguish the aesthetics from the aesthetic _mappings_ - the latter is what maps the data to the former.
+
+
+## {{< fa shapes >}} Common Aesthetics
+
+![](Images/aesthetics.svg)
+
+
+
+## {{< fa book >}} The Grammar of Graphics
+### Example
+
+![](Images/barplot_ggplot.svg)
+
+-   Note that (at least for this class), we are treating _x_- and _y_-coordinates as aesthetics.
+
+
+## {{< fa book >}} The Grammar of Graphics
+### `ggplot2`
+
+:::: {.columns}
+
+
+::: {.column width="85%"}
+-   The `ggplot2` package in `R` (part of the `tidyverse`) uses precisely this framework to generate graphics.
+    -   In fact, the `gg` stands for "grammar of graphics"
+:::
+
+::: {.column width="15%"}
+::: {.fragment style="padding-left:10px"}
+![](images/ggplot.png)
+:::
+:::
+
+
+::::
+
+
+::: {.fragment}
+
+```{r}
+#| eval: False
+#| echo: True
+
+ggplot(
+   data = NULL,           # <1>
+   mapping = aes(),       # <2>
+   ...) +
+ geom_<name>(             # <3>
+    mapping = aes(),
+    … ) +
+    …
+
+```
+1. The data
+2. The mapping of variables to aesthetics
+3. The geoms (as many as necessary, possibly with additional/different aesthetics and mappings)
+::: 
+
+
+
+## {{< fa book >}} The Grammar of Graphics
+### `ggplot2`
+
+```{r}
+#| echo: False
+
+commute_times <- data.frame(
+  `Commute Dist.` = c(0.5, 1, 1.5, 2, 2.5),
+  `Commute Time` = c(3, 2, 4, 6, 8),
+  check.names = F
+)
+```
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+commute_times %>%             # <1>
+  ggplot(
+    aes(x = `Commute Dist.`,  # <2>
+        y = `Commute Time`)   # <3>
+  ) +
+  geom_point()                # <4>
+```
+1. The dataframe is called `commute_times`
+2. We want Commute Distance on the horizontal axis
+3. We want Commute Time on the vertical axis
+4. We want points (i.e. we want to generate a scatterplot)
+
+
+
+## {{< fa book >}} The Grammar of Graphics
+### `ggplot2`
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+commute_times %>%             
+  ggplot(
+    aes(x = `Commute Dist.`, 
+        y = `Commute Time`)
+  ) +
+  geom_point(size = 4) +  # <1>
+  ggtitle("Scatterplot of Commute Time vs. Commute Distance") +  # <2>
+  theme_minimal(base_size = 18)   # <3>
+```
+1.  Increase the point size
+2.  Add a title
+3.  Add a theme to the plot
+
+
+
+## {{< fa globe >}} World Bank Dataset
+
+-   The _World Bank_ is a collection of organization aiming to study the effects of poverty worldwide.
+    -   You can read more about them at their [website](https://www.worldbank.org/ext/en/who-we-are).
+    
+-   To motivate our discussions on visualizations, we'll be taking a look at some data [collected by the World Bank](https://databank.worldbank.org/source/world-development-indicators#). The variables included are:
+
+::: {.fragment style="font-size:24px"}
+::: {.nonincremental}
+:::: {.columns}
+::: {.column width="33.3333%"}
+  -   Country Name
+  -   Country Code (abbreviation)
+  -   Continent
+  -   Year of observation
+  -   GDP (Gross Domestic Product)
+:::
+
+::: {.column width="33.3333%"}
+  -   Female Life Expectancy at Birth 
+  -   Male Life Expectancy at Birth
+  -   Total Life Expectancy at Birth
+  -   Female Adult Literacy Rate
+  -   Male Adult Literacy Rate
+  -   Total Adult Literacy Rate
+:::
+
+::: {.column width="33.3333%"}
+  -   Female Youth Literacy Rate
+  -   Male Youth Literacy Rate
+  -   Total Youth Literacy Rate
+  -   Population             
+:::
+:::
+:::
+:::
+
+## {{< fa globe >}} World Bank Dataset
+
+```{r}
+#| echo: True
+#| class-output: hscroll
+wb <- read.csv("data/wb_cont.csv", check.names = FALSE)
+wb %>% head(100)
+```
+
+## {{< fa globe >}} World Bank Dataset
+### A Couple of Review Questions
+
+-   Is the dataframe tidy?
+-   If not, what operation(s) are needed to tidy the dataframe?
+
+::: {.fragment}
+**Answers**:
+:::
+
+-   The dataframe is not tidy.
+-   We need to both `melt` (to get the years in their own column) and `pivot` (to split the series names into separate columns; you'll get practice with this in lab today)
+
+
+## {{< fa globe >}} World Bank Dataset
+### Tidying
+
+```{r}
+#| echo: True
+#| class-output: hscroll
+#| code-fold: True
+
+wb_tidy <- wb %>% melt(
+  id.vars = c("Country Name", "Country Code", "Continent", "Series Name"),
+  variable.name = "Year"
+) %>%
+  pivot_wider(
+    names_from = `Series Name`
+  )
+
+wb_tidy %>% head(100)
+```
+
+
+
+## {{< fa globe >}} World Bank Dataset
+### GDP vs. Life Expectancy, in 2014
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+wb_tidy %>% 
+  filter(
+    Year == "2014"
+  ) %>%
+  ggplot(aes(x = `Life expectancy at birth, total (years)`,
+             y = `GDP (current US$)`)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("GDP vs. Life Expectancy", subtitle = "In 2014")
+```
+
+## {{< fa globe >}} World Bank Dataset
+### GDP vs. Life Expectancy, in 2014
+
+-   It's difficult to read this plot; the points are all clustered together.
+    -   This is because `GDP` has a _huge_ spread!
+    
+-   As such, it will be beneficial to apply a [**transformation**]{.alert} to the vertical axis.
+
+-   Specifically, let's see what happens if we compare log(GDP) to Total Life Expectancy.
+
+
+## {{< fa globe >}} World Bank Dataset
+### GDP vs. Life Expectancy, in 2014
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+wb_tidy %>% 
+  filter(
+    Year == "2014"
+  ) %>%
+  ggplot(aes(x = `Life expectancy at birth, total (years)`,
+             y = `GDP (current US$)`)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("GDP vs. Life Expectancy", subtitle = "In 2014") +
+  scale_y_log10() + ylab("log(GDP), in USD")
+```
+
+## {{< fa globe >}} World Bank Dataset
+### Variations across continents?
+
+-   From this last plot, it appears as though, on average, higher GDPs correspond to higher life expectancies at birth.
+
+-   **Question:** how (if at all) does this relationship change across continents?
+    -   In other words, how can we incorporate information from the `Continent` variable into our plot?
+    
+-   **Answer:** using aesthetics!
+    -   For example, we could color code each point based on the continent it belongs to.
+    
+
+## {{< fa globe >}} World Bank Dataset
+### Variations across continents?
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+wb_tidy %>% 
+  filter(
+    Year == "2014"
+  ) %>%
+  ggplot(aes(x = `Life expectancy at birth, total (years)`,
+             y = `GDP (current US$)`)) +
+  geom_point(aes(colour = Continent), size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("GDP vs. Life Expectancy", subtitle = "In 2014") +
+  scale_y_log10() + ylab("log(GDP), in USD") +
+  labs(colour = "Continent")
+```
+
+
+
+## {{< fa globe >}} World Bank Dataset
+### Variations across continents?
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+wb_tidy %>% 
+  filter(
+    Year == "2014"
+  ) %>%
+  ggplot(aes(x = `Life expectancy at birth, total (years)`,
+             y = `GDP (current US$)`)) +
+  geom_point(aes(colour = Continent,
+                 shape = Continent), size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("GDP vs. Life Expectancy", subtitle = "In 2014") +
+  scale_y_log10() + ylab("log(GDP), in USD") +
+  labs(colour = "Continent")
+```
+
+
+## {{< fa globe >}} World Bank Dataset
+### Variations across continents?
+
+-   Okay, that's a start!
+    -   We now have information about continents displayed in our graph.
+    -   Note how neat that is - we have three variables displayed on a single graph!
+    
+-   But, this plot is difficult to read; the continents are all layered on top of each other.
+
+-   A useful trick to overcome this is called [**facetting**]{.alert}, where we essentially break our plot up into a collection of plots.
+
+-   In `ggplot2`, facetting is relatively easy, using either `facet_wrap()` or `facet_grid()`.
+
+
+
+## {{< fa globe >}} World Bank Dataset
+### Variations across continents?
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+wb_tidy %>% 
+  filter(
+    Year == "2014"
+  ) %>%
+  ggplot(aes(x = `Life expectancy at birth, total (years)`,
+             y = `GDP (current US$)`)) +
+  geom_point(size = 3) +
+  facet_wrap(~Continent) + 
+  theme_minimal(base_size = 18) +
+  ggtitle("GDP vs. Life Expectancy", subtitle = "In 2014") +
+  scale_y_log10() + ylab("log(GDP), in USD") +
+  labs(colour = "Continent")
+```
+
+## {{< fa globe >}} Some Takeaways
+
+-   Hopefully this mini case study illustrated a few things:
+    -   The beauty (again) of tidy data
+    -   How we can encode multivariate information into a plot using aesthetics
+    -   How transformations can mitigate the effects of skew
+    -   How faceting can be used to overcome "busy" plots
+
+-   As another example, we can explore the `mtcars` dataset (which is one of the datasets that comes pre-installed with `R`)
+    -   Collected in 1974 by the _Motor Trend_ US magazine, this dataset contains information on 32 different automobiles (including things like miles per gallon, number of cylinders, gross horsepower, etc.)
+    
+## {{< fa car-side >}} `mtcars`
+### Check Your Understanding
+
+:::: {.columns}
+::: {.column width="60%}
+```{r}
+#| echo: False
+#| fig-height: 10
+
+mtcars %>% ggplot(aes(x = wt, y = mpg)) +
+  geom_point(aes(size = cyl,
+                 col = hp)) +
+  ggtitle("Another Scatterplot") +
+  theme_minimal(base_size = 24) +
+  scale_size(range = c(3, 15)) +
+  guides(
+    col = guide_colourbar(theme = theme(
+      legend.key.width = unit(1.25, "lines"),
+      legend.key.height = unit(15, "lines")
+    ))
+  ) +
+  xlab("weight") + ylab("miles per gallon")
+```
+:::
+
+::: {.column width="40%"}
+-   How many variables are being compared?
+-   What aesthetic is each mapped to?
+
+:::
+::::
+
+# Theory of Visualization {background-color="black" background-image="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGsxOWltdm93a2Voc3RoenA1Z3JycTh5N3c5OWg2ODF0OWJ5ZDg1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vcB9QRaLUHYw8/giphy.gif" background-size="100rem"}
+
+
+## {{< fa lightbulb >}} Principles of Good Visualization
+### Setting Goals
+
+-   When setting out to make a plot, it's important to be intentional about our goals.
+
+-   There are two main types of plots: exploratory, and presentation-quality.
+
+::: {.fragment}
+::: {.panel-tabset}
+
+## Exploratory
+
+:::{.nonincremental}
+-   Summarize trends/patterns before performing more sophisticated statistical analyses
+-   Details not too important; quantity over quality
+:::
+
+## Presentation-Quality
+
+::: {.nonincremental}
+-   Highly curated for maximal impact and understandability
+-   Curate for communication; quality over quantity
+:::
+
+:::
+:::
+
+
+## {{< fa lightbulb >}} Principles of Good Visualizations
+### Tips and Tricks
+
+Here are some tips I've found useful when crafting visualizations
+
+<ol>
+
+::: {.fragment}
+<li>**Keep things simple.** You can (and in many cases should) try to communicate as much information as is effective. But, don’t take it to an extreme.</li>
+:::
+
+::: {.fragment}
+<ul>
+<li>**3D-Styling is almost NEVER effective**. As neat and "cool" as 3D barplots might be, the 3D-styling elements often obfuscate the plot's true meaning</li>
+</ul>
+:::
+
+:::{.fragment}
+<li>**Beware of Scales and Areas**. We;ll talk about this one more in a bit - spoiler alert, pie charts are a notoriously bad graphic!</li>
+:::
+</ol>
+
+
+## {{< fa lightbulb >}} Principles of Good Visualizations
+### Tips and Tricks
+
+
+<ol start="3">
+
+<li>**Label Axes, and Title your Plots.** This one should (hopefully) be self-explanatory, but make sure you are using descriptive (but not overly complex) labels for your axes, and make sure your plots are titled.</li>
+
+<li>**Interpret your plots.** All too often I see "floating" plots - that is, figures that appear mysteriously and suddenly with no explanation whatsoever.  No matter how self-explanatory you think your plot is, make sure you actively describe it and its conclusions somewhere in your report. </li>
+
+</ol>
+
+
+# More on Color {background-color="white" background-image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDN2eHQxOWdsdGJpZTE0N2dtb3dpZWU5emd3bzQ1dmw4N2x4bmlsNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/G0vaYbZDJV0cM/giphy.gif" background-size="70rem"}
+
+## {{< fa paint-roller >}} Color Scales
+### Qualitative
+
+-   There are three main types of color scales: [**qualitative**]{.alert}, [**sequential**]{.alert}, and [**diverging**]{.alert}.
+
+-   Colors in a qualitative scale are meant to look visually different from one another, with no order, while still being "equal".
+    -   Good when trying to color according to a categorial (i.e. qualitative) variable
+    
+    
+## {{< fa paint-roller >}} Color Scales
+### Qualitative Color Scale
+
+![Source: _Fundamentals of Data Visualization, by Claus Wilke_](Images/scale_qual.png)
+
+
+
+## {{< fa paint-roller >}} Color Scales
+### Sequential
+
+-   A sequential color scale ranges from light to dark (or dark to light).
+
+-   Colors in a sequential scale are designed to convey an _ordering_, or _hierarchy_ of values.
+    -   Use when there is a natural direction, but not necessarily a meaningful "middle point"
+    -   Can be based on a single hue, or across multiple hues
+    -   More akin to what we colloquially call "gradients"
+
+
+## {{< fa paint-roller >}} Color Scales
+### Sequential Color Scale
+
+![Source: _Fundamentals of Data Visualization, by Claus Wilke_](Images/scale_seq.png)
+
+
+## {{< fa paint-roller >}} Color Scales
+### Diverging Color Scale
+
+-   Colors in a diverging scale are designed to convey an _ordering_, or _hierarchy_ of values 
+_in two directions_ (positive or negative)
+    -   Accomplished by effectively "stitching" together two sequential scales at a common, neutral midpoint.
+    -   By construction, the midpoint is naturally highlighted so only use a diverging scale if there is a natural middle point (or if you want to highlight the two extremes).
+
+
+## {{< fa paint-roller >}} Color Scales
+### Diverging Color Scale
+
+![Source: _Fundamentals of Data Visualization, by Claus Wilke_](Images/scale_div.png)
+
+
+## {{< fa paint-roller >}} Color Scales
+
+![Source: _Fundamentals of Data Visualization, by Claus Wilke_](Images/texas_rainbow.png)
+
+## {{< fa paint-roller >}} Color Scales
+
+![Source: _Fundamentals of Data Visualization, by Claus Wilke_](Images/texas_better.png)
+
+
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+Suppose we want to use color to encode information about the following variables. Identify the scale/s that is/are most appropriate.
+
+:::{.nonincremental}
+a)    Distinguishing between different Majors
+
+b)    Distinguishing between different unemployment rates (i.e. on a map)
+
+c)    Distinguishing between different countries' GDPs, and highlighting a change that occurs as GDP increases.
+:::
+
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 3L, font_size = "6rem")
+```
+
+## {{< fa eye >}} CVD and Accessibility {style="font-size:28px"}
+
+-   Especially when it comes to presentation-oriented graphics, accessibility is key.
+
+-   One thing to keep in mind that many readers may suffer from Color-Vision Deficiency (CVD; aka colorblindness), and may not be able to easily perceive differences in colors. 
+    -   [**Deuteranomaly**]{.alert}: difficulty perceiving green
+    -   [**Protanomaly**]{.alert}: difficulty perceiving red
+    -   [**Tritanomaly**]{.alert}: difficulty perceiving blue
+    
+:::: {.columns}
+::: {.column width="40%"}
+::: {.fragment}
+![](Images/Photoreceptors.webp){width="75%"}
+:::
+:::
+
+::: {.column width="60%"}
+::: {.fragment}
+Trichromatic persons (i.e. people with no colorblindness) possess all three retinal cone cell types (and have cone cell types that function "as expected", and are therefore able to process and perceive red, green, and blue light
+
+::: {style = "font-size:21px"}
+_Image Source:_  https://www.aao.org/eye-health/anatomy/cones
+:::
+
+:::
+:::
+
+::::
+
+
+## {{< fa paint-roller >}} CVD and Accessibility
+
+![](Images/cvd1.svg)
+
+
+## {{< fa paint-roller >}} CVD and Accessibility
+
+![](Images/cvd2.svg)
+
+## {{< fa paint-roller >}} CVD and Accessibility
+### The Okabe-Ito Palette
+
+![](Images/okabe_ito.svg)
+
+::: {.fragment}
+```{r}
+#| echo: True
+
+palette.colors(palette = "Okabe-Ito")
+```
+:::
+
+-   Another resource: [https://www.color-blindness.com/coblis-color-blindness-simulator/](https://www.color-blindness.com/coblis-color-blindness-simulator/) 
+
+## {{< fa fill-drip >}} Interlude
+### Color Specification Schemes
+
+-   A quick interlude- some of you may be wondering what all these codes and hashtags mean.
+
+-   There are a few different [**color specification schemes**]{.alert} (i.e. ways to express colors in a more rigorous manner).
+
+-   [**RGB**]{.alert}: "Red Green Blue". Represents each color as a triple of values (between 0 and 255), specifying the amount of Red, Green, and Blue to be included in the hue
+    -   E.g. `(255, 0, 0)`: pure red
+    -   E.g. `(127, 0, 127)`: what color would this make?
+    
+
+## {{< fa fill-drip >}} Interlude
+### Color Specification Schemes
+
+-   Nice! But, not always predictable.
+    -   RGB specifications can be as few as 3 digits long, or as many as 9 digits long.
+    
+-   The [**hexadecimal**]{.alert} (more colloquially referred to as [**hex**]{.alert}) color specification scheme also specifies the amount of red, green, and blue in a hue, but does so in six characters.
+
+:::: {.columns}
+::: {.column width="30%"}
+::: {.fragment style="text-align:center"}
+![](Images/hex.svg)
+:::
+:::
+
+::: {.column width="70%"}
+-   Each digit is written using hexadecimal notation
+    -   0 – 9 correspond to our "familiar" values 0 through 9
+    -   A – F correspond to "familiar" (decimal) values 10 through 15.
+
+:::
+::::
+
+
+## {{< fa fill-drip >}} Interlude
+### Hex Color Scheme
+
+```{r}
+p1 <- data.frame(x = 1:3, y = 1:3) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(col = "#FF0000", size = 5) +
+  theme_bw(base_size = 18) +
+  annotate(
+    "text", label = "#FF0000", x = 1.25, y = 2.75, size = 6
+  )
+
+p2 <- data.frame(x = 1:3, y = 1:3) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(col = "#0000FF", size = 5) +
+  theme_bw(base_size = 18) +
+  annotate(
+    "text", label = "#0000FF", x = 1.25, y = 2.75, size = 6
+  )
+
+p3 <- data.frame(x = 1:3, y = 1:3) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(col = "#00FF00", size = 5) +
+  theme_bw(base_size = 18) +
+  annotate(
+    "text", label = "#00FF00", x = 1.25, y = 2.75,, size = 6
+  )
+
+p4 <- data.frame(x = 1:3, y = 1:3) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(col = "#000000", size = 5) +
+  theme_bw(base_size = 18) +
+  annotate(
+    "text", label = "#000000", x = 1.25, y = 2.75, size = 6
+  )
+
+grid.arrange(p1, p2, p3, p4, ncol = 2)
+```
+
+
+## {{< fa fill-drip >}} Interlude
+### Hex Color Scheme
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+set.seed(100)    ## for reproducibility
+x <- rnorm(1000)
+data.frame(x) %>% ggplot(aes(x = x)) +
+  geom_histogram(bins = 13, col = "white", fill = "#dbbae6") +
+  ggtitle("Sample Histogram") +
+  theme_minimal(base_size = 18)
+```
+
+
+## {{< fa forward-fast >}} Next Time
+### And Coming Up
+
+-   On Monday, we'll start exploring other (numerical) ways of summarizing data.
+
+-   In lab today, we'll cover a brief introduction to databases, and ways to combine two or more dataframes together.
+
+-   Please don't forget to finish Homework 1, which is due 11:59pm this Sunday!!!
+    -   You have all the information needed to complete all the problems now.
+    -   For the final problem, keep in mind the principles of visualization we talked about today!
