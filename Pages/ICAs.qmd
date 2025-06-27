@@ -4,4 +4,28 @@ page-layout: full
 fontsize: 14pt
 ---
 
-**_More Information will be posted here as we get closer to the date of the first ICA._**
+## ICA 01
+
+::: {.callout-important}
+## **Reminder**
+
+ICA01 is taking place on **Thursday July 3, 2025** from **12:30 - 1:35 pm** in **Harold Frank Hall 1104** (note that this is **NOT** our usual lecture classroom).
+:::
+
+-   **Information Document (PLEASE READ)**: <a href="https://docs.google.com/document/d/18ONudNjYhVJy3x4qAyetUhk_ukvjMSoTFjGqMtPqAXE" target="_blank"><button type="button" class="btn btn-primary">Link</button></a>
+    -   **Note:** The "`R` Cheatsheets" that will be provided are exactly the files that appear on the Course Server, under the `Cheatsheets/` subdirectory. <br /> <br />
+
+-   **Cover Page**: <a href="https://docs.google.com/document/d/17Qtu_OtccK_tnIXJEhOjtTk1FBHXye9zB847WNHNybc" target="_blank"><button type="button" class="btn btn-primary">Link</button></a>
+    -   This is the cover page that will be attached to the ICA on Thursday - I encourage you to read through it now, so you don't have to spend time reading through it during the actual ICA! <br /> <br />
+  
+-   **Practice Problems**: <a href="https://docs.google.com/document/d/1WCU1uBHv50QFUGat84q7bN170LsJDP_x4vMTodlhDDw" target="_blank"><button type="button" class="btn btn-primary">Link</button></a>
+    -   **Note:** Solutions will not be posted until **Tuesday July 1, 2025**. This is so that you spend more time working through the problems yourself; don't rely on the solutions to do the studying for you! <br /> <br />
+    
+    
+-   **Spring 2024 ICA01**: <a href="https://docs.google.com/document/d/14ojmkKA4-nSMRj7kQS44bCQmoQYztYJG93QIfShRNIA" target="_blank"><button type="button" class="btn btn-primary">Link</button></a>
+    -   **Note:** Solutions will not be posted until **Tuesday July 1, 2025**. This is so that you spend more time working through the problems yourself; don't rely on the solutions to do the studying for you!
+    -   This is the ICA01 I administered in Spring 2024, when I last taught this course.
+    -   **Important:** Certain problems are out-of-scope, because the order of topics has been changed slightly since Spring 2024. Additionally, the Spring 2024 ICA01 was entirely multiple choice whereas the Summer 2025 ICA will consist of a mix of multiple choice _and_ free response questions (please see the **Information Document** linked above). <br /> <br />
+  
+
+    

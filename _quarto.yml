@@ -28,9 +28,11 @@ website:
             text: "{{< fa file >}} Intro to Quarto"
       - href: "Pages/ICAs.qmd"
         text: "{{< fa pencil >}} ICA Info"
-      - href: "Pages/projects.qmd"
-        text: "{{< fa folder-open >}} Projects"
-
+      - text: "{{< fa folder-open >}} Projects"
+        menu:
+          - href: "Pages/Projects/MQP.qmd"
+            text: "{{< fa map-location-dot >}} Mid-Quarter Project"
+            
 format:
   html:
     theme: [minty, styles.scss]
