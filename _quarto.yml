@@ -26,6 +26,8 @@ website:
             text: "{{< fa table >}} Dataframe Basics"
           - href: "Pages/Lab00/quarto.qmd"
             text: "{{< fa file >}} Intro to Quarto"
+      - href: "Pages/solutions.qmd"
+        text: "{{< fa comments >}} Solutions"
       - href: "Pages/ICAs.qmd"
         text: "{{< fa pencil >}} ICA Info"
       - text: "{{< fa folder-open >}} Projects"

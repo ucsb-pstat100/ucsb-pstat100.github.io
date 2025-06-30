@@ -1,0 +1,39 @@
+---
+title: "PSTAT 100: Data Science Concepts and Analysis"
+subtitle: "Selected Solutions"
+author:
+  - name: "Ethan Marzban"
+    affiliations:
+      - name: "Summer Session A, 2025"
+author-title: "Instructor"
+affiliation-title: "Quarter"
+format: html
+page-layout: full
+fontsize: 14pt
+---
+
+
+::: {.callout-important}
+## **Important** 
+
+Below are solutions to selected assignment. Some things to keep in mind:
+
+-   There may be typos, so please proceed with caution (feel free to ask during Office Hours!)
+-   There are often many different ways to approach a problem, each of them “correct”! As such, if you work through a problem in a different way than the solutions that’s fine - your way is not necessarily wrong.
+
+:::
+
+
+## Labs
+
+:::: {.columns}
+
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab01_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab01</button></a>
+:::
+
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab02_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab02</button></a>
+:::
+
+::::
