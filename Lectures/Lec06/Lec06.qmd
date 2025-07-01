@@ -1,0 +1,688 @@
+---
+title: "PSTAT 100: Lecture 06"
+subtitle: "Principal Components Analysis"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/logo.svg"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/logo.svg"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\DeclareMathOperator*{\argmax}{\mathrm{arg} \ \max}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(plotly)
+library(MASS)
+```
+
+## {{< fa backward-fast >}} Recap
+### Dimension Reduction
+
+-   Data may be _high dimensional_ in the sense of containing many variables.
+
+-   It is possible, though, to _reduce_ the dimensionality of a dataset while not losing too much information.
+
+-   More formally, we considered the idea of projecting our [**data matrix**]{.alert} into a smaller-dimensional subspace so as to preserve as much _variance_ as possible.
+    -   This approach is the background of [**Principal Components Analysis**]{.alert}
+    
+-   Given a mean-centered data matrix $\mat{X}$, we saw that the unit vector $\vect{v}$ such that the projected data $\mat{X} \vect{v}$ has maximal variance is the eigenvector of $(\tmat{X} \mat{X})$ with the largest associated eigenvalue.
+
+
+## {{< fa minimize >}} PCA
+### Dimension Reduction
+
+-   For example, suppose we have a 6-dimensional data matrix $\mat{X}$ (i.e. a matrix with 6 columns), assumed to be mean-centered.
+
+-   A two-dimensional representation of $\mat{X}$ would be found by:
+    -   Finding the eigenvectors $\vect{v}_1$ and $\vect{v}_2$ of $(\tmat{X} \mat{X})$ that have the two largest eigenvalues
+    -   Projecting $\mat{X}$ into the subspace spanned by $\vect{v}_1$ and $\vect{v}_2$; i.e. by performing the multiplication 
+    $$ \mat{X} \begin{bmatrix} | & | \\ \vect{v}_1 & \vect{v}_2 \\ | & | \\ \end{bmatrix} $$
+    
+    
+## {{< fa minimize >}} PCA
+### Dimension Reduction
+
+![](Images/PCA_1.svg)
+
+## {{< fa minimize >}} PCA
+### Terminology
+
+-   Admittedly, the terminology surrounding PCA is a bit varied. 
+
+-   Here is the terminology we'll adopt for this class:
+    -   The [**principal components**]{.alert} (PCs) are the _directions_ along which the projected data has maximal variance.
+    -   The elements of the PCs will be called [**principal component loadings**]{.alert} (or just 'loadings').
+    -   The data projected along the PCs will be called [**scores**]{.alert}.
+        -   Thus, the scores are linear combinations of the original columns of the data matrix, with coefficients determined by the PC loadings.
+
+
+-   Again, some people use the term "Principal Component" to mean other things - we're adopting the above terminology for this class.
+
+## {{< fa minimize >}} PCA
+### Terminology
+
+![](Images/PCA_2.svg)
+
+-   Note that the scores are _not_ just variables from the original data matrix; they are essentially _linear combinations_ of several variables from the dataset.
+    -   They can be thought of as the linear combinations of variables _that provide the most information_ 
+
+## {{< fa triangle-exclamation >}} Warning
+### Mean-Centering Data
+
+-   Over the next few slides, we're going to establish some linear algebra results that connect various properties of matrices.
+
+-   A question we will often have to contend with is: is our data mean-centered or not?
+
+-   I'll do my best to be explicit about whether or not we are assuming mean-centered data or not.
+
+-   As a general rule-of-thumb: most of the linear algebra results we will derive hold for _any_ arbitrary data matrix, mean-centered or not.
+    -   However, the minute we start interpreting these linear algebra quantities (e.g. eigenvectors) in terms of PCA, we'll need to assume mean-centered data.
+
+
+
+## {{< fa ghost >}} Matrix Spectra
+
+-   Let's start by assuming an arbitrary (not necessarily mean-centered) data matrix $\mat{X}$. How can we go about finding the eigenvalues and eigenvectors of $(\tmat{X} \mat{X})$?
+
+-   Recall (from Math 4A and Homework 1) that there are two main ways to decompose a matrix: [**eigendecomposition**]{.alert} (EVD) and [**singular value decomposition**]{.alert} (SVD).
+
+-   Also recall that the SVD can be thought of as a "generalization" of the EVD.
+    -   Specifically, only diagonalizable (and, consequently, square) matrices admit an EVD, whereas _any_ matrix admits an SVD. 
+
+
+## {{< fa ghost >}} Matrix Spectra
+### SVD
+
+![](Images/SVD_1.svg)
+
+
+
+
+## {{< fa ghost >}} Matrix Spectra
+### SVD
+
+```{r}
+#| echo: True
+#| eval: False
+
+svd( x, nu = min(n, p), nv = min(n, p) )
+```
+
+::: {.panel-tabset}
+
+## Example Code
+```{r}
+#| echo: True
+svd(matrix(c(1, 2, 3, 0, 1, 1, 2, 1, 2), nrow = 3, byrow = T))
+```
+
+## Example Math
+
+::: {style = "font-size:20px"}
+$$
+\begin{align*}
+\begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 1 \\ 2 & 1 & 2 \\ \end{pmatrix} & = \left(\begin{array}{rrr} -0.766 & -0.419 & -0.487 \\ -0.262 & -0.489  & 0.832 \\ -0.587 & 0.765 & 0.265  \\ \end{array} \right) \begin{pmatrix} 4.835 & 0 & 0 \\ 0 & 1.264 & 0 \\ 0 & 0 & 0.164 \end{pmatrix} \left( \begin{array}{rrr} -0.401 & -0.492 & -0.772 \\ 0.878 & -0.446 & -0.172 \\ 0.259 & 0.748 & -0.611 \end{array} \right) \\[3mm]
+\mat{X} \hspace{12mm} & = \hspace{35mm} \mat{U} \hspace{68mm}  \mat{\Sigma} \hspace{69mm} \tmat{V} \\
+\end{align*}
+$$
+:::
+
+:::
+
+
+## {{< fa ghost >}} Matrix Spectra
+### SVD vs. EVD
+
+-   Note:
+\begin{align*}
+  \tmat{X} \mat{X} & = (\mat{U} \mat{\Sigma} \tmat{V})^{\mathsf{T}} (\mat{U} \mat{\Sigma} \tmat{V}) \\
+    & = \mat{V} \tmat{\Sigma} \tmat{U} \mat{U} \mat{\Sigma} \tmat{V}  \\
+    & = \mat{V} \tmat{\Sigma} \mat{\Sigma} \tmat{V}   \\
+    & = \mat{V} \mat{\Sigma}^2 \tmat{V} \\
+\implies (\tmat{X}\mat{X}) \mat{V} & = \mat{V} \mat{\Sigma}^2 \tmat{V} \mat{V} \\
+    & = \mat{V} \mat{\Sigma}^2
+\end{align*}
+
+
+## {{< fa ghost >}} Matrix Spectra
+### EVD vs. SVD
+
+::: {.callout-important}
+## **Moral**
+
+If the SVD of $\mat{X}$ is given by $\mat{X} = \mat{U} \mat{\Sigma} \tmat{V}$, then $\mat{\Sigma}^2$ is the matrix of eigenvalues of $(\tmat{X} \mat{X})$ and $\mat{V}$ is the matrix of eigenvectors of $(\tmat{X} \mat{X})$.
+:::
+
+
+::: {.panel-tabset}
+
+## `X`
+```{r}
+#| echo: True
+#| eval: True
+
+X <- matrix(c(1, 2, 3,
+              0, 1, 1,
+              2, 1, 2),
+            nrow = 3,
+            byrow = T)
+```
+
+## SVD
+```{r}
+#| echo: True
+#| eval: True
+
+svd(X)$v
+```
+
+## EVD
+```{r}
+#| echo: True
+#| eval: True
+
+eigen(t(X) %*% X)$vectors
+```
+
+
+## `prcomp()`
+```{r}
+#| echo: True
+#| eval: True
+
+prcomp(X, center = F)
+```
+
+:::
+
+
+## {{< fa minimize >}} PCA
+
+-   The eigenvectors of the matrix $(\tmat{X} \mat{X})$ represent the directions of maximal variance (i.e. if we project $\mat{X}$ along these directions, we get maximum variance), **provided $\mat{X}$ is mean-centered**.
+    -   So, the vectors on the previous slides aren't really interpretable as the PCs. 
+    -   But, if our matrix _were_ mean-centered, we see that the principal components can be computed through:
+        -   the direct eigendecomposition of $\tmat{X} \mat{X}$,
+        -   the singular value decomposition of $\mat{X}$, or 
+        -   the `prcomp()` function in `R`.
+
+-   Again, even if $\mat{X}$ is _not_ mean-centered, the above three methods will produce the same result. The only difference is that, under non-centered data, the result is _not_ necessarily interpretable as the matrix of PCs.
+
+
+
+## {{< fa minimize >}} PCA
+
+::: {.panel-tabset}
+
+## `X`
+```{r}
+#| echo: True
+#| eval: True
+
+X <- matrix(c(1, 2, 3,
+              0, 1, 1,
+              2, 1, 2),
+            nrow = 3,
+            byrow = T) %>% scale()
+```
+
+## SVD
+```{r}
+#| echo: True
+#| eval: True
+
+svd(X)$v
+```
+
+## EVD
+```{r}
+#| echo: True
+#| eval: True
+
+eigen(t(X) %*% X)$vectors
+```
+
+
+## `prcomp()`
+```{r}
+#| echo: True
+#| eval: True
+
+prcomp(X)
+```
+
+:::
+
+
+
+
+## {{< fa minimize >}} PCA: A Quick Recap
+
+-   Multiplying the original (_n_ × _p_) data matrix $\mat{X}$ by a matrix constructed from the first _d_ (for _d_ ≤ _n_) principal components (each of dimension _p_) will result in an (_n_ × _d_) matrix, the columns of which we call the **scores**.
+    -   We obtain the scores by either: 
+        -   computing $\mat{X} \mat{V}$ and extracting the first few columns, or
+        -   computing $\mat{U} \mat{\Sigma}$ and extracting the first few columns.
+
+-   Mathematical justification:
+$$ \mat{X} = \mat{U} \mat{\Sigma} \tmat{V} \ \implies \ \mat{X} \mat{V} = \mat{U} \mat{\Sigma} \tmat{V}  \mat{V} = \mat{U} \mat{\Sigma} $$
+
+
+## {{< fa minimize >}} PCA
+### Scores
+
+::: {.panel-tabset}
+
+## `X`
+```{r}
+#| echo: True
+#| eval: True
+
+X <- matrix(c(1, 2, 3,
+              0, 1, 1,
+              2, 1, 2),
+            nrow = 3,
+            byrow = T) %>% scale()
+```
+
+## Using `prcomp()`
+```{r}
+#| echo: True
+#| eval: True
+
+X %*% prcomp(X)[[2]]
+```
+
+## Using U∑
+```{r}
+#| echo: True
+#| eval: True
+
+svd(X)$u %*% diag(svd(X)$d)
+```
+
+## Using XV
+```{r}
+#| echo: True
+#| eval: True
+
+X %*% svd(X)$v
+```
+
+:::
+
+\
+
+
+::: {.fragment}
+```{r}
+#| echo: True
+qr(X)$rank
+```
+:::
+
+
+## {{< fa ghost >}} Matrix Spectra
+### Variance
+
+-   Yesterday we argued that the variance of the projected data along each PC (eigenvector) is proportional to the associated eigenvalue.
+    -   In other words, the variance of the scores can be recovered using either the EVD, SVD, or result of `prcomp()`.
+    
+::: {.fragment}
+::: {.panel-tabset}
+
+## Using SVD
+```{r}
+#| echo: True
+svd(X)$d^2 / (ncol(X) - 1)
+```
+
+## Using EVD
+```{r}
+#| echo: True
+EVD_XTX <- eigen(t(X) %*% X)
+EVD_XTX$values / (ncol(X) - 1)
+```
+
+## Using `prcomp()`
+```{r}
+#| echo: True
+prcomp(X)$sdev^2
+```
+
+
+## Directly
+```{r}
+#| echo: True
+(X %*% prcomp(X)$rotation) %>% apply(MARGIN = 2, FUN = var)
+```
+
+
+
+:::
+:::
+
+
+
+## {{< fa minimize >}} PCA
+### Inverting PCA
+
+![](Images/PCA_1.svg){width="75%"}
+
+-   So, this tells us how to go from, say, a $(6 \times 4)$ matrix to a $(6 \times 2)$ matrix. How do we go back to a $(6 \times 4)$ matrix?
+
+## {{< fa minimize >}} PCA
+### Inverting PCA
+
+-   Note:
+
+::: {.fragment}
+\begin{align*}
+  \mat{X} \mat{V} & := \mat{Z}  \\
+  \mat{X} \mat{V} \tmat{V}  & = \mat{Z} \tmat{V}  \\
+  \mat{X} & = \mat{Z} \tmat{V}
+\end{align*}
+:::
+
+-   Motivated by this, let $\mat{Z}$ denote a low-rank projection of $\mat{X}$; i.e. $\mat{Z} = \mat{X} \mat{V}_d$ where $\mat{V}_d$ is the (_p_ × _d_) matrix whose columns are the first _d_ prinipcal components. A low-rank _reconstruction_ of $\mat{X}$ is then 
+$$ \mat{X}_d := \mat{Z} \tmat{V}_d = \mat{X} \mat{V}_d \tmat{V}_d$$ 
+
+
+
+## {{< fa minimize >}} PCA
+### Inverting PCA
+
+-   Perhaps I should explain a bit further what I mean by a "reconstruction" of $\mat{X}$.
+
+-   By properties of matrix multiplication, $\mat{X}_d$ will be of size (_n_ × _p_), i.e. the same size as the original $\mat{X}$.
+
+-   However, since $\mat{V}_d$ is of rank _d_, $\mat{X}_d$ will be of rank _d_. 
+
+-   So, this is what I mean by a "low-rank reconstruction" of $\mat{X}$: a matrix whose dimensions are the same as $\mat{X}$, but whose rank is smaller than that of $\mat{X}$.
+
+-   We can define the [**reconstruction error**]{.alert} to be $\mathrm{R}(\mat{X}_d, \mat{X}) := \| \mat{X}_d - \mat{X} \|^2$, where $\| \cdot \|$ denotes an appropriately-defined [**matrix norm**]{.alert}.
+
+## {{< fa minimize >}} Example
+
+-   Whew, that's a lot of math!
+
+-   Let's work through an example together. We'll start off with 
+$$ \mat{X} = \begin{pmatrix} 1 & 2 & 3 & 1 \\ 2 & 0 & 1 & 2 \\ 3 & 0 & 0 & 1 \\ 2 & 1 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 2 & 1 & 1 & 1 \\ \end{pmatrix} $$
+
+## {{< fa minimize >}} Example
+
+::: {.nonincremental}
+-   Over the next few slides, I'll project $\mat{X}$ into a smaller-dimensional subspace using the first 2, 3, and 4 principal components, then invert the projection and display the "recovered" $\mat{X}$ (which will be the mean-centered version of $\mat{X}$):
+:::
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+
+X <- matrix(c(1, 2, 3, 1,
+         2, 0, 1, 2,
+         3, 0, 0, 1,
+         2, 1, 1, 0,
+         0, 1, 0, 0,
+         2, 1, 1, 1),
+       nrow = 6,
+       byrow = T)
+
+X_c <- scale(X, scale = F)
+
+X_c 
+```
+
+
+## {{< fa minimize >}} Example
+### 2-Dimensional Subspace
+
+::: {.panel-tabset}
+
+## Project 
+
+Multiply $\mat{X}$ by the matrix containing the first two principal components:
+```{r}
+#| echo: True
+
+(X2 <- prcomp(X)$x[,1:2])
+```
+
+## Recover 
+
+Backwards-project using the first two principal components:
+```{r}
+#| echo: True
+
+X2 %*% t(prcomp(X)$rotation[,1:2])
+```
+
+## Compare 
+```{r}
+#| echo: True
+
+X_c
+```
+
+:::
+
+
+
+## {{< fa minimize >}} Example
+### 3-Dimensional Subspace
+
+::: {.panel-tabset}
+
+## Project 
+
+Multiply $\mat{X}$ by the matrix containing the first three principal components:
+```{r}
+#| echo: True
+
+(X3 <- prcomp(X)$x[,1:3])
+```
+
+## Recover 
+
+Backwards-project using the first two principal components:
+```{r}
+#| echo: True
+
+X3 %*% t(prcomp(X)$rotation[,1:3])
+```
+
+## Compare 
+```{r}
+#| echo: True
+
+X_c
+```
+
+:::
+
+
+
+## {{< fa minimize >}} Example
+### 4-Dimensional Subspace
+
+::: {.panel-tabset}
+
+## Project 
+
+Multiply $\mat{X}$ by the matrix containing the four three principal components:
+```{r}
+#| echo: True
+
+(X4 <- prcomp(X)$x[,1:4])
+```
+
+## Recover 
+
+Backwards-project using the first two principal components:
+```{r}
+#| echo: True
+
+X4 %*% t(prcomp(X)$rotation[,1:4])
+```
+
+## Compare 
+```{r}
+#| echo: True
+
+X_c
+```
+
+:::
+
+
+
+## {{< fa mountain-sun >}} Screeplots
+### How Much Variance?
+
+-   So, as the last demo illustrated: as we increase the dimension onto which we are projecting, the reconstructed matrix will become more and more similar to the original matrix.
+
+-   As always, there's a tradeoff.
+    -   On the one hand, we want our reconstructed matrix to be as similar to the original as possible.
+    -   On the other, however, we want _some_ dimension reduction. 
+    -   So, how much dimension reduction should we perform?
+
+-   To answer this qeustion, we'll go back to a fact from yesterday's lecture: the variance of the data projected along the _k_^th^ principal component is proportional to $\lambda_k$, the associated eigenvalue.
+
+
+## {{< fa mountain-sun >}} Screeplots
+### How Much Variance?
+
+-   Therefore, the _proportion_ of the total variance captured by the _k_^th^ principal component (i.e. the proportion of the total variance present in the variance of the data projected along the _k_^th^ PC) is given by
+$$ s_k := \frac{\lambda_k}{\sum_{k} \lambda_k} = \frac{\sigma_k^2}{\sum_{k} \sigma_k^2} $$
+where $\sigma_k$ is the _k_^th^ singular value of $\mat{X}$. 
+
+-   A plot of _s_~_k_~ vs _k_ is called a [**screeplot**]{.alert}, named after a [particular rock formation](https://en.wikipedia.org/wiki/Scree).
+
+## {{< fa mountain-sun >}} Screeplots
+### How Much Variance?
+
+-   In practice, to figure out the ideal number of PCs to use, look for an "elbow" in the screeplot. 
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {.fragment}
+```{r}
+#| echo: True
+#| code-fold: True
+
+set.seed(100)  ## for reproducibility
+S_Mat <- toeplitz(c(10, rep(1, 5)))
+X <- mvrnorm(n = 10, mu = rep(0, 6), Sigma = S_Mat)
+
+PCA_X <- prcomp(X, scale. = TRUE)
+s_k <- PCA_X$sdev^2 / sum(PCA_X$sdev^2)
+
+data.frame(k = 1:ncol(X), y = s_k) %>% 
+  ggplot(aes(x = k, y = s_k)) +
+  geom_point(size = 5) + geom_line(linewidth = 1) +
+  theme_minimal(base_size = 24) + ylab("prop. var") +
+  ggtitle("Example Screeplot")
+```
+:::
+
+:::
+
+::: {.column width="40%"}
+-   The first five PCs capture around nearly 94\% of the total variance!
+
+-   So, for this matrix, around 5 dimensions is sufficient; the sixth contributed very little toward the total variance.
+:::
+
+::::
+
+
+## {{< fa code >}} Live Demo!
+
+::: {.callout-important}
+## **Live Demo**
+
+Time for another live demo! Feel free to boot up your laptops and follow along. In this demo we'll take a look at the notion of [**reconstruction error**]{.alert}, which essentially is a measure of how poorly our reconstructed matrix is doing at approximating the original matrix.
+
+**Background:** The MNIST (Modified National Institute of Standards and Technology) database contains around 70,000 handwritten digits, collected from a combination of high school students and US Census Bureau employees. Each digit is stored as a 28px by 28px image, with an additional classifier label (indicating what digit the image is supposed to be).
+
+![](Images/mnist_1.svg){width="60%"}
+:::
+
+## {{< fa forward-fast >}} Next Time
+
+-   In lab today, you will work through another example of PCA.
+    -   Specifically, you will explore the voting habits of the 118th House of Representatives.
+    
+-   Tonight's lab also marks the end of material that is fair game for the first ICA.
+    -   To be clear, PCA is fair game for the ICA.
+
+-   We'll spend tomorrow's lecture reviewing for the ICA, so please come with questions!

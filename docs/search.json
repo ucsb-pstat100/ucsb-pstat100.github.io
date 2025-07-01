@@ -263,14 +263,14 @@
     "href": "Pages/ICAs.html",
     "title": "Information about ICAs",
     "section": "",
-    "text": "Reminder\n\n\n\nICA01 is taking place on Thursday July 3, 2025 from 12:30 - 1:35 pm in Harold Frank Hall 1104 (note that this is NOT our usual lecture classroom).\n\n\n\nInformation Document (PLEASE READ): Link\n\nNote: The “R Cheatsheets” that will be provided are exactly the files that appear on the Course Server, under the Cheatsheets/ subdirectory.  \n\nCover Page: Link\n\nThis is the cover page that will be attached to the ICA on Thursday - I encourage you to read through it now, so you don’t have to spend time reading through it during the actual ICA!  \n\nPractice Problems: Link\n\nNote: Solutions will not be posted until Tuesday July 1, 2025. This is so that you spend more time working through the problems yourself; don’t rely on the solutions to do the studying for you!  \n\nSpring 2024 ICA01: Link\n\nNote: Solutions will not be posted until Tuesday July 1, 2025. This is so that you spend more time working through the problems yourself; don’t rely on the solutions to do the studying for you!\nThis is the ICA01 I administered in Spring 2024, when I last taught this course.\nImportant: Certain problems are out-of-scope, because the order of topics has been changed slightly since Spring 2024. Additionally, the Spring 2024 ICA01 was entirely multiple choice whereas the Summer 2025 ICA will consist of a mix of multiple choice and free response questions (please see the Information Document linked above)."
+    "text": "Reminder\n\n\n\nICA01 is taking place on Thursday July 3, 2025 from 12:30 - 1:35 pm in Harold Frank Hall 1104 (note that this is NOT our usual lecture classroom).\n\n\n\nInformation Document (PLEASE READ): Link\n\nNote: The “R Cheatsheets” that will be provided are exactly the files that appear on the Course Server, under the Cheatsheets/ subdirectory.  \n\nCover Page: Link\n\nThis is the cover page that will be attached to the ICA on Thursday - I encourage you to read through it now, so you don’t have to spend time reading through it during the actual ICA!  \n\nPractice Problems: Blank Solutions\n\nIf you feel there are typos, please leave a comment on the document.  \n\nSpring 2024 ICA01: Blank Solutions\n\nThis is the ICA01 I administered in Spring 2024, when I last taught this course.\nImportant: Certain problems are out-of-scope, because the order of topics has been changed slightly since Spring 2024. Additionally, the Spring 2024 ICA01 was entirely multiple choice whereas the Summer 2025 ICA will consist of a mix of multiple choice and free response questions (please see the Information Document linked above)."
   },
   {
     "objectID": "Pages/ICAs.html#ica-01",
     "href": "Pages/ICAs.html#ica-01",
     "title": "Information about ICAs",
     "section": "",
-    "text": "Reminder\n\n\n\nICA01 is taking place on Thursday July 3, 2025 from 12:30 - 1:35 pm in Harold Frank Hall 1104 (note that this is NOT our usual lecture classroom).\n\n\n\nInformation Document (PLEASE READ): Link\n\nNote: The “R Cheatsheets” that will be provided are exactly the files that appear on the Course Server, under the Cheatsheets/ subdirectory.  \n\nCover Page: Link\n\nThis is the cover page that will be attached to the ICA on Thursday - I encourage you to read through it now, so you don’t have to spend time reading through it during the actual ICA!  \n\nPractice Problems: Link\n\nNote: Solutions will not be posted until Tuesday July 1, 2025. This is so that you spend more time working through the problems yourself; don’t rely on the solutions to do the studying for you!  \n\nSpring 2024 ICA01: Link\n\nNote: Solutions will not be posted until Tuesday July 1, 2025. This is so that you spend more time working through the problems yourself; don’t rely on the solutions to do the studying for you!\nThis is the ICA01 I administered in Spring 2024, when I last taught this course.\nImportant: Certain problems are out-of-scope, because the order of topics has been changed slightly since Spring 2024. Additionally, the Spring 2024 ICA01 was entirely multiple choice whereas the Summer 2025 ICA will consist of a mix of multiple choice and free response questions (please see the Information Document linked above)."
+    "text": "Reminder\n\n\n\nICA01 is taking place on Thursday July 3, 2025 from 12:30 - 1:35 pm in Harold Frank Hall 1104 (note that this is NOT our usual lecture classroom).\n\n\n\nInformation Document (PLEASE READ): Link\n\nNote: The “R Cheatsheets” that will be provided are exactly the files that appear on the Course Server, under the Cheatsheets/ subdirectory.  \n\nCover Page: Link\n\nThis is the cover page that will be attached to the ICA on Thursday - I encourage you to read through it now, so you don’t have to spend time reading through it during the actual ICA!  \n\nPractice Problems: Blank Solutions\n\nIf you feel there are typos, please leave a comment on the document.  \n\nSpring 2024 ICA01: Blank Solutions\n\nThis is the ICA01 I administered in Spring 2024, when I last taught this course.\nImportant: Certain problems are out-of-scope, because the order of topics has been changed slightly since Spring 2024. Additionally, the Spring 2024 ICA01 was entirely multiple choice whereas the Summer 2025 ICA will consist of a mix of multiple choice and free response questions (please see the Information Document linked above)."
   },
   {
     "objectID": "Lectures/Lec03/Lec03.html#important-lab01-information",
@@ -882,13 +882,6 @@
     "text": "Next Time\n\nWe will continue discussing the details of PCA.\n\nFor example, now that we have the directions of maximal variance - what do we do?\nHow many dimensions are enough to capture a “good” lower-dimensional approximation of our data?\nHow do we do this in R?\n\nReminder: ICA01 is coming up this Thursday (July 3, 2025).\n\nAn information document has been posted to the course website; please read it fully!\n\nSecond Reminder: group formation for the Mid-Quarter Project is due tomorrow (Tuesday, July 1) by 11:59pm."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSTAT 100: Summer 2025",
-    "section": "",
-    "text": "PSTAT 100 - Data Science: Concepts and Analysis\n\n\n\n\nInstructor:\nEthan P. Marzban (He/Him)\n\n\n\n\nQuarter:\nSummer Session A, 2025\n\n\n\nCourse Description: Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\n\n\n\n\n\n\n\nWelcome to PSTAT 100! This is the official course page for the Summer Session A, 2025 iteration of the course - the Spring 2024 iteration has been moved to ucsb-pstat100-archives.github.io.\nLecture slides can be found on the Schedule; labs and project datasets can be found on our Course Computing Server, a link to which can be found on our course Canvas page. Please note, for security purposes, we can only share the link to the server with students who are currently enrolled in the course.\n\n\n\n\n\n\n\n\n    \n        \n            Important Course Assessments/Deadlines\n            \n                \n                    Homework 1\n                    Week 1 | Sunday, June 29, 2025\n                \n                \n                    In-Class Assessment 1\n                    Week 2 | Thursday, July 3, 2025\n                \n                \n                    Mid-Quarter Project\n                    Week 3 | Sunday, July 13, 2025\n                \n                \n                    Homework 2\n                    Week 4 | Sunday, July 20, 2025\n                \n                \n                    In-Class Assessment 2\n                    Week 5 | Thursday, July 24, 2025\n                \n                \n                    Final Project\n                    Week 6 | Friday, August 8, 2025\n                \n            \n        \n    \n\n\n\n\n\n\n\nImportant\n\n\n\nIn addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods."
-  },
-  {
     "objectID": "Lectures/Lec01/Lec01.html#introduction",
     "href": "Lectures/Lec01/Lec01.html#introduction",
     "title": "PSTAT 100: Lecture 01",
@@ -1167,6 +1160,216 @@
     "title": "PSTAT 100: Lecture 01",
     "section": " Next Time",
     "text": "Next Time\n\nWe’ll continue our discussion on data.\n\nSpecifically, we’ll take a closer look at the structure (as opposed to semantics) of a dataset\nWe’ll then discuss a framework to unify the semantics and structure of a dataset.\n\nReminder: please start Homework 1 early!\n\nProblem 1 is a Linear Algebra review, and Problem 2 combines Linear Algebra and PSTAT 120A (so you should be able to complete both problems already).\nFor problem 3, you’ll need to wait until Thursday’s lecture.\n\nIf you are able, please bring your laptops to tomorrow’s lecture."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSTAT 100: Summer 2025",
+    "section": "",
+    "text": "PSTAT 100 - Data Science: Concepts and Analysis\n\n\n\n\nInstructor:\nEthan P. Marzban (He/Him)\n\n\n\n\nQuarter:\nSummer Session A, 2025\n\n\n\nCourse Description: Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\n\n\n\n\n\n\n\nWelcome to PSTAT 100! This is the official course page for the Summer Session A, 2025 iteration of the course - the Spring 2024 iteration has been moved to ucsb-pstat100-archives.github.io.\nLecture slides can be found on the Schedule; labs and project datasets can be found on our Course Computing Server, a link to which can be found on our course Canvas page. Please note, for security purposes, we can only share the link to the server with students who are currently enrolled in the course.\n\n\n\n\n\n\n\n\n    \n        \n            Important Course Assessments/Deadlines\n            \n                \n                    Homework 1\n                    Week 1 | Sunday, June 29, 2025\n                \n                \n                    In-Class Assessment 1\n                    Week 2 | Thursday, July 3, 2025\n                \n                \n                    Mid-Quarter Project\n                    Week 3 | Sunday, July 13, 2025\n                \n                \n                    Homework 2\n                    Week 4 | Sunday, July 20, 2025\n                \n                \n                    In-Class Assessment 2\n                    Week 5 | Thursday, July 24, 2025\n                \n                \n                    Final Project\n                    Week 6 | Friday, August 8, 2025\n                \n            \n        \n    \n\n\n\n\n\n\n\nImportant\n\n\n\nIn addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#recap",
+    "href": "Lectures/Lec06/Lec06.html#recap",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Recap",
+    "text": "Recap\nDimension Reduction\n\nData may be high dimensional in the sense of containing many variables.\nIt is possible, though, to reduce the dimensionality of a dataset while not losing too much information.\nMore formally, we considered the idea of projecting our data matrix into a smaller-dimensional subspace so as to preserve as much variance as possible.\n\nThis approach is the background of Principal Components Analysis\n\nGiven a mean-centered data matrix \\(\\mat{X}\\), we saw that the unit vector \\(\\vect{v}\\) such that the projected data \\(\\mat{X} \\vect{v}\\) has maximal variance is the eigenvector of \\((\\tmat{X} \\mat{X})\\) with the largest associated eigenvalue."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca",
+    "href": "Lectures/Lec06/Lec06.html#pca",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\nDimension Reduction\n\nFor example, suppose we have a 6-dimensional data matrix \\(\\mat{X}\\) (i.e. a matrix with 6 columns), assumed to be mean-centered.\nA two-dimensional representation of \\(\\mat{X}\\) would be found by:\n\nFinding the eigenvectors \\(\\vect{v}_1\\) and \\(\\vect{v}_2\\) of \\((\\tmat{X} \\mat{X})\\) that have the two largest eigenvalues\nProjecting \\(\\mat{X}\\) into the subspace spanned by \\(\\vect{v}_1\\) and \\(\\vect{v}_2\\); i.e. by performing the multiplication \\[ \\mat{X} \\begin{bmatrix} | & | \\\\ \\vect{v}_1 & \\vect{v}_2 \\\\ | & | \\\\ \\end{bmatrix} \\]"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-1",
+    "href": "Lectures/Lec06/Lec06.html#pca-1",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\nDimension Reduction"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-2",
+    "href": "Lectures/Lec06/Lec06.html#pca-2",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\nTerminology\n\nAdmittedly, the terminology surrounding PCA is a bit varied.\nHere is the terminology we’ll adopt for this class:\n\nThe principal components (PCs) are the directions along which the projected data has maximal variance.\nThe elements of the PCs will be called principal component loadings (or just ‘loadings’).\nThe data projected along the PCs will be called scores.\n\nThus, the scores are linear combinations of the original columns of the data matrix, with coefficients determined by the PC loadings.\n\n\nAgain, some people use the term “Principal Component” to mean other things - we’re adopting the above terminology for this class."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-3",
+    "href": "Lectures/Lec06/Lec06.html#pca-3",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\nTerminology\n\n\nNote that the scores are not just variables from the original data matrix; they are essentially linear combinations of several variables from the dataset.\n\nThey can be thought of as the linear combinations of variables that provide the most information"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#warning",
+    "href": "Lectures/Lec06/Lec06.html#warning",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Warning",
+    "text": "Warning\nMean-Centering Data\n\nOver the next few slides, we’re going to establish some linear algebra results that connect various properties of matrices.\nA question we will often have to contend with is: is our data mean-centered or not?\nI’ll do my best to be explicit about whether or not we are assuming mean-centered data or not.\nAs a general rule-of-thumb: most of the linear algebra results we will derive hold for any arbitrary data matrix, mean-centered or not.\n\nHowever, the minute we start interpreting these linear algebra quantities (e.g. eigenvectors) in terms of PCA, we’ll need to assume mean-centered data."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#matrix-spectra",
+    "href": "Lectures/Lec06/Lec06.html#matrix-spectra",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Matrix Spectra",
+    "text": "Matrix Spectra\n\nLet’s start by assuming an arbitrary (not necessarily mean-centered) data matrix \\(\\mat{X}\\). How can we go about finding the eigenvalues and eigenvectors of \\((\\tmat{X} \\mat{X})\\)?\nRecall (from Math 4A and Homework 1) that there are two main ways to decompose a matrix: eigendecomposition (EVD) and singular value decomposition (SVD).\nAlso recall that the SVD can be thought of as a “generalization” of the EVD.\n\nSpecifically, only diagonalizable (and, consequently, square) matrices admit an EVD, whereas any matrix admits an SVD."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#matrix-spectra-1",
+    "href": "Lectures/Lec06/Lec06.html#matrix-spectra-1",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Matrix Spectra",
+    "text": "Matrix Spectra\nSVD"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#matrix-spectra-2",
+    "href": "Lectures/Lec06/Lec06.html#matrix-spectra-2",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Matrix Spectra",
+    "text": "Matrix Spectra\nSVD\n\nsvd( x, nu = min(n, p), nv = min(n, p) )\n\n\nExample CodeExample Math\n\n\n\nsvd(matrix(c(1, 2, 3, 0, 1, 1, 2, 1, 2), nrow = 3, byrow = T))\n\n$d\n[1] 4.8348990 1.2637105 0.1636685\n\n$u\n           [,1]       [,2]       [,3]\n[1,] -0.7659032 -0.4194393 -0.4873018\n[2,] -0.2615772 -0.4890773  0.8320942\n[3,] -0.5873412  0.7647706  0.2648701\n\n$v\n           [,1]       [,2]       [,3]\n[1,] -0.4013705  0.8784465  0.2592944\n[2,] -0.4924042 -0.4456599  0.7476131\n[3,] -0.7722952 -0.1723921 -0.6114255\n\n\n\n\n\n\\[\n\\begin{align*}\n\\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 1 \\\\ 2 & 1 & 2 \\\\ \\end{pmatrix} & = \\left(\\begin{array}{rrr} -0.766 & -0.419 & -0.487 \\\\ -0.262 & -0.489  & 0.832 \\\\ -0.587 & 0.765 & 0.265  \\\\ \\end{array} \\right) \\begin{pmatrix} 4.835 & 0 & 0 \\\\ 0 & 1.264 & 0 \\\\ 0 & 0 & 0.164 \\end{pmatrix} \\left( \\begin{array}{rrr} -0.401 & -0.492 & -0.772 \\\\ 0.878 & -0.446 & -0.172 \\\\ 0.259 & 0.748 & -0.611 \\end{array} \\right) \\\\[3mm]\n\\mat{X} \\hspace{12mm} & = \\hspace{35mm} \\mat{U} \\hspace{68mm}  \\mat{\\Sigma} \\hspace{69mm} \\tmat{V} \\\\\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#matrix-spectra-3",
+    "href": "Lectures/Lec06/Lec06.html#matrix-spectra-3",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Matrix Spectra",
+    "text": "Matrix Spectra\nSVD vs. EVD\n\nNote: \\[\\begin{align*}\n  \\tmat{X} \\mat{X} & = (\\mat{U} \\mat{\\Sigma} \\tmat{V})^{\\mathsf{T}} (\\mat{U} \\mat{\\Sigma} \\tmat{V}) \\\\\n& = \\mat{V} \\tmat{\\Sigma} \\tmat{U} \\mat{U} \\mat{\\Sigma} \\tmat{V}  \\\\\n& = \\mat{V} \\tmat{\\Sigma} \\mat{\\Sigma} \\tmat{V}   \\\\\n& = \\mat{V} \\mat{\\Sigma}^2 \\tmat{V} \\\\\n\\implies (\\tmat{X}\\mat{X}) \\mat{V} & = \\mat{V} \\mat{\\Sigma}^2 \\tmat{V} \\mat{V} \\\\\n& = \\mat{V} \\mat{\\Sigma}^2\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#matrix-spectra-4",
+    "href": "Lectures/Lec06/Lec06.html#matrix-spectra-4",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Matrix Spectra",
+    "text": "Matrix Spectra\nEVD vs. SVD\n\n\n\n\n\n\nMoral\n\n\nIf the SVD of \\(\\mat{X}\\) is given by \\(\\mat{X} = \\mat{U} \\mat{\\Sigma} \\tmat{V}\\), then \\(\\mat{\\Sigma}^2\\) is the matrix of eigenvalues of \\((\\tmat{X} \\mat{X})\\) and \\(\\mat{V}\\) is the matrix of eigenvectors of \\((\\tmat{X} \\mat{X})\\).\n\n\n\n\nXSVDEVDprcomp()\n\n\n\nX &lt;- matrix(c(1, 2, 3,\n              0, 1, 1,\n              2, 1, 2),\n            nrow = 3,\n            byrow = T)\n\n\n\n\nsvd(X)$v\n\n           [,1]       [,2]       [,3]\n[1,] -0.4013705  0.8784465  0.2592944\n[2,] -0.4924042 -0.4456599  0.7476131\n[3,] -0.7722952 -0.1723921 -0.6114255\n\n\n\n\n\neigen(t(X) %*% X)$vectors\n\n           [,1]       [,2]       [,3]\n[1,] -0.4013705  0.8784465 -0.2592944\n[2,] -0.4924042 -0.4456599 -0.7476131\n[3,] -0.7722952 -0.1723921  0.6114255\n\n\n\n\n\nprcomp(X, center = F)\n\nStandard deviations (1, .., p=3):\n[1] 3.4187899 0.8935783 0.1157311\n\nRotation (n x k) = (3 x 3):\n            PC1        PC2        PC3\n[1,] -0.4013705  0.8784465  0.2592944\n[2,] -0.4924042 -0.4456599  0.7476131\n[3,] -0.7722952 -0.1723921 -0.6114255"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-4",
+    "href": "Lectures/Lec06/Lec06.html#pca-4",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\n\nThe eigenvectors of the matrix \\((\\tmat{X} \\mat{X})\\) represent the directions of maximal variance (i.e. if we project \\(\\mat{X}\\) along these directions, we get maximum variance), provided \\(\\mat{X}\\) is mean-centered.\n\nSo, the vectors on the previous slides aren’t really interpretable as the PCs.\nBut, if our matrix were mean-centered, we see that the principal components can be computed through:\n\nthe direct eigendecomposition of \\(\\tmat{X} \\mat{X}\\),\nthe singular value decomposition of \\(\\mat{X}\\), or\nthe prcomp() function in R.\n\n\nAgain, even if \\(\\mat{X}\\) is not mean-centered, the above three methods will produce the same result. The only difference is that, under non-centered data, the result is not necessarily interpretable as the matrix of PCs."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-5",
+    "href": "Lectures/Lec06/Lec06.html#pca-5",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\n\nXSVDEVDprcomp()\n\n\n\nX &lt;- matrix(c(1, 2, 3,\n              0, 1, 1,\n              2, 1, 2),\n            nrow = 3,\n            byrow = T) %&gt;% scale()\n\n\n\n\nsvd(X)$v\n\n           [,1]          [,2]       [,3]\n[1,] -0.3535534  8.660254e-01  0.3535534\n[2,] -0.6123724 -5.000000e-01  0.6123724\n[3,] -0.7071068 -1.665335e-16 -0.7071068\n\n\n\n\n\neigen(t(X) %*% X)$vectors\n\n           [,1]          [,2]       [,3]\n[1,] -0.3535534  8.660254e-01  0.3535534\n[2,] -0.6123724 -5.000000e-01  0.6123724\n[3,] -0.7071068  7.771561e-16 -0.7071068\n\n\n\n\n\nprcomp(X)\n\nStandard deviations (1, .., p=3):\n[1] 1.414214e+00 1.000000e+00 6.640980e-17\n\nRotation (n x k) = (3 x 3):\n            PC1           PC2        PC3\n[1,] -0.3535534  8.660254e-01  0.3535534\n[2,] -0.6123724 -5.000000e-01  0.6123724\n[3,] -0.7071068 -1.665335e-16 -0.7071068"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-a-quick-recap",
+    "href": "Lectures/Lec06/Lec06.html#pca-a-quick-recap",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA: A Quick Recap",
+    "text": "PCA: A Quick Recap\n\nMultiplying the original (n × p) data matrix \\(\\mat{X}\\) by a matrix constructed from the first d (for d ≤ n) principal components (each of dimension p) will result in an (n × d) matrix, the columns of which we call the scores.\n\nWe obtain the scores by either:\n\ncomputing \\(\\mat{X} \\mat{V}\\) and extracting the first few columns, or\ncomputing \\(\\mat{U} \\mat{\\Sigma}\\) and extracting the first few columns.\n\n\nMathematical justification: \\[ \\mat{X} = \\mat{U} \\mat{\\Sigma} \\tmat{V} \\ \\implies \\ \\mat{X} \\mat{V} = \\mat{U} \\mat{\\Sigma} \\tmat{V}  \\mat{V} = \\mat{U} \\mat{\\Sigma} \\]"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-6",
+    "href": "Lectures/Lec06/Lec06.html#pca-6",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\nScores\n\nXUsing prcomp()Using U∑Using XV\n\n\n\nX &lt;- matrix(c(1, 2, 3,\n              0, 1, 1,\n              2, 1, 2),\n            nrow = 3,\n            byrow = T) %&gt;% scale()\n\n\n\n\nX %*% prcomp(X)[[2]]\n\n               PC1        PC2          PC3\n[1,] -1.414214e+00 -0.5773503 1.110223e-16\n[2,]  1.414214e+00 -0.5773503 1.110223e-16\n[3,] -1.439405e-16  1.1547005 2.433064e-17\n\n\n\n\n\nsvd(X)$u %*% diag(svd(X)$d)\n\n              [,1]       [,2]         [,3]\n[1,] -1.414214e+00 -0.5773503 1.080837e-16\n[2,]  1.414214e+00 -0.5773503 1.080837e-16\n[3,] -1.367162e-16  1.1547005 1.080837e-16\n\n\n\n\n\nX %*% svd(X)$v\n\n              [,1]       [,2]         [,3]\n[1,] -1.414214e+00 -0.5773503 1.110223e-16\n[2,]  1.414214e+00 -0.5773503 1.110223e-16\n[3,] -1.439405e-16  1.1547005 2.433064e-17\n\n\n\n\n\n\n\n\n\nqr(X)$rank\n\n[1] 2"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#matrix-spectra-5",
+    "href": "Lectures/Lec06/Lec06.html#matrix-spectra-5",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Matrix Spectra",
+    "text": "Matrix Spectra\nVariance\n\nYesterday we argued that the variance of the projected data along each PC (eigenvector) is proportional to the associated eigenvalue.\n\nIn other words, the variance of the scores can be recovered using either the EVD, SVD, or result of prcomp().\n\n\n\n\nUsing SVDUsing EVDUsing prcomp()Directly\n\n\n\nsvd(X)$d^2 / (ncol(X) - 1)\n\n[1] 2.000000e+00 1.000000e+00 1.752312e-32\n\n\n\n\n\nEVD_XTX &lt;- eigen(t(X) %*% X)\nEVD_XTX$values / (ncol(X) - 1)\n\n[1] 2.000000e+00 1.000000e+00 2.220446e-15\n\n\n\n\n\nprcomp(X)$sdev^2\n\n[1] 2.000000e+00 1.000000e+00 4.410261e-33\n\n\n\n\n\n(X %*% prcomp(X)$rotation) %&gt;% apply(MARGIN = 2, FUN = var)\n\n         PC1          PC2          PC3 \n2.000000e+00 1.000000e+00 2.505148e-33"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-7",
+    "href": "Lectures/Lec06/Lec06.html#pca-7",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\nInverting PCA\n\n\nSo, this tells us how to go from, say, a \\((6 \\times 4)\\) matrix to a \\((6 \\times 2)\\) matrix. How do we go back to a \\((6 \\times 4)\\) matrix?"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-8",
+    "href": "Lectures/Lec06/Lec06.html#pca-8",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\nInverting PCA\n\nNote:\n\n\n\\[\\begin{align*}\n  \\mat{X} \\mat{V} & := \\mat{Z}  \\\\\n  \\mat{X} \\mat{V} \\tmat{V}  & = \\mat{Z} \\tmat{V}  \\\\\n  \\mat{X} & = \\mat{Z} \\tmat{V}\n\\end{align*}\\]\n\n\nMotivated by this, let \\(\\mat{Z}\\) denote a low-rank projection of \\(\\mat{X}\\); i.e. \\(\\mat{Z} = \\mat{X} \\mat{V}_d\\) where \\(\\mat{V}_d\\) is the (p × d) matrix whose columns are the first d prinipcal components. A low-rank reconstruction of \\(\\mat{X}\\) is then \\[ \\mat{X}_d := \\mat{Z} \\tmat{V}_d = \\mat{X} \\mat{V}_d \\tmat{V}_d\\]"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#pca-9",
+    "href": "Lectures/Lec06/Lec06.html#pca-9",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " PCA",
+    "text": "PCA\nInverting PCA\n\nPerhaps I should explain a bit further what I mean by a “reconstruction” of \\(\\mat{X}\\).\nBy properties of matrix multiplication, \\(\\mat{X}_d\\) will be of size (n × p), i.e. the same size as the original \\(\\mat{X}\\).\nHowever, since \\(\\mat{V}_d\\) is of rank d, \\(\\mat{X}_d\\) will be of rank d.\nSo, this is what I mean by a “low-rank reconstruction” of \\(\\mat{X}\\): a matrix whose dimensions are the same as \\(\\mat{X}\\), but whose rank is smaller than that of \\(\\mat{X}\\).\nWe can define the reconstruction error to be \\(\\mathrm{R}(\\mat{X}_d, \\mat{X}) := \\| \\mat{X}_d - \\mat{X} \\|^2\\), where \\(\\| \\cdot \\|\\) denotes an appropriately-defined matrix norm."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#example",
+    "href": "Lectures/Lec06/Lec06.html#example",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Example",
+    "text": "Example\n\nWhew, that’s a lot of math!\nLet’s work through an example together. We’ll start off with \\[ \\mat{X} = \\begin{pmatrix} 1 & 2 & 3 & 1 \\\\ 2 & 0 & 1 & 2 \\\\ 3 & 0 & 0 & 1 \\\\ 2 & 1 & 1 & 0 \\\\ 0 & 1 & 0 & 0 \\\\ 2 & 1 & 1 & 1 \\\\ \\end{pmatrix} \\]"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#example-1",
+    "href": "Lectures/Lec06/Lec06.html#example-1",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Example",
+    "text": "Example\n\n\nOver the next few slides, I’ll project \\(\\mat{X}\\) into a smaller-dimensional subspace using the first 2, 3, and 4 principal components, then invert the projection and display the “recovered” \\(\\mat{X}\\) (which will be the mean-centered version of \\(\\mat{X}\\)):\n\n\n\n\nCode\nX &lt;- matrix(c(1, 2, 3, 1,\n         2, 0, 1, 2,\n         3, 0, 0, 1,\n         2, 1, 1, 0,\n         0, 1, 0, 0,\n         2, 1, 1, 1),\n       nrow = 6,\n       byrow = T)\n\nX_c &lt;- scale(X, scale = F)\n\nX_c \n\n\n           [,1]       [,2] [,3]       [,4]\n[1,] -0.6666667  1.1666667    2  0.1666667\n[2,]  0.3333333 -0.8333333    0  1.1666667\n[3,]  1.3333333 -0.8333333   -1  0.1666667\n[4,]  0.3333333  0.1666667    0 -0.8333333\n[5,] -1.6666667  0.1666667   -1 -0.8333333\n[6,]  0.3333333  0.1666667    0  0.1666667\nattr(,\"scaled:center\")\n[1] 1.6666667 0.8333333 1.0000000 0.8333333"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#example-2",
+    "href": "Lectures/Lec06/Lec06.html#example-2",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Example",
+    "text": "Example\n2-Dimensional Subspace\n\nProjectRecoverCompare\n\n\nMultiply \\(\\mat{X}\\) by the matrix containing the first two principal components:\n\n(X2 &lt;- prcomp(X)$x[,1:2])\n\n             PC1        PC2\n[1,] -2.22141095  0.9476208\n[2,]  0.78993734  0.8220772\n[3,]  1.82811089  0.2313481\n[4,] -0.02366601 -0.2547062\n[5,] -0.49186600 -2.0209854\n[6,]  0.11889473  0.2746455\n\n\n\n\nBackwards-project using the first two principal components:\n\nX2 %*% t(prcomp(X)$rotation[,1:2])\n\n           [,1]        [,2]        [,3]       [,4]\n[1,] -0.6824534  1.15684238  1.99860514  0.1849387\n[2,]  0.9013719 -0.43233075  0.01912272  0.5477820\n[3,]  1.1362868 -0.97030623 -1.00802682  0.3830813\n[4,] -0.1577576  0.01711215 -0.14544752 -0.1382030\n[5,] -1.4188787  0.29648176 -0.96215851 -1.1399328\n[6,]  0.2214310 -0.06779931  0.09790498  0.1623338\n\n\n\n\n\nX_c\n\n           [,1]       [,2] [,3]       [,4]\n[1,] -0.6666667  1.1666667    2  0.1666667\n[2,]  0.3333333 -0.8333333    0  1.1666667\n[3,]  1.3333333 -0.8333333   -1  0.1666667\n[4,]  0.3333333  0.1666667    0 -0.8333333\n[5,] -1.6666667  0.1666667   -1 -0.8333333\n[6,]  0.3333333  0.1666667    0  0.1666667\nattr(,\"scaled:center\")\n[1] 1.6666667 0.8333333 1.0000000 0.8333333"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#example-3",
+    "href": "Lectures/Lec06/Lec06.html#example-3",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Example",
+    "text": "Example\n3-Dimensional Subspace\n\nProjectRecoverCompare\n\n\nMultiply \\(\\mat{X}\\) by the matrix containing the first three principal components:\n\n(X3 &lt;- prcomp(X)$x[,1:3])\n\n             PC1        PC2         PC3\n[1,] -2.22141095  0.9476208  0.02606604\n[2,]  0.78993734  0.8220772 -0.92336792\n[3,]  1.82811089  0.2313481  0.32095854\n[4,] -0.02366601 -0.2547062  0.85861868\n[5,] -0.49186600 -2.0209854 -0.41659441\n[6,]  0.11889473  0.2746455  0.13431906\n\n\n\n\nBackwards-project using the first two principal components:\n\nX3 %*% t(prcomp(X)$rotation[,1:3])\n\n           [,1]        [,2]        [,3]        [,4]\n[1,] -0.6668552  1.16553247  2.00064836  0.16605904\n[2,]  0.3488162 -0.74016994 -0.05325683  1.21657701\n[3,]  1.3283527 -0.86330271 -0.98286801  0.15061120\n[4,]  0.3560513  0.30336477 -0.07814344 -0.76010018\n[5,] -1.6681744  0.15759445 -0.99481387 -0.83819359\n[6,]  0.3018094 -0.02301903  0.10843378  0.06504651\n\n\n\n\n\nX_c\n\n           [,1]       [,2] [,3]       [,4]\n[1,] -0.6666667  1.1666667    2  0.1666667\n[2,]  0.3333333 -0.8333333    0  1.1666667\n[3,]  1.3333333 -0.8333333   -1  0.1666667\n[4,]  0.3333333  0.1666667    0 -0.8333333\n[5,] -1.6666667  0.1666667   -1 -0.8333333\n[6,]  0.3333333  0.1666667    0  0.1666667\nattr(,\"scaled:center\")\n[1] 1.6666667 0.8333333 1.0000000 0.8333333"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#example-4",
+    "href": "Lectures/Lec06/Lec06.html#example-4",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Example",
+    "text": "Example\n4-Dimensional Subspace\n\nProjectRecoverCompare\n\n\nMultiply \\(\\mat{X}\\) by the matrix containing the four three principal components:\n\n(X4 &lt;- prcomp(X)$x[,1:4])\n\n             PC1        PC2         PC3          PC4\n[1,] -2.22141095  0.9476208  0.02606604  0.001453105\n[2,]  0.78993734  0.8220772 -0.92336792 -0.119358571\n[3,]  1.82811089  0.2313481  0.32095854  0.038396007\n[4,] -0.02366601 -0.2547062  0.85861868 -0.175134144\n[5,] -0.49186600 -2.0209854 -0.41659441  0.011623098\n[6,]  0.11889473  0.2746455  0.13431906  0.243020505\n\n\n\n\nBackwards-project using the first two principal components:\n\nX4 %*% t(prcomp(X)$rotation[,1:4])\n\n           [,1]       [,2]          [,3]       [,4]\n[1,] -0.6666667  1.1666667  2.000000e+00  0.1666667\n[2,]  0.3333333 -0.8333333  7.535993e-17  1.1666667\n[3,]  1.3333333 -0.8333333 -1.000000e+00  0.1666667\n[4,]  0.3333333  0.1666667 -3.215917e-17 -0.8333333\n[5,] -1.6666667  0.1666667 -1.000000e+00 -0.8333333\n[6,]  0.3333333  0.1666667 -3.564466e-17  0.1666667\n\n\n\n\n\nX_c\n\n           [,1]       [,2] [,3]       [,4]\n[1,] -0.6666667  1.1666667    2  0.1666667\n[2,]  0.3333333 -0.8333333    0  1.1666667\n[3,]  1.3333333 -0.8333333   -1  0.1666667\n[4,]  0.3333333  0.1666667    0 -0.8333333\n[5,] -1.6666667  0.1666667   -1 -0.8333333\n[6,]  0.3333333  0.1666667    0  0.1666667\nattr(,\"scaled:center\")\n[1] 1.6666667 0.8333333 1.0000000 0.8333333"
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#screeplots",
+    "href": "Lectures/Lec06/Lec06.html#screeplots",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Screeplots",
+    "text": "Screeplots\nHow Much Variance?\n\nSo, as the last demo illustrated: as we increase the dimension onto which we are projecting, the reconstructed matrix will become more and more similar to the original matrix.\nAs always, there’s a tradeoff.\n\nOn the one hand, we want our reconstructed matrix to be as similar to the original as possible.\nOn the other, however, we want some dimension reduction.\nSo, how much dimension reduction should we perform?\n\nTo answer this qeustion, we’ll go back to a fact from yesterday’s lecture: the variance of the data projected along the kth principal component is proportional to \\(\\lambda_k\\), the associated eigenvalue."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#screeplots-1",
+    "href": "Lectures/Lec06/Lec06.html#screeplots-1",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Screeplots",
+    "text": "Screeplots\nHow Much Variance?\n\nTherefore, the proportion of the total variance captured by the kth principal component (i.e. the proportion of the total variance present in the variance of the data projected along the kth PC) is given by \\[ s_k := \\frac{\\lambda_k}{\\sum_{k} \\lambda_k} = \\frac{\\sigma_k^2}{\\sum_{k} \\sigma_k^2} \\] where \\(\\sigma_k\\) is the kth singular value of \\(\\mat{X}\\).\nA plot of sk vs k is called a screeplot, named after a particular rock formation."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#screeplots-2",
+    "href": "Lectures/Lec06/Lec06.html#screeplots-2",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Screeplots",
+    "text": "Screeplots\nHow Much Variance?\n\nIn practice, to figure out the ideal number of PCs to use, look for an “elbow” in the screeplot.\n\n\n\n\n\n\nCode\nset.seed(100)  ## for reproducibility\nS_Mat &lt;- toeplitz(c(10, rep(1, 5)))\nX &lt;- mvrnorm(n = 10, mu = rep(0, 6), Sigma = S_Mat)\n\nPCA_X &lt;- prcomp(X, scale. = TRUE)\ns_k &lt;- PCA_X$sdev^2 / sum(PCA_X$sdev^2)\n\ndata.frame(k = 1:ncol(X), y = s_k) %&gt;% \n  ggplot(aes(x = k, y = s_k)) +\n  geom_point(size = 5) + geom_line(linewidth = 1) +\n  theme_minimal(base_size = 24) + ylab(\"prop. var\") +\n  ggtitle(\"Example Screeplot\")\n\n\n\n\n\n\n\n\n\n\n\n\nThe first five PCs capture around nearly 94% of the total variance!\nSo, for this matrix, around 5 dimensions is sufficient; the sixth contributed very little toward the total variance."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#live-demo",
+    "href": "Lectures/Lec06/Lec06.html#live-demo",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Live Demo!",
+    "text": "Live Demo!\n\n\n\n\n\n\nLive Demo\n\n\nTime for another live demo! Feel free to boot up your laptops and follow along. In this demo we’ll take a look at the notion of reconstruction error, which essentially is a measure of how poorly our reconstructed matrix is doing at approximating the original matrix.\nBackground: The MNIST (Modified National Institute of Standards and Technology) database contains around 70,000 handwritten digits, collected from a combination of high school students and US Census Bureau employees. Each digit is stored as a 28px by 28px image, with an additional classifier label (indicating what digit the image is supposed to be)."
+  },
+  {
+    "objectID": "Lectures/Lec06/Lec06.html#next-time",
+    "href": "Lectures/Lec06/Lec06.html#next-time",
+    "title": "PSTAT 100: Lecture 06",
+    "section": " Next Time",
+    "text": "Next Time\n\nIn lab today, you will work through another example of PCA.\n\nSpecifically, you will explore the voting habits of the 118th House of Representatives.\n\nTonight’s lab also marks the end of material that is fair game for the first ICA.\n\nTo be clear, PCA is fair game for the ICA.\n\nWe’ll spend tomorrow’s lecture reviewing for the ICA, so please come with questions!"
   },
   {
     "objectID": "Lectures/Lec02/Lec02.html#review-data-semantics",
