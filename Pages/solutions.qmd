@@ -37,3 +37,16 @@ Below are solutions to selected assignment. Some things to keep in mind:
 :::
 
 ::::
+
+
+
+## Homework
+
+:::: {.columns}
+
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/HW01_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">HW01</button></a>
+:::
+
+
+::::
