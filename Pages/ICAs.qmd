@@ -6,6 +6,11 @@ fontsize: 14pt
 
 ## ICA 01
 
+-   **Solutions to Version A:** <a href="https://docs.google.com/document/d/1eO2Y0dlMDX77ut00W0rZWbQiFE2hmPixi2icxPEN6zI" target="_blank"><button type="button" class="btn btn-primary">Link</button></a>
+
+-   **Post-ICA Info Document:** <a href="https://docs.google.com/document/d/16RYnqtDUJtehe3Twz-uKVDrTIWuxxVoBPA9-PW1-WH0/" target="_blank"><button type="button" class="btn btn-primary">Link</button></a>
+    -   Please read this document **FULLY** before submitting a regrade request.
+
 ::: {.callout-important}
 ## **Reminder**
 
