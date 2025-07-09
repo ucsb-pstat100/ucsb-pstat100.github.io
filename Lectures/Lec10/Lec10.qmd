@@ -1,0 +1,566 @@
+---
+title: "PSTAT 100: Lecture 10"
+subtitle: "Estimation, Confidence Intervals, and Resampling"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/logo.svg"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/logo.svg"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+
+$$
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+$$
+
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+```
+
+## {{< fa backward-fast >}} Recap: Statistical Inference
+
+-   Yesterday we talked about the general framework of [**statistical inference**]{.alert}.
+
+
+:::: {.columns}
+
+::: {.column width="60%"}
+-   We have a [**population**]{.alert}, governed by a set of [**population parameters**]{.alert} that are unobserved (but that we’d like to make claims about).
+
+-   To make claims about the population parameters, we take a [**sample**]{.alert}.
+
+-   We then use our sample to make [**inferences**]{.alert} (i.e. claims) about the population parameters.
+
+
+:::
+
+::: {.column width="40%"}
+::: {.fragment}
+![](images/inference.svg)
+:::
+:::
+
+::::
+
+
+## {{< fa backward-fast >}} Recap: Statistical Inference
+
+![](images/Estimator_vs_estimate.svg)
+
+-   A function of the random sample is an _estimator_
+    -   This is a _random_ quantity; "if I _were_ to take a sample, ..."
+
+-   The corresponding function of the _observed instance_ (aka _realization_) of the sample is called an [**estimate**]{.alert}
+    -   This is a _deterministic_ quantity; "given _this particular sample_ I took, ..."
+
+## {{< fa backward-fast >}} Recap: Statistical Inference
+
+-   The [**sampling distribution**]{.alert} of an estimator is simply its distribution.
+
+-   For example, we saw that the sampling distribution of the sample mean, assuming a normal population, is normal with mean equal to the population mean and variance equal to the population variance divided by the sample size.
+    -   We further saw that, thanks to the [**Central Limit Theorem**]{.alert}, this also holds if the population is _not_ normal but the sample size is relatively large.
+ 
+-   Let's consider one more scenario: suppose $Y_1, \cdots, Y_n$ represents an i.i.d. sample from the $\mathcal{N}(\mu, \sigma^2)$ distribution where _both_ _µ_ and σ^2^ are unknown.
+    -   Note that this differs from the situation we discussed yesterday, in which I had explicitly specified a value for σ^2^.
+
+## {{< fa chart-simple >}} Sampling Distributions
+### Sample Mean: Non-Normal Population; Unknown Variance
+
+-   As mentioned yesterday, a natural estimator for the population variance is the [**sample variance**]{.alert}, defined as
+$$ S_n^2 := \frac{1}{n - 1} \sum_{i=1}^{n} (Y_i - \overline{Y}_n)^2 $$
+and a natural estimator for the population standard deviation is just $S_n := \sqrt{S_n^2}$. 
+
+-   Let's take a look at the sampling distribution of 
+$$ U_n := \frac{\sqrt{n}(\overline{Y}_n - \mu)}{S_n} $$
+
+## {{< fa chart-simple >}} Sampling Distributions
+### Sample Mean: Non-Normal Population; Unknown Variance
+
+```{r}
+#| echo: True
+#| code-fold: True
+set.seed(100)    ## for reproducibility
+n <- 10          ## sample size
+B <- 1000        ## number of samples
+
+u_10 <- c()
+for(b in 1:B){
+  temp_samp <- rnorm(n)   ## sample from standard normal
+  u_10 <- c(u_10, mean(temp_samp) / sd(temp_samp))
+}
+```
+
+```{r}
+data.frame(x = u_10) %>% ggplot(aes(x = u_10)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 15, col = "white") +
+  theme_minimal(base_size = 18) + ggtitle(bquote("Histogram of"~~U[n]~", n = 10")) + xlab("means")
+```
+
+## {{< fa chart-simple >}} Sampling Distributions
+### Sample Mean: Non-Normal Population; Unknown Variance
+
+-   Hm... the bulk of this histogram _looks_ normal, but there are some unusually extreme values that we wouldn't expect to see if $U_n$ were truly normally distributed.
+
+-   Indeed, to check whether a set of values are normally distributed, we often generate a [**QQ-Plot**]{.alert} in which we plot the quantiles of our data against the theoretical quantiles of a normal distribution.
+    -   If the resulting graph is close to a perfect line, we know the quantiles match and our data is likely to be normally-distributed.
+    -   Equivalently, if we see marked deviation from linearity in the tails of the plot, we have reason to believe our data is _not_ normally-distributed.
+
+## {{< fa chart-simple >}} Sampling Distributions
+### Sample Mean: Non-Normal Population; Unknown Variance
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+data.frame(u_10) %>% ggplot(aes(sample = u_10)) +
+  geom_qq(size = 4) + ggtitle(bquote("Normal QQ-Plot of"~U[n])) +
+  geom_qq_line(col = "blue", linewidth = 1.25) +
+  theme_minimal(base_size = 18)
+```
+
+## {{< fa chart-simple >}} Sampling Distributions
+### Sample Mean: Non-Normal Population; Unknown Variance
+
+-   As we see, there are significant deviations from linearity in the tails of the QQ-plot.
+
+-   Hence, we conclude that $U_n$ is _not_ normally-distributed.
+    -   That is, when we estimate the sample variance, the sampling distribution of the sample mean is no longer normal.
+    
+-   There is a theoretical result to back up this claim.
+
+## {{< fa chart-simple >}} Sampling Distributions
+### Sample Mean: Non-Normal Population; Unknown Variance
+
+::: {.callout-important}
+## **Sampling Distribution of Mean; Estimated Variance**
+
+Given an i.i.d. sample (_Y_~1~, ..., _Y_~_n_~) from a distribution with finite mean _µ _ and finite variance σ^2^, 
+$$ \frac{\sqrt{n}(\overline{Y}_n - \mu)}{S_n} \stackrel{\cdot}{\sim} t_{n - 1} $$
+where $S_n := \sqrt{(n - 1)^{-1} \sum_{i=1}^{n} (Y_i - \overline{Y}_n)^2}$ and $t_{n - 1}$ denotes the [**_t_-distribution**]{.alert} with _ν_ degrees of freedom.
+:::
+
+-   You will discuss the _t_-distribution further in PSTAT 120B. For our purposes, just note that the _t_-distribution looks a lot like a standard normal distribution but with wider tails.
+
+## {{< fa chart-simple >}} Sampling Distributions
+### The _t_ Distribution
+
+```{r}
+#| echo: False
+
+data.frame(x = -3:3) %>% ggplot(aes(x = x)) +
+  stat_function(fun = dt, args = list(1),
+                aes(colour = "01"), n = 300, linewidth = 1.3) +
+  stat_function(fun = dt, args = list(3),
+                aes(colour = "03"), n = 300, linewidth = 1.3) +
+  stat_function(fun = dt, args = list(5),
+                aes(colour = "05"), n = 300, linewidth = 1.3) +
+  stat_function(fun = dt, args = list(10),
+                aes(colour = "10"), n = 300, linewidth = 1.3) +
+  stat_function(fun = dnorm, 
+                aes(colour = "∞"), n = 300, linewidth = 1.3,
+                linetype = "dashed") +
+  theme_minimal(base_size = 18) +
+  labs(colour = "Degrees of Freedom") +
+  ggtitle("Density of the t Distribution", 
+          subtitle = "For Different Degrees of Freedom") +
+  scale_color_okabe_ito()
+```
+
+## {{< fa chart-simple >}} Sampling Distributions
+### Sample Mean: Non-Normal Population; Unknown Variance
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+data.frame(u_10) %>% ggplot(aes(sample = u_10)) +
+  geom_qq(size = 4, distribution = stats::qt, dparams = 9) + 
+  ggtitle(bquote(t[9]~"QQ-Plot of"~U[n])) +
+  geom_qq_line(col = "blue", , distribution = stats::qt, dparams = 9,
+               linewidth = 1.25) +
+  theme_minimal(base_size = 18)
+```
+
+# Confidence Intervals {background-color="black" background-image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDNvazg1ZW0xNHI2b3BjbnduYXd3N2ZwZHlhMGFjNnM1MGJsY2x2ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1VV5mivAbIHSSiKXL9/giphy.gif" background-size="60rem"}
+
+## {{< fa stairs >}} Leadup
+
+-   All of the estimators we considered thus far (sample mean, sample variance) are examples of [**point estimators**]{.alert}; they reduce the sample to a single point.
+
+-   In some cases, however, a point estimator may be too restrictive.
+
+-   To borrow an analogy from _OpenIntro Statistics_ (an introductory stats textbook I highly recommend!):
+
+::: {.fragment}
+> Using only a point estimate is like fishing in a murky lake with a spear. We can throw a spear where we saw a fish, but we will probably miss. On the other hand, if we toss a net in that area, we have a good chance of catching the fish. (pg. 181)
+:::
+
+## {{< fa text-width >}} Confidence Intervals
+
+-   The statistical analog of using a net is using a [**confidence interval**]{.alert}.
+
+-   Loosely speaking, a confidence interval is an interval that we believe, with some degree of certainty (called the [**coverage probability**]{.alert}), covers the true value of the parameter of interest.
+
+-   For example, we are 100% certain that the true average weight of all cats in the world is somewhere between 0 and ∞; therefore, a 100% confidence interval for _µ_ (the true average weight of all cats in the world) is \[0, ∞).
+
+-   However, consider the interval [5, 20]. Are we 100% certain that the true average weight of all cats in the world is between 5 and 20 lbs? Probably not; so, the associated coverage probability of the interval [5, 20] is smaller than 100%.
+
+## {{< fa text-width >}} Confidence Intervals
+
+-   When constructing a Confidence Interval (CI), we often start with a coverage probability in mind first.
+
+-   Some common coverage probabilities are: 90\%, 95\%, and 99\%.
+    -   This isn't to say other coverage probabilities are never used; given domain knowledge, it may be desired to use a different coverage probability. 
+    
+-   Suppose we wish to construct a _p_ CI for the mean; i.e. given a population with (unknown) mean _µ_, we wish to construct a CI with coverage probability _p_ (e.g. 0.95).
+
+## {{< fa text-width >}} Confidence Intervals for the Mean {style="font-size:30px"}
+
+-   It seems natural to start with $\overline{Y}_n$, the sample mean. Indeed, we'll first take our CI to be of the form
+$$ \overline{Y}_n \pm \mathrm{m.e.} $$
+for some [**margin of error**]{.alert} $\mathrm{m.e.}$.
+    -   We can think of this as saying: "I think the sample mean is probably a good guess for the population mean. However, I acknowledge there is sampling variability, and I should include some padding in my estimate."
+    
+-   With this interpration, we see that the margin of error should depend on two things:
+    -   The coverage probability _p_ (higher _p_ implies what about the margin of error?)
+    -   The variance of $\overline{Y}_n$ (to capture variability _between_ samples).
+    
+## {{< fa text-width >}} Confidence Intervals for the Mean
+
+-   So, let's just take the margin of error to be the product of two terms: the variance of $\overline{X}_n$, and a [**confidence coefficient**]{.alert} _c_ (a value related to our coverage probability _p_):
+$$ \overline{Y}_n \pm c \cdot \frac{\sigma}{\sqrt{n}} $$
+
+-   So, all that's left is to figure out what the confidence coefficient _c_ should be.
+
+-   Indeed, we should select it such that
+$$ \Prob\left( \overline{Y}_n - c \cdot \frac{\sigma}{\sqrt{n}} \leq \mu \leq \overline{Y}_n + c \cdot \frac{\sigma}{\sqrt{n}} \right) = p $$
+
+## {{< fa text-width >}} Confidence Intervals for the Mean
+
+-   Equivalently,
+$$ \Prob\left( -c \leq \frac{\sqrt{n}(\overline{Y}_n - \mu)}{\sigma} \leq c \right) = p $$
+
+-   Hey- I know the sampling distribution of the middle quantity (provied we either have a normally-distributed population, or a large enough sample size for the CLT to kick in)!
+
+-   So, our equivalent condition _c_ must satisfy is
+$$ 2 \Phi(c) - 1 = p \ \implies \ c = \Phi^{-1}\left( \frac{1 + p}{2} \right)  $$
+
+
+## {{< fa text-width >}} Confidence Intervals for the Mean
+
+::: {.fragment}
+::: {.callout-important}
+## **CI for the Mean; Known Variance**
+
+Suppose (_Y_~1~, ..., _Y_~_n_~) represents an i.i.d. sample from a distribution with finite mean _µ _ and [known]{.underline} variance σ^2^ < ∞. If either the _Y_~_i_~'s are known to be normally distributed or the sample size _n_ is large (_n_ ≥ 30), a _p_ confidence interval for _µ_ is given by
+$$ \overline{Y}_n \pm \Phi^{-1}\left( \frac{1 + p}{2} \right) \cdot \frac{\sigma}{\sqrt{n}}$$ 
+
+:::
+:::
+
+-   For example, the confidence coefficient associated with a 95\% interval for the mean is given by
+
+::: {.fragment}
+```{r}
+#| echo: True
+qnorm((1 + 0.95) / 2)
+```
+:::
+
+
+## {{< fa text-width >}} Confidence Intervals for the Mean
+
+::: {.fragment}
+::: {.callout-important}
+## **CI for the Mean; Unknown Variance**
+
+Suppose (_Y_~1~, ..., _Y_~_n_~) represents an i.i.d. sample from a distribution with finite mean _µ _ and [unknown]{.underline} variance σ^2^ < ∞. If either the _Y_~_i_~'s are known to be normally distributed or the sample size _n_ is large (_n_ ≥ 30), a _p_ confidence interval for _µ_ is given by
+$$ \overline{Y}_n \pm F_{t_{n - 1}}^{-1} \left( \frac{1 + p}{2} \right) \cdot \frac{S_n}{\sqrt{n}}$$
+where $F_{t_{n - 1}}^{-1}(\cdot)$ denotes the inverse CDF of the _t_~_n_-1~ distribution.
+
+:::
+:::
+
+-   For example, the confidence coefficient associated with a 95\% interval for the mean, given a sample size of 32, is given by
+
+::: {.fragment}
+```{r}
+#| echo: True
+qt((1 + 0.95) / 2, 31)
+```
+:::
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+A consultant from the EPA (Environmental Protection Agency) is interested in estimating the average CO~2~ emissions among all US households. To that end, they collect a sample of 35 US households; the average emissions of these 35 households is 9.13 mt/yr and the standard deviation of these emissions is 2.43 mt/yr. Construct a 90\% confidence interval for the true average CO~2~ emissions among all US households using the consultant's data.
+
+:::
+
+::: {.callout-caution}
+## **Caution**
+
+You'll need a computer for this one!
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 5L, font_size = "4rem")
+```
+
+# Resampling Methods {background-color="black" background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWd0NjNqemgyMzhzbnJqcDk3eXl1bWxxb2lwcmY4ZDIzNHp2NnM0YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0G16FRujv2fiD3Ne/giphy.gif" background-size="30rem" background-repeat="repeat"}
+
+## {{< fa stairs >}} Leadup
+
+-   Much of our discussion yesterday and today has been **simulation-based**: for instance, yesterday we repeatedly sampled from the Exponential distribution and constructed the _empirical_ sampling distribution for the sample mean.
+    -   Furthermore, in our simulations, we sampled directly from the population.
+    
+-   What happens if we don't have access to the population distribution?
+    -   For example, suppose we have 100 cat weights, but we don't want to necessarily assume that the weight of a randomly-selected cat follows the normal distribution.
+
+## {{< fa recycle >}} Resampling Methods
+
+-   Here is an idea: what if we treat this sample as the population itself?
+    -   If we do, we can simply generate as many samples (with replacement) as we like and still construct empirical sampling distributions for estimators using the procedure we implemented yesterday.
+
+-   This is the idea behind the [**bootstrap**]{.alert}, which itself belongs to a class of techniques known as [**resampling methods**]{.alert}.
+
+-   Let's run through an example together.
+
+-   Imagine we have a vector of 100 cat weights, stored in a variable called `cat_wts`.
+
+## {{< fa shoe-prints >}} Bootstrapping: Example
+
+::: {.fragment}
+```{r}
+set.seed(100)
+cat_wts <- rnorm(100, 10.5, 3.2) %>% round(3)
+```
+
+```{r}
+#| echo: True
+head(cat_wts)
+```
+:::
+
+-   We can take a resample of size 100 (it's customary to take resamples of the same size as the original sample):
+
+::: {.fragment}
+```{r}
+#| echo: True
+
+set.seed(100)   ## for reproducibility
+cat_wt_resample <- sample(cat_wts, 100, replace = TRUE)
+head(cat_wt_resample)
+```
+:::
+
+-   Here's how the mean of our resample compares with the mean of our sample:
+
+::: {.fragment}
+```{r}
+#| echo: True
+cat("Mean of Sample:", mean(cat_wts), "\n",
+    "Mean of Resample:", mean(cat_wt_resample))
+```
+:::
+
+## {{< fa shoe-prints >}} Bootstrapping: Example
+
+-   If we imagine repeating this resampling procedure, we can construct an approximation to the sampling distribution of the sample mean.
+
+::: {.fragment}
+```{r}
+#| echo: True
+#| code-fold: True
+
+btstrp_means <- c()
+
+for(b in 1:100){
+  btstrp_means <- c(btstrp_means,
+                    sample(cat_wts, length(cat_wts), replace = T) %>% mean()
+  )
+}
+```
+
+```{r}
+#| fig-height: 4
+data.frame(btstrp_means) %>% ggplot(aes(x = btstrp_means)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 15, col = "white") +
+  theme_minimal(base_size = 18) +
+  ggtitle("Empirical Sampling Dist'n of Bootstrapped Means")
+```
+:::
+
+
+## {{< fa shoe-prints >}} Bootstrapping: Example
+
+-   Since this data was simulated, we can actually assess how well the bootstrap is doing.
+
+-   Specifically (even though I did not tell you this before), the `cat_wts` vector was sampled from the $\mathcal{N}(10.5, \ 3.2^2)$ distribution.
+
+-   So, let's compare our bootstrapped sample means against a set of sample means drawn directly from the population distribution.
+
+::: {.fragment}
+```{r}
+#| echo: True
+#| code-fold: True
+sm_from_pop <- c()
+for(b in 1:1000){sm_from_pop <- c(sm_from_pop,
+                                  rnorm(100, 10.5, 3.2) %>% mean())}
+
+summary(sm_from_pop)
+summary(btstrp_means)
+```
+:::
+
+
+## {{< fa shoe-prints >}} Bootstrapping: Example
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+data.frame(`From Pop.` = sm_from_pop, 
+           `Bootstrapped` = btstrp_means,
+           check.names = F) %>%
+  melt(variable.name = "type") %>%
+  ggplot(aes(x = type, y = value)) +
+  geom_boxplot(fill = "#dce7f7", staplewidth = 0.25,
+               outlier.size = 2) + theme_minimal(base_size = 18) +
+  ggtitle("Boxplot of Means", 
+          subtitle = "Sampled from Population, and Bootstrapping")
+```
+
+
+## {{< fa shoe-prints >}} Bootstrapping CIs
+
+-   What this means is that we can actually construct confidence intervals using bootstrapping.
+
+-   There are actually many different flavors of bootstrapped CIs; we'll only discuss one in this class.
+
+-   Specifically, let's go back to how I defined a confidence interval: an interval that we believe, with coverage probability, covers the true value of the parameter of interest.
+
+-   An equivalent way of interpreting a _p_ CI is: if we were to repeat the mechanism used to generate the CI a large number of times, we would expect (on average) (_p_×100)\% of the resulting CIs to cover the true value of _µ_.
+
+## {{< fa text-width >}} CI: Interpretation
+
+```{r}
+set.seed(10)
+lowers <- c()
+uppers <- c()
+B <- 100
+n <- 30
+
+for(b in 1:B) {
+  temp_samp <- rnorm(n)
+  lowers <- c(lowers, mean(temp_samp) - qnorm(0.975) /sqrt(n))
+  uppers <- c(uppers, mean(temp_samp) + qnorm(0.975) /sqrt(n))
+}
+
+noncov_ind <- which(lowers > 0 | uppers < 0)
+nci <- rep("c", B)
+nci[noncov_ind] <- "n"
+
+data.frame(lowers, uppers, y = 1:B, nci) %>%
+  ggplot(aes(y = y)) +
+  geom_segment(aes(x = y, xend = y, y = lowers, yend = uppers,
+                   colour = nci), linewidth = 1) +
+  scale_color_manual(values = c("c" = "black", "n" = "red")) +
+  theme_minimal(base_size = 18) +
+  theme(legend.position = "none") +
+  xlab("sample") + ylab("CI") +
+  ggtitle("100 CIs with 95% Confidence")
+```
+
+
+
+## {{< fa shoe-prints >}} Bootstrapping CIs
+
+-   "If we were to repeat [...] large number of times"; isn't that exactly what we do in the bootstrap?
+    -   Yup!
+    
+-   So, here's a way we can use the Bootstrap to obtain a _p_ CI:
+    1)    Generate a large number of bootstrapped estimators
+    2)    Use the (1 - _p_)/2 and 1 - (1 + _p_)/2 quantiles of the bootstraped sampling distribution
+    
+-   This has the benefit of being "distribution free" (sometimes called [**nonparametric**]{.alert}), and can be used to construct confidence intervals for a wide array of parameters (not just the mean).
+
+
+## {{< fa code >}} Live Demo!
+
+::: {.callout-important}
+## **Live Demo**
+
+In this live demo, we'll construct a bootstrap confidence interval for the proportion of cats that have FIV (Feline Immunodeficiency Virus). As always, please feel free to boot up your laptop and follow along!
+:::
+
+-   You'll get more practice with CIs (and boostrapping CIs) in a future lab.
+
