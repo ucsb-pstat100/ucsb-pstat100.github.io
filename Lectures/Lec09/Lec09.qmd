@@ -636,12 +636,7 @@ grid.arrange(p1, p2, p3, p4, ncol = 2)
 
 The amount of time a randomly-selected Santa Barbara MTD bus is delayed is a random variable with mean 4 minutes and standard deviation 3 minutes. 
 
-::: {.nonincremental}
-a)    What is the probability that a randomly-selected bus is _early_? (**Hint:** think about what this means in the context of the problem.)
-
-b)    A collection of 81 independent buses is taken, and the average (mean) amount of delay is recorded. What is the probability that the average amount of delay among these 81 buses lies between 3 minutes and 5 minutes?
-
-:::
+A collection of 81 independent buses is taken, and the average (mean) amount of delay is recorded. What is the probability that the average amount of delay among these 81 buses lies between 3 minutes and 5 minutes?
 
 :::
 

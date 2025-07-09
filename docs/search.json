@@ -1110,7 +1110,7 @@
     "href": "Lectures/Lec09/Lec09.html#collective-exercise",
     "title": "PSTAT 100: Lecture 09",
     "section": " Collective Exercise",
-    "text": "Collective Exercise\n\n\n\n\n\n\nLet’s Work On This Together!\n\n\nThe amount of time a randomly-selected Santa Barbara MTD bus is delayed is a random variable with mean 4 minutes and standard deviation 3 minutes.\n\n\nWhat is the probability that a randomly-selected bus is early? (Hint: think about what this means in the context of the problem.)\nA collection of 81 independent buses is taken, and the average (mean) amount of delay is recorded. What is the probability that the average amount of delay among these 81 buses lies between 3 minutes and 5 minutes?"
+    "text": "Collective Exercise\n\n\n\n\n\n\nLet’s Work On This Together!\n\n\nThe amount of time a randomly-selected Santa Barbara MTD bus is delayed is a random variable with mean 4 minutes and standard deviation 3 minutes.\nA collection of 81 independent buses is taken, and the average (mean) amount of delay is recorded. What is the probability that the average amount of delay among these 81 buses lies between 3 minutes and 5 minutes?"
   },
   {
     "objectID": "Lectures/Lec09/Lec09.html#next-time",
