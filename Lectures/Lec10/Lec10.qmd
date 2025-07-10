@@ -549,18 +549,7 @@ data.frame(lowers, uppers, y = 1:B, nci) %>%
     
 -   So, here's a way we can use the Bootstrap to obtain a _p_ CI:
     1)    Generate a large number of bootstrapped estimators
-    2)    Use the (1 - _p_)/2 and 1 - (1 + _p_)/2 quantiles of the bootstraped sampling distribution
+    2)    Use the (1 - _p_)/2 and (1 + _p_)/2 quantiles of the bootstraped sampling distribution
     
 -   This has the benefit of being "distribution free" (sometimes called [**nonparametric**]{.alert}), and can be used to construct confidence intervals for a wide array of parameters (not just the mean).
-
-
-## {{< fa code >}} Live Demo!
-
-::: {.callout-important}
-## **Live Demo**
-
-In this live demo, we'll construct a bootstrap confidence interval for the proportion of cats that have FIV (Feline Immunodeficiency Virus). As always, please feel free to boot up your laptop and follow along!
-:::
-
--   You'll get more practice with CIs (and boostrapping CIs) in a future lab.
 

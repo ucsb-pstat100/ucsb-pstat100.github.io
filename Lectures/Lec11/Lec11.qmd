@@ -1,0 +1,770 @@
+---
+title: "PSTAT 100: Lecture 11"
+subtitle: "Hypothesis Testing"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/logo.svg"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/logo.svg"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+```
+
+
+## {{< fa pencil >}} Live Demo, Part I...
+
+**Question:** Are bags of candies balanced?
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 7L, font_size = "12rem")
+```
+
+
+## {{< fa backward-fast >}} Recap
+### General Framework for Inference
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+::: {.fragment}
+![](images/inference.svg)
+:::
+:::
+
+
+::: {.column width="60%"}
+-   We have a [**population**]{.alert}, governed by a set of [**population parameters**]{.alert} that are unobserved (but that we’d like to make claims about).
+
+-   To make claims about the population parameters, we take a [**sample**]{.alert}.
+
+-   We then use our sample to make [**inferences**]{.alert} (i.e. claims) about the population parameters.
+
+
+:::
+
+::::
+
+-   Inference could mean [**estimation**]{.alert} or [**hypothesis testing**]{.alert}
+
+# Intro to Hypothesis Testing {background-color="black" background-image="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmpqZWM2amk3cGtkbmR0cng2cjgyemg0b3J1dHNuM3o4dHZqeHVwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gw3IWyGkC0rsazTi/200.gif" background-size="fill"}
+
+## {{< fa cat >}} Cats - Again!
+### Toe Beans...
+
+-   According to a <a href="https://www.quora.com/What-percentage-of-cats-are-born-with-6-toes#:~:text=Your%20average%20domesticated%20cat%20has,the%20litter%20will%20be%20polys." target="_blank">Quora post</a>, the average cat has about a 10% chance of being born with _polydactyly_ 
+
+:::: {.columns}
+::: {.column width="40%"}
+::: {.fragment}
+![Image Source: https://www.treehugger.com/thing-didnt-know-polydactyl-cats-4864197](Images/polydactyl.png)
+:::
+:::
+
+::: {.column width="60%"}
+-   Polydactyly refers to a condition whereby an animal is born with extra digits (e.g. extra fingers in humans, extra toes in cats, etc.)
+
+-   Suppose we wish to assess the validity of the _Quora_ claim, using data.
+    -   Note that we're not necessarily trying to estimate the true incidence of polydactyly among cats!
+:::
+
+::::
+
+
+
+## {{< fa cat >}} Cats - Again!
+### Toe Beans...
+
+-   Say we collect a simple random sample of 100 cats, and observe 9 polydactyl cats in this sample (i.e. $\widehat{p}$ = 9\%).
+
+-   Does this provide concrete evidence that the _Quora_ claim is incorrect? Not really!
+
+-   But, say our sample of 100 cats contains 80 polydactyl cats ($\widehat{p}$ = 80\%). Or, say we saw only 1 polydactyl cat in a sample of 100 ($\widehat{p}$ = 1\%).
+
+-   Now, it is _possible_ that the _Quora_ claim is true and we just happened to get _extraordinarily_ lucky (or unlucky).
+
+-   But, it's probably more likely that we should start to question the validity of the _Quora_ statistic.
+
+## {{< fa magnifying-glass-chart >}} Hypothesis Testing
+### General Framework
+
+-   So where's the cutoff - how many polydactyl cats do we need to observe in a sample of _n_ before we start to question the _Quora_ statistic?
+
+-   This is the general framework of [**hypothesis testing**]{.alert}.
+
+-   We start off with a pair of competing claims, called the [**null hypothesis**]{.alert} and the [**alternative hypothesis**]{.alert}. 
+    -   The null hypothesis is usually set to be the "status quo". For instance, in our polydactyly example, we would set the null hypothesis (denoted _H_~0~, and read "H-naught") to be "10% of cats are polydactyl."
+    
+    
+
+## {{< fa magnifying-glass-chart >}} Hypothesis Testing
+### Null Hypothesis
+
+-   It's customary to phrase the null and alternative hypotheses mathematically (as opposed to verbally).
+
+-   For example, letting _p_ denote the proportion of polydactyl cats, the null hypothesis in our _Quora_ example would be
+$$ H_0: \ p = 0.1 $$
+
+-   For now, we'll consider what is known as a [**simple null hypothesis**]{.alert} where the null is "parameter equals some value". 
+    -   Later, we'll generalize and consider null hypotheses like _H_~0~: _p_ ≥ 0.1.
+    
+-   As a rule-of-thumb, the null should include some form of equality; e.g. _p_ > 0.1 is _not_ a valid null whereas _p_ ≥ 0.1 is. 
+
+## {{< fa magnifying-glass-chart >}} Hypothesis Testing
+### Alternative Hypothesis
+
+-   The alternative hypothesis, as the name suggests, provides an _alternative_ to the null: if the null is in fact false, what is the truth?
+
+-   Given a null of the form _H_~0~: _p_ = _p_~0~ for some [**null value**]{.alert} _p_~0~, there are four main alternatives from which we can choose:
+    1)    [**Lower-Tailed**]{.alert}: _H_~_A_~: _p_ < _p_~0~
+    2)    [**Upper-Tailed**]{.alert}: _H_~_A_~: _p_ > _p_~0~
+    3)    [**Two-Tailed**]{.alert} (aka [**Two-Sided**]{.alert}): _H_~_A_~: _p_ ≠ _p_~0~
+    4)    [**Simple-vs-Simple**]{.alert}: _H_~_A_~: _p_ = _p_~_A_~ for some _p_~_A_~ ≠ _p_~0~
+    
+-   To stress: we must pick _one_ of these to be the alternative, and we must pick this before starting our test.
+
+
+## {{< fa magnifying-glass-chart >}} Hypothesis Testing
+### General Parameter
+
+-   We can perform hypothesis testing on any population parameter.
+    -   We usually use _θ_ (the Greek letter "theta") as a placeholder for an arbitrary population parameter.
+
+-   Null: _H_~0~: _θ_ = _θ_~0~ (e.g. 'the average weight of all cats is 9.75 lbs'; 'the standard deviation of all CO~2~ emissions is 5.4 mt/yr'; etc.)
+
+-   Alternative: pick one of the following:
+    1)    [**Lower-Tailed**]{.alert}: _H_~_A_~: _θ_ < _θ_~0~
+    2)    [**Upper-Tailed**]{.alert}: _H_~_A_~: _θ_ > _θ_~0~
+    3)    [**Two-Tailed**]{.alert} (aka [**Two-Sided**]{.alert}): _H_~_A_~: _θ_ ≠ _θ_~0~
+    4)    [**Simple-vs-Simple**]{.alert}: _H_~_A_~: _θ_ = _θ_~_A_~ for some _θ_~_A_~ ≠ _θ_~0~
+
+## {{< fa magnifying-glass-chart >}} Hypothesis Testing
+### Alternative Hypothesis
+
+-   It is _absolutely crucial_ that the null and alternative hypotheses cannot be simultaneously true.
+
+-   For instance, if _H_~0~: _p_ = _p_~0~, then _H_~_A_~: _p_ ≥ _p_~0~ is **not** a valid alternative hypothesis.
+    -   This is because, if the true value of _p_ is in fact _p_~0~, then the null and alternative _both_ become true!
+    
+-   Additionally, in a real-world setting, it will be up to you to pick which type of alternative to use.
+    -   On In-Class Assessments, we'll often tell you which type of alternative to use.
+    
+
+## {{< fa cat >}} Polydactyly Example
+
+-   Back to cats! Specifically, suppose we wish to test **H~0~:** _p_ = 0.1 against a _two-sided_ alternative **H~A~:** _p_ ≠ 0.1.
+
+-   We previously gained some intuition: If the observed sample proportion of polydactyl cats is, say, 9\%, we'd probably _not_ reject the null. But, if the observed sample proportion is 80\% or 1\%, we'd probably reject the null in favor of the alternative.
+
+-   So, this reveals a couple of things:
+    -   Our test will likely depend on a _point estimator_ (which is part of the reason we discussed point estimators first!)
+    -   We reject the null in favor of a two-sided alternative if the observed value of the point estimator is _very far_ from the null value.
+    
+## {{< fa cat >}} Polydactyly Example
+
+-   Here's another way to rephrase this. 
+
+-   We know to reject the null if $\widehat{P}_n$ - the observed sample proportion of polydactyl cats - is very far from our null value (10\%). 
+
+-   Now, even if the null _were_ true, we would still expect some variation - after all, $\widehat{P}_n$ is random. 
+
+-   So, our question is: if we assume the true proportion of polydactyl cats is 10\%, is the discrepancy between 10\% and our observed proportion of polydactyly too large to be due to chance?
+
+-   This requires information about the _sampling distribution_ of $\widehat{P}_n$!
+
+## {{< fa cat >}} Polydactyly Example
+
+-   Just like we saw before, there are two ways we could go about obtaining the sampling distribution of $\widehat{P}_n$: through simulations, or through theory.
+
+-   Let's start with simulations!
+
+-   I've gone ahead and created a (hypothetical) population of one million cats, some of which have polydactyly (encoded as `"poly"`) and some of which do not (encoded as `"non"`).
+    -   I won't tell you how many of each there are!
+    -   For now, I'll replicate the steps we took in lecture before (which are the steps you took on Lab 04 as well) to construct an approximation to the sampling distribution of the sample proportion.
+    
+
+## {{< fa cat >}} Polydactyly Example
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+pop <- read.csv("cats_pop.csv") %>% unlist() 
+set.seed(100)
+
+props <- c()
+for(b in 1:1000){
+  temp_samp <- sample(pop, size = 2500)
+  props <- c(props, ifelse(temp_samp == "poly", 1, 0) %>% mean())
+}
+
+data.frame(x = props) %>% ggplot(aes(x = x)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 13, col = "white") +
+  theme_minimal(base_size = 18) + 
+  ggtitle("Histogram of Sample Proportions",
+          subtitle = "1000 samples of size 2500") +
+  xlab("sample proportion")
+```
+
+## {{< fa toggle-off >}} DeMoivre-Laplace Theorem
+### Sampling Distribution of the Sample Proportion
+
+::: {.fragment}
+::: {.callout-important}
+## **DeMoivre-Laplace Theorem**
+
+Let $0 < p < 1$ be fixed and $S_n \sim \mathrm{Bin}(n, p)$. Then
+$$ \left( \frac{S_n - np}{\sqrt{np(1 - p)}} \right) \stackrel{\cdot}{\sim} \mathcal{N}(0, 1) \qquad \text{equivalently,} \qquad  \left( \frac{\widehat{P}_n - p}{\sqrt{\frac{p(1 - p)}{n}}} \right) \stackrel{\cdot}{\sim} \mathcal{N}(0, 1)  $$
+:::
+:::
+
+
+-   Just like the CLT, this is just a mathematically rigorous way of stating a claim about the sampling distribution of an estimator (in this case, the sample proportion).
+
+
+
+## {{< fa cat >}} Polydactyly Example
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+data.frame(x = props) %>% ggplot(aes(x = x)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 13, col = "white") +
+  theme_minimal(base_size = 18) + 
+  ggtitle("Histogram of Sample Proportions",
+          subtitle = "1000 samples of size 2500") +
+  xlab("sample proportion") +
+  stat_function(fun = dnorm, 
+                args = 
+                  list(
+                    mean = mean(pop == "poly"),
+                    sd = sqrt(mean(pop == "poly") * (1 - mean(pop == "poly")) / 2500)
+                  ),
+                col = "blue", linewidth = 1.5
+              )
+```
+
+## {{< fa cat >}} Polydactyly Example
+
+-   Alright, let's go back to our hypothesis test. Our test takes the form:
+
+::: {.fragment style="font-size:24px"}
+$$ \texttt{decision}(\texttt{data}) = \begin{cases} \text{Reject $H_0$ in favor of $H_A$} & \text{if } |\widehat{P}_n - p_0| > c \\ \text{Fail to Reject $H_0$} & \text{if } |\widehat{P}_n - p_0| \leq c \\ \end{cases}$$
+:::
+
+-   $\{|\widehat{P}_n - p_0| > c\}$ is just a mathematical way of saying "the distance between $\widehat{P}_n$ and $p_0$ is large"
+
+-   It's customary to standardize:
+
+::: {.fragment style="font-size:24px"}
+$$ \texttt{decision}(\texttt{data}) = \begin{cases} \text{Reject $H_0$ in favor of $H_A$} & \text{if } \left| \frac{\widehat{P}_n - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}} \right| > k \\ \text{Fail to Reject $H_0$} & \text{if } \left| \frac{\widehat{P}_n - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}} \right| \leq k \\ \end{cases}$$
+:::
+
+
+## {{< fa scale-unbalanced >}} States of the World
+
+-   In a given hypothesis testing setting, the null is either true or not (though we won't ever get to know for sure).
+
+-   Independently, our test will either reject the null or not.
+
+-   This leads to four states of the world:
+
+
+:::{.fragment}
+<table>
+  <tr>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 0px solid black;"></td>
+    <td colspan="2" padding-left:10px; background-color: #c4eef2; style="text-align: center"><b>Result of Test</b></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; width:5cm; text-align: center"><b>Reject</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; width:5cm; text-align: center"><b>Fail to Reject</b></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black; text-align: center; vertical-align: middle;" rowspan="2"><b><i>H</i><sub>0</sub></b></td>
+    <td style="border: 0px solid black;"><b>True</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:red"></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center"></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black;"><b>False</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center"></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center"></td>
+  </tr>
+</table>
+:::
+
+\
+
+-   Some of these states are good, others are bad. Which are which?
+
+## {{< fa scale-unbalanced >}} States of the World
+
+
+<table>
+  <tr>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 0px solid black;"></td>
+    <td colspan="2" padding-left:10px; background-color: #c4eef2; style="text-align: center"><b>Result of Test</b></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; width:5cm; text-align: center"><b>Reject</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; width:5cm; text-align: center"><b>Fail to Reject</b></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black; text-align: center; vertical-align: middle;" rowspan="2"><b><i>H</i><sub>0</sub></b></td>
+    <td style="border: 0px solid black;"><b>True</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:red"><b>BAD</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:green"><b>GOOD</b></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black;"><b>False</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:green"><b>GOOD</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:red"><b>BAD</b></td>
+  </tr>
+  
+</table>
+
+\
+
+- We give names to the two "bad" situations: **Type I** and **Type II** errors.
+
+:::{.fragment}
+<table>
+  <tr>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 0px solid black;"></td>
+    <td colspan="2" padding-left:10px; background-color: #c4eef2; style="text-align: center"><b>Result of Test</b></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 0px solid black;"></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; width:5cm; text-align: center"><b>Reject</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; width:5cm; text-align: center"><b>Fail to Reject</b></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black; text-align: center; vertical-align: middle;" rowspan="2"><b><i>H</i><sub>0</sub></b></td>
+    <td style="border: 0px solid black;"><b>True</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:red"><b>Type I Error</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:green"><b>GOOD</b></td>
+  </tr>
+  <tr>
+    <td style="border: 0px solid black;"><b>False</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:green"><b>GOOD</b></td>
+    <td style="border: 1px solid black; padding-right:10px;  padding-left:10px; text-align:center; color:red"><b>Type II Error</b></td>
+  </tr>
+  
+</table>
+:::
+
+
+
+## {{< fa scale-unbalanced >}} States of the World
+### Type I and Type II Errors
+
+
+:::{.fragment}
+::: callout-note
+## **Definition:** Type I and Type II errors
+
+:::{.nonincremental}
+::: {style="font-size: 25px"}
+- A [**Type I Error**]{.alert} occurs when we reject $H_0$, when $H_0$ was actually true. 
+- A [**Type II Error**]{.alert} occurs when we fail to reject $H_0$, when $H_0$ was actually false.
+:::
+:::
+:::
+:::
+
+- A common way of interpreting Type I and Type II errors are in the context of the judicial system.
+
+- The US judicial system is built upon a motto of "innocent until proven guilty." As such, the null hypothesis is that a given person is innocent.
+
+- A Type I error represents convicting an innocent person.
+
+- A Type II error represents letting a guilty person go free.
+
+
+## {{< fa scale-unbalanced >}} States of the World
+### Type I and Type II Errors
+
+- Viewing the two errors in the context of the judicial system also highlights a tradeoff.
+
+- If we want to reduce the number of times we wrongfully convict an innocent person, we may want to make the conditions for convicting someone even stronger.
+
+- But, this would have the consequence of having fewer people overall convicted, thereby (and inadvertently) *increasing* the chance we let a guilty person go free.
+
+- As such, [controlling for one type of error increses the likelihood of committing the other type.]{.underline}
+
+
+## {{< fa chart-pie >}} Hypothesis Test for a Proportion
+
+-   Let's return to our task of constructing a hypothesis test for a proportion.
+
+-   We had, for some (as-of-yet undetermined) [**critical value**]{.alert} _k_,
+
+::: {.fragment style="font-size:28px"}
+$$ \texttt{decision}(\texttt{data}) = \begin{cases} \text{Reject $H_0$ in favor of $H_A$} & \text{if } \left| \frac{\widehat{P}_n - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}} \right| > k \\ \text{Fail to Reject $H_0$} & \text{if } \left| \frac{\widehat{P}_n - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}} \right| \leq k \\ \end{cases}$$
+:::
+
+-   Here's the idea: we start by fixing the probability of committing a Type I error (called the [**level of significance**]{.alert}) to some small number α (the Greek letter "alpha").
+    -   This will, in turn, yield an equation which can be solved for _k_.
+    
+
+## {{< fa chart-pie >}} Hypothesis Test for a Proportion
+
+-   By definition, α is the probability of rejecting a true null. So,
+$$ \alpha := \Prob_{H_0}\left( \left| \frac{\widehat{P}_n - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}} \right| > k \right) $$
+where $\Prob_{H_0}$ is just a shorthand for "probability of (...), under the null".
+
+-   The DeMoivre-Laplace theorem tells us that, under the null, $\frac{\widehat{P}_n - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}}$ is well-approximated by a standard normal distribution.
+
+## {{< fa chart-pie >}} Hypothesis Test for a Proportion
+
+:::: {.columns}
+::: {.column width="40%"}
+```{r}
+#| echo: False
+
+data.frame(x = -3:3) %>%
+  ggplot(aes(x = x)) +
+  stat_function(
+    fun = dnorm,
+    linewidth = 1.5
+  ) + stat_function(
+    fun = dnorm,
+    geom = "area",
+    col = "#7ea3de",
+    fill = "#7ea3de",
+    xlim = c(-3, -1.3)
+  ) + stat_function(
+    fun = dnorm,
+    geom = "area",
+    col = "#7ea3de",
+    fill = "#7ea3de",
+    xlim = c(1.3, 3)
+  ) +
+  annotate(
+    "text",
+    label = "-k",
+    x = -1.3, y = 0.01,
+    size = 16
+  ) +
+  annotate(
+    "text",
+    label = "k",
+    x = 1.3, y = 0.01,
+    size = 16
+  ) + theme_minimal(base_size = 28)
+```
+:::
+
+::: {.column width="60%"}
+-   The curve represents the density of the test statistic, under the null.
+-   By construction, the shaded areas must together equal α.
+:::
+::::
+
+-   Therefore, the equation we have is
+$$ 2[1 - \Phi(k)] = \alpha \ \implies \ \boxed{k = \Phi^{-1}\left( 1 - \frac{\alpha}{2} \right)}$$
+
+-   Remember, we set the value of α at the beginning, to some small number.
+    -   Some common significance levels are 0.01, 0.05, and 0.1, though certain contexts may require smaller or higher levels of significance.
+    
+    
+
+## {{< fa chart-pie >}} Hypothesis Test for a Proportion
+### Two-Sided Case
+
+:::{.fragment}
+::: callout-important
+## **Two-Sided Test for a Proportion:**
+
+:::{.nonincremental}
+::: {style="font-size: 25px"}
+When testing _H_~0~: _p_ = _p_~0~ vs _H_~_A_~: _p_ ≠ _p_~0~ at an α level of significance, where _p_ denotes a population proportion, the test takes the form
+$$ \text{Reject $H_0$ if } \left| \frac{\widehat{p}_n - p_0}{\sqrt{ \frac{p_0 (1 - p_0)}{n}}} \right| > \Phi^{-1}\left( 1 - \frac{\alpha}{2} \right) $$
+:::
+:::
+:::
+:::
+
+-   The set of observed values of the [**test statistic**]{.alert} (in this case, the absolute value quantity that appears in the test above) that correspond to a rejection is called the [**rejection region**]{.alert}.
+
+
+
+## {{< fa chart-pie >}} Hypothesis Test for a Proportion
+### Upper- and Lower-Tailed
+
+-   **Upper-Tailed Test:** Reject _H_~0~ if $\displaystyle \frac{\widehat{P}_n - p_0}{\sqrt{ \frac{p_0 (1 - p_0)}{n}}}  > \Phi^{-1}(1 - \alpha)$ \
+
+-   **Lower-Tailed Test:** Reject _H_~0~ if $\displaystyle \frac{\widehat{P}_n - p_0}{\sqrt{ \frac{p_0 (1 - p_0)}{n}}} < \Phi^{-1}(\alpha)$
+
+\
+
+-   My advice: draw a picture!
+
+## {{< fa pencil >}} Live Demo, Part II!
+
+::: {.nonincremental}
+
+-   Let _p_ denote the true proportion (among all candies manufactured by this brand, in the world) of green candies.
+
+-   **Null:** _p_ = 0.2 (i.e. 1/5).
+    -   **Alternative:** _p_ ≠ 0.2.
+
+-   **Question:** At a 5\% level of significance, should we reject the null in favor of the alternative?
+
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 5L, font_size = "7rem")
+```
+
+
+## {{< fa chart-area >}} _p_-Values
+
+-   Instead of phrasing our test in terms of critical values, we can equivalently formulate  things in terms of what is known as a [**_p_-value**]{.alert}.
+
+-   The _p_-value of an observed value of a test statistic is the probability, under the null, of observing something as or more extreme (in the direction of the alternative) as what was observed.
+
+:::: {.columns}
+::: {.column width="50%"}
+-   Lower-tailed: ℙ(TS < ts)
+-   Upper-tailed: ℙ(TS > ts)
+-   Two-sided: ℙ(|TS| > ts)
+
+\
+
+-   Again, draw a picture!
+:::
+
+::: {.column width="40%"}
+::: {.fragment}
+```{r}
+#| echo: False
+#| fig-height: 9
+
+p1 <- data.frame(x = -3:3) %>%
+  ggplot(aes(x = x)) +
+  stat_function(
+    fun = dnorm,
+    linewidth = 1.5
+  ) + stat_function(
+    fun = dnorm,
+    geom = "area",
+    col = "#7ea3de",
+    fill = "#7ea3de",
+    xlim = c(-3, -1)
+  ) +
+  annotate(
+    "text",
+    label = "TS",
+    x = -1, y = 0.05,
+    size = 16
+  ) + theme_minimal(base_size = 30)
+
+p2 <- data.frame(x = -3:3) %>%
+  ggplot(aes(x = x)) +
+  stat_function(
+    fun = dnorm,
+    linewidth = 1.5
+  ) + stat_function(
+    fun = dnorm,
+    geom = "area",
+    col = "#7ea3de",
+    fill = "#7ea3de",
+    xlim = c(-1, 3)
+  ) +
+  annotate(
+    "text",
+    label = "TS",
+    x = -1, y = 0.05,
+    size = 16
+  ) + theme_minimal(base_size = 30)
+
+
+p3 <- data.frame(x = -3:3) %>%
+  ggplot(aes(x = x)) +
+  stat_function(
+    fun = dnorm,
+    linewidth = 1.5
+  ) + stat_function(
+    fun = dnorm,
+    geom = "area",
+    col = "#7ea3de",
+    fill = "#7ea3de",
+    xlim = c(-3, -1)
+  ) + stat_function(
+    fun = dnorm,
+    geom = "area",
+    col = "#7ea3de",
+    fill = "#7ea3de",
+    xlim = c(1, 3)
+  ) + stat_function(
+    fun = dnorm,
+    geom = "area",
+    col = "#7ea3de",
+    fill = "#7ea3de",
+    xlim = c(1, 3)
+  ) +
+  annotate(
+    "text",
+    label = "|TS|",
+    x = 1, y = 0.05,
+    size = 16
+  ) + theme_minimal(base_size = 30)
+
+grid.arrange(p1, p2, p3, ncol = 1)
+```
+:::
+:::
+
+::::
+
+
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+A particular community college claims that 78\% of its students continue on to a four-year university. To test these claims, an auditor takes a representative sample of 100 students, and finds that 72 continue on to a four-year university. 
+
+::: {.nonincremental}
+
+a)    In the context of this problem, what is a Type I error? What about a Type II error? Use words!
+
+b)    Use the provided data to test the college's claims against a two-sided alternative at a 5\% level of significance. For practice, conduct your test once using critical values and then again using _p_-values.
+:::
+
+:::
+
+::: {.callout-caution}
+## **Caution**
+
+You'll need a computer for this one!
+:::
+
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 5L, font_size = "6rem")
+```
+
+
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+
+According to the _World Bank_, 54.2% of households in Ethiopia live with access to electricity. Prior evidence suggests, however, that the true proportion may be higher than this number; as such, a sociologist decides to test the _World Bank_'s claims against an upper-tailed alternative at a 5\% level of significance. She collects a representative sample of 130 Ethiopian households, and observes that 67 of these households live with access to electricity. Using the sociologist's data, conduct the test and phrase your conclusions in the context of the problem. For practice, conduct your test once using critical values and once using _p_-values.
+:::
+
+::: {.callout-caution}
+## **Caution**
+
+You'll need a computer for this one!
+:::
+
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 5L, font_size = "6rem")
+```
+
+
+
+
+## {{< fa forward-fast >}} Next Time
+
+-   On Monday, we'll pick up with some more hypothesis testing.
+    -   We'll consider hypothesis tests for a population mean
+    -   We'll also consider hypothesis across multiple populations
+    
+-   In lab today, you'll get some practice with more advanced sampling techniques, including **Monte Carlo Methods**.
+
+-   [**FINAL REMINDER**]{.alert}: the Mid-Quarter Project is due [**THIS SUNDAY**]{.alert}, July 13, 2025 by 11:59pm on Gradescope.
