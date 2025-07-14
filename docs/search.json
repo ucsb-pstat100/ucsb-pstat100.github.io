@@ -4,14 +4,14 @@
     "href": "Pages/schedule.html",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nIntroduction to Statistical Modeling\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lab07\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec15 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec16 Slides   Lab08\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec17 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09\n\n\n6\nMon, Jul 28\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nData Ethics\n Lec18 Slides\n\n\n\n\nTue, Jul 29\n TBD\nCausal Inference\n Lec19 Slides   Lab10\n\n\n\n\nWed, Jul 30\n TBD\nNeural Networks\n Lec20 Slides\n\n\n\n\nThu, Jul 31\n TBD\nClosing Remarks\n Lab11\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
+    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lab07\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec15 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec16 Slides   Lab08\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec17 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09\n\n\n6\nMon, Jul 28\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nData Ethics\n Lec18 Slides\n\n\n\n\nTue, Jul 29\n TBD\nCausal Inference\n Lec19 Slides   Lab10\n\n\n\n\nWed, Jul 30\n TBD\nNeural Networks\n Lec20 Slides\n\n\n\n\nThu, Jul 31\n TBD\nClosing Remarks\n Lab11\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
   },
   {
     "objectID": "Pages/schedule.html#course-schedule",
     "href": "Pages/schedule.html#course-schedule",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nIntroduction to Statistical Modeling\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lab07\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec15 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec16 Slides   Lab08\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec17 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09\n\n\n6\nMon, Jul 28\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nData Ethics\n Lec18 Slides\n\n\n\n\nTue, Jul 29\n TBD\nCausal Inference\n Lec19 Slides   Lab10\n\n\n\n\nWed, Jul 30\n TBD\nNeural Networks\n Lec20 Slides\n\n\n\n\nThu, Jul 31\n TBD\nClosing Remarks\n Lab11\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
+    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lab07\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec15 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec16 Slides   Lab08\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec17 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09\n\n\n6\nMon, Jul 28\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nData Ethics\n Lec18 Slides\n\n\n\n\nTue, Jul 29\n TBD\nCausal Inference\n Lec19 Slides   Lab10\n\n\n\n\nWed, Jul 30\n TBD\nNeural Networks\n Lec20 Slides\n\n\n\n\nThu, Jul 31\n TBD\nClosing Remarks\n Lab11\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
   },
   {
     "objectID": "Pages/schedule.html#course-calendar",
@@ -1636,6 +1636,265 @@
     "title": "PSTAT 100: Summer 2025",
     "section": "",
     "text": "PSTAT 100 - Data Science: Concepts and Analysis\n\n\n\n\nInstructor:\nEthan P. Marzban (He/Him)\n\n\n\n\nQuarter:\nSummer Session A, 2025\n\n\n\nCourse Description: Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\n\n\n\n\n\n\n\nWelcome to PSTAT 100! This is the official course page for the Summer Session A, 2025 iteration of the course - the Spring 2024 iteration has been moved to ucsb-pstat100-archives.github.io.\nLecture slides can be found on the Schedule; labs and project datasets can be found on our Course Computing Server, a link to which can be found on our course Canvas page. Please note, for security purposes, we can only share the link to the server with students who are currently enrolled in the course.\n\n\n\n\n\n\n\n\n    \n        \n            Important Course Assessments/Deadlines\n            \n                \n                    Homework 1\n                    Week 1 | Sunday, June 29, 2025\n                \n                \n                    In-Class Assessment 1\n                    Week 2 | Thursday, July 3, 2025\n                \n                \n                    Mid-Quarter Project\n                    Week 3 | Sunday, July 13, 2025\n                \n                \n                    Homework 2\n                    Week 4 | Sunday, July 20, 2025\n                \n                \n                    In-Class Assessment 2\n                    Week 5 | Thursday, July 24, 2025\n                \n                \n                    Final Project\n                    Week 6 | Friday, August 8, 2025\n                \n            \n        \n    \n\n\n\n\n\n\n\nImportant\n\n\n\nIn addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#recap",
+    "href": "Lectures/Lec12/Lec12.html#recap",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Recap",
+    "text": "Recap\n\nLast lecture, we started our discussion on hypothesis testing.\nIn hypothesis testing, we seek to use data to assess the validity of a claim about a particular population parameter.\n\nE.g. we wish to use data to determine whether we believe the true proportion of polydactyl cats to be 10% or not.\n\nThe null hypothesis represents the “status quo,” or the claim we are given.\nThe alternative hypothesis represents an alternative to the null, and should be selected before beginning testing."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#recap-1",
+    "href": "Lectures/Lec12/Lec12.html#recap-1",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Recap",
+    "text": "Recap\n\nFor example, if we want to test H0: θ = θ0 where θ denotes an arbitrary population parameter, the four choices of alternatives become\n\nLower-Tailed: HA: θ &lt; θ0\nUpper-Tailed: HA: θ &gt; θ0\nTwo-Tailed (aka Two-Sided): HA: θ ≠ θ0\nSimple-vs-Simple: HA: θ = θA for some θA ≠ θ0\n\nAgain, we need to select one of these to be our alternative.\nLast lecture, we considered hypothesis tests for a population proportion. Let’s consider hypothesis testing for a mean.\nJust as our tests for the proportion involved the sample proportion, our tests for the mean will depend on the sample mean."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#hypothesis-test-for-a-mean",
+    "href": "Lectures/Lec12/Lec12.html#hypothesis-test-for-a-mean",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Hypothesis Test for a Mean",
+    "text": "Hypothesis Test for a Mean\nKnown Population Variance\n\nNull: µ = µ0. Assume the population variance σ2 is known.\nUpper-Tailed Test: Reject H0 if \\(\\displaystyle \\frac{\\overline{X}_n - \\mu_0}{\\sigma / \\sqrt{n}}  &gt; \\Phi^{-1}(1 - \\alpha)\\)\n\nLower-Tailed Test: Reject H0 if \\(\\displaystyle \\frac{\\overline{X}_n - \\mu_0}{\\sigma / \\sqrt{n}} &lt; \\Phi^{-1}(\\alpha)\\)\n\nTwo-Sided Test: Reject H0 if \\(\\displaystyle \\left| \\frac{\\overline{X}_n - \\mu_0}{\\sigma / \\sqrt{n}} \\right| &gt; \\Phi^{-1}\\left(1 - \\frac{\\alpha}{2} \\right)\\)"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#hypothesis-test-for-a-mean-1",
+    "href": "Lectures/Lec12/Lec12.html#hypothesis-test-for-a-mean-1",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Hypothesis Test for a Mean",
+    "text": "Hypothesis Test for a Mean\nUnknown Population Variance\n\nNull: µ = µ0. Assume the population variance σ2 is unknown\nUpper-Tailed Test: Reject H0 if \\(\\displaystyle \\frac{\\overline{X}_n - \\mu_0}{S_n / \\sqrt{n}}  &gt; F_{t_{n - 1}}^{-1}(1 - \\alpha)\\)\n\nLower-Tailed Test: Reject H0 if \\(\\displaystyle \\frac{\\overline{X}_n - \\mu_0}{S_n / \\sqrt{n}} &lt; F_{t_{n - 1}}^{-1}(\\alpha)\\)\n\nUpper-Tailed Test: Reject H0 if \\(\\displaystyle \\left| \\frac{\\overline{X}_n - \\mu_0}{S_n / \\sqrt{n}} \\right| &gt; F_{t_{n - 1}}^{-1}\\left(1 - \\frac{\\alpha}{2} \\right)\\)\n\\(S_n := \\sqrt{(n - 1) \\sum_{i=1}^{n} (X_i - \\overline{X}_n)^2}\\), and \\(F_{t_{n - 1}}^{-1}(\\cdot)\\) denotes the inverse CDF of the tn-1 distribution."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#hypothesis-test-for-a-mean-2",
+    "href": "Lectures/Lec12/Lec12.html#hypothesis-test-for-a-mean-2",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Hypothesis Test for a Mean",
+    "text": "Hypothesis Test for a Mean\np-Values\n\np-values are still defined in the same was as before: they are the probability of observing something as or more extreme (in the direction of the alternative) as what was actually observed.\nAgain, I find drawing a picture to be much more helpful than trying to memorize formulas and mathematical definitions!\nAlso, just as before, we reject the null if our p value falls below the level of significance."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#hypothesis-testing",
+    "href": "Lectures/Lec12/Lec12.html#hypothesis-testing",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Hypothesis Testing",
+    "text": "Hypothesis Testing\nSome Generalizations\n\nUp until now, we’ve exclusively considered null hypotheses of the form H0: θ = θ0.\n\nSuch a null is often referred to as a simple hypothesis\n\nWhat happens if we have a more complex null, like H0: θ ≥ θ0?\nIt turns out that the “best” hypothesis test looks only at the boundary; that is, it is equivalent to use the null H0: θ = θ0 when testing H0: θ ≥ θ0 or H0: θ ≤ θ0 !"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#your-turn",
+    "href": "Lectures/Lec12/Lec12.html#your-turn",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Your Turn!",
+    "text": "Your Turn!\n\n\n\n\n\n\nYour Turn!\n\n\n“Industrial wastewater discharge” refers to liquid waste produced as a result of industrial processes. Companies are often required to register for permits to produce industrial wastewater, and these permits are sometimes contingent on the average concentration of pollutants in the wastewater.\n\nSuppose that the state of Gauchonia only offers permits to companies whose wastewater has an average pollutant concentration of 150 mg/L or less. To ensure regular compliance, government officials take annual audits. Previous audits have revealed Company X’s average wastewater pollutant levels to be below 150 mg/L, but the most recent collection of 81 samples of wastewater revealed a combined average of 151.5 mg/L and standard deviation of 8 mg/L.\n\nShould the state of Gauchonia revoke Company X’s industrial wastewater discharge permit? Use a 5% level of significance, and report a p value.\n\n\n\n\n\n\n\n\n\nCaution\n\n\nYou’ll need a computer for this one!\n\n\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#leadup",
+    "href": "Lectures/Lec12/Lec12.html#leadup",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Leadup",
+    "text": "Leadup\n\nHere’s a question: do UCSB students, on average, have longer commute times than SBCC students?\n\nSuppose someone has claimed that the answer is “yes”; UCSB students have longer average commute times than SBCC students.\nThis seems like something we might like to answer using data; specifically, by constructing a hypothesis test.\n\nBut, note that the hypothesis we are testing involves two populations, and, consequently, two population parameters:\n\nµ1 := the average commute times among UCSB students\nµ2 := the average commute times among SBCC students\nH0:  µ1 = µ2"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#leadup-1",
+    "href": "Lectures/Lec12/Lec12.html#leadup-1",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Leadup",
+    "text": "Leadup\n\nThis is an example of hypothesis testing of multiple parameters, which often arises when we wish to compare two or more populations (or two or more groups within the same population).\nLet’s consider the two-sample problem first: i.e. where we have twwo populations \\(\\mathcal{P}_1\\) and \\(\\mathcal{P}_2\\) with associated means µ1 and µ2, respectively.\nFurther suppose our null is H0:  µ1 = µ2. There are then three types of alternatives to consider:\n\nHA: µ1 &lt; µ2\nHA: µ1 &gt; µ2\nHA: µ1 ≠ µ2\n\nWe will still call the third case a “two-sided” alternative, but no longer refer to the first and second as upper- or lower-tailed."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-problem",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-problem",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample Problem",
+    "text": "Two-Sample Problem\nIn Practice\n\nTo avoid getting too bogged down with math at first, I’ll let you in on a “secret”: we can conduct this test in R quite simply, using the function t.test().\nAllow me to demonstrate its use, and then we’ll dive deeper into the details of how it works and what the various components of the output mean.\n\nTo keep things simple, we’ll use simulated data.\n\n\n\n\nset.seed(100)           ## for reproducibility\nx &lt;- rnorm(30, 4, 1)    ## sample of UCSB commute times\ny &lt;- rnorm(40, 5, 1.5)  ## sample of SBCC commute times"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-problem-1",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-problem-1",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample Problem",
+    "text": "Two-Sample Problem\nIn Practice\n\nTwo-Sidedµ1 &lt; µ2µ1 &gt; µ2\n\n\n\nt.test(x, y, alternative = \"two.sided\")\n\n\n    Welch Two Sample t-test\n\ndata:  x and y\nt = -3.9571, df = 55.764, p-value = 0.0002167\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -1.7307509 -0.5672877\nsample estimates:\nmean of x mean of y \n 4.028864  5.177883 \n\n\n\n\n\nt.test(x, y, alternative = \"less\")\n\n\n    Welch Two Sample t-test\n\ndata:  x and y\nt = -3.9571, df = 55.764, p-value = 0.0001084\nalternative hypothesis: true difference in means is less than 0\n95 percent confidence interval:\n       -Inf -0.6633376\nsample estimates:\nmean of x mean of y \n 4.028864  5.177883 \n\n\n\n\n\nt.test(x, y, alternative = \"greater\")\n\n\n    Welch Two Sample t-test\n\ndata:  x and y\nt = -3.9571, df = 55.764, p-value = 0.9999\nalternative hypothesis: true difference in means is greater than 0\n95 percent confidence interval:\n -1.634701       Inf\nsample estimates:\nmean of x mean of y \n 4.028864  5.177883"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-problem-2",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-problem-2",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample Problem",
+    "text": "Two-Sample Problem\nMechanism\n\nAlright, let’s dive a bit deeper into the mechanisms behind this test.\nSuppose we have: \\[\\begin{align*}\n  X_1, \\cdots, X_{n_1}  & \\iid \\mathcal{N}(\\mu_1, \\ \\sigma_1^2) \\\\\n  Y_1, \\cdots, Y_{n_2}  & \\iid \\mathcal{N}(\\mu_2, \\ \\sigma_2^2)\n\\end{align*}\\] with the \\(X\\)’s and \\(Y\\)’s independent of each other.\nOur null hypothesis is that the two populations have the same mean: i.e. H0: µ1 = µ2.\n\nThe trick is to define δ := µ1 - µ2 as the difference in population means."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-problem-3",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-problem-3",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample Problem",
+    "text": "Two-Sample Problem\nMechanism\n\nThe null becomes H0: δ = 0, and our three possible alternatives as:\n\nHA: δ &lt; 0\nHA: δ &gt; 0\nHA: δ ≠ 0\n\nIn other words, after reparametrizing our problem to be in terms of δ, utilize all of our one-parameter testing results!\nBy the way, these three alternatives correspond (in order) to the following values for the alternative argument in t.test(): \"lower\", \"upper\", and \"two.sided\"."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-problem-4",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-problem-4",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample Problem",
+    "text": "Two-Sample Problem\nMechanism\n\nIf we knew the population variances σ12 and σ22, respectively, a natural test statistic would be \\[ T := \\frac{\\overline{X}_{n_1} - \\overline{Y}_{n_2}}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}} \\] since, under the null, \\(T\\) would follow a standard normal distribution.\nIn practice, however, the population variances are not known, meaning we should replace them with estimators:"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-problem-5",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-problem-5",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample Problem",
+    "text": "Two-Sample Problem\nMechanism\n\\[ T := \\frac{\\overline{X}_{n_1} - \\overline{Y}_{n_2}}{\\sqrt{\\frac{S_X^2}{n_1} + \\frac{S_Y^2}{n_2}}} \\]\n\nUnder the null (i.e. if δ = 0), it turns out that \\(T\\) doesn’t exactly follow a t-distribution, but instead follows a distribution that is well-approximated by the t-distribution.\nThe degrees of freedom are a whole other matter."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-problem-6",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-problem-6",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample Problem",
+    "text": "Two-Sample Problem\nWelch-Satterthwaite Approximation\n\nThe degrees of freedom is given by the Welch-Satterthwaite Approximation: \\[ \\nu = \\mathrm{round}\\left\\{\n  \\frac\n  {\\left[  \\left( \\frac{S_X^2}{n_1} \\right) + \\left( \\frac{S_Y^2}{n_2} \\right) \\right]^2}\n  {\\frac{\\left( \\frac{S_X^2}{n_1} \\right)^2}{n_1 - 1} + \\frac{\\left( \\frac{S_Y^2}{n_2} \\right)^2}{n_2 - 1}}\n\\right\\} \\]\n\nThis is what t.test() uses.\nSometimes you will see people use \\(\\nu = \\min\\{n_1 - 1, \\ n_2 - 1\\}\\)."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-problem-7",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-problem-7",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample Problem",
+    "text": "Two-Sample Problem\nWelch-Satterthwaite Approximation\n\nUsing t.test()By Hand\n\n\n\nt.test(x, y)$parameter\n\n      df \n55.76411 \n\n\n\n\n\ndf_sw &lt;- function(x, y){\n  sx2 &lt;- var(x);  sy2 &lt;- var(y)\n  n &lt;- length(x); m &lt;- length(y)\n  \n  num &lt;- ((sx2/n) + (sy2/m))^2\n  denom &lt;- ((sx2/n)^2 / (n - 1)) + ((sy2/m)^2 / (m - 1)) \n  \n  return(num/denom)\n}\n\ndf_sw(x, y)\n\n[1] 55.76411"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#two-sample-t-test",
+    "href": "Lectures/Lec12/Lec12.html#two-sample-t-test",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Two-Sample T-Test",
+    "text": "Two-Sample T-Test\n\nSo, this is what the t.test() function is doing behind the scenes, depending on the alternative argument (such a test is called a two-sample t-test):\n\ngreater: Reject H0 if \\(\\frac{(\\overline{X}_n - \\overline{Y}_m)}{\\sqrt{\\frac{S_X^2}{n} + \\frac{S_Y^2}{m}}}  &gt; F_{t_{\\nu}}^{-1} (1 - \\alpha)\\)\n\nlower: Reject H0 if \\(\\frac{(\\overline{X}_n - \\overline{Y}_m)}{\\sqrt{\\frac{S_X^2}{n} + \\frac{S_Y^2}{m}}} &lt; F_{t_{\\nu}}^{-1}(\\alpha)\\)\n\ntwo.sided: Reject H0 if \\(\\left| \\frac{(\\overline{X}_n - \\overline{Y}_m)}{\\sqrt{\\frac{S_X^2}{n} + \\frac{S_Y^2}{m}}} \\right| &gt; F_{t_{\\nu}}^{-1}\\left(1 - \\frac{\\alpha}{2} \\right)\\)"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#your-turn-2",
+    "href": "Lectures/Lec12/Lec12.html#your-turn-2",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Your Turn!",
+    "text": "Your Turn!\n\n\n\n\n\n\nYour Turn!\n\n\nA government official claims that the nations of Gauchonia and Bruinland have the same average household incomes. To test this claim, an analyst takes an i.i.d. sample of Gauchonian households and an independent i.i.d. sample of Bruinlandian households; their data is stored in the incomes.csv file located in the data/ subfolder.\nTest the government’s claims against a two-sided alternative, using a 5% level of significance. For practice, conduct this test twice: once using t.test() and once “by hand”.\n\n\n\n\n\n\n\n\n\nCaution\n\n\nYou’ll need a computer for this one!\n\n\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#multiple-testing",
+    "href": "Lectures/Lec12/Lec12.html#multiple-testing",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Multiple Testing",
+    "text": "Multiple Testing\n\nThe last thing I’d like to discuss is a very important concept, and relates to situations in which we need to repeatedly perform hypotheses tests.\nAs a simple example, let’s return to our hands-on demo from last week, where we sought to determine whether bags of candy were balanced in terms of colors.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTot\n58\n58\n58\n58\n58\n57\n\n\nGreen\n10\n10\n5\n8\n13\n8\n\n\nProp\n0.1724\n0.1724\n0.08621\n0.1379\n0.2241\n0.1404\n\n\n\n\n\n\n\nOn Thursday, we used only one of these samples to test the null that p (the true proportion of green candies) is equal to 0.2 against a two-sided alternative.\nIt seems natural to repeat this test 6 times, one for each sample."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#multiple-testing-1",
+    "href": "Lectures/Lec12/Lec12.html#multiple-testing-1",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Multiple Testing",
+    "text": "Multiple Testing\nCandy Example\n\ntester_1 &lt;- function(p, n){\n  test_stat &lt;- (p - 0.2) / sqrt((0.2 * (1 - 0.2)) / n)\n  p_val &lt;- 2 * pnorm(-1 * abs(test_stat))\n  return(p_val)\n}\n\nrbind(paste(\"Sample\", 1:6), \n      candy_data %&gt;% \n        mutate(p_vals = tester_1(Prop, Tot)) %&gt;%\n        pull(p_vals) %&gt;% round(5) \n) %&gt;% pander()\n\n\n\n\n\n\n\n\n\n\n\n\nSample 1\nSample 2\nSample 3\nSample 4\nSample 5\nSample 6\n\n\n0.59943\n0.59943\n0.03027\n0.2373\n0.64582\n0.26023"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#multiple-testing-2",
+    "href": "Lectures/Lec12/Lec12.html#multiple-testing-2",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Multiple Testing",
+    "text": "Multiple Testing\nCandy Example\n\nSuppose we use a 5% level of significance.\nThen, if we had observed any of samples 1, 2, 4, 5, or 6, we would have failed to reject the null in favor of the two-sided alternative, whereas if we had observed sample 3 we would have rejected the null in favor of the alternative.\nOf course, the true value of p is fixed across all of these samples. Hence, we see that there is some inherent randomness in our final decision.\nIndeed, consider a general test of H0: θ = θ0 at an α level of significance.\nBy definition of α: under the null, there is an α chance that we falsely reject the null."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#multiple-testing-3",
+    "href": "Lectures/Lec12/Lec12.html#multiple-testing-3",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Multiple Testing",
+    "text": "Multiple Testing\n\nSuppose, unbeknownst to us, the null is in fact true.\n\nFurther suppose we conduct N independent hypothesis tests.\n\nThe number of tests we reject then follows a Bin(N, α) distribution.\nThe probability that we reject at least one test (again, falsely!) is therefore 1 - (1 - α)N\nSo, for example, if we conduct 10 independent hypothesis tests of the same parameter at a 5% level of significance, there is around a 40% chance that we reject at least once even if the null is true!\nIt is relatively simple to show that even if the tests we conduct are not independent, the probability of rejecting at least one test is bounded above by Nα."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#multiple-testing-4",
+    "href": "Lectures/Lec12/Lec12.html#multiple-testing-4",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Multiple Testing",
+    "text": "Multiple Testing\n\nSo, here’s the moral: the more simultaneous tests (i.e. tests of the same hypothesis, or tests involving the same data) we conduct, the higher our chances become of falsely rejecting a null.\nThis is the phenomenon known as multiple testing, and it something we’d like to mitigate against!\nOne elegant way to mitigate the effects of multiple testing is known as the Bonferroni correction, which says: instead of using α as your level of significance, use α / N.\n\nIn this way, the probability of falsely rejecting at least one null drops to α, and does not grow with the number of tests.\n\nEx: in our candy example, use a significance level of α / 6 to safeguard against multiple testing if we perform a test based on each sample."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#models",
+    "href": "Lectures/Lec12/Lec12.html#models",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Models",
+    "text": "Models\nA General Overview\n\nWe can think of a model as a mathematical or idealized representation of a system.\n\nFor instance, a weather model seeks to represent what we think the weather tomorrow will be like; a financial model might seek to describe the behavior of a particular company’s stock; etc.\n\nThere are two main types of models: deterministic and stochastic (aka probabilistic, or random).\nDeterministic models govern the way the world works, and contain no (or very little) randomness.\n\nThese often come from fields like physics, astronomy, or chemistry.\n\nStochastic models seek to desribe random processes; e.g. the stock market, the weather, etc."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#models-1",
+    "href": "Lectures/Lec12/Lec12.html#models-1",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Models",
+    "text": "Models\nThe Ideal Gas Law\n\nAn example of a deterministic model is the Ideal Gas Law, which seeks to model the behavior of gas under certain conditions.\n\nStates that the product of the pressure and volume of the gas is proportional to the product of the amount of gas and the temperature: \\(pV = nRT\\).\n\n\n\n\n\n\n\n\nSource: https://en.wikipedia.org/wiki/Ideal_gas_law#/media/File:Ideal_gas_isotherms.svg\n\n\n\n\n\nIsotherms of an ideal gas for different temperatures. The curved lines are rectangular hyperbolae of the form y = a/x. They represent the relationship between pressure (on the vertical axis) and volume (on the horizontal axis) for an ideal gas at different temperatures: lines that are farther away from the origin (that is, lines that are nearer to the top right-hand corner of the diagram) correspond to higher temperatures."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#models-2",
+    "href": "Lectures/Lec12/Lec12.html#models-2",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Models",
+    "text": "Models\nKepler’s Third Law of Planetary Motion\n\nAnother example of a deterministic model is Kepler’s Third Law of Planetary Motion, which seeks to model the behavior of planets.\n\nThe ratio of the square of an object’s orbital period with the cube of the semi-major axis of its orbit is the same for all objects orbiting the same primary.\n\n\n\n\n\n\n\n\n\n\n\nLog-log plot of period T vs semi-major axis a (average of aphelion and perihelion) of some Solar System orbits (crosses denoting Kepler’s values) showing that a³/T² is constant (green line).\nSource: Wikipedia"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#models-3",
+    "href": "Lectures/Lec12/Lec12.html#models-3",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Models",
+    "text": "Models\nBlack-Scholes Merton Model\n\nAn example of a stochastic model is the Black-Scholes-Merton (BSM) model, which seeks to (broadly speaking) model the dynamics of a financial market.\n\n\n\n\n\n\n\n\n\n\n\n\n\\[ \\frac{\\partial V}{\\partial t} + \\frac{1}{2} \\sigma^2 S^2 \\frac{\\partial^2 V}{\\partial S^2} + rs \\frac{\\partial V}{\\partial S} - rV = 0 \\]\nSimulated geometric Brownian motions with parameters from market data.\nSource: Wikipedia"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#models-4",
+    "href": "Lectures/Lec12/Lec12.html#models-4",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Models",
+    "text": "Models\nA Familiar Concept\n\nBelieve it or not, we’ve actually been exposed to the idea of stochastic modeling… back in PSTAT 120A!\nFor example, suppose I toss a coin 10 times and observe the following string of heads and tails: (H, T, T, H, H, T, H, H, T, H).\nDefine the random variable Xi to be the result of the ith coin flip; either 1 (for “Heads”) or 0 (for “Tails”).\nBased on our probability knowledge, it seems natural to assign X ~ Bern(π). This is a stochastic model!\nNow, this model has one parameter (π) that remains unknown.\n\nBut, we can apply estimation techniques to generate a reasonable “guess” for the true value of π, based on our data."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#models-5",
+    "href": "Lectures/Lec12/Lec12.html#models-5",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Models",
+    "text": "Models\nThe General Modeling Framework\n\nThis is the idea underlying pretty much all of modeling!\nSpecifically, when positing a model, we often follow a three-step procedure (which I will affectionately refer to as the “PEA” process):\n\nPropose a model\nFit the model to the data\nAssess how well we believe our model is performing.\n\nWe’ll explore each of these steps in greater detail over the following slides."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#the-modeling-process",
+    "href": "Lectures/Lec12/Lec12.html#the-modeling-process",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " The Modeling Process",
+    "text": "The Modeling Process\nStep 1: Propose a Model\n\nThe first step of the modeling process is to propose a model.\nMost data, we believe, comes from a data generating process; the first step in the modeling process is to translate this DGP to be in mathematical/statistical terms.\nFor instance, in our coin-flipping example, we believe that the data was generated in the following way: flip a coin that lands H with probability π and T with probability (1 - π), and repeat this 10 times.\nMathematically, this is equivalent to asserting Xi ~ Bern(π); hence, this is our proposed model."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#the-modeling-process-1",
+    "href": "Lectures/Lec12/Lec12.html#the-modeling-process-1",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " The Modeling Process",
+    "text": "The Modeling Process\nStep 1: Propose a Model\n\nConsider, again, our example (from a few lectures ago) about estimating the true average weight of all cats in the world.\nAt one point, we said: assume the weight of a randomly-selected cat follows the Normal distribution, with some unknown mean µ and some known variance σ2.\n\nThis is a verbal description of a model!\n\n\n\n\n\nYi \\(\\stackrel{\\mathrm{i.i.d.}}{\\sim}\\) N (µ, σ2)\n\n\n\nYi = µ + εi, for εi \\(\\stackrel{\\mathrm{i.i.d.}}{\\sim}\\) N (0, σ2)\n\n\n\nBoth models describe the same DGP; so, model specification is not unique."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#the-modeling-process-2",
+    "href": "Lectures/Lec12/Lec12.html#the-modeling-process-2",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " The Modeling Process",
+    "text": "The Modeling Process\nStep 1: Propose a Model\n\nBroadly speaking, there are two main ways we can specify a model, leading to two different approaches to statistical modeling.\nIn one framework, we propose a model that is specified in terms of a series of parameters.\n\nThis is the framework of parametric modeling\n\nIt is, however, possible to specify a parameter-free model.\n\nThis is the framework of nonparametric modeling.\n\nTomorrow, we’ll consider an example of nonparametric modeling.\nIn subsequent lectures, we’ll spend more time on the parametric framework."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#the-modeling-process-3",
+    "href": "Lectures/Lec12/Lec12.html#the-modeling-process-3",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " The Modeling Process",
+    "text": "The Modeling Process\nStep 2: Fit the Model to the Data\n\nIn parametric modeling, Step 2 of the modeling process amounts to simply finding “optimal” (we’ll discuss this more tomorrow) estimates/estimators for the parameter(s).\nFor instance, in our coin-flipping example, there is just one parameter: π, the probability that the coin lands H.\nBased on the data (H, T, T, H, H, T, H, H, T, H), it seems natural to estimate π to be 0.6 (since 6 of the 10 coins landed H).\n\nOf course, we have no way of knowing whether this is the truth or not - the coin could be fair, and we just happened (due to chance) to observe 6 heads.\nThe statistician George Box famously said, “all models are wrong, but some are useful.”"
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#the-modeling-process-4",
+    "href": "Lectures/Lec12/Lec12.html#the-modeling-process-4",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " The Modeling Process",
+    "text": "The Modeling Process\nStep 2: Fit the Model to the Data\n\nIn our coin tossing example, our choice of estimation was relatively straightforward: use the sample proportion as an estimator for the population proportion.\nIn many cases, however, there won’t necessarily be one obvious choice for parameter estimates.\n\nFor example, in our cat-weight example: do we use the sample mean or the sample median?\nTo estimate spread, should we use the mean or the median? Standard deviation or IQR?\n\nWe’ll consider this question in more detail tomorrow."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#the-modeling-process-5",
+    "href": "Lectures/Lec12/Lec12.html#the-modeling-process-5",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " The Modeling Process",
+    "text": "The Modeling Process\nStep 3: Assess the Model Fit\n\nThe final step of the process is to assess how well we think we did.\nThis is a fairly broad concept, and consists of many context-dependent things.\nFor example, we might perform hypothesis testing to assess how well we think our fits from Step 2 are.\nOr, in certain cases (as we will see over the next few lectures), we may be able to assess how well we believe our proposed model is doing at capturing the aspects of the DGP.\nEither way, it is important to close out the modeling process by taking a retrospective “look back,” to ensure we aren’t missing anything."
+  },
+  {
+    "objectID": "Lectures/Lec12/Lec12.html#next-time",
+    "href": "Lectures/Lec12/Lec12.html#next-time",
+    "title": "PSTAT 100: Lecture 12",
+    "section": " Next Time",
+    "text": "Next Time\n\nIn Lab tomorrow, you’ll continue discussing hypothesis testing.\n\nThis will include reviewing some of the material we covered in lecture, as well as introducing you to the notion of hypothesis testing involving multiple parameters.\n\nIn lecture tomorrow, we’ll continue our discussion of statistical modeling.\n\nWe’ll see an example of nonparametric modeling, and another of parametric modeling.\nWe’ll also discuss the estimation framework of parametric modeling.\n\nREMINDER: Homework 2 is due This Sunday (July 20) by 11:59pm on Gradescope."
   },
   {
     "objectID": "Lectures/Lec06/Lec06.html#recap",
