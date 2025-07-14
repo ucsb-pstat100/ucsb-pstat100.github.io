@@ -36,8 +36,26 @@ Below are solutions to selected assignment. Some things to keep in mind:
 -   <a href="../Files/Solns/lab02_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab02</button></a>
 :::
 
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab03_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab03</button></a>
+:::
+
 ::::
 
+
+:::: {.columns}
+
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab04_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab04</button></a>
+:::
+
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab05_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab05</button></a>
+:::
+
+::::
+
+-   **Lab04 Note:** There was a typo in Question 9: you were meant to overlay the density over your histogram from Question _8_, not Question _7_. (The grader graded very leniently, as a result.)
 
 
 ## Homework
