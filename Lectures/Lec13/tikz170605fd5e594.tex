@@ -1,0 +1,16 @@
+\documentclass[
+%% TIKZ_CLASSOPTION %%
+tikz
+]{standalone}
+\usepackage{amsmath}
+\usetikzlibrary{matrix}
+%% EXTRA_TIKZ_PREAMBLE_CODE %%
+\begin{document}
+%% TIKZ_CODE %%
+\begin{tikzpicture}
+ \draw[-latex] (-2, 0) -- (2, 0);  \node[anchor = west] at (2, 0) {\textbf{error}};
+ \draw[-latex] (0, 0) -- (0, 2);   \node[anchor = south] at (0, 2) {\textbf{loss}};
+ 
+ \draw[-, thick, blue] (-2, 2) -- (0, 0) -- (2, 2);
+\end{tikzpicture}
+\end{document}

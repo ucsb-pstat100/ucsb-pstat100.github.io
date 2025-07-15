@@ -1,0 +1,943 @@
+---
+title: "PSTAT 100: Lecture 13"
+subtitle: "Examples of Statistical Modeling"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/100_hex.png"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/100_hex.png"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(palmerpenguins)
+```
+
+
+## {{< fa backward-fast >}} Recap
+
+-   We can think of a [**model**]{.alert} as a mathematical or idealized representation of a system.
+
+-   In statistical modeling, we adopt a three-step procedure:
+    1)    Propose a model
+    2)    Fit the model to the data
+    3)    Assess how well we believe our model is performing.
+    
+-   There are two main types of statistical models: [**parametric**]{.alert} and [**nonparametric**]{.alert}.
+    -   The [**model fitting**]{.alert} step differs between these types of models.
+
+
+-   Today, let's explore two examples of modeling: one nonparametric, and one parametric.
+
+# Nonparametric Modeling: An Example {background-color="black" background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHN0dmtzY2R3ZGtzdHpyb2Z4OTlxODE3OGRjcmN0YWV3Z2RrZDFtbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f6knFlHGDui0plYNeB/giphy.gif" background-size="75rem"}
+
+[**Density Estimation**]{style="font-size:40px"}
+
+## {{< fa bezier-curve >}} Density Estimation
+
+::: {.callout-tip}
+## **Framework**
+
+-   **Data:** A collection of numerical values; $\vect{x} = (x_1, \cdots, x_n)$ we believe to be a realization of an i.i.d. random sample $\vect{X} = (X_1, \cdots, X_n)$ taken from a distribution with density _f_().
+
+-   **Goal:** to estimate the true value of _f_() at each point.
+:::
+
+```{r}
+#| echo: False
+set.seed(100)
+
+w1 <- 0.75
+m1 <- -1.3
+m2 <- 1
+s1 <- 0.5
+s2 <- 0.5
+
+f <- function(x){w1 * dnorm(x, m1, s1) + (1 - w1) * dnorm(x, m2, s2)}
+
+n <- 300; samp <- c()
+for(b in 1:n){
+  ind <- sample(c("L", "R"), size = 1, prob = c(w1, 1 - w1))
+  if(ind == "L"){
+    samp[b] <- rnorm(1, m1, s1)
+  } else {
+    samp[b] <- rnorm(1, m2, s2)
+  }
+}
+```
+
+::: {.fragment}
+```{r}
+#| echo: True
+#| code-fold: True
+#| fig-height: 3.5
+#| code-line-numbers: "2"
+
+data.frame(samp) %>% ggplot(aes(x = samp)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 15, col = "white") +
+  theme_minimal(base_size = 18) +
+  ggtitle("Histogram of Sample Values") + xlab("value")
+```
+:::
+
+## {{< fa bezier-curve >}} Density Estimation
+### Histograms
+
+-   Believe it or not, a _histogram_ is actually a nonparametric attempt at modeling precisely this situation! 
+
+::: {.fragment}
+::: {.callout-important}
+## **Important**
+
+There are actually two kinds of histograms: [**frequency histograms**]{.alert} and [**density histograms**]{.alert}.
+:::
+:::
+
+-   Frequency histograms are the ones we talked about in Week 1.
+    -   Density histograms take frequency histograms and rescale the _y_-axis so that the total area under the histogram is 1.
+    
+-   Essentially, our "guess" for the value of the density at a given point _x_~_i_~ is simply the height of the _density_ histogram at that point.
+
+
+## {{< fa chart-simple >}} Histograms, Revisited
+
+-   If we let _B_~_j_~ denote the _j_^th^ bin, and if we have _n_ observations, the height of the _j_^th^ bar on a density histogram is given by
+$$ \mathrm{height}_j = \frac{1}{nh} \sum_{i=1}^{n} 1 \! \! 1_{\{x_i \in B_j\}} $$
+
+-   Recall that the sum of indicators is a succinct way of writing "the number of observations that satisfy a condition".
+    -   In this way, you should be able to interpret what the equation above is saying.
+    -   Perhaps an example may help:
+
+
+## {{< fa chart-simple >}} Histograms, Revisited
+
+![](Images/density_hist.svg)
+
+
+## {{< fa chart-simple >}} Histograms, Revisited
+
+-   Given a new observation _x_, we can think of our "best guess" at the value of _f_(_x_) to be the height of the density histogram at _x_:
+
+::: {.fragment style="font-size:26px;text-align:center"}
+$$ \widehat{f}(x) = \frac{1}{nh} \sum_{i=1}^{n} \sum_{j} 1 \! \! 1_{\{x \in B_j\}} 1 \! \! 1_{\{x_i \in B_j\}}  $$
+:::
+
+-   In other words, our estimate takes the input _x_, finds the bin to which _x_ belongs, and returns the height of that bin.
+
+-   We call this procedure [**fixed binning**]{.alert}, since, for a given _x_, we simply identify which, out of a set of _fixed_ bins, _x_ belongs to.
+
+-   This leads us to the idea of [**local binning**]{.alert}, in which we allow the height at _x_ to be a normalization of the count in a neighborhood of _x_ of width _h_ (as opposed to the count in one of a set of fixed bins). 
+
+## {{< fa chart-simple >}} Histograms, Revisited
+### Local Binning
+
+
+::: {.fragment style="font-size:26px;text-align:center"}
+$$ \widehat{f}_{\mathrm{lb}}(x) = \frac{1}{nh} \sum_{i=1}^{n}  1 \! \! 1_{\{ \left| x_i - x \right|  < \frac{h}{2} \}}  $$
+:::
+
+::: {.fragment}
+![](Images/loc_bin.svg)
+:::
+
+
+## {{< fa chart-simple >}} Histograms, Revisited
+### Local Binning
+
+```{r}
+#| echo: False
+
+set.seed(105)
+x <- runif(10, -2, 2) %>% round(2)
+x[5] <- 0.51
+x[3] <- -1
+
+p1 <- data.frame(x) %>%
+  ggplot(aes(x = x)) +
+  geom_point(aes(x = x, y= rep(0, 10))) +
+  stat_density(geom = "line",
+               kernel = "rectangular",
+               col = "blue",
+               linewidth = 1,
+               bw = 0.01) +
+  ylab("density") +
+  ggtitle("Locally Binned Histogram; Binwidth 0.01") +
+  theme_minimal(base_size = 12)
+
+p2 <- data.frame(x) %>%
+  ggplot(aes(x = x)) +
+  geom_point(aes(x = x, y= rep(0, 10))) +
+  stat_density(geom = "line",
+               kernel = "rectangular",
+               col = "blue",
+               linewidth = 1,
+               bw = 0.38) +
+  ylab("density") +
+  ggtitle("Locally Binned Histogram; Binwidth 0.38") +
+  theme_minimal(base_size = 12)
+
+p3 <- data.frame(x) %>%
+  ggplot(aes(x = x)) +
+  geom_point(aes(x = x, y= rep(0, 10))) +
+  stat_density(geom = "line",
+               kernel = "rectangular",
+               col = "blue",
+               linewidth = 1,
+               bw = 1) +
+  ylab("density") +
+  ggtitle("Locally Binned Histogram; Binwidth 1") +
+  theme_minimal(base_size = 12)
+
+grid.arrange(p1, p2, p3, ncol = 1)
+```
+
+
+
+## {{< fa chart-simple >}} Histograms, Revisited
+### Local Binning
+
+
+::: {.fragment style="font-size:26px;text-align:center"}
+$$ \widehat{f}_{\mathrm{lb}}(x) = \frac{1}{n} \sum_{i=1}^{n} \left[ \frac{1}{h} 1 \! \! 1_{\{ \left| x_i - x \right|  < \frac{h}{2} \}} \right]  $$
+:::
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+![](Images/boxcar.svg)
+:::
+:::
+::: {.column width="50%"}
+-   Changing _x_~_i_~ amounts to changing the "center" of the "box"
+-   Changing _h_ amounts to changing the width and height of the "box"
+-   Note, however, that for any value of _h_ and _x_~_i_~, the area underneath this graph is always 1.
+:::
+
+::::
+
+-   Nonnegative function that integrates to one... 
+
+
+## {{< fa stairs >}} Leadup
+
+::: {.fragment style="font-size:26px;text-align:center"}
+$$ \widehat{f}_{\mathrm{KDE}}(x) = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{\lambda} K_{\lambda}(x, x_i)   $$
+:::
+
+-   In this context, the function _K_(_x_, _x_~_i_~) is referred to as a [**kernel function**]{.alert}, provided it is nonnegative and integrates to unity: $$ \int_{-\infty}^{\infty} K_{\lambda}(x, x_i) \ \mathrm{d}x = 1, \ \forall x_i $$
+    -   Some people relax the condition of integrating to unity, but we'll include it.
+
+-   So, again, _**what kinds of functions does this sound like?**_
+
+## {{< fa bezier-curve >}} Kernel Density Estimation
+
+-   In general, we can use _any valid probability density function_ as a kernel. 
+
+-   The estimate defined on the previous slide is called a [**kernel density estimate**]{.alert} (KDE), and the general procedure of estimating a density as a weighted local average (with weights given by a kernel) of counts is called **kernel density estimation**.
+
+-   [**Gaussian KDE**]{.alert} utilizes a Gaussian kernel:
+
+::: {.fragment style="font-size:26px;text-align:center"}
+$$ \widehat{f}_{\mathrm{GKDE}}(x) = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{\lambda} \phi\left( \frac{x_i - x}{\lambda} \right)  $$
+:::
+
+-   Other kernels include the **boxcar** (equivalent to a locally binned histogram!), **triangular**, **Epanechnikov** (quadratic), **Biweight** (quartic), and a few others
+
+
+## {{< fa bezier-curve >}} Kernel Density Estimation
+### Kernels
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+
+epan <- Vectorize(function(x) {return((3/4) * (1 - x^2)) * ifelse(((x > -1) & (x < 1)), x, 0)})
+triang <- Vectorize(function(x) {return(1 - abs(x)) * ifelse(((x > -1) & (x < 1)), x, 0)})
+biweight <- Vectorize(function(x) {return((35 / 32) * (1 - x^2)^3) * ifelse(((x > -1) & (x < 1)), x, 0)})
+cosine2 <- Vectorize(function(x) {return((pi / 4) * cos((pi / 2) * x)) * ifelse(((x > -1) & (x < 1)), x, 0)})
+
+data.frame(x = -1:1) %>%
+  ggplot(aes(x = x)) +
+  stat_function(fun = epan,
+                aes(col = "Epanechnikov"),
+                linewidth = 1.5) +
+  stat_function(fun = triang,
+                aes(col = "Triangular"),
+                linewidth = 1.5) +
+  stat_function(fun = biweight,
+                aes(col = "Biweight"),
+                linewidth = 1.5) +
+  stat_function(fun = cosine2,
+                aes(col = "Cosine"),
+                linewidth = 1.5) +
+  theme_minimal(base_size = 24) +
+  labs(colour = "Legend") +
+  ggtitle("A Few Different Kernels")
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| echo: True
+#| eval: False
+
+density(...)        ## for analysis only
+stat_density(...)   ## for plotting
+```
+
+```
+ kernel = c("gaussian", "epanechnikov", "rectangular",
+                   "triangular", "biweight", "cosine", "optcosine"),
+```
+:::
+
+::::
+
+::: {.fragment}
+```{r}
+#| fig-height: 2.75
+opt_bw_heuristic <- 0.9 * min(sd(samp), IQR(samp)/1.34) * length(samp)^(-1/5)
+data.frame(samp) %>% ggplot(aes(x = samp)) +
+  stat_density(geom = "line",
+               kernel = "rectangular",
+               linewidth = 1,
+               bw = opt_bw_heuristic,
+               aes(colour = "GKDE")) +
+  stat_function(fun = f, linetype = "dashed", linewidth = 1,
+                aes(colour = "Truth")) +
+  theme_minimal(base_size = 18) +
+  ggtitle("GKDE on Bimodal Data") + labs(colour = "Legend")
+```
+:::
+
+# Parametric Modeling: An Introduction {background-color="black" background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnpmcGFhaDNxMDVsemFocGlucGgxemN1OTVpMmt0djdmeWE3d2trYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l1AsGu5mhPzMUkRcA/giphy.gif" background-size="100rem"}
+
+## {{< fa bezier-curve >}} Parametric Modeling
+
+-   Recall that, in the parametric setting of modeling, we express our model in terms of a series of estimable parameters.
+
+-   For example, suppose we assume the weight _Y_~_i_~ of a randomly-selected cat to follow a Normal distribution with mean _µ_ and variance 1, independently across observations. 
+
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.fragment style="text-align:center"}
+_Y_~_i_~ $\stackrel{\mathrm{i.i.d.}}{\sim}$ _N_ (_µ_, 1)
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment style="text-align:center"}
+_Y_~_i_~ = _µ_ + _ε_~_i_~, for  _ε_~_i_~ $\stackrel{\mathrm{i.i.d.}}{\sim}$ _N_ (0, 1)
+:::
+:::
+
+::::
+
+
+-   Fitting a model to our data is therefore equivalent to finding the "optimal" _estimates_ for the parameters in our model (in this case, _µ_).
+
+## {{< fa list-ol >}} The Modeling Process
+### More About Step 2
+
+-   This is precisely what is meant by Step 2 of the modeling procedure (sometimes called the [**model fitting**]{.alert} stage): we identify estimators/estimates of the parameters that are ideal in some way.
+
+-   In our coin tossing example, our choice of estimation was relatively straightforward: use the sample proportion as an estimator for the population proportion.
+
+-   In many cases, however, there won't necessarily be one obvious choice for parameter estimates.
+    -   For example, in our cat-weight example: do we use the sample mean or the sample median? 
+    -   To estimate spread, should we use the mean or the median? Standard deviation or IQR?
+
+## {{< fa face-frown >}} Loss Functions
+
+-   In general, we can think of an estimator as a rule.
+    -   Mathematically, rules are functions - so, an estimator based on a single random observation _Y_ can be expressed as δ(_Y_) 
+
+-   A [**loss function**]{.alert} is a mathematical quantification of the consequence paid in estimating a parameter _θ_ by an estimator δ(_Y_). 
+    -   More concretely, a loss function is a function $\mathcal{L}: \R^2 \to \R^{+}$, where $\mathcal{L}(\theta, \delta(Y))$ represents how poorly $\delta(Y)$ is doing at estimating $\theta$.
+
+-   The [**risk**]{.alert} is the average loss: $\mathbb{E}_{Y}[\mathcal{L}(\theta, \delta(Y))]$. 
+
+-   An "optimal" estimator for _θ_ is therefore one that minimizes the risk:
+$$ \widehat{\theta} := \argmin_{\theta} \left\{ \mathbb{E}_{Y}[\mathcal{L}(\theta, \delta(Y))] \right\} $$
+
+## {{< fa face-frown >}} Loss Functions
+### Illustration
+
+-   As an illustration of this framework of estimation, let's attempt to find the value _c_ that "best" summarizes a set of observations (_y_~1~, ..., _y_~n~). 
+
+-   As the distribution of _Y_ is, in general, unknown, we can consider the [**empirical risk**]{.alert} in place of the risk:
+$$ R(\theta) := \frac{1}{n} \sum_{i=1}^{n} \mathcal{L}(y_i, c) $$
+    -   Here, $\mathcal{L}(y_i, c)$ can be interpreted as "how far away _c_ is from _y_~_i_~".
+
+-   Again, our "best" summary will be the value of _c_ that minimizes _R_(_θ_)
+
+## {{< fa face-frown >}} Loss Functions
+
+-   There are many choices for loss functions, each with pros and cons.
+
+-   For numerical data, the two most common loss functions are:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r, engine = 'tikz'}
+\begin{tikzpicture}
+ \draw[-latex] (-2, 0) -- (2, 0);  \node[anchor = west] at (2, 0) {\textbf{error}};
+ \draw[-latex] (0, 0) -- (0, 2);   \node[anchor = south] at (0, 2) {\textbf{loss}};
+ 
+ \draw[-, thick, blue, domain = -{sqrt(2)}:{sqrt(2)}] plot(\x, {\x*\x});
+\end{tikzpicture}
+```
+:::
+
+::: {.fragment style = "text-align:center"}
+[**Squared Error**]{.alert} (aka [**L~2~**]{.alert}) <br /> $\mathcal{L}(y_i, \theta) = (y_i - \theta)^2$
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r, engine = 'tikz'}
+\begin{tikzpicture}
+ \draw[-latex] (-2, 0) -- (2, 0);  \node[anchor = west] at (2, 0) {\textbf{error}};
+ \draw[-latex] (0, 0) -- (0, 2);   \node[anchor = south] at (0, 2) {\textbf{loss}};
+ 
+ \draw[-, thick, blue] (-2, 2) -- (0, 0) -- (2, 2);
+\end{tikzpicture}
+```
+:::
+
+::: {.fragment style = "text-align:center"}
+[**Absolute Error**]{.alert} (aka [**L~1~**]{.alert}) <br /> $\mathcal{L}(y_i, \theta) = |y_i - \theta|$
+:::
+:::
+
+::::
+
+## {{< fa face-frown >}} Loss Functions
+
+-   L~1~ loss tends to be more robust to outliers than L~2~ loss. 
+    -   Keep in mind that, depending on the context, this could be a good or bad thing.
+    -   In general, it is up to you (the modeler) to decide which loss function to adopt.
+    
+-   As an example of how loss functions help us construct estimators for parameters, let us consider the case of L~2~ loss.
+
+-   Given data (_y_~1~, ..., _y_~_n_~), our "optimal" (risk-minimizing) estimate for _θ_ (under L~2~ loss) satisfies
+$$ \widehat{\theta}_n := \argmin_{\theta} \left\{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \theta)^2 \right\} $$
+
+## {{< fa face-frown >}} Loss Functions
+### Example: L~2~-minimizing Estimate
+
+-   To optimize a function, we differentiate and set equal to zero:
+
+::: {.fragment style="font-size:28px"}
+\begin{align*}
+  \frac{\partial}{\partial \theta} R(\theta)  & = \frac{\partial}{\partial \theta} \left[  \frac{1}{n} \sum_{i=1}^{n} (y_i - \theta)^2 \right]   \\
+    & = \frac{2}{n} \sum_{i=1}^{n} (\theta - y_i) = \frac{2}{n} \left[ n \theta - n \overline{y}_n \right] = 2(\theta - \overline{y}_n)  \\
+    \implies 2(\widehat{\theta} - \overline{y}_n) & = 0 \ \implies \ \boxed{\widehat{\theta} = \overline{y}_n}
+\end{align*}
+:::
+
+-   So, the sample mean minimizes the risk under L~2~ loss; i.e. if we adopt L~2~ loss, then the value of _θ_ that best fits the data is the sample mean.
+
+
+## {{< fa pencil >}} Chalkboard Example
+
+::: {.callout-tip}
+## **Chalkboard Example**
+
+Identify the summary statistic that minimizes the empirical risk under L~1~ loss.
+:::
+
+
+# Modeling with Two Variables {background-color="black" background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3h0Yzd5Mjd2cG5xbWdscHUyYWdtMTc2dDk5eDFmMDRkam1nNDd1dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgri3D9sTwCUGMcT8L/giphy.gif" background-size="75rem"}
+
+## {{< fa arrow-trend-up >}} Two Variables
+
+-   Both of our examples up until now can be classified as "univariate" modeling, as they involve only _one_ variable.
+
+-   In data science, we are often interested in how two (or more) variables are _related_ to one another. 
+
+-   As an example, it's not difficult to surmise that houses built in different years sell for different prices.
+
+-   As such, we can explore a dataset that tracks the median selling price of homes built in various years, as sold in King County (Washington State) between May 2014 and May 2015. 
+    -   E.g. one datapoint represents the median selling price of a home built in 1963, sold in 2014.
+    -   [Data Source](https://www.kaggle.com/datasets/harlfoxem/housesalesprediction/data), though we're using a version that I aggregated and cleaned.
+
+
+## {{< fa house >}} Housing Data
+### An Example
+
+```{r}
+#| echo: False
+
+housing <- read.csv("Data/housing_averages.csv")
+```
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+housing %>% ggplot(aes(x = yr_built,
+                       y = avg_price)) +
+  geom_point(size = 3) + 
+  ggtitle("Median Selling Prices in 2014") +
+  xlab("Year Built") + ylab("Median Selling Price") +
+  theme_minimal(base_size = 18)
+```
+
+
+
+## {{< fa house >}} Housing Data
+### An Example
+
+-   Thinking back to the first week of this class:
+    -   Is there a trend?
+    -   If so, is the trend linear or nonlinear?
+    -   Can the trend be classified as positive or negative?
+    
+-   Additionally, can anyone propose an explanation for the "dip" in prices near the middle of the graph?
+
+
+
+
+## {{< fa house >}} Housing Data
+### Building a Model
+
+```{r}
+mod1 <- lm(avg_price ~ poly(yr_built, 5), housing)
+housing %>% ggplot(aes(x = yr_built,
+                       y = avg_price)) +
+  geom_point(size = 3, alpha = 0.1) + 
+  ggtitle("Median Selling Prices in 2014") +
+  xlab("Year Built") + ylab("Median Selling Price") +
+  theme_minimal(base_size = 18) +
+  annotate(
+    "point",
+    x = housing[19, 1],
+    y = housing[19, 2],
+    size = 5
+  )  +
+  annotate(
+    "label",
+    label = "(x[i]~.~y[i])",
+    parse = T,
+    x = housing[19, 1],
+    y = housing[19, 2] - 0.5e05,
+    size = 8
+  ) 
+```
+
+
+## {{< fa house >}} Housing Data
+### Building a Model
+
+```{r}
+mod1 <- lm(avg_price ~ poly(yr_built, 5), housing)
+housing %>% ggplot(aes(x = yr_built,
+                       y = avg_price)) +
+  geom_point(size = 3, alpha = 0.1) + 
+  ggtitle("Median Selling Prices in 2014") +
+  xlab("Year Built") + ylab("Median Selling Price") +
+  theme_minimal(base_size = 18) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ poly(x, 5),
+    se = F,
+    col = "blue",
+    linewidth = 2,
+    alpha = 0.5
+  ) +
+  annotate(
+    "point",
+    x = housing[19, 1],
+    y = housing[19, 2],
+    size = 5
+  )  +
+  annotate(
+    "label",
+    label = "(x[i]~.~y[i])",
+    parse = T,
+    x = housing[19, 1],
+    y = housing[19, 2] - 0.5e05,
+    size = 8
+  ) 
+```
+
+
+
+## {{< fa house >}} Housing Data
+### Building a Model
+
+```{r}
+mod1 <- lm(avg_price ~ poly(yr_built, 5), housing)
+housing %>% ggplot(aes(x = yr_built,
+                       y = avg_price)) +
+  geom_point(size = 3, alpha = 0.1) + 
+  ggtitle("Median Selling Prices in 2014") +
+  xlab("Year Built") + ylab("Median Selling Price") +
+  theme_minimal(base_size = 18) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ poly(x, 5),
+    se = F,
+    col = "blue",
+    linewidth = 2,
+    alpha = 0.5
+  ) +
+  annotate(
+    "point",
+    x = housing[19, 1],
+    y = housing[19, 2],
+    size = 5
+  ) +
+  annotate(
+    "point",
+    x = housing[19, 1],
+    y = predict(mod1, data.frame(yr_built = 1918)),
+    size = 5,
+    shape = 15,
+    col = "red"
+  )  +
+  annotate(
+    "label",
+    label = "(x[i]~.~f(x[i]))",
+    parse = T,
+    x = housing[19, 1] + 15,
+    y = predict(mod1, data.frame(yr_built = 1918)),
+    size = 8,
+    col = "red"
+  ) +
+  annotate(
+    "label",
+    label = "(x[i]~.~y[i])",
+    parse = T,
+    x = housing[19, 1],
+    y = housing[19, 2] - 0.5e05,
+    size = 8
+  ) 
+```
+
+
+## {{< fa house >}} Housing Data
+### Building a Model
+
+```{r}
+mod1 <- lm(avg_price ~ poly(yr_built, 5), housing)
+housing %>% ggplot(aes(x = yr_built,
+                       y = avg_price)) +
+  geom_point(size = 3, alpha = 0.1) + 
+  ggtitle("Median Selling Prices in 2014") +
+  xlab("Year Built") + ylab("Median Selling Price") +
+  theme_minimal(base_size = 18) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ poly(x, 5),
+    se = F,
+    col = "blue",
+    linewidth = 2,
+    alpha = 0.5
+  ) +
+  annotate(
+    "point",
+    x = housing[19, 1],
+    y = housing[19, 2],
+    size = 5
+  ) +
+  geom_segment(
+    aes(x = housing[19, 1],
+        xend = housing[19, 1],
+        y = housing[19, 2],
+        yend = predict(mod1, data.frame(yr_built = 1918))
+        ),
+    linetype = "dashed",
+    linewidth = 0.75
+  ) +
+  annotate(
+    "point",
+    x = housing[19, 1],
+    y = predict(mod1, data.frame(yr_built = 1918)),
+    size = 5,
+    shape = 15,
+    col = "red"
+  )  +
+  annotate(
+    "label",
+    label = "(x[i]~.~f(x[i]))",
+    parse = T,
+    x = housing[19, 1] + 15,
+    y = predict(mod1, data.frame(yr_built = 1918)),
+    size = 8,
+    col = "red"
+  ) +
+  annotate(
+    "label",
+    label = "(x[i]~.~y[i])",
+    parse = T,
+    x = housing[19, 1],
+    y = housing[19, 2] - 0.5e05,
+    size = 8
+  ) +
+  annotate(
+    "label",
+    label = "epsilon[i]",
+    parse = T,
+    x = housing[19, 1] - 5,
+    y = 0.5 * housing[19, 2] + 0.5 * predict(mod1, data.frame(yr_built = 1918)),
+    size = 8
+  )
+```
+
+## {{< fa house >}} Housing Data
+### Building a Model
+
+-   In other words: for every year _x_~_i_~ we believe there is an associated "true" median selling price _f_(_x_~_i_~). 
+
+-   This true price is unobserved; what we actually observe is a median selling price _y_~_i_~ that has been contaminated by some [**noise**]{.alert} ε~_i_~. 
+    -   This noise could be due any number of factors: measurement error, random fluctuations in the market, etc. 
+    -   We'll talk about this noise process more in a bit.
+    
+-   Mathematically: $y_i = f(x_i) + \varepsilon_i$, for some zero-mean constant-variance random variable _ε_~_i_~. 
+    -   It is precisely this error term that makes our model stochastic.
+
+## {{< fa magnifying-glass-chart >}} Statistical Models
+### Terminology
+
+::: {.fragment style="text-align:center; font-size:40px"}
+**`y`** = **`f`** ( **`x`** ) + **`noise`**
+:::
+
+:::: {.columns}
+::: {.column width="33.33%"}
+::: {.fragment}
+[**`y`**]{.bg style="--col: #f5e287"}: response variable
+:::
+
+-   Dependent variable
+-   Outcome
+-   Output
+
+:::
+
+::: {.column width="33.33%"}
+::: {.fragment}
+[**`f`**]{.bg style="--col: #f5e287"}: signal function
+:::
+
+-   Mean function
+
+:::
+
+::: {.column width="33.33%"}
+::: {.fragment}
+[**`x`**]{.bg style="--col: #f5e287"}: explanatory variable
+:::
+
+-   Independent variable
+-   Feature
+-   Input
+-   Covariate
+
+:::
+
+::::
+
+-   If `y` is numerical, the model is called a [**regression model**]{.alert}; if `y` is categorical, the model is called a [**classification model**]{.alert}.
+
+
+
+## {{< fa magnifying-glass-chart >}} Statistical Models
+### Noise
+
+-   The `noise` term can be thought of as a catch-all for any uncertainty present in our model.
+    
+-   Broadly speaking, uncertainty can be classified as either [**epistemic**]{.alert} (aka "reducible") or [**aleatoric**]{.alert} (aka "irreducible").
+
+-   Epistemic uncertainty stems from a lack of knowledge about the world; with additional information, it _could_ be reduced.
+    
+-   Aleatoric uncertainty, on the other hand, stems from randomness inherent in the world; no amount of additional information can reduce it.
+    
+    
+    
+## {{< fa magnifying-glass-chart >}} Statistical Models
+### Noise
+
+-   As an example: errors arising from a misspecified model are _epistemic_, as, in theory, if the model were corrected, they would be eliminated.
+
+-   On the other hand, measurement error is widely accepted as _aleatoric_; repeated measurements will not reduce the amount of measurement error.
+
+-   Since the `noise` term in our model captures the uncertainty present, we treat it as a zero-mean _random variable_.
+
+-   Later, we'll need to add some additional specificity to this (e.g. what distribution does it follow? What assumptions do we need to make about its variance?) - for now, we'll leave things fairly general.
+
+
+
+## {{< fa circle-question >}} Why Model?
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {.fragment style="text-align:center"}
+[**Prediction**]{.bg style="--col: #f5e287"}
+:::
+
+::: {.fragment}
+```{r}
+#| fig-height: 6
+mod1 <- lm(avg_price ~ poly(yr_built, 5), housing)
+housing %>% ggplot(aes(x = yr_built,
+                       y = avg_price)) +
+  geom_point(size = 3, alpha = 0.1) + 
+  ggtitle("Median Selling Prices in 2014") +
+  xlab("Year Built") + ylab("Median Selling Price") +
+  theme_minimal(base_size = 30) +
+  annotate(
+    "point",
+    x = housing[19, 1],
+    y = housing[19, 2],
+    size = 10
+  ) +
+  annotate(
+    "point",
+    x = housing[19, 1],
+    y = predict(mod1, data.frame(yr_built = 1918)),
+    size = 10,
+    shape = 15,
+    col = "red"
+  )  +
+  annotate(
+    "label",
+    label = "(x[i]~.~f(x[i]))",
+    parse = T,
+    x = housing[19, 1] + 15,
+    y = predict(mod1, data.frame(yr_built = 1918)),
+    size = 8,
+    col = "red"
+  ) +
+  annotate(
+    "label",
+    label = "(x[i]~.~y[i])",
+    parse = T,
+    x = housing[19, 1],
+    y = housing[19, 2] - 0.5e05,
+    size = 8
+  ) 
+```
+:::
+
+-   What's the true (de-noised) median selling price of a house built in 1918?
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment style="text-align:center"}
+[**Inference**]{.bg style="--col: #f5e287"}
+:::
+
+
+::: {.fragment}
+```{r}
+#| fig-height: 6
+mod1 <- lm(avg_price ~ poly(yr_built, 5), housing)
+housing %>% ggplot(aes(x = yr_built,
+                       y = avg_price)) +
+  geom_point(size = 3, alpha = 0.1) + 
+  ggtitle("Median Selling Prices in 2014") +
+  xlab("Year Built") + ylab("Median Selling Price") +
+  theme_minimal(base_size = 30) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ poly(x, 5),
+    se = T,
+    col = "blue",
+    linewidth = 2,
+    alpha = 0.5
+  )
+```
+:::
+
+-   How confident are we in our guess about the relationship between year built and selling price?
+:::
+::::
+
+
+
+## {{< fa forward-fast >}} Next Time
+
+    
+-   Tomorrow, we'll start our discussion on a specific type of parametric model that lends itself nicely to analysis (called the SLR model).
+    -   Our discussion on the SLR model will last several lectures.
+
+-   [**REMINDER:**]{.alert} Homework 2 is due **This Sunday** (July 20) by 11:59pm on Gradescope.

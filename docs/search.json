@@ -1631,6 +1631,237 @@
     "text": "Next Time\n\nWe’ll continue our discussion on data.\n\nSpecifically, we’ll take a closer look at the structure (as opposed to semantics) of a dataset\nWe’ll then discuss a framework to unify the semantics and structure of a dataset.\n\nReminder: please start Homework 1 early!\n\nProblem 1 is a Linear Algebra review, and Problem 2 combines Linear Algebra and PSTAT 120A (so you should be able to complete both problems already).\nFor problem 3, you’ll need to wait until Thursday’s lecture.\n\nIf you are able, please bring your laptops to tomorrow’s lecture."
   },
   {
+    "objectID": "Lectures/Lec13/Lec13.html#recap",
+    "href": "Lectures/Lec13/Lec13.html#recap",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Recap",
+    "text": "Recap\n\nWe can think of a model as a mathematical or idealized representation of a system.\nIn statistical modeling, we adopt a three-step procedure:\n\nPropose a model\nFit the model to the data\nAssess how well we believe our model is performing.\n\nThere are two main types of statistical models: parametric and nonparametric.\n\nThe model fitting step differs between these types of models.\n\nToday, let’s explore two examples of modeling: one nonparametric, and one parametric."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#density-estimation",
+    "href": "Lectures/Lec13/Lec13.html#density-estimation",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Density Estimation",
+    "text": "Density Estimation\n\n\n\n\n\n\nFramework\n\n\n\nData: A collection of numerical values; \\(\\vect{x} = (x_1, \\cdots, x_n)\\) we believe to be a realization of an i.i.d. random sample \\(\\vect{X} = (X_1, \\cdots, X_n)\\) taken from a distribution with density f().\nGoal: to estimate the true value of f() at each point.\n\n\n\n\n\n\n\nCode\ndata.frame(samp) %&gt;% ggplot(aes(x = samp)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 15, col = \"white\") +\n  theme_minimal(base_size = 18) +\n  ggtitle(\"Histogram of Sample Values\") + xlab(\"value\")"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#density-estimation-1",
+    "href": "Lectures/Lec13/Lec13.html#density-estimation-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Density Estimation",
+    "text": "Density Estimation\nHistograms\n\nBelieve it or not, a histogram is actually a nonparametric attempt at modeling precisely this situation!\n\n\n\n\n\n\n\n\nImportant\n\n\nThere are actually two kinds of histograms: frequency histograms and density histograms.\n\n\n\n\n\nFrequency histograms are the ones we talked about in Week 1.\n\nDensity histograms take frequency histograms and rescale the y-axis so that the total area under the histogram is 1.\n\nEssentially, our “guess” for the value of the density at a given point xi is simply the height of the density histogram at that point."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\n\nIf we let Bj denote the jth bin, and if we have n observations, the height of the jth bar on a density histogram is given by \\[ \\mathrm{height}_j = \\frac{1}{nh} \\sum_{i=1}^{n} 1 \\! \\! 1_{\\{x_i \\in B_j\\}} \\]\nRecall that the sum of indicators is a succinct way of writing “the number of observations that satisfy a condition”.\n\nIn this way, you should be able to interpret what the equation above is saying.\nPerhaps an example may help:"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-1",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-2",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-2",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\n\nGiven a new observation x, we can think of our “best guess” at the value of f(x) to be the height of the density histogram at x:\n\n\n\\[ \\widehat{f}(x) = \\frac{1}{nh} \\sum_{i=1}^{n} \\sum_{j} 1 \\! \\! 1_{\\{x \\in B_j\\}} 1 \\! \\! 1_{\\{x_i \\in B_j\\}}  \\]\n\n\nIn other words, our estimate takes the input x, finds the bin to which x belongs, and returns the height of that bin.\nWe call this procedure fixed binning, since, for a given x, we simply identify which, out of a set of fixed bins, x belongs to.\nThis leads us to the idea of local binning, in which we allow the height at x to be a normalization of the count in a neighborhood of x of width h (as opposed to the count in one of a set of fixed bins)."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-3",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-3",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\nLocal Binning\n\n\\[ \\widehat{f}_{\\mathrm{lb}}(x) = \\frac{1}{nh} \\sum_{i=1}^{n}  1 \\! \\! 1_{\\{ \\left| x_i - x \\right|  &lt; \\frac{h}{2} \\}}  \\]"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-4",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-4",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\nLocal Binning"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-5",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-5",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\nLocal Binning\n\n\\[ \\widehat{f}_{\\mathrm{lb}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\left[ \\frac{1}{h} 1 \\! \\! 1_{\\{ \\left| x_i - x \\right|  &lt; \\frac{h}{2} \\}} \\right]  \\]\n\n\n\n\n\n\n\n\nChanging xi amounts to changing the “center” of the “box”\nChanging h amounts to changing the width and height of the “box”\nNote, however, that for any value of h and xi, the area underneath this graph is always 1.\n\n\n\nNonnegative function that integrates to one…"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#leadup",
+    "href": "Lectures/Lec13/Lec13.html#leadup",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Leadup",
+    "text": "Leadup\n\n\\[ \\widehat{f}_{\\mathrm{KDE}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\frac{1}{\\lambda} K_{\\lambda}(x, x_i)   \\]\n\n\nIn this context, the function K(x, xi) is referred to as a kernel function, provided it is nonnegative and integrates to unity: \\[ \\int_{-\\infty}^{\\infty} K_{\\lambda}(x, x_i) \\ \\mathrm{d}x = 1, \\ \\forall x_i \\]\n\nSome people relax the condition of integrating to unity, but we’ll include it.\n\nSo, again, what kinds of functions does this sound like?"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#kernel-density-estimation",
+    "href": "Lectures/Lec13/Lec13.html#kernel-density-estimation",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Kernel Density Estimation",
+    "text": "Kernel Density Estimation\n\nIn general, we can use any valid probability density function as a kernel.\nThe estimate defined on the previous slide is called a kernel density estimate (KDE), and the general procedure of estimating a density as a weighted local average (with weights given by a kernel) of counts is called kernel density estimation.\nGaussian KDE utilizes a Gaussian kernel:\n\n\n\\[ \\widehat{f}_{\\mathrm{GKDE}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\frac{1}{\\lambda} \\phi\\left( \\frac{x_i - x}{\\lambda} \\right)  \\]\n\n\nOther kernels include the boxcar (equivalent to a locally binned histogram!), triangular, Epanechnikov (quadratic), Biweight (quartic), and a few others"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#kernel-density-estimation-1",
+    "href": "Lectures/Lec13/Lec13.html#kernel-density-estimation-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Kernel Density Estimation",
+    "text": "Kernel Density Estimation\nKernels\n\n\n\n\n\n\n\n\n\n\n\n\n\ndensity(...)        ## for analysis only\nstat_density(...)   ## for plotting\n\n kernel = c(\"gaussian\", \"epanechnikov\", \"rectangular\",\n                   \"triangular\", \"biweight\", \"cosine\", \"optcosine\"),"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#parametric-modeling",
+    "href": "Lectures/Lec13/Lec13.html#parametric-modeling",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Parametric Modeling",
+    "text": "Parametric Modeling\n\nRecall that, in the parametric setting of modeling, we express our model in terms of a series of estimable parameters.\nFor example, suppose we assume the weight Yi of a randomly-selected cat to follow a Normal distribution with mean µ and variance 1, independently across observations.\n\n\n\n\nYi \\(\\stackrel{\\mathrm{i.i.d.}}{\\sim}\\) N (µ, 1)\n\n\n\nYi = µ + εi, for εi \\(\\stackrel{\\mathrm{i.i.d.}}{\\sim}\\) N (0, 1)\n\n\n\nFitting a model to our data is therefore equivalent to finding the “optimal” estimates for the parameters in our model (in this case, µ)."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#the-modeling-process",
+    "href": "Lectures/Lec13/Lec13.html#the-modeling-process",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " The Modeling Process",
+    "text": "The Modeling Process\nMore About Step 2\n\nThis is precisely what is meant by Step 2 of the modeling procedure (sometimes called the model fitting stage): we identify estimators/estimates of the parameters that are ideal in some way.\nIn our coin tossing example, our choice of estimation was relatively straightforward: use the sample proportion as an estimator for the population proportion.\nIn many cases, however, there won’t necessarily be one obvious choice for parameter estimates.\n\nFor example, in our cat-weight example: do we use the sample mean or the sample median?\nTo estimate spread, should we use the mean or the median? Standard deviation or IQR?"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\n\nIn general, we can think of an estimator as a rule.\n\nMathematically, rules are functions - so, an estimator based on a single random observation Y can be expressed as δ(Y)\n\nA loss function is a mathematical quantification of the consequence paid in estimating a parameter θ by an estimator δ(Y).\n\nMore concretely, a loss function is a function \\(\\mathcal{L}: \\R^2 \\to \\R^{+}\\), where \\(\\mathcal{L}(\\theta, \\delta(Y))\\) represents how poorly \\(\\delta(Y)\\) is doing at estimating \\(\\theta\\).\n\nThe risk is the average loss: \\(\\mathbb{E}_{Y}[\\mathcal{L}(\\theta, \\delta(Y))]\\).\nAn “optimal” estimator for θ is therefore one that minimizes the risk: \\[ \\widehat{\\theta} := \\argmin_{\\theta} \\left\\{ \\mathbb{E}_{Y}[\\mathcal{L}(\\theta, \\delta(Y))] \\right\\} \\]"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-1",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\nIllustration\n\nAs an illustration of this framework of estimation, let’s attempt to find the value c that “best” summarizes a set of observations (y1, …, yn).\nAs the distribution of Y is, in general, unknown, we can consider the empirical risk in place of the risk: \\[ R(\\theta) := \\frac{1}{n} \\sum_{i=1}^{n} \\mathcal{L}(y_i, c) \\]\n\nHere, \\(\\mathcal{L}(y_i, c)\\) can be interpreted as “how far away c is from yi”.\n\nAgain, our “best” summary will be the value of c that minimizes R(θ)"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-2",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions-2",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\n\nThere are many choices for loss functions, each with pros and cons.\nFor numerical data, the two most common loss functions are:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSquared Error (aka L2)  \\(\\mathcal{L}(y_i, \\theta) = (y_i - \\theta)^2\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAbsolute Error (aka L1)  \\(\\mathcal{L}(y_i, \\theta) = |y_i - \\theta|\\)"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-3",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions-3",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\n\nL1 loss tends to be more robust to outliers than L2 loss.\n\nKeep in mind that, depending on the context, this could be a good or bad thing.\nIn general, it is up to you (the modeler) to decide which loss function to adopt.\n\nAs an example of how loss functions help us construct estimators for parameters, let us consider the case of L2 loss.\nGiven data (y1, …, yn), our “optimal” (risk-minimizing) estimate for θ (under L2 loss) satisfies \\[ \\widehat{\\theta}_n := \\argmin_{\\theta} \\left\\{ \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\theta)^2 \\right\\} \\]"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-4",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions-4",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\nExample: L2-minimizing Estimate\n\nTo optimize a function, we differentiate and set equal to zero:\n\n\n\\[\\begin{align*}\n  \\frac{\\partial}{\\partial \\theta} R(\\theta)  & = \\frac{\\partial}{\\partial \\theta} \\left[  \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\theta)^2 \\right]   \\\\\n    & = \\frac{2}{n} \\sum_{i=1}^{n} (\\theta - y_i) = \\frac{2}{n} \\left[ n \\theta - n \\overline{y}_n \\right] = 2(\\theta - \\overline{y}_n)  \\\\\n    \\implies 2(\\widehat{\\theta} - \\overline{y}_n) & = 0 \\ \\implies \\ \\boxed{\\widehat{\\theta} = \\overline{y}_n}\n\\end{align*}\\]\n\n\nSo, the sample mean minimizes the risk under L2 loss; i.e. if we adopt L2 loss, then the value of θ that best fits the data is the sample mean."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#chalkboard-example",
+    "href": "Lectures/Lec13/Lec13.html#chalkboard-example",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Chalkboard Example",
+    "text": "Chalkboard Example\n\n\n\n\n\n\nChalkboard Example\n\n\nIdentify the summary statistic that minimizes the empirical risk under L1 loss."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#two-variables",
+    "href": "Lectures/Lec13/Lec13.html#two-variables",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Two Variables",
+    "text": "Two Variables\n\nBoth of our examples up until now can be classified as “univariate” modeling, as they involve only one variable.\nIn data science, we are often interested in how two (or more) variables are related to one another.\nAs an example, it’s not difficult to surmise that houses built in different years sell for different prices.\nAs such, we can explore a dataset that tracks the median selling price of homes built in various years, as sold in King County (Washington State) between May 2014 and May 2015.\n\nE.g. one datapoint represents the median selling price of a home built in 1963, sold in 2014.\nData Source, though we’re using a version that I aggregated and cleaned."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data",
+    "href": "Lectures/Lec13/Lec13.html#housing-data",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nAn Example\n\n\nCode\nhousing %&gt;% ggplot(aes(x = yr_built,\n                       y = avg_price)) +\n  geom_point(size = 3) + \n  ggtitle(\"Median Selling Prices in 2014\") +\n  xlab(\"Year Built\") + ylab(\"Median Selling Price\") +\n  theme_minimal(base_size = 18)"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-1",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nAn Example\n\nThinking back to the first week of this class:\n\nIs there a trend?\nIf so, is the trend linear or nonlinear?\nCan the trend be classified as positive or negative?\n\nAdditionally, can anyone propose an explanation for the “dip” in prices near the middle of the graph?"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-2",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-2",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-3",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-3",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-4",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-4",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-5",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-5",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-6",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-6",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model\n\nIn other words: for every year xi we believe there is an associated “true” median selling price f(xi).\nThis true price is unobserved; what we actually observe is a median selling price yi that has been contaminated by some noise εi.\n\nThis noise could be due any number of factors: measurement error, random fluctuations in the market, etc.\nWe’ll talk about this noise process more in a bit.\n\nMathematically: \\(y_i = f(x_i) + \\varepsilon_i\\), for some zero-mean constant-variance random variable εi.\n\nIt is precisely this error term that makes our model stochastic."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#statistical-models",
+    "href": "Lectures/Lec13/Lec13.html#statistical-models",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Statistical Models",
+    "text": "Statistical Models\nTerminology\n\ny = f ( x ) + noise\n\n\n\n\ny: response variable\n\n\nDependent variable\nOutcome\nOutput\n\n\n\nf: signal function\n\n\nMean function\n\n\n\nx: explanatory variable\n\n\nIndependent variable\nFeature\nInput\nCovariate\n\n\n\nIf y is numerical, the model is called a regression model; if y is categorical, the model is called a classification model."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#statistical-models-1",
+    "href": "Lectures/Lec13/Lec13.html#statistical-models-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Statistical Models",
+    "text": "Statistical Models\nNoise\n\nThe noise term can be thought of as a catch-all for any uncertainty present in our model.\nBroadly speaking, uncertainty can be classified as either epistemic (aka “reducible”) or aleatoric (aka “irreducible”).\nEpistemic uncertainty stems from a lack of knowledge about the world; with additional information, it could be reduced.\nAleatoric uncertainty, on the other hand, stems from randomness inherent in the world; no amount of additional information can reduce it."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#statistical-models-2",
+    "href": "Lectures/Lec13/Lec13.html#statistical-models-2",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Statistical Models",
+    "text": "Statistical Models\nNoise\n\nAs an example: errors arising from a misspecified model are epistemic, as, in theory, if the model were corrected, they would be eliminated.\nOn the other hand, measurement error is widely accepted as aleatoric; repeated measurements will not reduce the amount of measurement error.\nSince the noise term in our model captures the uncertainty present, we treat it as a zero-mean random variable.\nLater, we’ll need to add some additional specificity to this (e.g. what distribution does it follow? What assumptions do we need to make about its variance?) - for now, we’ll leave things fairly general."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#why-model",
+    "href": "Lectures/Lec13/Lec13.html#why-model",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Why Model?",
+    "text": "Why Model?\n\n\n\nPrediction\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the true (de-noised) median selling price of a house built in 1918?\n\n\n\nInference\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow confident are we in our guess about the relationship between year built and selling price?"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#next-time",
+    "href": "Lectures/Lec13/Lec13.html#next-time",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Next Time",
+    "text": "Next Time\n\nTomorrow, we’ll start our discussion on a specific type of parametric model that lends itself nicely to analysis (called the SLR model).\n\nOur discussion on the SLR model will last several lectures.\n\nREMINDER: Homework 2 is due This Sunday (July 20) by 11:59pm on Gradescope."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "PSTAT 100: Summer 2025",
