@@ -1631,6 +1631,272 @@
     "text": "Next Time\n\nWe’ll continue our discussion on data.\n\nSpecifically, we’ll take a closer look at the structure (as opposed to semantics) of a dataset\nWe’ll then discuss a framework to unify the semantics and structure of a dataset.\n\nReminder: please start Homework 1 early!\n\nProblem 1 is a Linear Algebra review, and Problem 2 combines Linear Algebra and PSTAT 120A (so you should be able to complete both problems already).\nFor problem 3, you’ll need to wait until Thursday’s lecture.\n\nIf you are able, please bring your laptops to tomorrow’s lecture."
   },
   {
+    "objectID": "Lectures/Lec14/Lec14.html#recap",
+    "href": "Lectures/Lec14/Lec14.html#recap",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Recap",
+    "text": "Recap\nStatistical Modeling\n\nYesterday, we discussed the general framework of statistical models.\n\nWe discussed this in the context of one random variable (e.g. modeling flips of a coin), and two variables (regression and classification).\n\nGiven a response y and an explanatory variable x, the most general form for a model is y = f ( x ) + noise\n\nFor instance, we explored how the median selling price of a house in 2014 can be modeled as a function of the year in which it was built.\n\nRegression models arise when the response is numerical; classification models arise when the response is categorical."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#recap-1",
+    "href": "Lectures/Lec14/Lec14.html#recap-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Recap",
+    "text": "Recap\nTypes of Statistical Models\n\n\n\n\n\n\n\nCheck Your Understanding\n\n\nIdentify the following situations as either regression or classification:\n\nPredicting the birth weight of a newborn from the mothers’ height, blood type, and white blood cell count\nPredicting whether or not a newborn will be born with a congenital heart defect or not, based on the mother and fathers’ health history.\nDescribing the relationship between the number of accidents on a stretch of highway and: the number of cars driving, the speed limit, and the time of day."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#penguins",
+    "href": "Lectures/Lec14/Lec14.html#penguins",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Penguins",
+    "text": "Penguins\nAn Example\n\n\n\n\n\n\nArtwork by @allison_horst\n\n\n\n\n\nThe penguins dataset, from the palmerpenguins package, contains information on 344 penguins, collected by Dr. Kristen Gorman, at the Palmer Research Station in Antarctica.\nThree species of penguins were observed: Adélie, Chinstrap, and Gentoo\n\n\n\n\n\nVarious characteristics of each penguin were also observed, including: flipper length, bill length, bill depth, sex, and island.\nIt seems plausible that a penguin’s bill length should be related to its body mass.\n\n\n\n\n\n\nArtwork by @allison_horst"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#penguins-1",
+    "href": "Lectures/Lec14/Lec14.html#penguins-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Penguins",
+    "text": "Penguins\nAn Example\n\n\n\n\nCode\npenguins %&gt;% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +\n  geom_point(size = 3) + \n  theme_minimal(base_size = 18) + \n  xlab(\"Body Mass (g)\") + ylab(\"Bill Length (mm)\") +\n  ggtitle(\"Bill Length vs. Body Mass\")\n\n\n\n\n\n\n\n\n\n\n\nBased on our discussions from Week 1:\n\nIs there a trend?\nIncreasing or decreasing?\nLinear or nonlinear?\n\n\n\n\nIf we model Bill Length (response) as a function of Body Mass (predictor), would this be a regression or a classification model?"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#penguins-2",
+    "href": "Lectures/Lec14/Lec14.html#penguins-2",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Penguins",
+    "text": "Penguins\nStep 1: Propose a Model\n\nyi = β0 + β1 xi + εi\n\n\nyi = ith Bill Length measurement\nxi = ith Body Mass measurement\nεi = ith (aleatoric) noise term\n\nWe simply assume, for now, that the noise is mean zero (𝔼[εi] = 0 for all i) and homoskedastic (constant variance; Var(εi) = σ2, across all i)"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#simple-linear-regression-model",
+    "href": "Lectures/Lec14/Lec14.html#simple-linear-regression-model",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Simple Linear Regression Model",
+    "text": "Simple Linear Regression Model\nStep 1: Propose a Model\n\nyi = β0 + β1 xi + εi\n\n\nyi = ith response measurement\nxi = ith predictor measurement\nεi = ith (aleatoric) noise term; zero-mean and homoskedastic\n\n\nCalled the Simple Linear Regression (SLR) model.\n\nSimple: only one covariate\nLinear: we are assuming a linear signal function\nRegression: well, you tell me!"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#simple-linear-regression-model-1",
+    "href": "Lectures/Lec14/Lec14.html#simple-linear-regression-model-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Simple Linear Regression Model",
+    "text": "Simple Linear Regression Model\nAs Applied to the Palmerpenguins Dataset\n\n\n\nEssentially, the SLR seeks to fit the “best” line to the data.\nThe parameters that need to be estimated in the model fitting step are, therefore, the intercept and the slope.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifying these slope and intercept values by eye is next to impossible - this is why modeling is so useful!"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#simple-linear-regression-model-2",
+    "href": "Lectures/Lec14/Lec14.html#simple-linear-regression-model-2",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Simple Linear Regression Model",
+    "text": "Simple Linear Regression Model\nStep 2: Fit the Model to the Data\n\nLet’s find the optimal slope and intercept using the “loss” framework introduced in lecture yesterday.\nSpecifically, for each yi we believe there to be a “true response” value given by β0 + β1 xi, where β0 and β1 are the true slope and intercept.\n\nGiven estimates b0 and b1 for β0 and β1, respectively, our “best guess” at this true response value is simply b0 + b1 xi.\n\nSo, adopting L2 loss, let’s take \\(\\mathcal{L}(y_i, b_0, b_1) := (y_i - b_0 - b_1 x_i)^2\\) so that our empirical risk becomes\n\n\n\\[ R(b_0, b_1) = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 \\]"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#simple-linear-regression-model-3",
+    "href": "Lectures/Lec14/Lec14.html#simple-linear-regression-model-3",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Simple Linear Regression Model",
+    "text": "Simple Linear Regression Model\nStep 2: Fit the Model to the Data\n\nOur “best” estimators are then those b0 and b1 values that minimize this above quantity.\n\nSuch ideal estimators - namely, those that minimize empirical risk under squared loss - are called the ordinary least-squares (OLS) estimators/estimates in the context of SLR.\n\n\n\n\\[ \\begin{pmatrix} \\widehat{\\beta}_{0, \\ \\mathrm{OLS}} \\\\ \\widehat{\\beta}_{1, \\ \\mathrm{OLS}} \\end{pmatrix} := \\argmin_{(b_0, b_1)} \\left\\{ \\frac{1}{n} \\sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 \\right\\} \\]\n\n\nThis is a simultaneous minimization problem in two dimensions, so we’ll need to take partial derivatives."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#simple-linear-regression",
+    "href": "Lectures/Lec14/Lec14.html#simple-linear-regression",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Simple Linear Regression",
+    "text": "Simple Linear Regression\nStep 2: Estimate Parameters\n\n\\[ R(b_0, b_1) = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 \\]\n\n\n\n\n\\[\\begin{align*}\n  \\frac{\\partial R}{\\partial b_0} & = - \\frac{2}{n} \\sum_{i=1}^{n} (y_i - b_0 - b_1 x_i) \\\\\n    & = - \\frac{2}{n} \\left( n \\overline{y}_n - n b_1 - n \\overline{x}_n b_1 \\right) \\\\\n    & = - 2 \\left( \\overline{y}_n - b_0 - \\overline{x}_n  b_1 \\right)\n\\end{align*}\\]\n\n\n\n\\[\\begin{align*}\n  \\frac{\\partial R}{\\partial b_1} & = - \\frac{2}{n} \\sum_{i=1}^{n} x_i (y_i - b_0 - b_1 x_i) \\\\\n    & = - \\frac{2}{n} \\left( n \\overline{x}_n \\overline{y}_n - n \\overline{x}_n b_0 - b_1 \\sum_{i=1}^{n} x_i^2 \\right) \\\\\n    & = - 2 \\left( \\overline{x}_n \\overline{y}_n - \\overline{x}_n b_0 - \\frac{1}{n} b_1 \\sum_{i=1}^{n} x_i^2 \\right)\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#simple-linear-regression-1",
+    "href": "Lectures/Lec14/Lec14.html#simple-linear-regression-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Simple Linear Regression",
+    "text": "Simple Linear Regression\nStep 2: Estimate Parameters\n\n\\[\\begin{align*}\n\\overline{y}_n - \\widehat{\\beta}_0 - \\overline{x}_n  \\widehat{\\beta}_1  & = 0 \\\\\n\\overline{x}_n \\overline{y}_n - \\overline{x}_n \\widehat{\\beta}_0 - {\\textstyle \\frac{1}{n} \\widehat{\\beta}_1 \\sum_{i=1}^{n} x_i^2 }  & = 0\n\\end{align*}\\]\n\n\nWe call these the normal equations. When solved, they reveal:\n\n\n\\[ \\widehat{\\beta}_0 = \\overline{y}_n - \\widehat{\\beta}_1 \\overline{x}_n; \\qquad \\widehat{\\beta}_1 = r \\cdot \\frac{s_Y}{s_X} \\] where sX and sY denote the sample variances of the x and y values, respectively, and \\[ r := \\frac{1}{n - 1} \\sum_{i=1}^{n} \\left( \\frac{x_i - \\overline{x}_n}{s_X} \\right) \\left( \\frac{y_i - \\overline{y}_n}{s_Y} \\right)  \\] denotes Pearson’s Correlation Coefficient."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#simple-linear-regression-2",
+    "href": "Lectures/Lec14/Lec14.html#simple-linear-regression-2",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Simple Linear Regression",
+    "text": "Simple Linear Regression\nEmpirical Verification\n\nDataCorrelationOLS Fit\n\n\n\nset.seed(100)   ## for reproducibility\nx &lt;- rnorm(100)\ny &lt;- 0.5 + 1.5 * x + rnorm(100)\n\n\n\n\nn &lt;- length(x)\n1/(n - 1) * sum(((x - mean(x))/sd(x)) * ((y - mean(y))/sd(y)))\n\n[1] 0.8746656\n\ncor(x, y)\n\n[1] 0.8746656\n\n\n\n\n\nbeta1_hat &lt;- cor(x, y) * sd(y) / sd(x)\nbeta0_hat &lt;- mean(y) - beta1_hat * mean(x) \n\ncat(\"By Hand:\", c(beta0_hat, beta1_hat), \"\\n\",\n    \"From lm():\", lm(y ~ x) %&gt;% coef()\n)\n\nBy Hand: 0.5114477 1.394633 \n From lm(): 0.5114477 1.394633\n\n\n\n\n\n\nThe function lm() - which stands for linear model - performs the model fitting step (under L2 loss) for us."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#penguins-3",
+    "href": "Lectures/Lec14/Lec14.html#penguins-3",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Penguins",
+    "text": "Penguins\nThe Fitted SLR Model\n\n\nCode\npenguins %&gt;% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +\n  geom_point(size = 3) + \n  theme_minimal(base_size = 18) + \n  xlab(\"Body Mass (g)\") + ylab(\"Bill Length (mm)\") +\n  ggtitle(\"Bill Length vs. Body Mass\") +\n  geom_smooth(method = \"lm\", formula = y ~ x, linewidth = 2)"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#model-diagnostics",
+    "href": "Lectures/Lec14/Lec14.html#model-diagnostics",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Model Diagnostics",
+    "text": "Model Diagnostics\n\nFinally, let’s talk a bit about the third step in the modeling process: assessing model fit (sometimes called performing model diagnostics).\n\nPersonally, I believe this is perhaps the most important step in the entire process!\n\nRecall that the main goal of model diagnostics is to assess whether we believe our initial model (from step 1) is doing any good.\n\nTo stress: even though, in step 2, we “optimized” our model, we are only optimizing under the model we picked. This says nothing about whether our choice of model was any good!"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#model-diagnostics-1",
+    "href": "Lectures/Lec14/Lec14.html#model-diagnostics-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Model Diagnostics",
+    "text": "Model Diagnostics\nExample: Poor Choice of Model\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor example, consider the simulated data to the left.\nThe true relationship appears highly nonlinear; nevertheless, we have fit a linear model to the data.\n\n\n\nThe coefficients of the linear fit are “optimal” - they minimize risk under squared-error loss!\n\nIn other words, the blue line is the line of best fit to the data.\nBut, visually, we believe that this line is not doing a good job of capturing the overall trend in the data."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#model-diagnostics-2",
+    "href": "Lectures/Lec14/Lec14.html#model-diagnostics-2",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Model Diagnostics",
+    "text": "Model Diagnostics\nResiduals\n\nThere are a wide variety of tools and techniques that can be used for model diagnostics.\n\nYou’ll learn about some these tools in classes like PSTAT 126 and PSTAT 131/231.\n\nFor the purposes of PSTAT 100, we will focus primarily on one specific type of diagnostic tool, known as a residuals plot.\nThe residuals are defined as \\(e_i := y_i - \\widehat{y}_i\\), where \\(\\widehat{y}_i\\) is the predicted true response (i.e. point along the fitted signal).\n\nIn a sense, they are our attempt at modeling the noise in the data."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#model-diagnostics-3",
+    "href": "Lectures/Lec14/Lec14.html#model-diagnostics-3",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Model Diagnostics",
+    "text": "Model Diagnostics\nResiduals\n\nIf our fitted values \\(\\widehat{y}_i\\) capture the signal function perfectly - i.e. if \\(\\widehat{y}_i = f(x_i)\\) for the true signal function \\(f(\\cdot)\\), the residuals becomes \\[ e_i = y_i - \\widehat{y}_i = (f(x_i) + \\varepsilon_i) - f(x_i) = \\varepsilon_i \\]\nThat is, if our model is capturing the signal perfectly, then our residuals should behave exactly like noise (which we have assumed is zero mean and possesses constant-variance).\nSo, the basic idea behind a residuals plot is to plot the residuals, and see how closely they resemble noise!"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#model-diagnostics-4",
+    "href": "Lectures/Lec14/Lec14.html#model-diagnostics-4",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Model Diagnostics",
+    "text": "Model Diagnostics\nResiduals\n\nNow, we should be a bit more careful about what we mean by “noise.”\n\nTo that end, let us return to our SLR model: yi = β0 + β1 xi + εi\n\nWe make two assumptions about εi:\n\nZero-Mean: 𝔼[εi] = 0\nHomoskedasticity: Var[εi] = σ2, independent of i\n\nSometimes we will substitute the following assumption in place of the two above: \\[ \\varepsilon \\iid \\mathcal{N}(0, \\sigma_0^2) \\]"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#residuals-plots",
+    "href": "Lectures/Lec14/Lec14.html#residuals-plots",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Residuals Plots",
+    "text": "Residuals Plots\n\nIn a residuals plot, we plot the residuals on the vertical axis and the fitted values on the vertical axis.\nA residuals plot indicative of a well-fitting model should display:\n\nNo discernable trend\nHomoskedasticity\n\nOn the flipside, a residuals plot missing one or both of these attributes is indicative of a poorly-fitting model.\nLet’s take a look at a few examples."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#residuals-plots-1",
+    "href": "Lectures/Lec14/Lec14.html#residuals-plots-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Residuals Plots",
+    "text": "Residuals Plots\nExamples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe residuals plot displays a clear quadratic trend, indicating a poor choice of model.\n\nThe scatterplot on the left confirms this.\nNote that the nature of the trend in the residuals plot is indicative of the portion of the model missing; we’ll return to this in a bit."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#residuals-plots-2",
+    "href": "Lectures/Lec14/Lec14.html#residuals-plots-2",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Residuals Plots",
+    "text": "Residuals Plots\nExamples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNow, the residuals plot displays no discernable trend along with homoskedasticity.\n\nThis indicates that our choice of quadratic fit was good; certainly in comparison to the linear fit."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#diagnostic-1",
+    "href": "Lectures/Lec14/Lec14.html#diagnostic-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Diagnostic 1",
+    "text": "Diagnostic 1\nTrend in Residuals\n\nAs noted, the presence of trend in the residuals plot indicates a poor choice of model.\nIndeed, it is not a coincidence that a linear fit to quadratic data displays a quadratic trend in the residuals plot.\nSuppose the true model is quadratic: yi = β0 + β1 xi + β2 xi2 + εi\nFurther suppose we fit a linear model: ŷi = α0 + α1 xi + εi\nThe residuals then take the form: ei = (β0 - α0) + (β1 - α1) xi + β2 xi2 + εi\nEven if α0 matches perfectly with β0 and α1 matches perfectly with β1, the residuals will still have a β2 xi2 term left over.\n\nIn other words, the expectation of ei will be quadratic in x."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#misspecified-model",
+    "href": "Lectures/Lec14/Lec14.html#misspecified-model",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Misspecified Model",
+    "text": "Misspecified Model\nTrend in Residuals\n\n\n\n\n\n\nMoral\n\n\nIf the residuals plot displays a trend of the form g(ŷ) for some function g, consider incorporating a term of the form g(x) into the original model.\n\n\n\n\n\n\n\n\n\nYour Turn!\n\n\nWhen a simple linear regression model is fit to a particular dataset, the resulting residuals plot is:\n\n\n\n\n\n\n\n\n\n\n\n\nPropose an improved model, and justify your choice of improvement.\n\n\n\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#live-demo",
+    "href": "Lectures/Lec14/Lec14.html#live-demo",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Live Demo!",
+    "text": "Live Demo!\n\n\n\n\n\n\nLive Demo!\n\n\nUsing the penguins dataset, let’s fit a linear model of bill depth as a function of body mass; we’ll then generate a residuals plot and decide on whether we believe a linear model was appropriate or not."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#diagnostic-2",
+    "href": "Lectures/Lec14/Lec14.html#diagnostic-2",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Diagnostic 2",
+    "text": "Diagnostic 2\nHeteroskedasticity in Residuals\n\nThe other type of “problem” we might encounter in a residuals graph is heteroksedasticity (i.e. nonconstant variance).\nThere are a couple of different ways to address heteroskedasticity, most of which I’ll leave for your future PSTAT courses to discuss.\n\nFor the purposes of PSTAT 100, you should just be able to identify the presence of heteroskedasticity from a residuals plot"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#why-model",
+    "href": "Lectures/Lec14/Lec14.html#why-model",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Why Model?",
+    "text": "Why Model?\n\n\n\nPrediction\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the true (de-noised) bill length (in mm) of a 4000g penguin?\n\n\n\nInference\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow confident are we in our guess about the relationship between bill length and body mass?"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#prediction-example",
+    "href": "Lectures/Lec14/Lec14.html#prediction-example",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Prediction: Example",
+    "text": "Prediction: Example\n\ngentoo &lt;- penguins %&gt;% filter(species == \"Gentoo\")\nlm1 &lt;- lm(bill_depth_mm ~  body_mass_g, gentoo)\n(y1 &lt;- predict(lm1, newdata = data.frame(body_mass_g = 5010)))\n\n       1 \n14.88971 \n\n\n\n\nCode\ngentoo %&gt;% ggplot(aes(x = body_mass_g, \n                        y = bill_depth_mm)) +\n  geom_point(size = 4, alpha = 0.4) + \n  theme_minimal(base_size = 24) +\n  annotate(\"point\", shape = 15, x = 5010, y = y1, col = \"red\", size = 6) +\n  xlab(\"body mass (g)\") + ylab(\"bill depth (mm)\") +\n  ggtitle(\"Bill Depth vs. Body Mass\", \n          subtitle = \"Gentoo Only\")"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#prediction-example-1",
+    "href": "Lectures/Lec14/Lec14.html#prediction-example-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Prediction: Example",
+    "text": "Prediction: Example\n\nFor a general statistical model yi = f (xi) + εi , a prediction for the true response value at an input x is given by first estimating f (either parametrically or nonparametrically) by \\(\\widehat{f}\\), and then returning a fitted value \\[ \\widehat{y}_i := \\widehat{f}(x) \\]"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#dangers-of-extrapolation",
+    "href": "Lectures/Lec14/Lec14.html#dangers-of-extrapolation",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Dangers of Extrapolation",
+    "text": "Dangers of Extrapolation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOur “optimal” model fit is only optimal for the range of data on which it was fit.\n\nExtrapolation (predicting based on predictor values far outside the range originally observed) assumes that our proposed model holds even far outside the range of data we initially observed - an assumption that is very dangerous to make.\n\nSo, don’t do it!"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#dangers-of-extrapolation-1",
+    "href": "Lectures/Lec14/Lec14.html#dangers-of-extrapolation-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Dangers of Extrapolation",
+    "text": "Dangers of Extrapolation\n\n\n\npenguins %&gt;% select(bill_length_mm, body_mass_g) %&gt;% summary()\n\n bill_length_mm   body_mass_g  \n Min.   :32.10   Min.   :2700  \n 1st Qu.:39.23   1st Qu.:3550  \n Median :44.45   Median :4050  \n Mean   :43.92   Mean   :4202  \n 3rd Qu.:48.50   3rd Qu.:4750  \n Max.   :59.60   Max.   :6300  \n NA's   :2       NA's   :2     \n\n\n\n\n\nThe summary() function provides (among other things) a good way to check the range of covariate (and response) values."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#inference",
+    "href": "Lectures/Lec14/Lec14.html#inference",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Inference",
+    "text": "Inference\n\nLet’s now discuss inference on the SLR model.\nThe OLS estimators (recall the distinction between an estimate and an estimator) are given by \\[ \\widehat{B}_0 = \\overline{Y}_n - \\widehat{B}_1 \\overline{X}_n; \\qquad \\widehat{B}_1 = \\frac{\\sum_{i=1}^{n}(X_i - \\overline{X}_n)(Y_i - \\overline{Y}_n)}{\\sum_{i=1}^{n}(X_i - \\overline{X}_n)^2} \\]\nOne can show these are unbiased estimators for the true slope and intercept β0 and β1, respectively.\nIf we assume the errors in the model are normally distributed, one can show that the standardized OLS estimators follow a tn-2 distribution."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#inference-1",
+    "href": "Lectures/Lec14/Lec14.html#inference-1",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Inference",
+    "text": "Inference\nRegression Tables\n\n\n\nCode\nx &lt;- rnorm(100)\ny &lt;- 0.5 + 1.5*x + rnorm(100)\n\nlm(y ~ x) %&gt;% summary()\n\n\n\nCall:\nlm(formula = y ~ x)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-3.06033 -0.54038  0.05607  0.77025  2.02609 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  0.36060    0.10755   3.353  0.00114 ** \nx            1.40672    0.09971  14.109  &lt; 2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.072 on 98 degrees of freedom\nMultiple R-squared:  0.6701,    Adjusted R-squared:  0.6667 \nF-statistic: 199.1 on 1 and 98 DF,  p-value: &lt; 2.2e-16\n\n\n\n\nThis is an example of a regression table."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#inference-2",
+    "href": "Lectures/Lec14/Lec14.html#inference-2",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Inference",
+    "text": "Inference\nRegression Tables\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  0.36060    0.10755   3.353  0.00114\nx            1.40672    0.09971  14.109  &lt; 2e-16\n\n\n\n\nEstimateStd. Errort-ValuePr(&gt;|t|)\n\n\nThe Estimate column provides the actual OLS estimates, given the data.\n\n\nThe Std. Error column provides the standard errror (i.e. standard deviation) of the OLS estimators, given the data.\n\n\nThe t Value column provides the observed value of \\(\\widehat{B} / \\mathrm{se}(\\widehat{B})\\), which, assuming the true coefficient is zero, follows a t distribution with (n - 2) degrees of freedom.\n\n\nHm… what’s this doing?\n\n\n\n\nBased on this (and perhaps some additional work), what is a 95% confidence interval for the true slope?"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#inference-3",
+    "href": "Lectures/Lec14/Lec14.html#inference-3",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Inference",
+    "text": "Inference\nRegression Tables\n\nWe saw something like Pr(&gt;|t|) in Lab yesterday. What context was that in, and what did this quantity mean in that context?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nlm(y ~ x) %&gt;% coef()\n\n(Intercept)           x \n 0.01144773 -0.10536744 \n\n\n\n\nSo, according to R, a one-unit increase in x corresponds to a predicted 0.105-unit change in y.\nDo we believe this?\n\nDo we really think there is a trend at all?"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#inference-4",
+    "href": "Lectures/Lec14/Lec14.html#inference-4",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Inference",
+    "text": "Inference\nTrend or Not?\n\nWouldn’t it be nice to statistical test whether or not there even is a linear relationship between the response and covariate?\nThankfully, there is one! Specifically, in the SLR model, which parameter controls/captures the linear relationship between x and y?\nSo, testing whether or not there is a trend is analogous to testing the null H0: β1 = 0 against the alternative HA: β1 ≠ 0.\nThis is why the sampling distributions of the OLS estimators is useful - it allows us to construct a hypothesis test for whether or not a linear association exists between x and y."
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#inference-5",
+    "href": "Lectures/Lec14/Lec14.html#inference-5",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Inference",
+    "text": "Inference\nTrend or Not?\n\nThe final column in the regression table provides a p-value for the test of H0: β1 = 0 against the two-sided alternative HA: β1 ≠ 0.\n\n\n\nlm(y ~ x) %&gt;% summary()\n\n\nCall:\nlm(formula = y ~ x)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2.05195 -0.43265 -0.07854  0.48583  1.93858 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)\n(Intercept)  0.01145    0.07929   0.144    0.885\nx           -0.10537    0.07807  -1.350    0.180\n\nResidual standard error: 0.7929 on 98 degrees of freedom\nMultiple R-squared:  0.01825,   Adjusted R-squared:  0.008229 \nF-statistic: 1.821 on 1 and 98 DF,  p-value: 0.1803"
+  },
+  {
+    "objectID": "Lectures/Lec14/Lec14.html#next-time",
+    "href": "Lectures/Lec14/Lec14.html#next-time",
+    "title": "PSTAT 100: Lecture 14",
+    "section": " Next Time",
+    "text": "Next Time\n\nTomorrow, we’ll start generalizing from only one covariate to multiple covariates.\n\nThis is going to involve some linear algebra!\n\nWe’ll also get some hands-on practice with the R side of regression, and further practice with interpreting results.\nReminder: please don’t forget to turn in HW02 this sunday!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSTAT 100: Summer 2025",
+    "section": "",
+    "text": "PSTAT 100 - Data Science: Concepts and Analysis\n\n\n\n\nInstructor:\nEthan P. Marzban (He/Him)\n\n\n\n\nQuarter:\nSummer Session A, 2025\n\n\n\nCourse Description: Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\n\n\n\n\n\n\n\nWelcome to PSTAT 100! This is the official course page for the Summer Session A, 2025 iteration of the course - the Spring 2024 iteration has been moved to ucsb-pstat100-archives.github.io.\nLecture slides can be found on the Schedule; labs and project datasets can be found on our Course Computing Server, a link to which can be found on our course Canvas page. Please note, for security purposes, we can only share the link to the server with students who are currently enrolled in the course.\n\n\n\n\n\n\n\n\n    \n        \n            Important Course Assessments/Deadlines\n            \n                \n                    Homework 1\n                    Week 1 | Sunday, June 29, 2025\n                \n                \n                    In-Class Assessment 1\n                    Week 2 | Thursday, July 3, 2025\n                \n                \n                    Mid-Quarter Project\n                    Week 3 | Sunday, July 13, 2025\n                \n                \n                    Homework 2\n                    Week 4 | Sunday, July 20, 2025\n                \n                \n                    In-Class Assessment 2\n                    Week 5 | Thursday, July 24, 2025\n                \n                \n                    Final Project\n                    Week 6 | Friday, August 8, 2025\n                \n            \n        \n    \n\n\n\n\n\n\n\nImportant\n\n\n\nIn addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods."
+  },
+  {
     "objectID": "Lectures/Lec13/Lec13.html#recap",
     "href": "Lectures/Lec13/Lec13.html#recap",
     "title": "PSTAT 100: Lecture 13",
@@ -1860,13 +2126,6 @@
     "title": "PSTAT 100: Lecture 13",
     "section": " Next Time",
     "text": "Next Time\n\nTomorrow, we’ll start our discussion on a specific type of parametric model that lends itself nicely to analysis (called the SLR model).\n\nOur discussion on the SLR model will last several lectures.\n\nREMINDER: Homework 2 is due This Sunday (July 20) by 11:59pm on Gradescope."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSTAT 100: Summer 2025",
-    "section": "",
-    "text": "PSTAT 100 - Data Science: Concepts and Analysis\n\n\n\n\nInstructor:\nEthan P. Marzban (He/Him)\n\n\n\n\nQuarter:\nSummer Session A, 2025\n\n\n\nCourse Description: Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\n\n\n\n\n\n\n\nWelcome to PSTAT 100! This is the official course page for the Summer Session A, 2025 iteration of the course - the Spring 2024 iteration has been moved to ucsb-pstat100-archives.github.io.\nLecture slides can be found on the Schedule; labs and project datasets can be found on our Course Computing Server, a link to which can be found on our course Canvas page. Please note, for security purposes, we can only share the link to the server with students who are currently enrolled in the course.\n\n\n\n\n\n\n\n\n    \n        \n            Important Course Assessments/Deadlines\n            \n                \n                    Homework 1\n                    Week 1 | Sunday, June 29, 2025\n                \n                \n                    In-Class Assessment 1\n                    Week 2 | Thursday, July 3, 2025\n                \n                \n                    Mid-Quarter Project\n                    Week 3 | Sunday, July 13, 2025\n                \n                \n                    Homework 2\n                    Week 4 | Sunday, July 20, 2025\n                \n                \n                    In-Class Assessment 2\n                    Week 5 | Thursday, July 24, 2025\n                \n                \n                    Final Project\n                    Week 6 | Friday, August 8, 2025\n                \n            \n        \n    \n\n\n\n\n\n\n\nImportant\n\n\n\nIn addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods."
   },
   {
     "objectID": "Lectures/Lec12/Lec12.html#recap",

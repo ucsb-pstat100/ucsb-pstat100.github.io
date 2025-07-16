@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../../Images/Logos_Icons/hex.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <meta name="author" content="Ethan P. Marzban">
+  <title>PSTAT 100: Summer 2025 – PSTAT 100: Lecture 14</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ce6bc8a5410e8df11883f060677c6af5.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="../../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="../../site_libs/countdown-0.4.0/countdown.js"></script>
+</head>
+<body class="quarto-light">
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="Images/100_hex.png" data-background-opacity="0.5" data-background-position="80% 50%" data-background-size="30%" class="quarto-title-block center">
+  <h1 class="title">PSTAT 100: Lecture 14</h1>
+  <p class="subtitle">Simple Linear Regression</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Ethan P. Marzban 
+</div>
+        <p class="quarto-title-affiliation">
+            Department of Statistics and Applied Probability; UCSB <br> <br>
+          </p>
+        <p class="quarto-title-affiliation">
+            Summer Session A, 2025
+          </p>
+    </div>
+</div>
+
+</section>
+<section class="slide level2">
+
+<p><span class="math display">\[
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+\]</span></p>
+<div class="cell">
+<style type="text/css">
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+</style>
+</div>
+</section>
+<section id="recap" class="slide level2">
+<h2><i class="fa-solid fa-backward-fast" aria-label="backward-fast"></i> Recap</h2>
+<h3 id="statistical-modeling">Statistical Modeling</h3>
+<ul>
+<li class="fragment">Yesterday, we discussed the general framework of <span class="alert"><strong>statistical models</strong></span>.
+<ul>
+<li class="fragment">We discussed this in the context of one random variable (e.g.&nbsp;modeling flips of a coin), and two variables (regression and classification).</li>
+</ul></li>
+<li class="fragment">Given a <span class="alert"><strong>response</strong></span> <strong><code>y</code></strong> and an <span class="alert"><strong>explanatory variable</strong></span> <strong><code>x</code></strong>, the most general form for a model is <strong><code>y</code></strong> = <strong><code>f</code></strong> ( <strong><code>x</code></strong> ) + <strong><code>noise</code></strong>
+<ul>
+<li class="fragment">For instance, we explored how the median selling price of a house in 2014 can be modeled as a function of the year in which it was built.</li>
+</ul></li>
+<li class="fragment"><span class="alert"><strong>Regression</strong></span> models arise when the response is numerical; <span class="alert"><strong>classification</strong></span> models arise when the response is categorical.</li>
+</ul>
+</section>
+<section id="recap-1" class="slide level2">
+<h2><i class="fa-solid fa-backward-fast" aria-label="backward-fast"></i> Recap</h2>
+<h3 id="types-of-statistical-models">Types of Statistical Models</h3>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Check Your Understanding</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Identify the following situations as either regression or classification:</p>
+<ol type="1">
+<li><p>Predicting the birth weight of a newborn from the mothers’ height, blood type, and white blood cell count</p></li>
+<li><p>Predicting whether or not a newborn will be born with a congenital heart defect or not, based on the mother and fathers’ health history.</p></li>
+<li><p>Describing the relationship between the number of accidents on a stretch of highway and: the number of cars driving, the speed limit, and the time of day.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="penguins" class="slide level2" style="font-size:30px">
+<h2><i class="fa-solid fa-kiwi-bird" aria-label="kiwi-bird"></i> Penguins</h2>
+<h3 id="an-example">An Example</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/lter_penguins-1.png"></p>
+<figcaption>Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></figcaption>
+</figure>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>The <code>penguins</code> dataset, from the <code>palmerpenguins</code> package, contains information on 344 penguins, collected by Dr.&nbsp;Kristen Gorman, at the Palmer Research Station in Antarctica.</p></li>
+<li class="fragment"><p>Three species of penguins were observed: Adélie, Chinstrap, and Gentoo</p></li>
+</ul>
+</div></div>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>Various characteristics of each penguin were also observed, including: flipper length, bill length, bill depth, sex, and island.</p></li>
+<li class="fragment"><p>It seems plausible that a penguin’s bill length should be related to its body mass.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/culmen_depth.png" style="width:80.0%"></p>
+<figcaption>Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></figcaption>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="penguins-1" class="slide level2">
+<h2><i class="fa-solid fa-kiwi-bird" aria-label="kiwi-bird"></i> Penguins</h2>
+<h3 id="an-example-1">An Example</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>penguins <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> bill_length_mm)) <span class="sc">+</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb1-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span> </span>
+<span id="cb1-4"><a></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass (g)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Bill Length (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">ggtitle</span>(<span class="st">"Bill Length vs. Body Mass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li class="fragment">Based on our discussions from Week 1:
+<ul>
+<li class="fragment">Is there a trend?</li>
+<li class="fragment">Increasing or decreasing?</li>
+<li class="fragment">Linear or nonlinear?</li>
+</ul></li>
+</ul>
+</div></div>
+<ul>
+<li class="fragment">If we model Bill Length (response) as a function of Body Mass (predictor), would this be a regression or a classification model?</li>
+</ul>
+</section>
+<section id="penguins-2" class="slide level2">
+<h2><i class="fa-solid fa-kiwi-bird" aria-label="kiwi-bird"></i> Penguins</h2>
+<h3 id="step-1-propose-a-model">Step 1: Propose a Model</h3>
+<div class="fragment" style="text-align:center">
+<p><strong><code>y</code><sub><code>i</code></sub></strong> = β<sub>0</sub> + β<sub>1</sub> <strong><code>x</code><sub><code>i</code></sub></strong> + <em>ε</em><sub><em>i</em></sub></p>
+</div>
+<ul>
+<li class="fragment"><strong><code>y</code><sub><code>i</code></sub></strong> = <em>i</em><sup>th</sup> <code>Bill Length</code> measurement</li>
+<li class="fragment"><strong><code>x</code><sub><code>i</code></sub></strong> = <em>i</em><sup>th</sup> <code>Body Mass</code> measurement</li>
+<li class="fragment"><em>ε</em><sub><em>i</em></sub> = <em>i</em><sup>th</sup> (aleatoric) noise term
+<ul>
+<li class="fragment">We simply assume, for now, that the noise is <strong>mean zero</strong> (𝔼[<em>ε</em><sub><em>i</em></sub>] = 0 for all <em>i</em>) and <span class="alert"><strong>homoskedastic</strong></span> (constant variance; Var(<em>ε</em><sub><em>i</em></sub>) = σ<sup>2</sup>, across all <em>i</em>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="simple-linear-regression-model" class="slide level2">
+<h2><i class="fa-solid fa-chart-line" aria-label="chart-line"></i> Simple Linear Regression Model</h2>
+<h3 id="step-1-propose-a-model-1">Step 1: Propose a Model</h3>
+<div style="text-align:center">
+<p><strong><code>y</code><sub><code>i</code></sub></strong> = β<sub>0</sub> + β<sub>1</sub> <strong><code>x</code><sub><code>i</code></sub></strong> + <em>ε</em><sub><em>i</em></sub></p>
+</div>
+<ul>
+<li><strong><code>y</code><sub><code>i</code></sub></strong> = <em>i</em><sup>th</sup> response measurement</li>
+<li><strong><code>x</code><sub><code>i</code></sub></strong> = <em>i</em><sup>th</sup> predictor measurement</li>
+<li><em>ε</em><sub><em>i</em></sub> = <em>i</em><sup>th</sup> (aleatoric) noise term; zero-mean and homoskedastic</li>
+</ul>
+<ul>
+<li class="fragment">Called the <span class="alert"><strong>Simple Linear Regression</strong></span> (SLR) model.
+<ul>
+<li class="fragment"><strong>Simple:</strong> only one covariate</li>
+<li class="fragment"><strong>Linear:</strong> we are assuming a <em>linear</em> signal function</li>
+<li class="fragment"><strong>Regression:</strong> well, you tell me!</li>
+</ul></li>
+</ul>
+</section>
+<section id="simple-linear-regression-model-1" class="slide level2">
+<h2><i class="fa-solid fa-chart-line" aria-label="chart-line"></i> Simple Linear Regression Model</h2>
+<h3 id="as-applied-to-the-palmerpenguins-dataset">As Applied to the <code>Palmerpenguins</code> Dataset</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li class="fragment">Essentially, the SLR seeks to fit the “best” line to the data.</li>
+<li class="fragment">The parameters that need to be estimated in the model fitting step are, therefore, the intercept and the slope.</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li class="fragment">Identifying these slope and intercept values by eye is next to impossible - this is why modeling is so useful!</li>
+</ul>
+</section>
+<section id="simple-linear-regression-model-2" class="slide level2">
+<h2><i class="fa-solid fa-chart-line" aria-label="chart-line"></i> Simple Linear Regression Model</h2>
+<h3 id="step-2-fit-the-model-to-the-data">Step 2: Fit the Model to the Data</h3>
+<ul>
+<li class="fragment"><p>Let’s find the optimal slope and intercept using the “loss” framework introduced in lecture yesterday.</p></li>
+<li class="fragment"><p>Specifically, for each <em>y</em><sub><em>i</em></sub> we believe there to be a “true response” value given by β<sub>0</sub> + β<sub>1</sub> <em>x</em><sub><em>i</em></sub>, where β<sub>0</sub> and β<sub>1</sub> are the <em>true</em> slope and intercept.</p>
+<ul>
+<li class="fragment">Given estimates <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> for β<sub>0</sub> and β<sub>1</sub>, respectively, our “best guess” at this true response value is simply <em>b</em><sub>0</sub> + <em>b</em><sub>1</sub> <em>x</em><sub><em>i</em></sub>.</li>
+</ul></li>
+<li class="fragment"><p>So, adopting <em>L</em><sub>2</sub> loss, let’s take <span class="math inline">\(\mathcal{L}(y_i, b_0, b_1) := (y_i - b_0 - b_1 x_i)^2\)</span> so that our empirical risk becomes</p></li>
+</ul>
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[ R(b_0, b_1) = \frac{1}{n} \sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 \]</span></p>
+</div>
+</section>
+<section id="simple-linear-regression-model-3" class="slide level2">
+<h2><i class="fa-solid fa-chart-line" aria-label="chart-line"></i> Simple Linear Regression Model</h2>
+<h3 id="step-2-fit-the-model-to-the-data-1">Step 2: Fit the Model to the Data</h3>
+<ul>
+<li class="fragment">Our “best” estimators are then those <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> values that <em>minimize</em> this above quantity.
+<ul>
+<li class="fragment">Such ideal estimators - namely, those that minimize empirical risk under squared loss - are called the <span class="alert"><strong>ordinary least-squares</strong></span> (OLS) estimators/estimates in the context of SLR.</li>
+</ul></li>
+</ul>
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[ \begin{pmatrix} \widehat{\beta}_{0, \ \mathrm{OLS}} \\ \widehat{\beta}_{1, \ \mathrm{OLS}} \end{pmatrix} := \argmin_{(b_0, b_1)} \left\{ \frac{1}{n} \sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 \right\} \]</span></p>
+</div>
+<ul>
+<li class="fragment">This is a simultaneous minimization problem in <em>two</em> dimensions, so we’ll need to take <em>partial</em> derivatives.</li>
+</ul>
+</section>
+<section id="simple-linear-regression" class="slide level2">
+<h2><i class="fa-solid fa-chart-line" aria-label="chart-line"></i> Simple Linear Regression</h2>
+<h3 id="step-2-estimate-parameters">Step 2: Estimate Parameters</h3>
+<div class="fragment" style="font-size: 28px">
+<p><span class="math display">\[ R(b_0, b_1) = \frac{1}{n} \sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 \]</span></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[\begin{align*}
+  \frac{\partial R}{\partial b_0} &amp; = - \frac{2}{n} \sum_{i=1}^{n} (y_i - b_0 - b_1 x_i) \\
+    &amp; = - \frac{2}{n} \left( n \overline{y}_n - n b_1 - n \overline{x}_n b_1 \right) \\
+    &amp; = - 2 \left( \overline{y}_n - b_0 - \overline{x}_n  b_1 \right)
+\end{align*}\]</span></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[\begin{align*}
+  \frac{\partial R}{\partial b_1} &amp; = - \frac{2}{n} \sum_{i=1}^{n} x_i (y_i - b_0 - b_1 x_i) \\
+    &amp; = - \frac{2}{n} \left( n \overline{x}_n \overline{y}_n - n \overline{x}_n b_0 - b_1 \sum_{i=1}^{n} x_i^2 \right) \\
+    &amp; = - 2 \left( \overline{x}_n \overline{y}_n - \overline{x}_n b_0 - \frac{1}{n} b_1 \sum_{i=1}^{n} x_i^2 \right)
+\end{align*}\]</span></p>
+</div>
+</div></div>
+</section>
+<section id="simple-linear-regression-1" class="slide level2" style="font-size:28px">
+<h2><i class="fa-solid fa-chart-line" aria-label="chart-line"></i> Simple Linear Regression</h2>
+<h3 id="step-2-estimate-parameters-1">Step 2: Estimate Parameters</h3>
+<div class="fragment" style="font-size: 28px">
+<p><span class="math display">\[\begin{align*}
+\overline{y}_n - \widehat{\beta}_0 - \overline{x}_n  \widehat{\beta}_1  &amp; = 0 \\
+\overline{x}_n \overline{y}_n - \overline{x}_n \widehat{\beta}_0 - {\textstyle \frac{1}{n} \widehat{\beta}_1 \sum_{i=1}^{n} x_i^2 }  &amp; = 0
+\end{align*}\]</span></p>
+</div>
+<ul>
+<li class="fragment">We call these the <span class="alert"><strong>normal equations</strong></span>. When solved, they reveal:</li>
+</ul>
+<div class="fragment" style="font-size: 28px">
+<p><span class="math display">\[ \widehat{\beta}_0 = \overline{y}_n - \widehat{\beta}_1 \overline{x}_n; \qquad \widehat{\beta}_1 = r \cdot \frac{s_Y}{s_X} \]</span> where <em>s</em><sub><em>X</em></sub> and <em>s</em><sub><em>Y</em></sub> denote the sample variances of the <strong><code>x</code></strong> and <strong><code>y</code></strong> values, respectively, and <span class="math display">\[ r := \frac{1}{n - 1} \sum_{i=1}^{n} \left( \frac{x_i - \overline{x}_n}{s_X} \right) \left( \frac{y_i - \overline{y}_n}{s_Y} \right)  \]</span> denotes <span class="alert"><strong>Pearson’s Correlation Coefficient</strong></span>.</p>
+</div>
+</section>
+<section id="simple-linear-regression-2" class="slide level2">
+<h2><i class="fa-solid fa-chart-line" aria-label="chart-line"></i> Simple Linear Regression</h2>
+<h3 id="empirical-verification">Empirical Verification</h3>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Data</a></li><li><a href="#tabset-1-2">Correlation</a></li><li><a href="#tabset-1-3">OLS Fit</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">set.seed</span>(<span class="dv">100</span>)   <span class="do">## for reproducibility</span></span>
+<span id="cb2-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb2-3"><a></a>y <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb3-2"><a></a><span class="dv">1</span><span class="sc">/</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sum</span>(((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sd</span>(x)) <span class="sc">*</span> ((y <span class="sc">-</span> <span class="fu">mean</span>(y))<span class="sc">/</span><span class="fu">sd</span>(y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8746656</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">cor</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8746656</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>beta1_hat <span class="ot">&lt;-</span> <span class="fu">cor</span>(x, y) <span class="sc">*</span> <span class="fu">sd</span>(y) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
+<span id="cb7-2"><a></a>beta0_hat <span class="ot">&lt;-</span> <span class="fu">mean</span>(y) <span class="sc">-</span> beta1_hat <span class="sc">*</span> <span class="fu">mean</span>(x) </span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a><span class="fu">cat</span>(<span class="st">"By Hand:"</span>, <span class="fu">c</span>(beta0_hat, beta1_hat), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb7-5"><a></a>    <span class="st">"From lm():"</span>, <span class="fu">lm</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span> <span class="fu">coef</span>()</span>
+<span id="cb7-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>By Hand: 0.5114477 1.394633 
+ From lm(): 0.5114477 1.394633</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">The function <code>lm()</code> - which stands for <strong>l</strong>inear <strong>m</strong>odel - performs the model fitting step (under L<sub>2</sub> loss) for us.</li>
+</ul>
+</section>
+<section id="penguins-3" class="slide level2">
+<h2><i class="fa-solid fa-kiwi-bird" aria-label="kiwi-bird"></i> Penguins</h2>
+<h3 id="the-fitted-slr-model">The Fitted SLR Model</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> bill_length_mm)) <span class="sc">+</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb9-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span> </span>
+<span id="cb9-4"><a></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass (g)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Bill Length (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a></a>  <span class="fu">ggtitle</span>(<span class="st">"Bill Length vs. Body Mass"</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">linewidth =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="Lec14_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="model-diagnostics" class="slide level2">
+<h2><i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> Model Diagnostics</h2>
+<ul>
+<li class="fragment">Finally, let’s talk a bit about the third step in the modeling process: assessing model fit (sometimes called performing <span class="alert"><strong>model diagnostics</strong></span>).
+<ul>
+<li class="fragment">Personally, I believe this is perhaps the <em>most</em> important step in the entire process!</li>
+</ul></li>
+<li class="fragment">Recall that the main goal of model diagnostics is to assess whether we believe our initial model (from step 1) is doing any good.
+<ul>
+<li class="fragment">To stress: even though, in step 2, we “optimized” our model, we are only optimizing <em>under the model</em> we picked. This says nothing about whether our choice of model was any good!</li>
+</ul></li>
+</ul>
+</section>
+<section id="model-diagnostics-1" class="slide level2">
+<h2><i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> Model Diagnostics</h2>
+<h3 id="example-poor-choice-of-model">Example: Poor Choice of Model</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li class="fragment">For example, consider the simulated data to the left.</li>
+<li class="fragment">The true relationship appears highly <em>nonlinear</em>; nevertheless, we have fit a <em>linear</em> model to the data.</li>
+</ul>
+</div></div>
+<ul>
+<li class="fragment">The coefficients of the linear fit are “optimal” - they minimize risk under squared-error loss!
+<ul>
+<li class="fragment">In other words, the blue line is the <em>line</em> of best fit to the data.</li>
+<li class="fragment">But, visually, we believe that this line is <em>not</em> doing a good job of capturing the overall trend in the data.</li>
+</ul></li>
+</ul>
+</section>
+<section id="model-diagnostics-2" class="slide level2">
+<h2><i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> Model Diagnostics</h2>
+<h3 id="residuals">Residuals</h3>
+<ul>
+<li class="fragment"><p>There are a wide variety of tools and techniques that can be used for model diagnostics.</p>
+<ul>
+<li class="fragment">You’ll learn about some these tools in classes like PSTAT 126 and PSTAT 131/231.</li>
+</ul></li>
+<li class="fragment"><p>For the purposes of PSTAT 100, we will focus primarily on one specific type of diagnostic tool, known as a <span class="alert"><strong>residuals plot</strong></span>.</p></li>
+<li class="fragment"><p>The <span class="alert"><strong>residuals</strong></span> are defined as <span class="math inline">\(e_i := y_i - \widehat{y}_i\)</span>, where <span class="math inline">\(\widehat{y}_i\)</span> is the predicted true response (i.e.&nbsp;point along the fitted signal).</p>
+<ul>
+<li class="fragment">In a sense, they are our attempt at modeling the <em>noise</em> in the data.</li>
+</ul></li>
+</ul>
+</section>
+<section id="model-diagnostics-3" class="slide level2">
+<h2><i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> Model Diagnostics</h2>
+<h3 id="residuals-1">Residuals</h3>
+<ul>
+<li class="fragment"><p>If our fitted values <span class="math inline">\(\widehat{y}_i\)</span> capture the signal function perfectly - i.e.&nbsp;if <span class="math inline">\(\widehat{y}_i = f(x_i)\)</span> for the true signal function <span class="math inline">\(f(\cdot)\)</span>, the residuals becomes <span class="math display">\[ e_i = y_i - \widehat{y}_i = (f(x_i) + \varepsilon_i) - f(x_i) = \varepsilon_i \]</span></p></li>
+<li class="fragment"><p>That is, if our model is capturing the signal <em>perfectly</em>, then our residuals should behave exactly like noise (which we have assumed is zero mean and possesses constant-variance).</p></li>
+<li class="fragment"><p>So, the basic idea behind a residuals plot is to plot the residuals, and see how closely they resemble noise!</p></li>
+</ul>
+</section>
+<section id="model-diagnostics-4" class="slide level2">
+<h2><i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> Model Diagnostics</h2>
+<h3 id="residuals-2">Residuals</h3>
+<ul>
+<li class="fragment">Now, we should be a bit more careful about what we mean by “noise.”
+<ul>
+<li class="fragment">To that end, let us return to our SLR model: <strong><code>y</code><sub><code>i</code></sub></strong> = β<sub>0</sub> + β<sub>1</sub> <strong><code>x</code><sub><code>i</code></sub></strong> + <em>ε</em><sub><em>i</em></sub></li>
+</ul></li>
+<li class="fragment">We make two assumptions about <em>ε</em><sub><em>i</em></sub>:
+<ol type="1">
+<li class="fragment"><strong>Zero-Mean:</strong> 𝔼[<em>ε</em><sub><em>i</em></sub>] = 0</li>
+<li class="fragment"><span class="alert"><strong>Homoskedasticity</strong></span>: Var[<em>ε</em><sub><em>i</em></sub>] = σ<sup>2</sup>, independent of <em>i</em></li>
+</ol></li>
+<li class="fragment">Sometimes we will substitute the following assumption in place of the two above: <span class="math display">\[ \varepsilon \iid \mathcal{N}(0, \sigma_0^2) \]</span></li>
+</ul>
+</section>
+<section id="residuals-plots" class="slide level2">
+<h2><i class="fa-solid fa-arrow-trend-up" aria-label="arrow-trend-up"></i> Residuals Plots</h2>
+<ul>
+<li class="fragment"><p>In a residuals plot, we plot the residuals on the vertical axis and the fitted values on the vertical axis.</p></li>
+<li class="fragment"><p>A residuals plot indicative of a well-fitting model should display:</p>
+<ul>
+<li class="fragment">No discernable trend</li>
+<li class="fragment">Homoskedasticity</li>
+</ul></li>
+<li class="fragment"><p>On the flipside, a residuals plot missing one or both of these attributes is indicative of a poorly-fitting model.</p></li>
+<li class="fragment"><p>Let’s take a look at a few examples.</p></li>
+</ul>
+</section>
+<section id="residuals-plots-1" class="slide level2">
+<h2><i class="fa-solid fa-arrow-trend-up" aria-label="arrow-trend-up"></i> Residuals Plots</h2>
+<h3 id="examples">Examples</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li class="fragment">The residuals plot displays a clear quadratic trend, indicating a poor choice of model.
+<ul>
+<li class="fragment">The scatterplot on the left confirms this.</li>
+<li class="fragment">Note that the nature of the trend in the residuals plot is indicative of the portion of the model missing; we’ll return to this in a bit.</li>
+</ul></li>
+</ul>
+</section>
+<section id="residuals-plots-2" class="slide level2">
+<h2><i class="fa-solid fa-arrow-trend-up" aria-label="arrow-trend-up"></i> Residuals Plots</h2>
+<h3 id="examples-1">Examples</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li class="fragment">Now, the residuals plot displays no discernable trend along with homoskedasticity.
+<ul>
+<li class="fragment">This indicates that our choice of quadratic fit was good; certainly in comparison to the linear fit.</li>
+</ul></li>
+</ul>
+</section>
+<section id="diagnostic-1" class="slide level2">
+<h2><i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> Diagnostic 1</h2>
+<h3 id="trend-in-residuals">Trend in Residuals</h3>
+<ul>
+<li class="fragment"><p>As noted, the presence of trend in the residuals plot indicates a poor choice of model.</p></li>
+<li class="fragment"><p>Indeed, it is not a coincidence that a linear fit to quadratic data displays a quadratic trend in the residuals plot.</p></li>
+<li class="fragment"><p>Suppose the true model is quadratic: <strong><code>y</code><sub><code>i</code></sub></strong> = β<sub>0</sub> + β<sub>1</sub> <strong><code>x</code><sub><code>i</code></sub></strong> + β<sub>2</sub> <strong><code>x</code><sub><code>i</code></sub></strong><sup>2</sup> + <em>ε</em><sub><em>i</em></sub></p></li>
+<li class="fragment"><p>Further suppose we fit a linear model: <strong>ŷ<sub><code>i</code></sub></strong> = α<sub>0</sub> + α<sub>1</sub> <strong><code>x</code><sub><code>i</code></sub></strong> + <em>ε</em><sub><em>i</em></sub></p></li>
+<li class="fragment"><p>The residuals then take the form: <strong><code>e</code><sub><code>i</code></sub></strong> = (β<sub>0</sub> - α<sub>0</sub>) + (β<sub>1</sub> - α<sub>1</sub>) <strong><code>x</code><sub><code>i</code></sub></strong> + β<sub>2</sub> <strong><code>x</code><sub><code>i</code></sub></strong><sup>2</sup> + <em>ε</em><sub><em>i</em></sub></p></li>
+<li class="fragment"><p>Even if α<sub>0</sub> matches perfectly with β<sub>0</sub> and α<sub>1</sub> matches perfectly with β<sub>1</sub>, the residuals will still have a β<sub>2</sub> <strong><code>x</code><sub><code>i</code></sub></strong><sup>2</sup> term left over.</p>
+<ul>
+<li class="fragment">In other words, the expectation of <strong><code>e</code><sub><code>i</code></sub></strong> will be quadratic in <strong><code>x</code></strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="misspecified-model" class="slide level2">
+<h2><i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> Misspecified Model</h2>
+<h3 id="trend-in-residuals-1">Trend in Residuals</h3>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Moral</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>If the residuals plot displays a trend of the form <em>g</em>(<strong>ŷ</strong>) for some function <em>g</em>, consider incorporating a term of the form <em>g</em>(<strong><code>x</code></strong>) into the original model.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Your Turn!</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>When a simple linear regression model is fit to a particular dataset, the resulting residuals plot is:</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-13-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<p>Propose an improved model, and justify your choice of improvement.</p>
+</div></div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_6c1d0814" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:6rem;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="live-demo" class="slide level2">
+<h2><i class="fa-solid fa-code" aria-label="code"></i> Live Demo!</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Live Demo!</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Using the <code>penguins</code> dataset, let’s fit a linear model of bill depth as a function of body mass; we’ll then generate a residuals plot and decide on whether we believe a linear model was appropriate or not.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="diagnostic-2" class="slide level2">
+<h2><i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> Diagnostic 2</h2>
+<h3 id="heteroskedasticity-in-residuals">Heteroskedasticity in Residuals</h3>
+<ul>
+<li class="fragment"><p>The other type of “problem” we might encounter in a residuals graph is <span class="alert"><strong>heteroksedasticity</strong></span> (i.e.&nbsp;nonconstant variance).</p></li>
+<li class="fragment"><p>There are a couple of different ways to address heteroskedasticity, most of which I’ll leave for your future PSTAT courses to discuss.</p>
+<ul>
+<li class="fragment">For the purposes of PSTAT 100, you should just be able to identify the presence of heteroskedasticity from a residuals plot</li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="why-model" class="slide level2">
+<h2><i class="fa-solid fa-circle-question" aria-label="circle-question"></i> Why Model?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment" style="text-align:center">
+<p><span class="bg" style="--col: #f5e287"><strong>Prediction</strong></span></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">What’s the true (de-noised) bill length (in mm) of a 4000g penguin?</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment" style="text-align:center">
+<p><span class="bg" style="--col: #f5e287"><strong>Inference</strong></span></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">How confident are we in our guess about the relationship between bill length and body mass?</li>
+</ul>
+</div></div>
+</section>
+<section id="prediction-example" class="slide level2">
+<h2><i class="fa-solid fa-bars-progress" aria-label="bars-progress"></i> Prediction: Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>gentoo <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Gentoo"</span>)</span>
+<span id="cb10-2"><a></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span>  body_mass_g, gentoo)</span>
+<span id="cb10-3"><a></a>(y1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm1, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">body_mass_g =</span> <span class="dv">5010</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1 
+14.88971 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>gentoo <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb12-2"><a></a>                        <span class="at">y =</span> bill_depth_mm)) <span class="sc">+</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> </span>
+<span id="cb12-4"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">shape =</span> <span class="dv">15</span>, <span class="at">x =</span> <span class="dv">5010</span>, <span class="at">y =</span> y1, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a></a>  <span class="fu">xlab</span>(<span class="st">"body mass (g)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"bill depth (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a></a>  <span class="fu">ggtitle</span>(<span class="st">"Bill Depth vs. Body Mass"</span>, </span>
+<span id="cb12-8"><a></a>          <span class="at">subtitle =</span> <span class="st">"Gentoo Only"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="Lec14_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<section id="prediction-example-1" class="slide level2" style="font-size:30px">
+<h2><i class="fa-solid fa-bars-progress" aria-label="bars-progress"></i> Prediction: Example</h2>
+<ul>
+<li class="fragment">For a general statistical model <strong><code>y</code><sub><code>i</code></sub></strong> = <strong><code>f</code></strong> (<strong><code>x</code><sub><code>i</code></sub></strong>) + <em>ε</em><sub><em>i</em></sub> , a prediction for the true response value at an input <strong><code>x</code></strong> is given by first estimating <strong><code>f</code></strong> (either parametrically or nonparametrically) by <span class="math inline">\(\widehat{f}\)</span>, and then returning a <span class="alert"><strong>fitted value</strong></span> <span class="math display">\[ \widehat{y}_i := \widehat{f}(x) \]</span></li>
+</ul>
+<div class="fragment" style="text-align:center">
+<p><img data-src="Images/inter_extrap.svg" style="width:75.0%"></p>
+</div>
+</section>
+<section id="dangers-of-extrapolation" class="slide level2">
+<h2><i class="fa-solid fa-bars-progress" aria-label="bars-progress"></i> Dangers of Extrapolation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li class="fragment">Our “optimal” model fit is only optimal for the range of data on which it was fit.
+<ul>
+<li class="fragment">Extrapolation (predicting based on predictor values far outside the range originally observed) assumes that our proposed model holds even far outside the range of data we initially observed - an assumption that is very dangerous to make.</li>
+</ul></li>
+<li class="fragment">So, don’t do it!</li>
+</ul>
+</section>
+<section id="dangers-of-extrapolation-1" class="slide level2">
+<h2><i class="fa-solid fa-bars-progress" aria-label="bars-progress"></i> Dangers of Extrapolation</h2>
+<p><br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>penguins <span class="sc">%&gt;%</span> <span class="fu">select</span>(bill_length_mm, body_mass_g) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> bill_length_mm   body_mass_g  
+ Min.   :32.10   Min.   :2700  
+ 1st Qu.:39.23   1st Qu.:3550  
+ Median :44.45   Median :4050  
+ Mean   :43.92   Mean   :4202  
+ 3rd Qu.:48.50   3rd Qu.:4750  
+ Max.   :59.60   Max.   :6300  
+ NA's   :2       NA's   :2     </code></pre>
+</div>
+</div>
+<p><br>
+</p>
+<ul>
+<li class="fragment">The <code>summary()</code> function provides (among other things) a good way to check the range of covariate (and response) values.</li>
+</ul>
+</section>
+<section id="inference" class="slide level2">
+<h2><i class="fa-solid fa-dice" aria-label="dice"></i> Inference</h2>
+<ul>
+<li class="fragment"><p>Let’s now discuss inference on the SLR model.</p></li>
+<li class="fragment"><p>The OLS estimat<em>ors</em> (recall the distinction between an estimate and an estimator) are given by <span class="math display">\[ \widehat{B}_0 = \overline{Y}_n - \widehat{B}_1 \overline{X}_n; \qquad \widehat{B}_1 = \frac{\sum_{i=1}^{n}(X_i - \overline{X}_n)(Y_i - \overline{Y}_n)}{\sum_{i=1}^{n}(X_i - \overline{X}_n)^2} \]</span></p></li>
+<li class="fragment"><p>One can show these are unbiased estimators for the true slope and intercept β<sub>0</sub> and β<sub>1</sub>, respectively.</p></li>
+<li class="fragment"><p>If we assume the errors in the model are <em>normally</em> distributed, one can show that the standardized OLS estimators follow a <em>t</em><sub><em>n</em>-2</sub> distribution.</p></li>
+</ul>
+</section>
+<section id="inference-1" class="slide level2">
+<h2><i class="fa-solid fa-dice" aria-label="dice"></i> Inference</h2>
+<h3 id="regression-tables">Regression Tables</h3>
+<div class="fragment">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb15-2"><a></a>y <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="fl">1.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a><span class="fu">lm</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-3.06033 -0.54038  0.05607  0.77025  2.02609 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  0.36060    0.10755   3.353  0.00114 ** 
+x            1.40672    0.09971  14.109  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.072 on 98 degrees of freedom
+Multiple R-squared:  0.6701,    Adjusted R-squared:  0.6667 
+F-statistic: 199.1 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">This is an example of a <span class="alert"><strong>regression table</strong></span>.</li>
+</ul>
+</section>
+<section id="inference-2" class="slide level2">
+<h2><i class="fa-solid fa-dice" aria-label="dice"></i> Inference</h2>
+<h3 id="regression-tables-1">Regression Tables</h3>
+<pre><code>Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  0.36060    0.10755   3.353  0.00114
+x            1.40672    0.09971  14.109  &lt; 2e-16
+</code></pre>
+<p><br>
+</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Estimate</a></li><li><a href="#tabset-2-2">Std. Error</a></li><li><a href="#tabset-2-3"><em>t</em>-Value</a></li><li><a href="#tabset-2-4">Pr(&gt;|t|)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>The <code>Estimate</code> column provides the actual OLS estimates, given the data.</p>
+</div>
+<div id="tabset-2-2">
+<p>The <code>Std. Error</code> column provides the standard errror (i.e.&nbsp;standard deviation) of the OLS estimators, given the data.</p>
+</div>
+<div id="tabset-2-3">
+<p>The <code>t Value</code> column provides the observed value of <span class="math inline">\(\widehat{B} / \mathrm{se}(\widehat{B})\)</span>, which, assuming the true coefficient is zero, follows a <em>t</em> distribution with (<em>n</em> - 2) degrees of freedom.</p>
+</div>
+<div id="tabset-2-4">
+<p>Hm… what’s this doing?</p>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Based on this (and perhaps some additional work), what is a 95% confidence interval for the true slope?</li>
+</ul>
+</section>
+<section id="inference-3" class="slide level2">
+<h2><i class="fa-solid fa-dice" aria-label="dice"></i> Inference</h2>
+<h3 id="regression-tables-2">Regression Tables</h3>
+<ul>
+<li class="fragment">We saw something like <code>Pr(&gt;|t|)</code> in Lab yesterday. What context was that in, and what did this quantity mean in that context?</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec14_files/figure-revealjs/unnamed-chunk-25-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">lm</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span> <span class="fu">coef</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)           x 
+ 0.01144773 -0.10536744 </code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment"><p>So, according to <code>R</code>, a one-unit increase in <strong><code>x</code></strong> corresponds to a predicted 0.105-unit change in <strong><code>y</code></strong>.</p></li>
+<li class="fragment"><p>Do we believe this?</p>
+<ul>
+<li class="fragment">Do we really think there is a trend at all?</li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="inference-4" class="slide level2">
+<h2><i class="fa-solid fa-dice" aria-label="dice"></i> Inference</h2>
+<h3 id="trend-or-not">Trend or Not?</h3>
+<ul>
+<li class="fragment"><p>Wouldn’t it be nice to <em>statistical</em> test whether or not there even is a linear relationship between the response and covariate?</p></li>
+<li class="fragment"><p>Thankfully, there is one! Specifically, in the SLR model, which parameter controls/captures the linear relationship between <strong><code>x</code></strong> and <strong><code>y</code></strong>?</p></li>
+<li class="fragment"><p>So, testing whether or not there is a trend is analogous to testing the null <strong>H</strong><sub>0</sub>: β<sub>1</sub> = 0 against the alternative <strong>H</strong><sub>A</sub>: β<sub>1</sub> ≠ 0.</p></li>
+<li class="fragment"><p>This is why the sampling distributions of the OLS estimators is useful - it allows us to construct a hypothesis test for whether or not a linear association exists between <strong><code>x</code></strong> and <strong><code>y</code></strong>.</p></li>
+</ul>
+</section>
+<section id="inference-5" class="slide level2">
+<h2><i class="fa-solid fa-dice" aria-label="dice"></i> Inference</h2>
+<h3 id="trend-or-not-1">Trend or Not?</h3>
+<ul>
+<li class="fragment">The final column in the regression table provides a <em>p</em>-value for the test of <strong>H</strong><sub>0</sub>: β<sub>1</sub> = 0 against the two-sided alternative <strong>H</strong><sub>A</sub>: β<sub>1</sub> ≠ 0.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">lm</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.05195 -0.43265 -0.07854  0.48583  1.93858 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)  0.01145    0.07929   0.144    0.885
+x           -0.10537    0.07807  -1.350    0.180
+
+Residual standard error: 0.7929 on 98 degrees of freedom
+Multiple R-squared:  0.01825,   Adjusted R-squared:  0.008229 
+F-statistic: 1.821 on 1 and 98 DF,  p-value: 0.1803</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="next-time" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<ul>
+<li class="fragment"><p>Tomorrow, we’ll start generalizing from only one covariate to multiple covariates.</p>
+<ul>
+<li class="fragment">This is going to involve some linear algebra!</li>
+</ul></li>
+<li class="fragment"><p>We’ll also get some hands-on practice with the <code>R</code> side of regression, and further practice with interpreting results.</p></li>
+<li class="fragment"><p>Reminder: please don’t forget to turn in HW02 this sunday!</p></li>
+</ul>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="Images/100_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+            for (let i=0; i<annoteTargets.length; i++) {
+              const annoteTarget = annoteTargets[i];
+              const targetCell = annoteTarget.getAttribute("data-target-cell");
+              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+              const contentFn = () => {
+                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+                if (content) {
+                  const tipContent = content.cloneNode(true);
+                  tipContent.classList.add("code-annotation-tip-content");
+                  return tipContent.outerHTML;
+                }
+              }
+              const config = {
+                allowHTML: true,
+                content: contentFn,
+                onShow: (instance) => {
+                  selectCodeLines(instance.reference);
+                  instance.reference.classList.add('code-annotation-active');
+                  window.tippy.hideAll();
+                },
+                onHide: (instance) => {
+                  unselectCodeLines();
+                  instance.reference.classList.remove('code-annotation-active');
+                },
+                maxWidth: 300,
+                delay: [50, 0],
+                duration: [200, 0],
+                offset: [5, 10],
+                arrow: true,
+                appendTo: function(el) {
+                  return el.parentElement.parentElement.parentElement;
+                },
+                interactive: true,
+                interactiveBorder: 10,
+                theme: 'light-border',
+                placement: 'right',
+                popperOptions: {
+                  modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      flipVariations: false, // true by default
+                      allowedAutoPlacements: ['right'],
+                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      mainAxis: false,
+                      altAxis: false
+                    }
+                  }
+                  ]        
+                }      
+              };
+              window.tippy(annoteTarget, config); 
+            }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

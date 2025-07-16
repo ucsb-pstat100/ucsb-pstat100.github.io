@@ -1,0 +1,991 @@
+---
+title: "PSTAT 100: Lecture 14"
+subtitle: "Simple Linear Regression"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/100_hex.png"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/100_hex.png"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(palmerpenguins)
+```
+
+## {{< fa backward-fast >}} Recap
+### Statistical Modeling
+
+-   Yesterday, we discussed the general framework of [**statistical models**]{.alert}.
+    -   We discussed this in the context of one random variable (e.g. modeling flips of a coin), and two variables (regression and classification).
+    
+-   Given a [**response**]{.alert} **`y`** and an [**explanatory variable**]{.alert} **`x`**, the most general form for a model is **`y`** = **`f`** ( **`x`** ) + **`noise`**
+    -   For instance, we explored how the median selling price of a house in 2014 can be modeled as a function of the year in which it was built.
+
+-   [**Regression**]{.alert} models arise when the response is numerical; [**classification**]{.alert} models arise when the response is categorical.
+
+
+## {{< fa backward-fast >}} Recap
+### Types of Statistical Models
+
+::: {.fragment}
+::: {.callout-tip}
+## **Check Your Understanding**
+
+Identify the following situations as either regression or classification:
+
+::: {.nonincremental}
+1)    Predicting the birth weight of a newborn from the mothers' height, blood type, and white blood cell count
+
+2)    Predicting whether or not a newborn will be born with a congenital heart defect or not, based on the mother and fathers' health history.
+
+3)    Describing the relationship between the number of accidents on a stretch of highway and: the number of cars driving, the speed limit, and the time of day.
+:::
+
+:::
+:::
+
+
+
+## {{< fa kiwi-bird >}} Penguins {style="font-size:30px"}
+### An Example
+
+:::: {.columns}
+::: {.column width="40%"}
+::: {.fragment}
+![Artwork by @allison_horst](Images/lter_penguins-1.png)
+:::
+:::
+
+::: {.column width="60%"}
+-   The `penguins` dataset, from the `palmerpenguins` package, contains information on 344 penguins, collected by Dr. Kristen Gorman, at the Palmer Research Station in Antarctica.
+
+-   Three species of penguins were observed: Adélie, Chinstrap, and Gentoo
+:::
+::::
+
+:::: {.columns}
+::: {.column width="60%"}
+-   Various characteristics of each penguin were also observed, including: flipper length, bill length, bill depth, sex, and island.
+
+-   It seems plausible that a penguin's bill length should be related to its body mass.
+:::
+
+::: {.column width="40%"}
+::: {.fragment}
+![Artwork by @allison_horst](Images/culmen_depth.png){width="80%"}
+:::
+:::
+
+::::
+
+
+
+## {{< fa kiwi-bird >}} Penguins
+### An Example
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r}
+#| echo: True
+#| code-fold: True
+
+penguins %>% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(size = 3) + 
+  theme_minimal(base_size = 18) + 
+  xlab("Body Mass (g)") + ylab("Bill Length (mm)") +
+  ggtitle("Bill Length vs. Body Mass")
+```
+:::
+
+::: {.column width="40%"}
+-   Based on our discussions from Week 1:
+    -   Is there a trend?
+    -   Increasing or decreasing?
+    -   Linear or nonlinear?
+:::
+
+::::
+
+-   If we model Bill Length (response) as a function of Body Mass (predictor), would this be a regression or a classification model?
+
+## {{< fa kiwi-bird >}} Penguins
+### Step 1: Propose a Model
+
+::: {.fragment style="text-align:center"}
+**`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~**  + _ε_~_i_~
+:::
+
+-   **`y`~`i`~** = _i_^th^ `Bill Length` measurement
+-   **`x`~`i`~** = _i_^th^ `Body Mass` measurement
+-   _ε_~_i_~ = _i_^th^ (aleatoric) noise term
+    -   We simply assume, for now, that the noise is **mean zero** (𝔼[_ε_~_i_~] = 0 for all _i_) and [**homoskedastic**]{.alert} (constant variance; Var(_ε_~_i_~) = σ^2^, across all _i_)
+
+
+
+## {{< fa chart-line >}} Simple Linear Regression Model
+### Step 1: Propose a Model
+
+::: {style="text-align:center"}
+**`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~**  + _ε_~_i_~
+:::
+
+::: {.nonincremental}
+-   **`y`~`i`~** = _i_^th^ response measurement
+-   **`x`~`i`~** = _i_^th^ predictor measurement
+-   _ε_~_i_~ = _i_^th^ (aleatoric) noise term; zero-mean and homoskedastic
+:::
+
+-   Called the [**Simple Linear Regression**]{.alert} (SLR) model.
+    -   **Simple:** only one covariate
+    -   **Linear:** we are assuming a _linear_ signal function
+    -   **Regression:** well, you tell me!
+
+
+## {{< fa chart-line >}} Simple Linear Regression Model
+### As Applied to the `Palmerpenguins` Dataset
+
+:::: {.columns}
+
+::: {.column width="40%"}
+-   Essentially, the SLR seeks to fit the "best" line to the data.
+-   The parameters that need to be estimated in the model fitting step are, therefore, the intercept and the slope.
+:::
+
+
+::: {.column width="60%"}
+::: {.fragment}
+```{r}
+#| echo: False
+#| fig-height: 7
+
+penguins %>% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(size = 3.5) + 
+  theme_minimal(base_size = 24) + 
+  xlab("Body Mass (g)") + ylab("Bill Length (mm)") +
+  ggtitle("Bill Length vs. Body Mass") +
+  geom_abline(linewidth = 2.2,
+              aes(colour = "line 1", slope = 0.004, intercept = 27)) +
+  geom_abline(linewidth = 2.2,
+              aes(colour = "line 2", slope = 0.006, intercept = 18)) +
+  labs(colour = "Legend")
+```
+:::
+:::
+
+
+::::
+
+-   Identifying these slope and intercept values by eye is next to impossible - this is why modeling is so useful!
+
+## {{< fa chart-line >}} Simple Linear Regression Model
+### Step 2: Fit the Model to the Data
+
+-   Let's find the optimal slope and intercept using the "loss" framework introduced in lecture yesterday. 
+
+-   Specifically, for each _y_~_i_~ we believe there to be a "true response" value given by β~0~ + β~1~ _x_~_i_~, where β~0~ and β~1~ are the _true_ slope and intercept.
+    -   Given estimates _b_~0~ and _b_~1~ for β~0~ and β~1~, respectively, our "best guess" at this true response value is simply _b_~0~ + _b_~1~ _x_~_i_~.
+
+-   So, adopting _L_~2~ loss, let's take $\mathcal{L}(y_i, b_0, b_1) := (y_i - b_0 - b_1 x_i)^2$ so that our empirical risk becomes 
+
+::: {.fragment style="font-size:28px"}
+$$ R(b_0, b_1) = \frac{1}{n} \sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 $$
+:::
+    
+## {{< fa chart-line >}} Simple Linear Regression Model
+### Step 2: Fit the Model to the Data
+
+-   Our "best" estimators are then those _b_~0~ and _b_~1~ values that _minimize_ this above quantity.
+    -   Such ideal estimators - namely, those that minimize empirical risk under squared loss - are called the [**ordinary least-squares**]{.alert} (OLS) estimators/estimates in the context of SLR.
+
+::: {.fragment style="font-size:28px"}
+$$ \begin{pmatrix} \widehat{\beta}_{0, \ \mathrm{OLS}} \\ \widehat{\beta}_{1, \ \mathrm{OLS}} \end{pmatrix} := \argmin_{(b_0, b_1)} \left\{ \frac{1}{n} \sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 \right\} $$
+:::
+
+-   This is a simultaneous minimization problem in _two_ dimensions, so we'll need to take _partial_ derivatives.
+
+## {{< fa chart-line >}} Simple Linear Regression
+### Step 2: Estimate Parameters
+
+::: {.fragment style="font-size: 28px"}
+$$ R(b_0, b_1) = \frac{1}{n} \sum_{i=1}^{n} (y_i - b_0 - b_1 x_i)^2 $$
+:::
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment style="font-size:28px"}
+\begin{align*}
+  \frac{\partial R}{\partial b_0} & = - \frac{2}{n} \sum_{i=1}^{n} (y_i - b_0 - b_1 x_i) \\
+    & = - \frac{2}{n} \left( n \overline{y}_n - n b_1 - n \overline{x}_n b_1 \right) \\
+    & = - 2 \left( \overline{y}_n - b_0 - \overline{x}_n  b_1 \right) 
+\end{align*}
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment style="font-size:28px"}
+\begin{align*}
+  \frac{\partial R}{\partial b_1} & = - \frac{2}{n} \sum_{i=1}^{n} x_i (y_i - b_0 - b_1 x_i) \\
+    & = - \frac{2}{n} \left( n \overline{x}_n \overline{y}_n - n \overline{x}_n b_0 - b_1 \sum_{i=1}^{n} x_i^2 \right) \\
+    & = - 2 \left( \overline{x}_n \overline{y}_n - \overline{x}_n b_0 - \frac{1}{n} b_1 \sum_{i=1}^{n} x_i^2 \right) 
+\end{align*}
+:::
+:::
+
+::::
+
+
+
+## {{< fa chart-line >}} Simple Linear Regression {style="font-size:28px"}
+### Step 2: Estimate Parameters
+
+::: {.fragment style="font-size: 28px"}
+\begin{align*}
+\overline{y}_n - \widehat{\beta}_0 - \overline{x}_n  \widehat{\beta}_1  & = 0 \\
+\overline{x}_n \overline{y}_n - \overline{x}_n \widehat{\beta}_0 - {\textstyle \frac{1}{n} \widehat{\beta}_1 \sum_{i=1}^{n} x_i^2 }  & = 0
+\end{align*}
+:::
+
+-   We call these the [**normal equations**]{.alert}. When solved, they reveal:
+
+::: {.fragment style="font-size: 28px"}
+$$ \widehat{\beta}_0 = \overline{y}_n - \widehat{\beta}_1 \overline{x}_n; \qquad \widehat{\beta}_1 = r \cdot \frac{s_Y}{s_X} $$
+where _s_~_X_~ and _s_~_Y_~ denote the sample variances of the **`x`** and **`y`** values, respectively, and
+$$ r := \frac{1}{n - 1} \sum_{i=1}^{n} \left( \frac{x_i - \overline{x}_n}{s_X} \right) \left( \frac{y_i - \overline{y}_n}{s_Y} \right)  $$
+denotes [**Pearson's Correlation Coefficient**]{.alert}.
+:::
+
+## {{< fa chart-line >}} Simple Linear Regression
+### Empirical Verification
+
+::: {.panel-tabset}
+## Data
+```{r}
+#| echo: True
+
+set.seed(100)   ## for reproducibility
+x <- rnorm(100)
+y <- 0.5 + 1.5 * x + rnorm(100)
+```
+
+## Correlation
+```{r}
+#| echo: True
+
+n <- length(x)
+1/(n - 1) * sum(((x - mean(x))/sd(x)) * ((y - mean(y))/sd(y)))
+
+cor(x, y)
+```
+
+## OLS Fit
+```{r}
+#| echo: True
+
+beta1_hat <- cor(x, y) * sd(y) / sd(x)
+beta0_hat <- mean(y) - beta1_hat * mean(x) 
+
+cat("By Hand:", c(beta0_hat, beta1_hat), "\n",
+    "From lm():", lm(y ~ x) %>% coef()
+)
+```
+
+:::
+
+-   The function `lm()` - which stands for **l**inear **m**odel - performs the model fitting step (under L~2~ loss) for us.
+
+## {{< fa kiwi-bird >}} Penguins
+### The Fitted SLR Model
+
+```{r}
+#| echo: True
+#| code-fold: True
+#| code-line-numbers: "6"
+
+penguins %>% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(size = 3) + 
+  theme_minimal(base_size = 18) + 
+  xlab("Body Mass (g)") + ylab("Bill Length (mm)") +
+  ggtitle("Bill Length vs. Body Mass") +
+  geom_smooth(method = "lm", formula = y ~ x, linewidth = 2)
+```
+
+
+## {{< fa stethoscope >}} Model Diagnostics
+
+-   Finally, let's talk a bit about the third step in the modeling process: assessing model fit (sometimes called performing [**model diagnostics**]{.alert}).
+    -   Personally, I believe this is perhaps the _most_ important step in the entire process!
+
+-   Recall that the main goal of model diagnostics is to assess whether we believe our initial model (from step 1) is doing any good.
+    -   To stress: even though, in step 2, we "optimized" our model, we are only optimizing _under the model_ we picked. This says nothing about whether our choice of model was any good!
+ 
+## {{< fa stethoscope >}} Model Diagnostics
+### Example: Poor Choice of Model
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r}
+set.seed(100)
+x <- runif(100, 0, 4)
+y <- (x - 0.5)^2 + rnorm(100)
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 4) + 
+  theme_minimal(base_size = 32) + 
+  ggtitle("Linear Fit") +
+  geom_smooth(method = "lm", formula = y ~ x, se = F, linewidth = 3)
+```
+:::
+
+::: {.column width="40%"}
+-   For example, consider the simulated data to the left.
+-   The true relationship appears highly _nonlinear_; nevertheless, we have fit a _linear_ model to the data.
+:::
+
+::::
+
+-   The coefficients of the linear fit are "optimal" - they minimize risk under squared-error loss! 
+    -   In other words, the blue line is the _line_ of best fit to the data.
+    -   But, visually, we believe that this line is _not_ doing a good job of capturing the overall trend in the data.
+
+---
+
+## {{< fa stethoscope >}} Model Diagnostics
+### Residuals
+
+-   There are a wide variety of tools and techniques that can be used for model diagnostics.
+    -   You'll learn about some these tools in classes like PSTAT 126 and PSTAT 131/231.
+    
+-   For the purposes of PSTAT 100, we will focus primarily on one specific type of diagnostic tool, known as a [**residuals plot**]{.alert}.
+
+-   The [**residuals**]{.alert} are defined as $e_i := y_i - \widehat{y}_i$, where $\widehat{y}_i$ is the predicted true response (i.e. point along the fitted signal).
+    -   In a sense, they are our attempt at modeling the _noise_ in the data.
+
+## {{< fa stethoscope >}} Model Diagnostics
+### Residuals
+
+-   If our fitted values $\widehat{y}_i$ capture the signal function perfectly - i.e. if $\widehat{y}_i = f(x_i)$ for the true signal function $f(\cdot)$, the residuals becomes
+$$ e_i = y_i - \widehat{y}_i = (f(x_i) + \varepsilon_i) - f(x_i) = \varepsilon_i $$
+
+-   That is, if our model is capturing the signal _perfectly_, then our residuals should behave exactly like noise (which we have assumed is zero mean and possesses constant-variance).
+
+-   So, the basic idea behind a residuals plot is to plot the residuals, and see how closely they resemble noise!
+
+## {{< fa stethoscope >}} Model Diagnostics
+### Residuals
+
+-   Now, we should be a bit more careful about what we mean by "noise."
+    -   To that end, let us return to our SLR model: **`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~**  + _ε_~_i_~
+
+-   We make two assumptions about _ε_~_i_~:
+    1)    **Zero-Mean:** 𝔼[_ε_~_i_~] = 0
+    2)    [**Homoskedasticity**]{.alert}: Var[_ε_~_i_~] = σ^2^, independent of _i_
+
+-   Sometimes we will substitute the following assumption in place of the two above: 
+$$ \varepsilon \iid \mathcal{N}(0, \sigma_0^2) $$
+
+## {{< fa arrow-trend-up >}} Residuals Plots
+
+-   In a residuals plot, we plot the residuals on the vertical axis and the fitted values on the vertical axis.
+
+-   A residuals plot indicative of a well-fitting model should display:
+    -   No discernable trend
+    -   Homoskedasticity
+
+-   On the flipside, a residuals plot missing one or both of these attributes is indicative of a poorly-fitting model.
+
+-   Let's take a look at a few examples.
+
+
+## {{< fa arrow-trend-up >}} Residuals Plots
+### Examples
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+set.seed(100)
+
+x <- runif(100, 0, 4)
+y <- (x - 0.5)^2 + rnorm(100)
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 4) + 
+  theme_minimal(base_size = 32) + 
+  ggtitle("Linear Fit") +
+  geom_smooth(method = "lm", formula = y ~ x, se = F, linewidth = 3)
+```
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+mod_lin <- lm(y ~ x)
+
+data.frame(x = fitted(mod_lin), y = resid(mod_lin)) %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 4) + 
+  theme_minimal(base_size = 32) + 
+  ggtitle("Linear Fit; Residuals Plot") 
+```
+:::
+:::
+
+::::
+
+-   The residuals plot displays a clear quadratic trend, indicating a poor choice of model.
+    -   The scatterplot on the left confirms this.
+    -   Note that the nature of the trend in the residuals plot is indicative of the portion of the model missing; we'll return to this in a bit.
+    
+    
+## {{< fa arrow-trend-up >}} Residuals Plots
+### Examples
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 4) + 
+  theme_minimal(base_size = 32) + 
+  ggtitle("Quadratic Fit") +
+  geom_smooth(method = "lm", 
+              formula = y ~ poly(x, 2), se = F, linewidth = 3)
+```
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+set.seed(100)
+
+mod_quad <- lm(y ~ poly(x, 2))
+
+data.frame(x = fitted(mod_quad), y = resid(mod_quad)) %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 4) + 
+  theme_minimal(base_size = 32) + 
+  ggtitle("Quadratic Fit; Residuals Plot") 
+```
+:::
+:::
+
+::::
+
+-   Now, the residuals plot displays no discernable trend along with homoskedasticity.
+    -   This indicates that our choice of quadratic fit was good; certainly in comparison to the linear fit.
+
+
+## {{< fa stethoscope >}} Diagnostic 1
+### Trend in Residuals
+
+-   As noted, the presence of trend in the residuals plot indicates a poor choice of model.
+
+-   Indeed, it is not a coincidence that a linear fit to quadratic data displays a quadratic trend in the residuals plot.
+
+-   Suppose the true model is quadratic: **`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~**  + β~2~ **`x`~`i`~**^2^ + _ε_~_i_~
+
+-   Further suppose we fit a linear model: **ŷ~`i`~** = α~0~ + α~1~ **`x`~`i`~** + _ε_~_i_~ 
+
+-   The residuals then take the form: **`e`~`i`~** = (β~0~ - α~0~) +  (β~1~ - α~1~)  **`x`~`i`~**  + β~2~ **`x`~`i`~**^2^  + _ε_~_i_~
+
+-   Even if α~0~ matches perfectly with β~0~ and α~1~ matches perfectly with β~1~, the residuals will still have a β~2~ **`x`~`i`~**^2^ term left over.
+    -   In other words, the expectation of **`e`~`i`~** will be quadratic in **`x`**.
+    
+    
+## {{< fa stethoscope >}} Misspecified Model
+### Trend in Residuals
+
+::: {.callout-note}
+## **Moral**
+
+If the residuals plot displays a trend of the form _g_(**ŷ**) for some function _g_, consider incorporating a term of the form _g_(**`x`**) into the original model.
+
+:::
+
+::: {.callout-tip}
+## **Your Turn!**
+
+When a simple linear regression model is fit to a particular dataset, the resulting residuals plot is:
+
+:::: {.columns}
+
+::: {.column width = "60%"}
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+
+set.seed(123)
+
+x <- rnorm(100, 0, 1)
+y <- 0.75 * x^3 + rnorm(100, 0, 1)
+
+lin_mod2 <- lm(y ~ x)
+
+data.frame(x = fitted(lin_mod2), y = resid(lin_mod2)) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  xlab("fitted values") + ylab("residuals") +
+  ggtitle("Residuals Plot")
+```
+:::
+
+::: {.column width="40%"}
+Propose an improved model, and justify your choice of improvement.
+:::
+
+::::
+
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 3L, font_size = "6rem")
+```
+
+
+
+## {{< fa code >}} Live Demo!
+
+::: {.callout-important}
+## **Live Demo!**
+
+Using the `penguins` dataset, let's fit a linear model of bill depth as a function of body mass; we'll then generate a residuals plot and decide on whether we believe a linear model was appropriate or not.
+
+:::
+
+## {{< fa stethoscope >}} Diagnostic 2
+### Heteroskedasticity in Residuals
+
+-   The other type of "problem" we might encounter in a residuals graph is [**heteroksedasticity**]{.alert} (i.e. nonconstant variance).
+
+-   There are a couple of different ways to address heteroskedasticity, most of which I'll leave for your future PSTAT courses to discuss.
+    -   For the purposes of PSTAT 100, you should just be able to identify the presence of heteroskedasticity from a residuals plot
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| fig-height: 5
+
+
+set.seed(100)
+x <- runif(100, 0, 3)
+y <- rnorm(100, x, x)
+
+mod1 <- lm(y ~ x)
+
+data.frame(x = fitted(mod1), y = resid(mod1)) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 4) +
+  theme_minimal(base_size = 32) + 
+  xlab("fitted values") + ylab("residuals") +
+  ggtitle("Residuals Plot; Untransformed Data")
+```
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| fig-height: 5
+
+mod2 <- lm(log(y) ~ x)
+
+data.frame(x = fitted(mod2), y = resid(mod2)) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 4) +
+  theme_minimal(base_size = 32) + 
+  xlab("fitted values") + ylab("residuals") +
+  ggtitle("Residuals Plot; Log Transformation")
+```
+:::
+:::
+
+::::
+
+
+
+
+## {{< fa circle-question >}} Why Model?
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {.fragment style="text-align:center"}
+[**Prediction**]{.bg style="--col: #f5e287"}
+:::
+
+::: {.fragment}
+```{r}
+#| fig-height: 6
+mod1 <- lm(bill_length_mm ~ body_mass_g, penguins)
+penguins %>% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(size = 4.5, alpha = 0.1) + 
+  theme_minimal(base_size = 30) + 
+  xlab("Body Mass (g)") + ylab("Bill Length (mm)") +
+  ggtitle("Bill Length vs. Body Mass") +
+  geom_vline(xintercept = 4000,
+             linetype = "dashed",
+             linewidth = 1,
+             alpha = 0.4,
+             col = "blue") + 
+  annotate(
+    "point",
+    x = 4000,
+    y = mean(penguins$bill_length_mm[which(penguins$body_mass_g == 4000)]),
+    size = 10,
+    shape = 15,
+    col = "red"
+  )
+```
+:::
+
+-   What's the true (de-noised) bill length (in mm) of a 4000g penguin?
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment style="text-align:center"}
+[**Inference**]{.bg style="--col: #f5e287"}
+:::
+
+
+::: {.fragment}
+```{r}
+#| fig-height: 6
+penguins %>% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(size = 4.5, alpha = 0.1) + 
+  theme_minimal(base_size = 30) + 
+  xlab("Body Mass (g)") + ylab("Bill Length (mm)") +
+  ggtitle("Bill Length vs. Body Mass") +
+  geom_smooth(method = "lm", formula = y ~ x,
+              col = "blue", linewidth = 1.5)
+```
+:::
+
+-   How confident are we in our guess about the relationship between bill length and body mass?
+:::
+::::
+
+
+
+
+## {{< fa bars-progress >}} Prediction: Example
+
+```{r}
+#| echo: True
+
+gentoo <- penguins %>% filter(species == "Gentoo")
+lm1 <- lm(bill_depth_mm ~  body_mass_g, gentoo)
+(y1 <- predict(lm1, newdata = data.frame(body_mass_g = 5010)))
+```
+
+
+```{r}
+#| echo: True
+#| code-fold: True
+
+gentoo %>% ggplot(aes(x = body_mass_g, 
+                        y = bill_depth_mm)) +
+  geom_point(size = 4, alpha = 0.4) + 
+  theme_minimal(base_size = 24) +
+  annotate("point", shape = 15, x = 5010, y = y1, col = "red", size = 6) +
+  xlab("body mass (g)") + ylab("bill depth (mm)") +
+  ggtitle("Bill Depth vs. Body Mass", 
+          subtitle = "Gentoo Only")
+```
+
+
+## {{< fa bars-progress >}} Prediction: Example {style="font-size:30px"}
+
+-   For a general statistical model **`y`~`i`~** = **`f`** (**`x`~`i`~**) + _ε_~_i_~ , a prediction for the true response value at an input **`x`** is given by first estimating **`f`**  (either parametrically or nonparametrically) by $\widehat{f}$, and then returning a [**fitted value**]{.alert}
+$$ \widehat{y}_i := \widehat{f}(x) $$
+
+::: {.fragment style="text-align:center"}
+![](Images/inter_extrap.svg){width="75%"}
+:::
+
+
+## {{< fa bars-progress >}} Dangers of Extrapolation
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+x <- runif(100, 0.75, 1.25)
+y <- x^2 + rnorm(100, 0, 0.1)
+
+data.frame(x = x, y = y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3.5, alpha = 0.6) +
+  geom_smooth(method = "lm", formula = y ~ x, linewidth = 2.5, col = "blue", se = F) +
+  theme_minimal(base_size = 24) +
+  xlim(c(0, 1.5)) +
+  ylim(c(0, 1.5^2)) +
+  ggtitle("Data With True Fit")
+```
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+data.frame(x = x, y = y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3.5, alpha = 0.6) +
+  stat_function(fun = \(x){x^2}, col = "blue", linewidth = 2.5) +
+  theme_minimal(base_size = 24) +
+  xlim(c(0, 1.5)) +
+  ggtitle("Data With True Fit")
+```
+:::
+:::
+
+::::
+
+-   Our "optimal" model fit is only optimal for the range of data on which it was fit.
+    -   Extrapolation (predicting based on predictor values far outside the range originally observed) assumes that our proposed model holds even far outside the range of data we initially observed - an assumption that is very dangerous to make.
+
+-   So, don't do it!
+
+
+
+## {{< fa bars-progress >}} Dangers of Extrapolation
+
+\
+
+```{r}
+#| echo: True
+
+penguins %>% select(bill_length_mm, body_mass_g) %>% summary()
+```
+
+\
+
+-   The `summary()` function provides (among other things) a good way to check the range of covariate (and response) values.
+
+## {{< fa dice >}} Inference
+
+-   Let's now discuss inference on the SLR model.
+
+-   The OLS estimat*ors* (recall the distinction between an estimate and an estimator) are given by
+$$ \widehat{B}_0 = \overline{Y}_n - \widehat{B}_1 \overline{X}_n; \qquad \widehat{B}_1 = \frac{\sum_{i=1}^{n}(X_i - \overline{X}_n)(Y_i - \overline{Y}_n)}{\sum_{i=1}^{n}(X_i - \overline{X}_n)^2} $$
+
+-   One can show these are unbiased estimators for the true slope and intercept β~0~ and β~1~, respectively. 
+
+-   If we assume the errors in the model are _normally_ distributed, one can show that the standardized OLS estimators follow a _t_~*n*-2~ distribution. 
+
+
+## {{< fa dice >}} Inference
+### Regression Tables
+
+::: {.fragment}
+```{r}
+#| code-line-numbers: "4"
+#| echo: True
+#| code-fold: True
+
+x <- rnorm(100)
+y <- 0.5 + 1.5*x + rnorm(100)
+
+lm(y ~ x) %>% summary()
+```
+:::
+
+-   This is an example of a [**regression table**]{.alert}.
+
+
+
+## {{< fa dice >}} Inference
+### Regression Tables
+
+
+```
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.36060    0.10755   3.353  0.00114
+x            1.40672    0.09971  14.109  < 2e-16
+
+```
+
+\
+
+
+::: {.panel-tabset}
+
+## Estimate
+
+The `Estimate` column provides the actual OLS estimates, given the data.
+
+## Std. Error
+
+The `Std. Error` column provides the standard errror (i.e. standard deviation) of the OLS estimators, given the data.
+
+## *t*-Value
+
+The `t Value` column provides the observed value of $\widehat{B} / \mathrm{se}(\widehat{B})$, which, assuming the true coefficient is zero, follows a _t_ distribution with (_n_ - 2) degrees of freedom.
+
+## Pr(>|t|)
+
+Hm... what's this doing?
+
+:::
+
+-   Based on this (and perhaps some additional work), what is a 95\% confidence interval for the true slope?
+
+
+
+## {{< fa dice >}} Inference
+### Regression Tables
+
+-   We saw something like `Pr(>|t|)` in Lab yesterday. What context was that in, and what did this quantity mean in that context?
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| fig-height: 4
+#| fig-width: 5
+set.seed(100)     ## for reproducibility
+
+x <- rnorm(100)
+y <- rnorm(100)
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) + 
+  geom_point(size = 4) + theme_minimal(base_size = 24) +
+  ggtitle("Scatterplot of Y vs X") +
+  geom_smooth(method = "lm", formula = y ~ x, se = F, linewidth = 1.5)
+```
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| echo: True
+lm(y ~ x) %>% coef()
+```
+:::
+
+-   So, according to `R`, a one-unit increase in **`x`** corresponds to a predicted 0.105-unit change in **`y`**.
+
+-   Do we believe this?
+    -   Do we really think there is a trend at all?
+:::
+
+::::
+
+
+## {{< fa dice >}} Inference
+### Trend or Not?
+
+-   Wouldn't it be nice to _statistical_ test whether or not there even is a linear relationship between the response and covariate?
+
+-   Thankfully, there is one! Specifically, in the SLR model, which parameter controls/captures the linear relationship between **`x`** and **`y`**?
+    
+-   So, testing whether or not there is a trend is analogous to testing the null **H**~0~: β~1~ = 0 against the alternative **H**~A~: β~1~ ≠ 0.
+
+-   This is why the sampling distributions of the OLS estimators is useful - it allows us to construct a hypothesis test for whether or not a linear association exists between **`x`** and **`y`**.
+
+
+## {{< fa dice >}} Inference
+### Trend or Not?
+
+-   The final column in the regression table provides a _p_-value for the test of **H**~0~: β~1~ = 0 against the two-sided alternative **H**~A~: β~1~ ≠ 0. 
+
+::: {.fragment}
+```{r}
+#| echo: True
+lm(y ~ x) %>% summary()
+```
+:::
+
+## {{< fa forward-fast >}} Next Time
+
+-   Tomorrow, we'll start generalizing from only one covariate to multiple covariates.
+    -   This is going to involve some linear algebra!
+
+-   We'll also get some hands-on practice with the `R` side of regression, and further practice with interpreting results.
+
+-   Reminder: please don't forget to turn in HW02 this sunday!
