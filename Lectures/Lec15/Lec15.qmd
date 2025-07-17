@@ -1,0 +1,681 @@
+---
+title: "PSTAT 100: Lecture 15"
+subtitle: "Regression, Part II"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/100_hex.png"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/100_hex.png"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(palmerpenguins)
+library(plotly)
+```
+
+## {{< fa backward-fast >}} Recap
+### SLR Model
+
+::: {.fragment style="text-align:center"}
+**`y`** = β~0~ + β~1~ **`x`** + **`noise`**
+:::
+
+-   **Simple:** only one covariate
+-   **Linear:** we assume the signal function is linear in the parameters
+-   **Regression:** numerical response.
+
+-   In terms of individual observations: 
+
+::: {.fragment style="text-align:center"}
+**`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~**  + _ε_~_i_~
+:::
+
+
+## {{< fa backward-fast >}} Recap
+### OLS Fits: Another View
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment style="font-size:28px"}
+![](Images/rss.svg)
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+$$ \frac{\sum_{i=1}^{n} e_i^2}{n} =: \frac{\mathrm{RSS}}{2}$$
+
+-   [**Residual Sum of Squares**]{.alert} divided by _n_ is, in essence, the "average distance the points to a line"
+:::
+:::
+
+::::
+
+-   The OLS (Ordinary Least Squares) estimates are the slope and intercept of the line that is "closest," in terms of minimizing RSS, to the data.
+
+
+
+## {{< fa chart-simple >}} SLR
+### Parameter Interpretations
+
+-   Here is how we interpret the parameter estimates:
+    -   **Intercept:** at a covariate value of zero, we expect the response value to be [...]
+    -   **Slope:** a one-unit change in the value of the covariate corresponds to a predicted [...] unit change in the average response
+    
+-   Keep in mind: in some cases, trying to interpret the intercept may run the risk of running extrapolation.
+    -   Essentially, if you are going to interpret the intercept, check to make sure that the range of observed covariate values either covers zero or is close to a neighborhood of zero.
+
+# Multiple Linear Regression {background-color="black" background-image="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2ViN2t1NXloMTFuN2g0bjNqZ2JpeWduNXVqZWtvNW16bWoxMGx5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gl8ymnpv4Sqha/giphy.gif" background-size="100rem"}
+
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### MLR Model
+
+::: {.fragment style="text-align:center"}
+**`y`** = β~0~ + β~1~ **`x`~1~** + ... + β~_p_~ **`x`~_p_~** + **`noise`**
+:::
+
+-   **Multiple:** multiple (_p_) covariates
+-   **Linear:** we assume the signal function is linear in the covariates
+-   **Regression:** numerical response.
+
+-   In terms of individual observations: 
+
+::: {.fragment style="text-align:center"}
+**`y`~`i`~** = β~0~ + β~1~ **`x`~`i`,1~** + ... + β~_p_~ **`x`~`i`,_p_~**  + _ε_~_i_~
+:::
+
+-   Again, assume zero-mean and homoskedastic noise.
+
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### MLR Model; Matrix Form
+
+::: {.fragment style="font-size:28px"}
+\begin{align*}
+  \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} & = \begin{pmatrix} 1 & x_{11} & \cdots & x_{1p} \\ 1 & x_{21} & \cdots & x_{2p} \\ \vdots & \vdots & \ddots & \vdots \\ 1 & x_{n1} & \cdots & x_{np} \\ \end{pmatrix} \begin{pmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_p \\ \end{pmatrix} + \begin{pmatrix} \varepsilon_1 \\ \vdots \\ \varepsilon_n \end{pmatrix}
+\end{align*}
+:::
+
+-   In more succinct terms: $\vect{y} = \mat{X} \vect{\beta} + \vect{\varepsilon}$
+    -   Notice the initial columns of 1s in the data matrix $\mat{X}$; this is necessary in order to include an intercept in the model.
+    
+-   Under L~2~ loss, the empirical risk becomes $R(\vect{b}) = \| \vect{y} - \mat{X} \vect{b} \|^2$
+
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### MLR Model; OLS Estimates
+
+-   Taking appropriate derivatives and setting equal to zero yields the multivariate analog of the [**normal equations**]{.alert}, which the OLS estimator must satisfy:
+$$ \tmat{X} \mat{X} \hvect{\beta} = \tmat{X} \vect{y} $$
+
+-   Assuming $(\tmat{X} \mat{X})$ is nonsingular, this yields
+$$ \boxed{\hvect{\beta} = (\tmat{X} \mat{X})^{-1} \tmat{X} \vect{y} } $$
+
+-   This is rarely used directly; in practice, we continue relying on the `lm()` function in `R`.
+
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### Comparisons
+
+::: {.panel-tabset}
+## Data
+```{r}
+#| echo: True
+
+set.seed(100)   ## for reproducibility
+x1 <- rnorm(100)
+x2 <- rnorm(100, 3)
+y <- 0.2 + 0.5*x1 + 1.5 * x2 + rnorm(100)
+
+X <- cbind(1, x1, x2)
+```
+
+## Direct Computation
+```{r}
+#| echo: True
+
+solve(t(X) %*% X) %*% t(X) %*% y
+```
+
+
+## Using `lm()`
+```{r}
+#| echo: True
+
+(lm1 <- lm(y ~ x1 + x2))
+```
+
+:::
+
+
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### The Geometry of MLR
+
+-   Given our OLS estimates, we see that the fitted values are obtained using
+$$ \hvect{y} = [\mat{X} (\tmat{X} \mat{X})^{-1} \tmat{X}] \vect{y} =: \mat{H} \vect{y}$$
+where the matrix $\mat{H} := [\mat{X} (\tmat{X} \mat{X})^{-1} \tmat{X}]$ is called the [**hat matrix**]{.alert}. 
+
+::: {.fragment}
+::: {.callout-important}
+## **Fact**
+
+The hat matrix is an orthogonal projection matrix.
+:::
+:::
+
+-   Recall that an orthogonal projection matrix is one that is symmetric and idempotent.
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### The Geometry of MLR
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment style="font-size:28px"}
+**Symmetric:**
+$$\begin{align*}
+  \tmat{H}  & = [\mat{X} (\tmat{X} \mat{X})^{-1} \tmat{X}]^{\mathsf{T}} \\
+    & = \mat{X} (\tmat{X} \mat{X})^{-1} \tmat{X} = \mat{H}
+\end{align*}$$
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment style="font-size:28px"}
+**Idempotent:**
+$$\begin{align*}
+  \mat{H}^2  & = [\mat{X} (\tmat{X} \mat{X})^{-1} \tmat{X}] [\mat{X} (\tmat{X} \mat{X})^{-1} \tmat{X}] \\
+    & = \mat{X} (\tmat{X} \mat{X})^{-1} \tmat{X} = \mat{H}
+\end{align*}$$
+:::
+:::
+
+::::
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+-   So, our fitted values are obtained by taking the orthogonal projection of our observed response values onto the column space of our data matrix.
+:::
+
+::: {.column width="50%"}
+::: {.fragment style="font-size:28px"}
+![](Images/proj1.svg)
+:::
+:::
+
+::::
+
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### The Linear Algebra
+
+-   The hat matrix is given its name because it "puts a hat on _y_": that is, our fitted values are obtained as $\hvect{y} = \mat{H} \vect{y}$.
+
+-   Given that our residuals are $\vect{e} := \vect{y} - \hvect{y}$, we see that $\vect{e} = (\mat{I} - \mat{H}) \vect{y}$.
+
+::: {.fragment}
+::: {.panel-tabset}
+## Fitted Values
+```{r}
+#| echo: True
+#| class-output: hscroll4
+H <- X %*% solve(t(X) %*% X) %*% t(X)
+data.frame(by_hand = H %*% y, from_lm = lm1$fitted.values)
+```
+
+```{css echo = F}
+.hscroll4 {
+  height: 100% !important;
+  max-height: 150px !important;
+}
+```
+
+
+## Residuals
+```{r}
+#| echo: True
+#| class-output: hscroll4
+data.frame(by_hand = (diag(1, length(y)) - H) %*% y, 
+                      from_lm = lm1$residuals)
+```
+
+
+:::
+:::
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### Inference
+
+-   In order to perform inference, we do need to impose a _distributional_ assumption on our noise.
+
+-   Using [**random vectors**]{.alert} (remember these from HW01?), we can succinctly express our noise assumptions as
+$$ \vect{\varepsilon} \sim \boldsymbol{\mathcal{N}_n}\left( \vect{0}, \ \sigma^2 \mat{I}_n \right) $$
+where $\boldsymbol{\mathcal{N}_p}$ denotes the [**multivariate normal distribution**]{.alert} (MVN).
+
+-   On Homework 1, you (effectively) showed that this is equivalent to asserting
+$$ \varepsilon_i \stackrel{\mathrm{i.i.d.}}{\sim} \mathcal{N}(0, \sigma^2) $$
+
+
+## {{< fa bell >}} The Multivariate Normal Distribution
+
+::: {.callout-note}
+## **Definition**: Multivariate Normal Distribution
+
+A random vector $\vect{X}$ is said to follow an _n_-dimensional [**multivariate normal**]{.alert} (MVN) distribution with parameters $\vect{\mu}$ and $\mat{\Sigma}$, notated $\vect{X} \sim \boldsymbol{\mathcal{N}_k}(\vect{\mu}, \mat{\Sigma})$, if the joint density of $\vect{X}$ is given by
+$$ f_{\vect{X}}(\vect{x}) = (2 \pi)^{k/2} \cdot (|\mat{\Sigma}|)^{-1/2} \cdot  \exp\left\{ - \frac{1}{2} (\vect{x} - \vect{\mu})^{\mathsf{T}} \mat{\Sigma}^{-1} (\vect{x} - \vect{\mu}) \right\} $$
+
+:::
+-   <a href="https://epm027.shinyapps.io/Bivariate_Normal_Test/" target="_blank">**Interactive Demo**</a>
+
+-   One can show that if $\vect{X} \sim \boldsymbol{\mathcal{N}_k}(\vect{\mu}, \mat{\Sigma})$, then
+$$ \E[\vect{X}] = \vect{\mu}; \qquad \Var(\vect{X}) = \mat{\Sigma} $$
+
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### Inference
+
+-   We can compute the variance-covariance matrix of the OLS estimators relatively easily.
+
+-   One property: $\mathrm{Var}(\mat{A} \vect{x}) = \mat{A} \Var(\vect{x}) \tmat{A}$ .
+
+::: {.fragment style="font-size:28px}
+$$\begin{align*}
+  \Var( \hvect{B})  & = \Var((\tmat{X} \mat{X})^{-1} \tmat{X} \vect{Y} ) \\
+    & = (\tmat{X} \mat{X})^{-1} \tmat{X} \Var(\vect{Y}) [(\tmat{X} \mat{X})^{-1} \tmat{X}]^{\mathsf{T}} \\
+    & = (\tmat{X} \mat{X})^{-1} \tmat{X} [\sigma^2 \mat{I}] \mat{X} (\tmat{X} \mat{X})^{-1} \\
+    & = \sigma^2 (\tmat{X} \mat{X})^{-1}
+\end{align*}$$
+:::
+
+-   An unbiased estimator for $\sigma^2$ is $\widehat{\sigma}^2 := \mathrm{RSS} / (n - p)$
+
+
+
+## {{< fa layer-group >}} Multiple Linear Regression
+### Inference
+
+::: {.fragment}
+```{r}
+#| echo: True
+
+lm(y ~ x1 + x2) %>% summary()
+```
+:::
+
+
+
+## {{< fa layer-group >}} Residuals Plots
+
+-   MLR is where residuals plots, in my opinion, truly shine.
+
+-   First note: for data with two covariates and one response, we need three axes to display the full data.
+    -   For data with more than two covariates, it becomes _impossible_ to visualize the raw data directly.
+    
+-   Residuals plots are _always_ two-dimensional scatterplots, regardless of the dimensionality of our data matrix.
+
+-   Their interpretation in the MLR case is exactly the same as in the SLR case; no trend and homosekdasticity in a residuals plot implies a good choice of model, whereas the presence of trend of heteroskedasticity implies that the initial model may need to be modified.
+
+
+## {{< fa lines-leaning >}} Multicollinearity
+
+-   When it comes to MLR, there is a very important phenomenon to be aware of.
+
+-   Recall that, assuming $(\tmat{X} \mat{X})$ is invertible, then the OLS estimates are given by $\hvect{\beta} = (\tmat{X} \mat{X})^{-1} \tmat{X} \vect{y}$.
+
+-   Letting σ^2^ := Var(_ε_~_i_~), further recall that the variance-covariance matrix of the OLS estimators is given by
+$$ \Var(\widehat{\boldsymbol{B}}) = \sigma^2 (\tmat{X} \mat{X})^{-1} $$
+
+-   So, what happens if $(\tmat{X} \mat{X})$ is singular - or, equivalently, if $\mat{X}$ is rank deficient?
+
+
+## {{< fa lines-leaning >}} Multicollinearity
+
+-   Well, for one, the OLS estimators become nonunique. 
+
+-   Additionally, the variances of the OLS estimators become infinite, leading to highly unstable estimates.
+
+-   All of this to say: it is very bad if the data matrix is rank deficient.
+    -   Saying that the data matrix is rank deficient is equivalent to asserting that at least one of the columns in $\mat{X}$ can be expressed as a linear combination of the other columns.
+    -   Such a situation is called [**multicollinearity**]{.alert} and, again, should be avoided at all costs.
+    
+    
+-   There's a fairly nice geometric interpretation of multicollinearity as well.
+
+## {{< fa lines-leaning >}} Multicollinearity
+
+-   Imagine we have a response `y` that has a strong linear association with a covariate `x1`, and that `y` also has a strong linear association with another covariate `x2`. 
+    -   Further suppose `x1` and `x2` have a strong linear association as well.
+    
+-   Imagining a plot of our data in three-space (`y` on the _z_-axis and `x1` and `x2` on the _x_- and _y_-axes), the data cloud would look like a pencil - very cylindrical, and very thin.
+
+-   OLS estimation seeks to fit the "best" _plane_ (since _z_ = _a_ + _b_ _x_ + _c_ _y_ prescribes a plane in ℝ^3^) to this data.
+    -   But, is there really a _single_ best plane that fits this data?
+    -   Not really - there are an infinite number of them!
+
+
+## {{< fa lines-leaning >}} Multicollinearity
+### Extreme Case
+
+```{r}
+set.seed(100)
+n <- 25
+
+x1 <- rnorm(n)
+x2 <- jitter(x1, amount = 0.1)
+y <- 0.5 + 0.2 * x1  + 0.4 * x2 + rnorm(n, 0, 0.001)
+dat <- data.frame(y, x1, x2)
+
+dat %>% plot_ly(
+  x = ~x1,
+  y = ~x2,
+  z = ~y
+) %>% 
+  add_markers() %>%
+  layout(
+    scene = list(
+      camera = list(eye = list(x = 2, y = -2, z = .4))
+    )
+  )
+```
+
+
+## {{< fa lines-leaning >}} Multicollinearity
+
+-   Here's another explanation: suppose we are trying to predict a person's weight from their height.
+    -   Our response variable **`y`** would be `height` and the covariate **`x`** might be `weight` as measured in `lbs`.
+
+-   Suppose we augment our data matrix with an additional column: the individual's heights as measured in kilograms.
+    -   The data matrix would now be rank-deficient, as there is a one-to-one correspondence between weights in lbs and weights in kgs.
+    
+-   Intuitively: we aren't really gaining a _new_ variable by incorporating the weights in kgs - we still only have _one_ variable, so including _both_ the lbs and kg weights is a bit nonsensical.
+
+
+## {{< fa lines-leaning >}} Multicollinearity
+
+-   There are a few different tools for detecting and combating multicollinearity.
+    -   We won't discuss many of these; you'll learn about some of them in PSTAT 126/127.
+    
+-   For the purposes of PSTAT 100, if the number of variables is relatively small, you should construct a [**correlation matrix**]{.alert} of the covariates - for any pair covariates that are highly correlated, remove one from the model.
+
+-   In `R`, the `cor()` function can be used to produce a correlation matrix.
+
+::: {.fragment}
+::: {.callout-caution}
+## **Caution**
+
+Remember to only look for covariates that are correlated _with other covariates_; do not remove covariates that are highly correlated with the _response_.
+:::
+:::
+
+
+## {{< fa kiwi-bird >}} `Palmerpenguins`
+
+-   Finally, as an example of another way in which multicollinearity can throw a wrench into things, let's return to the Palmer Penguins dataset from yesterday.
+
+-   Consider using bill length as our response, and using body mass and flipper length as two covariates.
+
+-   Let's look at regressions of bill length onto these two covariates separately, and then examine a model which uses both covariates simultaneously.
+
+## {{< fa kiwi-bird >}} `Palmerpenguins`
+
+::: {.fragment}
+::: {.panel-tabset}
+## Body Mass
+
+```{r}
+#| echo: True
+
+lm(bill_length_mm ~ body_mass_g, penguins) %>% summary()
+```
+
+## Flipper Length
+
+```{r}
+#| echo: True
+
+lm(bill_length_mm ~ flipper_length_mm, penguins) %>% summary()
+```
+
+## Full Model
+
+```{r}
+#| echo: True
+
+lm(bill_length_mm ~ body_mass_g + flipper_length_mm, penguins) %>% summary()
+```
+:::
+
+:::
+
+## {{< fa kiwi-bird >}} `Palmerpenguins`
+
+-   When we regress on body mass and flipper length separately, we notice that the _p_-values tell us that there exists a significant linear relationship.
+
+-   However, when we include both covariates in the same model, it appears as though the significance of the body mass coefficient is lost.
+
+-   This is because of - you guessed it - Multicollinearity!
+
+::: {.fragment}
+```{r}
+#| echo: True
+
+penguins %>% select(bill_length_mm, body_mass_g, flipper_length_mm) %>% cor(use = "complete")
+```
+:::
+
+-   Body mass and flipper length are themselves highly correlated; hence, including them both in the same model leads to multicolinearity.
+
+
+## {{< fa kiwi-bird >}} `Palmerpenguins`
+
+```{r}
+set.seed(100)
+n <- 25
+
+penguins %>% plot_ly(
+  x = ~body_mass_g,
+  y = ~flipper_length_mm,
+  z = ~bill_length_mm
+) %>% 
+  add_markers() %>%
+  layout(
+    scene = list(
+      camera = list(eye = list(x = 2, y = -2, z = .4))
+    )
+  )
+```
+
+
+
+## {{< fa lines-leaning >}} Multicollinearity
+### Absence Of
+
+```{r}
+set.seed(100)
+n <- 75
+
+x1 <- rnorm(n)
+x2 <- rnorm(n)
+y <- 0.5 + 0.2 * x1  + 0.4 * x2 + rnorm(n, 0, 0.2)
+dat <- data.frame(y, x1, x2)
+
+dat %>% plot_ly(
+  x = ~x1,
+  y = ~x2,
+  z = ~y
+) %>% 
+  add_markers() %>%
+  layout(
+    scene = list(
+      camera = list(eye = list(x = 2, y = -2, z = .4))
+    )
+  )
+```
+
+
+
+
+## {{< fa bezier-curve >}} Polynomial Regression
+
+-   I'd like to close out with something we've actually alluded to before - [**polynomial regression**]{.alert}.
+
+-   Admittedly, this is a bit of a misnomer - what we mean by "polynomial regression" is fitting a polynomial to a dataset with one response and one predictor.
+
+::: {.fragment style="text-align:center"}
+**`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~** + β~1~ **`x`~`i`~**^2^ + ... + β~_p_~ **`x`~`i`~**^p^ + _ε_~_i_~
+:::
+
+-   Note that this can be viewed as a special case of the MLR model - as such, polynomial regression is actually a _linear_ model.
+    -   The "linearity" of a model refers only to how the _parameters_ appear - even in polynomial regression, we don't have any polynomial _coefficients_.
+
+## {{< fa bezier-curve >}} Polynomial Regression
+### In `R`
+
+```{r}
+#| echo: True
+#| eval: False
+
+lm(y ~ poly(x, p))
+```
+
+-   For example:
+
+::: {.fragment}
+```{r}
+#| echo: True
+set.seed(100)      ## for reproducibility
+x <- rnorm(100)    ## simulate the covariate
+y <- 0.25 + 0.5 * x^2 + rnorm(100)
+
+lm(y ~ poly(x, 2)) %>% summary()
+```
+:::
+
+## {{< fa bezier-curve >}} Polynomial Regression
+### Caution
+
+-   Be careful with polynomial regression - it's easy to go overboard with the degree of the polynomial!
+
+::: {.fragment}
+```{r}
+#| fig-height: 4
+
+set.seed(100)
+x <- rnorm(20)
+y <- x + rnorm(20)
+
+poly_plot <- function(k){
+  data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+    geom_point(size = 3) +
+    geom_smooth(method = "lm", formula = y ~ poly(x, k), se = F) +
+    ggtitle(paste("Degree", k)) +
+    theme_minimal(base_size = 12) +
+    ylim(c(-5, 3)) + xlim(c(-1, 1))
+}
+
+grid.arrange(poly_plot(1), poly_plot(3), poly_plot(6), poly_plot(8), ncol = 2)
+```
+:::
+
+## {{< fa bezier-curve >}} Polynomial Regression
+### Caution
+
+-   In the limit, we can think of the "connect-the-dots" estimator, which estimates the trend as a curve that passes through every single point in the dataset.
+
+-   This is a bad estimate, _because it completely ignores the noise in the model_!
+
+-   The phenomenon of an estimator "trusting the data too much" (at the cost of ignoring the noise) is called [**overfitting**]{.alert}.
+
+-   There isn't really a single agreed-upon cutoff for what degree in polynomial regression corresponds to overfitting - it's a bit context-dependent.
+    -   You'll likely talk more about this in both PSTAT 126 and PSTAT 131/231.
+
+## {{< fa forward-fast >}} Next Time
+
+-   On Monday, we'll extend our regression framework to include _categorical_ covariates.
+
+-   In lab today, you'll get some more practice with regression in `R`.
+    -   Specifically, you'll work through a sort of mini-project involving multiple linear regression
+    -   You'll also get some practice with simulated multicollinearity
+
+-   **Reminder:** Homework 2 is due [**THIS SUNDAY**]{.alert} (July 20) by 11:59pm on Gradescope!
+    -   Please do not forget to submit!
+    
+-   Information about ICA02 will be posted in the coming days.
+
+-   **Please Note:** I need to move my Office Hours tomorrow (Friday July 18) to 10:30 am - 11:30 am, still over Zoom.

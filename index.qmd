@@ -85,7 +85,7 @@ Lecture slides can be found on the [Schedule](Pages/schedule.qmd); labs and proj
 				</li>
 				<li>
 					<a style="color:blue">Final Project</a>
-					<a style="color:blue" class="float-right">Week 6 | Friday, August 8, 2025</a>
+					<a style="color:blue" class="float-right">Week 6 | Friday, August 1, 2025</a>
 				</li>
 			</ul>
 		</div>

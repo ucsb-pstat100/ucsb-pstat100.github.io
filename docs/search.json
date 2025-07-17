@@ -4,14 +4,14 @@
     "href": "Pages/schedule.html",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lab07\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec15 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec16 Slides   Lab08\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec17 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09\n\n\n6\nMon, Jul 28\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nData Ethics\n Lec18 Slides\n\n\n\n\nTue, Jul 29\n TBD\nCausal Inference\n Lec19 Slides   Lab10\n\n\n\n\nWed, Jul 30\n TBD\nNeural Networks\n Lec20 Slides\n\n\n\n\nThu, Jul 31\n TBD\nClosing Remarks\n Lab11\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
+    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lec15 Slides    Lab07: Rent Due, Lights Due, Mountain Dew (Regression)\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec16 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec17 Slides   Lab08\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec18 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09\n\n\n6\nMon, Jul 28\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nData Ethics\n Lec19 Slides\n\n\n\n\nTue, Jul 29\n TBD\nCausal Inference\n Lec20 Slides   Lab10\n\n\n\n\nWed, Jul 30\n TBD\nNeural Networks\n Lec21 Slides\n\n\n\n\nThu, Jul 31\n TBD\nClosing Remarks\n Lab11\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
   },
   {
     "objectID": "Pages/schedule.html#course-schedule",
     "href": "Pages/schedule.html#course-schedule",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lab07\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec15 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec16 Slides   Lab08\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec17 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09\n\n\n6\nMon, Jul 28\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nData Ethics\n Lec18 Slides\n\n\n\n\nTue, Jul 29\n TBD\nCausal Inference\n Lec19 Slides   Lab10\n\n\n\n\nWed, Jul 30\n TBD\nNeural Networks\n Lec20 Slides\n\n\n\n\nThu, Jul 31\n TBD\nClosing Remarks\n Lab11\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
+    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lec15 Slides    Lab07: Rent Due, Lights Due, Mountain Dew (Regression)\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec16 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec17 Slides   Lab08\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec18 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09\n\n\n6\nMon, Jul 28\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nData Ethics\n Lec19 Slides\n\n\n\n\nTue, Jul 29\n TBD\nCausal Inference\n Lec20 Slides   Lab10\n\n\n\n\nWed, Jul 30\n TBD\nNeural Networks\n Lec21 Slides\n\n\n\n\nThu, Jul 31\n TBD\nClosing Remarks\n Lab11\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
   },
   {
     "objectID": "Pages/schedule.html#course-calendar",
@@ -1631,6 +1631,461 @@
     "text": "Next Time\n\nWe’ll continue our discussion on data.\n\nSpecifically, we’ll take a closer look at the structure (as opposed to semantics) of a dataset\nWe’ll then discuss a framework to unify the semantics and structure of a dataset.\n\nReminder: please start Homework 1 early!\n\nProblem 1 is a Linear Algebra review, and Problem 2 combines Linear Algebra and PSTAT 120A (so you should be able to complete both problems already).\nFor problem 3, you’ll need to wait until Thursday’s lecture.\n\nIf you are able, please bring your laptops to tomorrow’s lecture."
   },
   {
+    "objectID": "Lectures/Lec15/Lec15.html#recap",
+    "href": "Lectures/Lec15/Lec15.html#recap",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Recap",
+    "text": "Recap\nSLR Model\n\ny = β0 + β1 x + noise\n\n\nSimple: only one covariate\nLinear: we assume the signal function is linear in the parameters\nRegression: numerical response.\nIn terms of individual observations:\n\n\nyi = β0 + β1 xi + εi"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#recap-1",
+    "href": "Lectures/Lec15/Lec15.html#recap-1",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Recap",
+    "text": "Recap\nOLS Fits: Another View\n\n\n\n\n\n\n\n\\[ \\frac{\\sum_{i=1}^{n} e_i^2}{n} =: \\frac{\\mathrm{RSS}}{2}\\]\n\nResidual Sum of Squares divided by n is, in essence, the “average distance the points to a line”\n\n\n\n\nThe OLS (Ordinary Least Squares) estimates are the slope and intercept of the line that is “closest,” in terms of minimizing RSS, to the data."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#slr",
+    "href": "Lectures/Lec15/Lec15.html#slr",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " SLR",
+    "text": "SLR\nParameter Interpretations\n\nHere is how we interpret the parameter estimates:\n\nIntercept: at a covariate value of zero, we expect the response value to be […]\nSlope: a one-unit change in the value of the covariate corresponds to a predicted […] unit change in the average response\n\nKeep in mind: in some cases, trying to interpret the intercept may run the risk of running extrapolation.\n\nEssentially, if you are going to interpret the intercept, check to make sure that the range of observed covariate values either covers zero or is close to a neighborhood of zero."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-1",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-1",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nMLR Model\n\ny = β0 + β1 x1 + … + βp xp + noise\n\n\nMultiple: multiple (p) covariates\nLinear: we assume the signal function is linear in the covariates\nRegression: numerical response.\nIn terms of individual observations:\n\n\nyi = β0 + β1 xi,1 + … + βp xi,p + εi\n\n\nAgain, assume zero-mean and homoskedastic noise."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-2",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-2",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nMLR Model; Matrix Form\n\n\\[\\begin{align*}\n  \\begin{pmatrix} y_1 \\\\ \\vdots \\\\ y_n \\end{pmatrix} & = \\begin{pmatrix} 1 & x_{11} & \\cdots & x_{1p} \\\\ 1 & x_{21} & \\cdots & x_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 1 & x_{n1} & \\cdots & x_{np} \\\\ \\end{pmatrix} \\begin{pmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\vdots \\\\ \\beta_p \\\\ \\end{pmatrix} + \\begin{pmatrix} \\varepsilon_1 \\\\ \\vdots \\\\ \\varepsilon_n \\end{pmatrix}\n\\end{align*}\\]\n\n\nIn more succinct terms: \\(\\vect{y} = \\mat{X} \\vect{\\beta} + \\vect{\\varepsilon}\\)\n\nNotice the initial columns of 1s in the data matrix \\(\\mat{X}\\); this is necessary in order to include an intercept in the model.\n\nUnder L2 loss, the empirical risk becomes \\(R(\\vect{b}) = \\| \\vect{y} - \\mat{X} \\vect{b} \\|^2\\)"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-3",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-3",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nMLR Model; OLS Estimates\n\nTaking appropriate derivatives and setting equal to zero yields the multivariate analog of the normal equations, which the OLS estimator must satisfy: \\[ \\tmat{X} \\mat{X} \\hvect{\\beta} = \\tmat{X} \\vect{y} \\]\nAssuming \\((\\tmat{X} \\mat{X})\\) is nonsingular, this yields \\[ \\boxed{\\hvect{\\beta} = (\\tmat{X} \\mat{X})^{-1} \\tmat{X} \\vect{y} } \\]\nThis is rarely used directly; in practice, we continue relying on the lm() function in R."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-4",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-4",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nComparisons\n\nDataDirect ComputationUsing lm()\n\n\n\nset.seed(100)   ## for reproducibility\nx1 &lt;- rnorm(100)\nx2 &lt;- rnorm(100, 3)\ny &lt;- 0.2 + 0.5*x1 + 1.5 * x2 + rnorm(100)\n\nX &lt;- cbind(1, x1, x2)\n\n\n\n\nsolve(t(X) %*% X) %*% t(X) %*% y\n\n        [,1]\n   1.2200814\nx1 0.5734795\nx2 1.1654085\n\n\n\n\n\n(lm1 &lt;- lm(y ~ x1 + x2))\n\n\nCall:\nlm(formula = y ~ x1 + x2)\n\nCoefficients:\n(Intercept)           x1           x2  \n     1.2201       0.5735       1.1654"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-5",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-5",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nThe Geometry of MLR\n\nGiven our OLS estimates, we see that the fitted values are obtained using \\[ \\hvect{y} = [\\mat{X} (\\tmat{X} \\mat{X})^{-1} \\tmat{X}] \\vect{y} =: \\mat{H} \\vect{y}\\] where the matrix \\(\\mat{H} := [\\mat{X} (\\tmat{X} \\mat{X})^{-1} \\tmat{X}]\\) is called the hat matrix.\n\n\n\n\n\n\n\n\nFact\n\n\nThe hat matrix is an orthogonal projection matrix.\n\n\n\n\n\nRecall that an orthogonal projection matrix is one that is symmetric and idempotent."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-6",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-6",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nThe Geometry of MLR\n\n\n\nSymmetric: \\[\\begin{align*}\n  \\tmat{H}  & = [\\mat{X} (\\tmat{X} \\mat{X})^{-1} \\tmat{X}]^{\\mathsf{T}} \\\\\n    & = \\mat{X} (\\tmat{X} \\mat{X})^{-1} \\tmat{X} = \\mat{H}\n\\end{align*}\\]\n\n\n\nIdempotent: \\[\\begin{align*}\n  \\mat{H}^2  & = [\\mat{X} (\\tmat{X} \\mat{X})^{-1} \\tmat{X}] [\\mat{X} (\\tmat{X} \\mat{X})^{-1} \\tmat{X}] \\\\\n    & = \\mat{X} (\\tmat{X} \\mat{X})^{-1} \\tmat{X} = \\mat{H}\n\\end{align*}\\]\n\n\n\n\n\nSo, our fitted values are obtained by taking the orthogonal projection of our observed response values onto the column space of our data matrix."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-7",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-7",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nThe Linear Algebra\n\nThe hat matrix is given its name because it “puts a hat on y”: that is, our fitted values are obtained as \\(\\hvect{y} = \\mat{H} \\vect{y}\\).\nGiven that our residuals are \\(\\vect{e} := \\vect{y} - \\hvect{y}\\), we see that \\(\\vect{e} = (\\mat{I} - \\mat{H}) \\vect{y}\\).\n\n\n\nFitted ValuesResiduals\n\n\n\nH &lt;- X %*% solve(t(X) %*% X) %*% t(X)\ndata.frame(by_hand = H %*% y, from_lm = lm1$fitted.values)\n\n     by_hand  from_lm\n1   4.040318 4.040318\n2   6.380321 6.380321\n3   4.124301 4.124301\n4   6.207154 6.207154\n5   3.084229 3.084229\n6   4.432515 4.432515\n7   3.477818 3.477818\n8   4.695695 4.695695\n9   5.688262 5.688262\n10  4.384729 4.384729\n11  4.968997 4.968997\n12  5.068233 5.068233\n13  3.884491 3.884491\n14  3.474971 3.474971\n15  4.401341 4.401341\n16  4.849116 4.849116\n17  5.679832 5.679832\n18  4.711425 4.711425\n19  3.839669 3.839669\n20  7.923572 7.923572\n21  3.563379 3.563379\n22  5.648616 5.648616\n23  4.185999 4.185999\n24  5.643525 5.643525\n25  2.448416 2.448416\n26  3.860309 3.860309\n27  3.977203 3.977203\n28  6.022848 6.022848\n29  3.505132 3.505132\n30  5.205171 5.205171\n31  4.177154 4.177154\n32  4.733085 4.733085\n33  5.440227 5.440227\n34  4.116223 4.116223\n35  5.891783 5.891783\n36  5.105471 5.105471\n37  4.645310 4.645310\n38  5.486534 5.486534\n39  5.280497 5.280497\n40  5.804265 5.804265\n41  4.182042 4.182042\n42  3.031127 3.031127\n43  3.880124 3.880124\n44  5.842735 5.842735\n45  3.272550 3.272550\n46  4.176729 4.176729\n47  3.998192 3.998192\n48  4.871284 4.871284\n49  5.229715 5.229715\n50  3.795282 3.795282\n51  5.665758 5.665758\n52  5.646263 5.646263\n53  4.797967 4.797967\n54  5.776258 5.776258\n55  3.705044 3.705044\n56  4.885695 4.885695\n57  3.782006 3.782006\n58  5.647595 5.647595\n59  5.816222 5.816222\n60  4.397215 4.397215\n61  4.283715 4.283715\n62  4.745622 4.745622\n63  4.292431 4.292431\n64  7.123134 7.123134\n65  4.798616 4.798616\n66  3.573439 3.573439\n67  4.787930 4.787930\n68  4.027349 4.027349\n69  4.912255 4.912255\n70  5.649646 5.649646\n71  5.710368 5.710368\n72  4.340650 4.340650\n73  3.943549 3.943549\n74  5.999067 5.999067\n75  3.470007 3.470007\n76  2.344029 2.344029\n77  4.510278 4.510278\n78  4.437223 4.437223\n79  6.772731 6.772731\n80  6.053983 6.053983\n81  3.785832 3.785832\n82  5.375079 5.375079\n83  4.089310 4.089310\n84  2.998463 2.998463\n85  5.846056 5.846056\n86  5.451119 5.451119\n87  4.731775 4.731775\n88  4.841022 4.841022\n89  4.441388 4.441388\n90  3.928632 3.928632\n91  4.125261 4.125261\n92  5.243104 5.243104\n93  5.315892 5.315892\n94  3.742497 3.742497\n95  6.620963 6.620963\n96  5.617741 5.617741\n97  6.075043 6.075043\n98  5.142180 5.142180\n99  2.775360 2.775360\n100 4.715389 4.715389\n\n\n\n\n\n\n\n\ndata.frame(by_hand = (diag(1, length(y)) - H) %*% y, \n                      from_lm = lm1$residuals)\n\n         by_hand      from_lm\n1   -0.062627457 -0.062627457\n2    0.073411320  0.073411320\n3    0.685145691  0.685145691\n4    0.713917034  0.713917034\n5    0.505468893  0.505468893\n6   -1.195137591 -1.195137591\n7   -0.795007966 -0.795007966\n8   -1.204929836 -1.204929836\n9   -2.561553911 -2.561553911\n10   0.306539581  0.306539581\n11   1.275348359  1.275348359\n12   0.733156085  0.733156085\n13  -1.537142708 -1.537142708\n14  -1.399453469 -1.399453469\n15  -1.924944934 -1.924944934\n16   1.260326240  1.260326240\n17   0.018520748  0.018520748\n18  -1.106679117 -1.106679117\n19   0.828982577  0.828982577\n20   0.100784189  0.100784189\n21  -1.760869831 -1.760869831\n22   0.045534806  0.045534806\n23  -0.204279782 -0.204279782\n24   0.229412480  0.229412480\n25  -0.063490090 -0.063490090\n26  -0.785021399 -0.785021399\n27   0.579916913  0.579916913\n28  -0.898124501 -0.898124501\n29   1.258190949  1.258190949\n30  -0.533555251 -0.533555251\n31   0.292802193  0.292802193\n32   0.183558321  0.183558321\n33  -0.074719085 -0.074719085\n34  -1.762702147 -1.762702147\n35   0.146019317  0.146019317\n36  -0.433069216 -0.433069216\n37  -0.470607349 -0.470607349\n38   0.950965688  0.950965688\n39   0.576699786  0.576699786\n40   0.302730598  0.302730598\n41  -0.856116521 -0.856116521\n42   1.779052713  1.779052713\n43  -1.459926174 -1.459926174\n44  -1.448534258 -1.448534258\n45   0.033874347  0.033874347\n46   2.241808295  2.241808295\n47  -0.463124192 -0.463124192\n48  -1.542814276 -1.542814276\n49  -0.310729200 -0.310729200\n50   2.715476526  2.715476526\n51  -0.408667491 -0.408667491\n52   0.157350452  0.157350452\n53  -0.305477085 -0.305477085\n54   0.584286711  0.584286711\n55   0.902957575  0.902957575\n56  -0.656448463 -0.656448463\n57  -1.879294113 -1.879294113\n58   1.698494174  1.698494174\n59  -1.279153834 -1.279153834\n60  -0.397510507 -0.397510507\n61   0.137274543  0.137274543\n62   0.430611958  0.430611958\n63  -1.268928505 -1.268928505\n64   0.372093252  0.372093252\n65   0.862869647  0.862869647\n66   0.300174183  0.300174183\n67   0.722174151  0.722174151\n68  -1.148660158 -1.148660158\n69  -0.072055921 -0.072055921\n70   1.370191934  1.370191934\n71   0.680224238  0.680224238\n72   0.527326046  0.527326046\n73   1.105295223  1.105295223\n74  -0.490120484 -0.490120484\n75   0.743019964  0.743019964\n76  -1.519265227 -1.519265227\n77  -0.080004565 -0.080004565\n78  -0.006279664 -0.006279664\n79   0.902403650  0.902403650\n80  -1.798444816 -1.798444816\n81   0.639526945  0.639526945\n82   0.606506512  0.606506512\n83   1.474127291  1.474127291\n84   1.054126458  1.054126458\n85   0.786122691  0.786122691\n86   0.407896806  0.407896806\n87   0.590169055  0.590169055\n88  -0.240626745 -0.240626745\n89   0.138998779  0.138998779\n90   0.146554453  0.146554453\n91   0.790109889  0.790109889\n92  -0.881657724 -0.881657724\n93  -0.022960247 -0.022960247\n94   0.384699538  0.384699538\n95  -0.450056205 -0.450056205\n96  -0.723186058 -0.723186058\n97   0.866049601  0.866049601\n98   1.800552838  1.800552838\n99   0.521151147  0.521151147\n100 -1.057025279 -1.057025279"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-8",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-8",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nInference\n\nIn order to perform inference, we do need to impose a distributional assumption on our noise.\nUsing random vectors (remember these from HW01?), we can succinctly express our noise assumptions as \\[ \\vect{\\varepsilon} \\sim \\boldsymbol{\\mathcal{N}_n}\\left( \\vect{0}, \\ \\sigma^2 \\mat{I}_n \\right) \\] where \\(\\boldsymbol{\\mathcal{N}_p}\\) denotes the multivariate normal distribution (MVN).\nOn Homework 1, you (effectively) showed that this is equivalent to asserting \\[ \\varepsilon_i \\stackrel{\\mathrm{i.i.d.}}{\\sim} \\mathcal{N}(0, \\sigma^2) \\]"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#the-multivariate-normal-distribution",
+    "href": "Lectures/Lec15/Lec15.html#the-multivariate-normal-distribution",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " The Multivariate Normal Distribution",
+    "text": "The Multivariate Normal Distribution\n\n\n\n\n\n\nDefinition: Multivariate Normal Distribution\n\n\nA random vector \\(\\vect{X}\\) is said to follow an n-dimensional multivariate normal (MVN) distribution with parameters \\(\\vect{\\mu}\\) and \\(\\mat{\\Sigma}\\), notated \\(\\vect{X} \\sim \\boldsymbol{\\mathcal{N}_k}(\\vect{\\mu}, \\mat{\\Sigma})\\), if the joint density of \\(\\vect{X}\\) is given by \\[ f_{\\vect{X}}(\\vect{x}) = (2 \\pi)^{k/2} \\cdot (|\\mat{\\Sigma}|)^{-1/2} \\cdot  \\exp\\left\\{ - \\frac{1}{2} (\\vect{x} - \\vect{\\mu})^{\\mathsf{T}} \\mat{\\Sigma}^{-1} (\\vect{x} - \\vect{\\mu}) \\right\\} \\]\n\n\n\n\nInteractive Demo\nOne can show that if \\(\\vect{X} \\sim \\boldsymbol{\\mathcal{N}_k}(\\vect{\\mu}, \\mat{\\Sigma})\\), then \\[ \\E[\\vect{X}] = \\vect{\\mu}; \\qquad \\Var(\\vect{X}) = \\mat{\\Sigma} \\]"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-9",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-9",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nInference\n\nWe can compute the variance-covariance matrix of the OLS estimators relatively easily.\nOne property: \\(\\mathrm{Var}(\\mat{A} \\vect{x}) = \\mat{A} \\Var(\\vect{x}) \\tmat{A}\\) .\n\n\n\\[\\begin{align*}\n  \\Var( \\hvect{B})  & = \\Var((\\tmat{X} \\mat{X})^{-1} \\tmat{X} \\vect{Y} ) \\\\\n    & = (\\tmat{X} \\mat{X})^{-1} \\tmat{X} \\Var(\\vect{Y}) [(\\tmat{X} \\mat{X})^{-1} \\tmat{X}]^{\\mathsf{T}} \\\\\n    & = (\\tmat{X} \\mat{X})^{-1} \\tmat{X} [\\sigma^2 \\mat{I}] \\mat{X} (\\tmat{X} \\mat{X})^{-1} \\\\\n    & = \\sigma^2 (\\tmat{X} \\mat{X})^{-1}\n\\end{align*}\\]\n\n\nAn unbiased estimator for \\(\\sigma^2\\) is \\(\\widehat{\\sigma}^2 := \\mathrm{RSS} / (n - p)\\)"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multiple-linear-regression-10",
+    "href": "Lectures/Lec15/Lec15.html#multiple-linear-regression-10",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multiple Linear Regression",
+    "text": "Multiple Linear Regression\nInference\n\n\nlm(y ~ x1 + x2) %&gt;% summary()\n\n\nCall:\nlm(formula = y ~ x1 + x2)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.5615 -0.6731  0.1190  0.6815  2.7155 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   1.2201     0.4002   3.049  0.00296 ** \nx1            0.5735     0.1003   5.718 1.19e-07 ***\nx2            1.1654     0.1286   9.063 1.41e-14 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.009 on 97 degrees of freedom\nMultiple R-squared:  0.5143,    Adjusted R-squared:  0.5043 \nF-statistic: 51.36 on 2 and 97 DF,  p-value: 6.152e-16"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#residuals-plots",
+    "href": "Lectures/Lec15/Lec15.html#residuals-plots",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Residuals Plots",
+    "text": "Residuals Plots\n\nMLR is where residuals plots, in my opinion, truly shine.\nFirst note: for data with two covariates and one response, we need three axes to display the full data.\n\nFor data with more than two covariates, it becomes impossible to visualize the raw data directly.\n\nResiduals plots are always two-dimensional scatterplots, regardless of the dimensionality of our data matrix.\nTheir interpretation in the MLR case is exactly the same as in the SLR case; no trend and homosekdasticity in a residuals plot implies a good choice of model, whereas the presence of trend of heteroskedasticity implies that the initial model may need to be modified."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multicollinearity",
+    "href": "Lectures/Lec15/Lec15.html#multicollinearity",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multicollinearity",
+    "text": "Multicollinearity\n\nWhen it comes to MLR, there is a very important phenomenon to be aware of.\nRecall that, assuming \\((\\tmat{X} \\mat{X})\\) is invertible, then the OLS estimates are given by \\(\\hvect{\\beta} = (\\tmat{X} \\mat{X})^{-1} \\tmat{X} \\vect{y}\\).\nLetting σ2 := Var(εi), further recall that the variance-covariance matrix of the OLS estimators is given by \\[ \\Var(\\widehat{\\boldsymbol{B}}) = \\sigma^2 (\\tmat{X} \\mat{X})^{-1} \\]\nSo, what happens if \\((\\tmat{X} \\mat{X})\\) is singular - or, equivalently, if \\(\\mat{X}\\) is rank deficient?"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multicollinearity-1",
+    "href": "Lectures/Lec15/Lec15.html#multicollinearity-1",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multicollinearity",
+    "text": "Multicollinearity\n\nWell, for one, the OLS estimators become nonunique.\nAdditionally, the variances of the OLS estimators become infinite, leading to highly unstable estimates.\nAll of this to say: it is very bad if the data matrix is rank deficient.\n\nSaying that the data matrix is rank deficient is equivalent to asserting that at least one of the columns in \\(\\mat{X}\\) can be expressed as a linear combination of the other columns.\nSuch a situation is called multicollinearity and, again, should be avoided at all costs.\n\nThere’s a fairly nice geometric interpretation of multicollinearity as well."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multicollinearity-2",
+    "href": "Lectures/Lec15/Lec15.html#multicollinearity-2",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multicollinearity",
+    "text": "Multicollinearity\n\nImagine we have a response y that has a strong linear association with a covariate x1, and that y also has a strong linear association with another covariate x2.\n\nFurther suppose x1 and x2 have a strong linear association as well.\n\nImagining a plot of our data in three-space (y on the z-axis and x1 and x2 on the x- and y-axes), the data cloud would look like a pencil - very cylindrical, and very thin.\nOLS estimation seeks to fit the “best” plane (since z = a + b x + c y prescribes a plane in ℝ3) to this data.\n\nBut, is there really a single best plane that fits this data?\nNot really - there are an infinite number of them!"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multicollinearity-3",
+    "href": "Lectures/Lec15/Lec15.html#multicollinearity-3",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multicollinearity",
+    "text": "Multicollinearity\nExtreme Case"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multicollinearity-4",
+    "href": "Lectures/Lec15/Lec15.html#multicollinearity-4",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multicollinearity",
+    "text": "Multicollinearity\n\nHere’s another explanation: suppose we are trying to predict a person’s weight from their height.\n\nOur response variable y would be height and the covariate x might be weight as measured in lbs.\n\nSuppose we augment our data matrix with an additional column: the individual’s heights as measured in kilograms.\n\nThe data matrix would now be rank-deficient, as there is a one-to-one correspondence between weights in lbs and weights in kgs.\n\nIntuitively: we aren’t really gaining a new variable by incorporating the weights in kgs - we still only have one variable, so including both the lbs and kg weights is a bit nonsensical."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multicollinearity-5",
+    "href": "Lectures/Lec15/Lec15.html#multicollinearity-5",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multicollinearity",
+    "text": "Multicollinearity\n\nThere are a few different tools for detecting and combating multicollinearity.\n\nWe won’t discuss many of these; you’ll learn about some of them in PSTAT 126/127.\n\nFor the purposes of PSTAT 100, if the number of variables is relatively small, you should construct a correlation matrix of the covariates - for any pair covariates that are highly correlated, remove one from the model.\nIn R, the cor() function can be used to produce a correlation matrix.\n\n\n\n\n\n\n\n\nCaution\n\n\nRemember to only look for covariates that are correlated with other covariates; do not remove covariates that are highly correlated with the response."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#palmerpenguins",
+    "href": "Lectures/Lec15/Lec15.html#palmerpenguins",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Palmerpenguins",
+    "text": "Palmerpenguins\n\nFinally, as an example of another way in which multicollinearity can throw a wrench into things, let’s return to the Palmer Penguins dataset from yesterday.\nConsider using bill length as our response, and using body mass and flipper length as two covariates.\nLet’s look at regressions of bill length onto these two covariates separately, and then examine a model which uses both covariates simultaneously."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#palmerpenguins-1",
+    "href": "Lectures/Lec15/Lec15.html#palmerpenguins-1",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Palmerpenguins",
+    "text": "Palmerpenguins\n\n\nBody MassFlipper LengthFull Model\n\n\n\nlm(bill_length_mm ~ body_mass_g, penguins) %&gt;% summary()\n\n\nCall:\nlm(formula = bill_length_mm ~ body_mass_g, data = penguins)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-10.1251  -3.0434  -0.8089   2.0711  16.1109 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 2.690e+01  1.269e+00   21.19   &lt;2e-16 ***\nbody_mass_g 4.051e-03  2.967e-04   13.65   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.394 on 340 degrees of freedom\n  (2 observations deleted due to missingness)\nMultiple R-squared:  0.3542,    Adjusted R-squared:  0.3523 \nF-statistic: 186.4 on 1 and 340 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\nlm(bill_length_mm ~ flipper_length_mm, penguins) %&gt;% summary()\n\n\nCall:\nlm(formula = bill_length_mm ~ flipper_length_mm, data = penguins)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-8.5792 -2.6715 -0.5721  2.0148 19.1518 \n\nCoefficients:\n                  Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       -7.26487    3.20016   -2.27   0.0238 *  \nflipper_length_mm  0.25477    0.01589   16.03   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.126 on 340 degrees of freedom\n  (2 observations deleted due to missingness)\nMultiple R-squared:  0.4306,    Adjusted R-squared:  0.4289 \nF-statistic: 257.1 on 1 and 340 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\nlm(bill_length_mm ~ body_mass_g + flipper_length_mm, penguins) %&gt;% summary()\n\n\nCall:\nlm(formula = bill_length_mm ~ body_mass_g + flipper_length_mm, \n    data = penguins)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-8.8064 -2.5898 -0.7053  1.9911 18.8288 \n\nCoefficients:\n                    Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       -3.4366939  4.5805532  -0.750    0.454    \nbody_mass_g        0.0006622  0.0005672   1.168    0.244    \nflipper_length_mm  0.2218655  0.0323484   6.859 3.31e-11 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.124 on 339 degrees of freedom\n  (2 observations deleted due to missingness)\nMultiple R-squared:  0.4329,    Adjusted R-squared:  0.4295 \nF-statistic: 129.4 on 2 and 339 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#palmerpenguins-2",
+    "href": "Lectures/Lec15/Lec15.html#palmerpenguins-2",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Palmerpenguins",
+    "text": "Palmerpenguins\n\nWhen we regress on body mass and flipper length separately, we notice that the p-values tell us that there exists a significant linear relationship.\nHowever, when we include both covariates in the same model, it appears as though the significance of the body mass coefficient is lost.\nThis is because of - you guessed it - Multicollinearity!\n\n\n\npenguins %&gt;% select(bill_length_mm, body_mass_g, flipper_length_mm) %&gt;% cor(use = \"complete\")\n\n                  bill_length_mm body_mass_g flipper_length_mm\nbill_length_mm         1.0000000   0.5951098         0.6561813\nbody_mass_g            0.5951098   1.0000000         0.8712018\nflipper_length_mm      0.6561813   0.8712018         1.0000000\n\n\n\n\nBody mass and flipper length are themselves highly correlated; hence, including them both in the same model leads to multicolinearity."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#palmerpenguins-3",
+    "href": "Lectures/Lec15/Lec15.html#palmerpenguins-3",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Palmerpenguins",
+    "text": "Palmerpenguins"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#multicollinearity-6",
+    "href": "Lectures/Lec15/Lec15.html#multicollinearity-6",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Multicollinearity",
+    "text": "Multicollinearity\nAbsence Of"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#polynomial-regression",
+    "href": "Lectures/Lec15/Lec15.html#polynomial-regression",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Polynomial Regression",
+    "text": "Polynomial Regression\n\nI’d like to close out with something we’ve actually alluded to before - polynomial regression.\nAdmittedly, this is a bit of a misnomer - what we mean by “polynomial regression” is fitting a polynomial to a dataset with one response and one predictor.\n\n\nyi = β0 + β1 xi + β1 xi2 + … + βp xip + εi\n\n\nNote that this can be viewed as a special case of the MLR model - as such, polynomial regression is actually a linear model.\n\nThe “linearity” of a model refers only to how the parameters appear - even in polynomial regression, we don’t have any polynomial coefficients."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#polynomial-regression-1",
+    "href": "Lectures/Lec15/Lec15.html#polynomial-regression-1",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Polynomial Regression",
+    "text": "Polynomial Regression\nIn R\n\nlm(y ~ poly(x, p))\n\n\nFor example:\n\n\n\nset.seed(100)      ## for reproducibility\nx &lt;- rnorm(100)    ## simulate the covariate\ny &lt;- 0.25 + 0.5 * x^2 + rnorm(100)\n\nlm(y ~ poly(x, 2)) %&gt;% summary()\n\n\nCall:\nlm(formula = y ~ poly(x, 2))\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.0511 -0.4242 -0.1232  0.5291  1.8763 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  0.77686    0.07897   9.837 3.01e-16 ***\npoly(x, 2)1 -0.18241    0.78969  -0.231    0.818    \npoly(x, 2)2  8.25328    0.78969  10.451  &lt; 2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.7897 on 97 degrees of freedom\nMultiple R-squared:  0.5298,    Adjusted R-squared:  0.5201 \nF-statistic: 54.64 on 2 and 97 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#polynomial-regression-2",
+    "href": "Lectures/Lec15/Lec15.html#polynomial-regression-2",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Polynomial Regression",
+    "text": "Polynomial Regression\nCaution\n\nBe careful with polynomial regression - it’s easy to go overboard with the degree of the polynomial!"
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#polynomial-regression-3",
+    "href": "Lectures/Lec15/Lec15.html#polynomial-regression-3",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Polynomial Regression",
+    "text": "Polynomial Regression\nCaution\n\nIn the limit, we can think of the “connect-the-dots” estimator, which estimates the trend as a curve that passes through every single point in the dataset.\nThis is a bad estimate, because it completely ignores the noise in the model!\nThe phenomenon of an estimator “trusting the data too much” (at the cost of ignoring the noise) is called overfitting.\nThere isn’t really a single agreed-upon cutoff for what degree in polynomial regression corresponds to overfitting - it’s a bit context-dependent.\n\nYou’ll likely talk more about this in both PSTAT 126 and PSTAT 131/231."
+  },
+  {
+    "objectID": "Lectures/Lec15/Lec15.html#next-time",
+    "href": "Lectures/Lec15/Lec15.html#next-time",
+    "title": "PSTAT 100: Lecture 15",
+    "section": " Next Time",
+    "text": "Next Time\n\nOn Monday, we’ll extend our regression framework to include categorical covariates.\nIn lab today, you’ll get some more practice with regression in R.\n\nSpecifically, you’ll work through a sort of mini-project involving multiple linear regression\nYou’ll also get some practice with simulated multicollinearity\n\nReminder: Homework 2 is due THIS SUNDAY (July 20) by 11:59pm on Gradescope!\n\nPlease do not forget to submit!\n\nInformation about ICA02 will be posted in the coming days.\nPlease Note: I need to move my Office Hours tomorrow (Friday July 18) to 10:30 am - 11:30 am, still over Zoom."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#recap",
+    "href": "Lectures/Lec13/Lec13.html#recap",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Recap",
+    "text": "Recap\n\nWe can think of a model as a mathematical or idealized representation of a system.\nIn statistical modeling, we adopt a three-step procedure:\n\nPropose a model\nFit the model to the data\nAssess how well we believe our model is performing.\n\nThere are two main types of statistical models: parametric and nonparametric.\n\nThe model fitting step differs between these types of models.\n\nToday, let’s explore two examples of modeling: one nonparametric, and one parametric."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#density-estimation",
+    "href": "Lectures/Lec13/Lec13.html#density-estimation",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Density Estimation",
+    "text": "Density Estimation\n\n\n\n\n\n\nFramework\n\n\n\nData: A collection of numerical values; \\(\\vect{x} = (x_1, \\cdots, x_n)\\) we believe to be a realization of an i.i.d. random sample \\(\\vect{X} = (X_1, \\cdots, X_n)\\) taken from a distribution with density f().\nGoal: to estimate the true value of f() at each point.\n\n\n\n\n\n\n\nCode\ndata.frame(samp) %&gt;% ggplot(aes(x = samp)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 15, col = \"white\") +\n  theme_minimal(base_size = 18) +\n  ggtitle(\"Histogram of Sample Values\") + xlab(\"value\")"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#density-estimation-1",
+    "href": "Lectures/Lec13/Lec13.html#density-estimation-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Density Estimation",
+    "text": "Density Estimation\nHistograms\n\nBelieve it or not, a histogram is actually a nonparametric attempt at modeling precisely this situation!\n\n\n\n\n\n\n\n\nImportant\n\n\nThere are actually two kinds of histograms: frequency histograms and density histograms.\n\n\n\n\n\nFrequency histograms are the ones we talked about in Week 1.\n\nDensity histograms take frequency histograms and rescale the y-axis so that the total area under the histogram is 1.\n\nEssentially, our “guess” for the value of the density at a given point xi is simply the height of the density histogram at that point."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\n\nIf we let Bj denote the jth bin, and if we have n observations, the height of the jth bar on a density histogram is given by \\[ \\mathrm{height}_j = \\frac{1}{nh} \\sum_{i=1}^{n} 1 \\! \\! 1_{\\{x_i \\in B_j\\}} \\]\nRecall that the sum of indicators is a succinct way of writing “the number of observations that satisfy a condition”.\n\nIn this way, you should be able to interpret what the equation above is saying.\nPerhaps an example may help:"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-1",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-2",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-2",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\n\nGiven a new observation x, we can think of our “best guess” at the value of f(x) to be the height of the density histogram at x:\n\n\n\\[ \\widehat{f}(x) = \\frac{1}{nh} \\sum_{i=1}^{n} \\sum_{j} 1 \\! \\! 1_{\\{x \\in B_j\\}} 1 \\! \\! 1_{\\{x_i \\in B_j\\}}  \\]\n\n\nIn other words, our estimate takes the input x, finds the bin to which x belongs, and returns the height of that bin.\nWe call this procedure fixed binning, since, for a given x, we simply identify which, out of a set of fixed bins, x belongs to.\nThis leads us to the idea of local binning, in which we allow the height at x to be a normalization of the count in a neighborhood of x of width h (as opposed to the count in one of a set of fixed bins)."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-3",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-3",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\nLocal Binning\n\n\\[ \\widehat{f}_{\\mathrm{lb}}(x) = \\frac{1}{nh} \\sum_{i=1}^{n}  1 \\! \\! 1_{\\{ \\left| x_i - x \\right|  &lt; \\frac{h}{2} \\}}  \\]"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-4",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-4",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\nLocal Binning"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-5",
+    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-5",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Histograms, Revisited",
+    "text": "Histograms, Revisited\nLocal Binning\n\n\\[ \\widehat{f}_{\\mathrm{lb}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\left[ \\frac{1}{h} 1 \\! \\! 1_{\\{ \\left| x_i - x \\right|  &lt; \\frac{h}{2} \\}} \\right]  \\]\n\n\n\n\n\n\n\n\nChanging xi amounts to changing the “center” of the “box”\nChanging h amounts to changing the width and height of the “box”\nNote, however, that for any value of h and xi, the area underneath this graph is always 1.\n\n\n\nNonnegative function that integrates to one…"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#leadup",
+    "href": "Lectures/Lec13/Lec13.html#leadup",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Leadup",
+    "text": "Leadup\n\n\\[ \\widehat{f}_{\\mathrm{KDE}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\frac{1}{\\lambda} K_{\\lambda}(x, x_i)   \\]\n\n\nIn this context, the function K(x, xi) is referred to as a kernel function, provided it is nonnegative and integrates to unity: \\[ \\int_{-\\infty}^{\\infty} K_{\\lambda}(x, x_i) \\ \\mathrm{d}x = 1, \\ \\forall x_i \\]\n\nSome people relax the condition of integrating to unity, but we’ll include it.\n\nSo, again, what kinds of functions does this sound like?"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#kernel-density-estimation",
+    "href": "Lectures/Lec13/Lec13.html#kernel-density-estimation",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Kernel Density Estimation",
+    "text": "Kernel Density Estimation\n\nIn general, we can use any valid probability density function as a kernel.\nThe estimate defined on the previous slide is called a kernel density estimate (KDE), and the general procedure of estimating a density as a weighted local average (with weights given by a kernel) of counts is called kernel density estimation.\nGaussian KDE utilizes a Gaussian kernel:\n\n\n\\[ \\widehat{f}_{\\mathrm{GKDE}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\frac{1}{\\lambda} \\phi\\left( \\frac{x_i - x}{\\lambda} \\right)  \\]\n\n\nOther kernels include the boxcar (equivalent to a locally binned histogram!), triangular, Epanechnikov (quadratic), Biweight (quartic), and a few others"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#kernel-density-estimation-1",
+    "href": "Lectures/Lec13/Lec13.html#kernel-density-estimation-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Kernel Density Estimation",
+    "text": "Kernel Density Estimation\nKernels\n\n\n\n\n\n\n\n\n\n\n\n\n\ndensity(...)        ## for analysis only\nstat_density(...)   ## for plotting\n\n kernel = c(\"gaussian\", \"epanechnikov\", \"rectangular\",\n                   \"triangular\", \"biweight\", \"cosine\", \"optcosine\"),"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#parametric-modeling",
+    "href": "Lectures/Lec13/Lec13.html#parametric-modeling",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Parametric Modeling",
+    "text": "Parametric Modeling\n\nRecall that, in the parametric setting of modeling, we express our model in terms of a series of estimable parameters.\nFor example, suppose we assume the weight Yi of a randomly-selected cat to follow a Normal distribution with mean µ and variance 1, independently across observations.\n\n\n\n\nYi \\(\\stackrel{\\mathrm{i.i.d.}}{\\sim}\\) N (µ, 1)\n\n\n\nYi = µ + εi, for εi \\(\\stackrel{\\mathrm{i.i.d.}}{\\sim}\\) N (0, 1)\n\n\n\nFitting a model to our data is therefore equivalent to finding the “optimal” estimates for the parameters in our model (in this case, µ)."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#the-modeling-process",
+    "href": "Lectures/Lec13/Lec13.html#the-modeling-process",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " The Modeling Process",
+    "text": "The Modeling Process\nMore About Step 2\n\nThis is precisely what is meant by Step 2 of the modeling procedure (sometimes called the model fitting stage): we identify estimators/estimates of the parameters that are ideal in some way.\nIn our coin tossing example, our choice of estimation was relatively straightforward: use the sample proportion as an estimator for the population proportion.\nIn many cases, however, there won’t necessarily be one obvious choice for parameter estimates.\n\nFor example, in our cat-weight example: do we use the sample mean or the sample median?\nTo estimate spread, should we use the mean or the median? Standard deviation or IQR?"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\n\nIn general, we can think of an estimator as a rule.\n\nMathematically, rules are functions - so, an estimator based on a single random observation Y can be expressed as δ(Y)\n\nA loss function is a mathematical quantification of the consequence paid in estimating a parameter θ by an estimator δ(Y).\n\nMore concretely, a loss function is a function \\(\\mathcal{L}: \\R^2 \\to \\R^{+}\\), where \\(\\mathcal{L}(\\theta, \\delta(Y))\\) represents how poorly \\(\\delta(Y)\\) is doing at estimating \\(\\theta\\).\n\nThe risk is the average loss: \\(\\mathbb{E}_{Y}[\\mathcal{L}(\\theta, \\delta(Y))]\\).\nAn “optimal” estimator for θ is therefore one that minimizes the risk: \\[ \\widehat{\\theta} := \\argmin_{\\theta} \\left\\{ \\mathbb{E}_{Y}[\\mathcal{L}(\\theta, \\delta(Y))] \\right\\} \\]"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-1",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\nIllustration\n\nAs an illustration of this framework of estimation, let’s attempt to find the value c that “best” summarizes a set of observations (y1, …, yn).\nAs the distribution of Y is, in general, unknown, we can consider the empirical risk in place of the risk: \\[ R(\\theta) := \\frac{1}{n} \\sum_{i=1}^{n} \\mathcal{L}(y_i, c) \\]\n\nHere, \\(\\mathcal{L}(y_i, c)\\) can be interpreted as “how far away c is from yi”.\n\nAgain, our “best” summary will be the value of c that minimizes R(θ)"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-2",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions-2",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\n\nThere are many choices for loss functions, each with pros and cons.\nFor numerical data, the two most common loss functions are:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSquared Error (aka L2)  \\(\\mathcal{L}(y_i, \\theta) = (y_i - \\theta)^2\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAbsolute Error (aka L1)  \\(\\mathcal{L}(y_i, \\theta) = |y_i - \\theta|\\)"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-3",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions-3",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\n\nL1 loss tends to be more robust to outliers than L2 loss.\n\nKeep in mind that, depending on the context, this could be a good or bad thing.\nIn general, it is up to you (the modeler) to decide which loss function to adopt.\n\nAs an example of how loss functions help us construct estimators for parameters, let us consider the case of L2 loss.\nGiven data (y1, …, yn), our “optimal” (risk-minimizing) estimate for θ (under L2 loss) satisfies \\[ \\widehat{\\theta}_n := \\argmin_{\\theta} \\left\\{ \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\theta)^2 \\right\\} \\]"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-4",
+    "href": "Lectures/Lec13/Lec13.html#loss-functions-4",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Loss Functions",
+    "text": "Loss Functions\nExample: L2-minimizing Estimate\n\nTo optimize a function, we differentiate and set equal to zero:\n\n\n\\[\\begin{align*}\n  \\frac{\\partial}{\\partial \\theta} R(\\theta)  & = \\frac{\\partial}{\\partial \\theta} \\left[  \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\theta)^2 \\right]   \\\\\n    & = \\frac{2}{n} \\sum_{i=1}^{n} (\\theta - y_i) = \\frac{2}{n} \\left[ n \\theta - n \\overline{y}_n \\right] = 2(\\theta - \\overline{y}_n)  \\\\\n    \\implies 2(\\widehat{\\theta} - \\overline{y}_n) & = 0 \\ \\implies \\ \\boxed{\\widehat{\\theta} = \\overline{y}_n}\n\\end{align*}\\]\n\n\nSo, the sample mean minimizes the risk under L2 loss; i.e. if we adopt L2 loss, then the value of θ that best fits the data is the sample mean."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#chalkboard-example",
+    "href": "Lectures/Lec13/Lec13.html#chalkboard-example",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Chalkboard Example",
+    "text": "Chalkboard Example\n\n\n\n\n\n\nChalkboard Example\n\n\nIdentify the summary statistic that minimizes the empirical risk under L1 loss."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#two-variables",
+    "href": "Lectures/Lec13/Lec13.html#two-variables",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Two Variables",
+    "text": "Two Variables\n\nBoth of our examples up until now can be classified as “univariate” modeling, as they involve only one variable.\nIn data science, we are often interested in how two (or more) variables are related to one another.\nAs an example, it’s not difficult to surmise that houses built in different years sell for different prices.\nAs such, we can explore a dataset that tracks the median selling price of homes built in various years, as sold in King County (Washington State) between May 2014 and May 2015.\n\nE.g. one datapoint represents the median selling price of a home built in 1963, sold in 2014.\nData Source, though we’re using a version that I aggregated and cleaned."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data",
+    "href": "Lectures/Lec13/Lec13.html#housing-data",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nAn Example\n\n\nCode\nhousing %&gt;% ggplot(aes(x = yr_built,\n                       y = avg_price)) +\n  geom_point(size = 3) + \n  ggtitle(\"Median Selling Prices in 2014\") +\n  xlab(\"Year Built\") + ylab(\"Median Selling Price\") +\n  theme_minimal(base_size = 18)"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-1",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nAn Example\n\nThinking back to the first week of this class:\n\nIs there a trend?\nIf so, is the trend linear or nonlinear?\nCan the trend be classified as positive or negative?\n\nAdditionally, can anyone propose an explanation for the “dip” in prices near the middle of the graph?"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-2",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-2",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-3",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-3",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-4",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-4",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-5",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-5",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#housing-data-6",
+    "href": "Lectures/Lec13/Lec13.html#housing-data-6",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Housing Data",
+    "text": "Housing Data\nBuilding a Model\n\nIn other words: for every year xi we believe there is an associated “true” median selling price f(xi).\nThis true price is unobserved; what we actually observe is a median selling price yi that has been contaminated by some noise εi.\n\nThis noise could be due any number of factors: measurement error, random fluctuations in the market, etc.\nWe’ll talk about this noise process more in a bit.\n\nMathematically: \\(y_i = f(x_i) + \\varepsilon_i\\), for some zero-mean constant-variance random variable εi.\n\nIt is precisely this error term that makes our model stochastic."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#statistical-models",
+    "href": "Lectures/Lec13/Lec13.html#statistical-models",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Statistical Models",
+    "text": "Statistical Models\nTerminology\n\ny = f ( x ) + noise\n\n\n\n\ny: response variable\n\n\nDependent variable\nOutcome\nOutput\n\n\n\nf: signal function\n\n\nMean function\n\n\n\nx: explanatory variable\n\n\nIndependent variable\nFeature\nInput\nCovariate\n\n\n\nIf y is numerical, the model is called a regression model; if y is categorical, the model is called a classification model."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#statistical-models-1",
+    "href": "Lectures/Lec13/Lec13.html#statistical-models-1",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Statistical Models",
+    "text": "Statistical Models\nNoise\n\nThe noise term can be thought of as a catch-all for any uncertainty present in our model.\nBroadly speaking, uncertainty can be classified as either epistemic (aka “reducible”) or aleatoric (aka “irreducible”).\nEpistemic uncertainty stems from a lack of knowledge about the world; with additional information, it could be reduced.\nAleatoric uncertainty, on the other hand, stems from randomness inherent in the world; no amount of additional information can reduce it."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#statistical-models-2",
+    "href": "Lectures/Lec13/Lec13.html#statistical-models-2",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Statistical Models",
+    "text": "Statistical Models\nNoise\n\nAs an example: errors arising from a misspecified model are epistemic, as, in theory, if the model were corrected, they would be eliminated.\nOn the other hand, measurement error is widely accepted as aleatoric; repeated measurements will not reduce the amount of measurement error.\nSince the noise term in our model captures the uncertainty present, we treat it as a zero-mean random variable.\nLater, we’ll need to add some additional specificity to this (e.g. what distribution does it follow? What assumptions do we need to make about its variance?) - for now, we’ll leave things fairly general."
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#why-model",
+    "href": "Lectures/Lec13/Lec13.html#why-model",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Why Model?",
+    "text": "Why Model?\n\n\n\nPrediction\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the true (de-noised) median selling price of a house built in 1918?\n\n\n\nInference\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow confident are we in our guess about the relationship between year built and selling price?"
+  },
+  {
+    "objectID": "Lectures/Lec13/Lec13.html#next-time",
+    "href": "Lectures/Lec13/Lec13.html#next-time",
+    "title": "PSTAT 100: Lecture 13",
+    "section": " Next Time",
+    "text": "Next Time\n\nTomorrow, we’ll start our discussion on a specific type of parametric model that lends itself nicely to analysis (called the SLR model).\n\nOur discussion on the SLR model will last several lectures.\n\nREMINDER: Homework 2 is due This Sunday (July 20) by 11:59pm on Gradescope."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSTAT 100: Summer 2025",
+    "section": "",
+    "text": "PSTAT 100 - Data Science: Concepts and Analysis\n\n\n\n\nInstructor:\nEthan P. Marzban (He/Him)\n\n\n\n\nQuarter:\nSummer Session A, 2025\n\n\n\nCourse Description: Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\n\n\n\n\n\n\n\nWelcome to PSTAT 100! This is the official course page for the Summer Session A, 2025 iteration of the course - the Spring 2024 iteration has been moved to ucsb-pstat100-archives.github.io.\nLecture slides can be found on the Schedule; labs and project datasets can be found on our Course Computing Server, a link to which can be found on our course Canvas page. Please note, for security purposes, we can only share the link to the server with students who are currently enrolled in the course.\n\n\n\n\n\n\n\n\n    \n        \n            Important Course Assessments/Deadlines\n            \n                \n                    Homework 1\n                    Week 1 | Sunday, June 29, 2025\n                \n                \n                    In-Class Assessment 1\n                    Week 2 | Thursday, July 3, 2025\n                \n                \n                    Mid-Quarter Project\n                    Week 3 | Sunday, July 13, 2025\n                \n                \n                    Homework 2\n                    Week 4 | Sunday, July 20, 2025\n                \n                \n                    In-Class Assessment 2\n                    Week 5 | Thursday, July 24, 2025\n                \n                \n                    Final Project\n                    Week 6 | Friday, August 1, 2025\n                \n            \n        \n    \n\n\n\n\n\n\n\nImportant\n\n\n\nIn addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods."
+  },
+  {
     "objectID": "Lectures/Lec14/Lec14.html#recap",
     "href": "Lectures/Lec14/Lec14.html#recap",
     "title": "PSTAT 100: Lecture 14",
@@ -1888,244 +2343,6 @@
     "title": "PSTAT 100: Lecture 14",
     "section": " Next Time",
     "text": "Next Time\n\nTomorrow, we’ll start generalizing from only one covariate to multiple covariates.\n\nThis is going to involve some linear algebra!\n\nWe’ll also get some hands-on practice with the R side of regression, and further practice with interpreting results.\nReminder: please don’t forget to turn in HW02 this sunday!"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PSTAT 100: Summer 2025",
-    "section": "",
-    "text": "PSTAT 100 - Data Science: Concepts and Analysis\n\n\n\n\nInstructor:\nEthan P. Marzban (He/Him)\n\n\n\n\nQuarter:\nSummer Session A, 2025\n\n\n\nCourse Description: Overview of data science key concepts and the use of tools for data retrieval, analysis, visualization, and reproducible research. Topics include an introduction to inference and prediction, principles of measurement, missing data, and notions of causality, statistical “traps”, and concepts in data ethics and privacy. Case studies will illustrate the importance of domain knowledge. Credit units: 4.\n\n\n\n\n\n\n\n\nWelcome to PSTAT 100! This is the official course page for the Summer Session A, 2025 iteration of the course - the Spring 2024 iteration has been moved to ucsb-pstat100-archives.github.io.\nLecture slides can be found on the Schedule; labs and project datasets can be found on our Course Computing Server, a link to which can be found on our course Canvas page. Please note, for security purposes, we can only share the link to the server with students who are currently enrolled in the course.\n\n\n\n\n\n\n\n\n    \n        \n            Important Course Assessments/Deadlines\n            \n                \n                    Homework 1\n                    Week 1 | Sunday, June 29, 2025\n                \n                \n                    In-Class Assessment 1\n                    Week 2 | Thursday, July 3, 2025\n                \n                \n                    Mid-Quarter Project\n                    Week 3 | Sunday, July 13, 2025\n                \n                \n                    Homework 2\n                    Week 4 | Sunday, July 20, 2025\n                \n                \n                    In-Class Assessment 2\n                    Week 5 | Thursday, July 24, 2025\n                \n                \n                    Final Project\n                    Week 6 | Friday, August 8, 2025\n                \n            \n        \n    \n\n\n\n\n\n\n\nImportant\n\n\n\nIn addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#recap",
-    "href": "Lectures/Lec13/Lec13.html#recap",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Recap",
-    "text": "Recap\n\nWe can think of a model as a mathematical or idealized representation of a system.\nIn statistical modeling, we adopt a three-step procedure:\n\nPropose a model\nFit the model to the data\nAssess how well we believe our model is performing.\n\nThere are two main types of statistical models: parametric and nonparametric.\n\nThe model fitting step differs between these types of models.\n\nToday, let’s explore two examples of modeling: one nonparametric, and one parametric."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#density-estimation",
-    "href": "Lectures/Lec13/Lec13.html#density-estimation",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Density Estimation",
-    "text": "Density Estimation\n\n\n\n\n\n\nFramework\n\n\n\nData: A collection of numerical values; \\(\\vect{x} = (x_1, \\cdots, x_n)\\) we believe to be a realization of an i.i.d. random sample \\(\\vect{X} = (X_1, \\cdots, X_n)\\) taken from a distribution with density f().\nGoal: to estimate the true value of f() at each point.\n\n\n\n\n\n\n\nCode\ndata.frame(samp) %&gt;% ggplot(aes(x = samp)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 15, col = \"white\") +\n  theme_minimal(base_size = 18) +\n  ggtitle(\"Histogram of Sample Values\") + xlab(\"value\")"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#density-estimation-1",
-    "href": "Lectures/Lec13/Lec13.html#density-estimation-1",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Density Estimation",
-    "text": "Density Estimation\nHistograms\n\nBelieve it or not, a histogram is actually a nonparametric attempt at modeling precisely this situation!\n\n\n\n\n\n\n\n\nImportant\n\n\nThere are actually two kinds of histograms: frequency histograms and density histograms.\n\n\n\n\n\nFrequency histograms are the ones we talked about in Week 1.\n\nDensity histograms take frequency histograms and rescale the y-axis so that the total area under the histogram is 1.\n\nEssentially, our “guess” for the value of the density at a given point xi is simply the height of the density histogram at that point."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited",
-    "href": "Lectures/Lec13/Lec13.html#histograms-revisited",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Histograms, Revisited",
-    "text": "Histograms, Revisited\n\nIf we let Bj denote the jth bin, and if we have n observations, the height of the jth bar on a density histogram is given by \\[ \\mathrm{height}_j = \\frac{1}{nh} \\sum_{i=1}^{n} 1 \\! \\! 1_{\\{x_i \\in B_j\\}} \\]\nRecall that the sum of indicators is a succinct way of writing “the number of observations that satisfy a condition”.\n\nIn this way, you should be able to interpret what the equation above is saying.\nPerhaps an example may help:"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-1",
-    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-1",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Histograms, Revisited",
-    "text": "Histograms, Revisited"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-2",
-    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-2",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Histograms, Revisited",
-    "text": "Histograms, Revisited\n\nGiven a new observation x, we can think of our “best guess” at the value of f(x) to be the height of the density histogram at x:\n\n\n\\[ \\widehat{f}(x) = \\frac{1}{nh} \\sum_{i=1}^{n} \\sum_{j} 1 \\! \\! 1_{\\{x \\in B_j\\}} 1 \\! \\! 1_{\\{x_i \\in B_j\\}}  \\]\n\n\nIn other words, our estimate takes the input x, finds the bin to which x belongs, and returns the height of that bin.\nWe call this procedure fixed binning, since, for a given x, we simply identify which, out of a set of fixed bins, x belongs to.\nThis leads us to the idea of local binning, in which we allow the height at x to be a normalization of the count in a neighborhood of x of width h (as opposed to the count in one of a set of fixed bins)."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-3",
-    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-3",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Histograms, Revisited",
-    "text": "Histograms, Revisited\nLocal Binning\n\n\\[ \\widehat{f}_{\\mathrm{lb}}(x) = \\frac{1}{nh} \\sum_{i=1}^{n}  1 \\! \\! 1_{\\{ \\left| x_i - x \\right|  &lt; \\frac{h}{2} \\}}  \\]"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-4",
-    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-4",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Histograms, Revisited",
-    "text": "Histograms, Revisited\nLocal Binning"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#histograms-revisited-5",
-    "href": "Lectures/Lec13/Lec13.html#histograms-revisited-5",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Histograms, Revisited",
-    "text": "Histograms, Revisited\nLocal Binning\n\n\\[ \\widehat{f}_{\\mathrm{lb}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\left[ \\frac{1}{h} 1 \\! \\! 1_{\\{ \\left| x_i - x \\right|  &lt; \\frac{h}{2} \\}} \\right]  \\]\n\n\n\n\n\n\n\n\nChanging xi amounts to changing the “center” of the “box”\nChanging h amounts to changing the width and height of the “box”\nNote, however, that for any value of h and xi, the area underneath this graph is always 1.\n\n\n\nNonnegative function that integrates to one…"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#leadup",
-    "href": "Lectures/Lec13/Lec13.html#leadup",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Leadup",
-    "text": "Leadup\n\n\\[ \\widehat{f}_{\\mathrm{KDE}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\frac{1}{\\lambda} K_{\\lambda}(x, x_i)   \\]\n\n\nIn this context, the function K(x, xi) is referred to as a kernel function, provided it is nonnegative and integrates to unity: \\[ \\int_{-\\infty}^{\\infty} K_{\\lambda}(x, x_i) \\ \\mathrm{d}x = 1, \\ \\forall x_i \\]\n\nSome people relax the condition of integrating to unity, but we’ll include it.\n\nSo, again, what kinds of functions does this sound like?"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#kernel-density-estimation",
-    "href": "Lectures/Lec13/Lec13.html#kernel-density-estimation",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Kernel Density Estimation",
-    "text": "Kernel Density Estimation\n\nIn general, we can use any valid probability density function as a kernel.\nThe estimate defined on the previous slide is called a kernel density estimate (KDE), and the general procedure of estimating a density as a weighted local average (with weights given by a kernel) of counts is called kernel density estimation.\nGaussian KDE utilizes a Gaussian kernel:\n\n\n\\[ \\widehat{f}_{\\mathrm{GKDE}}(x) = \\frac{1}{n} \\sum_{i=1}^{n} \\frac{1}{\\lambda} \\phi\\left( \\frac{x_i - x}{\\lambda} \\right)  \\]\n\n\nOther kernels include the boxcar (equivalent to a locally binned histogram!), triangular, Epanechnikov (quadratic), Biweight (quartic), and a few others"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#kernel-density-estimation-1",
-    "href": "Lectures/Lec13/Lec13.html#kernel-density-estimation-1",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Kernel Density Estimation",
-    "text": "Kernel Density Estimation\nKernels\n\n\n\n\n\n\n\n\n\n\n\n\n\ndensity(...)        ## for analysis only\nstat_density(...)   ## for plotting\n\n kernel = c(\"gaussian\", \"epanechnikov\", \"rectangular\",\n                   \"triangular\", \"biweight\", \"cosine\", \"optcosine\"),"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#parametric-modeling",
-    "href": "Lectures/Lec13/Lec13.html#parametric-modeling",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Parametric Modeling",
-    "text": "Parametric Modeling\n\nRecall that, in the parametric setting of modeling, we express our model in terms of a series of estimable parameters.\nFor example, suppose we assume the weight Yi of a randomly-selected cat to follow a Normal distribution with mean µ and variance 1, independently across observations.\n\n\n\n\nYi \\(\\stackrel{\\mathrm{i.i.d.}}{\\sim}\\) N (µ, 1)\n\n\n\nYi = µ + εi, for εi \\(\\stackrel{\\mathrm{i.i.d.}}{\\sim}\\) N (0, 1)\n\n\n\nFitting a model to our data is therefore equivalent to finding the “optimal” estimates for the parameters in our model (in this case, µ)."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#the-modeling-process",
-    "href": "Lectures/Lec13/Lec13.html#the-modeling-process",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " The Modeling Process",
-    "text": "The Modeling Process\nMore About Step 2\n\nThis is precisely what is meant by Step 2 of the modeling procedure (sometimes called the model fitting stage): we identify estimators/estimates of the parameters that are ideal in some way.\nIn our coin tossing example, our choice of estimation was relatively straightforward: use the sample proportion as an estimator for the population proportion.\nIn many cases, however, there won’t necessarily be one obvious choice for parameter estimates.\n\nFor example, in our cat-weight example: do we use the sample mean or the sample median?\nTo estimate spread, should we use the mean or the median? Standard deviation or IQR?"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#loss-functions",
-    "href": "Lectures/Lec13/Lec13.html#loss-functions",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Loss Functions",
-    "text": "Loss Functions\n\nIn general, we can think of an estimator as a rule.\n\nMathematically, rules are functions - so, an estimator based on a single random observation Y can be expressed as δ(Y)\n\nA loss function is a mathematical quantification of the consequence paid in estimating a parameter θ by an estimator δ(Y).\n\nMore concretely, a loss function is a function \\(\\mathcal{L}: \\R^2 \\to \\R^{+}\\), where \\(\\mathcal{L}(\\theta, \\delta(Y))\\) represents how poorly \\(\\delta(Y)\\) is doing at estimating \\(\\theta\\).\n\nThe risk is the average loss: \\(\\mathbb{E}_{Y}[\\mathcal{L}(\\theta, \\delta(Y))]\\).\nAn “optimal” estimator for θ is therefore one that minimizes the risk: \\[ \\widehat{\\theta} := \\argmin_{\\theta} \\left\\{ \\mathbb{E}_{Y}[\\mathcal{L}(\\theta, \\delta(Y))] \\right\\} \\]"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-1",
-    "href": "Lectures/Lec13/Lec13.html#loss-functions-1",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Loss Functions",
-    "text": "Loss Functions\nIllustration\n\nAs an illustration of this framework of estimation, let’s attempt to find the value c that “best” summarizes a set of observations (y1, …, yn).\nAs the distribution of Y is, in general, unknown, we can consider the empirical risk in place of the risk: \\[ R(\\theta) := \\frac{1}{n} \\sum_{i=1}^{n} \\mathcal{L}(y_i, c) \\]\n\nHere, \\(\\mathcal{L}(y_i, c)\\) can be interpreted as “how far away c is from yi”.\n\nAgain, our “best” summary will be the value of c that minimizes R(θ)"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-2",
-    "href": "Lectures/Lec13/Lec13.html#loss-functions-2",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Loss Functions",
-    "text": "Loss Functions\n\nThere are many choices for loss functions, each with pros and cons.\nFor numerical data, the two most common loss functions are:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSquared Error (aka L2)  \\(\\mathcal{L}(y_i, \\theta) = (y_i - \\theta)^2\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAbsolute Error (aka L1)  \\(\\mathcal{L}(y_i, \\theta) = |y_i - \\theta|\\)"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-3",
-    "href": "Lectures/Lec13/Lec13.html#loss-functions-3",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Loss Functions",
-    "text": "Loss Functions\n\nL1 loss tends to be more robust to outliers than L2 loss.\n\nKeep in mind that, depending on the context, this could be a good or bad thing.\nIn general, it is up to you (the modeler) to decide which loss function to adopt.\n\nAs an example of how loss functions help us construct estimators for parameters, let us consider the case of L2 loss.\nGiven data (y1, …, yn), our “optimal” (risk-minimizing) estimate for θ (under L2 loss) satisfies \\[ \\widehat{\\theta}_n := \\argmin_{\\theta} \\left\\{ \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\theta)^2 \\right\\} \\]"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#loss-functions-4",
-    "href": "Lectures/Lec13/Lec13.html#loss-functions-4",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Loss Functions",
-    "text": "Loss Functions\nExample: L2-minimizing Estimate\n\nTo optimize a function, we differentiate and set equal to zero:\n\n\n\\[\\begin{align*}\n  \\frac{\\partial}{\\partial \\theta} R(\\theta)  & = \\frac{\\partial}{\\partial \\theta} \\left[  \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\theta)^2 \\right]   \\\\\n    & = \\frac{2}{n} \\sum_{i=1}^{n} (\\theta - y_i) = \\frac{2}{n} \\left[ n \\theta - n \\overline{y}_n \\right] = 2(\\theta - \\overline{y}_n)  \\\\\n    \\implies 2(\\widehat{\\theta} - \\overline{y}_n) & = 0 \\ \\implies \\ \\boxed{\\widehat{\\theta} = \\overline{y}_n}\n\\end{align*}\\]\n\n\nSo, the sample mean minimizes the risk under L2 loss; i.e. if we adopt L2 loss, then the value of θ that best fits the data is the sample mean."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#chalkboard-example",
-    "href": "Lectures/Lec13/Lec13.html#chalkboard-example",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Chalkboard Example",
-    "text": "Chalkboard Example\n\n\n\n\n\n\nChalkboard Example\n\n\nIdentify the summary statistic that minimizes the empirical risk under L1 loss."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#two-variables",
-    "href": "Lectures/Lec13/Lec13.html#two-variables",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Two Variables",
-    "text": "Two Variables\n\nBoth of our examples up until now can be classified as “univariate” modeling, as they involve only one variable.\nIn data science, we are often interested in how two (or more) variables are related to one another.\nAs an example, it’s not difficult to surmise that houses built in different years sell for different prices.\nAs such, we can explore a dataset that tracks the median selling price of homes built in various years, as sold in King County (Washington State) between May 2014 and May 2015.\n\nE.g. one datapoint represents the median selling price of a home built in 1963, sold in 2014.\nData Source, though we’re using a version that I aggregated and cleaned."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#housing-data",
-    "href": "Lectures/Lec13/Lec13.html#housing-data",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Housing Data",
-    "text": "Housing Data\nAn Example\n\n\nCode\nhousing %&gt;% ggplot(aes(x = yr_built,\n                       y = avg_price)) +\n  geom_point(size = 3) + \n  ggtitle(\"Median Selling Prices in 2014\") +\n  xlab(\"Year Built\") + ylab(\"Median Selling Price\") +\n  theme_minimal(base_size = 18)"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#housing-data-1",
-    "href": "Lectures/Lec13/Lec13.html#housing-data-1",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Housing Data",
-    "text": "Housing Data\nAn Example\n\nThinking back to the first week of this class:\n\nIs there a trend?\nIf so, is the trend linear or nonlinear?\nCan the trend be classified as positive or negative?\n\nAdditionally, can anyone propose an explanation for the “dip” in prices near the middle of the graph?"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#housing-data-2",
-    "href": "Lectures/Lec13/Lec13.html#housing-data-2",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Housing Data",
-    "text": "Housing Data\nBuilding a Model"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#housing-data-3",
-    "href": "Lectures/Lec13/Lec13.html#housing-data-3",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Housing Data",
-    "text": "Housing Data\nBuilding a Model"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#housing-data-4",
-    "href": "Lectures/Lec13/Lec13.html#housing-data-4",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Housing Data",
-    "text": "Housing Data\nBuilding a Model"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#housing-data-5",
-    "href": "Lectures/Lec13/Lec13.html#housing-data-5",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Housing Data",
-    "text": "Housing Data\nBuilding a Model"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#housing-data-6",
-    "href": "Lectures/Lec13/Lec13.html#housing-data-6",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Housing Data",
-    "text": "Housing Data\nBuilding a Model\n\nIn other words: for every year xi we believe there is an associated “true” median selling price f(xi).\nThis true price is unobserved; what we actually observe is a median selling price yi that has been contaminated by some noise εi.\n\nThis noise could be due any number of factors: measurement error, random fluctuations in the market, etc.\nWe’ll talk about this noise process more in a bit.\n\nMathematically: \\(y_i = f(x_i) + \\varepsilon_i\\), for some zero-mean constant-variance random variable εi.\n\nIt is precisely this error term that makes our model stochastic."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#statistical-models",
-    "href": "Lectures/Lec13/Lec13.html#statistical-models",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Statistical Models",
-    "text": "Statistical Models\nTerminology\n\ny = f ( x ) + noise\n\n\n\n\ny: response variable\n\n\nDependent variable\nOutcome\nOutput\n\n\n\nf: signal function\n\n\nMean function\n\n\n\nx: explanatory variable\n\n\nIndependent variable\nFeature\nInput\nCovariate\n\n\n\nIf y is numerical, the model is called a regression model; if y is categorical, the model is called a classification model."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#statistical-models-1",
-    "href": "Lectures/Lec13/Lec13.html#statistical-models-1",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Statistical Models",
-    "text": "Statistical Models\nNoise\n\nThe noise term can be thought of as a catch-all for any uncertainty present in our model.\nBroadly speaking, uncertainty can be classified as either epistemic (aka “reducible”) or aleatoric (aka “irreducible”).\nEpistemic uncertainty stems from a lack of knowledge about the world; with additional information, it could be reduced.\nAleatoric uncertainty, on the other hand, stems from randomness inherent in the world; no amount of additional information can reduce it."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#statistical-models-2",
-    "href": "Lectures/Lec13/Lec13.html#statistical-models-2",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Statistical Models",
-    "text": "Statistical Models\nNoise\n\nAs an example: errors arising from a misspecified model are epistemic, as, in theory, if the model were corrected, they would be eliminated.\nOn the other hand, measurement error is widely accepted as aleatoric; repeated measurements will not reduce the amount of measurement error.\nSince the noise term in our model captures the uncertainty present, we treat it as a zero-mean random variable.\nLater, we’ll need to add some additional specificity to this (e.g. what distribution does it follow? What assumptions do we need to make about its variance?) - for now, we’ll leave things fairly general."
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#why-model",
-    "href": "Lectures/Lec13/Lec13.html#why-model",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Why Model?",
-    "text": "Why Model?\n\n\n\nPrediction\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the true (de-noised) median selling price of a house built in 1918?\n\n\n\nInference\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow confident are we in our guess about the relationship between year built and selling price?"
-  },
-  {
-    "objectID": "Lectures/Lec13/Lec13.html#next-time",
-    "href": "Lectures/Lec13/Lec13.html#next-time",
-    "title": "PSTAT 100: Lecture 13",
-    "section": " Next Time",
-    "text": "Next Time\n\nTomorrow, we’ll start our discussion on a specific type of parametric model that lends itself nicely to analysis (called the SLR model).\n\nOur discussion on the SLR model will last several lectures.\n\nREMINDER: Homework 2 is due This Sunday (July 20) by 11:59pm on Gradescope."
   },
   {
     "objectID": "Lectures/Lec12/Lec12.html#recap",
