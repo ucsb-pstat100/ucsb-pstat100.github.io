@@ -147,7 +147,7 @@ $$ \frac{\sum_{i=1}^{n} e_i^2}{n} =: \frac{\mathrm{RSS}}{2}$$
 :::
 
 -   **Multiple:** multiple (_p_) covariates
--   **Linear:** we assume the signal function is linear in the covariates
+-   **Linear:** we assume the signal function is linear in the parameters
 -   **Regression:** numerical response.
 
 -   In terms of individual observations: 
