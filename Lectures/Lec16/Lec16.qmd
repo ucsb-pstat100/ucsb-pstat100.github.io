@@ -1,0 +1,1095 @@
+---
+title: "PSTAT 100: Lecture 16"
+subtitle: "Regression, Part III"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/100_hex.png"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/100_hex.png"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(palmerpenguins)
+library(plotly)
+library(splines)
+```
+
+# Categorical Predictors {background-color="black" background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHJyOG5pY3RqeHRndzV3YjBraTc4cXM0dWIya2dsMnI5bXlhdGZrayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/28Dt9jCEPSKHA0rcfy/giphy.gif" background-size="100rem"}
+
+
+## {{< fa gamepad >}} Mario Kart
+
+-   Let's consider a dataset pertaining to _Mario Kart_.
+    -   Specifically, this dataset tracks the selling price of used and new copies of _Mario Kart_ for the Nintendo Wii.
+    
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+mariokart <- read.csv("data/mariokart.csv")
+mariokart <- mariokart %>% mutate(
+  cond = as.factor(cond),
+  sell_price = total_pr - ship_pr)
+mariokart %>% select(sell_price, cond) %>% head(7) %>% pander()
+```
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| fig-height: 8
+mariokart %>% ggplot(aes(x = cond, y = sell_price)) +
+  geom_boxplot(staplewidth = 0.25, 
+               outlier.size = 4) + theme_minimal(base_size = 36) + 
+  ggtitle("Price Comparisons") + xlab("condition") + ylab("selling price")
+```
+:::
+:::
+
+::::
+
+
+## {{< fa gamepad >}} Mario Kart
+
+-   Let's remove the two unusually-expensive used copies from our consideration.
+    -   Very likely, these were rare/antique copies which is why they sold for unusually high prices
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| fig-height: 8
+set.seed(123)
+mariokart <- mariokart[-which(mariokart$sell_price > 100),]
+mariokart$cond_new <- ifelse(mariokart$cond == "new", 0, 1)
+
+mariokart %>% ggplot(aes(x = cond, y = sell_price)) +
+  geom_boxplot(staplewidth = 0.25, 
+               outlier.size = 4,
+               linewidth = 1.5,
+               fill = "#56B4E9") + 
+  theme_minimal(base_size = 36) + 
+  ggtitle("Price Comparisons") + xlab("condition") + ylab("selling price")
+  
+```
+:::
+:::
+
+
+::: {.column width="50%"}
+-   From our plot, it appears as though, on average, used copies sold for less than new copies.
+
+-   But how might we _model_ this statistically?
+
+-   _y_~_i_~ = β~0~ + β~1~ _x_~_i_~ + ε~_i_~?
+:::
+
+
+::::
+
+
+
+## {{< fa gamepad >}} Mario Kart
+    
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+mariokart %>% select(sell_price, cond) %>% head(3) %>% pander()
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+
+set.seed(123)
+mariokart %>% ggplot(aes(x = jitter(cond_new, amount = 0.05), y = sell_price)) +
+  geom_vline(xintercept = 0, linewidth = 1, col = "gray") +
+  geom_vline(xintercept = 1, linewidth = 1, col = "gray") +
+  geom_point(size = 4) + theme_minimal(base_size = 32) + 
+  ggtitle("Scatterplot (Not Good!)") + xlab("condition (jittered)") + 
+  ylab("selling price") +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.text.x = element_blank())  +
+  annotate("text", label = "new", x = 0, y = 27, size = 9) +
+  annotate("text", label = "used", x = 1, y = 27, size = 9)
+```
+:::
+
+::::
+
+-   By the way, recall that a "scatterplot" is _NOT_ a good plot for this particular dataset - I'm mainly including one to keep things consistent with out treatment of regression from the past few lectures.
+
+-   47.55	= β~0~ + β~1~ (`new`) + ε~_i_~? That doesn't seem right...
+
+-   The main idea is that our covariate is now _categorical_ (as opposed to _numerical_). So, we need a new way to encode its observations into our model.
+
+-   **Idea:** use [**indicators**]{.alert}!
+
+
+
+## {{< fa gamepad >}} Mario Kart
+    
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+mariokart %>% select(sell_price, cond) %>% head(3) %>% pander()
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+set.seed(123)
+
+mariokart %>% ggplot(aes(x = jitter(cond_new, amount = 0.05), y = sell_price)) +
+  geom_vline(xintercept = 0, linewidth = 1, col = "gray") +
+  geom_vline(xintercept = 1, linewidth = 1, col = "gray") +
+  geom_point(size = 4) + theme_minimal(base_size = 32) + 
+  ggtitle("Scatterplot (Not Good!)") + xlab("condition (jittered)") + 
+  ylab("selling price") +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.text.x = element_blank())  +
+  annotate("text", label = "new", x = 0, y = 27, size = 9) +
+  annotate("text", label = "used", x = 1, y = 27, size = 9)
+```
+:::
+
+::::
+
+$$ y_i = \beta_0 + \beta_1 \cdot 1 \! \! 1 \{ \texttt{condition}_i = \texttt{used} \} + \varepsilon_i $$
+
+
+
+## {{< fa gamepad >}} Mario Kart
+    
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+mariokart %>% select(sell_price, cond) %>% head(3) %>% pander()
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+set.seed(123)
+
+mariokart %>% ggplot(aes(x = jitter(cond_new, amount = 0.05), y = sell_price)) +
+  geom_vline(xintercept = 0, linewidth = 1, col = "gray") +
+  geom_vline(xintercept = 1, linewidth = 1, col = "gray") +
+  geom_point(size = 4) + theme_minimal(base_size = 32) + 
+  ggtitle("Scatterplot (Not Good!)") + xlab("condition (jittered)") + 
+  ylab("selling price") +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.text.x = element_blank())  +
+  annotate("text", label = "new", x = 0, y = 27, size = 9) +
+  annotate("text", label = "used", x = 1, y = 27, size = 9)
+```
+:::
+
+::::
+
+$$ y_i = \begin{cases} \beta_0 + \beta_1 + \varepsilon_i & \text{if $i^\text{th}$ copy is used} \\ \beta_0  + \varepsilon_i & \text{if $i^\text{th}$ copy is new} \\ \end{cases}  $$
+
+    
+-   β~0~ can be interpreted as the average price among new copies
+-   β~0~ + β~1~ can be interpreted as the average price among used copies
+    -   Hence, β~1~ can be interpreted as the average difference in price between new and used copies of the game
+
+
+## {{< fa gamepad >}} Mario Kart
+    
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 6
+set.seed(123)
+
+mariokart %>% ggplot(aes(x = jitter(cond_new, amount = 0.05), y = sell_price)) +
+  geom_vline(xintercept = 0, linewidth = 1, col = "gray") +
+  geom_vline(xintercept = 1, linewidth = 1, col = "gray") +
+  geom_point(size = 4) + theme_minimal(base_size = 32) + 
+  ggtitle("Scatterplot (Not Good!)") + xlab("condition (jittered)") + 
+  ylab("selling price") +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.text.x = element_blank())  +
+  annotate("text", label = "new", x = 0, y = 27, size = 9) +
+  annotate("text", label = "used", x = 1, y = 27, size = 9) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linewidth = 1.5)
+```
+:::
+
+
+::: {.column width="50%"}
+$$ \widehat{y}_i = \beta_0 + \beta_1 1 \! \! 1\{\texttt{condition}_i = \texttt{used}\} $$
+
+```{r}
+mariokart %>% group_by(cond) %>% summarise(avg_price = mean(sell_price) %>% round(10)) %>% pander()
+```
+
+:::
+
+
+::::
+
+::: {.fragment}
+```
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   51.008      0.995  51.266  < 2e-16 ***
+condused     -11.271      1.305  -8.639  1.2e-14 ***
+```
+:::
+
+\
+
+-   Note: 39.74 - 51.0 = -11.26.
+
+## {{< fa gamepad >}} Mario Kart
+
+-   Before, we used the indicator $1 \! \! 1 \{ \texttt{condition}_i = \texttt{used} \}$. What happens if we, instead, used the indicator $1 \! \! 1 \{ \texttt{condition}_i = \texttt{new} \}$?
+
+-   Mathematically, our model becomes
+
+::: {.fragment style="font-size:28px"}
+$$ y_i = \beta_0 + \beta_1 1 \! \! 1 \{ \texttt{condition}_i = \texttt{new} \} + \varepsilon_i = \begin{cases} \beta_0 + \beta_1 + \varepsilon_i & \text{if $i^\text{th}$ game is new} \\ \beta_0 + \varepsilon_i & \text{if $i^\text{th}$ game is used} \\ \end{cases} $$
+:::
+
+-   Now, β~0~ can be interpreted as the average selling price among _used_ copies and β~0~ + β~1~ can be interpreted as the average selling price among new copies.
+    -   Then, β~1~ represents the difference in average selling prices between new and used copies.
+    
+-   **Question:** What are the new estimates of the slope and intercept?
+
+
+## {{< fa code-branch >}} Encoding Binary Variables
+### 0/1 Encoding
+
+-   In our previous example, our covariate (game condition) was categorical.
+    -   Specifically, it is what we might call [**binary**]{.alert}, since its values are one of only two possibilities (`used` or `new`).
+    
+-   In the case of a general binary covariate `x`, we need to select which **level** (i.e. category) corresponds to a 0 value in our indicator and which corresponds to a 1 value in our indicator.
+    -   The level encoded with a 0 value is called the [**baseline**]{.alert} (aka [**reference**]{.alert}) level.
+    -   The intercept in an SLR will correspond to the average response value _within the baseline level_.
+
+-   It is up to you to set the baseline level; as we saw in _Mario Kart_ example, our choice doesn't matter too much as long as we are consistent!
+
+
+## {{< fa code-branch >}} Encoding Binary Variables
+### 0/1 Encoding
+
+-   In `R`, the baseline level is set to whichever level of the factor appears first:
+
+::: {.fragment}
+```{r}
+#| echo: True
+mariokart$cond %>% levels()
+```
+:::
+
+-   Since `"new"` appears as the first level, it was assigned to be the baseline level.
+
+-   If we want to recode the baseline, we can use the `relevel()` function:
+
+::: {.fragment}
+```{r}
+#| echo: True
+mariokart <- mariokart %>% 
+  mutate(cond_2 = relevel(cond, "used"))
+
+mariokart$cond_2 %>% levels()
+```
+:::
+
+
+## {{< fa code-branch >}} Encoding Binary Variables
+### -1/1 Encoding
+
+-   The framework above is sometimes called [**0/1 encoding**]{.alert}, as we are using _indicators_ (which output either a 0 or a 1 value). 
+
+-   There is another type of encoding commonly used, called [**-1/1 encoding**]{.alert}.
+
+-   As the name suggests, instead of assigning 0/1 values to the categories, we assign -1/1 values.
+
+-   For example, in the _Mario Kart_ example, we might set
+$$ x_i = \begin{cases} +1 & \text{if the $i^\text{th}$ copy was used} \\ -1 & \text{if the $i^\text{th}$ copy was new} \\ \end{cases} $$
+
+
+## {{< fa code-branch >}} Encoding Binary Variables
+### -1/1 Encoding
+
+-   Then, our model becomes
+
+::: {.fragment style="font-size:28px"}
+$$ y_i = \beta_0 + \beta_1 x_i + \varepsilon_i  = \begin{cases} \beta_0 + \beta_1 + \varepsilon_i & \text{if $i^\text{th}$ game is used} \\ \beta_0 - \beta_1 - \varepsilon_i & \text{if $i^\text{th}$ game is used} \\ \end{cases} $$
+:::
+
+-   β~0~ can be interpreted as the overall average price of game copies (ignoring condition entirely)
+β~1~ can be interpreted as the amount over the average that new copies sell for and also the amount under the average that used copies sell for.
+
+## {{< fa code-branch >}} Encoding Binary Variables
+### -1/1 Encoding
+
+```{r}
+mariokart <- read.csv("data/mariokart.csv")
+mariokart <- mariokart[-which(mariokart$total_pr > 100),]
+mariokart <- mariokart %>% mutate(
+  cond = as.factor(cond),
+  sell_price = total_pr - ship_pr)
+```
+
+
+```{r}
+#| echo: True
+
+mariokart$cond_2 <- ifelse(mariokart$cond == "new", 1, -1)
+lm(sell_price ~ cond_2, mariokart) %>% summary()
+```
+
+
+## {{< fa code-branch >}} Encoding Binary Variables
+### -1/1 Encoding
+
+```{r}
+#| echo: True
+
+mariokart %>% group_by(cond) %>% summarise(avg_price = mean(sell_price)) %>% pander()
+```
+
+\
+
+```{r}
+#| echo: True
+
+(mariokart %>% 
+    group_by(cond) %>% 
+    summarise(avg_price = mean(sell_price))
+)$avg_price %>% mean()
+```
+
+
+
+## {{< fa layer-group >}} Encoding Categorical Variables
+### Multiple Levels
+
+-   What if we have a covariate with _more_ than two levels?
+
+-   As an example, let's return to the `palmerpenguins` dataset
+    -   Recall that this particular dataset tracks various characteristics of penguins from the Palmer Research Station in Antarctica 
+    
+:::: {.columns}
+
+::: {.column width="50%"}
+-   One variable records the species of each penguin, as either Adélie, Chinstrap, or Gentoo
+    -   As such, `species` is a categorical variable that has three levels.
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+![Artwork by @allison_horst](Images/lter_penguins.png)
+:::
+:::
+
+::::
+
+
+
+## {{< fa layer-group >}} Encoding Categorical Variables
+### Palmerpenguins `species`
+
+:::: {.columns}
+
+
+::: {.column width="50%"}
+```{r}
+#| echo: False
+
+penguins %>% select(body_mass_g, species) %>% head(5) %>% pander()
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: False
+#| fig-height: 6
+
+set.seed(100)
+penguins %>% ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(staplewidth = 0.25,
+                outlier.size = 4,
+               linewidth = 1.5,
+               fill = "#56B4E9") +
+  ylab("body mass (g)") + xlab("species (jittered)") +
+  theme_minimal(base_size = 36) +
+  ggtitle("Penguin Weight vs. Species")
+```
+:::
+
+::::
+
+::: {.fragment style="font-size:28px"}
+\begin{align*}
+  y_i & =  \beta_0 + \beta_1 1 \! \! 1 \{\texttt{species}_i = \texttt{Adelie}\} + \beta_2 1 \! \! 1 \{\texttt{species}_i = \texttt{Chinstrap}\}   \\
+  & \hspace{15mm} + \beta_3 1 \! \! 1 \{\texttt{species}_i = \texttt{Gentoo}\} + \varepsilon_i
+\end{align*}
+:::
+
+-   What's the intercept β~0~ doing here? (Hint: how many species are there?)
+
+## {{< fa layer-group >}} Encoding Categorical Variables
+### Palmerpenguins `species`
+
+::: {.fragment style="font-size:28px"}
+\begin{align*}
+  y_i & =  \beta_0 + \beta_1 1 \! \! 1 \{\texttt{species}_i = \texttt{Chinstrap}\}   \\
+  & \hspace{15mm} + \beta_2 1 \! \! 1 \{\texttt{species}_i = \texttt{Gentoo}\} + \varepsilon_i
+\end{align*}
+:::
+
+-   Here, we've set `Adelie` to be the baseline level.
+    -   Said differently, β~0~  can now be interpreted as the average body weight of Adélie penguins.
+
+-   The slope parameters can now be interpreted as comparisons of species-specific body weights _as compared to the average body weight of Adélie penguins_.
+    -   E.g. β~1~ represents the average difference in body weights of Chinstrap penguins as compared with Adélie penguins.
+
+## {{< fa layer-group >}} Encoding Categorical Variables
+### General Case
+
+-   In general, for a categorical variable with _k_ levels, we will (if we want to use proper indicators to encode values) need only _k_ – 1 slope parameters and one intercept (representing the average response value within the baseline level).
+
+-   This is often called a [**set-to-zero**]{.alert} condition, as we are explicitly setting one of the parameters (i.e. one of the slope parameters) to be equal to zero.
+
+-   There exists another type of condition, which we will not discuss in this course (but will arise in future classes, like PSTAT 122).
+
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+Interpret the following `R` output:
+
+```{r}
+lm(body_mass_g ~ species, data = penguins) %>% summary()
+```
+
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 3L, font_size = "6rem")
+```
+
+## {{< fa plug >}} An Interesting Connection...
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+mariokart %>% select(sell_price, cond) %>% head(5) %>% pander()
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 6
+set.seed(123)
+
+mariokart$cond_new <- ifelse(mariokart$cond == "new", 0, 1)
+mk_mod1 <- lm(sell_price ~ cond, mariokart)
+
+mariokart %>% ggplot(aes(x = jitter(cond_new, amount = 0.05), y = sell_price)) +
+  geom_vline(xintercept = 0, linewidth = 1, col = "gray") +
+  geom_vline(xintercept = 1, linewidth = 1, col = "gray") +
+  geom_point(size = 4) + theme_minimal(base_size = 32) + 
+  ggtitle("Scatterplot (Not Good!)") + xlab("condition (jittered)") + 
+  ylab("selling price") +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.text.x = element_blank())  +
+  annotate("text", label = "new", x = 0, y = 27, size = 9) +
+  annotate("text", label = "used", x = 1, y = 27, size = 9) +
+  geom_abline(intercept = mk_mod1$coef[1], slope = mk_mod1$coef[2],
+              linewidth = 1.5, col = "blue") + xlim(c(-0.5, 1.5))
+```
+:::
+
+::::
+
+::: {.fragment}
+$$ y_i = \beta_0 + \beta_1 \cdot 1 \! \! 1 \{ \texttt{condition}_i = \texttt{used} \} + \varepsilon_i $$
+:::
+
+
+## {{< fa plug >}} An Interesting Connection...
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+mariokart %>% select(sell_price, cond) %>% head(5) %>% pander()
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 6
+set.seed(123)
+
+mariokart$cond_new <- ifelse(mariokart$cond == "new", 0, 1)
+mk_mod1 <- lm(sell_price ~ cond, mariokart)
+
+mariokart %>% ggplot(aes(x = as.factor(cond_new), y = sell_price)) +
+  geom_vline(xintercept = 0, linewidth = 1, col = "gray") +
+  geom_vline(xintercept = 1, linewidth = 1, col = "gray") +
+  geom_boxplot(linewidth = 1, staplewidth = 0.25, outlier.size = 6) + theme_minimal(base_size = 32) + 
+  ggtitle("Scatterplot") + xlab("condition (jittered)") + 
+  ylab("selling price") +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.text.x = element_blank()) +
+  geom_abline(intercept = mk_mod1$coef[1] + 11.5, slope = mk_mod1$coef[2],
+              linewidth = 1.5, col = "blue")
+```
+:::
+
+::::
+
+
+$$ y_i = \beta_0 + \beta_1 \cdot 1 \! \! 1 \{ \texttt{condition}_i = \texttt{used} \} + \varepsilon_i $$
+
+
+## {{< fa plug >}} An Interesting Connection...
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+mariokart %>% select(sell_price, cond) %>% head(5) %>% pander()
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 6
+set.seed(123)
+
+mariokart$cond_new <- ifelse(mariokart$cond == "new", 0, 1)
+mk_mod1 <- lm(sell_price ~ cond, mariokart)
+
+mariokart %>% ggplot(aes(x = as.factor(cond_new), y = sell_price)) +
+  geom_vline(xintercept = 0, linewidth = 1, col = "gray") +
+  geom_vline(xintercept = 1, linewidth = 1, col = "gray") +
+  geom_boxplot(linewidth = 1, staplewidth = 0.25, outlier.size = 6) + theme_minimal(base_size = 32) + 
+  ggtitle("Scatterplot") + xlab("condition (jittered)") + 
+  ylab("selling price") +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.text.x = element_blank()) +
+  geom_abline(intercept = mk_mod1$coef[1] + 11.5, slope = mk_mod1$coef[2],
+              linewidth = 1.5, col = "blue")
+```
+:::
+
+::::
+
+
+:::: {.columns}
+::: {.column width="75%"}
+`y` = (grand mean) + (deviations from grand mean) + (noise)
+:::
+
+::: {.column width="25%"}
+::: {.fragment}
+**This is just ANOVA!**
+:::
+:::
+
+::::
+
+::: {.fragment}
+$$ y_{ij} = \mu + \tau_j + \varepsilon_{ij}; \quad i = 1, \cdots, n_j; \ j = 1, 2 $$
+:::
+
+
+## {{< fa plug >}} An Interesting Connection...
+
+::: {.fragment}
+```{r}
+#| echo: True
+aov(mariokart$sell_price ~ mariokart$cond) %>% coef()
+```
+:::
+
+\
+
+::: {.fragment}
+```{r}
+#| echo: True
+lm(mariokart$sell_price ~ mariokart$cond) %>% coef()
+```
+:::
+
+
+\
+
+::: {.fragment}
+::: {.callout-tip}
+## **Moral**
+
+Regression with categorical variables is equivalent to ANOVA.
+:::
+:::
+
+
+## {{< fa plug >}} ANOVA Tables
+
+-   This also allows us to address one oustanding issue: that of the output of `aov()`.
+
+-   Back when we talked about ANOVA, I mentioned we'd discuss the output of `aov()` a bit more after we discussed regression.
+
+-   This is because an [**ANOVA Table**]{.alert} is really just a _regression table_!
+
+::: {.fragment}
+```{r}
+#| echo: True
+aov(mariokart$sell_price ~ mariokart$cond) %>% summary()
+```
+:::
+
+
+
+
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+Using the `penguins` dataset, regress body mass onto flipper length, flipper depth, species, and sex. 
+
+::: {.nonincremental}
+(a)   Should any covariates be removed from the model? Why?
+(b)   Produce a regression table and interpret the results. (If you believe a covariate should be removed, produce a regression table for the modified regression fit, after removing the covariate.)
+:::
+
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 6L, font_size = "6rem")
+```
+
+## {{< fa triangle-exclamation >}} An Important Distinction
+
+-   Note that our discussions today have all been about categorical _covariates_.
+
+-   We have still been in a regression setting; i.e. assuming that our _response_ is _numerical_.
+
+-   The question of how to deal with categorical _responses_ leads us into the realm of [**classification**]{.alert}, which we will start discussing tomorrow.
+
+-   For now, I'd like to close our our Regression chapter with some extensions.
+
+
+# Series Estimators {background-color="black" background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW53ZTlxa212MWlzY2lqbmh4ZGthd2cyY3I2cnE4N2x5NnY4dW9peSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEduXpUkXpRgAxfAk/giphy.gif" background-size="100rem"}
+
+
+## {{< fa backward-fast >}} Recap
+### Statistical Model
+
+::: {.fragment style="text-align:center"}
+**`y`** = **`f`** ( **`x`** ) + **`noise`**
+:::
+
+-   As mentioned a few lectures ago, in [**parametric**]{.alert} modeling, we decompose the signal into a series of components, each involving a _parameter_ that can be estimated.
+
+-   For instance, in linear regression, we asserted **`y`~`i`~** = β~0~ + β~1~ **`x`~`i`,1~** + ... + β~_p_~ **`x`~`i`,_p_~**  + _ε_~_i_~
+    -   Estimating the signal is therefore equivalent to estimating the parameters.
+
+-   There exist other approaches to regression, some of which we will briefly discuss now.
+
+## {{< fa bezier-curve >}} Polynomial Regression
+
+-   Recall [**polynomial regression**]{.alert}: **`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~** + β~2~ **`x`~`i`~**^2^ + ... + β~_p_~ **`x`~`i`~**^_p_^  + _ε_~_i_~
+
+-   Polynomial regression is actually a special case of a broader class of regression techniques, called [**series estimators**]{.alert} (sometimes called [**basis regression**]{.alert} methods).
+
+-   The idea is that we continue to decompose our signal function into a series of estimable components; now, however, we use a set of [**orthonormal basis function**]{.alert} $\{\phi_k(t)\}_{k}$:
+$$ f(x) = \sum_{k = 0}^{p} \beta_k \phi_k(x) $$
+
+## {{< fa bezier-curve >}} Polynomial Regression
+
+-   For example, polynomial regression essentially takes $\phi_k(x) = x^k$
+    -   **Aside:** "raw" polynomials (_x_, _x_^2^, etc.) are not orthogonal, so technically we use an orthogonalized version of polynomials (e.g. [**Legendre polynomials**]{.alert} or [**Hermite polynomials**]{.alert}).
+    
+::: {.fragment}
+```{r}
+#| fig-height: 4
+
+set.seed(100)
+n <- 100
+true_sig <- \(x){(x - 2)^3 + (x - 2)^2 - (x - 2) + 0.75}
+x <- runif(n, 0, 3.3)
+y <- true_sig(x) + rnorm(n, 0, 0.5)
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("Scatterplot of Y vs. X",
+          subtitle = "with Cubic Polynomial Fit") +
+  xlim(c(0, 3.5)) +
+  geom_smooth(method = "lm", 
+              formula = y ~ poly(x, 3),
+              se = F,
+              col = "blue", linewidth = 1.75)
+```
+:::
+
+## {{< fa water-ladder >}} Piecewise Regression
+### Example Data
+
+```{r}
+set.seed(100)
+n <- 100
+true_sig <- \(x){(x - 2)^3 + (x - 2)^2 - (x - 2) + 0.75}
+x <- runif(n, 0, 3.3)
+y <- true_sig(x) + rnorm(n, 0, 0.5)
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("Scatterplot of Y vs. X") +
+  xlim(c(0, 3.5))
+```
+
+
+## {{< fa water-ladder >}} Piecewise Regression
+### Piecewise-Constant Regression
+
+```{r}
+## piecewise-constant regression
+m1 <- mean(y[which((x >= 0) & (x < 1))])
+m2 <- mean(y[which((x >= 1) & (x < 2))])
+m3 <- mean(y[which((x >= 2) & (x < 3))])
+m4 <- mean(y[which((x >= 3) & (x < 4))])
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("Scatterplot of Y vs. X") +
+  geom_vline(xintercept = 1, linetype = "dashed", col = "red") +
+  geom_vline(xintercept = 2, linetype = "dashed", col = "red") +
+  geom_vline(xintercept = 3, linetype = "dashed", col = "red") +
+  annotate(
+    "segment",
+    x = 0, xend = 1, y = m1, yend = m1,
+    col = "blue", linewidth = 1.5
+  ) +
+  annotate(
+    "segment",
+    x = 1, xend = 2, y = m2, yend = m2,
+    col = "blue", linewidth = 1.5
+  ) +
+  annotate(
+    "segment",
+    x = 2, xend = 3, y = m3, yend = m3,
+    col = "blue", linewidth = 1.5
+  ) +
+  annotate(
+    "segment",
+    x = 3, xend = 3.5, y = m4, yend = m4,
+    col = "blue", linewidth = 1.5
+  ) +
+  xlim(c(0, 3.5))
+
+```
+
+## {{< fa water-ladder >}} Piecewise Regression
+### Piecewise-Linear Regression
+
+```{r}
+## piecewise-linear regression
+slope_int <- function(k) {
+  x_train <- x[which((x >= k) & (x < (k + 1)))]
+  y_train <- y[which((x >= k) & (x < (k + 1)))]
+  lm1 <- lm(y_train ~ x_train)
+  data.frame( x_start = k,
+              y_start = predict(lm1, newdata = data.frame(x_train = k)),
+              x_end = (k + 1),
+              y_end =  predict(lm1, newdata = data.frame(x_train = (k + 1)))
+  )
+}
+
+x_fin <- x[which((x >= 3) & (x < (3 + 1)))]
+y_fin <- y[which((x >= 3) & (x < (3 + 1)))]
+lm_fin <- lm(y_fin ~ x_fin)
+
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("Scatterplot of Y vs. X") +
+  geom_vline(xintercept = 1, linetype = "dashed", col = "red") +
+  geom_vline(xintercept = 2, linetype = "dashed", col = "red") +
+  geom_vline(xintercept = 3, linetype = "dashed", col = "red") +
+  annotate(
+    "segment",
+    x = slope_int(0)$x_start, xend = slope_int(0)$x_end, 
+    y = slope_int(0)$y_start, yend = slope_int(0)$y_end, 
+    col = "blue", linewidth = 1.5
+  ) + annotate(
+    "segment",
+    x = slope_int(1)$x_start, xend = slope_int(1)$x_end, 
+    y = slope_int(1)$y_start, yend = slope_int(1)$y_end, 
+    col = "blue", linewidth = 1.5
+  ) + annotate(
+    "segment",
+    x = slope_int(2)$x_start, xend = slope_int(2)$x_end, 
+    y = slope_int(2)$y_start, yend = slope_int(2)$y_end, 
+    col = "blue", linewidth = 1.5
+  ) + 
+  annotate(
+    "segment",
+    x = slope_int(3)$x_start, xend = x[which.max(x)] + 0.1,
+    y = predict(lm_fin, newdata = data.frame(x_fin = 3)),
+    yend = predict(lm_fin, newdata = data.frame(x_fin = x[which.max(x)] + 0.1)),
+    col = "blue", linewidth = 1.5
+  ) + 
+  xlim(c(0, 3.5))
+```
+
+
+## {{< fa water-ladder >}} Piecewise Regression
+### Piecewise-Cubic Regression
+
+```{r}
+## piecewise-linear regression
+cubic_res <- function(k) {
+  x_train <- x[which((x >= k) & (x < (k + 1)))]
+  y_train <- y[which((x >= k) & (x < (k + 1)))]
+  cub1 <- lm(y_train ~ x_train + I(x_train**2) + I(x_train**3))
+  return(coef(cub1))
+}
+
+x_fin <- x[which((x >= 3) & (x < (3 + 1)))]
+y_fin <- y[which((x >= 3) & (x < (3 + 1)))]
+lm_fin <- lm(y_fin ~ x_fin)
+
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("Scatterplot of Y vs. X") +
+  geom_vline(xintercept = 1, linetype = "dashed", col = "red") +
+  geom_vline(xintercept = 2, linetype = "dashed", col = "red") +
+  geom_vline(xintercept = 3, linetype = "dashed", col = "red") +
+  stat_function(
+    fun = \(x){cubic_res(0)[1] + cubic_res(0)[2] * x + 
+        cubic_res(0)[3] * x^2 + cubic_res(0)[4] * x^3},
+    xlim = c(0, 1),
+    col = "blue", linewidth = 1.5
+  ) + stat_function(
+    fun = \(x){cubic_res(1)[1] + cubic_res(1)[2] * x + 
+        cubic_res(1)[3] * x^2 + cubic_res(1)[4] * x^3},
+    xlim = c(1, 2),
+    col = "blue", linewidth = 1.5
+  ) + stat_function(
+    fun = \(x){cubic_res(2)[1] + cubic_res(2)[2] * x + 
+        cubic_res(2)[3] * x^2 + cubic_res(2)[4] * x^3},
+    xlim = c(2, 3),
+    col = "blue", linewidth = 1.5
+  ) + stat_function(
+    fun = \(x){cubic_res(3)[1] + cubic_res(3)[2] * x + 
+        cubic_res(3)[3] * x^2 + cubic_res(3)[4] * x^3},
+    xlim = c(3, 3.27),
+    col = "blue", linewidth = 1.5
+  ) +
+  xlim(c(0, 3.5))
+```
+
+
+## {{< fa water-ladder >}} Piecewise Regression
+### Piecewise-Cubic Regression with Boundary Conditions
+
+```{r}
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("Scatterplot of Y vs. X") +
+  geom_vline(xintercept = 1, linetype = "dashed", col = "red") +
+  geom_vline(xintercept = 2, linetype = "dashed", col = "red") +
+  geom_vline(xintercept = 3, linetype = "dashed", col = "red") +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ bs(x, knots = c(0, 1, 2, 3)), se = F,
+    linewidth = 1.5
+  ) + 
+  xlim(c(0, 3.5))
+```
+
+
+## {{< fa water-ladder >}} Piecewise Regression
+### Splines
+
+-   Piecewise-polynomial regression is actually _also_ an example of a series estimator!
+    -   Essentially we take $\phi_k(x) = x^k \cdot 1 \! \! 1_{\{c_k \leq x < c_{k + 1}\}}$
+
+-   Piecewise-cubic regression with the constraint of being continuous and twice-differentiable at the endpoints is called [**spline regression**]{.alert}. The points at which we divide our data are called [**knots**]{.alert}.
+    -   Again, we won't cover how to select the location or number of knots; you'll talk more about this in PSTAT 131/231.
+
+
+## {{< fa angles-up >}} Series Estimators
+### Trigonometric Regression
+
+:::: {.columns}
+
+::: {.column width="50%"}
+-   Assuming equally-spaced inputs, we can also propose a class of [**trigonometric series estimators**]{.alert}; for example,
+
+::: {.fragment style="font-size:24px"}
+$$ f(x) = \sum_{j=1}^{p} \beta_j \cos[(j - 1) \pi x]$$
+:::
+
+-   Selection of _p_ can be accomplished with Cross-Validation (out-of-scope for PSTAT 100)
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r}
+#| fig-height: 10
+
+source("Code/cosreg.R")
+data.frame(x = x, y = y) %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 5) +
+  stat_function(fun = \(t){cosest(t, x, y, lam_opt)},
+                col = "blue",
+                linewidth = 3) +
+  theme_minimal(base_size = 32) +
+  ggtitle("Cosine Regression")
+```
+:::
+
+:::
+
+
+::::
+
+
+## {{< fa angles-up >}} Series Estimators {style="font-size:30px"}
+### Kernel Regression
+
+-   Inspired by our discussion on Kernel Density Estimation, we can propose a [**kernel regression estimate**]{.alert}:
+
+::: {.fragment style="font-size:28px"}
+$$ \widehat{f}(x) = \frac{1}{n \lambda} \sum_{i=1}^{n}\left[ K\left(\frac{x - x_i}{\lambda} \right)y_i \right] $$
+:::
+
+-   Estimators like these arise frequently in a class like PSTAT 105, and are widely categorized as a [**nonparametric regression**]{.alert} technique.
+    -   **Fun Fact:** my own research falls within the paradigm of nonparametric regression!
+    -   Essentially, my advisor and I are trying to propose a new nonparametric regression estimator that allows for correlation in the outputs.
+    
+    
+## {{< fa forward-fast >}} Next Time
+
+-   Tomorrow we'll begin (and conclude) our discussion on Classification.
+
+-   Lab 08 (tomorrow's lab) will walk you through some hands-on explorations of classification. 
+    -   As a reminder, if you attend Section in-person tomorrow you will gain access to the solutions to Lab 08 early!
+    
+-   I advise you to keep working through the ICA 02 practice problems as well.
