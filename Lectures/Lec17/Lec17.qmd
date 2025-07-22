@@ -1,0 +1,714 @@
+---
+title: "PSTAT 100: Lecture 17"
+subtitle: "Classification"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/100_hex.png"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/100_hex.png"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(palmerpenguins)
+library(plotly)
+library(tidymodels)
+```
+
+## {{< fa ferry >}} RMS Titanic
+
+-   The RMS Titanic was an ocean liner that set sail from Southampton (UK) to New York (US) on April 10, 1912.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+![Image Source: https://images.liverpoolmuseums.org.uk/2020-01/titanic-deck-plan-for-titanic-resource-pack-pdf.pdf](images/titanic.png)
+:::
+:::
+
+::: {.column width="50%"}
+-   5 days into its journey, on April 15, 1912, the ship collided with an iceberg and sank. 
+    -   Tragically, the number of lifeboats was far fewer than the total number of passengers, and as a result not everyone survived. 
+:::
+
+::::
+
+-   A passenger/crew manifest still exists, which includes survival statuses. 
+
+
+## {{< fa ferry >}} RMS Titanic
+
+```{r}
+#| echo: True
+titanic <- read.csv("data/titatnic.csv")
+titanic %>% head(3) %>% pander()
+```
+
+
+## {{< fa ferry >}} RMS Titanic
+
+-   **Question:** given a passenger's information (e.g. sex, class, etc.), can we predict whether or not they would have survived the crash?
+
+-   Firstly, based on _domain knowledge_ available to us, we believe there to be a relationship between survival rates and demographics.
+    -   For example, it is known that women and children were allowed to board lifeboats before adult men; hence, it's plausible to surmise that women and children had higher survival rates than men.
+    -   Additionally, lifeboats were located on the main deck of the ship; so, perhaps those staying on higher decks had greater chances of survival than those staying on lower decks.
+    
+    
+    
+## {{< fa ferry >}} RMS Titanic
+### First Model
+
+-   To make things more explicit, let's suppose we wish to predict survival based solely on a passenger's age.
+
+-   This lends itself nicely to a model, with:
+    -   **Response:** survival status (either `1` for `survived`, or `0` for `died`)
+    -   **Predictor:** age (numerical, continuous)
+    
+-   Now, note that our response is _categorical_. Hence, our model is a _classification_ model, as opposed to a _regression_ one.
+
+-   The (parametric) modeling approach is still the same:
+    1)    Propose a model
+    2)    Estimate parameters
+    3)    Assess model fit
+    
+    
+## {{< fa ferry >}} RMS Titanic
+### First Model
+
+-   We just have to be a bit more creative about our model proposition.
+
+-   Let's see what happens if we try to fit a "linear" model: **`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~**  + _ε_~_i_~
+
+::: {.fragment}
+```{r}
+#| fig-height: 4
+titanic %>% ggplot(aes(x = Age, y = Survived)) +
+  geom_point(size = 3) + theme_minimal(base_size = 18) +
+  ggtitle("Survival vs. Age")
+```
+:::
+
+
+## {{< fa ferry >}} RMS Titanic
+### First Model
+
+```{r}
+#| fig-height: 4
+titanic %>% ggplot(aes(x = Age, y = Survived)) +
+  geom_point(size = 3) + theme_minimal(base_size = 18) +
+  ggtitle("Survival vs. Age") +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linewidth = 1.5)
+```
+
+-   But what does this line _mean_? 
+    -   The problem is in our proposed model.
+
+
+## {{< fa ferry >}} RMS Titanic
+### First Model
+
+::: {.fragment style="text-align:center"}
+**`y`~`i`~** = β~0~ + β~1~ **`x`~`i`~**  + _ε_~_i_~
+:::
+
+-   For any _i_, **`y`~`i`~** will either be zero or one.
+-   But, for any _i_, **`x`~`i`~** will be a positive number, not necessarily constrained to be either 0 or 1.
+-   So, this model makes no sense; how can something that is categorical equal something that is numerical? 
+-   There are a couple of different resolutions - what we discuss in PSTAT 100 is just one possible approach.
+
+
+## {{< fa ferry >}} RMS Titanic
+### Second Model
+
+-   **First Idea:** rethink the way we incorporate randomness (error) into our model.
+    -   Let's define the random variable _Y_~_i_~ to be the survival status of the _i_^th^ (randomly selected) passenger. Then _Y_~_i_~ ~ Bern(_π_~i~), where _π_~i~ denotes the probability that the _i_^th^ (randomly selected) passenger survives.
+
+-   **Second Idea:** instead of modeling _Y_~_i_~ directly, model the _survival probabilities_, _π_~i~.
+    -   After all, the probability of surviving is likely related to age.
+    
+-   But, _π_~`i`~ = β~0~ + β~1~ **`x`~`i`~** is _still_ not a valid model, since _π_~i~  is constrained to be between 0 and 1, whereas (β~0~ + β~1~ **`x`~`i`~**) is unconstrained.
+
+
+## {{< fa ferry >}} RMS Titanic
+### Second Model
+
+-   **Third Idea:** apply a _transformation_ to β~0~ + β~1~ **`x`~`i`~**.
+
+-   Specifically, if we can find a function _g_ that maps from the real line to the unit interval, then a valid model would be _π_~`i`~ = g(β~0~ + β~1~ **`x`~`i`~**). 
+
+-   What class of (probabilistic) functions map from the real line to the unit interval?
+    -   CDF's! 
+    
+-   Indeed, we can pick _any_ CDF to be our transformation _g_. There are two popular choices, giving rise to two different models:
+    -   Standard Normal CDF, leading to [**probit**]{.alert} models
+    -   Logistic Distribution CDF, leading to [**logit**]{.alert} models
+    
+
+
+## {{< fa code-fork >}} Probit vs. Logit Models
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Probit Model:** _π_~`i`~ = Φ(β~0~ + β~1~ **`x`~`i`~**)
+
+::: {style="font-size:25px"}
+$$ \Phi(x) := \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-z^2 / 2} \ \mathrm{d}z $$
+:::
+
+:::
+
+::: {.column width="50%"}
+```{r}
+data.frame(x = -3:3) %>% ggplot(aes(x = x)) +
+  stat_function(fun = pnorm, col = "blue", linewidth = 2) + 
+  xlab("x") + ylab(bquote(Phi(x))) +
+  theme_minimal(base_size = 28) + 
+  ggtitle(bquote("Graph of"~~Phi(x)))
+```
+:::
+
+::::
+
+
+::: {.fragment}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Logit Model:** _π_~`i`~ = Λ(β~0~ + β~1~ **`x`~`i`~**)
+
+::: {style="font-size:25px"}
+$$ \Lambda(x) := \frac{1}{1 + e^{-x}} $$
+:::
+
+:::
+
+::: {.column width="50%"}
+```{r}
+data.frame(x = -3:3) %>% ggplot(aes(x = x)) +
+  stat_function(fun = plogis, col = "blue", linewidth = 2) + 
+  xlab("x") + ylab(bquote(Lambda(x))) +
+  theme_minimal(base_size = 28) + 
+  ggtitle(bquote("Graph of"~~Lambda(x)))
+```
+:::
+
+::::
+
+
+:::
+
+-   Logit models are more commonly referred to as [**logistic**]{.alert} regression models.
+
+
+## {{< fa code-fork >}} Logistic Regression
+
+-   As an example, let's return to our _Titanic_ example where _π_~`i`~ represents the probability that the _i_^th^ passenger survived, and **`x`~`i`~** denotes the _i_^th^ passenger's age.
+
+-   A logistic regression model posits
+$$ \pi_i = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_i)}} $$
+
+-   Equivalently,
+$$ \ln\left( \frac{\pi_i}{1 - \pi_i} \right) = \beta_0 + \beta_1 x_i $$
+    -   **Aside:** we call the function _g_(t) = ln(_t_ / (1 - _t_)) the [**logit function**]{.alert}.
+
+
+## {{< fa code-fork >}} Logistic Regression
+### Model Assumptions
+
+-   Now, as with pretty much all statistical models, there are some assumptions that must be met in order for a Logistic Regression Model (LRM) to be appropriate.
+
+-   The two main assumptions of the LRM are:
+    1)   The probability of the outcome changes monotonically with each explanatory variable
+    2)   Observations are independent
+    
+-   Technically, we are also assuming that the true conditional probability of success $\Prob(Y_i = 1 \mid X_i = x_i)$ is logistically-related to the covariate value _x_~_i_~.
+    
+-   In PSTAT 100, we'll opt for a "knowledge-based" approach to check if the assumptions are met; that is, we'll simply use our knowledge/intuition behind the true DGP.
+
+## {{< fa code-fork >}} Logistic Regression
+
+-   The second formulation of our model makes it a bit easier to interpret the coefficients:
+    -   _Ceterus paribus_ (holding all else constant), a one-unit increase in **`x`~`i`~** is modeled to be associated with a β~1~ -unit increase in the [**log-odds**]{.alert} of _π_~_i_~.
+    -   β~0~ represents the log-odds of survival of a unit with a predictor value of zero.
+    
+-   In `R`, we fit a logistic regression using the `glm()` function.
+    -   This is because logistic regression is a special type of what is known as a [**Generalized Linear Model**]{.alert} (GLM), which is discussed further in PSTAT 127.
+    
+    
+## {{< fa code-fork >}} Logistic Regression
+### _Titatnic_ Dataset
+
+```{r}
+#| echo: True
+
+glm(Survived ~ Age, data = titanic, family = "binomial") %>% summary()
+```
+
+::: {.fragment style="font-size:28px"}
+$$ \ln\left( \frac{\widehat{\pi}_i}{1 - \widehat{\pi_i}} \right) = -0.05672 -0.01096 x_i $$
+:::
+
+
+## {{< fa code-fork >}} Logistic Regression
+### _Titatnic_ Dataset
+
+-   So, as expected, a one-unit increase in `age` corresponds to a _decrease_ in the log-odds of survival.
+    -   Again, this is "expected" because we know children were allowed to board lifeboats before adults.
+    
+-   By the way, can anyone tell me why we use `family = "binomial"` in our call to `glm()`?
+    -   Specifically, what is "binomial" about our logistic regression model? (Hint: go back to the beginning of how we constructed our model!)
+    
+-   **Example Question:** Karla was around 24 years old. What is the probability that she would have survived the crash of the Titanic?
+
+
+
+
+## {{< fa code-fork >}} Logistic Regression
+### _Titatnic_ Dataset
+
+```{r}
+#| echo: True
+
+glm_age <- glm(Survived ~ Age, data = titanic, family = "binomial")
+(p1 <- predict(glm_age, newdata = data.frame(Age = 24)))
+```
+
+::: {.fragment}
+::: {.callout-caution}
+## **Caution**
+
+`predict.glm()` will give you the predicted _log-odds_ - to find the true predicted _survival probability_, you need to invert.
+:::
+:::
+
+
+::: {.fragment}
+```{r}
+#| echo: True
+
+1 / (1 + exp(-p1))
+```
+:::
+
+-   So, based on our model, Karla has an approximately 42.1\% chance of having survived the crash of the Titanic.
+
+
+## {{< fa code-fork >}} Logistic Regression
+### _Titatnic_ Dataset
+
+```{r}
+#| echo: True
+#| code-fold: True
+glm1_c <- glm(Survived ~ Fare, data = titanic, family = "binomial") %>% coef()
+pred_surv <- Vectorize(function(x){
+  1 / (1 + exp(-glm1_c[1] - glm1_c[2] * x))
+})
+
+titanic %>% ggplot(aes(x = Fare, y = Survived)) +
+  geom_point(size = 3) + 
+  theme_minimal(base_size = 18) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, 
+              aes(colour = "Linear Regression"), linewidth = 2) +
+  stat_function(fun = pred_surv, 
+                aes(colour = "Logistic Regression"), linewidth = 2) +
+  labs(colour = "Survival Probability") +
+  ggtitle("Survival Status vs. Fare")
+```
+
+-   Does this make sense, based on our background knowledge?
+
+
+
+## {{< fa code-fork >}} Multiple Logistic Regression
+
+-   Of course, we can construct a logistic regression with _multiple_ predictors:
+
+::: {.fragment style="font-size:25px"}
+\begin{align*}
+\pi_i & = \Lambda\left( \beta_0 + \sum_{j=1}^{p} \beta_j x_{ij} \right) = \frac{1}{1 - e^{-\left(\beta_0 + \sum_{j=1}^{p} \beta_j x_{ij}  \right)}}  \\
+  \mathrm{logit}(\pi_i) & = \beta_0 + \sum_{j=1}^{p} \beta_j x_{ij} 
+\end{align*}
+:::
+
+-   Estimating the parameters ends up being a task and a half; indeed, there do not exist closed-form solutions for the optimal estimates.
+    -   Instead, most computer programs utilize recursive algorithms to perform the model fits.
+    
+    
+## {{< fa pencil >}} Your Turn!
+
+::: {.callout-tip}
+## **Your Turn!**
+
+Adebimpe has found that a good predictor of whether an email is spam or not is the number of times the word "promotion" appears in its body. To that end, she has fit a logistic regression model to model an email's spam/ham status as it relates to the number of times the word "promotion" appears. The resulting regression table is displayed below:
+
+```{r}
+#| echo: False
+set.seed(100)
+n <- 150
+
+num_prom <- rbinom(n, 10, 0.2)
+trueprobs <- 1 / (1 + exp(-(0.2 + 1.5 * num_prom)))
+y <- c()
+for(b in 1:n){
+  y[b] <- sample(c(1, 0), size = 1, prob = c(trueprobs[b], 1 - trueprobs[b]))
+}
+
+spam_df <- data.frame(spam_ham = y, num_prom)
+```
+
+```
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.68748    0.04360  15.768  < 2e-16 ***
+num_prom     0.10258    0.01844   5.564  1.2e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+::: {.nonincremental}
+a)    What is the predicted probability that an email containing the word "promotion" 3 times is spam?
+b)    Provide an interpretation for the value `0.01844` in the context of this problem.
+:::
+:::
+
+```{r}
+#| echo: False
+#| eval: True
+
+countdown(minutes = 3L, font_size = "6rem")
+```
+
+    
+## {{< fa address-card >}} Classification
+
+-   Now, logistic regression gets us estimated survival _probabilities_.
+
+-   It does not, however, give us survival _statuses_ - to get those, we need to build a [**classifier**]{.alert}.
+    -   For example, a few slides ago we said that 24-year-old Karla had a 42.1\% chance of surviving the crash of the _Titanic_.
+    -   But, if she were an actual passenger on the _Titanic_ she would have either survived or not.
+    
+-   In binary classification (i.e. where our original response takes only two values, `survived` or `not`), our classifier typically takes the form: assign **`y`~_i_~** a value of `survived` if the survival probability is above some threshold _c_, and assign **`y`~_i_~** a value of `did not survive` if the survival probability falls below the threshold.
+
+
+## {{< fa address-card >}} _Titanic_ Classifier
+
+-   To start, let's explore the following classifier: {_Y_~_i_~ = 1} if and only if the predicted survival probability was above 50\%. 
+    -   Let's also stick with our model that models survival probabilities in terms of only `Fare`.
+    
+    
+::: {.fragment}
+```{r}
+#| echo: True
+
+glm_fare <- glm(Survived ~ Fare, data = titanic, family = "binomial")
+probs <- glm_fare$fitted.values
+titanic$PassengerId[which(probs > 0.5)] %>% head(15)
+```
+:::
+
+-   Can anyone tell me, in words, what these represent?
+
+
+::: {.fragment}
+```{r}
+#| echo: True
+
+sum(titanic[which(probs > 0.5),]$Survived) / length(which(probs > 0.5))
+```
+:::
+
+-   What does this represent?
+
+## {{< fa table >}} Confusion Matrices
+
+![](Images/confusion_matrix.svg)
+
+## {{< fa table >}} Confusion Matrices
+
+-   For example, in the context of the _Titanic_ dataset:
+    -   The count of **true positives** is the number of passengers correctly classified as having survived
+    -   The count of **false negatives** is the number of passengers incorrectly classified as having died
+
+-   The [**True Positive Rate**]{.alert} (aka [**sensitivity**]{.alert}) is the proportion of passengers who actually survived that were correctly classified as having survived.
+
+-   The [**False Positive Rate**]{.alert} (aka one minus the [**specificity**]{.alert}) is the proportion of passengers who actually died that were incorrectly classified as having survived.
+
+
+## {{< fa table >}} Confusion Matrices
+### _Titanic Example_
+
+**Classifier:** $\{Y_i = 1\} \iff \{ \widehat{\pi}_i > 0.5\}$
+
+```{r}
+#| echo: True
+
+tp <- ((titanic$Survived == 1) * (fitted.values(glm_fare) > 0.5)) %>% sum
+fp <- ((titanic$Survived == 0) * (fitted.values(glm_fare) > 0.5)) %>% sum
+
+fn <- ((titanic$Survived == 1) * (fitted.values(glm_fare) < 0.5)) %>% sum
+tn <- ((titanic$Survived == 0) * (fitted.values(glm_fare) < 0.5)) %>% sum
+```
+
+\
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+data.frame(`truth_+` = c(tp, fn),
+           `truth_-` = c(fp, tn),
+           row.names = c("class_+", "class_-"),
+           check.names = F) %>% pander()
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+tpr <- tp / (tp + fn)
+fpr <- fp / (fp + tn)
+
+cat("TPR:", tpr, "\n", "\n", "FPR:", fpr)
+```
+:::
+
+::::
+
+
+## {{< fa table >}} Confusion Matrices
+### _Titanic Example_
+
+**Classifier:** $\{Y_i = 1\} \iff \{ \widehat{\pi}_i > 0.9\}$
+
+```{r}
+#| echo: True
+
+tp <- ((titanic$Survived == 1) * (fitted.values(glm_fare) > 0.9)) %>% sum
+fp <- ((titanic$Survived == 0) * (fitted.values(glm_fare) > 0.9)) %>% sum
+
+fn <- ((titanic$Survived == 1) * (fitted.values(glm_fare) < 0.9)) %>% sum
+tn <- ((titanic$Survived == 0) * (fitted.values(glm_fare) < 0.9)) %>% sum
+```
+
+\
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+data.frame(`truth_+` = c(tp, fn),
+           `truth_-` = c(fp, tn),
+           row.names = c("class_+", "class_-"),
+           check.names = F) %>% pander()
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+tpr <- tp / (tp + fn)
+fpr <- fp / (fp + tn)
+
+cat("TPR:", tpr, "\n", "\n", "FPR:", fpr)
+```
+:::
+
+::::
+
+
+## {{< fa table >}} Performance of a Classifier
+### ROC Curves
+
+-   So, we can see that our TPR and TNR will change depending on the cutoff value we 
+select for our classifier.
+
+-   This gives us the idea to perhaps use quantities like TPR and TNR to compare across different cutoff values.
+
+-   Rather than trying to compare confusion matrices, it’s a much nicer idea to try and compare plots.
+
+-   One such plot is called a [**Receiver Operating Characteristic (ROC) Curve**]{.alert}, which plots the sensitivity (on the vertical axis) against (1 - specificity) (on the horizontal axis)
+
+## {{< fa table >}} ROC Curves
+
+```{r}
+tprs <- c()
+fprs <- c()
+
+for(c in seq(0, 1, length = 80)) {
+  tp <- ((titanic$Survived == 1) * (fitted.values(glm_fare) > c)) %>% sum
+  fp <- ((titanic$Survived == 0) * (fitted.values(glm_fare) > c)) %>% sum
+  
+  fn <- ((titanic$Survived == 1) * (fitted.values(glm_fare) < c)) %>% sum
+  tn <- ((titanic$Survived == 0) * (fitted.values(glm_fare) < c)) %>% sum
+  
+  tpr <- tp / (tp + fn)
+  fpr <- fp / (fp + tn)
+  
+  tprs <- c(tprs, tpr)
+  fprs <- c(fprs, fpr)
+}
+
+
+data.frame(x = fprs, y = tprs, c = seq(0, 1, length = 80)) %>%
+  plot_ly(
+    x = ~fprs,
+    text = ~paste("cutoff:", round(c, 4))
+  ) %>%
+  add_trace(
+    y = ~tprs,
+    mode = 'lines+markers') %>%
+  layout(
+    xaxis = list(title = "1 - Specificity", range = c(0, 1)),
+    yaxis = list(title = "Sensitivity", scaleanchor = "x", scaleratio = 1)
+  )
+```
+
+-   We pick the cutoff to be that which makes the ROC curve as close to the point (0, 1) as possible.
+    -   This indicates we should use a cutoff of around 33\%
+    
+    
+## {{< fa table >}} Performance of a Classifier
+### ROC Curves
+
+-   Allow me to elaborate a bit more on this last point.
+
+-   The vertical axis of a ROC curve effectively represents the probability of a good thing; ideally, we’d like a classifier that has a 100% TPR!
+
+-   Simultaneously, an ideal classifier would also have a 0% FPR (which is precisely what is plotted on the horizontal axis of an ROC curve).
+
+::: {.fragment style="text-align:center"}
+![](Images/roc.svg){width="85%"}
+:::
+
+## {{< fa table >}} Performance of a Classifier
+### ROC Curves
+
+-   ROC curves can also be used to compare across _models_ as well.
+
+:::: {.columns}
+::: {.column width="30%"}
+-   **Model 1:** Using `Fare`, `Age`, `Sex`, and `Cabin` as predictors
+-   **Model 2:** Using `Fare` and `Age` as predictors
+:::
+
+::: {.column width="70%"}
+::: {.fragment}
+```{r}
+titanic_complete <- titanic[complete.cases(titanic), ]
+
+c1 <- data.frame(
+  truth = titanic_complete$Survived %>% factor(),
+  probs = 1 - glm(Survived ~ Fare + Age + Sex + Cabin, data = titanic_complete, family = "binomial")$fitted.values
+) %>%
+  roc_curve(
+    truth, probs
+  )
+
+
+c2 <- data.frame(
+  truth = titanic_complete$Survived %>% factor(),
+  probs = 1 - glm(Survived ~ Fare + Age, data = titanic_complete, family = "binomial")$fitted.values
+) %>%
+  roc_curve(
+    truth, probs
+  )
+
+rbind(c1, c2) %>% mutate(
+  ind = c(rep("Mod1", nrow(c1)), rep("Mod2", nrow(c2))) %>% factor()
+) %>%
+  ggplot(aes(x = 1 - specificity, y = sensitivity)) +
+  geom_path(aes(col = ind), linewidth = 1.5) +
+  geom_abline(lty = 3) +
+  coord_equal() +
+  theme_bw(base_size = 24) +
+  labs(colour = "Legend") + 
+  ggtitle("ROC Curves")
+```
+:::
+:::
+::::
+
+-   The ROC curve for model 1 is farther from the diagonal than model 2, indicating that it is the better choice. 
+
+
+## {{< fa forward-fast >}} Next Time
+
+-   In lab today, you'll explore classification a bit further.
+    -   Specifically, you'll work through fitting a few logistic models and building a few classifiers based on a non-simulated dataset pertaining to dates (the fruit)
+    
+-   There will be no new material tomorrow; instead, we'll review for ICA 02.
+    -   If you haven't already, please read through the information document I posted on the website pertaining to ICA 02.
+    -   As a reminder, all material (up to and including today's lecture **and lab**) is potentially fair game for the ICA, though there will be a considerable emphasis on material from _after_ ICA 01.
+    
+-   Also, recall you'll be getting early-access to Lab08 solutions by going to Section today!
