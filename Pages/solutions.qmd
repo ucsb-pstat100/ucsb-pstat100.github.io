@@ -66,6 +66,10 @@ Below are solutions to selected assignment. Some things to keep in mind:
 -   <a href="../Files/Solns/lab07_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab07</button></a>
 :::
 
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab08_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab08</button></a>
+:::
+
 
 ::::
 
