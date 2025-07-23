@@ -59,7 +59,20 @@ Below are solutions to selected assignment. Some things to keep in mind:
 
 ::::
 
+
+:::: {.columns}
+
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab07_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab07</button></a>
+:::
+
+
+::::
+
 -   **Lab04 Note:** There was a typo in Question 9: you were meant to overlay the density over your histogram from Question _8_, not Question _7_. (The grader graded very leniently, as a result.)
+
+-   **Lab07 Note:** I know people had some trouble getting Question 6 to work. In a sense, this was to be expected and one of the reasons why multicollinearity is so dangerous!
+    -   For the purposes of an ICA, you should just make sure you're comfortable detecting multicollinearity using a correlation matrix, and be generally aware of some of the implications multicollinearity has on a model (if it is present).
 
 
 ## Homework
@@ -70,7 +83,8 @@ Below are solutions to selected assignment. Some things to keep in mind:
 -   <a href="../Files/Solns/HW01_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">HW01</button></a>
 :::
 
--   Homework 2 solutions will become accessible at this link at 12:01am on Tuesday July 22, 2025, and be uploaded to the course website sometime later in the day: [Click Here](https://ucsb.instructure.com/courses/27498/modules)
-
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/HW02_Solns.pdf" target="_blank"><button type="button" class="btn btn-primary">HW02</button></a>
+:::
 
 ::::
