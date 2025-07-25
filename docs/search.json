@@ -259,6 +259,90 @@
     "text": "Some General Tips for Success\n\nForm study groups\nData Science is not meant to be a lonely field! There is much we can learn from one another, and it can be an incredibly enlightening experience to discuss problems and ideas with one another. (Just make sure you don’t violate any of the Academic Integrity points listed above)\n\n\nStart things early!\nMake sure you’re giving yourself enough time to complete the homework assignments, labs, projects, and make sure to leave plenty of time to study for the ICAs. I’d recommend creating a weekly schedule for yourself, and allocating time each day for PSTAT 100 material (whether that be working on an assignment, reading lecture slides, or coming to Office Hours.\n\n\nPractice Makes Progress\nThe best way to start learning Data Science is to start doing Data Science. The various textbooks and resources linked on the Course Website come equipped with additional practice problems and exercises which I highly recommend you work through.\n\n\nAttend Office Hours (TA and Instructor) regularly\nEven if you don’t have a specific question, you’re always more than welcome to sit in on Office Hours and listen to other people’s questions. (Sometimes, doing so will help you formulate your own questions!)\n\n\nAttend Lectures and Discussion Sections.\nIt’s true that we do not have an attendance policy, but please don’t let yourselves fall behind on attendance. Studies show that regular exposure is the best way to learn material, and there really is no substitute for going to Section and Lecture. Also, while you’re in Lecture, take your own notes! Even the act of writing things down and having to synthesize what you think is important information can help you process and learn the material in real time.\n\n\nDon’t Be Too Hard on Yourself!\nThough a little stress can be a good motivating factor for some, please don’t stress yourself out too much. Your performance in this course is not an evaluation of who you are as a person!"
   },
   {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle",
+    "title": "Project Walkthrough",
+    "section": "Data Science Lifecycle",
+    "text": "Data Science Lifecycle\nFirst Version\n\n\n\n\n\nThe Data Science Lifecycle (DSL) seeks to describe the general lifecycle of a typical data science project.\nFour main stages: questioning, collecting, analyzing, and interpreting.\nLots of variations of the DSL, some with more steps than others.\nMain idea: data science projects are highly iterative."
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-1",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-1",
+    "title": "Project Walkthrough",
+    "section": "Data Science Lifecycle",
+    "text": "Data Science Lifecycle\nSecond Version\n\n\n\n\n\nIn my opinion, this is a much better representation of the DSL! (Though the graphic is certainly too complex.)\nAgain, data science is a highly iterative field; we rarely proceed in a linear fashion from start to finish.\n\nRather, we start, analyze out data, realize we need more data, collect more data, analyze our new data, realize we need to revise our original question, etc."
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-2",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-2",
+    "title": "Project Walkthrough",
+    "section": "Data Science Lifecycle",
+    "text": "Data Science Lifecycle\nStarting the Cycle\n\n\n\n\n\nSometimes we’ll begin with a question we want to answer.\nE.g. “Has air quality in the US improved over time?”\nE.g. “How has the distribution of wealth and income changed since the economic recession of 2008?”"
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-3",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-3",
+    "title": "Project Walkthrough",
+    "section": "Data Science Lifecycle",
+    "text": "Data Science Lifecycle\nStarting the Cycle\n\n\n\n\n\nIn this case, our question will dictate what kind of data to collect\n\nE.g. AQI data\nE.g. Income Data; Federal Bank Data; etc.\n\nIn other cases, we’ll start with a dataset, which will then inform what question we want to ask.\n\nLimitations in our dataset may also necessitate changes in our question; we’ll return to this point in a few lectures."
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-4",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-4",
+    "title": "Project Walkthrough",
+    "section": "Data Science Lifecycle",
+    "text": "Data Science Lifecycle\nTraveling Through the Cycle\n\n\n\n\n\nOnce we have our data, we need to analyze it.\nThis might involve data cleaning or data tidying; this could also involve producing appropriate visualizations.\n\nAt this stage, we may perform Exploratory Data Analysis (EDA).\nIn certain cases, we may find it useful to apply techniques from maching learning to better understand our dataset."
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-5",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#data-science-lifecycle-5",
+    "title": "Project Walkthrough",
+    "section": "Data Science Lifecycle",
+    "text": "Data Science Lifecycle\nTraveling Through the Cycle\n\n\n\n\n\nFinally, we need to understand what our data is saying.\nThis will typically involve answering our question(s); oftentimes we’ll take things a step further and see if we can use our data to make sense of the world.\nA key component of this stage of the DSL is producing some sort of a report or presentation."
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question",
+    "title": "Project Walkthrough",
+    "section": " Formulating a Research Question",
+    "text": "Formulating a Research Question\nSome Tips\n\nFormulating a good research question is a balancing act.\n\nOn the one hand, your question should be specific enough to be answerable.\nOn the other, yes/no questions tend to make relatively uninteresting research questions\n\nSometimes, a collection of yes/no questions can be combined to create a more interesting research question.\n\n\nFinally, make sure you are setting reasonable expectations with your question.\n\nAfter all, we only have a finite number of hours in a day, and a finite number of days before the showcase!"
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question-1",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question-1",
+    "title": "Project Walkthrough",
+    "section": " Formulating a Research Question",
+    "text": "Formulating a Research Question\nFirst Example\n\n\n\n\n\n\nQuestion: First Pass\n\n\nHave global temperatures increased in the past decade?\n\n\n\n\nLet’s start with positives.\n\nIt’s definitely applicable!\nIt includes a specific time frame for investigation (“past decade”)\n\nHowever, it is a bit too specific.\n\nAll we need to do is plot temperature over time, and we will certainly see the answer to be “yes”.\nWe can be a bit more ambitious than this!"
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question-2",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question-2",
+    "title": "Project Walkthrough",
+    "section": " Formulating a Research Question",
+    "text": "Formulating a Research Question\nFirst Example\n\n\n\n\n\n\nQuestion: Second Pass\n\n\nHow have global temperatures increased in the past decade?\n\n\n\n\nThis is a much “better” question.\n\nSomewhat open-ended; leaves something to actually be done!\nWe can answer using a graph, using statistical hypothesis testing, or a wide array of other tools."
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question-3",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question-3",
+    "title": "Project Walkthrough",
+    "section": " Formulating a Research Question",
+    "text": "Formulating a Research Question\nSecond Example\n\n\n\n\n\n\nQuestion: First Pass\n\n\nWhat have been the effects of Global Warming in the past decade?\n\n\n\n\nThis is definitely not too specific; in fact, it might be a bit too nonspecific…\nNow, this might be a perfectly good question to start with.\n\nBut, as you conduct your analyses, I’d encourage you to start fine-tuning the question a bit more.\nAre you going to focus on temperature? Carbon emissions? The impact on wildlife? The impact on people?\nTrying to answer all of these, as interesting as it may be, will not be feasible in the next few weeks."
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question-4",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#formulating-a-research-question-4",
+    "title": "Project Walkthrough",
+    "section": " Formulating a Research Question",
+    "text": "Formulating a Research Question\nThird Example\n\n\n\n\n\n\nQuestion: First Pass\n\n\nDo UCLA students tend to, on average, have longer commute times than UCSB students?\n\n\n\n\nLet’s discuss this one together - what are your thoughts?"
+  },
+  {
+    "objectID": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#collecting-data",
+    "href": "Pages/Projects/ProjWalkthrough/ProjWalkthrough.html#collecting-data",
+    "title": "Project Walkthrough",
+    "section": " Collecting Data",
+    "text": "Collecting Data\n\nThe next stage in the DSL is to collect data.\nGoogle is a great place to start!\nAnother popular site is Kaggle.\nIf you’re struggling with creating a research question, you can always start by finding an interesting dataset, and then formulating a question from that!\nLet’s run through an example of that."
+  },
+  {
     "objectID": "Pages/ICAs.html",
     "href": "Pages/ICAs.html",
     "title": "Information about ICAs",
@@ -4247,6 +4331,48 @@
     "title": "PSTAT 100: Lecture 04",
     "section": " Next Time",
     "text": "Next Time\nAnd Coming Up\n\nOn Monday, we’ll start exploring other (numerical) ways of summarizing data.\nIn lab today, we’ll cover a brief introduction to databases, and ways to combine two or more dataframes together.\nPlease don’t forget to finish Homework 1, which is due 11:59pm this Sunday!!!\n\nYou have all the information needed to complete all the problems now.\nFor the final problem, keep in mind the principles of visualization we talked about today!"
+  },
+  {
+    "objectID": "Pages/Projects/FP.html",
+    "href": "Pages/Projects/FP.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "Major attribution to Dr. Trevor Ruiz for large portions of this project!"
+  },
+  {
+    "objectID": "Pages/Projects/FP.html#overview",
+    "href": "Pages/Projects/FP.html#overview",
+    "title": "Final Project",
+    "section": "Overview",
+    "text": "Overview\nIt’s time to put everything we’ve learned together, and practice running through the Data Science Lifecycle all the way through! We will be working with data from the World Happiness Report 2023, including information on indices related to happiness and wellbeing by country from 2008-2023.\nAdditionally, you will be tasked with producing two deliverables for this project:\n\nA report that answers a question of your choice (pertaining to the dataset you choose)\nA Multimedia Component: either a Video Presentation, or a Shiny App (see details below)"
+  },
+  {
+    "objectID": "Pages/Projects/FP.html#the-report",
+    "href": "Pages/Projects/FP.html#the-report",
+    "title": "Final Project",
+    "section": "The Report",
+    "text": "The Report\nFor the report, you should both formulate and answer a question of your choosing. A good question is one that you want to answer. It should be a question with contextual meaning, not a purely technical matter. It should be clear enough to answer, but not so specific or narrow that your analysis is a single line of code. It should require you to do some nontrivial exploratory analysis, descriptive analysis, and possibly some statistical modeling. You aren’t required to use any specific methods, but it should take a bit of work to answer the question. There may be multiple answers or approaches to contrast based on different ways of interpreting the question or different ways of analyzing the data. If your question is answerable in under 15 minutes, or your answer only takes a few sentences to explain, the question probably isn’t nuanced enough.\n\n\n\n\n\n\nSome Tips on Choosing a Good Question\n\n\n\n\nYes/No questions are often too simple, and don’t make very good research questions\nYou can consider compounding several smaller questions into a single, broader research goal\nA good research question strikes a balance between being broad enough to warrant an interesting discussion, but not so broad as to not be able to be addressed in the given timeframe.\n\nAn example:\n\nNeeds Improvement: “Is there a relationship between variable Y and variable X?”\n\nThis is not a good question - it is too simple, and can be answered in only one line of code.\n\nImproved Question: “What factors contribute to variable Y, and in what ways?”\n\nThis is a better question, because it allows for a broader investigation.\n\nEven Better: “What factors contribute to variable Y, and in what ways? What possible consequences does this have for population Z?”\n\nThis is a better question, as it starts to get into our discussion on scope of inference and creates a more meaningful discussion.\n\n\nFor your convenience, here is a link to a presentation I gave to a Data Science club last (Spring 2025) quarter on picking a good research question: Click Here\n\n\nYour report should take the form of a full “formal” report, including:\n\nAn abstract, in which you provide a brief outline of your report\nAn introduction, in which you introduce the dataset you are working with along with the question/s you want to answer. You should also describe the data as best you can; cover the sampling if applicable and data semantics, but focus on providing high-level context and not technical details. Don’t report preprocessing steps or describe tabular layouts, etc.\nA series of explorations and analyses as you see fit (e.g. a section for EDA, a section where you carry out some tests, etc.) Provide a walkthrough with commentary of the steps you took to investigate and answer the question. This section can and should include code cells and text cells, but you should try to focus on presenting the analysis clearly by organizing cells according to the high-level steps in your analysis so that it is easy to skim. For example, if you fit a regression model, include formulating the explanatory variable matrix and response, fitting the model, extracting coefficients, and perhaps even visualization all in one cell; don’t separate these into 5-6 substeps.\nA conclusion, in which you restate the answer to your question and summarize your report.\n\nLike with the Mid-Quarter Project, you should not include any code chunks in your report; you should also make sure to interpret and describe all of your plots/tables."
+  },
+  {
+    "objectID": "Pages/Projects/FP.html#multimedia-component",
+    "href": "Pages/Projects/FP.html#multimedia-component",
+    "title": "Final Project",
+    "section": "Multimedia Component",
+    "text": "Multimedia Component\nOne of the most important skills a Data Scientist can have is the ability to convey information to a broader audience. As such, you are being tasked with producing (in addition to your report) a multimedia component, designed to convey your findings to a non-technical audience.\nTo that end, your group may choose to either produce a video presentation or design an interactive Shiny App.\n\nVideo Presentation\nIf your group chooses this option, you must submit a video that is at least 7 minutes in length. Your video must also come equipped with slides, and each member of your group must appear in the video for a significant portion of time. In your presentation, you can highlight a few of your findings from your report - just make sure that your presentation is not too technical. As a rule-of-thumb, you should imagine that the audience watching your video only has a basic (PSTAT 5A) level of understanding of statistics - so don’t expect the audience to, for example, know what an estimator is!\nPlease keep in mind that I expect you to use slides for your presentation (e.g. Gogle Slides, Powerpoint, Keynote, etc.). You may consider using RevealJS for a more interactive slide deck - this is actually the format I used for the lecture slides this quarter. You can read more about creating RevealJS slides in R at this link: https://quarto.org/docs/presentations/revealjs/.\n\n\nShiny App\nShiny Apps are an incredible functionality provided by R, which allows you to easily create interactive apps using familiar R syntax. To read more about Shiny Apps, click here: https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/.\nIf your group decides to create a Shiny App, your app should showcase at least two interesting parts of your dataset. For example, you might consider including a PCA-related analysis in which the user controls the magnitude of dimension reduction. Or, you could opt for a more visualizations-based app, allowing the user to add aesthetics to encode additional information on variables. It’s really up to you! Having said that, your app should, above all, be interactive - don’t just display a static plot in a Shiny App and call that your “app”.\nI find the “Get Started” tutorial on the above-mentioned link (https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/) to be a great starting point if you haven’t used Shiny Apps before."
+  },
+  {
+    "objectID": "Pages/Projects/FP.html#evaluation",
+    "href": "Pages/Projects/FP.html#evaluation",
+    "title": "Final Project",
+    "section": "Evaluation",
+    "text": "Evaluation\n\nReport Grading\nYour report will be graded according to the following rubric:\n\n\n\n\n\n\n\n\n\n\n\n\n\nExcellent\nGreat\nAcceptable\nSomewhat Lacking\nNeeds Improvement\nMissing\n\n\n\n\nFormatting: Report is free of major typos; all plots and figures are rendered, and no code chunks / error messages are present.\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts\n\n\nContent: Report reads narratively (as opposed to a bulleted list), with a clearly indicated research question and an appropriate evidence-based answer to the question\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts\n\n\nFigures: All figures have clearly and descriptively labeled axes and titles; appropriate color scales and schemes have been utilizes, and all figures are interpreted.\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts\n\n\n\n\n\nVideo Presentation Grading\nVideo Presentations will be evaluated according to the following rubric:\n\n\n\n\n\n\n\n\n\n\n\n\n\nExcellent\nGreat\nAcceptable\nSomewhat Lacking\nNeeds Improvement\nMissing\n\n\n\n\nLogistics: Presentation was the required length (at least 7 minutes) wich everyone presenting at least once. Slides were properly formatted, and contributed to the overall presentation.\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts\n\n\nDepth: Presentation showcased several interesting findings from the data, and wasn’t just a re-reading of the report\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts\n\n\nLevel: Presentation was not overly technical, and comprehensible to a watcher with limited statistical background\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts\n\n\n\n\n\nShiny App Grading\nShiny Apps will be evaluated according to the following rubric:\nVideo Presentations will be evaluated according to the following rubric:\n\n\n\n\n\n\n\n\n\n\n\n\n\nExcellent\nGreat\nAcceptable\nSomewhat Lacking\nNeeds Improvement\nMissing\n\n\n\n\nInteractivity: Application has sufficient interactivity, that contributes to the overall app and understanding of the data\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts\n\n\nAesthetics/Ease-of-use: Application is easy to use, and user-friendly with clearly labeled inputs and outputs\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts\n\n\nContent: Application displays appropriate outputs (with no errors/unrendered code), and all figures are presentation-quality\n5 pts\n4 pts\n3 pts\n2 pts\n1pts\n0 pts"
+  },
+  {
+    "objectID": "Pages/Projects/FP.html#what-to-submit",
+    "href": "Pages/Projects/FP.html#what-to-submit",
+    "title": "Final Project",
+    "section": "What to Submit",
+    "text": "What to Submit\nThere are two separate upload portals on Gradescope- one for your report, and one for your shiny app.\n\nWhen submitting the report, submit only a PDF. Again, only one member in your group needs to submit - they will then need to indicate, on Gradescope, which members were a part of your group.\nFor submitting the Multimedia Component:\n\nIf you are submitting a Video:\n\nUpload your Video to Google Drive\nUpload your Slides to Google Drive\nCreate a document with a link to your Video and a link to your Slides, and upload this document to the Gradescope portal\n\nIf you are submitting a Shiny App:\n\nDownload all of your app files (including any data subfolders) as a .zip file\nUpload this .zip file to the Gradescope portal\n\n\n\nPlease ensure your report is readable, and your videos are uploaded/your zip files open and your app runs correctly. Again, the graders will not be sifting through your code - if your app doesn’t run or your PDF doesn’t open, you will receive a zero on the related grading parts. Thank you for understanding!"
   },
   {
     "objectID": "Pages/Projects/MQP.html",

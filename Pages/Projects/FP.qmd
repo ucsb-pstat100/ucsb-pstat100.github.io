@@ -1,0 +1,146 @@
+---
+title: "Final Project"
+author:
+  - name: "PSTAT 100, with Ethan Marzban"
+    affiliations:
+      - name: "Summer Session A, 2025"
+author-title: "Course"
+affiliation-title: "Quarter"
+format:
+  html:
+    page-layout: full
+    fontsize: 14pt
+title-block-banner: TRUE
+toc: TRUE
+---
+
+_**Major attribution to Dr. Trevor Ruiz for large portions of this project!**_
+
+:::{.callout-important}
+## **IMPORTANT**
+
+-   You must submit the project in the same groups you used for the Mid-Quarter Project.
+
+    -   It's up to you and your groupmates on how you want to divide up the work. Just be sure you include the names of all of your group members on both the report and the Multimedia Component (see below).
+    
+-   The final project is now due by 11:59pm on **Friday, August 1, 2025**. No late submissions will be accepted for any reasons.
+:::
+
+## Overview
+
+It's time to put everything we've learned together, and practice running through the Data Science Lifecycle all the way through! We will be working with data from the World Happiness Report 2023, including information on indices related to happiness and wellbeing by country from 2008-2023.
+
+Additionally, you will be tasked with producing two deliverables for this project:
+
+-   A report that answers a question of your choice (pertaining to the dataset you choose)
+
+-   A Multimedia Component: either a Video Presentation, or a Shiny App (see details below)
+
+## The Report
+
+For the report, you should both **formulate** and **answer** a question of your choosing. A good question is one that you want to answer. It should be a question with contextual meaning, not a purely technical matter. It should be clear enough to answer, but not so specific or narrow that your analysis is a single line of code. It should require you to do some nontrivial exploratory analysis, descriptive analysis, and possibly some statistical modeling. You aren’t required to use any specific methods, but it should take a bit of work to answer the question. There may be multiple answers or approaches to contrast based on different ways of interpreting the question or different ways of analyzing the data. If your question is answerable in under 15 minutes, or your answer only takes a few sentences to explain, the question probably isn’t nuanced enough.
+
+::: {.callout-tip}
+## **Some Tips on Choosing a Good Question**
+
+1)    Yes/No questions are often too simple, and don't make very good research questions
+2)    You can consider compounding _several_ smaller questions into a single, broader research goal
+3)    A good research question strikes a balance between being broad enough to warrant an interesting discussion, but not so broad as to not be able to be addressed in the given timeframe.
+
+**An example:**
+
+-   **Needs Improvement:** "Is there a relationship between variable `Y` and variable `X`?"
+    -   This is not a good question - it is too simple, and can be answered in only one line of code.
+-   **Improved Question:** "What factors contribute to variable `Y`, and in what ways?"
+    -   This is a better question, because it allows for a broader investigation.
+-   **Even Better:** "What factors contribute to variable `Y`, and in what ways? What possible consequences does this have for population `Z`?"
+    -   This is a better question, as it starts to get into our discussion on **scope of inference** and creates a more meaningful discussion.
+    
+For your convenience, here is a link to a presentation I gave to a Data Science club last (Spring 2025) quarter on picking a good research question: <a href="ProjWalkthrough/ProjWalkthrough.qmd" target="_blank"><button type="button" class="btn btn-primary">Click Here</button></a>
+:::
+
+Your report should take the form of a full "formal" report, including:
+
+1)    An **abstract**, in which you provide a brief outline of your report
+
+2)    An **introduction**, in which you introduce the dataset you are working with along with the question/s you want to answer. You should also describe the data as best you can; cover the sampling if applicable and data semantics, but focus on providing high-level context and not technical details. Don’t report preprocessing steps or describe tabular layouts, etc.
+
+3)    A series of **explorations** and **analyses** as you see fit (e.g. a section for EDA, a section where you carry out some tests, etc.) Provide a walkthrough with commentary of the steps you took to investigate and answer the question. This section can and should include code cells and text cells, but you should try to focus on presenting the analysis clearly by organizing cells according to the high-level steps in your analysis so that it is easy to skim. For example, if you fit a regression model, include formulating the explanatory variable matrix and response, fitting the model, extracting coefficients, and perhaps even visualization all in one cell; don’t separate these into 5-6 substeps.
+
+4)    A **conclusion**, in which you restate the answer to your question and summarize your report.
+
+Like with the Mid-Quarter Project, you should **not** include any code chunks in your report; you should also make sure to interpret and describe all of your plots/tables.
+
+
+## Multimedia Component
+
+One of the most important skills a Data Scientist can have is the ability to convey information to a broader audience. As such, you are being tasked with producing (in addition to your report) a multimedia component, designed to convey your findings to a non-technical audience. 
+
+To that end, your group may choose to either produce a **video presentation** or design an **interactive Shiny App**.
+
+### Video Presentation
+
+If your group chooses this option, you must submit a video that is **at least 7 minutes in length**. Your video must also come equipped with **slides**, and **each member of your group must appear in the video for a significant portion of time**. In your presentation, you can highlight a few of your findings from your report - just make sure that your presentation is **not too technical.** As a rule-of-thumb, you should imagine that the audience watching your video only has a basic (PSTAT 5A) level of understanding of statistics - so don't expect the audience to, for example, know what an estimator is!
+
+Please keep in mind that I expect you to use **slides** for your presentation (e.g. Gogle Slides, Powerpoint, Keynote, etc.). You may consider using **RevealJS** for a more interactive slide deck - this is actually the format I used for the lecture slides this quarter. You can read more about creating RevealJS slides in `R` at this link: [https://quarto.org/docs/presentations/revealjs/](https://quarto.org/docs/presentations/revealjs/).
+
+### Shiny App
+
+**Shiny Apps** are an incredible functionality provided by `R`, which allows you to easily create interactive apps using familiar `R` syntax. To read more about Shiny Apps, click here: [https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/). 
+
+If your group decides to create a Shiny App, your app should showcase at least two interesting parts of your dataset. For example, you might consider including a PCA-related analysis in which the user controls the magnitude of dimension reduction. Or, you could opt for a more visualizations-based app, allowing the user to add aesthetics to encode additional information on variables. It's really up to you! Having said that, your app should, above all, be **interactive** - don't just display a static plot in a Shiny App and call that your "app".  
+
+I find the "Get Started" tutorial on the above-mentioned link ([https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/)) to be a great starting point if you haven't used Shiny Apps before.
+
+## Evaluation
+
+### Report Grading
+
+Your report will be graded according to the following rubric:
+
+|  | **_Excellent_** | **_Great_** | **_Acceptable_** | **_Somewhat Lacking_**  | **_Needs Improvement_** |  **_Missing_** | 
+|:--------------------|:------:|:------:|:------:|:------:|:------:|:------:|
+| **Formatting:** Report is free of major typos; all plots and figures are rendered, and no code chunks / error messages are present. | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+| **Content:** Report reads narratively (as opposed to a bulleted list), with a clearly indicated research question and an appropriate evidence-based answer to the question | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+| **Figures:** All figures have clearly and descriptively labeled axes and titles; appropriate color scales and schemes have been utilizes, and all figures are interpreted. | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+
+### Video Presentation Grading
+
+Video Presentations will be evaluated according to the following rubric:
+
+|  | **_Excellent_** | **_Great_** | **_Acceptable_** | **_Somewhat Lacking_**  | **_Needs Improvement_** |  **_Missing_** | 
+|:--------------------|:------:|:------:|:------:|:------:|:------:|:------:|
+| **Logistics:** Presentation was the required length (at least 7 minutes) wich everyone presenting at least once. Slides were properly formatted, and contributed to the overall presentation. | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+| **Depth:** Presentation showcased several interesting findings from the data, and wasn't just a re-reading of the report | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+| **Level:** Presentation was not overly technical, and comprehensible to a watcher with limited statistical background | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+
+
+### Shiny App Grading
+
+Shiny Apps will be evaluated according to the following rubric:
+
+
+Video Presentations will be evaluated according to the following rubric:
+
+|  | **_Excellent_** | **_Great_** | **_Acceptable_** | **_Somewhat Lacking_**  | **_Needs Improvement_** |  **_Missing_** | 
+|:--------------------|:------:|:------:|:------:|:------:|:------:|:------:|
+| **Interactivity:** Application has sufficient interactivity, that contributes to the overall app and understanding of the data | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+| **Aesthetics/Ease-of-use:** Application is easy to use, and user-friendly with clearly labeled inputs and outputs | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+| **Content:** Application displays appropriate outputs (with no errors/unrendered code), and all figures are presentation-quality | 5 pts | 4 pts | 3 pts | 2 pts | 1pts  | 0 pts  |
+
+## What to Submit
+
+There are two separate upload portals on Gradescope- one for your report, and one for your shiny app.
+
+-   When submitting the report, submit only a PDF. Again, only one member in your group needs to submit - they will then need to indicate, on Gradescope, which members were a part of your group.
+
+-   For submitting the Multimedia Component:
+    -   If you are submitting a Video: 
+        1)    Upload your Video to Google Drive
+        2)    Upload your Slides to Google Drive
+        3)    Create a document with a link to your Video and a link to your Slides, and upload this document to the Gradescope portal
+    -   If you are submitting a Shiny App:
+        1)    Download **all** of your app files (including any data subfolders) as a `.zip` file
+        2)    Upload this `.zip` file to the Gradescope portal
+
+Please ensure your report is readable, and your videos are uploaded/your zip files open and your app runs correctly. Again, the graders will not be sifting through your code - if your app doesn't run or your PDF doesn't open, you will receive a zero on the related grading parts. Thank you for understanding!

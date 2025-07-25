@@ -1,0 +1,280 @@
+---
+title: "Project Walkthrough"
+subtitle: "Data Science Collaborative; Spring 2025"
+footer: "DS Collab; © Ethan P. Marzban"
+logo: "Images/circular_logo.svg"
+format: 
+  clean-revealjs:
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: "April 24, 2025"
+title-slide-attributes:
+    data-background-image: "Images/circular_logo.svg"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+---
+
+## {visibility="hidden"}
+::: hidden
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\usepackage[makeroom]{cancel}
+$$
+:::
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+```
+
+## Data Science Lifecycle
+### First Version
+
+:::: {.columns}
+
+::: {.column width=40%}
+![](Images/dsl_simple.svg)
+:::
+
+::: {.column width=60%}
+-   The [**Data Science Lifecycle**]{.alert} (DSL) seeks to describe the general _lifecycle_ of a typical data science project.
+
+-   Four main stages: [**questioning**]{.alert}, [**collecting**]{.alert}, [**analyzing**]{.alert}, and [**interpreting**]{.alert}.
+
+-   Lots of variations of the DSL, some with more steps than others.
+
+-   Main idea: data science projects are highly [**iterative**]{.alert}.
+:::
+
+::::
+
+
+## Data Science Lifecycle
+### Second Version
+
+:::: {.columns}
+
+::: {.column width=40%}
+![](Images/dsl_complex.svg)
+:::
+
+::: {.column width=60%}
+-   In my opinion, this is a much better representation of the DSL! (Though the graphic is certainly too complex.)
+
+-   Again, data science is a highly iterative field; we rarely proceed in a linear fashion from start to finish.
+
+    -   Rather, we start, analyze out data, realize we need more data, collect more data, analyze our new data, realize we need to revise our original question, etc.
+:::
+
+::::
+
+## Data Science Lifecycle
+### Starting the Cycle
+
+:::: {.columns}
+::: {.column width=40%}
+![](Images/DSL_question.svg)
+:::
+
+::: {.column width=60%}
+-   Sometimes we'll begin with a question we want to answer.
+
+-   E.g. "Has air quality in the US improved over time?"
+
+-   E.g. "How has the distribution of wealth and income changed since the economic recession of 2008?"
+:::
+
+::::
+
+
+## Data Science Lifecycle {transition="none"}
+### Starting the Cycle
+
+:::: {.columns}
+::: {.column width=40%}
+![](Images/DSL_question_collect.svg)
+:::
+
+::: {.column width=60%}
+-   In this case, our question will dictate what kind of data to collect
+    -   E.g. AQI data
+    -   E.g. Income Data; Federal Bank Data; etc.
+    
+-   In other cases, we'll _start_ with a dataset, which will then inform what question we want to ask.
+    -   Limitations in our dataset may also necessitate changes in our question; we'll return to this point in a few lectures.
+:::
+
+::::
+
+
+## Data Science Lifecycle {transition="none"}
+### Traveling Through the Cycle
+
+:::: {.columns}
+::: {.column width=40%}
+![](Images/DSL_question_collect_analyze.svg)
+:::
+
+::: {.column width=60%}
+-   Once we have our data, we need to analyze it.
+-   This might involve [**data cleaning**]{.alert} or [**data tidying**]{.alert}; this could also involve producing appropriate [**visualizations**]{.alert}.
+    -   At this stage, we may perform [**Exploratory Data Analysis**]{.alert} (EDA).
+    -   In certain cases, we may find it useful to apply techniques from [**maching learning**]{.alert} to better understand our dataset.
+:::
+
+::::
+
+
+
+## Data Science Lifecycle {transition="none"}
+### Traveling Through the Cycle
+
+:::: {.columns}
+::: {.column width=40%}
+![](Images/dsl_simple.svg)
+:::
+
+::: {.column width=60%}
+-   Finally, we need to understand what our data is saying.
+-   This will typically involve answering our question(s); oftentimes we'll take things a step further and see if we can use our data to make sense of the world.
+-   A key component of this stage of the DSL is producing some sort of a [**report**]{.alert} or [**presentation**]{.alert}.
+:::
+
+::::
+
+
+## {{< fa lightbulb >}} Formulating a Research Question
+### Some Tips
+
+-   Formulating a good research question is a balancing act.
+    -   On the one hand, your question should be specific enough to be answerable.
+    -   On the other, yes/no questions tend to make relatively uninteresting research questions
+        -   Sometimes, a collection of yes/no questions can be combined to create a more interesting research question.
+    
+-   Finally, make sure you are setting reasonable expectations with your question.
+    -   After all, we only have a finite number of hours in a day, and a finite number of days before the showcase!
+    
+
+## {{< fa lightbulb >}} Formulating a Research Question
+### First Example
+
+::: {.callout-tip}
+## **Question**: First Pass
+
+Have global temperatures increased in the past decade?
+:::
+
+-   Let's start with positives.
+    -   It's definitely applicable!
+    -   It includes a specific time frame for investigation ("past decade")
+    
+-   However, it is a bit too specific.
+    -   All we need to do is plot temperature over time, and we will certainly see the answer to be "yes".
+    -   We can be a bit more ambitious than this!
+    
+    
+    
+## {{< fa lightbulb >}} Formulating a Research Question
+### First Example
+
+::: {.callout-tip}
+## **Question**: Second Pass
+
+[**How**]{.alert} have global temperatures increased in the past decade?
+:::
+
+-   This is a much "better" question.
+    -   Somewhat open-ended; leaves something to actually be _done_!
+    -   We can answer using a graph, using statistical hypothesis testing, or a wide array of other tools.
+    
+
+
+## {{< fa lightbulb >}} Formulating a Research Question
+### Second Example
+
+::: {.callout-tip}
+## **Question**: First Pass
+
+What have been the effects of Global Warming in the past decade?
+:::
+
+-   This is definitely not too specific; in fact, it might be a bit _too_ nonspecific...
+
+-   Now, this might be a perfectly good question to start with. 
+    -   But, as you conduct your analyses, I'd encourage you to start fine-tuning the question a bit more.
+    -   Are you going to focus on temperature? Carbon emissions? The impact on wildlife? The impact on people?
+    -   Trying to answer _all_ of these, as interesting as it may be, will not be feasible in the next few weeks.
+    
+
+## {{< fa lightbulb >}} Formulating a Research Question
+### Third Example
+
+::: {.callout-tip}
+## **Question**: First Pass
+
+Do UCLA students tend to, on average, have longer commute times than UCSB students?
+:::
+
+-   Let's discuss this one together - what are your thoughts?
+
+
+
+## {{< fa table >}} Collecting Data
+
+-   The next stage in the DSL is to [**collect data**]{.alert}.
+
+-   Google is a great place to start!
+
+-   Another popular site is <a href="http://kaggle.com/" target="_blank">Kaggle</a>.
+
+-   If you're struggling with creating a research question, you can always start by finding an interesting _dataset_, and then formulating a question from that!
+
+-   Let's run through an example of that.
+

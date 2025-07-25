@@ -34,6 +34,8 @@ website:
         menu:
           - href: "Pages/Projects/MQP.qmd"
             text: "{{< fa map-location-dot >}} Mid-Quarter Project"
+          - href: "Pages/Projects/FP.qmd"
+            text: "{{< fa face-smile >}} Final Project"
             
 format:
   html:
