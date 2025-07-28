@@ -1,0 +1,686 @@
+---
+title: "PSTAT 100: Lecture 19"
+subtitle: "Clustering; Introduction to Missing Data"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/100_hex.png"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/100_hex.png"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(palmerpenguins)
+library(plotly)
+library(tidymodels)
+```
+
+## {{< fa gift >}} Congrats!
+
+-   Congrats on finishing the last ICA!
+
+-   Grades will be released shortly after lecture today - allow me to say a few words.
+
+-   Also, looking forward: please don't forget to continue to work on your Final Projects!
+
+
+## {{< fa braille >}} Supervised Vs. Unspervised Learning
+
+-   Though I haven't made explicit mention about this yet, there exists a broad division of statistical learning into [**supervised**]{.alert} and [**unsupervised**]{.alert} learning.
+
+-   Supervised learning is where we have a response variable, whose relationship with one or more covariates we are trying to _learn_ (hence the name statistical "learning")
+    -   Kernel Density Estimation, Regression, Classification, are both examples of supervised learning
+
+-   However, there are some situations in which we _don't_ have a response variable, and we are primarily interested in _summarising_ or _understanding_ our data. This is the setting of unsupervised learning.
+    -   One of the primary concepts from Week 2 of this course falls under this category - can anyone remind me what that concept is?
+    
+    
+## {{< fa braille >}} Clustering vs. Classification
+
+-   The first topic of today's lecture, [**clustering**]{.alert}, is the unsupervised analog of classification.
+
+-   As an example, consider the following scatterplot of penguins Bill Lengths plotted against their Body Mass:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| fig-height: 7
+penguins %>% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(size = 3) + 
+  xlab("Body Mass (g)") + ylab("Bill Length (mm)") +
+  theme_minimal(base_size = 32) +
+  ggtitle("Bill Length vs. Body Mass")
+```
+:::
+:::
+
+::: {.column width="50%"}
+-   Here's a question: how many "groups" (clusters) of points do you see?
+    -   Note that I'm not asking about the relationship between any two variables!
+:::
+
+::::
+
+
+## {{< fa braille >}} Clustering
+
+-   By eye, it looks like there are potentially two main clusters.
+
+-   But the boundaries between these clusters are perhaps a bit "fuzzy".
+
+-   For example, which group should the circled point belong to?
+
+::: {.fragment}
+```{r}
+#| fig-height: 4
+#| fig.width: 7
+#| fig.align: 'center'
+penguins %>% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(size = 2.5) + 
+  xlab("Body Mass (g)") + ylab("Bill Length (mm)") +
+  theme_minimal(base_size = 18) +
+  ggtitle("Bill Length vs. Body Mass") +
+  annotate("point",
+           x = penguins$body_mass_g[341],
+           y = penguins$bill_length_mm[341],
+           col = "red",
+           size = 10,
+           shape = 1,
+           stroke = 3)
+```
+:::
+
+
+## {{< fa braille >}} Clustering
+
+-   Essentially, the goal of clustering is to uncover patterns of "similarities" within the data.
+    -   Such similarities can go a long way in interpreting and summarizing a given dataset.
+    
+::: {.fragment}
+::: {.callout-tip}
+## **Question**
+
+Given _p_ variables, can we classify observations into two or more groups?
+:::
+:::
+
+-   [**Clustering Techniques**]{.alert} seek to address this very question.
+
+-   Now, to be clear, we are not making any impositions about whether or not true _subpopulations_ exist.
+
+-   It _is_ possible that there exist subpopulations, like with the penguins dataset:
+
+## {{< fa braille >}} Clustering
+### Subpopulations or Not
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| fig-height: 7
+penguins %>% ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(size = 4,
+             aes(colour = species)) + 
+  xlab("Body Mass (g)") + ylab("Bill Length (mm)") +
+  theme_minimal(base_size = 32) +
+  ggtitle("Bill Length vs. Body Mass") +
+  scale_color_okabe_ito()
+```
+:::
+:::
+
+::: {.column width="50%"}
+-   In this problem, there just so happened to exist three subpopulations in our data, and that this was what was driving our observations about clusters.
+
+-   But clustering works just as well when there _aren't_ natural subpopulations in the data.
+:::
+
+::::
+
+-   For illustrative purposes, let's stick with the penguins dataset and increase the number of variables we consider.
+
+
+
+## {{< fa kiwi-bird >}} Penguins, Revisited
+
+```{r}
+#| echo: True
+
+penguins_num <- penguins %>% select(where(is.numeric))
+penguins_num <- penguins_num[penguins_num %>% complete.cases(), ]
+penguins_num %>% head() %>% pander()
+```
+
+
+## {{< fa kiwi-bird >}} Penguins, Revisited
+### PCA
+
+::: {.panel-tabset}
+
+## PC Plot
+```{r}
+prcomp(penguins_num, scale. = TRUE)$x[,1:2] %>%
+  data.frame() %>%
+  ggplot(aes(x = PC1, y = PC2)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("PCA Plot of Penguins Dataset",
+          subtitle = "First Two PCs") +
+  labs(colour = "Species")  +
+  scale_color_okabe_ito()
+```
+
+## Species
+```{r}
+prcomp(penguins_num, scale. = TRUE)$x[,1:2] %>%
+  data.frame() %>%
+  ggplot(aes(x = PC1, y = PC2)) +
+  geom_point(size = 3,
+             aes(colour = penguins[(penguins %>% select(where(is.numeric)) %>% complete.cases),]$species)) +
+  theme_minimal(base_size = 18) +
+  ggtitle("PCA Plot of Penguins Dataset",
+          subtitle = "First Two PCs") +
+  labs(colour = "Species")  +
+  scale_color_okabe_ito()
+```
+
+## Moral
+
+Even when there exist subpopulations, our clusters may not always reflect them (particularly if two or more subpopulations are very similar to one another).
+
+In this way, we can perhaps think of clustering as identifying "inherent subpopulations" (like PCA uncovers "inherent dimensionality")
+::::
+
+
+## {{< fa check-to-slot >}} Votes, Revisited
+
+```{r}
+#| echo: False
+
+votes <- read.csv("data/votes.csv")
+votes <- votes %>% mutate(Vote = ifelse(votes$Vote %in% c("Yea", "Aye"), 1, 0))
+votes <- votes %>% pivot_wider(
+  names_from = Bill,
+  values_from = Vote
+)
+votes <- votes[complete.cases(votes), ]
+votes <- votes %>% select(!Vote_Question)
+```
+
+```{r}
+panderOptions('table.split.table', Inf)
+```
+
+```{r}
+#| echo: True
+votes %>% head() %>% pander()
+```
+
+
+## {{< fa check-to-slot >}} Votes, Revisited
+
+```{r}
+votes_num <- votes %>% select(where(is.numeric))
+
+prcomp(votes_num, scale. = TRUE)$x[,1:2] %>%
+  data.frame() %>%
+  ggplot(aes(x = PC1, y = PC2)) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 18) +
+  ggtitle("PCA Plot of Votes Dataset",
+          subtitle = "First Two PCs") +
+  scale_color_okabe_ito()
+```
+
+-   How many clusters? Two? Three?
+
+
+## {{< fa check-to-slot >}} Votes, Revisited
+### Clustering
+
+```{r}
+#| echo: True
+votes %>% pull(Party) %>% table()
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| echo: False
+#| fig.height: 7
+
+prcomp(votes_num, scale. = TRUE)$x[,1:2] %>%
+  data.frame() %>%
+  ggplot(aes(x = PC1, y = PC2)) +
+  geom_point(size = 4) +
+  theme_minimal(base_size = 24) +
+  ggtitle("PCA Plot of Votes Dataset",
+          subtitle = "First Two PCs") +
+  scale_color_okabe_ito()
+```
+:::
+:::
+
+
+::: {.column width="50%"}
+-   Let's say we believe there to be two clusters in our data.
+-   Even with that determination, there is still the question of where to place our cluster boundaries.
+-   So, let's discuss some techniques for setting those.
+:::
+
+::::
+
+
+## {{< fa circle-nodes >}} _K_-Means Clustering
+
+-   One of the most widely-known clustering techniques is that of [**_K_-means**]{.alert}.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment style="text-align:center"}
+![](Images/cluster_centroids.svg){width="45%"}
+
+Identify the cluster [**centroids**]{.alert} by minimizing the variance within each cluster
+:::
+:::
+
+
+
+::: {.column width="50%"}
+::: {.fragment style="text-align:center"}
+![](Images/cluster_assignments.svg){width="45%"}
+
+Identify the cluster [**assignments**]{.alert} by finding the shortest Euclidean distance to a centroid
+:::
+:::
+
+::::
+
+
+## {{< fa circle-nodes >}} _K_-Means Clustering
+### Optimization Problem
+
+-   Let _C_~_i_~ denote the indicies of points in cluster _i_, for _i_ = 1, ..., _K_, such that:
+    1)    $\bigcup_{i=1}^{K} C_i = \{1, \cdots, n\}$ (each observation belongs to at least one of the _K_ clusters)
+    2)    $C_i \cap C_j = \varnothing$ for all $i \neq j$ (clusters do not overlap)
+    
+-   A "good" clustering is one for which the _within-cluster variation_ is as small as possible.
+
+::: {.fragment style="font-size:28px"}
+$$\min_{C_1, \cdots, C_K} \left\{ \sum_{k=1}^{K} \frac{1}{|C_k|} \sum_{i, i' \in C_k} \sum_{j=1}^{p} (x_{ij} - x_{i' j})^2 \right\}$$
+:::
+
+## {{< fa circle-nodes >}} _K_-Means Clustering
+### Optimization Problem
+
+-   This optimization problem is, in general, intractable.
+
+-   Thankfully, a local solution can be obtained using the following iterative algorithm (called the [**_K_-means clustering algorithm**]{.alert})
+
+::: {.fragment}
+::: {.callout-important}
+## **K-Means Clustering Algorithm**
+
+1) Start with a random initialization of clusters; i.e. assign a random number from \{1, ..., _K_\} to each point
+2) Iterate the following until cluster assignments stop changing:
+   a) For each cluster, compute the cluster centroid
+   b) Assign each observation to the cluster whose centroid is closest (in terms of Euclidean)
+:::
+:::
+
+-   This is iterative because after cluster assignments change, so too do the centroids.
+
+## {{< fa circle-nodes >}} _K_-Means Clustering
+### Votes Dataset
+
+```{r}
+#| echo: True
+#| code-fold: True
+#| code-line-numbers: "3,10"
+
+set.seed(100)   ## for reproducibility
+
+km_votes <- kmeans(votes_num, centers = 2)
+prcomp(votes_num, scale. = TRUE)$x[,1:2] %>%
+  data.frame() %>%
+  mutate(kmeans_clust = factor(km_votes$cluster)) %>%
+  ggplot(aes(x = PC1, y = PC2)) +
+  geom_point(size = 3,
+             aes(col = kmeans_clust)) +
+  theme_minimal(base_size = 18) +
+  ggtitle("PCA Plot of Votes Dataset",
+          subtitle = "Clustered using K-Means") +
+  scale_color_okabe_ito() +
+  labs(col = "Cluster")
+```
+
+
+## {{< fa circle-nodes >}} _K_-Means Clustering {style="font-size:30px"}
+### Votes Dataset
+
+-   Since we believe there to be some clustering along party lines, we can cross-tabulate the cluster labels with party labels:
+
+::: {.fragment}
+```{r}
+data.frame(
+  party = votes$Party,
+  cluster = km_votes$cluster
+) %>%
+  group_by(party, cluster) %>% 
+  summarise(count = n()) %>% 
+  pivot_wider(
+    names_from = party,
+    values_from = count
+  ) %>% pander()
+```
+:::
+
+-   Interestingly, this reveals that there are four democratic representatives that appear to vote more similarly to republicans than democrats
+
+::: {.fragment}
+```{r}
+votes[which((km_votes$cluster == 2) & (votes$Party == "Democratic")), ] %>% select(Rep, Party, State) %>% pander()
+```
+:::
+
+## {{< fa circle-nodes >}} _K_-Means Clustering {style="font-size:30px"}
+### Votes Dataset
+
+![**Source:** https://www.politico.com/minutes/congress/05-24-2023/blue-dog-boost-centrists-house/](Images/perez.png){width="60%"}
+
+![**Source:** https://en.wikipedia.org/wiki/Henry_Cuellar](Images/cuellar.png){width="60%"}
+
+## {{< fa circle-nodes >}} _K_-Means Clustering {style="font-size:30px"}
+### Votes Dataset
+
+-   Also, we can examine the one person whose party affiliation is missing from the original dataset:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| fig-height: 8
+
+np <- which(votes$Party == "No data found")
+votes_loadings <- prcomp(votes_num, scale. = TRUE)$x[,1:2] %>%
+  data.frame() %>%
+  mutate(kmeans_clust = factor(km_votes$cluster))
+
+votes_loadings %>%
+  ggplot(aes(x = PC1, y = PC2)) +
+  geom_point(size = 5,
+             aes(col = kmeans_clust)) +
+  theme_minimal(base_size = 32) +
+  ggtitle("PCA Plot of Votes Dataset",
+          subtitle = "Clustered using K-Means") +
+  scale_color_okabe_ito() +
+  labs(col = "Cluster") +
+  annotate("point",
+           x = votes_loadings[np,1],
+           y = votes_loadings[np,2],
+           col = "#009E73",
+           shape = 1,
+           size = 6,
+           stroke = 5)
+```
+:::
+:::
+
+::: {.column width="50%"}
+-   This person falls well within our "Democratcic" cluster, meaning they are likely a Democrat.
+
+-   In this way, we can see that clustering can, in some cases, help us with [**missing data**]{.alert}.
+
+-   Indeed, perhaps this is a good segue into our next topic for today...
+:::
+
+::::
+
+
+
+# Missing Data {background-color="black" background-image="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGczeHV6amRxNWtoNW1penZkeGttNWIwMzhoZThpazRzbms3aGVnZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ru9sjtZ09XOEg/200.gif" background-size="60rem"}
+
+
+## {{< fa notdef >}} Missing Data
+
+-   [**Missing data**]{.alert} occurs when one or more variables have observations that are not present.
+
+-   There are a variety of reasons why data might be missing:
+    -   equipment failure
+    -   non-response bias
+    -   sample corruption
+    -   atrition (participants dropping out)
+
+-   Missing values are often encoded using a special symbol. In `R`, missing values are by default mapped to the symbol `NA`.
+
+-   Admittedly, missing data is the bane of most data scientists' existences.
+
+## {{< fa notdef >}} Missing Data
+
+-   For example, many functions in `R` break down in the presence of missing data
+
+::: {.fragment}
+```{r}
+#| echo: True
+
+x <- c(1, 2, NA, 4, 5)
+mean(x)
+```
+:::
+
+-   Some functions have the ability to ignore missing values, often through the specification of an additional argument:
+
+
+::: {.fragment}
+```{r}
+#| echo: True
+
+x <- c(1, 2, NA, 4, 5)
+mean(x, na.rm = T)
+```
+:::
+
+::: {.fragment}
+::: {.callout-caution}
+## **Caution**
+
+Simply throwing out missing values is, in some cases, ill-advised.
+:::
+:::
+
+
+## {{< fa notdef >}} Missing Data
+
+-   So how _should_ missing values be handled in practice?
+
+-   This is a _very_ hot-topic question! 
+    -   Indeed, today's lecture isn't meant to be a comprehensive guide on handling missingness; rather, I'd encourage you to treat this as an exercise in raising awareness.
+    -   The text [_Flexible Imputation of Missing Data_ by Stef Van Buuren ](https://stefvanbuuren.name/fimd/) provides a great introduction to the topic of handling missing data.
+    
+-   The general idea is that we need to consider the _mechanisms_ behind the missingness. 
+
+## {{< fa notdef >}} Missing Data
+### General Framework
+
+-   Let $X = \{x_{ij}\}_{(i, j) = (1, 1)}^{(n, p)}$ denote an $n \times p$ dataset (i.e. a dataset with _n_ observations on _p_ variables).
+
+-   Denote by $q_{ij}$ the probability that element $x_{ij}$ is missing:
+$$ q_{ij} := \Prob(x_{ij} \text{ is missing}) $$
+
+-   There are two main cases to consider: one where data is [**Missing Completely at Random**]{.alert} (MCAR) and on where data is [**Missing at Random**]{.alert} (MAR).
+
+
+## {{< fa notdef >}} Missing Data
+### MCAR vs MAR
+
+-   If data is MCAR, then $q_{ij}$ is fixed across all _i_ and _j_.
+    -   That is, every element in _X_ has an equal chance of being missing.
+    -   This implies that the cause of missingness is _unrelated to the data_.
+    -   As such, missing values _can be safely ignored_.
+    
+-   If data is MAR, then $q_{ij}$ is some function of observed data: $q_{ij} = f(\vec{\boldsymbol{x}}_{i})$.
+    -   Now, the cause of missingness _is_ related to the data, and simply ignoring missing values can lead to potentially _biased_ results.
+    -   It is, however, possible to _estimate_ the probabilities $q_{ij}$, since they depend only on _observed_ data.
+    
+    
+## {{< fa notdef >}} Missing Data {style="font-size:30px"}
+### MNAR
+
+-   We can see that MCAR is perhaps the "best-case" scenario.
+
+-   With that interpretation, the "worst-case" scenario is when data is [**Missing Not at Random**]{.alert} (MNAR).
+
+-   If data is MNAR, then the probabilities $q_{ij}$ depend on both observed values and _unobserved_ values as well: $q_{ij} = f(z_i, x_{ij})$ for unknown $z_j$.
+    -   Now, not only is the missigness related to the data (like when data is MNAR), it is _impossible_ to estimate the $q_{ij}$ as they depend on _unobserved_ quantities.
+    
+-   Unfortunately, there aren't any formal tests to determine whether data is MCAR, MAR, or MNAR; the best (and only) way to determine the missingness mechanism is to make an informed assumption based on knowledge about the data collection procedure (which is why we started off today by talking about sampling!)
+
+
+## {{< fa notdef >}} Missing Data
+### Example
+
+-   Here is an example to illustrate the difference between some of these mechanisms, adapted from the article [_What is the difference between missing
+completely at random and missing at random?_ by Krishnan Bhaskaran and Liam Smeeth](https://academic.oup.com/ije/article/43/4/1336/2938944) 
+
+-   Suppose we have a dataset containing several patients' blood pressures. 
+
+-   Some values are missing.
+    -   Indeed, healthy persons are likely going to the doctor less often than, say, eldery persons and people with preexisting conditions, meaning there are more observations from this latter group of people.
+    -   In fact, it is very likely that, on average, blood pressures are higher in this latter group than in the former group (of healthy individuals).
+    
+    
+## {{< fa notdef >}} Missing Data
+### Example
+
+-   So, if we looked at an (imaginary) histogram of the missing blood pressure values, this histogram would likely be right-shifted when compared to a histogram of the non-missing values.
+
+-   If the data were missing MCAR, these two histograms would be the same.
+    -   The histograms are likely _not_ the same, so the data is likely not MCAR.
+    
+-   However, we can _explain_ any differences between the (hypothetical) missing values and the non-missing values using _observable_ quantities (e.g. preexisting health conditions, age, etc.)
+    -   So, the data is likely MAR.
+    
+    
+    
+## {{< fa notdef >}} Missing Data
+### What To Do?
+
+-   Alright, let's say we have data that is MCAR or MAR. What do we do?
+
+-   Again, one option is to simply drop the missing values (e.g. using `tidyr::drop_na()`, or `complete.cases()`).
+    -   This "works" if data is MCAR, but is risky if data is MAR.
+    
+-   Another option is [**imputation**]{.alert}, which, broadly speaking, refers to the act of trying to "fill in" the missing values in some way.
+    -   If data is MAR or MNAR, this will often induce bias, so, again, it's important to assess what type of missingness you believe is present before deciding to impute.
+
+## {{< fa notdef >}} Missing Data
+### Imputation
+
+-   One idea is to replace the missing value with the mean/median of the surrounding non-missing values (sometimes called [**mean imputation**]{.alert}).
+    
+-   Another imputation technique is to try and _predict_ the missing value from other recorded values in the dataset (sometimes called [**model-based imputation**]{.alert}).
+
+-   If data is MCAR or MAR, we can try to explicitly model the probability of missingness, and apply bias corrections (like the inverse probability weighting scheme we saw on Lab 4).
+
+
+## {{< fa notdef >}} Missing Data
+### Do's and Dont's
+
+**Do:**
+
+-   Start by checking for missing values right after importing your data
+    -   Tabulate the proportion of missing values
+-   Take steps to determine the missigness mechanisms (MCAR, MAR, or MNAR)
+
+::: {.fragment}
+**Don't:**
+:::
+
+-   Rely on software defaults for handling missing values
+-   Drop missing values if data is not MCAR, or if there is too high a proportion of missing values
+
+
+
+## {{< fa forward-fast >}} Next Time
+
+-   Tomorrow, we'll start talking a bit about Neural Networks.
+
+-   In Lab tomorrow, you'll get some practice with clustering and missing data.
+
+-   Reminder: keep working on your projects!
