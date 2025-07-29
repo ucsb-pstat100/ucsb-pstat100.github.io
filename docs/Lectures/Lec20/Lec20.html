@@ -1,0 +1,3091 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../../Images/Logos_Icons/hex.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <meta name="author" content="Ethan P. Marzban">
+  <title>PSTAT 100: Summer 2025 – PSTAT 100: Lecture 20</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ce6bc8a5410e8df11883f060677c6af5.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+  <script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <script src="../../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+  <script src="../../site_libs/typedarray-0.1/typedarray.min.js"></script>
+  <script src="../../site_libs/jquery-3.5.1/jquery.min.js"></script>
+  <link href="../../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+  <script src="../../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+  <link href="../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+  <script src="../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+</head>
+<body class="quarto-light">
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="Images/100_hex.png" data-background-opacity="0.5" data-background-position="80% 50%" data-background-size="30%" class="quarto-title-block center">
+  <h1 class="title">PSTAT 100: Lecture 20</h1>
+  <p class="subtitle">An Introduction to Neural Networks</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Ethan P. Marzban 
+</div>
+        <p class="quarto-title-affiliation">
+            Department of Statistics and Applied Probability; UCSB <br> <br>
+          </p>
+        <p class="quarto-title-affiliation">
+            Summer Session A, 2025
+          </p>
+    </div>
+</div>
+
+</section>
+<section class="slide level2">
+
+<p><span class="math display">\[
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+\]</span></p>
+<div class="cell">
+<style type="text/css">
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+</style>
+</div>
+</section>
+<section id="recap-logistic-regression" class="slide level2">
+<h2><i class="fa-solid fa-backward-fast" aria-label="backward-fast"></i> Recap: Logistic Regression</h2>
+<ul>
+<li class="fragment"><p>Let’s, for the moment, go back to our last lecture before the ICA, when we talked about <strong>logistic regression</strong>.</p></li>
+<li class="fragment"><p>Our idea was that a linear combination of our covariate functions could be mapped to a value in [0, 1] by way of a transformation; namely, the logistic function.</p>
+<ul>
+<li class="fragment">This output is then interpreted as the probability of survival.</li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="3" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="288" viewbox="0.00 0.00 221.39 255.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 251)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-251 217.39,-251 217.39,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-8 8,-239 65.39,-239 65.39,-8 8,-8"></polygon>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="white" points="153.39,-96 153.39,-173 205.39,-173 205.39,-96 153.39,-96"></polygon>
+<text text-anchor="middle" x="179.39" y="-156.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-210" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-206.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-206.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">0</text>
+</g>
+<!-- out1 -->
+<g id="node5" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="179.39" cy="-122" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="179.39" y="-117.8" font-family="Times,serif" font-size="14.00">π</text>
+</g>
+<!-- inp1&#45;&gt;out1 -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M54.66,-199.39C80.92,-182.96 131.23,-151.49 158.92,-134.17"></path>
+<polygon fill="#009e73" stroke="#009e73" points="160.18,-135.45 163.49,-131.31 158.33,-132.48 160.18,-135.45"></polygon>
+<text text-anchor="start" x="102.39" y="-173.2" font-family="Times,serif" font-size="14.00">β</text>
+<text text-anchor="start" x="109.39" y="-173.2" font-family="Times,serif" baseline-shift="sub" font-size="14.00">0</text>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-151" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-147.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-147.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- inp2&#45;&gt;out1 -->
+<g id="edge2" class="edge">
+<title>inp2-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M57.26,-146.97C83.31,-141.6 129.25,-132.13 156.45,-126.52"></path>
+<polygon fill="#009e73" stroke="#009e73" points="157.08,-128.18 161.63,-125.45 156.38,-124.75 157.08,-128.18"></polygon>
+<text text-anchor="start" x="102.39" y="-142.2" font-family="Times,serif" font-size="14.00">β</text>
+<text text-anchor="start" x="109.39" y="-142.2" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="white" stroke="white" cx="36.69" cy="-94" rx="18.06" ry="18.06"></ellipse>
+<text text-anchor="middle" x="36.69" y="-89.8" font-family="Times,serif" font-size="14.00">⋮</text>
+</g>
+<!-- inp3&#45;&gt;out1 -->
+<g id="edge3" class="edge">
+<title>inp3-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M54.95,-96.55C70.93,-98.99 95.34,-102.93 116.39,-107.2 129.96,-109.95 145.07,-113.55 156.98,-116.51"></path>
+<polygon fill="#009e73" stroke="#009e73" points="156.6,-118.22 161.88,-117.73 157.45,-114.82 156.6,-118.22"></polygon>
+<text text-anchor="middle" x="109.39" y="-111.2" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- inp4 -->
+<g id="node4" class="node">
+<title>inp4</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-37" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-33.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-33.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">p</text>
+</g>
+<!-- inp4&#45;&gt;out1 -->
+<g id="edge4" class="edge">
+<title>inp4-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M54.97,-46.95C70.97,-56.22 95.39,-70.47 116.39,-83.2 130.89,-91.99 147.14,-102.18 159.37,-109.9"></path>
+<polygon fill="#009e73" stroke="#009e73" points="158.52,-111.44 163.68,-112.63 160.39,-108.48 158.52,-111.44"></polygon>
+<text text-anchor="start" x="102.39" y="-88.2" font-family="Times,serif" font-size="14.00">β</text>
+<text text-anchor="start" x="109.39" y="-88.2" font-family="Times,serif" baseline-shift="sub" font-size="14.00">p</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>Diagramatically, we might represent this using the <span class="alert"><strong>graph</strong></span> to the left.</p></li>
+<li class="fragment"><p>This graph illustrates the “direct” relationship between the covariates and the output probability (albeit through the logistic function, not pictured on the graph).</p></li>
+</ul>
+</div></div>
+</section>
+<section id="recap-logistic-regression-1" class="slide level2">
+<h2><i class="fa-solid fa-backward-fast" aria-label="backward-fast"></i> Recap: Logistic Regression</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">A perhaps more accurate representation of our logistic regression model might be</li>
+</ul>
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="3" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="288" viewbox="0.00 0.00 423.39 255.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 251)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-251 419.39,-251 419.39,4 -4,4"></polygon>
+<g id="clust4" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="white" points="355.39,-96 355.39,-173 407.39,-173 407.39,-96 355.39,-96"></polygon>
+<text text-anchor="middle" x="381.39" y="-156.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_lin</title>
+<polygon fill="none" stroke="white" points="121.39,-96 121.39,-173 173.39,-173 173.39,-96 121.39,-96"></polygon>
+<text text-anchor="middle" x="147.39" y="-156.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_activation</title>
+<polygon fill="none" stroke="white" points="229.39,-96 229.39,-173 299.39,-173 299.39,-96 229.39,-96"></polygon>
+<text text-anchor="middle" x="264.39" y="-156.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-8 8,-239 65.39,-239 65.39,-8 8,-8"></polygon>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-210" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-206.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-206.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">0</text>
+</g>
+<!-- lin -->
+<g id="node5" class="node">
+<title>lin</title>
+<polygon fill="white" stroke="black" points="165.39,-140 129.39,-140 129.39,-104 165.39,-104 165.39,-140"></polygon>
+<text text-anchor="start" x="140.39" y="-118.8" font-family="Times,serif" font-size="14.00">h</text>
+<text text-anchor="start" x="147.39" y="-118.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">β</text>
+</g>
+<!-- inp1&#45;&gt;lin -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;lin</title>
+<path fill="none" stroke="#009e73" d="M53.27,-197.39C72.09,-182.15 103.85,-156.44 124.97,-139.34"></path>
+<polygon fill="#009e73" stroke="#009e73" points="126.26,-140.55 129.05,-136.04 124.06,-137.83 126.26,-140.55"></polygon>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-151" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-147.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-147.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- inp2&#45;&gt;lin -->
+<g id="edge2" class="edge">
+<title>inp2-&gt;lin</title>
+<path fill="none" stroke="#009e73" d="M56.88,-145.88C75.67,-140.87 104.31,-133.23 124.1,-127.95"></path>
+<polygon fill="#009e73" stroke="#009e73" points="124.81,-129.57 129.19,-126.59 123.9,-126.19 124.81,-129.57"></polygon>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="white" stroke="white" cx="36.69" cy="-94" rx="18.06" ry="18.06"></ellipse>
+<text text-anchor="middle" x="36.69" y="-89.8" font-family="Times,serif" font-size="14.00">⋮</text>
+</g>
+<!-- inp3&#45;&gt;lin -->
+<g id="edge3" class="edge">
+<title>inp3-&gt;lin</title>
+<path fill="none" stroke="#009e73" d="M54.68,-98.38C73.39,-103.2 103.56,-110.97 124.15,-116.27"></path>
+<polygon fill="#009e73" stroke="#009e73" points="123.89,-118.01 129.16,-117.56 124.76,-114.62 123.89,-118.01"></polygon>
+</g>
+<!-- inp4 -->
+<g id="node4" class="node">
+<title>inp4</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-37" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-33.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-33.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">p</text>
+</g>
+<!-- inp4&#45;&gt;lin -->
+<g id="edge4" class="edge">
+<title>inp4-&gt;lin</title>
+<path fill="none" stroke="#009e73" d="M53.73,-49.54C72.67,-64.35 104.22,-89.03 125.16,-105.4"></path>
+<polygon fill="#009e73" stroke="#009e73" points="124.19,-106.86 129.21,-108.56 126.34,-104.11 124.19,-106.86"></polygon>
+</g>
+<!-- activ -->
+<g id="node6" class="node">
+<title>activ</title>
+<ellipse fill="white" stroke="black" cx="264.39" cy="-122" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="264.39" y="-117.8" font-family="Times,serif" font-size="14.00">Λ</text>
+</g>
+<!-- lin&#45;&gt;activ -->
+<g id="edge5" class="edge">
+<title>lin-&gt;activ</title>
+<path fill="none" stroke="#009e73" d="M165.85,-122C183.35,-122 210.65,-122 231.93,-122"></path>
+<polygon fill="#009e73" stroke="#009e73" points="232.2,-123.75 237.2,-122 232.2,-120.25 232.2,-123.75"></polygon>
+</g>
+<!-- out1 -->
+<g id="node7" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="381.39" cy="-122" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="381.39" y="-117.8" font-family="Times,serif" font-size="14.00">π</text>
+</g>
+<!-- activ&#45;&gt;out1 -->
+<g id="edge6" class="edge">
+<title>activ-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M291.48,-122C311.59,-122 339.1,-122 358.16,-122"></path>
+<polygon fill="#009e73" stroke="#009e73" points="358.31,-123.75 363.31,-122 358.31,-120.25 358.31,-123.75"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">However, for the sake of parsimony, we often remove the functional transformations from our graph:</li>
+</ul>
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="3" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="288" viewbox="0.00 0.00 207.39 255.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 251)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-251 203.39,-251 203.39,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-8 8,-239 65.39,-239 65.39,-8 8,-8"></polygon>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="white" points="139.39,-96 139.39,-173 191.39,-173 191.39,-96 139.39,-96"></polygon>
+<text text-anchor="middle" x="165.39" y="-156.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-210" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-206.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-206.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">0</text>
+</g>
+<!-- out1 -->
+<g id="node5" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="165.39" cy="-122" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="165.39" y="-117.8" font-family="Times,serif" font-size="14.00">π</text>
+</g>
+<!-- inp1&#45;&gt;out1 -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M54.26,-198.5C77.87,-182.09 121.09,-152.08 145.78,-134.92"></path>
+<polygon fill="#009e73" stroke="#009e73" points="147.06,-136.17 150.16,-131.88 145.06,-133.29 147.06,-136.17"></polygon>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-151" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-147.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-147.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- inp2&#45;&gt;out1 -->
+<g id="edge2" class="edge">
+<title>inp2-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M56.94,-146.6C79.94,-141.33 118.36,-132.54 142.48,-127.01"></path>
+<polygon fill="#009e73" stroke="#009e73" points="142.92,-128.71 147.4,-125.89 142.14,-125.3 142.92,-128.71"></polygon>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="white" stroke="white" cx="36.69" cy="-94" rx="18.06" ry="18.06"></ellipse>
+<text text-anchor="middle" x="36.69" y="-89.8" font-family="Times,serif" font-size="14.00">⋮</text>
+</g>
+<!-- inp3&#45;&gt;out1 -->
+<g id="edge3" class="edge">
+<title>inp3-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M54.78,-97.78C77.48,-102.79 117.61,-111.66 142.5,-117.16"></path>
+<polygon fill="#009e73" stroke="#009e73" points="142.31,-118.91 147.57,-118.28 143.07,-115.5 142.31,-118.91"></polygon>
+</g>
+<!-- inp4 -->
+<g id="node4" class="node">
+<title>inp4</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-37" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-33.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-33.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">p</text>
+</g>
+<!-- inp4&#45;&gt;out1 -->
+<g id="edge4" class="edge">
+<title>inp4-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M54.26,-48.11C77.75,-63.87 120.63,-92.64 145.38,-109.25"></path>
+<polygon fill="#009e73" stroke="#009e73" points="144.66,-110.87 149.78,-112.2 146.61,-107.96 144.66,-110.87"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="a-quick-interlude-about-graphs" class="slide level2">
+<h2><i class="fa-solid fa-circle-nodes" aria-label="circle-nodes"></i> A Quick Interlude about Graphs</h2>
+<ul>
+<li class="fragment"><p>By “graph,” we don’t mean the graph of a function but rather <em>graph</em> in the mathematical sense.</p></li>
+<li class="fragment"><p>A graph is comprised of a collection of <span class="alert"><strong>nodes</strong></span> (represented pictorially as circles) and <span class="alert"><strong>edges</strong></span> (represented pictorially as lines connecting nodes).</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="3" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="288" viewbox="0.00 0.00 471.31 329.51" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 325.51)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-325.51 467.31,-325.51 467.31,4 -4,4"></polygon>
+<!-- a -->
+<g id="node1" class="node">
+<title>a</title>
+<ellipse fill="#cc79a7" stroke="black" cx="161.85" cy="-49.82" rx="9" ry="9"></ellipse>
+</g>
+<!-- b -->
+<g id="node2" class="node">
+<title>b</title>
+<ellipse fill="#cc79a7" stroke="black" cx="199.61" cy="-128.21" rx="9" ry="9"></ellipse>
+</g>
+<!-- a&#45;&#45;b -->
+<g id="edge1" class="edge">
+<title>a--b</title>
+<path fill="none" stroke="black" d="M165.89,-58.21C173.12,-73.22 188.19,-104.51 195.48,-119.65"></path>
+</g>
+<!-- c -->
+<g id="node3" class="node">
+<title>c</title>
+<ellipse fill="#cc79a7" stroke="black" cx="9" cy="-84.71" rx="9" ry="9"></ellipse>
+</g>
+<!-- a&#45;&#45;c -->
+<g id="edge2" class="edge">
+<title>a--c</title>
+<path fill="none" stroke="black" d="M152.75,-51.9C125.5,-58.12 44.8,-76.54 17.86,-82.69"></path>
+</g>
+<!-- d -->
+<g id="node4" class="node">
+<title>d</title>
+<ellipse fill="#cc79a7" stroke="black" cx="9" cy="-171.72" rx="9" ry="9"></ellipse>
+</g>
+<!-- a&#45;&#45;d -->
+<g id="edge3" class="edge">
+<title>a--d</title>
+<path fill="none" stroke="black" d="M154.48,-55.7C128.6,-76.34 42.06,-145.35 16.3,-165.9"></path>
+</g>
+<!-- e -->
+<g id="node5" class="node">
+<title>e</title>
+<ellipse fill="#cc79a7" stroke="black" cx="77.03" cy="-225.97" rx="9" ry="9"></ellipse>
+</g>
+<!-- a&#45;&#45;e -->
+<g id="edge4" class="edge">
+<title>a--e</title>
+<path fill="none" stroke="black" d="M157.76,-58.32C143.4,-88.14 95.38,-187.87 81.08,-217.56"></path>
+</g>
+<!-- f -->
+<g id="node6" class="node">
+<title>f</title>
+<ellipse fill="#cc79a7" stroke="black" cx="161.85" cy="-206.61" rx="9" ry="9"></ellipse>
+</g>
+<!-- a&#45;&#45;f -->
+<g id="edge5" class="edge">
+<title>a--f</title>
+<path fill="none" stroke="black" d="M161.85,-59.16C161.85,-87.11 161.85,-169.89 161.85,-197.51"></path>
+</g>
+<!-- g -->
+<g id="node7" class="node">
+<title>g</title>
+<ellipse fill="#cc79a7" stroke="black" cx="77.03" cy="-30.46" rx="9" ry="9"></ellipse>
+</g>
+<!-- a&#45;&#45;g -->
+<g id="edge6" class="edge">
+<title>a--g</title>
+<path fill="none" stroke="black" d="M152.78,-47.75C136.45,-44.02 102.32,-36.23 86.04,-32.52"></path>
+</g>
+<!-- b&#45;&#45;c -->
+<g id="edge7" class="edge">
+<title>b--c</title>
+<path fill="none" stroke="black" d="M190.67,-126.17C158.73,-118.88 50.4,-94.16 18.14,-86.8"></path>
+</g>
+<!-- b&#45;&#45;d -->
+<g id="edge8" class="edge">
+<title>b--d</title>
+<path fill="none" stroke="black" d="M190.67,-130.25C158.73,-137.55 50.4,-162.27 18.14,-169.63"></path>
+</g>
+<!-- b&#45;&#45;e -->
+<g id="edge9" class="edge">
+<title>b--e</title>
+<path fill="none" stroke="black" d="M192.3,-134.04C170.45,-151.46 105.74,-203.07 84.14,-220.3"></path>
+</g>
+<!-- b&#45;&#45;f -->
+<g id="edge10" class="edge">
+<title>b--f</title>
+<path fill="none" stroke="black" d="M195.57,-136.6C188.34,-151.61 173.27,-182.9 165.98,-198.04"></path>
+</g>
+<!-- b&#45;&#45;g -->
+<g id="edge11" class="edge">
+<title>b--g</title>
+<path fill="none" stroke="black" d="M192.3,-122.39C170.45,-104.96 105.74,-53.36 84.14,-36.13"></path>
+</g>
+<!-- c&#45;&#45;d -->
+<g id="edge12" class="edge">
+<title>c--d</title>
+<path fill="none" stroke="black" d="M9,-94.02C9,-110.77 9,-145.78 9,-162.47"></path>
+</g>
+<!-- c&#45;&#45;e -->
+<g id="edge13" class="edge">
+<title>c--e</title>
+<path fill="none" stroke="black" d="M13.05,-93.12C25.18,-118.31 61.09,-192.88 73.08,-217.78"></path>
+</g>
+<!-- c&#45;&#45;f -->
+<g id="edge14" class="edge">
+<title>c--f</title>
+<path fill="none" stroke="black" d="M16.37,-90.59C42.25,-111.23 128.79,-180.24 154.56,-200.79"></path>
+</g>
+<!-- c&#45;&#45;g -->
+<g id="edge15" class="edge">
+<title>c--g</title>
+<path fill="none" stroke="black" d="M16.28,-78.9C29.3,-68.52 56.46,-46.86 69.59,-36.39"></path>
+</g>
+<!-- d&#45;&#45;e -->
+<g id="edge16" class="edge">
+<title>d--e</title>
+<path fill="none" stroke="black" d="M16.28,-177.52C29.3,-187.91 56.46,-209.57 69.59,-220.04"></path>
+</g>
+<!-- d&#45;&#45;f -->
+<g id="edge17" class="edge">
+<title>d--f</title>
+<path fill="none" stroke="black" d="M18.1,-173.8C45.35,-180.02 126.05,-198.44 152.99,-204.58"></path>
+</g>
+<!-- d&#45;&#45;g -->
+<g id="edge18" class="edge">
+<title>d--g</title>
+<path fill="none" stroke="black" d="M13.05,-163.31C25.18,-138.12 61.09,-63.55 73.08,-38.65"></path>
+</g>
+<!-- e&#45;&#45;f -->
+<g id="edge19" class="edge">
+<title>e--f</title>
+<path fill="none" stroke="black" d="M86.1,-223.9C102.43,-220.17 136.56,-212.38 152.84,-208.66"></path>
+</g>
+<!-- e&#45;&#45;g -->
+<g id="edge20" class="edge">
+<title>e--g</title>
+<path fill="none" stroke="black" d="M77.03,-216.8C77.03,-184.04 77.03,-72.93 77.03,-39.84"></path>
+</g>
+<!-- f&#45;&#45;g -->
+<g id="edge21" class="edge">
+<title>f--g</title>
+<path fill="none" stroke="black" d="M157.76,-198.11C143.4,-168.29 95.38,-68.56 81.08,-38.87"></path>
+</g>
+<!-- a1 -->
+<g id="node8" class="node">
+<title>a1</title>
+<ellipse fill="#cc79a7" stroke="black" cx="177.04" cy="-255.21" rx="9" ry="9"></ellipse>
+</g>
+<!-- b1 -->
+<g id="node9" class="node">
+<title>b1</title>
+<ellipse fill="#cc79a7" stroke="black" cx="234.34" cy="-312.51" rx="9" ry="9"></ellipse>
+</g>
+<!-- a1&#45;&#45;b1 -->
+<g id="edge22" class="edge">
+<title>a1--b1</title>
+<path fill="none" stroke="#0072b2" d="M183.61,-261.79C194.67,-272.84 216.84,-295.01 227.84,-306.01"></path>
+</g>
+<!-- c1 -->
+<g id="node10" class="node">
+<title>c1</title>
+<ellipse fill="#cc79a7" stroke="black" cx="291.63" cy="-255.21" rx="9" ry="9"></ellipse>
+</g>
+<!-- a1&#45;&#45;c1 -->
+<g id="edge23" class="edge">
+<title>a1--c1</title>
+<path fill="none" stroke="#0072b2" d="M186.42,-255.21C208.01,-255.21 261.04,-255.21 282.45,-255.21"></path>
+</g>
+<!-- e1 -->
+<g id="node12" class="node">
+<title>e1</title>
+<ellipse fill="#cc79a7" stroke="black" cx="234.34" cy="-197.92" rx="9" ry="9"></ellipse>
+</g>
+<!-- a1&#45;&#45;e1 -->
+<g id="edge27" class="edge">
+<title>a1--e1</title>
+<path fill="none" stroke="#0072b2" d="M183.61,-248.64C194.67,-237.59 216.84,-215.42 227.84,-204.41"></path>
+</g>
+<!-- b1&#45;&#45;c1 -->
+<g id="edge24" class="edge">
+<title>b1--c1</title>
+<path fill="none" stroke="#0072b2" d="M240.91,-305.94C251.96,-294.89 274.14,-272.71 285.14,-261.71"></path>
+</g>
+<!-- d1 -->
+<g id="node11" class="node">
+<title>d1</title>
+<ellipse fill="#cc79a7" stroke="black" cx="372.63" cy="-255.21" rx="9" ry="9"></ellipse>
+</g>
+<!-- c1&#45;&#45;d1 -->
+<g id="edge25" class="edge">
+<title>c1--d1</title>
+<path fill="none" stroke="#0072b2" d="M300.93,-255.21C316.55,-255.21 347.9,-255.21 363.45,-255.21"></path>
+</g>
+<!-- c1&#45;&#45;e1 -->
+<g id="edge26" class="edge">
+<title>c1--e1</title>
+<path fill="none" stroke="#0072b2" d="M285.06,-248.64C274.01,-237.59 251.83,-215.42 240.83,-204.41"></path>
+</g>
+<!-- a2 -->
+<g id="node13" class="node">
+<title>a2</title>
+<ellipse fill="#cc79a7" stroke="black" cx="218.85" cy="-9" rx="9" ry="9"></ellipse>
+</g>
+<!-- b2 -->
+<g id="node14" class="node">
+<title>b2</title>
+<ellipse fill="#cc79a7" stroke="black" cx="218.85" cy="-83.43" rx="9" ry="9"></ellipse>
+</g>
+<!-- a2&#45;&#45;b2 -->
+<g id="edge28" class="edge">
+<title>a2--b2</title>
+<path fill="none" stroke="#0072b2" d="M218.85,-18.13C218.85,-32.41 218.85,-59.9 218.85,-74.23"></path>
+</g>
+<!-- c2 -->
+<g id="node15" class="node">
+<title>c2</title>
+<ellipse fill="#cc79a7" stroke="black" cx="283.31" cy="-46.21" rx="9" ry="9"></ellipse>
+</g>
+<!-- a2&#45;&#45;c2 -->
+<g id="edge30" class="edge">
+<title>a2--c2</title>
+<path fill="none" stroke="#0072b2" d="M226.76,-13.56C239.13,-20.71 262.93,-34.45 275.34,-41.61"></path>
+</g>
+<!-- b2&#45;&#45;c2 -->
+<g id="edge29" class="edge">
+<title>b2--c2</title>
+<path fill="none" stroke="#0072b2" d="M226.76,-78.87C239.13,-71.72 262.93,-57.98 275.34,-50.82"></path>
+</g>
+<!-- d2 -->
+<g id="node16" class="node">
+<title>d2</title>
+<ellipse fill="#cc79a7" stroke="black" cx="364.31" cy="-46.21" rx="9" ry="9"></ellipse>
+</g>
+<!-- c2&#45;&#45;d2 -->
+<g id="edge31" class="edge">
+<title>c2--d2</title>
+<path fill="none" stroke="#0072b2" d="M292.6,-46.21C308.23,-46.21 339.57,-46.21 355.13,-46.21"></path>
+</g>
+<!-- e2 -->
+<g id="node17" class="node">
+<title>e2</title>
+<ellipse fill="#cc79a7" stroke="black" cx="454.31" cy="-46.21" rx="9" ry="9"></ellipse>
+</g>
+<!-- d2&#45;&#45;e2 -->
+<g id="edge32" class="edge">
+<title>d2--e2</title>
+<path fill="none" stroke="#0072b2" d="M373.6,-46.21C390.94,-46.21 428.01,-46.21 445.2,-46.21"></path>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Graphs are particularly useful when representing relationships between objects; objects are represented as nodes, and a relationship between two objects can be represented as an edge connecting them, and arise frequently in <span class="alert"><strong>network analysis</strong></span>.</li>
+</ul>
+</div></div>
+</section>
+<section id="classification-with-multiple-levels" class="slide level2">
+<h2><i class="fa-solid fa-layer-group" aria-label="layer-group"></i> Classification with Multiple Levels</h2>
+<ul>
+<li class="fragment"><p>We might imagine a situation in which, instead of having a binary output, we have a categorical output with more than two levels.</p></li>
+<li class="fragment"><p>For example, back when we talked about PCA, we encountered the <span class="alert"><strong>MNIST</strong></span> dataset in which each image belongs to one of 10 classes (each representing a digit).</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="3" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="288" viewbox="0.00 0.00 212.77 255.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 251)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-251 208.77,-251 208.77,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-8 8,-239 65.39,-239 65.39,-8 8,-8"></polygon>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="white" points="139.39,-25 139.39,-221 196.77,-221 196.77,-25 139.39,-25"></polygon>
+<text text-anchor="middle" x="168.08" y="-204.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-210" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-206.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-206.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">0</text>
+</g>
+<!-- out1 -->
+<g id="node5" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="168.08" cy="-168" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="161.08" y="-164.8" font-family="Times,serif" font-size="14.00">π</text>
+<text text-anchor="start" x="168.08" y="-164.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- inp1&#45;&gt;out1 -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M56.51,-203.89C79.51,-196.43 118.44,-183.79 143.44,-175.67"></path>
+<polygon fill="#009e73" stroke="#009e73" points="144.03,-177.32 148.24,-174.11 142.95,-173.99 144.03,-177.32"></polygon>
+</g>
+<!-- out3 -->
+<g id="node7" class="node">
+<title>out3</title>
+<ellipse fill="#56b4e9" stroke="white" cx="168.08" cy="-54" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="161.08" y="-50.8" font-family="Times,serif" font-size="14.00">π</text>
+<text text-anchor="start" x="168.08" y="-50.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">k</text>
+</g>
+<!-- inp1&#45;&gt;out3 -->
+<g id="edge5" class="edge">
+<title>inp1-&gt;out3</title>
+<path fill="none" stroke="#009e73" d="M51.82,-195.84C56.27,-191.21 61.14,-185.98 65.39,-181 100.61,-139.77 104.51,-125.52 139.39,-84 142.6,-80.17 146.14,-76.18 149.59,-72.4"></path>
+<polygon fill="#009e73" stroke="#009e73" points="150.89,-73.57 152.99,-68.71 148.32,-71.2 150.89,-73.57"></polygon>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-151" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-147.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-147.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- inp2&#45;&gt;out1 -->
+<g id="edge2" class="edge">
+<title>inp2-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M57.34,-153.58C80.05,-156.56 117.45,-161.48 142.17,-164.73"></path>
+<polygon fill="#009e73" stroke="#009e73" points="142.06,-166.48 147.24,-165.39 142.51,-163.01 142.06,-166.48"></polygon>
+</g>
+<!-- inp2&#45;&gt;out3 -->
+<g id="edge6" class="edge">
+<title>inp2-&gt;out3</title>
+<path fill="none" stroke="#009e73" d="M53.82,-138.91C77.38,-121.24 121.21,-88.39 146.89,-69.14"></path>
+<polygon fill="#009e73" stroke="#009e73" points="148.21,-70.34 151.16,-65.94 146.11,-67.54 148.21,-70.34"></polygon>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="white" stroke="white" cx="36.69" cy="-94" rx="18.06" ry="18.06"></ellipse>
+<text text-anchor="middle" x="36.69" y="-89.8" font-family="Times,serif" font-size="14.00">⋮</text>
+</g>
+<!-- inp3&#45;&gt;out1 -->
+<g id="edge3" class="edge">
+<title>inp3-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M53.04,-102.78C75.95,-115.88 119.18,-140.6 145.33,-155.56"></path>
+<polygon fill="#009e73" stroke="#009e73" points="144.48,-157.09 149.69,-158.05 146.22,-154.05 144.48,-157.09"></polygon>
+</g>
+<!-- inp3&#45;&gt;out3 -->
+<g id="edge7" class="edge">
+<title>inp3-&gt;out3</title>
+<path fill="none" stroke="#009e73" d="M54.34,-88.85C76.87,-81.89 117.19,-69.42 143.01,-61.44"></path>
+<polygon fill="#009e73" stroke="#009e73" points="143.71,-63.06 147.97,-59.91 142.68,-59.71 143.71,-63.06"></polygon>
+</g>
+<!-- inp4 -->
+<g id="node4" class="node">
+<title>inp4</title>
+<ellipse fill="#e69f00" stroke="white" cx="36.69" cy="-37" rx="20.89" ry="20.89"></ellipse>
+<text text-anchor="start" x="29.69" y="-33.8" font-family="Times,serif" font-size="14.00">x</text>
+<text text-anchor="start" x="36.69" y="-33.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">p</text>
+</g>
+<!-- inp4&#45;&gt;out1 -->
+<g id="edge4" class="edge">
+<title>inp4-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M51.79,-51.27C75.51,-75.29 123.36,-123.74 149.34,-150.04"></path>
+<polygon fill="#009e73" stroke="#009e73" points="148.25,-151.42 153,-153.75 150.74,-148.96 148.25,-151.42"></polygon>
+</g>
+<!-- inp4&#45;&gt;out3 -->
+<g id="edge8" class="edge">
+<title>inp4-&gt;out3</title>
+<path fill="none" stroke="#009e73" d="M57.34,-39.58C80.05,-42.56 117.45,-47.48 142.17,-50.73"></path>
+<polygon fill="#009e73" stroke="#009e73" points="142.06,-52.48 147.24,-51.39 142.51,-49.01 142.06,-52.48"></polygon>
+</g>
+<!-- out2 -->
+<g id="node6" class="node">
+<title>out2</title>
+<ellipse fill="white" stroke="white" cx="168.08" cy="-111" rx="18.06" ry="18.06"></ellipse>
+<text text-anchor="middle" x="168.08" y="-106.8" font-family="Times,serif" font-size="14.00">⋮</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>We might update our diagram, then, to look something like that to the left.</p></li>
+<li class="fragment"><p>For example, in the MNIST dataset, we would have (<em>k</em> = 10) output probabilities.</p>
+<ul>
+<li class="fragment"><em>π</em><sub><em>i</em></sub> then represents the probability that a given image is the digit <em>i</em>, for <em>i</em> in {0, …, 10}.</li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="series-estimators" class="slide level2">
+<h2><i class="fa-solid fa-add" aria-label="add"></i> Series Estimators</h2>
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[ y(\vect{x}, \vect{\beta}) = \beta_0 + \sum_{j=1}^{p} \beta_j \phi_j(\vect{x})\]</span></p>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="4" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="384" viewbox="0.00 0.00 243.91 322.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 318)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-318 239.91,-318 239.91,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-8 8,-306 87.91,-306 87.91,-8 8,-8"></polygon>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="white" points="175.91,-124 175.91,-201 227.91,-201 227.91,-124 175.91,-124"></polygon>
+<text text-anchor="middle" x="201.91" y="-184.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="47.95" cy="-266" rx="31.91" ry="31.91"></ellipse>
+<text text-anchor="start" x="32.79" y="-262.8" font-family="Times,serif" font-size="14.00">φ</text>
+<text text-anchor="start" x="39.79" y="-262.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">0</text>
+<text text-anchor="start" x="46.79" y="-262.8" font-family="Times,serif" font-size="14.00">(</text>
+<text text-anchor="start" x="51.45" y="-262.8" font-family="Times,serif" font-weight="bold" font-size="14.00">x</text>
+<text text-anchor="start" x="58.45" y="-262.8" font-family="Times,serif" font-size="14.00">)</text>
+</g>
+<!-- out1 -->
+<g id="node5" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="201.91" cy="-150" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="201.91" y="-145.8" font-family="Times,serif" font-size="14.00">y</text>
+</g>
+<!-- inp1&#45;&gt;out1 -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M74.05,-246.84C104.77,-223.39 156.05,-184.25 183.04,-163.64"></path>
+<polygon fill="#009e73" stroke="#009e73" points="184.24,-164.92 187.15,-160.5 182.12,-162.14 184.24,-164.92"></polygon>
+<text text-anchor="start" x="124.91" y="-213.2" font-family="Times,serif" font-size="14.00">β</text>
+<text text-anchor="start" x="131.91" y="-213.2" font-family="Times,serif" baseline-shift="sub" font-size="14.00">0</text>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="#e69f00" stroke="white" cx="47.95" cy="-184" rx="31.91" ry="31.91"></ellipse>
+<text text-anchor="start" x="32.79" y="-180.8" font-family="Times,serif" font-size="14.00">φ</text>
+<text text-anchor="start" x="39.79" y="-180.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+<text text-anchor="start" x="46.79" y="-180.8" font-family="Times,serif" font-size="14.00">(</text>
+<text text-anchor="start" x="51.45" y="-180.8" font-family="Times,serif" font-weight="bold" font-size="14.00">x</text>
+<text text-anchor="start" x="58.45" y="-180.8" font-family="Times,serif" font-size="14.00">)</text>
+</g>
+<!-- inp2&#45;&gt;out1 -->
+<g id="edge2" class="edge">
+<title>inp2-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M79.34,-177.2C108.89,-170.59 153.06,-160.71 179.22,-154.85"></path>
+<polygon fill="#009e73" stroke="#009e73" points="179.71,-156.54 184.21,-153.74 178.95,-153.12 179.71,-156.54"></polygon>
+<text text-anchor="start" x="124.91" y="-172.2" font-family="Times,serif" font-size="14.00">β</text>
+<text text-anchor="start" x="131.91" y="-172.2" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="white" stroke="white" cx="47.95" cy="-116" rx="18.06" ry="18.06"></ellipse>
+<text text-anchor="middle" x="47.95" y="-111.8" font-family="Times,serif" font-size="14.00">⋮</text>
+</g>
+<!-- inp3&#45;&gt;out1 -->
+<g id="edge3" class="edge">
+<title>inp3-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M66.09,-119.83C93.82,-126.04 148.51,-138.28 179.02,-145.1"></path>
+<polygon fill="#009e73" stroke="#009e73" points="178.8,-146.85 184.07,-146.23 179.57,-143.43 178.8,-146.85"></polygon>
+<text text-anchor="middle" x="131.91" y="-140.2" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- inp4 -->
+<g id="node4" class="node">
+<title>inp4</title>
+<ellipse fill="#e69f00" stroke="white" cx="47.95" cy="-48" rx="31.91" ry="31.91"></ellipse>
+<text text-anchor="start" x="32.79" y="-44.8" font-family="Times,serif" font-size="14.00">φ</text>
+<text text-anchor="start" x="39.79" y="-44.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">p</text>
+<text text-anchor="start" x="46.79" y="-44.8" font-family="Times,serif" font-size="14.00">(</text>
+<text text-anchor="start" x="51.45" y="-44.8" font-family="Times,serif" font-weight="bold" font-size="14.00">x</text>
+<text text-anchor="start" x="58.45" y="-44.8" font-family="Times,serif" font-size="14.00">)</text>
+</g>
+<!-- inp4&#45;&gt;out1 -->
+<g id="edge4" class="edge">
+<title>inp4-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M75.08,-65.53C105.56,-86 155.21,-119.32 182.12,-137.39"></path>
+<polygon fill="#009e73" stroke="#009e73" points="181.43,-139.03 186.56,-140.37 183.38,-136.13 181.43,-139.03"></polygon>
+<text text-anchor="start" x="124.91" y="-113.2" font-family="Times,serif" font-size="14.00">β</text>
+<text text-anchor="start" x="131.91" y="-113.2" font-family="Times,serif" baseline-shift="sub" font-size="14.00">p</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Now, each node represents a basis function</li>
+<li class="fragment">Parameters (which we can really think of as <span class="alert"><strong>weights</strong></span>) are, again, represented by <span class="alert"><strong>edges</strong></span></li>
+<li class="fragment">If necessary, we can still pass the linear combination of our covariates through a function <em>g</em>() to create a more flexible model (these transformations aren’t depicted on our graph).</li>
+</ul>
+</div></div>
+</section>
+<section id="generalizing" class="slide level2">
+<h2><i class="fa-solid fa-bezier-curve" aria-label="bezier-curve"></i> Generalizing</h2>
+<ul>
+<li class="fragment">Note that passing our linear combination of covariates through a function <em>g</em>() (which we can call an <span class="alert"><strong>output activation function</strong></span>) leads to a potentially nonlinear model:</li>
+</ul>
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[ y(\vect{x}, \vect{\beta}) = g\left( \beta_0 + \sum_{j=1}^{p} \beta_j \phi_j(\vect{x}) \right) = g \left( \tvect{\beta} \vect{\phi}(\vect{x}) \right) \]</span></p>
+</div>
+<ul>
+<li class="fragment">Recall that “linearity” in a model typically refers to the <em>parameters</em> - taking the output activation function (leading back to series estimation) results in a model that is <em>linear</em> in the parameters and hence one that is classified as “linear”.
+<ul>
+<li class="fragment">More complex output activation functions, however, may introduce nonlinearity into the model.</li>
+</ul></li>
+</ul>
+</section>
+<section id="neural-networks" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<ul>
+<li class="fragment"><p>These are all examples of <span class="alert"><strong>artificial neural networks</strong></span> (often referred to simply as <span class="alert"><strong>neural nets</strong></span>).</p></li>
+<li class="fragment"><p>Broadly speaking, neural nets are mathematical models that are motivated by the functioning of the brain.</p>
+<ul>
+<li class="fragment">Nodes correspond to neurons; edges correspond to neural pathways</li>
+</ul></li>
+</ul>
+<div class="fragment" style="text-align:center">
+<p><img data-src="Images/brain.svg" style="width:75.0%"></p>
+</div>
+</section>
+<section id="neural-networks-1" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<ul>
+<li class="fragment"><p>The general idea is to recursively construct a model, whereby outputs of one portion are used as inputs in another portion.</p></li>
+<li class="fragment"><p>The examples of neural networks we’ve seen today so far are all examples of <span class="alert"><strong>one-layer</strong></span> (sometimes called <span class="alert"><strong>shallow</strong></span>) networks, in which we have just one input layer and one output layer, and no layers in between.</p></li>
+</ul>
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="3" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="288" viewbox="0.00 0.00 202.00 238.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 234)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-234 198,-234 198,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-8 8,-222 60,-222 60,-8 8,-8"></polygon>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="white" points="134,-62 134,-193 186,-193 186,-62 134,-62"></polygon>
+<text text-anchor="middle" x="160" y="-176.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-196" rx="18" ry="18"></ellipse>
+</g>
+<!-- out1 -->
+<g id="node5" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="160" cy="-142" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;out1 -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M50.7,-189.16C72.94,-179.48 113.65,-161.75 138.32,-151.01"></path>
+<polygon fill="#009e73" stroke="#009e73" points="139.15,-152.56 143.03,-148.95 137.75,-149.35 139.15,-152.56"></polygon>
+</g>
+<!-- out2 -->
+<g id="node6" class="node">
+<title>out2</title>
+<ellipse fill="#56b4e9" stroke="white" cx="160" cy="-88" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;out2 -->
+<g id="edge5" class="edge">
+<title>inp1-&gt;out2</title>
+<path fill="none" stroke="#009e73" d="M48.27,-184.44C70.92,-164.71 117.03,-124.56 142,-102.8"></path>
+<polygon fill="#009e73" stroke="#009e73" points="143.2,-104.08 145.83,-99.47 140.91,-101.44 143.2,-104.08"></polygon>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-142" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp2&#45;&gt;out1 -->
+<g id="edge2" class="edge">
+<title>inp2-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M52.24,-142C74.27,-142 112.43,-142 136.66,-142"></path>
+<polygon fill="#009e73" stroke="#009e73" points="136.9,-143.75 141.9,-142 136.9,-140.25 136.9,-143.75"></polygon>
+</g>
+<!-- inp2&#45;&gt;out2 -->
+<g id="edge6" class="edge">
+<title>inp2-&gt;out2</title>
+<path fill="none" stroke="#009e73" d="M50.7,-135.16C72.94,-125.48 113.65,-107.75 138.32,-97.01"></path>
+<polygon fill="#009e73" stroke="#009e73" points="139.15,-98.56 143.03,-94.95 137.75,-95.35 139.15,-98.56"></polygon>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-88" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp3&#45;&gt;out1 -->
+<g id="edge3" class="edge">
+<title>inp3-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M50.7,-94.84C72.94,-104.52 113.65,-122.25 138.32,-132.99"></path>
+<polygon fill="#009e73" stroke="#009e73" points="137.75,-134.65 143.03,-135.05 139.15,-131.44 137.75,-134.65"></polygon>
+</g>
+<!-- inp3&#45;&gt;out2 -->
+<g id="edge7" class="edge">
+<title>inp3-&gt;out2</title>
+<path fill="none" stroke="#009e73" d="M52.24,-88C74.27,-88 112.43,-88 136.66,-88"></path>
+<polygon fill="#009e73" stroke="#009e73" points="136.9,-89.75 141.9,-88 136.9,-86.25 136.9,-89.75"></polygon>
+</g>
+<!-- inp4 -->
+<g id="node4" class="node">
+<title>inp4</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-34" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp4&#45;&gt;out1 -->
+<g id="edge4" class="edge">
+<title>inp4-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M48.27,-45.56C70.92,-65.29 117.03,-105.44 142,-127.2"></path>
+<polygon fill="#009e73" stroke="#009e73" points="140.91,-128.56 145.83,-130.53 143.2,-125.92 140.91,-128.56"></polygon>
+</g>
+<!-- inp4&#45;&gt;out2 -->
+<g id="edge8" class="edge">
+<title>inp4-&gt;out2</title>
+<path fill="none" stroke="#009e73" d="M50.7,-40.84C72.94,-50.52 113.65,-68.25 138.32,-78.99"></path>
+<polygon fill="#009e73" stroke="#009e73" points="137.75,-80.65 143.03,-81.05 139.15,-77.44 137.75,-80.65"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="neural-networks-2" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<ul>
+<li class="fragment">We can imagine potentially mapping inputs to another layer, and then mapping <em>this</em> (<span class="alert"><strong>hidden</strong></span>) layer to the output layer:</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="3" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="288" viewbox="0.00 0.00 256.00 238.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 234)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-234 252,-234 252,4 -4,4"></polygon>
+<g id="clust3" class="cluster">
+<title>cluster_2</title>
+<polygon fill="none" stroke="white" points="188,-89 188,-166 240,-166 240,-89 188,-89"></polygon>
+<text text-anchor="middle" x="214" y="-149.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="white" points="98,-8 98,-222 150,-222 150,-8 98,-8"></polygon>
+</g>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-35 8,-195 60,-195 60,-35 8,-35"></polygon>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-115" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1 -->
+<g id="node4" class="node">
+<title>hid1</title>
+<ellipse fill="#009e73" stroke="white" cx="124" cy="-196" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid1 -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;hid1</title>
+<path fill="none" stroke="#0072b2" d="M47.98,-126.95C63.54,-141.27 89.62,-165.28 106.57,-180.88"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="105.38,-182.16 110.25,-184.26 107.75,-179.59 105.38,-182.16"></polygon>
+</g>
+<!-- hid2 -->
+<g id="node5" class="node">
+<title>hid2</title>
+<ellipse fill="#009e73" stroke="white" cx="124" cy="-142" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid2 -->
+<g id="edge2" class="edge">
+<title>inp1-&gt;hid2</title>
+<path fill="none" stroke="#0072b2" d="M51.55,-120.08C65.69,-124.42 86.11,-130.68 101.51,-135.41"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="101.23,-137.15 106.52,-136.94 102.26,-133.8 101.23,-137.15"></polygon>
+</g>
+<!-- hid3 -->
+<g id="node6" class="node">
+<title>hid3</title>
+<ellipse fill="#009e73" stroke="white" cx="124" cy="-88" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid3 -->
+<g id="edge3" class="edge">
+<title>inp1-&gt;hid3</title>
+<path fill="none" stroke="#0072b2" d="M51.55,-109.92C65.69,-105.58 86.11,-99.32 101.51,-94.59"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="102.26,-96.2 106.52,-93.06 101.23,-92.85 102.26,-96.2"></polygon>
+</g>
+<!-- hid4 -->
+<g id="node7" class="node">
+<title>hid4</title>
+<ellipse fill="#009e73" stroke="white" cx="124" cy="-34" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid4 -->
+<g id="edge4" class="edge">
+<title>inp1-&gt;hid4</title>
+<path fill="none" stroke="#0072b2" d="M47.98,-103.05C63.54,-88.73 89.62,-64.72 106.57,-49.12"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="107.75,-50.41 110.25,-45.74 105.38,-47.84 107.75,-50.41"></polygon>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-61" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp2&#45;&gt;hid1 -->
+<g id="edge5" class="edge">
+<title>inp2-&gt;hid1</title>
+<path fill="none" stroke="#0072b2" d="M44.59,-75.7C60.59,-100.25 92.73,-149.57 110.49,-176.82"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="109.23,-178.08 113.43,-181.31 112.16,-176.17 109.23,-178.08"></polygon>
+</g>
+<!-- inp2&#45;&gt;hid2 -->
+<g id="edge6" class="edge">
+<title>inp2-&gt;hid2</title>
+<path fill="none" stroke="#0072b2" d="M47.98,-72.95C63.54,-87.27 89.62,-111.28 106.57,-126.88"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="105.38,-128.16 110.25,-130.26 107.75,-125.59 105.38,-128.16"></polygon>
+</g>
+<!-- inp2&#45;&gt;hid3 -->
+<g id="edge7" class="edge">
+<title>inp2-&gt;hid3</title>
+<path fill="none" stroke="#0072b2" d="M51.55,-66.08C65.69,-70.42 86.11,-76.68 101.51,-81.41"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="101.23,-83.15 106.52,-82.94 102.26,-79.8 101.23,-83.15"></polygon>
+</g>
+<!-- inp2&#45;&gt;hid4 -->
+<g id="edge8" class="edge">
+<title>inp2-&gt;hid4</title>
+<path fill="none" stroke="#0072b2" d="M51.55,-55.92C65.69,-51.58 86.11,-45.32 101.51,-40.59"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="102.26,-42.2 106.52,-39.06 101.23,-38.85 102.26,-42.2"></polygon>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-169" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp3&#45;&gt;hid1 -->
+<g id="edge9" class="edge">
+<title>inp3-&gt;hid1</title>
+<path fill="none" stroke="#0072b2" d="M51.55,-174.08C65.69,-178.42 86.11,-184.68 101.51,-189.41"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="101.23,-191.15 106.52,-190.94 102.26,-187.8 101.23,-191.15"></polygon>
+</g>
+<!-- inp3&#45;&gt;hid2 -->
+<g id="edge10" class="edge">
+<title>inp3-&gt;hid2</title>
+<path fill="none" stroke="#0072b2" d="M51.55,-163.92C65.69,-159.58 86.11,-153.32 101.51,-148.59"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="102.26,-150.2 106.52,-147.06 101.23,-146.85 102.26,-150.2"></polygon>
+</g>
+<!-- inp3&#45;&gt;hid3 -->
+<g id="edge11" class="edge">
+<title>inp3-&gt;hid3</title>
+<path fill="none" stroke="#0072b2" d="M47.98,-157.05C63.54,-142.73 89.62,-118.72 106.57,-103.12"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="107.75,-104.41 110.25,-99.74 105.38,-101.84 107.75,-104.41"></polygon>
+</g>
+<!-- inp3&#45;&gt;hid4 -->
+<g id="edge12" class="edge">
+<title>inp3-&gt;hid4</title>
+<path fill="none" stroke="#0072b2" d="M44.59,-154.3C60.59,-129.75 92.73,-80.43 110.49,-53.18"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="112.16,-53.83 113.43,-48.69 109.23,-51.92 112.16,-53.83"></polygon>
+</g>
+<!-- out1 -->
+<g id="node8" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="214" cy="-115" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1&#45;&gt;out1 -->
+<g id="edge13" class="edge">
+<title>hid1-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M137.98,-184.05C153.54,-169.73 179.62,-145.72 196.57,-130.12"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="197.75,-131.41 200.25,-126.74 195.38,-128.84 197.75,-131.41"></polygon>
+</g>
+<!-- hid2&#45;&gt;out1 -->
+<g id="edge14" class="edge">
+<title>hid2-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M141.55,-136.92C155.69,-132.58 176.11,-126.32 191.51,-121.59"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="192.26,-123.2 196.52,-120.06 191.23,-119.85 192.26,-123.2"></polygon>
+</g>
+<!-- hid3&#45;&gt;out1 -->
+<g id="edge15" class="edge">
+<title>hid3-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M141.55,-93.08C155.69,-97.42 176.11,-103.68 191.51,-108.41"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="191.23,-110.15 196.52,-109.94 192.26,-106.8 191.23,-110.15"></polygon>
+</g>
+<!-- hid4&#45;&gt;out1 -->
+<g id="edge16" class="edge">
+<title>hid4-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M137.98,-45.95C153.54,-60.27 179.62,-84.28 196.57,-99.88"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="195.38,-101.16 200.25,-103.26 197.75,-98.59 195.38,-101.16"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>One input layer</p></li>
+<li class="fragment"><p>One hidden layer</p></li>
+<li class="fragment"><p>One output layer</p></li>
+<li class="fragment"><p>One parameter per edge</p></li>
+<li class="fragment"><p>Each node “feeds” into another one layer down; hence the name <span class="alert"><strong>feedforward</strong></span> neural network (NN).</p></li>
+</ul>
+</div></div>
+<ul>
+<li class="fragment">In general, the <span class="alert"><strong>depth</strong></span> of a neural network is the number of non-input layers; hence, our NN above has depth 2.</li>
+</ul>
+</section>
+<section id="neural-networks-3" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="more-formally">More Formally</h3>
+<ul>
+<li class="fragment"><p>We first take a linear combination of our inputs, and pass them through an <span class="alert"><strong>activation function</strong></span> σ<sub>X</sub>().</p></li>
+<li class="fragment"><p>Each of these resulting quantities is then treated as an input into the hidden layer, which then takes a linear combination of <em>these</em> values, and passes them through yet another activation function σ<sub>Z</sub>().</p></li>
+<li class="fragment"><p>The resulting values are again weightedly-averaged, passed through a final <span class="alert"><strong>output activation function</strong></span> σ<sub>Z</sub>(), the result of which is then treated as the outputs of our NN.</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:33.3333%;">
+<div class="fragment" style="text-align: center">
+<p><strong>Input Layer:</strong> <br> <span style="color:#E69F00"><strong>X</strong></span> = [x<sub>1</sub>, …, x<sub><em>p</em></sub>]</p>
+</div>
+</div><div class="column" style="width:33.3333%;">
+<div class="fragment" style="text-align: center">
+<p><strong>Hidden Layer:</strong> <br> <span style="color:#009E73"><strong>Z</strong></span> = [σ<sub>X</sub>(<span style="color:#E69F00"><strong>X</strong></span>α<sub>1</sub>), …, σ<sub>X</sub>(<span style="color:#E69F00"><strong>X</strong></span>α<sub><em>M</em></sub>)]</p>
+</div>
+</div><div class="column" style="width:33.3333%;">
+<div class="fragment" style="text-align: center">
+<p><strong>Output Layer:</strong> <br> 𝔼[<span style="color:#56B4E9"><strong>Y</strong></span>] = σ<sub>Z</sub>(<span style="color:#009E73"><strong>Z</strong></span>β)</p>
+</div>
+</div></div>
+</section>
+<section id="neural-networks-4" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="composition-of-functions">Composition of Functions</h3>
+<ul>
+<li class="fragment">Note that, at the end of the day, a Neural Network really just models the output as a long composition of functions on the inputs:</li>
+</ul>
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[ Y = f(X) =: (\sigma_Z \circ h_{\beta} \circ \sigma_X \circ h_\alpha)(X)\]</span></p>
+</div>
+<ul>
+<li class="fragment"><p>Each function in the composition is either known (like the activation functions) or linear (what I’ve called the <em>h</em> functions above).</p></li>
+<li class="fragment"><p>So, two key things become apparent:</p>
+<ol type="1">
+<li class="fragment">A Neural Net is a statistical model</li>
+<li class="fragment">“Training” a Neural Net amounts to <em>estimating the weight parameters</em>.</li>
+</ol></li>
+</ul>
+</section>
+<section id="neural-networks-5" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="deep-neural-nets">Deep Neural Nets</h3>
+<ul>
+<li class="fragment">There is nothing stopping us from including more hidden layers.
+<ul>
+<li class="fragment">Generally, any NN with depth 3 or higher is considered a <span class="alert"><strong>deep neural network</strong></span></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<div class="cell" data-fig-width="6" data-fig-height="3" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="576" height="288" viewbox="0.00 0.00 436.00 260.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-256 432,-256 432,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-39 8,-199 60,-199 60,-39 8,-39"></polygon>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_2</title>
+<polygon fill="none" stroke="white" points="368,-60 368,-191 420,-191 420,-60 368,-60"></polygon>
+<text text-anchor="middle" x="394" y="-174.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-119" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1 -->
+<g id="node4" class="node">
+<title>hid1</title>
+<ellipse fill="#009e73" stroke="white" cx="124" cy="-72" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid1 -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;hid1</title>
+<path fill="none" stroke="#0072b2" d="M50.33,-110.81C64.97,-103 87.1,-91.17 103.1,-82.63"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="104.26,-83.99 107.85,-80.09 102.61,-80.9 104.26,-83.99"></polygon>
+</g>
+<!-- hid2 -->
+<g id="node5" class="node">
+<title>hid2</title>
+<ellipse fill="#009e73" stroke="white" cx="124" cy="-18" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid2 -->
+<g id="edge2" class="edge">
+<title>inp1-&gt;hid2</title>
+<path fill="none" stroke="#0072b2" d="M46.5,-105.8C62.32,-87.65 90.78,-54.99 108.17,-35.02"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="109.53,-36.13 111.49,-31.21 106.89,-33.83 109.53,-36.13"></polygon>
+</g>
+<!-- hid3 -->
+<g id="node6" class="node">
+<title>hid3</title>
+<ellipse fill="#009e73" stroke="white" cx="124" cy="-180" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid3 -->
+<g id="edge3" class="edge">
+<title>inp1-&gt;hid3</title>
+<path fill="none" stroke="#0072b2" d="M49.14,-128.8C64.06,-139.14 87.66,-155.5 104.15,-166.94"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="103.5,-168.61 108.6,-170.02 105.49,-165.73 103.5,-168.61"></polygon>
+</g>
+<!-- hid4 -->
+<g id="node7" class="node">
+<title>hid4</title>
+<ellipse fill="#009e73" stroke="white" cx="124" cy="-126" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid4 -->
+<g id="edge4" class="edge">
+<title>inp1-&gt;hid4</title>
+<path fill="none" stroke="#0072b2" d="M51.97,-120.35C65.76,-121.45 85.33,-123 100.44,-124.21"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="100.66,-125.98 105.78,-124.63 100.94,-122.49 100.66,-125.98"></polygon>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-65" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp2&#45;&gt;hid1 -->
+<g id="edge5" class="edge">
+<title>inp2-&gt;hid1</title>
+<path fill="none" stroke="#0072b2" d="M51.97,-66.35C65.76,-67.45 85.33,-69 100.44,-70.21"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="100.66,-71.98 105.78,-70.63 100.94,-68.49 100.66,-71.98"></polygon>
+</g>
+<!-- inp2&#45;&gt;hid2 -->
+<g id="edge6" class="edge">
+<title>inp2-&gt;hid2</title>
+<path fill="none" stroke="#0072b2" d="M50.33,-56.81C64.97,-49 87.1,-37.17 103.1,-28.63"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="104.26,-29.99 107.85,-26.09 102.61,-26.9 104.26,-29.99"></polygon>
+</g>
+<!-- inp2&#45;&gt;hid3 -->
+<g id="edge7" class="edge">
+<title>inp2-&gt;hid3</title>
+<path fill="none" stroke="#0072b2" d="M45.79,-79.1C61.78,-99.99 91.75,-139.16 109.27,-162.06"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="107.97,-163.24 112.4,-166.14 110.75,-161.11 107.97,-163.24"></polygon>
+</g>
+<!-- inp2&#45;&gt;hid4 -->
+<g id="edge8" class="edge">
+<title>inp2-&gt;hid4</title>
+<path fill="none" stroke="#0072b2" d="M49.14,-74.8C64.06,-85.14 87.66,-101.5 104.15,-112.94"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="103.5,-114.61 108.6,-116.02 105.49,-111.73 103.5,-114.61"></polygon>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="#e69f00" stroke="white" cx="34" cy="-173" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp3&#45;&gt;hid1 -->
+<g id="edge9" class="edge">
+<title>inp3-&gt;hid1</title>
+<path fill="none" stroke="#0072b2" d="M46.5,-159.8C62.32,-141.65 90.78,-108.99 108.17,-89.02"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="109.53,-90.13 111.49,-85.21 106.89,-87.83 109.53,-90.13"></polygon>
+</g>
+<!-- inp3&#45;&gt;hid2 -->
+<g id="edge10" class="edge">
+<title>inp3-&gt;hid2</title>
+<path fill="none" stroke="#0072b2" d="M43.76,-157.57C59.84,-129.25 94.03,-69.03 111.78,-37.76"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="113.33,-38.58 114.28,-33.37 110.29,-36.85 113.33,-38.58"></polygon>
+</g>
+<!-- inp3&#45;&gt;hid3 -->
+<g id="edge11" class="edge">
+<title>inp3-&gt;hid3</title>
+<path fill="none" stroke="#0072b2" d="M51.97,-174.35C65.76,-175.45 85.33,-177 100.44,-178.21"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="100.66,-179.98 105.78,-178.63 100.94,-176.49 100.66,-179.98"></polygon>
+</g>
+<!-- inp3&#45;&gt;hid4 -->
+<g id="edge12" class="edge">
+<title>inp3-&gt;hid4</title>
+<path fill="none" stroke="#0072b2" d="M50.33,-164.81C64.97,-157 87.1,-145.17 103.1,-136.63"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="104.26,-137.99 107.85,-134.09 102.61,-134.9 104.26,-137.99"></polygon>
+</g>
+<!-- hid21 -->
+<g id="node8" class="node">
+<title>hid21</title>
+<ellipse fill="#cc79a7" stroke="white" cx="214" cy="-126" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1&#45;&gt;hid21 -->
+<g id="edge13" class="edge">
+<title>hid1-&gt;hid21</title>
+<path fill="none" stroke="#0072b2" d="M139.93,-81.16C154.81,-90.29 177.72,-104.35 193.92,-114.29"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="193.12,-115.85 198.29,-116.97 194.95,-112.87 193.12,-115.85"></polygon>
+</g>
+<!-- hid22 -->
+<g id="node9" class="node">
+<title>hid22</title>
+<ellipse fill="#cc79a7" stroke="white" cx="214" cy="-72" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1&#45;&gt;hid22 -->
+<g id="edge14" class="edge">
+<title>hid1-&gt;hid22</title>
+<path fill="none" stroke="#0072b2" d="M142.39,-72C156.22,-72 175.66,-72 190.65,-72"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="190.95,-73.75 195.95,-72 190.95,-70.25 190.95,-73.75"></polygon>
+</g>
+<!-- hid2&#45;&gt;hid21 -->
+<g id="edge15" class="edge">
+<title>hid2-&gt;hid21</title>
+<path fill="none" stroke="#0072b2" d="M136.15,-31.68C152.01,-51.15 181.13,-86.89 198.61,-108.34"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="197.43,-109.66 201.95,-112.43 200.14,-107.45 197.43,-109.66"></polygon>
+</g>
+<!-- hid2&#45;&gt;hid22 -->
+<g id="edge16" class="edge">
+<title>hid2-&gt;hid22</title>
+<path fill="none" stroke="#0072b2" d="M139.93,-27.16C154.81,-36.29 177.72,-50.35 193.92,-60.29"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="193.12,-61.85 198.29,-62.97 194.95,-58.87 193.12,-61.85"></polygon>
+</g>
+<!-- hid3&#45;&gt;hid21 -->
+<g id="edge17" class="edge">
+<title>hid3-&gt;hid21</title>
+<path fill="none" stroke="#0072b2" d="M139.93,-170.84C154.81,-161.71 177.72,-147.65 193.92,-137.71"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="194.95,-139.13 198.29,-135.03 193.12,-136.15 194.95,-139.13"></polygon>
+</g>
+<!-- hid3&#45;&gt;hid22 -->
+<g id="edge18" class="edge">
+<title>hid3-&gt;hid22</title>
+<path fill="none" stroke="#0072b2" d="M136.15,-166.32C152.01,-146.85 181.13,-111.11 198.61,-89.66"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="200.14,-90.55 201.95,-85.57 197.43,-88.34 200.14,-90.55"></polygon>
+</g>
+<!-- hid4&#45;&gt;hid21 -->
+<g id="edge19" class="edge">
+<title>hid4-&gt;hid21</title>
+<path fill="none" stroke="#0072b2" d="M142.39,-126C156.22,-126 175.66,-126 190.65,-126"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="190.95,-127.75 195.95,-126 190.95,-124.25 190.95,-127.75"></polygon>
+</g>
+<!-- hid4&#45;&gt;hid22 -->
+<g id="edge20" class="edge">
+<title>hid4-&gt;hid22</title>
+<path fill="none" stroke="#0072b2" d="M139.93,-116.84C154.81,-107.71 177.72,-93.65 193.92,-83.71"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="194.95,-85.13 198.29,-81.03 193.12,-82.15 194.95,-85.13"></polygon>
+</g>
+<!-- hid31 -->
+<g id="node10" class="node">
+<title>hid31</title>
+<ellipse fill="#cc79a7" stroke="white" cx="304" cy="-234" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid21&#45;&gt;hid31 -->
+<g id="edge21" class="edge">
+<title>hid21-&gt;hid31</title>
+<path fill="none" stroke="#0072b2" d="M226.15,-139.68C242.01,-159.15 271.13,-194.89 288.61,-216.34"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="287.43,-217.66 291.95,-220.43 290.14,-215.45 287.43,-217.66"></polygon>
+</g>
+<!-- hid32 -->
+<g id="node11" class="node">
+<title>hid32</title>
+<ellipse fill="#cc79a7" stroke="white" cx="304" cy="-180" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid21&#45;&gt;hid32 -->
+<g id="edge22" class="edge">
+<title>hid21-&gt;hid32</title>
+<path fill="none" stroke="#0072b2" d="M229.93,-135.16C244.81,-144.29 267.72,-158.35 283.92,-168.29"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="283.12,-169.85 288.29,-170.97 284.95,-166.87 283.12,-169.85"></polygon>
+</g>
+<!-- hid33 -->
+<g id="node12" class="node">
+<title>hid33</title>
+<ellipse fill="#cc79a7" stroke="white" cx="304" cy="-126" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid21&#45;&gt;hid33 -->
+<g id="edge23" class="edge">
+<title>hid21-&gt;hid33</title>
+<path fill="none" stroke="#0072b2" d="M232.39,-126C246.22,-126 265.66,-126 280.65,-126"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="280.95,-127.75 285.95,-126 280.95,-124.25 280.95,-127.75"></polygon>
+</g>
+<!-- hid34 -->
+<g id="node13" class="node">
+<title>hid34</title>
+<ellipse fill="#cc79a7" stroke="white" cx="304" cy="-72" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid21&#45;&gt;hid34 -->
+<g id="edge24" class="edge">
+<title>hid21-&gt;hid34</title>
+<path fill="none" stroke="#0072b2" d="M229.93,-116.84C244.81,-107.71 267.72,-93.65 283.92,-83.71"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="284.95,-85.13 288.29,-81.03 283.12,-82.15 284.95,-85.13"></polygon>
+</g>
+<!-- hid35 -->
+<g id="node14" class="node">
+<title>hid35</title>
+<ellipse fill="#cc79a7" stroke="white" cx="304" cy="-18" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid21&#45;&gt;hid35 -->
+<g id="edge25" class="edge">
+<title>hid21-&gt;hid35</title>
+<path fill="none" stroke="#0072b2" d="M226.15,-112.32C242.01,-92.85 271.13,-57.11 288.61,-35.66"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="290.14,-36.55 291.95,-31.57 287.43,-34.34 290.14,-36.55"></polygon>
+</g>
+<!-- hid22&#45;&gt;hid31 -->
+<g id="edge26" class="edge">
+<title>hid22-&gt;hid31</title>
+<path fill="none" stroke="#0072b2" d="M223.44,-87.53C239.43,-116.97 274.14,-180.87 291.96,-213.67"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="290.53,-214.72 294.46,-218.28 293.61,-213.05 290.53,-214.72"></polygon>
+</g>
+<!-- hid22&#45;&gt;hid32 -->
+<g id="edge27" class="edge">
+<title>hid22-&gt;hid32</title>
+<path fill="none" stroke="#0072b2" d="M226.15,-85.68C242.01,-105.15 271.13,-140.89 288.61,-162.34"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="287.43,-163.66 291.95,-166.43 290.14,-161.45 287.43,-163.66"></polygon>
+</g>
+<!-- hid22&#45;&gt;hid33 -->
+<g id="edge28" class="edge">
+<title>hid22-&gt;hid33</title>
+<path fill="none" stroke="#0072b2" d="M229.93,-81.16C244.81,-90.29 267.72,-104.35 283.92,-114.29"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="283.12,-115.85 288.29,-116.97 284.95,-112.87 283.12,-115.85"></polygon>
+</g>
+<!-- hid22&#45;&gt;hid34 -->
+<g id="edge29" class="edge">
+<title>hid22-&gt;hid34</title>
+<path fill="none" stroke="#0072b2" d="M232.39,-72C246.22,-72 265.66,-72 280.65,-72"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="280.95,-73.75 285.95,-72 280.95,-70.25 280.95,-73.75"></polygon>
+</g>
+<!-- hid22&#45;&gt;hid35 -->
+<g id="edge30" class="edge">
+<title>hid22-&gt;hid35</title>
+<path fill="none" stroke="#0072b2" d="M229.93,-62.84C244.81,-53.71 267.72,-39.65 283.92,-29.71"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="284.95,-31.13 288.29,-27.03 283.12,-28.15 284.95,-31.13"></polygon>
+</g>
+<!-- out1 -->
+<g id="node15" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="394" cy="-140" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid31&#45;&gt;out1 -->
+<g id="edge31" class="edge">
+<title>hid31-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M316.87,-221.32C332.48,-204.64 359.97,-175.28 377.29,-156.78"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="378.9,-157.62 381.04,-152.78 376.34,-155.23 378.9,-157.62"></polygon>
+</g>
+<!-- out2 -->
+<g id="node16" class="node">
+<title>out2</title>
+<ellipse fill="#56b4e9" stroke="white" cx="394" cy="-86" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid31&#45;&gt;out2 -->
+<g id="edge32" class="edge">
+<title>hid31-&gt;out2</title>
+<path fill="none" stroke="#0072b2" d="M314.09,-218.72C330.09,-191.8 363.3,-135.94 381.11,-106"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="382.78,-106.61 383.83,-101.42 379.77,-104.82 382.78,-106.61"></polygon>
+</g>
+<!-- hid32&#45;&gt;out1 -->
+<g id="edge33" class="edge">
+<title>hid32-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M320.73,-172.85C335.25,-166.25 356.88,-156.42 372.7,-149.23"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="373.58,-150.75 377.4,-147.09 372.13,-147.57 373.58,-150.75"></polygon>
+</g>
+<!-- hid32&#45;&gt;out2 -->
+<g id="edge34" class="edge">
+<title>hid32-&gt;out2</title>
+<path fill="none" stroke="#0072b2" d="M316.87,-167.32C332.48,-150.64 359.97,-121.28 377.29,-102.78"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="378.9,-103.62 381.04,-98.78 376.34,-101.23 378.9,-103.62"></polygon>
+</g>
+<!-- hid33&#45;&gt;out1 -->
+<g id="edge35" class="edge">
+<title>hid33-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M321.97,-128.7C335.97,-130.93 355.93,-134.1 371.13,-136.52"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="370.87,-138.25 376.08,-137.31 371.42,-134.8 370.87,-138.25"></polygon>
+</g>
+<!-- hid33&#45;&gt;out2 -->
+<g id="edge36" class="edge">
+<title>hid33-&gt;out2</title>
+<path fill="none" stroke="#0072b2" d="M320.73,-118.85C335.25,-112.25 356.88,-102.42 372.7,-95.23"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="373.58,-96.75 377.4,-93.09 372.13,-93.57 373.58,-96.75"></polygon>
+</g>
+<!-- hid34&#45;&gt;out1 -->
+<g id="edge37" class="edge">
+<title>hid34-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M318.75,-82.62C333.99,-94.4 358.62,-113.43 375.29,-126.31"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="374.32,-127.78 379.35,-129.45 376.46,-125.01 374.32,-127.78"></polygon>
+</g>
+<!-- hid34&#45;&gt;out2 -->
+<g id="edge38" class="edge">
+<title>hid34-&gt;out2</title>
+<path fill="none" stroke="#0072b2" d="M321.97,-74.7C335.97,-76.93 355.93,-80.1 371.13,-82.52"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="370.87,-84.25 376.08,-83.31 371.42,-80.8 370.87,-84.25"></polygon>
+</g>
+<!-- hid35&#45;&gt;out1 -->
+<g id="edge39" class="edge">
+<title>hid35-&gt;out1</title>
+<path fill="none" stroke="#0072b2" d="M315.44,-32.47C331.38,-54.58 361.8,-96.75 379.44,-121.2"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="378.23,-122.51 382.57,-125.54 381.07,-120.47 378.23,-122.51"></polygon>
+</g>
+<!-- hid35&#45;&gt;out2 -->
+<g id="edge40" class="edge">
+<title>hid35-&gt;out2</title>
+<path fill="none" stroke="#0072b2" d="M318.75,-28.62C333.99,-40.4 358.62,-59.43 375.29,-72.31"></path>
+<polygon fill="#0072b2" stroke="#0072b2" points="374.32,-73.78 379.35,-75.45 376.46,-71.01 374.32,-73.78"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="neural-networks-6" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="universal-approximation-theorem">Universal Approximation Theorem</h3>
+<ul>
+<li class="fragment"><p>There are a few different versions of the so-called <span class="alert"><strong>Universal Approximation Theorem</strong></span>, posited and proved by different people at different points in time, differing in the assumptions made.</p></li>
+<li class="fragment"><p>The broadest version of this theorem states: a feedforward neural network with one hidden layer and a finite number of neurons can approximate any continuous function on a compact subset of ℝ<sup><em>n</em></sup> to an arbitrary degree of closeness.</p>
+<ul>
+<li class="fragment">Subsequent versions have posited the same assertion for deep neural networks as well.</li>
+</ul></li>
+<li class="fragment"><p>Crucially, though, the UAT does <em>not</em> tell us how to find such an approximation.</p></li>
+</ul>
+</section>
+<section id="neural-networks-7" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="network-architecture">Network Architecture</h3>
+<ul>
+<li class="fragment">To distinguish between portions of the model that need to be estimated and those that are assumed known/specified, we’ll often use the term <span class="alert"><strong>architecture</strong></span> to refer to the portions of the NN that are prespecified. These include things like:
+<ul>
+<li class="fragment">The number of hidden layers</li>
+<li class="fragment">The choice of activation functions</li>
+</ul></li>
+<li class="fragment">The <strong>parameters</strong> are then just the weights by which we scale at each layer.
+<ul>
+<li class="fragment">Just like we did before, we can estimate these parameters by minimizing a loss function.</li>
+</ul></li>
+</ul>
+</section>
+<section id="neural-networks-8" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="optimization">Optimization</h3>
+<ul>
+<li class="fragment"><p>However, unlike with the simpler statistical models we considered (e.g.&nbsp;SLR), the minimization problems that arise in the context of training neural nets are often <em>quite</em> tricky and don’t always admit closed-form solutions.</p></li>
+<li class="fragment"><p>As such, it is common to use iterative methods to solve the minimization problem.</p></li>
+<li class="fragment"><p>One popular choice of such an algorithm is called <span class="alert"><strong>gradient descent</strong></span>, which we’ll discuss in a bit.</p></li>
+<li class="fragment"><p>Before we dive too deep into the general optimization, it may be useful to make concrete our goals in fitting a neural net.</p></li>
+</ul>
+</section>
+<section id="neural-networks-9" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="concrete-problem">Concrete Problem</h3>
+<ul>
+<li class="fragment">As a simple example, consider a noiseless regression problem where the true signal function is sinusoidal:</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb1-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length =</span> n)</span>
+<span id="cb1-3"><a></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x)</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a><span class="fu">data.frame</span>(x, y) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
+<span id="cb1-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb1-7"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">ggtitle</span>(<span class="st">"Simple Regression Problem"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lec20_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:&quot;50%;">
+<ul>
+<li class="fragment">Our goal, for now, is to fit the true signal function using a Neural Net with one hidden layer comprised of three hidden nodes:</li>
+</ul>
+<div class="fragment">
+<div class="cell" data-fig-width="3" data-fig-height="2" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="288" height="192" viewbox="0.00 0.00 329.12 263.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-259 325.12,-259 325.12,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="none" stroke="white" points="8,-20 8,-234 60.56,-234 60.56,-20 8,-20"></polygon>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="white" points="260.56,-8 260.56,-247 313.12,-247 313.12,-8 260.56,-8"></polygon>
+<text text-anchor="middle" x="286.84" y="-230.4" font-family="Times,serif" font-size="14.00"> </text>
+</g>
+<!-- inp1 -->
+<g id="node1" class="node">
+<title>inp1</title>
+<ellipse fill="#e69f00" stroke="white" cx="34.28" cy="-208" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1 -->
+<g id="node5" class="node">
+<title>hid1</title>
+<ellipse fill="#cc79a7" stroke="white" cx="160.56" cy="-100" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid1 -->
+<g id="edge1" class="edge">
+<title>inp1-&gt;hid1</title>
+<path fill="none" stroke="#009e73" d="M48.58,-196.44C71.28,-176.71 117.49,-136.56 142.53,-114.8"></path>
+<polygon fill="#009e73" stroke="#009e73" points="143.73,-116.08 146.35,-111.47 141.43,-113.43 143.73,-116.08"></polygon>
+</g>
+<!-- hid2 -->
+<g id="node6" class="node">
+<title>hid2</title>
+<ellipse fill="#cc79a7" stroke="white" cx="160.56" cy="-46" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid2 -->
+<g id="edge2" class="edge">
+<title>inp1-&gt;hid2</title>
+<path fill="none" stroke="#009e73" d="M47.43,-195.65C51.7,-191.14 56.46,-185.94 60.56,-181 93.54,-141.25 128.44,-91.63 146.7,-65"></path>
+<polygon fill="#009e73" stroke="#009e73" points="148.32,-65.73 149.7,-60.61 145.43,-63.75 148.32,-65.73"></polygon>
+</g>
+<!-- hid3 -->
+<g id="node7" class="node">
+<title>hid3</title>
+<ellipse fill="#cc79a7" stroke="white" cx="160.56" cy="-154" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp1&#45;&gt;hid3 -->
+<g id="edge3" class="edge">
+<title>inp1-&gt;hid3</title>
+<path fill="none" stroke="#009e73" d="M51.02,-201.16C73.31,-191.48 114.1,-173.75 138.83,-163.01"></path>
+<polygon fill="#009e73" stroke="#009e73" points="139.67,-164.55 143.55,-160.95 138.27,-161.34 139.67,-164.55"></polygon>
+</g>
+<!-- inp2 -->
+<g id="node2" class="node">
+<title>inp2</title>
+<ellipse fill="white" stroke="white" cx="34.28" cy="-154" rx="18.06" ry="18.06"></ellipse>
+<text text-anchor="middle" x="34.28" y="-149.8" font-family="Times,serif" font-size="14.00">⋮</text>
+</g>
+<!-- inp2&#45;&gt;hid1 -->
+<g id="edge4" class="edge">
+<title>inp2-&gt;hid1</title>
+<path fill="none" stroke="#009e73" d="M51.27,-147.05C73.64,-137.33 114.3,-119.67 138.93,-108.97"></path>
+<polygon fill="#009e73" stroke="#009e73" points="139.74,-110.52 143.63,-106.92 138.34,-107.31 139.74,-110.52"></polygon>
+</g>
+<!-- inp2&#45;&gt;hid2 -->
+<g id="edge5" class="edge">
+<title>inp2-&gt;hid2</title>
+<path fill="none" stroke="#009e73" d="M48.58,-142.44C71.28,-122.71 117.49,-82.56 142.53,-60.8"></path>
+<polygon fill="#009e73" stroke="#009e73" points="143.73,-62.08 146.35,-57.47 141.43,-59.43 143.73,-62.08"></polygon>
+</g>
+<!-- inp2&#45;&gt;hid3 -->
+<g id="edge6" class="edge">
+<title>inp2-&gt;hid3</title>
+<path fill="none" stroke="#009e73" d="M52.56,-154C74.63,-154 112.88,-154 137.17,-154"></path>
+<polygon fill="#009e73" stroke="#009e73" points="137.42,-155.75 142.42,-154 137.42,-152.25 137.42,-155.75"></polygon>
+</g>
+<!-- inp3 -->
+<g id="node3" class="node">
+<title>inp3</title>
+<ellipse fill="#e69f00" stroke="white" cx="34.28" cy="-100" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp3&#45;&gt;hid1 -->
+<g id="edge7" class="edge">
+<title>inp3-&gt;hid1</title>
+<path fill="none" stroke="#009e73" d="M52.3,-100C74.3,-100 112.68,-100 137.07,-100"></path>
+<polygon fill="#009e73" stroke="#009e73" points="137.35,-101.75 142.35,-100 137.35,-98.25 137.35,-101.75"></polygon>
+</g>
+<!-- inp3&#45;&gt;hid2 -->
+<g id="edge8" class="edge">
+<title>inp3-&gt;hid2</title>
+<path fill="none" stroke="#009e73" d="M51.02,-93.16C73.31,-83.48 114.1,-65.75 138.83,-55.01"></path>
+<polygon fill="#009e73" stroke="#009e73" points="139.67,-56.55 143.55,-52.95 138.27,-53.34 139.67,-56.55"></polygon>
+</g>
+<!-- inp3&#45;&gt;hid3 -->
+<g id="edge9" class="edge">
+<title>inp3-&gt;hid3</title>
+<path fill="none" stroke="#009e73" d="M51.02,-106.84C73.31,-116.52 114.1,-134.25 138.83,-144.99"></path>
+<polygon fill="#009e73" stroke="#009e73" points="138.27,-146.66 143.55,-147.05 139.67,-143.45 138.27,-146.66"></polygon>
+</g>
+<!-- inp4 -->
+<g id="node4" class="node">
+<title>inp4</title>
+<ellipse fill="#e69f00" stroke="white" cx="34.28" cy="-46" rx="18" ry="18"></ellipse>
+</g>
+<!-- inp4&#45;&gt;hid1 -->
+<g id="edge10" class="edge">
+<title>inp4-&gt;hid1</title>
+<path fill="none" stroke="#009e73" d="M51.02,-52.84C73.31,-62.52 114.1,-80.25 138.83,-90.99"></path>
+<polygon fill="#009e73" stroke="#009e73" points="138.27,-92.66 143.55,-93.05 139.67,-89.45 138.27,-92.66"></polygon>
+</g>
+<!-- inp4&#45;&gt;hid2 -->
+<g id="edge11" class="edge">
+<title>inp4-&gt;hid2</title>
+<path fill="none" stroke="#009e73" d="M52.3,-46C74.3,-46 112.68,-46 137.07,-46"></path>
+<polygon fill="#009e73" stroke="#009e73" points="137.35,-47.75 142.35,-46 137.35,-44.25 137.35,-47.75"></polygon>
+</g>
+<!-- inp4&#45;&gt;hid3 -->
+<g id="edge12" class="edge">
+<title>inp4-&gt;hid3</title>
+<path fill="none" stroke="#009e73" d="M48.58,-57.56C71.28,-77.29 117.49,-117.44 142.53,-139.2"></path>
+<polygon fill="#009e73" stroke="#009e73" points="141.43,-140.57 146.35,-142.53 143.73,-137.92 141.43,-140.57"></polygon>
+</g>
+<!-- out1 -->
+<g id="node8" class="node">
+<title>out1</title>
+<ellipse fill="#56b4e9" stroke="white" cx="286.84" cy="-196" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1&#45;&gt;out1 -->
+<g id="edge13" class="edge">
+<title>hid1-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M175.33,-110.64C197.92,-128.08 242.8,-162.76 267.86,-182.11"></path>
+<polygon fill="#009e73" stroke="#009e73" points="266.97,-183.64 272,-185.31 269.11,-180.87 266.97,-183.64"></polygon>
+</g>
+<!-- out2 -->
+<g id="node9" class="node">
+<title>out2</title>
+<ellipse fill="white" stroke="white" cx="286.84" cy="-142" rx="18.06" ry="18.06"></ellipse>
+<text text-anchor="middle" x="286.84" y="-137.8" font-family="Times,serif" font-size="14.00">⋮</text>
+</g>
+<!-- hid1&#45;&gt;out2 -->
+<g id="edge14" class="edge">
+<title>hid1-&gt;out2</title>
+<path fill="none" stroke="#009e73" d="M177.81,-105.49C199.92,-112.96 239.55,-126.36 264.17,-134.68"></path>
+<polygon fill="#009e73" stroke="#009e73" points="263.89,-136.43 269.19,-136.37 265.01,-133.12 263.89,-136.43"></polygon>
+</g>
+<!-- out3 -->
+<g id="node10" class="node">
+<title>out3</title>
+<ellipse fill="#56b4e9" stroke="white" cx="286.84" cy="-88" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1&#45;&gt;out3 -->
+<g id="edge15" class="edge">
+<title>hid1-&gt;out3</title>
+<path fill="none" stroke="#009e73" d="M178.58,-98.36C200.58,-96.23 238.96,-92.53 263.34,-90.17"></path>
+<polygon fill="#009e73" stroke="#009e73" points="263.82,-91.88 268.62,-89.66 263.48,-88.4 263.82,-91.88"></polygon>
+</g>
+<!-- out4 -->
+<g id="node11" class="node">
+<title>out4</title>
+<ellipse fill="#56b4e9" stroke="white" cx="286.84" cy="-34" rx="18" ry="18"></ellipse>
+</g>
+<!-- hid1&#45;&gt;out4 -->
+<g id="edge16" class="edge">
+<title>hid1-&gt;out4</title>
+<path fill="none" stroke="#009e73" d="M176.8,-91.91C199.25,-79.98 241.24,-57.68 266.05,-44.51"></path>
+<polygon fill="#009e73" stroke="#009e73" points="266.88,-46.05 270.47,-42.16 265.24,-42.96 266.88,-46.05"></polygon>
+</g>
+<!-- hid2&#45;&gt;out1 -->
+<g id="edge17" class="edge">
+<title>hid2-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M172.22,-59.93C190.01,-83.02 227.13,-130.5 260.56,-169 263.58,-172.48 266.9,-176.14 270.11,-179.6"></path>
+<polygon fill="#009e73" stroke="#009e73" points="269.11,-181.09 273.81,-183.54 271.67,-178.7 269.11,-181.09"></polygon>
+</g>
+<!-- hid2&#45;&gt;out2 -->
+<g id="edge18" class="edge">
+<title>hid2-&gt;out2</title>
+<path fill="none" stroke="#009e73" d="M175.33,-56.64C197.92,-74.08 242.8,-108.76 267.86,-128.11"></path>
+<polygon fill="#009e73" stroke="#009e73" points="266.97,-129.64 272,-131.31 269.11,-126.87 266.97,-129.64"></polygon>
+</g>
+<!-- hid2&#45;&gt;out3 -->
+<g id="edge19" class="edge">
+<title>hid2-&gt;out3</title>
+<path fill="none" stroke="#009e73" d="M177.81,-51.49C200.04,-59.01 239.99,-72.51 264.58,-80.82"></path>
+<polygon fill="#009e73" stroke="#009e73" points="264.29,-82.56 269.59,-82.51 265.41,-79.25 264.29,-82.56"></polygon>
+</g>
+<!-- hid2&#45;&gt;out4 -->
+<g id="edge20" class="edge">
+<title>hid2-&gt;out4</title>
+<path fill="none" stroke="#009e73" d="M178.58,-44.36C200.58,-42.23 238.96,-38.53 263.34,-36.17"></path>
+<polygon fill="#009e73" stroke="#009e73" points="263.82,-37.88 268.62,-35.66 263.48,-34.4 263.82,-37.88"></polygon>
+</g>
+<!-- hid3&#45;&gt;out1 -->
+<g id="edge21" class="edge">
+<title>hid3-&gt;out1</title>
+<path fill="none" stroke="#009e73" d="M177.81,-159.49C200.04,-167.01 239.99,-180.51 264.58,-188.82"></path>
+<polygon fill="#009e73" stroke="#009e73" points="264.29,-190.56 269.59,-190.51 265.41,-187.25 264.29,-190.56"></polygon>
+</g>
+<!-- hid3&#45;&gt;out2 -->
+<g id="edge22" class="edge">
+<title>hid3-&gt;out2</title>
+<path fill="none" stroke="#009e73" d="M178.58,-152.36C200.58,-150.23 238.96,-146.53 263.34,-144.17"></path>
+<polygon fill="#009e73" stroke="#009e73" points="263.82,-145.88 268.62,-143.66 263.48,-142.4 263.82,-145.88"></polygon>
+</g>
+<!-- hid3&#45;&gt;out3 -->
+<g id="edge23" class="edge">
+<title>hid3-&gt;out3</title>
+<path fill="none" stroke="#009e73" d="M176.8,-145.91C199.25,-133.98 241.24,-111.68 266.05,-98.51"></path>
+<polygon fill="#009e73" stroke="#009e73" points="266.88,-100.05 270.47,-96.16 265.24,-96.96 266.88,-100.05"></polygon>
+</g>
+<!-- hid3&#45;&gt;out4 -->
+<g id="edge24" class="edge">
+<title>hid3-&gt;out4</title>
+<path fill="none" stroke="#009e73" d="M174.39,-141.61C197.11,-119.67 244.39,-74.02 269.44,-49.83"></path>
+<polygon fill="#009e73" stroke="#009e73" points="270.88,-50.88 273.26,-46.14 268.45,-48.36 270.88,-50.88"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="neural-networks-10" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="concrete-problem-1">Concrete Problem</h3>
+<ul>
+<li class="fragment"><p>That is: we begin with 50 input values <em>x</em><sub>1</sub> through <em>x</em><sub>50</sub>.</p></li>
+<li class="fragment"><p>What is it that we want out of our network?</p>
+<ul>
+<li class="fragment">Well, ideally we want the “true” signal function <em>f</em>().</li>
+<li class="fragment">But, NNs only return output <em>values</em>.</li>
+</ul></li>
+<li class="fragment"><p>So, here’s the trick: we imagine finding the values of the signal function at a very fine grid of points. The finer the grid, the “smoother” our final function will look.</p></li>
+<li class="fragment"><p>That is, the output of our NN should be a set of values {<em>y</em><sub>1</sub>, …, <em>y</em><sub><em>K</em></sub>} for some large value <em>K</em>, where <em>y</em><sub><em>k</em></sub> denotes the value of the signal at some point <em>x</em><sub><em>k</em></sub>.</p>
+<ul>
+<li class="fragment">Note that <em>x</em><sub><em>k</em></sub> may or may not be one of our original <span class="alert"><strong>design points</strong></span>!</li>
+</ul></li>
+</ul>
+</section>
+<section id="neural-networks-11" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="input-layer-to-hidden-layer">Input Layer to Hidden Layer</h3>
+<ul>
+<li class="fragment"><p>We take a linear combination of our 50 input values: <span class="math display">\[ a_j^{(1)} = \sum_{i=1}^{50} w_{ij}^{(1)} x_i + w_{j0}^{(1)} \]</span> and scale each by an activation function: <span class="math display">\[ z_j^{(1)} = \sigma_1 (a_j^{(1)}) \]</span></p></li>
+<li class="fragment"><p>The <span class="math inline">\(z_j^{(1)}\)</span> then form the input to our hidden layer, and receive a similar treatment as the original <em>x</em><sub><em>i</em></sub> did.</p></li>
+</ul>
+</section>
+<section id="neural-networks-12" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="hidden-layer-to-output-layer">Hidden Layer to Output Layer</h3>
+<ul>
+<li class="fragment"><p>That is: <span class="math display">\[ a_k^{(2)} = \sum_{j=1}^{3} w_{jk}^{(2)} z_{j}^{(1)} + w_{k0}^{(2)} \]</span> for <em>k</em> = 1, …, <em>K</em> (we can, somewhat aribtrarily, take <em>K</em> to be 1000).</p></li>
+<li class="fragment"><p>Finally, these <span class="math inline">\(a_k^{(2)}\)</span> are transformed by way of an output activation function to obtain the <em>K</em> output values: <span class="math display">\[ y_k = \sigma_2 (a_{k}^{(2)}) \]</span></p></li>
+</ul>
+</section>
+<section id="neural-networks-13" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="overview">Overview</h3>
+<ul>
+<li class="fragment"><p>Let’s take a step back and examine the various components of this NN.</p></li>
+<li class="fragment"><p>First, there is the matter of selecting the two activation functions σ<sub>1</sub>() and σ<sub>2</sub>().</p></li>
+<li class="fragment"><p>Then, there is the matter of estimating the parameters <span class="math display">\[ \begin{align*}
+  \{w_{j0}^{(1)}, \ w_{j1}^{(1)}, \ \cdots, \ w_{j50}^{(1)} \}  &amp; \quad j = 1, 2, 3 \\  
+  \{w_{k0}^{(2)}, \ w_{k1}^{(2)}, \ w_{k3}^{(2)} \}  &amp; \quad k = 1, \cdots, K \\  
+\end{align*} \]</span></p></li>
+<li class="fragment"><p>For (<em>K</em> = 1000) outputs, this is a total of 453 parameters to estimate.</p></li>
+<li class="fragment"><p>As you can imagine, the number of parameters in an arbitrary NN can be <em>astronomically</em> large.</p></li>
+</ul>
+</section>
+<section id="neural-networks-14" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="overview-1">Overview</h3>
+<ul>
+<li class="fragment"><p>In general, if we consider a “vanilla” NN (one hidden layer) with <em>D</em> input values, <em>M</em> hidden nodes, and <em>K</em> outputs, the parameters to estimate becomes <span class="math display">\[ \begin{align*}
+  \{w_{j0}^{(1)}, \ w_{j1}^{(1)}, \ \cdots, \ w_{jD}^{(1)} \}  &amp; \quad j = 1, \cdots, M \\  
+  \{w_{k0}^{(2)}, \ w_{k1}^{(2)}, \ \cdots, \  w_{kM}^{(2)} \}  &amp; \quad k = 1, \cdots, K \\  
+\end{align*} \]</span> leaving a total of [<em>M</em> (<em>D</em> + 1) + <em>K</em> (<em>M</em> + 1)] = <em>M</em> (<em>D</em> + <em>K</em> + 1) + <em>K</em> parameters.</p></li>
+<li class="fragment"><p>And this is all with only one hidden layer; for Deep Neural Nets, it is not uncommon for the number of parameters to surpass a million (or even a billion, in cases)!</p></li>
+</ul>
+</section>
+<section id="neural-networks-15" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="history">History</h3>
+<ul>
+<li class="fragment"><p>Neural Networks are perhaps not as “recent” a phenomenon as people think - the earliest neural network model was the <span class="alert"><strong>perceptron</strong></span> model, proposed by Frank Rosenblatt back in 1957.</p>
+<ul>
+<li class="fragment">The use of neurons as a basis for mathematical models can be traced even further back, to the work of McColluh and Pitts in 1943.</li>
+</ul></li>
+<li class="fragment"><p>A fair amount of work was dedicated towards Neural Networks through the turn of the millennium, with a “burst” in publications through the 90s and into the early 2000s.</p></li>
+<li class="fragment"><p>Work on Neural Networks slowed a bit, however, mainly due to the intense computational challenges involved in training them.</p></li>
+</ul>
+</section>
+<section id="neural-networks-16" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="history-1">History</h3>
+<ul>
+<li class="fragment"><p>Near 2010, however, advancements in computational power drove what is considered to be the most recent (“second” or “third”, depending on who you ask) wave of interest in Neural Networks.</p></li>
+<li class="fragment"><p>Since around 2016, the number of publications relating to Neural Networks has skyrocketed, and NNs remain a popular area of research to this day.</p></li>
+<li class="fragment"><p>This most recent wave of interest has been accompanied with interest in the newly-minted field of <span class="alert"><strong>deep learning</strong></span>, which, again, has only been feasible to research thanks to recent and continued advancements in computing.</p></li>
+</ul>
+</section>
+<section id="neural-networks-17" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="history-2">History</h3>
+
+<img data-src="Images/Bishop_Graph.jpeg" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure 1.16 from <em>Deep Learning</em> by Bishop and Bishop</p></section>
+<section id="neural-networks-18" class="slide level2">
+<h2><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Neural Networks</h2>
+<h3 id="history-3">History</h3>
+<ul>
+<li class="fragment">Up until this point in the course, I have very intentionally remained vague about my stance on the “R vs.&nbsp;Python” debate.
+<ul>
+<li class="fragment">I will continue in this vagueness! I do truly believe both programming languages excel in nonoverlapping areas.</li>
+<li class="fragment">For example, when it comes to graphics, <code>R</code> is truly (and this is not just my personal opinion) superior.</li>
+</ul></li>
+<li class="fragment">However, I will admit that when it comes to Deep Learning, Python is typically preferred.
+<ul>
+<li class="fragment">To that end, we won’t be able to get into the nitty-gritty of training Neural Nets too much in PSTAT 100.</li>
+<li class="fragment">Nevertheless, we can still cover the basics!</li>
+</ul></li>
+</ul>
+</section>
+<section>
+<section id="gradient-descent" class="title-slide slide level1 center" data-background-color="black" data-background-image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWc2MmkxanM4bnRuM2R1bWptMG9xZ2gzbjl4Ymp4MWUyaWxkbDk5eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rneBwBTLKWyEHmokvX/giphy.gif" data-background-size="60rem">
+<h1>Gradient Descent</h1>
+
+</section>
+<section id="gradient-descent-1" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<ul>
+<li class="fragment"><p><span class="alert"><strong>Gradient Descent</strong></span> (GD) is an algorithm that can be used to identify local minima of (possibly multivariate) functions.</p></li>
+<li class="fragment"><p>You can imagine why this is useful: sometimes, minimization problems don’t admit closed-form expressions and as such we may need to resort to <em>iterative algorithms</em> to solve them.</p></li>
+<li class="fragment"><p>The basic idea is as follows: the <span class="alert"><strong>gradient</strong></span> (which we can think of as a multivariate derivative) gives the direction of greatest increase.</p>
+<ul>
+<li class="fragment">Hence, if we “travel” along the graph of the function in the direction opposite to the gradient, we should eventually reach a minimum.</li>
+</ul></li>
+<li class="fragment"><p>Perhaps a one-dimensional illustration may help:</p></li>
+</ul>
+</section>
+<section id="gradient-descent-2" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+
+<img data-src="Images/graddesc1.gif" class="r-stretch"></section>
+<section id="gradient-descent-3" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<ul>
+<li class="fragment"><p>More formally, in the case of a univariate function <em>f</em>(<em>x</em>), we start with an initial “guess” <em>x</em><sub>1</sub>.</p></li>
+<li class="fragment"><p>Then, we iteratively define <em>x</em><sub><em>i</em></sub> = <em>x</em><sub><em>i</em>-1</sub> - α <em>f</em>’(<em>x</em><sub><em>i</em></sub>) for some <span class="alert"><strong>step size</strong></span></p></li>
+<li class="fragment"><p>We stop the algorithm once the difference between <em>x</em><sub><em>i</em></sub> and <em>x</em><sub><em>i</em>-1</sub> is small.</p></li>
+<li class="fragment"><p>The step size is fairly important: if it is too small, the algorithm may take a long time to converge. If it is too large, we may “overshoot” the minimum.</p></li>
+<li class="fragment"><p>Even if our algorithm converges, we need to be cautious that it may have converged at a <em>local</em> minimum.</p>
+<ul>
+<li class="fragment">As such, it is always a good idea to examine the overall structure of the minimand before getting started.</li>
+</ul></li>
+</ul>
+</section>
+<section id="gradient-descent-4" class="slide level2" style="font-size:28px">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<p><strong>Example:</strong> <em>f</em>(<em>x</em>) = <em>x</em><sup>2</sup></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>xprev <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span>          <span class="do">## initialize</span></span>
+<span id="cb2-2"><a></a>h <span class="ot">&lt;-</span> <span class="fl">0.1</span>             <span class="do">## step size</span></span>
+<span id="cb2-3"><a></a>tol <span class="ot">&lt;-</span> <span class="fl">10e-6</span>         <span class="do">## tolerance for convergence</span></span>
+<span id="cb2-4"><a></a>iter <span class="ot">&lt;-</span> <span class="dv">0</span>            <span class="do">## track the number of iterations</span></span>
+<span id="cb2-5"><a></a>itermax <span class="ot">&lt;-</span> <span class="dv">100</span>       <span class="do">## cap the number of iterations</span></span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a><span class="cf">repeat</span>{</span>
+<span id="cb2-8"><a></a>  iter <span class="ot">&lt;-</span> iter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb2-9"><a></a>  xnew <span class="ot">&lt;-</span> xprev <span class="sc">-</span> h <span class="sc">*</span> (<span class="dv">2</span><span class="sc">*</span>xprev)    <span class="do">## update step</span></span>
+<span id="cb2-10"><a></a>  <span class="cf">if</span>(<span class="fu">abs</span>(xnew <span class="sc">-</span> xprev) <span class="sc">&lt;=</span> tol) {</span>
+<span id="cb2-11"><a></a>    <span class="cf">break</span>                          <span class="do">## convergence condition</span></span>
+<span id="cb2-12"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-13"><a></a>    xprev <span class="ot">&lt;-</span> xnew                  <span class="do">## update and restart</span></span>
+<span id="cb2-14"><a></a>  }</span>
+<span id="cb2-15"><a></a>  <span class="cf">if</span>(iter <span class="sc">&gt;=</span> itermax){</span>
+<span id="cb2-16"><a></a>    <span class="fu">stop</span>(<span class="st">"Maximum Number of Iterations Exceeded"</span>)</span>
+<span id="cb2-17"><a></a>  }</span>
+<span id="cb2-18"><a></a>}</span>
+<span id="cb2-19"><a></a></span>
+<span id="cb2-20"><a></a><span class="fu">cat</span>(<span class="st">"Final Answer:"</span>, xnew, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"Iterations:"</span>, iter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Final Answer: -3.484491e-05 
+ Iterations: 46</code></pre>
+</div>
+</div>
+</section>
+<section id="gradient-descent-5" class="slide level2" style="font-size:28px">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<p><strong>Example:</strong> <em>f</em>(<em>x</em>) = <em>x</em><sup>2</sup></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>xprev <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span>          <span class="do">## initialize</span></span>
+<span id="cb4-2"><a></a>h <span class="ot">&lt;-</span> <span class="fl">0.05</span>            <span class="do">## step size</span></span>
+<span id="cb4-3"><a></a>tol <span class="ot">&lt;-</span> <span class="fl">10e-6</span>         <span class="do">## tolerance for convergence</span></span>
+<span id="cb4-4"><a></a>iter <span class="ot">&lt;-</span> <span class="dv">0</span>            <span class="do">## track the number of iterations</span></span>
+<span id="cb4-5"><a></a>itermax <span class="ot">&lt;-</span> <span class="dv">100</span>       <span class="do">## cap the number of iterations</span></span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a><span class="cf">repeat</span>{</span>
+<span id="cb4-8"><a></a>  iter <span class="ot">&lt;-</span> iter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-9"><a></a>  xnew <span class="ot">&lt;-</span> xprev <span class="sc">-</span> h <span class="sc">*</span> (<span class="dv">2</span><span class="sc">*</span>xprev)    <span class="do">## update step</span></span>
+<span id="cb4-10"><a></a>  <span class="cf">if</span>(<span class="fu">abs</span>(xnew <span class="sc">-</span> xprev) <span class="sc">&lt;=</span> tol) {</span>
+<span id="cb4-11"><a></a>    <span class="cf">break</span>                          <span class="do">## convergence condition</span></span>
+<span id="cb4-12"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb4-13"><a></a>    xprev <span class="ot">&lt;-</span> xnew                  <span class="do">## update and restart</span></span>
+<span id="cb4-14"><a></a>  }</span>
+<span id="cb4-15"><a></a>  <span class="cf">if</span>(iter <span class="sc">&gt;=</span> itermax){</span>
+<span id="cb4-16"><a></a>    <span class="fu">stop</span>(<span class="st">"Maximum Number of Iterations Exceeded"</span>)</span>
+<span id="cb4-17"><a></a>  }</span>
+<span id="cb4-18"><a></a>}</span>
+<span id="cb4-19"><a></a></span>
+<span id="cb4-20"><a></a><span class="fu">cat</span>(<span class="st">"Final Answer:"</span>, xnew, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"Iterations:"</span>, iter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Final Answer: -8.46415e-05 
+ Iterations: 89</code></pre>
+</div>
+</div>
+</section>
+<section id="gradient-descent-6" class="slide level2" style="font-size:28px">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<p><strong>Example:</strong> <em>f</em>(<em>x</em>) = <em>x</em><sup>2</sup></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>xprev <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span>          <span class="do">## initialize</span></span>
+<span id="cb6-2"><a></a>h <span class="ot">&lt;-</span> <span class="dv">1</span>               <span class="do">## step size</span></span>
+<span id="cb6-3"><a></a>tol <span class="ot">&lt;-</span> <span class="fl">10e-6</span>         <span class="do">## tolerance for convergence</span></span>
+<span id="cb6-4"><a></a>iter <span class="ot">&lt;-</span> <span class="dv">0</span>            <span class="do">## track the number of iterations</span></span>
+<span id="cb6-5"><a></a>itermax <span class="ot">&lt;-</span> <span class="dv">100</span>       <span class="do">## cap the number of iterations</span></span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a><span class="cf">repeat</span>{</span>
+<span id="cb6-8"><a></a>  iter <span class="ot">&lt;-</span> iter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb6-9"><a></a>  xnew <span class="ot">&lt;-</span> xprev <span class="sc">-</span> h <span class="sc">*</span> (<span class="dv">2</span><span class="sc">*</span>xprev)    <span class="do">## update step</span></span>
+<span id="cb6-10"><a></a>  <span class="cf">if</span>(<span class="fu">abs</span>(xnew <span class="sc">-</span> xprev) <span class="sc">&lt;=</span> tol) {</span>
+<span id="cb6-11"><a></a>    <span class="cf">break</span>                          <span class="do">## convergence condition</span></span>
+<span id="cb6-12"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb6-13"><a></a>    xprev <span class="ot">&lt;-</span> xnew                  <span class="do">## update and restart</span></span>
+<span id="cb6-14"><a></a>  }</span>
+<span id="cb6-15"><a></a>  <span class="cf">if</span>(iter <span class="sc">&gt;=</span> itermax){</span>
+<span id="cb6-16"><a></a>    <span class="fu">stop</span>(<span class="st">"Maximum Number of Iterations Exceeded"</span>)</span>
+<span id="cb6-17"><a></a>  }</span>
+<span id="cb6-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: Maximum Number of Iterations Exceeded</code></pre>
+</div>
+</div>
+</section>
+<section id="gradient-descent-7" class="slide level2" style="font-size:30px">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<h3 id="gradients">Gradients</h3>
+<ul>
+<li class="fragment"><p>If we have a multivariate function <span class="math inline">\(f(\vect{x})\)</span>, the <span class="alert"><strong>gradient</strong></span> serves the role of the derivative: <span class="math display">\[ \vec{\boldsymbol{\nabla}} f(\vect{x}) := \begin{bmatrix} \frac{\partial}{\partial x_1}f(\vect{x}) \\ \vdots \\ \frac{\partial}{\partial x_n}f(\vect{x})  \\ \end{bmatrix} \]</span></p></li>
+<li class="fragment"><p>Our GD algorithm is relatively straightforward to update:</p></li>
+</ul>
+</section>
+<section id="gradient-descent-8" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<h3 id="multivariate-analog">Multivariate Analog</h3>
+<ul>
+<li class="fragment"><p>Initialize a starting vector <span class="math inline">\(\vect{x}^{(1)}\)</span></p></li>
+<li class="fragment"><p>At step <em>s</em>, update according to <span class="math inline">\(\vect{x}^{(s)} = \vect{x}^{(s - 1)} - \alpha \vec{\boldsymbol{\nabla}}f(\vect{x}^{(s)})\)</span></p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:35%;">
+<ul>
+<li class="fragment"><p>Iterate until <span class="math inline">\(\|\vect{x}^{(s)} - \vect{x}^{(s - 1)}\|^2\)</span> is small.</p></li>
+<li class="fragment"><p>As an example, consider <span class="math display">\[ f(x, y) = x^2 + y^2 \]</span></p></li>
+<li class="fragment"><p>We’ll compute the gradient on the board</p></li>
+</ul>
+</div><div class="column" style="width:65%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-a4b2f969655b175a0446" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-a4b2f969655b175a0446">{"x":{"visdat":{"a5b95bb74988":["function () ","plotlyVisDat"]},"cur_data":"a5b95bb74988","attrs":{"a5b95bb74988":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"camera":{"eye":{"x":1.8700000000000001,"y":0.88,"z":-0.64000000000000001}},"xaxis":{"title":"x"},"yaxis":{"title":"y"},"zaxis":{"title":"z"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"z","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[-1,-0.94999999999999996,-0.90000000000000002,-0.84999999999999998,-0.80000000000000004,-0.75,-0.69999999999999996,-0.64999999999999991,-0.59999999999999998,-0.55000000000000004,-0.5,-0.44999999999999996,-0.39999999999999991,-0.34999999999999998,-0.29999999999999993,-0.25,-0.19999999999999996,-0.14999999999999991,-0.099999999999999978,-0.049999999999999933,0,0.050000000000000044,0.10000000000000009,0.15000000000000013,0.20000000000000018,0.25,0.30000000000000004,0.35000000000000009,0.40000000000000013,0.45000000000000018,0.5,0.55000000000000004,0.60000000000000009,0.65000000000000013,0.70000000000000018,0.75,0.80000000000000004,0.85000000000000009,0.90000000000000013,0.95000000000000018,1],"y":[-1,-0.94999999999999996,-0.90000000000000002,-0.84999999999999998,-0.80000000000000004,-0.75,-0.69999999999999996,-0.64999999999999991,-0.59999999999999998,-0.55000000000000004,-0.5,-0.44999999999999996,-0.39999999999999991,-0.34999999999999998,-0.29999999999999993,-0.25,-0.19999999999999996,-0.14999999999999991,-0.099999999999999978,-0.049999999999999933,0,0.050000000000000044,0.10000000000000009,0.15000000000000013,0.20000000000000018,0.25,0.30000000000000004,0.35000000000000009,0.40000000000000013,0.45000000000000018,0.5,0.55000000000000004,0.60000000000000009,0.65000000000000013,0.70000000000000018,0.75,0.80000000000000004,0.85000000000000009,0.90000000000000013,0.95000000000000018,1],"z":[[2,1.9024999999999999,1.8100000000000001,1.7224999999999999,1.6400000000000001,1.5625,1.49,1.4224999999999999,1.3599999999999999,1.3025,1.25,1.2024999999999999,1.1599999999999999,1.1225000000000001,1.0899999999999999,1.0625,1.04,1.0225,1.01,1.0024999999999999,1,1.0024999999999999,1.01,1.0225,1.04,1.0625,1.0900000000000001,1.1225000000000001,1.1600000000000001,1.2025000000000001,1.25,1.3025,1.3600000000000001,1.4225000000000001,1.4900000000000002,1.5625,1.6400000000000001,1.7225000000000001,1.8100000000000003,1.9025000000000003,2],[1.9024999999999999,1.8049999999999999,1.7124999999999999,1.625,1.5425,1.4649999999999999,1.3924999999999998,1.3249999999999997,1.2625,1.2050000000000001,1.1524999999999999,1.105,1.0625,1.0249999999999999,0.99249999999999994,0.96499999999999997,0.94249999999999989,0.92499999999999993,0.91249999999999998,0.90499999999999992,0.90249999999999997,0.90500000000000003,0.91249999999999998,0.92500000000000004,0.9425,0.96499999999999997,0.99249999999999994,1.0250000000000001,1.0625,1.1050000000000002,1.1524999999999999,1.2050000000000001,1.2625000000000002,1.3250000000000002,1.3925000000000003,1.4649999999999999,1.5425,1.625,1.7125000000000004,1.8050000000000002,1.9024999999999999],[1.8100000000000001,1.7124999999999999,1.6200000000000001,1.5325,1.4500000000000002,1.3725000000000001,1.3,1.2324999999999999,1.1699999999999999,1.1125,1.0600000000000001,1.0125,0.96999999999999997,0.9325,0.90000000000000002,0.87250000000000005,0.85000000000000009,0.83250000000000002,0.82000000000000006,0.8125,0.81000000000000005,0.81250000000000011,0.82000000000000006,0.83250000000000013,0.85000000000000009,0.87250000000000005,0.90000000000000013,0.93250000000000011,0.9700000000000002,1.0125000000000002,1.0600000000000001,1.1125,1.1700000000000002,1.2325000000000002,1.3000000000000003,1.3725000000000001,1.4500000000000002,1.5325000000000002,1.6200000000000003,1.7125000000000004,1.8100000000000001],[1.7224999999999999,1.625,1.5325,1.4449999999999998,1.3625,1.2849999999999999,1.2124999999999999,1.1449999999999998,1.0825,1.0249999999999999,0.97249999999999992,0.92499999999999982,0.88249999999999984,0.84499999999999986,0.81249999999999989,0.78499999999999992,0.76249999999999996,0.74499999999999988,0.73249999999999993,0.72499999999999987,0.72249999999999992,0.72499999999999998,0.73249999999999993,0.745,0.76249999999999996,0.78499999999999992,0.8125,0.84499999999999997,0.88250000000000006,0.92500000000000004,0.97249999999999992,1.0249999999999999,1.0825,1.145,1.2125000000000001,1.2849999999999999,1.3625,1.4450000000000001,1.5325000000000002,1.6250000000000002,1.7224999999999999],[1.6400000000000001,1.5425,1.4500000000000002,1.3625,1.2800000000000002,1.2025000000000001,1.1300000000000001,1.0625,1,0.94250000000000012,0.89000000000000012,0.84250000000000003,0.80000000000000004,0.76250000000000007,0.73000000000000009,0.70250000000000012,0.68000000000000016,0.66250000000000009,0.65000000000000013,0.64250000000000007,0.64000000000000012,0.64250000000000018,0.65000000000000013,0.6625000000000002,0.68000000000000016,0.70250000000000012,0.7300000000000002,0.76250000000000018,0.80000000000000027,0.84250000000000025,0.89000000000000012,0.94250000000000012,1.0000000000000002,1.0625000000000002,1.1300000000000003,1.2025000000000001,1.2800000000000002,1.3625000000000003,1.4500000000000004,1.5425000000000004,1.6400000000000001],[1.5625,1.4649999999999999,1.3725000000000001,1.2849999999999999,1.2025000000000001,1.125,1.0525,0.98499999999999988,0.92249999999999999,0.86499999999999999,0.8125,0.7649999999999999,0.72249999999999992,0.68499999999999994,0.65249999999999997,0.625,0.60250000000000004,0.58499999999999996,0.57250000000000001,0.56499999999999995,0.5625,0.56500000000000006,0.57250000000000001,0.58500000000000008,0.60250000000000004,0.625,0.65250000000000008,0.68500000000000005,0.72250000000000014,0.76500000000000012,0.8125,0.86499999999999999,0.9225000000000001,0.9850000000000001,1.0525000000000002,1.125,1.2025000000000001,1.2850000000000001,1.3725000000000003,1.4650000000000003,1.5625],[1.49,1.3924999999999998,1.3,1.2124999999999999,1.1300000000000001,1.0525,0.97999999999999987,0.91249999999999987,0.84999999999999987,0.79249999999999998,0.73999999999999999,0.69249999999999989,0.64999999999999991,0.61249999999999993,0.57999999999999985,0.55249999999999999,0.52999999999999992,0.51249999999999996,0.49999999999999994,0.49249999999999994,0.48999999999999994,0.49249999999999994,0.49999999999999994,0.51249999999999996,0.53000000000000003,0.55249999999999999,0.57999999999999996,0.61250000000000004,0.65000000000000002,0.69250000000000012,0.73999999999999999,0.79249999999999998,0.85000000000000009,0.91250000000000009,0.9800000000000002,1.0525,1.1300000000000001,1.2125000000000001,1.3000000000000003,1.3925000000000003,1.49],[1.4224999999999999,1.3249999999999997,1.2324999999999999,1.1449999999999998,1.0625,0.98499999999999988,0.91249999999999987,0.84499999999999975,0.78249999999999986,0.72499999999999987,0.67249999999999988,0.62499999999999978,0.5824999999999998,0.54499999999999982,0.51249999999999984,0.48499999999999988,0.46249999999999986,0.44499999999999984,0.43249999999999988,0.42499999999999988,0.42249999999999988,0.42499999999999988,0.43249999999999988,0.4449999999999999,0.46249999999999997,0.48499999999999988,0.51249999999999996,0.54499999999999993,0.58250000000000002,0.625,0.67249999999999988,0.72499999999999987,0.78249999999999997,0.84499999999999997,0.91250000000000009,0.98499999999999988,1.0625,1.145,1.2325000000000002,1.3250000000000002,1.4224999999999999],[1.3599999999999999,1.2625,1.1699999999999999,1.0825,1,0.92249999999999999,0.84999999999999987,0.78249999999999986,0.71999999999999997,0.66250000000000009,0.60999999999999999,0.5625,0.51999999999999991,0.48249999999999998,0.44999999999999996,0.42249999999999999,0.39999999999999997,0.38249999999999995,0.37,0.36249999999999999,0.35999999999999999,0.36249999999999999,0.37,0.38250000000000001,0.40000000000000008,0.42249999999999999,0.45000000000000001,0.48250000000000004,0.52000000000000013,0.56250000000000011,0.60999999999999999,0.66250000000000009,0.72000000000000008,0.7825000000000002,0.85000000000000031,0.92249999999999999,1,1.0825,1.1700000000000004,1.2625000000000002,1.3599999999999999],[1.3025,1.2050000000000001,1.1125,1.0249999999999999,0.94250000000000012,0.86499999999999999,0.79249999999999998,0.72499999999999987,0.66250000000000009,0.60500000000000009,0.55249999999999999,0.505,0.46249999999999997,0.42500000000000004,0.39250000000000002,0.36500000000000005,0.34250000000000003,0.32500000000000001,0.31250000000000006,0.30500000000000005,0.30250000000000005,0.30500000000000005,0.31250000000000006,0.32500000000000007,0.34250000000000014,0.36500000000000005,0.39250000000000007,0.4250000000000001,0.46250000000000013,0.50500000000000023,0.55249999999999999,0.60500000000000009,0.66250000000000009,0.7250000000000002,0.79250000000000032,0.86499999999999999,0.94250000000000012,1.0250000000000001,1.1125000000000003,1.2050000000000003,1.3025],[1.25,1.1524999999999999,1.0600000000000001,0.97249999999999992,0.89000000000000012,0.8125,0.73999999999999999,0.67249999999999988,0.60999999999999999,0.55249999999999999,0.5,0.45249999999999996,0.40999999999999992,0.3725,0.33999999999999997,0.3125,0.28999999999999998,0.27249999999999996,0.26000000000000001,0.2525,0.25,0.2525,0.26000000000000001,0.27250000000000002,0.29000000000000009,0.3125,0.34000000000000002,0.37250000000000005,0.41000000000000014,0.45250000000000012,0.5,0.55249999999999999,0.6100000000000001,0.6725000000000001,0.74000000000000021,0.8125,0.89000000000000012,0.97250000000000014,1.0600000000000003,1.1525000000000003,1.25],[1.2024999999999999,1.105,1.0125,0.92499999999999982,0.84250000000000003,0.7649999999999999,0.69249999999999989,0.62499999999999978,0.5625,0.505,0.45249999999999996,0.40499999999999992,0.36249999999999988,0.32499999999999996,0.29249999999999993,0.26499999999999996,0.24249999999999994,0.22499999999999992,0.21249999999999997,0.20499999999999996,0.20249999999999996,0.20499999999999996,0.21249999999999997,0.22500000000000001,0.24250000000000002,0.26499999999999996,0.29249999999999998,0.32500000000000001,0.36250000000000004,0.40500000000000014,0.45249999999999996,0.505,0.5625,0.62500000000000011,0.69250000000000023,0.7649999999999999,0.84250000000000003,0.92500000000000004,1.0125000000000002,1.1050000000000002,1.2024999999999999],[1.1599999999999999,1.0625,0.96999999999999997,0.88249999999999984,0.80000000000000004,0.72249999999999992,0.64999999999999991,0.5824999999999998,0.51999999999999991,0.46249999999999997,0.40999999999999992,0.36249999999999988,0.31999999999999984,0.28249999999999992,0.24999999999999989,0.22249999999999992,0.1999999999999999,0.18249999999999988,0.16999999999999993,0.16249999999999992,0.15999999999999992,0.16249999999999992,0.16999999999999993,0.18249999999999997,0.19999999999999998,0.22249999999999992,0.24999999999999994,0.28249999999999997,0.32000000000000006,0.36250000000000004,0.40999999999999992,0.46249999999999997,0.52000000000000002,0.58250000000000002,0.65000000000000013,0.72249999999999992,0.80000000000000004,0.88250000000000006,0.9700000000000002,1.0625000000000002,1.1599999999999999],[1.1225000000000001,1.0249999999999999,0.9325,0.84499999999999986,0.76250000000000007,0.68499999999999994,0.61249999999999993,0.54499999999999982,0.48249999999999998,0.42500000000000004,0.3725,0.32499999999999996,0.28249999999999992,0.24499999999999997,0.21249999999999994,0.185,0.16249999999999998,0.14499999999999996,0.13249999999999998,0.12499999999999997,0.12249999999999998,0.12499999999999999,0.13250000000000001,0.14500000000000002,0.16250000000000006,0.185,0.21250000000000002,0.24500000000000005,0.28250000000000008,0.32500000000000012,0.3725,0.42500000000000004,0.4825000000000001,0.54500000000000015,0.61250000000000027,0.68499999999999994,0.76250000000000007,0.84500000000000008,0.93250000000000022,1.0250000000000004,1.1225000000000001],[1.0899999999999999,0.99249999999999994,0.90000000000000002,0.81249999999999989,0.73000000000000009,0.65249999999999997,0.57999999999999985,0.51249999999999984,0.44999999999999996,0.39250000000000002,0.33999999999999997,0.29249999999999993,0.24999999999999989,0.21249999999999994,0.17999999999999991,0.15249999999999997,0.12999999999999995,0.11249999999999993,0.09999999999999995,0.092499999999999943,0.089999999999999955,0.092499999999999957,0.099999999999999978,0.11249999999999999,0.13000000000000003,0.15249999999999997,0.17999999999999999,0.21250000000000002,0.25000000000000006,0.29250000000000009,0.33999999999999997,0.39250000000000002,0.45000000000000007,0.51250000000000007,0.58000000000000018,0.65249999999999997,0.73000000000000009,0.81250000000000011,0.90000000000000024,0.99250000000000027,1.0899999999999999],[1.0625,0.96499999999999997,0.87250000000000005,0.78499999999999992,0.70250000000000012,0.625,0.55249999999999999,0.48499999999999988,0.42249999999999999,0.36500000000000005,0.3125,0.26499999999999996,0.22249999999999992,0.185,0.15249999999999997,0.125,0.10249999999999998,0.084999999999999978,0.072499999999999995,0.064999999999999988,0.0625,0.065000000000000002,0.072500000000000023,0.085000000000000048,0.10250000000000006,0.125,0.15250000000000002,0.18500000000000005,0.22250000000000011,0.26500000000000012,0.3125,0.36500000000000005,0.4225000000000001,0.48500000000000015,0.55250000000000021,0.625,0.70250000000000012,0.78500000000000014,0.87250000000000028,0.9650000000000003,1.0625],[1.04,0.94249999999999989,0.85000000000000009,0.76249999999999996,0.68000000000000016,0.60250000000000004,0.52999999999999992,0.46249999999999986,0.39999999999999997,0.34250000000000003,0.28999999999999998,0.24249999999999994,0.1999999999999999,0.16249999999999998,0.12999999999999995,0.10249999999999998,0.07999999999999996,0.062499999999999958,0.049999999999999975,0.042499999999999975,0.03999999999999998,0.042499999999999982,0.049999999999999996,0.062500000000000028,0.080000000000000043,0.10249999999999998,0.13,0.16250000000000003,0.20000000000000009,0.24250000000000013,0.28999999999999998,0.34250000000000003,0.40000000000000008,0.46250000000000013,0.53000000000000025,0.60250000000000004,0.68000000000000016,0.76250000000000018,0.85000000000000031,0.94250000000000034,1.04],[1.0225,0.92499999999999993,0.83250000000000002,0.74499999999999988,0.66250000000000009,0.58499999999999996,0.51249999999999996,0.44499999999999984,0.38249999999999995,0.32500000000000001,0.27249999999999996,0.22499999999999992,0.18249999999999988,0.14499999999999996,0.11249999999999993,0.084999999999999978,0.062499999999999958,0.04499999999999995,0.032499999999999973,0.024999999999999967,0.022499999999999975,0.024999999999999981,0.032499999999999994,0.045000000000000012,0.062500000000000042,0.084999999999999978,0.1125,0.14500000000000005,0.18250000000000008,0.22500000000000012,0.27249999999999996,0.32500000000000001,0.38250000000000006,0.44500000000000012,0.51250000000000029,0.58499999999999996,0.66250000000000009,0.74500000000000011,0.83250000000000024,0.92500000000000027,1.0225],[1.01,0.91249999999999998,0.82000000000000006,0.73249999999999993,0.65000000000000013,0.57250000000000001,0.49999999999999994,0.43249999999999988,0.37,0.31250000000000006,0.26000000000000001,0.21249999999999997,0.16999999999999993,0.13249999999999998,0.09999999999999995,0.072499999999999995,0.049999999999999975,0.032499999999999973,0.01999999999999999,0.012499999999999989,0.009999999999999995,0.012499999999999999,0.020000000000000011,0.032500000000000036,0.050000000000000065,0.072499999999999995,0.10000000000000002,0.13250000000000006,0.1700000000000001,0.21250000000000013,0.26000000000000001,0.31250000000000006,0.37000000000000011,0.43250000000000016,0.50000000000000022,0.57250000000000001,0.65000000000000013,0.73250000000000015,0.82000000000000028,0.91250000000000031,1.01],[1.0024999999999999,0.90499999999999992,0.8125,0.72499999999999987,0.64250000000000007,0.56499999999999995,0.49249999999999994,0.42499999999999988,0.36249999999999999,0.30500000000000005,0.2525,0.20499999999999996,0.16249999999999992,0.12499999999999997,0.092499999999999943,0.064999999999999988,0.042499999999999975,0.024999999999999967,0.012499999999999989,0.0049999999999999871,0.0024999999999999935,0.0049999999999999975,0.012500000000000011,0.025000000000000036,0.042500000000000066,0.064999999999999988,0.092500000000000013,0.12500000000000006,0.16250000000000012,0.20500000000000015,0.2525,0.30500000000000005,0.3625000000000001,0.42500000000000016,0.49250000000000027,0.56499999999999995,0.64250000000000007,0.72500000000000009,0.81250000000000022,0.90500000000000025,1.0024999999999999],[1,0.90249999999999997,0.81000000000000005,0.72249999999999992,0.64000000000000012,0.5625,0.48999999999999994,0.42249999999999988,0.35999999999999999,0.30250000000000005,0.25,0.20249999999999996,0.15999999999999992,0.12249999999999998,0.089999999999999955,0.0625,0.03999999999999998,0.022499999999999975,0.009999999999999995,0.0024999999999999935,0,0.0025000000000000044,0.010000000000000018,0.022500000000000041,0.04000000000000007,0.0625,0.090000000000000024,0.12250000000000007,0.16000000000000011,0.20250000000000015,0.25,0.30250000000000005,0.3600000000000001,0.42250000000000015,0.49000000000000027,0.5625,0.64000000000000012,0.72250000000000014,0.81000000000000028,0.9025000000000003,1],[1.0024999999999999,0.90500000000000003,0.81250000000000011,0.72499999999999998,0.64250000000000018,0.56500000000000006,0.49249999999999994,0.42499999999999988,0.36249999999999999,0.30500000000000005,0.2525,0.20499999999999996,0.16249999999999992,0.12499999999999999,0.092499999999999957,0.065000000000000002,0.042499999999999982,0.024999999999999981,0.012499999999999999,0.0049999999999999975,0.0025000000000000044,0.0050000000000000088,0.012500000000000022,0.025000000000000046,0.042500000000000072,0.065000000000000002,0.092500000000000027,0.12500000000000008,0.16250000000000012,0.20500000000000015,0.2525,0.30500000000000005,0.3625000000000001,0.42500000000000016,0.49250000000000027,0.56500000000000006,0.64250000000000018,0.7250000000000002,0.81250000000000033,0.90500000000000036,1.0024999999999999],[1.01,0.91249999999999998,0.82000000000000006,0.73249999999999993,0.65000000000000013,0.57250000000000001,0.49999999999999994,0.43249999999999988,0.37,0.31250000000000006,0.26000000000000001,0.21249999999999997,0.16999999999999993,0.13250000000000001,0.099999999999999978,0.072500000000000023,0.049999999999999996,0.032499999999999994,0.020000000000000011,0.012500000000000011,0.010000000000000018,0.012500000000000022,0.020000000000000035,0.032500000000000057,0.050000000000000086,0.072500000000000023,0.10000000000000005,0.13250000000000009,0.17000000000000012,0.21250000000000016,0.26000000000000001,0.31250000000000006,0.37000000000000011,0.43250000000000016,0.50000000000000033,0.57250000000000001,0.65000000000000013,0.73250000000000015,0.82000000000000028,0.91250000000000031,1.01],[1.0225,0.92500000000000004,0.83250000000000013,0.745,0.6625000000000002,0.58500000000000008,0.51249999999999996,0.4449999999999999,0.38250000000000001,0.32500000000000007,0.27250000000000002,0.22500000000000001,0.18249999999999997,0.14500000000000002,0.11249999999999999,0.085000000000000048,0.062500000000000028,0.045000000000000012,0.032500000000000036,0.025000000000000036,0.022500000000000041,0.025000000000000046,0.032500000000000057,0.045000000000000082,0.062500000000000111,0.085000000000000048,0.11250000000000007,0.1450000000000001,0.18250000000000016,0.2250000000000002,0.27250000000000002,0.32500000000000007,0.38250000000000012,0.44500000000000017,0.51250000000000029,0.58500000000000008,0.6625000000000002,0.74500000000000022,0.83250000000000035,0.92500000000000038,1.0225],[1.04,0.9425,0.85000000000000009,0.76249999999999996,0.68000000000000016,0.60250000000000004,0.53000000000000003,0.46249999999999997,0.40000000000000008,0.34250000000000014,0.29000000000000009,0.24250000000000002,0.19999999999999998,0.16250000000000006,0.13000000000000003,0.10250000000000006,0.080000000000000043,0.062500000000000042,0.050000000000000065,0.042500000000000066,0.04000000000000007,0.042500000000000072,0.050000000000000086,0.062500000000000111,0.08000000000000014,0.10250000000000006,0.13000000000000009,0.16250000000000014,0.20000000000000018,0.24250000000000022,0.29000000000000009,0.34250000000000014,0.40000000000000019,0.46250000000000024,0.53000000000000036,0.60250000000000004,0.68000000000000016,0.76250000000000018,0.85000000000000031,0.94250000000000034,1.04],[1.0625,0.96499999999999997,0.87250000000000005,0.78499999999999992,0.70250000000000012,0.625,0.55249999999999999,0.48499999999999988,0.42249999999999999,0.36500000000000005,0.3125,0.26499999999999996,0.22249999999999992,0.185,0.15249999999999997,0.125,0.10249999999999998,0.084999999999999978,0.072499999999999995,0.064999999999999988,0.0625,0.065000000000000002,0.072500000000000023,0.085000000000000048,0.10250000000000006,0.125,0.15250000000000002,0.18500000000000005,0.22250000000000011,0.26500000000000012,0.3125,0.36500000000000005,0.4225000000000001,0.48500000000000015,0.55250000000000021,0.625,0.70250000000000012,0.78500000000000014,0.87250000000000028,0.9650000000000003,1.0625],[1.0900000000000001,0.99249999999999994,0.90000000000000013,0.8125,0.7300000000000002,0.65250000000000008,0.57999999999999996,0.51249999999999996,0.45000000000000001,0.39250000000000007,0.34000000000000002,0.29249999999999998,0.24999999999999994,0.21250000000000002,0.17999999999999999,0.15250000000000002,0.13,0.1125,0.10000000000000002,0.092500000000000013,0.090000000000000024,0.092500000000000027,0.10000000000000005,0.11250000000000007,0.13000000000000009,0.15250000000000002,0.18000000000000005,0.21250000000000008,0.25000000000000011,0.2925000000000002,0.34000000000000002,0.39250000000000007,0.45000000000000012,0.51250000000000018,0.58000000000000029,0.65250000000000008,0.7300000000000002,0.81250000000000022,0.90000000000000036,0.99250000000000038,1.0900000000000001],[1.1225000000000001,1.0250000000000001,0.93250000000000011,0.84499999999999997,0.76250000000000018,0.68500000000000005,0.61250000000000004,0.54499999999999993,0.48250000000000004,0.4250000000000001,0.37250000000000005,0.32500000000000001,0.28249999999999997,0.24500000000000005,0.21250000000000002,0.18500000000000005,0.16250000000000003,0.14500000000000005,0.13250000000000006,0.12500000000000006,0.12250000000000007,0.12500000000000008,0.13250000000000009,0.1450000000000001,0.16250000000000014,0.18500000000000005,0.21250000000000008,0.24500000000000013,0.2825000000000002,0.32500000000000023,0.37250000000000005,0.4250000000000001,0.48250000000000015,0.54500000000000026,0.61250000000000038,0.68500000000000005,0.76250000000000018,0.8450000000000002,0.93250000000000033,1.0250000000000004,1.1225000000000001],[1.1600000000000001,1.0625,0.9700000000000002,0.88250000000000006,0.80000000000000027,0.72250000000000014,0.65000000000000002,0.58250000000000002,0.52000000000000013,0.46250000000000013,0.41000000000000014,0.36250000000000004,0.32000000000000006,0.28250000000000008,0.25000000000000006,0.22250000000000011,0.20000000000000009,0.18250000000000008,0.1700000000000001,0.16250000000000012,0.16000000000000011,0.16250000000000012,0.17000000000000012,0.18250000000000016,0.20000000000000018,0.22250000000000011,0.25000000000000011,0.2825000000000002,0.32000000000000023,0.36250000000000027,0.41000000000000014,0.46250000000000013,0.52000000000000024,0.58250000000000024,0.65000000000000036,0.72250000000000014,0.80000000000000027,0.88250000000000028,0.97000000000000042,1.0625000000000004,1.1600000000000001],[1.2025000000000001,1.1050000000000002,1.0125000000000002,0.92500000000000004,0.84250000000000025,0.76500000000000012,0.69250000000000012,0.625,0.56250000000000011,0.50500000000000023,0.45250000000000012,0.40500000000000014,0.36250000000000004,0.32500000000000012,0.29250000000000009,0.26500000000000012,0.24250000000000013,0.22500000000000012,0.21250000000000013,0.20500000000000015,0.20250000000000015,0.20500000000000015,0.21250000000000016,0.2250000000000002,0.24250000000000022,0.26500000000000012,0.2925000000000002,0.32500000000000023,0.36250000000000027,0.4050000000000003,0.45250000000000012,0.50500000000000023,0.56250000000000022,0.62500000000000033,0.69250000000000045,0.76500000000000012,0.84250000000000025,0.92500000000000027,1.0125000000000004,1.1050000000000004,1.2025000000000001],[1.25,1.1524999999999999,1.0600000000000001,0.97249999999999992,0.89000000000000012,0.8125,0.73999999999999999,0.67249999999999988,0.60999999999999999,0.55249999999999999,0.5,0.45249999999999996,0.40999999999999992,0.3725,0.33999999999999997,0.3125,0.28999999999999998,0.27249999999999996,0.26000000000000001,0.2525,0.25,0.2525,0.26000000000000001,0.27250000000000002,0.29000000000000009,0.3125,0.34000000000000002,0.37250000000000005,0.41000000000000014,0.45250000000000012,0.5,0.55249999999999999,0.6100000000000001,0.6725000000000001,0.74000000000000021,0.8125,0.89000000000000012,0.97250000000000014,1.0600000000000003,1.1525000000000003,1.25],[1.3025,1.2050000000000001,1.1125,1.0249999999999999,0.94250000000000012,0.86499999999999999,0.79249999999999998,0.72499999999999987,0.66250000000000009,0.60500000000000009,0.55249999999999999,0.505,0.46249999999999997,0.42500000000000004,0.39250000000000002,0.36500000000000005,0.34250000000000003,0.32500000000000001,0.31250000000000006,0.30500000000000005,0.30250000000000005,0.30500000000000005,0.31250000000000006,0.32500000000000007,0.34250000000000014,0.36500000000000005,0.39250000000000007,0.4250000000000001,0.46250000000000013,0.50500000000000023,0.55249999999999999,0.60500000000000009,0.66250000000000009,0.7250000000000002,0.79250000000000032,0.86499999999999999,0.94250000000000012,1.0250000000000001,1.1125000000000003,1.2050000000000003,1.3025],[1.3600000000000001,1.2625000000000002,1.1700000000000002,1.0825,1.0000000000000002,0.9225000000000001,0.85000000000000009,0.78249999999999997,0.72000000000000008,0.66250000000000009,0.6100000000000001,0.5625,0.52000000000000002,0.4825000000000001,0.45000000000000007,0.4225000000000001,0.40000000000000008,0.38250000000000006,0.37000000000000011,0.3625000000000001,0.3600000000000001,0.3625000000000001,0.37000000000000011,0.38250000000000012,0.40000000000000019,0.4225000000000001,0.45000000000000012,0.48250000000000015,0.52000000000000024,0.56250000000000022,0.6100000000000001,0.66250000000000009,0.7200000000000002,0.7825000000000002,0.85000000000000031,0.9225000000000001,1.0000000000000002,1.0825000000000002,1.1700000000000004,1.2625000000000004,1.3600000000000001],[1.4225000000000001,1.3250000000000002,1.2325000000000002,1.145,1.0625000000000002,0.9850000000000001,0.91250000000000009,0.84499999999999997,0.7825000000000002,0.7250000000000002,0.6725000000000001,0.62500000000000011,0.58250000000000002,0.54500000000000015,0.51250000000000007,0.48500000000000015,0.46250000000000013,0.44500000000000012,0.43250000000000016,0.42500000000000016,0.42250000000000015,0.42500000000000016,0.43250000000000016,0.44500000000000017,0.46250000000000024,0.48500000000000015,0.51250000000000018,0.54500000000000026,0.58250000000000024,0.62500000000000033,0.6725000000000001,0.7250000000000002,0.7825000000000002,0.84500000000000031,0.91250000000000042,0.9850000000000001,1.0625000000000002,1.1450000000000002,1.2325000000000004,1.3250000000000004,1.4225000000000001],[1.4900000000000002,1.3925000000000003,1.3000000000000003,1.2125000000000001,1.1300000000000003,1.0525000000000002,0.9800000000000002,0.91250000000000009,0.85000000000000031,0.79250000000000032,0.74000000000000021,0.69250000000000023,0.65000000000000013,0.61250000000000027,0.58000000000000018,0.55250000000000021,0.53000000000000025,0.51250000000000029,0.50000000000000022,0.49250000000000027,0.49000000000000027,0.49250000000000027,0.50000000000000033,0.51250000000000029,0.53000000000000036,0.55250000000000021,0.58000000000000029,0.61250000000000038,0.65000000000000036,0.69250000000000045,0.74000000000000021,0.79250000000000032,0.85000000000000031,0.91250000000000042,0.98000000000000054,1.0525000000000002,1.1300000000000003,1.2125000000000004,1.3000000000000005,1.3925000000000005,1.4900000000000002],[1.5625,1.4649999999999999,1.3725000000000001,1.2849999999999999,1.2025000000000001,1.125,1.0525,0.98499999999999988,0.92249999999999999,0.86499999999999999,0.8125,0.7649999999999999,0.72249999999999992,0.68499999999999994,0.65249999999999997,0.625,0.60250000000000004,0.58499999999999996,0.57250000000000001,0.56499999999999995,0.5625,0.56500000000000006,0.57250000000000001,0.58500000000000008,0.60250000000000004,0.625,0.65250000000000008,0.68500000000000005,0.72250000000000014,0.76500000000000012,0.8125,0.86499999999999999,0.9225000000000001,0.9850000000000001,1.0525000000000002,1.125,1.2025000000000001,1.2850000000000001,1.3725000000000003,1.4650000000000003,1.5625],[1.6400000000000001,1.5425,1.4500000000000002,1.3625,1.2800000000000002,1.2025000000000001,1.1300000000000001,1.0625,1,0.94250000000000012,0.89000000000000012,0.84250000000000003,0.80000000000000004,0.76250000000000007,0.73000000000000009,0.70250000000000012,0.68000000000000016,0.66250000000000009,0.65000000000000013,0.64250000000000007,0.64000000000000012,0.64250000000000018,0.65000000000000013,0.6625000000000002,0.68000000000000016,0.70250000000000012,0.7300000000000002,0.76250000000000018,0.80000000000000027,0.84250000000000025,0.89000000000000012,0.94250000000000012,1.0000000000000002,1.0625000000000002,1.1300000000000003,1.2025000000000001,1.2800000000000002,1.3625000000000003,1.4500000000000004,1.5425000000000004,1.6400000000000001],[1.7225000000000001,1.625,1.5325000000000002,1.4450000000000001,1.3625000000000003,1.2850000000000001,1.2125000000000001,1.145,1.0825,1.0250000000000001,0.97250000000000014,0.92500000000000004,0.88250000000000006,0.84500000000000008,0.81250000000000011,0.78500000000000014,0.76250000000000018,0.74500000000000011,0.73250000000000015,0.72500000000000009,0.72250000000000014,0.7250000000000002,0.73250000000000015,0.74500000000000022,0.76250000000000018,0.78500000000000014,0.81250000000000022,0.8450000000000002,0.88250000000000028,0.92500000000000027,0.97250000000000014,1.0250000000000001,1.0825000000000002,1.1450000000000002,1.2125000000000004,1.2850000000000001,1.3625000000000003,1.4450000000000003,1.5325000000000004,1.6250000000000004,1.7225000000000001],[1.8100000000000003,1.7125000000000004,1.6200000000000003,1.5325000000000002,1.4500000000000004,1.3725000000000003,1.3000000000000003,1.2325000000000002,1.1700000000000004,1.1125000000000003,1.0600000000000003,1.0125000000000002,0.9700000000000002,0.93250000000000022,0.90000000000000024,0.87250000000000028,0.85000000000000031,0.83250000000000024,0.82000000000000028,0.81250000000000022,0.81000000000000028,0.81250000000000033,0.82000000000000028,0.83250000000000035,0.85000000000000031,0.87250000000000028,0.90000000000000036,0.93250000000000033,0.97000000000000042,1.0125000000000004,1.0600000000000003,1.1125000000000003,1.1700000000000004,1.2325000000000004,1.3000000000000005,1.3725000000000003,1.4500000000000004,1.5325000000000004,1.6200000000000006,1.7125000000000006,1.8100000000000003],[1.9025000000000003,1.8050000000000002,1.7125000000000004,1.6250000000000002,1.5425000000000004,1.4650000000000003,1.3925000000000003,1.3250000000000002,1.2625000000000002,1.2050000000000003,1.1525000000000003,1.1050000000000002,1.0625000000000002,1.0250000000000004,0.99250000000000027,0.9650000000000003,0.94250000000000034,0.92500000000000027,0.91250000000000031,0.90500000000000025,0.9025000000000003,0.90500000000000036,0.91250000000000031,0.92500000000000038,0.94250000000000034,0.9650000000000003,0.99250000000000038,1.0250000000000004,1.0625000000000004,1.1050000000000004,1.1525000000000003,1.2050000000000003,1.2625000000000004,1.3250000000000004,1.3925000000000005,1.4650000000000003,1.5425000000000004,1.6250000000000004,1.7125000000000006,1.8050000000000006,1.9025000000000003],[2,1.9024999999999999,1.8100000000000001,1.7224999999999999,1.6400000000000001,1.5625,1.49,1.4224999999999999,1.3599999999999999,1.3025,1.25,1.2024999999999999,1.1599999999999999,1.1225000000000001,1.0899999999999999,1.0625,1.04,1.0225,1.01,1.0024999999999999,1,1.0024999999999999,1.01,1.0225,1.04,1.0625,1.0900000000000001,1.1225000000000001,1.1600000000000001,1.2025000000000001,1.25,1.3025,1.3600000000000001,1.4225000000000001,1.4900000000000002,1.5625,1.6400000000000001,1.7225000000000001,1.8100000000000003,1.9025000000000003,2]],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="gradient-descent-9" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<h3 id="example">Example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>xprev <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>); h <span class="ot">&lt;-</span> <span class="fl">0.8</span>; tol <span class="ot">&lt;-</span> <span class="fl">10e-8</span></span>
+<span id="cb8-2"><a></a>iter <span class="ot">&lt;-</span> <span class="dv">0</span>; itermax <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a><span class="cf">repeat</span>{</span>
+<span id="cb8-5"><a></a>  iter <span class="ot">&lt;-</span> iter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb8-6"><a></a>  xnew <span class="ot">&lt;-</span> xprev <span class="sc">-</span> h <span class="sc">*</span> xprev</span>
+<span id="cb8-7"><a></a>  <span class="cf">if</span>(<span class="fu">sum</span>((xnew <span class="sc">-</span> xprev)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">&lt;=</span> tol) { <span class="cf">break</span> } </span>
+<span id="cb8-8"><a></a>  <span class="cf">else</span> { xprev <span class="ot">&lt;-</span> xnew }</span>
+<span id="cb8-9"><a></a>  <span class="cf">if</span>(iter <span class="sc">&gt;=</span> itermax){</span>
+<span id="cb8-10"><a></a>    <span class="fu">stop</span>(<span class="st">"Maximum Number of Iterations Exceeded"</span>)</span>
+<span id="cb8-11"><a></a>  }</span>
+<span id="cb8-12"><a></a>}</span>
+<span id="cb8-13"><a></a></span>
+<span id="cb8-14"><a></a><span class="fu">cat</span>(<span class="st">"Final Answer:"</span>, xnew, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"Iterations:"</span>, iter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Final Answer: -1.28e-05 -1.28e-05 
+ Iterations: 7</code></pre>
+</div>
+</div>
+</section>
+<section id="gradient-descent-10" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<h3 id="example-1">Example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>xprev <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>); h <span class="ot">&lt;-</span> <span class="dv">1</span>; tol <span class="ot">&lt;-</span> <span class="fl">10e-8</span></span>
+<span id="cb10-2"><a></a>iter <span class="ot">&lt;-</span> <span class="dv">0</span>; itermax <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a><span class="cf">repeat</span>{</span>
+<span id="cb10-5"><a></a>  iter <span class="ot">&lt;-</span> iter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb10-6"><a></a>  xnew <span class="ot">&lt;-</span> xprev <span class="sc">-</span> h <span class="sc">*</span> xprev</span>
+<span id="cb10-7"><a></a>  <span class="cf">if</span>(<span class="fu">sum</span>((xnew <span class="sc">-</span> xprev)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">&lt;=</span> tol) { <span class="cf">break</span> } </span>
+<span id="cb10-8"><a></a>  <span class="cf">else</span> { xprev <span class="ot">&lt;-</span> xnew }</span>
+<span id="cb10-9"><a></a>  <span class="cf">if</span>(iter <span class="sc">&gt;=</span> itermax){</span>
+<span id="cb10-10"><a></a>    <span class="fu">stop</span>(<span class="st">"Maximum Number of Iterations Exceeded"</span>)</span>
+<span id="cb10-11"><a></a>  }</span>
+<span id="cb10-12"><a></a>}</span>
+<span id="cb10-13"><a></a></span>
+<span id="cb10-14"><a></a><span class="fu">cat</span>(<span class="st">"Final Answer:"</span>, xnew, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"Iterations:"</span>, iter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Final Answer: 0 0 
+ Iterations: 2</code></pre>
+</div>
+</div>
+</section>
+<section id="gradient-descent-11" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<h3 id="example-2">Example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>xprev <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>); h <span class="ot">&lt;-</span> <span class="dv">2</span>; tol <span class="ot">&lt;-</span> <span class="fl">10e-8</span></span>
+<span id="cb12-2"><a></a>iter <span class="ot">&lt;-</span> <span class="dv">0</span>; itermax <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a><span class="cf">repeat</span>{</span>
+<span id="cb12-5"><a></a>  iter <span class="ot">&lt;-</span> iter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb12-6"><a></a>  xnew <span class="ot">&lt;-</span> xprev <span class="sc">-</span> h <span class="sc">*</span> xprev</span>
+<span id="cb12-7"><a></a>  <span class="cf">if</span>(<span class="fu">sum</span>((xnew <span class="sc">-</span> xprev)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">&lt;=</span> tol) { <span class="cf">break</span> } </span>
+<span id="cb12-8"><a></a>  <span class="cf">else</span> { xprev <span class="ot">&lt;-</span> xnew }</span>
+<span id="cb12-9"><a></a>  <span class="cf">if</span>(iter <span class="sc">&gt;=</span> itermax){</span>
+<span id="cb12-10"><a></a>    <span class="fu">stop</span>(<span class="st">"Maximum Number of Iterations Exceeded"</span>)</span>
+<span id="cb12-11"><a></a>  }</span>
+<span id="cb12-12"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: Maximum Number of Iterations Exceeded</code></pre>
+</div>
+</div>
+</section>
+<section id="gradient-descent-12" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<h3 id="a-summary">A Summary</h3>
+<ul>
+<li class="fragment"><p>So, to summarize: if we want to minimize a function, we can use Gradient Descent to <em>descend</em> along the graph of the function in the direction <em>opposite</em> to the gradient.</p></li>
+<li class="fragment"><p>At each step, we take a step of size α.</p>
+<ul>
+<li class="fragment">If α is too small, the algorithm can take a long time to converge</li>
+<li class="fragment">If α is too large, the algorithm may overshoot the minimum and get “stuck” (thereby failing to converge)</li>
+</ul></li>
+<li class="fragment"><p>We are only guaranteed convergence at a <em>local</em> minimum, not necessarily a <em>global</em> minimum.</p></li>
+</ul>
+</section>
+<section id="gradient-descent-13" class="slide level2">
+<h2><i class="fa-solid fa-down-long" aria-label="down-long"></i> Gradient Descent</h2>
+<h3 id="connection-with-neural-networks">Connection with Neural Networks</h3>
+<ul>
+<li class="fragment"><p>So, why did I bring this up now?</p></li>
+<li class="fragment"><p>Well, recall where we left off in our discussion on Neural Networks: we said that estimating the parameters can be accomplished by minimizing an appropriate loss function.</p></li>
+<li class="fragment"><p>Indeed, most popular choices for loss functions lead to minimization problems that do not admit analytic solutions.</p>
+<ul>
+<li class="fragment">Hence, we can use Gradient Descent to perform the minimization!</li>
+</ul></li>
+<li class="fragment"><p>Explicitly computing the necessary gradients and partial derivatives leads to what is known as the <span class="alert"><strong>backpropagation</strong></span> algorithm, which remains a very popular method for parameter estimation in Neural Networks.</p></li>
+</ul>
+</section>
+<section id="next-time" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<ul>
+<li class="fragment"><p>In lab today, it will be <em>Labubu</em> time</p></li>
+<li class="fragment"><p>Tomorrow, we’ll delve a bit into Causal Inference</p></li>
+<li class="fragment"><p>Please keep working on your projects!</p></li>
+</ul>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="Images/100_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+            for (let i=0; i<annoteTargets.length; i++) {
+              const annoteTarget = annoteTargets[i];
+              const targetCell = annoteTarget.getAttribute("data-target-cell");
+              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+              const contentFn = () => {
+                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+                if (content) {
+                  const tipContent = content.cloneNode(true);
+                  tipContent.classList.add("code-annotation-tip-content");
+                  return tipContent.outerHTML;
+                }
+              }
+              const config = {
+                allowHTML: true,
+                content: contentFn,
+                onShow: (instance) => {
+                  selectCodeLines(instance.reference);
+                  instance.reference.classList.add('code-annotation-active');
+                  window.tippy.hideAll();
+                },
+                onHide: (instance) => {
+                  unselectCodeLines();
+                  instance.reference.classList.remove('code-annotation-active');
+                },
+                maxWidth: 300,
+                delay: [50, 0],
+                duration: [200, 0],
+                offset: [5, 10],
+                arrow: true,
+                appendTo: function(el) {
+                  return el.parentElement.parentElement.parentElement;
+                },
+                interactive: true,
+                interactiveBorder: 10,
+                theme: 'light-border',
+                placement: 'right',
+                popperOptions: {
+                  modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      flipVariations: false, // true by default
+                      allowedAutoPlacements: ['right'],
+                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      mainAxis: false,
+                      altAxis: false
+                    }
+                  }
+                  ]        
+                }      
+              };
+              window.tippy(annoteTarget, config); 
+            }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

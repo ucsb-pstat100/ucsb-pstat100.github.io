@@ -1,0 +1,1235 @@
+---
+title: "PSTAT 100: Lecture 20"
+subtitle: "An Introduction to Neural Networks"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/100_hex.png"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/100_hex.png"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(palmerpenguins)
+library(plotly)
+library(tidymodels)
+```
+
+## {{< fa backward-fast >}} Recap: Logistic Regression
+
+-   Let's, for the moment, go back to our last lecture before the ICA, when we talked about **logistic regression**.
+
+-   Our idea was that a linear combination of our covariate functions could be mapped to a value in [0, 1] by way of a transformation; namely, the logistic function.
+    -   This output is then interpreted as the probability of survival.
+
+:::: {.columns}
+::: {.column width="40%"}
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 3
+digraph G {
+    layout = dot
+    rankdir = LR
+    constraint = false
+    edge [arrowsize = 0.5, color = "#009E73"]
+    ranksep=1.25
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle];
+    
+    inp1 [label = <x<sub>0</sub>>];
+    inp2 [label = <x<sub>1</sub>>];
+    inp3 [label = "⋮", fillcolor = white];
+    inp4 [label = <x<sub>p</sub>>];
+  }
+  
+  
+  subgraph cluster_1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle];
+    
+    out1 [label = "π"]
+
+    label = " ";
+  }
+  
+  inp1 -> out1 [label=<β<sub>0</sub>>];
+  inp2 -> out1 [label=<β<sub>1</sub>>];
+  inp3 -> out1 [label="..."];
+  inp4 -> out1 [label=<β<sub>p</sub>>];
+
+  
+}
+```
+:::
+:::
+
+::: {.column width="60%"}
+-   Diagramatically, we might represent this using the [**graph**]{.alert} to the left.
+
+-   This graph illustrates the "direct" relationship between the covariates and the output probability (albeit through the logistic function, not pictured on the graph).
+:::
+
+::::
+
+
+## {{< fa backward-fast >}} Recap: Logistic Regression
+
+:::: {.columns}
+
+::: {.column width="50%"}
+-   A perhaps more accurate representation of our logistic regression model might be 
+
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 3
+digraph G {
+    layout = dot
+    rankdir = LR
+    constraint = false
+    edge [arrowsize = 0.5, color = "#009E73"]
+    ranksep=1
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle];
+    
+    inp1 [label = <x<sub>0</sub>>];
+    inp2 [label = <x<sub>1</sub>>];
+    inp3 [label = "⋮", fillcolor = white];
+    inp4 [label = <x<sub>p</sub>>];
+  }
+  
+   subgraph cluster_lin {
+   color = white
+    node [color=black, style = filled, fillcolor = "white", shape = square];
+    
+    lin [label = <h<sub>&beta;</sub>>]
+
+    label = " ";
+  }
+  
+  subgraph cluster_activation {
+   color = white
+    node [color=black, style = filled, fillcolor = "white", shape = ellipse];
+    
+    activ [label = "&Lambda;"]
+
+    label = " ";
+  }
+  
+  subgraph cluster_1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle];
+    
+    out1 [label = "π"]
+
+    label = " ";
+  }
+  
+  {inp1 inp2 inp3 inp4} -> lin -> activ -> out1
+
+  
+}
+```
+:::
+
+:::
+
+::: {.column width="50%"}
+-   However, for the sake of parsimony, we often remove the functional transformations from our graph:
+
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 3
+digraph G {
+    layout = dot
+    rankdir = LR
+    constraint = false
+    edge [arrowsize = 0.5, color = "#009E73"]
+    ranksep=1.25
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle];
+    
+    inp1 [label = <x<sub>0</sub>>];
+    inp2 [label = <x<sub>1</sub>>];
+    inp3 [label = "⋮", fillcolor = white];
+    inp4 [label = <x<sub>p</sub>>];
+  }
+  
+  
+  subgraph cluster_1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle];
+    
+    out1 [label = "π"]
+
+    label = " ";
+  }
+  
+  {inp1 inp2 inp3 inp4} -> out1
+
+}
+```
+:::
+:::
+::::
+
+## {{< fa circle-nodes >}} A Quick Interlude about Graphs
+
+-   By "graph," we don't mean the graph of a function but rather _graph_ in the mathematical sense.
+
+-   A graph is comprised of a collection of [**nodes**]{.alert} (represented pictorially as circles) and [**edges**]{.alert} (represented pictorially as lines connecting nodes).
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 3
+graph G {
+
+        layout = circo;
+        node[shape = circle style = "filled" fillcolor = "#CC79A7" label = "" width = 0.25];
+        splines = false
+        
+        a--b; a--c; a--d; a--e; a--f; a--g
+        b--c; b--d; b--e; b--f; b--g
+        c--d; c--e; c--f; c--g
+        d--e; d--f; d--g
+        e--f; e--g;
+        f--g;
+
+    
+    subgraph G1 {
+        layout = dot
+        rankdir = LR
+        splines = false
+        constraint = false
+        edge [arrowsize = 0.5, color = "#0072B2"]
+        ranksep = 0.75
+        
+        a1 -- b1;
+        a1 -- c1;
+        b1 -- c1;
+        c1 -- d1;
+        c1 -- e1;
+        a1 -- e1;
+    }
+    
+    subgraph G2 {
+        layout = dot
+        rankdir = LR
+        splines = false
+        constraint = false
+        edge [arrowsize = 0.5, color = "#0072B2"]
+        ranksep = 0.75
+        
+        a2 -- b2 -- c2;
+        a2 -- c2 -- d2 -- e2;
+    }
+}
+```
+:::
+:::
+
+::: {.column width="50%"}
+
+-   Graphs are particularly useful when representing relationships between objects; objects are represented as nodes, and a relationship between two objects can be represented as an edge connecting them, and arise frequently in [**network analysis**]{.alert}.
+
+:::
+
+::::
+
+## {{< fa layer-group >}} Classification with Multiple Levels
+
+-   We might imagine a situation in which, instead of having a binary output, we have a categorical output with more than two levels.
+
+-   For example, back when we talked about PCA, we encountered the [**MNIST**]{.alert} dataset in which each image belongs to one of 10 classes (each representing a digit).
+
+
+:::: {.columns}
+::: {.column width="40%"}
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 3
+digraph G {
+    layout = dot
+    rankdir = LR
+    constraint = false
+    edge [arrowsize = 0.5, color = "#009E73"]
+    ranksep=1.25
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle];
+    
+    inp1 [label = <x<sub>0</sub>>];
+    inp2 [label = <x<sub>1</sub>>];
+    inp3 [label = "⋮", fillcolor = white];
+    inp4 [label = <x<sub>p</sub>>];
+  }
+  
+  
+  subgraph cluster_1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle];
+    
+    out1 [label = <π<sub>1</sub>>]
+    out2 [label = "⋮", fillcolor = white]
+    out3 [label = <π<sub>k</sub>>]
+
+    label = " ";
+  }
+  
+  {inp1 inp2 inp3 inp4} -> {out1}
+  {inp1 inp2 inp3 inp4} -> {out3}
+
+  
+}
+```
+:::
+:::
+
+::: {.column width="60%"}
+-   We might update our diagram, then, to look something like that to the left.
+
+-   For example, in the MNIST dataset, we would have (_k_ = 10) output probabilities.
+    -   _π_~_i_~ then represents the probability that a given image is the digit _i_, for _i_ in {0, ..., 10}.
+    
+:::
+
+::::
+
+
+## {{< fa add >}} Series Estimators
+
+::: {.fragment style="font-size:28px"}
+$$ y(\vect{x}, \vect{\beta}) = \beta_0 + \sum_{j=1}^{p} \beta_j \phi_j(\vect{x})$$
+:::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 4
+digraph G {
+    layout = dot
+    rankdir = LR
+    splines = false
+    constraint = false
+    edge [arrowsize = 0.5, color = "#009E73"]
+    ranksep=1.25
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle];
+    
+    inp1 [label = <φ<sub>0</sub>(<b>x</b>)>];
+    inp2 [label = <φ<sub>1</sub>(<b>x</b>)>];
+    inp3 [label = "⋮", fillcolor = white];
+    inp4 [label = <φ<sub>p</sub>(<b>x</b>)>];
+  }
+  
+  
+  subgraph cluster_1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle];
+    
+    out1 [label = "y"]
+
+    label = " ";
+  }
+  
+  inp1 -> out1 [label=<β<sub>0</sub>>];
+  inp2 -> out1 [label=<β<sub>1</sub>>];
+  inp3 -> out1 [label="..."];
+  inp4 -> out1 [label=<β<sub>p</sub>>];
+
+  
+}
+```
+:::
+:::
+
+::: {.column width="60%"}
+-   Now, each node represents a basis function
+-   Parameters (which we can really think of as [**weights**]{.alert}) are, again, represented by [**edges**]{.alert}
+-   If necessary, we can still pass the linear combination of our covariates through a function _g_() to create a more flexible model (these transformations aren't depicted on our graph).
+:::
+
+::::
+
+
+## {{< fa bezier-curve >}} Generalizing
+
+-   Note that passing our linear combination of covariates through a function _g_() (which we can call an [**output activation function**]{.alert}) leads to a potentially nonlinear model:
+
+::: {.fragment style="font-size:28px"}
+$$ y(\vect{x}, \vect{\beta}) = g\left( \beta_0 + \sum_{j=1}^{p} \beta_j \phi_j(\vect{x}) \right) = g \left( \tvect{\beta} \vect{\phi}(\vect{x}) \right) $$
+:::
+
+-   Recall that "linearity" in a model typically refers to the _parameters_ - taking the output activation function (leading back to series estimation) results in a model that is _linear_ in the parameters and hence one that is classified as "linear".
+    -   More complex output activation functions, however, may introduce nonlinearity into the model.
+    
+## {{< fa diagram-project >}} Neural Networks
+
+-   These are all examples of [**artificial neural networks**]{.alert} (often referred to simply as [**neural nets**]{.alert}).
+
+-   Broadly speaking, neural nets are mathematical models that are motivated by the functioning of the brain.
+    -   Nodes correspond to neurons; edges correspond to neural pathways
+    
+::: {.fragment style="text-align:center"}
+![](Images/brain.svg){width="75%"}
+:::
+
+
+## {{< fa diagram-project >}} Neural Networks
+
+-   The general idea is to recursively construct a model, whereby outputs of one portion are used as inputs in another portion.
+
+-   The examples of neural networks we've seen today so far are all examples of [**one-layer**]{.alert} (sometimes called [**shallow**]{.alert}) networks, in which we have just one input layer and one output layer, and no layers in between.
+
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 3
+digraph G {
+    layout = dot
+    rankdir = LR
+    constraint = false
+    edge [arrowsize = 0.5, color = "#009E73"]
+    ranksep=1.25
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle label = ""];
+    
+    inp1
+    inp2
+    inp3
+    inp4
+  }
+  
+  
+  subgraph cluster_1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle label = ""];
+    
+    out1
+    out2
+
+    label = " ";
+  }
+  
+  {inp1 inp2 inp3 inp4} -> {out1}
+  {inp1 inp2 inp3 inp4} -> {out2}
+
+  
+}
+```
+:::
+
+
+## {{< fa diagram-project >}} Neural Networks
+
+-   We can imagine potentially mapping inputs to another layer, and then mapping _this_ ([**hidden**]{.alert}) layer to the output layer:
+    
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 3
+digraph G {
+    layout = dot
+    rankdir = LR
+    splines = false
+    constraint = false
+    edge [arrowsize = 0.5, color = "#0072B2"]
+    ranksep = 0.75
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle];
+    
+    inp1 [label = ""];
+    inp2 [label = ""];
+    inp3 [label = ""];
+  }
+  
+  subgraph cluster_1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#009E73", shape = circle];
+    
+    hid1 [label = ""];
+    hid2 [label = ""];
+    hid3 [label = ""];
+    hid4 [label = ""];
+  }
+  
+  
+  subgraph cluster_2 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle];
+    
+    out1 [label = ""]
+
+    label = " ";
+  }
+  
+  {inp1 inp2 inp3} -> {hid1 hid2 hid3 hid4} -> {out1}
+
+  
+}
+```
+:::
+:::
+
+::: {.column width="50%"}
+-   One input layer
+-   One hidden layer
+-   One output layer
+-   One parameter per edge 
+
+-   Each node "feeds" into another one layer down; hence the name [**feedforward**]{.alert} neural network (NN).
+:::
+
+::::
+
+-   In general, the [**depth**]{.alert} of a neural network is the number of non-input layers; hence, our NN above has depth 2.
+
+## {{< fa diagram-project >}} Neural Networks
+### More Formally
+
+-   We first take a linear combination of our inputs, and pass them through an [**activation function**]{.alert} σ~X~().
+
+-   Each of these resulting quantities is then treated as an input into the hidden layer, which then takes a linear combination of _these_ values, and passes them through yet another activation function σ~Z~().
+
+-   The resulting values are again weightedly-averaged, passed through a final [**output activation function**]{.alert} σ~Z~(), the result of which is then treated as the outputs of our NN.
+
+
+:::: {.columns}
+::: {.column width="33.3333%"}
+::: {.fragment style="text-align: center"}
+**Input Layer:** <br />
+[**X**]{style="color:#E69F00"} = [x~1~, ..., x~_p_~]
+:::
+:::
+
+::: {.column width="33.3333%"}
+::: {.fragment style="text-align: center"}
+**Hidden Layer:**  <br />
+[**Z**]{style="color:#009E73"} = [σ~X~([**X**]{style="color:#E69F00"}α~1~), ..., σ~X~([**X**]{style="color:#E69F00"}α~_M_~)]
+:::
+:::
+
+::: {.column width="33.3333%"}
+::: {.fragment style="text-align: center"}
+**Output Layer:**  <br />
+𝔼[[**Y**]{style="color:#56B4E9"}] = σ~Z~([**Z**]{style="color:#009E73"}β)
+:::
+:::
+::::
+
+
+
+
+## {{< fa diagram-project >}} Neural Networks
+### Composition of Functions
+
+-   Note that, at the end of the day, a Neural Network really just models the output as a long composition of functions on the inputs:
+
+::: {.fragment style="font-size:28px"}
+$$ Y = f(X) =: (\sigma_Z \circ h_{\beta} \circ \sigma_X \circ h_\alpha)(X)$$
+:::
+
+-   Each function in the composition is either known (like the activation functions) or linear (what I've called the _h_ functions above).
+
+- So, two key things become apparent:
+    1) A Neural Net is a statistical model
+    2) "Training" a Neural Net amounts to _estimating the weight parameters_.
+
+
+
+## {{< fa diagram-project >}} Neural Networks
+### Deep Neural Nets
+
+-   There is nothing stopping us from including more hidden layers.
+    -   Generally, any NN with depth 3 or higher is considered a [**deep neural network**]{.alert}
+
+::: {.fragment}
+```{dot}
+//| fig-width: 6
+//| fig-height: 3
+digraph G {
+    layout = dot
+    rankdir = LR
+    splines = false
+    constraint = false
+    edge [arrowsize = 0.5, color = "#0072B2"]
+    ranksep = 0.75
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle];
+    
+    inp1 [label = ""];
+    inp2 [label = ""];
+    inp3 [label = ""];
+  }
+  
+  subgraph hidden1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#009E73", shape = circle];
+    
+    hid1 [label = ""];
+    hid2 [label = ""];
+    hid3 [label = ""];
+    hid4 [label = ""];
+  }
+  
+  
+    subgraph hidden2 {
+        color = white
+        node [color=white, style = filled, fillcolor = "#CC79A7", shape = circle];
+    
+    hid21 [label = ""];
+    hid22 [label = ""];
+  }
+  
+    subgraph hidden2 {
+        color = white
+        node [color=white, style = filled, fillcolor = "#CC79A7", shape = circle];
+    
+    hid31 [label = ""];
+    hid32 [label = ""];
+    hid33 [label = ""];
+    hid34 [label = ""];
+    hid35 [label = ""];
+  }
+  
+  
+  subgraph cluster_2 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle];
+    
+    out1 [label = ""]
+    out2 [label = ""]
+
+    label = " ";
+  }
+  
+  {inp1 inp2 inp3} -> {hid1 hid2 hid3 hid4} -> {hid21 hid22} -> {hid31 hid32 hid33 hid34 hid35 } -> {out1 out2}
+
+  
+}
+```
+:::
+
+## {{< fa diagram-project >}} Neural Networks
+### Universal Approximation Theorem
+
+-   There are a few different versions of the so-called [**Universal Approximation Theorem**]{.alert}, posited and proved by different people at different points in time, differing in the assumptions made.
+
+-   The broadest version of this theorem states: a feedforward neural network with one hidden layer and a finite number of neurons can approximate any continuous function on a compact subset of ℝ^_n_^ to an arbitrary degree of closeness.
+    -   Subsequent versions have posited the same assertion for deep neural networks as well.
+
+-   Crucially, though, the UAT does _not_ tell us how to find such an approximation.
+
+## {{< fa diagram-project >}} Neural Networks
+### Network Architecture
+
+-   To distinguish between portions of the model that need to be estimated and those that are assumed known/specified, we'll often use the term [**architecture**]{.alert} to refer to the portions of the NN that are prespecified. These include things like:
+    -   The number of hidden layers
+    -   The choice of activation functions
+    
+-   The **parameters** are then just the weights by which we scale at each layer.
+    -   Just like we did before, we can estimate these parameters by minimizing a loss function.
+    
+## {{< fa diagram-project >}} Neural Networks
+### Optimization
+
+-   However, unlike with the simpler statistical models we considered (e.g. SLR), the minimization problems that arise in the context of training neural nets are often _quite_ tricky and don't always admit closed-form solutions.
+
+-   As such, it is common to use iterative methods to solve the minimization problem.
+
+-   One popular choice of such an algorithm is called [**gradient descent**]{.alert}, which we'll discuss in a bit.
+
+-   Before we dive too deep into the general optimization, it may be useful to make concrete our goals in fitting a neural net.
+
+## {{< fa diagram-project >}} Neural Networks
+### Concrete Problem
+
+-   As a simple example, consider a noiseless regression problem where the true signal function is sinusoidal:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment}
+```{r}
+#| echo: True
+#| code-fold: True
+#| fig-height: 7
+
+n <- 50
+x <- seq(0, 1, length = n)
+y <- sin(2 * pi * x)
+
+data.frame(x, y) %>% ggplot(aes(x = x, y = y)) + 
+  geom_point(size = 3) +
+  theme_minimal(base_size = 24) +
+  ggtitle("Simple Regression Problem")
+```
+:::
+:::
+
+::: {.column width="50%}
+-   Our goal, for now, is to fit the true signal function using a Neural Net with one hidden layer comprised of three hidden nodes:
+
+
+::: {.fragment}
+```{dot}
+//| fig-width: 3
+//| fig-height: 2
+digraph G {
+    layout = dot
+    rankdir = LR
+    constraint = false
+    edge [arrowsize = 0.5, color = "#009E73"]
+    ranksep=1.25
+    
+  subgraph cluster_0 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#E69F00", shape = circle label = ""];
+    
+    inp1
+    inp2 [label = "⋮", fillcolor = white];
+    inp3 
+    inp4
+  }
+  
+  subgraph hid1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#CC79A7", shape = circle label = ""];
+    
+    hid1
+    hid2
+    hid3
+
+    label = " ";
+  }
+  
+  subgraph cluster_1 {
+   color = white
+    node [color=white, style = filled, fillcolor = "#56B4E9", shape = circle label = ""];
+    
+    out1
+    out2 [label = "⋮", fillcolor = white];
+    out3 
+    out4
+
+    label = " ";
+  }
+  
+  {inp1 inp2 inp3 inp4} -> {hid1 hid2 hid3} -> {out1 out2 out3 out4}
+
+  
+}
+```
+:::
+:::
+::::
+
+
+## {{< fa diagram-project >}} Neural Networks
+### Concrete Problem
+
+-   That is: we begin with 50 input values _x_~1~ through _x_~50~. 
+
+-   What is it that we want out of our network? 
+    -   Well, ideally we want the "true" signal function _f_().
+    -   But, NNs only return output _values_.
+
+-   So, here's the trick: we imagine finding the values of the signal function at a very fine grid of points. The finer the grid, the "smoother" our final function will look.
+
+-   That is, the output of our NN should be a set of values \{_y_~1~, ..., _y_~_K_~} for some large value _K_, where _y_~_k_~ denotes the value of the signal at some point _x_~_k_~.
+    -   Note that _x_~_k_~ may or may not be one of our original [**design points**]{.alert}!
+
+## {{< fa diagram-project >}} Neural Networks
+### Input Layer to Hidden Layer
+
+-   We take a linear combination of our 50 input values:
+    $$ a_j^{(1)} = \sum_{i=1}^{50} w_{ij}^{(1)} x_i + w_{j0}^{(1)} $$
+    and scale each by an activation function:
+    $$ z_j^{(1)} = \sigma_1 (a_j^{(1)}) $$
+
+-   The $z_j^{(1)}$ then form the input to our hidden layer, and receive a similar treatment as the original _x_~_i_~ did.
+
+## {{< fa diagram-project >}} Neural Networks
+### Hidden Layer to Output Layer
+
+-   That is:
+    $$ a_k^{(2)} = \sum_{j=1}^{3} w_{jk}^{(2)} z_{j}^{(1)} + w_{k0}^{(2)} $$
+    for _k_ = 1, ..., _K_ (we can, somewhat aribtrarily, take _K_ to be 1000).
+    
+    
+-   Finally, these $a_k^{(2)}$ are transformed by way of an output activation function to obtain the _K_ output values:
+$$ y_k = \sigma_2 (a_{k}^{(2)}) $$
+
+
+## {{< fa diagram-project >}} Neural Networks
+### Overview
+
+-   Let's take a step back and examine the various components of this NN.
+
+-   First, there is the matter of selecting the two activation functions σ~1~() and σ~2~(). 
+
+-   Then, there is the matter of estimating the parameters
+$$ \begin{align*} 
+  \{w_{j0}^{(1)}, \ w_{j1}^{(1)}, \ \cdots, \ w_{j50}^{(1)} \}  & \quad j = 1, 2, 3 \\  
+  \{w_{k0}^{(2)}, \ w_{k1}^{(2)}, \ w_{k3}^{(2)} \}  & \quad k = 1, \cdots, K \\  
+\end{align*} $$
+
+-   For (_K_ = 1000) outputs, this is a total of 453 parameters to estimate.
+
+-   As you can imagine, the number of parameters in an arbitrary NN can be _astronomically_ large.
+
+
+
+## {{< fa diagram-project >}} Neural Networks
+### Overview
+
+-   In general, if we consider a "vanilla" NN (one hidden layer) with _D_ input values, _M_ hidden nodes, and _K_ outputs, the parameters to estimate becomes
+$$ \begin{align*} 
+  \{w_{j0}^{(1)}, \ w_{j1}^{(1)}, \ \cdots, \ w_{jD}^{(1)} \}  & \quad j = 1, \cdots, M \\  
+  \{w_{k0}^{(2)}, \ w_{k1}^{(2)}, \ \cdots, \  w_{kM}^{(2)} \}  & \quad k = 1, \cdots, K \\  
+\end{align*} $$
+leaving a total of [_M_ (_D_ + 1) + _K_ (_M_ + 1)] = _M_ (_D_ + _K_ + 1) + _K_ parameters.
+
+-   And this is all with only one hidden layer; for Deep Neural Nets, it is not uncommon for the number of parameters to surpass a million (or even a billion, in cases)!
+
+## {{< fa diagram-project >}} Neural Networks
+### History
+
+-   Neural Networks are perhaps not as "recent" a phenomenon as people think - the earliest neural network model was the [**perceptron**]{.alert} model, proposed by Frank Rosenblatt back in 1957.
+    -   The use of neurons as a basis for mathematical models can be traced even further back, to the work of McColluh and Pitts in 1943.
+    
+-   A fair amount of work was dedicated towards Neural Networks through the turn of the millennium, with a "burst" in publications through the 90s and into the early 2000s.
+
+-   Work on Neural Networks slowed a bit, however, mainly due to the intense computational challenges involved in training them.
+    
+
+
+
+## {{< fa diagram-project >}} Neural Networks
+### History
+
+-   Near 2010, however, advancements in computational power drove what is considered to be the most recent ("second" or "third", depending on who you ask) wave of interest in Neural Networks. 
+
+-   Since around 2016, the number of publications relating to Neural Networks has skyrocketed, and NNs remain a popular area of research to this day.
+
+-   This most recent wave of interest has been accompanied with interest in the newly-minted field of [**deep learning**]{.alert}, which, again, has only been feasible to research thanks to recent and continued advancements in computing.
+
+
+## {{< fa diagram-project >}} Neural Networks
+### History
+
+![Figure 1.16 from _Deep Learning_ by Bishop and Bishop](Images/Bishop_Graph.jpeg){width="50%"}
+
+
+## {{< fa diagram-project >}} Neural Networks
+### History
+
+-   Up until this point in the course, I have very intentionally remained vague about my stance on the "R vs. Python" debate.
+    -   I will continue in this vagueness! I do truly believe both programming languages excel in nonoverlapping areas.
+    -   For example, when it comes to graphics, `R` is truly (and this is not just my personal opinion) superior.
+    
+-   However, I will admit that when it comes to Deep Learning, Python is typically preferred.
+    -   To that end, we won't be able to get into the nitty-gritty of training Neural Nets too much in PSTAT 100.
+    -   Nevertheless, we can still cover the basics!
+
+# Gradient Descent {background-color="black" background-image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWc2MmkxanM4bnRuM2R1bWptMG9xZ2gzbjl4Ymp4MWUyaWxkbDk5eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rneBwBTLKWyEHmokvX/giphy.gif" background-size="60rem"}
+
+## {{< fa down-long >}} Gradient Descent
+
+-   [**Gradient Descent**]{.alert} (GD) is an algorithm that can be used to identify local minima of (possibly multivariate) functions.
+
+-   You can imagine why this is useful: sometimes, minimization problems don't admit closed-form expressions and as such we may need to resort to _iterative algorithms_ to solve them.
+
+-   The basic idea is as follows: the [**gradient**]{.alert} (which we can think of as a multivariate derivative) gives the direction of greatest increase.
+    -   Hence, if we "travel" along the graph of the function in the direction opposite to the gradient, we should eventually reach a minimum.
+    
+-   Perhaps a one-dimensional illustration may help:
+    
+    
+## {{< fa down-long >}} Gradient Descent
+
+![](Images/graddesc1.gif)
+
+## {{< fa down-long >}} Gradient Descent
+
+- More formally, in the case of a univariate function _f_(_x_), we start with an initial "guess" _x_~1~. 
+
+-   Then, we iteratively define _x_~_i_~ = _x_~_i_-1~ - α _f_'(_x_~_i_~) for some [**step size**]{.alert}
+
+-   We stop the algorithm once the difference between _x_~_i_~ and _x_~_i_-1~ is small.
+
+-   The step size is fairly important: if it is too small, the algorithm may take a long time to converge. If it is too large, we may "overshoot" the minimum.
+
+-   Even if our algorithm converges, we need to be cautious that it may have converged at a _local_ minimum.
+    -   As such, it is always a good idea to examine the overall structure of the minimand before getting started.
+    
+    
+    
+## {{< fa down-long >}} Gradient Descent {style="font-size:28px"}
+
+**Example:** _f_(_x_) = _x_^2^
+
+```{r}
+#| echo: True
+
+xprev <- -1          ## initialize
+h <- 0.1             ## step size
+tol <- 10e-6         ## tolerance for convergence
+iter <- 0            ## track the number of iterations
+itermax <- 100       ## cap the number of iterations
+
+repeat{
+  iter <- iter + 1
+  xnew <- xprev - h * (2*xprev)    ## update step
+  if(abs(xnew - xprev) <= tol) {
+    break                          ## convergence condition
+  } else {
+    xprev <- xnew                  ## update and restart
+  }
+  if(iter >= itermax){
+    stop("Maximum Number of Iterations Exceeded")
+  }
+}
+
+cat("Final Answer:", xnew, "\n", "Iterations:", iter)
+```
+
+
+
+    
+## {{< fa down-long >}} Gradient Descent {style="font-size:28px"}
+
+**Example:** _f_(_x_) = _x_^2^
+
+```{r}
+#| echo: True
+#| code-line-numbers: "2"
+
+xprev <- -1          ## initialize
+h <- 0.05            ## step size
+tol <- 10e-6         ## tolerance for convergence
+iter <- 0            ## track the number of iterations
+itermax <- 100       ## cap the number of iterations
+
+repeat{
+  iter <- iter + 1
+  xnew <- xprev - h * (2*xprev)    ## update step
+  if(abs(xnew - xprev) <= tol) {
+    break                          ## convergence condition
+  } else {
+    xprev <- xnew                  ## update and restart
+  }
+  if(iter >= itermax){
+    stop("Maximum Number of Iterations Exceeded")
+  }
+}
+
+cat("Final Answer:", xnew, "\n", "Iterations:", iter)
+```
+
+
+## {{< fa down-long >}} Gradient Descent {style="font-size:28px"}
+
+**Example:** _f_(_x_) = _x_^2^
+
+```{r}
+#| echo: True
+#| error: True
+#| code-line-numbers: "2"
+
+xprev <- -1          ## initialize
+h <- 1               ## step size
+tol <- 10e-6         ## tolerance for convergence
+iter <- 0            ## track the number of iterations
+itermax <- 100       ## cap the number of iterations
+
+repeat{
+  iter <- iter + 1
+  xnew <- xprev - h * (2*xprev)    ## update step
+  if(abs(xnew - xprev) <= tol) {
+    break                          ## convergence condition
+  } else {
+    xprev <- xnew                  ## update and restart
+  }
+  if(iter >= itermax){
+    stop("Maximum Number of Iterations Exceeded")
+  }
+}
+```
+
+
+## {{< fa down-long >}} Gradient Descent {style="font-size:30px"}
+### Gradients
+
+-   If we have a multivariate function $f(\vect{x})$, the [**gradient**]{.alert} serves the role of the derivative:
+$$ \vec{\boldsymbol{\nabla}} f(\vect{x}) := \begin{bmatrix} \frac{\partial}{\partial x_1}f(\vect{x}) \\ \vdots \\ \frac{\partial}{\partial x_n}f(\vect{x})  \\ \end{bmatrix} $$
+
+-   Our GD algorithm is relatively straightforward to update:
+
+
+## {{< fa down-long >}} Gradient Descent
+### Multivariate Analog
+
+-   Initialize a starting vector $\vect{x}^{(1)}$
+
+-   At step _s_, update according to $\vect{x}^{(s)} = \vect{x}^{(s - 1)} - \alpha \vec{\boldsymbol{\nabla}}f(\vect{x}^{(s)})$
+
+:::: {.columns}
+
+::: {.column width="35%"}
+-   Iterate until $\|\vect{x}^{(s)} - \vect{x}^{(s - 1)}\|^2$ is small.
+
+-   As an example, consider $$ f(x, y) = x^2 + y^2 $$
+-   We'll compute the gradient on the board
+:::
+
+::: {.column width="65%"}
+::: {.fragment}
+```{r}
+
+x <- seq(-1, 1, by = 0.05)
+y <- seq(-1, 1, by = 0.05)
+xygrid <- expand.grid(x, y) %>% rename(x = Var1, y = Var2)
+
+z <- matrix(rep(NA, length(x)^2), nrow = length(x))
+for(i in 1:length(x)){
+  for(j in 1:length(y)) {
+    z[i, j] = x[i]^2 + y[j]^2
+  }
+}
+
+fig <- plot_ly(
+  x = ~x,
+  y = ~y,
+  z = ~z) %>% add_surface(
+  contours = list(
+    z = list(
+      show=TRUE,
+      usecolormap=TRUE,
+      highlightcolor="#ff0000",
+      project=list(z=TRUE)
+    )
+  )
+)
+
+fig <- fig %>% layout(
+  scene = list(
+    camera=list(
+      eye = list(x=1.87, y=0.88, z=-0.64)
+    )
+  )
+)
+
+fig
+```
+:::
+:::
+
+::::
+
+
+## {{< fa down-long >}} Gradient Descent
+### Example
+
+```{r}
+#| echo: True
+xprev <- c(-1, -1); h <- 0.8; tol <- 10e-8
+iter <- 0; itermax <- 100
+
+repeat{
+  iter <- iter + 1
+  xnew <- xprev - h * xprev
+  if(sum((xnew - xprev)^2) <= tol) { break } 
+  else { xprev <- xnew }
+  if(iter >= itermax){
+    stop("Maximum Number of Iterations Exceeded")
+  }
+}
+
+cat("Final Answer:", xnew, "\n", "Iterations:", iter)
+```
+
+
+
+
+## {{< fa down-long >}} Gradient Descent
+### Example
+
+```{r}
+#| echo: True
+#| code-line-numbers: "1"
+#| error: True
+
+xprev <- c(-1, -1); h <- 1; tol <- 10e-8
+iter <- 0; itermax <- 100
+
+repeat{
+  iter <- iter + 1
+  xnew <- xprev - h * xprev
+  if(sum((xnew - xprev)^2) <= tol) { break } 
+  else { xprev <- xnew }
+  if(iter >= itermax){
+    stop("Maximum Number of Iterations Exceeded")
+  }
+}
+
+cat("Final Answer:", xnew, "\n", "Iterations:", iter)
+```
+
+
+
+
+## {{< fa down-long >}} Gradient Descent
+### Example
+
+```{r}
+#| echo: True
+#| code-line-numbers: "1"
+#| error: True
+
+xprev <- c(-1, -1); h <- 2; tol <- 10e-8
+iter <- 0; itermax <- 100
+
+repeat{
+  iter <- iter + 1
+  xnew <- xprev - h * xprev
+  if(sum((xnew - xprev)^2) <= tol) { break } 
+  else { xprev <- xnew }
+  if(iter >= itermax){
+    stop("Maximum Number of Iterations Exceeded")
+  }
+}
+```
+
+
+
+## {{< fa down-long >}} Gradient Descent
+### A Summary
+
+-   So, to summarize: if we want to minimize a function, we can use Gradient Descent to _descend_ along the graph of the function in the direction _opposite_ to the gradient.
+
+-   At each step, we take a step of size α.
+    -   If α is too small, the algorithm can take a long time to converge
+    -   If α is too large, the algorithm may overshoot the minimum and get "stuck" (thereby failing to converge)
+    
+-   We are only guaranteed convergence at a _local_ minimum, not necessarily a _global_ minimum.
+    
+
+## {{< fa down-long >}} Gradient Descent
+### Connection with Neural Networks
+
+-   So, why did I bring this up now?
+
+-   Well, recall where we left off in our discussion on Neural Networks: we said that estimating the parameters can be accomplished by minimizing an appropriate loss function.
+
+-   Indeed, most popular choices for loss functions lead to minimization problems that do not admit analytic solutions.
+    -   Hence, we can use Gradient Descent to perform the minimization!
+    
+-   Explicitly computing the necessary gradients and partial derivatives leads to what is known as the [**backpropagation**]{.alert} algorithm, which remains a very popular method for parameter estimation in Neural Networks.
+
+
+## {{< fa forward-fast >}} Next Time
+
+-   In lab today, it will be _Labubu_ time
+
+-   Tomorrow, we'll delve a bit into Causal Inference
+
+-   Please keep working on your projects!
