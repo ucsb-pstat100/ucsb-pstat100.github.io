@@ -1,0 +1,647 @@
+---
+title: "PSTAT 100: Lecture 21"
+subtitle: "An Very Brief Introduction to Causal Inference"
+footer: "PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban"
+logo: "Images/100_hex.png"
+format: 
+  clean-revealjs:
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: true
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+    menu:
+      side: left
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Ethan P. Marzban
+    affiliations: Department of Statistics and Applied Probability; UCSB <br /> <br />
+institute: Summer Session A, 2025
+title-slide-attributes:
+    data-background-image: "Images/100_hex.png"
+    data-background-size: "30%"
+    data-background-opacity: "0.5"
+    data-background-position: 80% 50%
+code-annotations: hover
+---
+
+$$
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+$$
+
+```{css echo = F}
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+```
+
+```{r setup, echo = F}
+library(tidyverse)
+library(countdown)
+library(fixest)
+library(modelsummary) # Make sure you have >=v2.0.0
+library(GGally)
+library(ggokabeito)
+library(reshape2)
+library(pander)
+library(gridExtra)
+library(cowplot)
+library(palmerpenguins)
+library(plotly)
+library(tidymodels)
+```
+
+## {{< fa building-columns >}} UC Berkeley Admissions
+
+-   In the 1970’s, UC Berkeley conducted an observational study to determine whether or not there was gender bias in the graduate student admittance practices at the university.
+    -   A disclaimer: at the time, "gender" was treated as a binary variable with values `male` and `female.` I would like to also acknowledge that we now recognize that there are a great deal many more genders than simply “male” and "female".
+    
+-   Overall, the survey included 8,422 men and 4,321 women.
+
+-   Of the men 44% were admitted; of the women only 35% were admitted.
+    -   This difference was also deemed statistically significant.
+
+
+-   So, on the surface, it does appear as though women are being disproportionately denied entry.
+
+## {{< fa building-columns >}} UC Berkeley Admissions
+
+
+-   But, something puzzling happens when we take a look at the data after grouping by major:
+
+
+:::{.fragment}
+<table>
+  <thead>
+  <tr> 
+    <td></td>
+    <td colspan="2" style="text-align:center">**Men**</td>
+    <td colspan="2" style="text-align:center">**Women**</td>
+  </tr>
+  <tr>
+    <td style="padding-right:3cm">**Major**</td>
+    
+    <td>**Num. Applicants**</td>
+    <td>**\% Admitted**</td>
+    
+    <td>**Num. Applicants**</td>
+    <td>**\% Admitted**</td>
+    
+  </tr>
+  </thead>
+  
+  <tbody>
+  <tr>
+    <td>A</td>
+    
+    <td>825</td>
+    <td>62</td>
+    
+    <td>108</td>
+    <td>82</td>
+  </tr>
+  
+  <tr>
+    <td>B</td>
+    
+    <td>560</td>
+    <td>63</td>
+    
+    <td>25</td>
+    <td>68</td>
+  </tr>
+  
+  <tr>
+    <td>C</td>
+    
+    <td>325</td>
+    <td>37</td>
+    
+    <td>593</td>
+    <td>34</td>
+  </tr>
+  
+  <tr>
+    <td>D</td>
+    
+    <td>417</td>
+    <td>33</td>
+    
+    <td>375</td>
+    <td>35</td>
+  </tr>
+  
+  <tr>
+    <td>E</td>
+    
+    <td>191</td>
+    <td>28</td>
+    
+    <td>393</td>
+    <td>24</td>
+  </tr>
+  
+  <tr>
+    <td>F</td>
+    
+    <td>373</td>
+    <td>6</td>
+    
+    <td>341</td>
+    <td>7</td>
+  </tr>
+  </tbody>
+</table>
+:::
+
+
+
+## {{< fa building-columns >}} UC Berkeley Admissions
+
+- Nearly none of the majors on their own display this bias against women.
+    - In fact, in Major A there almost appears to be a bias *against men*
+    
+- So, what's going on? How can it be that none of the majors individually display a discrimination against women, but *overall* they display discrimination against women?
+
+- The answer lies in how difficult each major was to get into.
+
+- For instance, Major A appears to have an overall 64\% acceptance rate, whereas Major E appears to have an overall 53.62\% acceptance rate.
+    - Major A seems to be harder to get into than, say, Major E.
+    - Majors A and B are easier to get into than majors C through F.
+    
+## {{< fa building-columns >}} UC Berkeley Admissions
+
+- Indeed, if we look at the `Num. Applicants` column within each gender, we see that, on the aggregate, *men were applying to easier majors!* 
+
+    - Over half of men applied to Majors A and B (the "easy" majors): $$\frac{825 + 560}{825 + 560 + 325 + 417 + 191 + 373} \approx 51.5\% $$ 
+    whereas nearly 90\%  of women applied to Majors C through F (the "hard" majors):
+    $$ \frac{593 + 375 + 393 + 341}{108 + 25 + 593 + 375 + 393 + 341} \approx 92.8 $$
+    
+- In other words, `difficulty of major` was a [**confounding variable**]{.alert} that influenced the acceptance rates. 
+  
+  
+## {{< fa building-columns >}} UC Berkeley Admissions
+
+- After controlling for this variable, it was actually found that there was *no* significant difference in admittance rates between men and women.
+    
+-   As an aside, this relates to what is known as [**Simpson's Paradox**]{.alert}, a well-documented statistical phenomenon in which relationships between percentages in subgroups can sometimes be reversed after the subgroups are aggregated.
+
+-   But, for now, I use this example as a way to re-introduce us to the notion of confounding variables.
+
+-   Intuitively, we can think of a confounding variable as a variable that affects a relationship of interest, but that is not explicitly modeled or controlled for.
+
+-   This is a pretty vague definition; we'll revisit the notion of confounding in a few slides, once we've gotten a bit of basics under our belt.
+
+
+
+# Causal Inference {background-color="black" background-image="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjRqZDFmbGlrZzR0aHBncG1yOWEyYjQwOWlmOGI5YmQ0Z3MxeHRlayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tBxyh2hbwMiqc/giphy.gif" background-size="60rem"}
+    
+    
+## {{< fa arrow-right >}} Causality
+
+-   We consider an [**outcome**]{.alert} (or [**response**]{.alert}) variable, which we denote by _Y_.
+
+-   We also consider a [**treatment**]{.alert}, whose effect on the response is what we are interested in exploring.
+    -   Other terms for "treatment" include [**intervention**]{.alert} and [**manipulation**]{.alert}
+    
+-   As an example, suppose we let _Y_ denote the pain rating (on a scale from 1 to 10) of a headache.
+
+-   If we're interested in the effect taking Aspirin has on this pain rating, our treatment is taking Aspirin or not.
+
+-   If we're interested in the effect a pilot program has on AP Calculus AB scores, our treatment is being a part of the program or not.
+
+
+
+## {{< fa arrow-right >}} Causality
+
+-   Now, note one important distinction: we are not, for example, asking "whether or not taking Aspirin causes a decrease in pain levels." 
+    -   Rather, we are asking what magnitude of _effect_ taking/not taking Aspirin has on pain levels.
+    
+-   So, what do we mean by "effect"? 
+
+-   Here's the general idea. Let _Y_~_i_~^(1)^ denote the response value of the _i_^th^ individual, assuming they have undergone treatment. 
+    -   Analogously, let _Y_~_i_~^(0)^ denote the response value of the _i_^th^ individual, assuming they have _not_ undergone treatment.
+
+-   For example, in the context of our headache example, _Y_~_i_~^(1)^ might denote John's pain level on Aspirin and _Y_~_i_~^(0)^ would denote John's pain level off of Aspirin.
+
+
+## {{< fa arrow-right >}} Causality
+
+-   The true effect of treatment on the _i_^th^ individual would then just be 𝜏~_i_~ := _Y_~_i_~^(1)^ - _Y_~_i_~^(0)^.
+    -   Again, this represents, for example, the difference in pain levels John experiences on and off Aspirin; this difference is precisely the _effect_ Aspirin has on reducing John's pain.
+    
+::: {.fragment}
+
+| w/ Treatment | w/o Treatment |
+|:-----:|:-----:|
+| _Y_~1~^(1)^ | _Y_~1~^(0)^ | 
+| _Y_~2~^(1)^ | _Y_~2~^(0)^ | 
+| ⋮ | ⋮ |
+| _Y_~_n_~^(1)^ | _Y_~_n_~^(0)^ | 
+
+:::
+
+-   In practice, however, we have to contend with the [**fundamental problem of causal inference**]{.alert}: for each individual, we only get to observe the response on or off treatment - never both. 
+
+## {{< fa arrow-right >}} Causality
+
+-   To stress, in the headache example: _Y_~_i_~^(1)^ and _Y_~_i_~^(0)^ represent John's pain levels on and off Aspirin _at the same time_, assuming no changes in John's status other than his Aspirin usage.
+    -   We cannot observe both, because, at any given time, John is either on or off Aspirin.
+
+-   To that end, we call _Y_~_i_~^(1)^ and _Y_~_i_~^(0)^ [**potential outcomes**]{.alert}.
+    -   We call the 𝜏~_i_~ [**individual treatment effects**]{.alert} (ITE).
+    
+-   The ITE are unknown and unknowable, since (again) we never observe both potential outcomes. 
+
+-   So, what _do_ we observe?
+
+## {{< fa arrow-right >}} Causality
+
+
+:::: {.columns}
+
+::: {.column width="70%"}
+-   Each individual is either administered treatment or not.
+    -   Let _Z_~_i_~ denote the assignment indicator of the _i_^th^ individual; that is (_Z_~_i_~ = 1) if the _i_^th^ individual is administered treatment and (_Z_~_i_~ = 0) otherwise
+    
+-   Then, our observed data might look like:
+:::
+
+::: {.column width="30%"}
+::: {.fragment}
+| _Y_~1~^(1)^ | _Y_~0~^(1)^ | Z~_i_~ | 
+|:-----:|:-----:|:-----:|
+| $\bullet$ | `NA` | 1 | 
+| ⋮ |  | 0 | 
+| $\bullet$ | `NA` | 1 | 
+| `NA` | $\bullet$ | 0 | 
+|  | ⋮ |  | 
+| `NA` | $\bullet$ | 0 | 
+:::
+:::
+
+::::
+
+-   Again, as much as we would like to be able to determine the 𝜏~_i_~ := _Y_~_i_~^(1)^ - _Y_~_i_~^(0)^, we are unable to do so because, for each _i_, one of these values is missing.
+    -   So, in a sense, the fundamental problem of causal inference is one about _missing data_!
+
+## {{< fa arrow-right >}} Causality
+
+![](Images/assignment.svg)
+
+## {{< fa arrow-right >}} Causality
+
+-   We can think of the ITEs (𝜏~_i_~) as population parameters. However, they are unestimable. 
+
+-   Instead, we can focus on the [**average causal effect**]{.alert} (ACE):
+$$ \tau := \frac{1}{n} \sum_{i=1}^{n} \tau_i =: \frac{1}{n} \sum_{i=1}^{n} \left[Y_{i}^{(1)} - Y_{i}^{(0)} \right] $$
+
+-   Our goal will be to estimate this; that is, we wish to determine an estimate for the _average_ causal effect of treatment on the response.
+    -   E.g. the _average_ causal effect Aspirin usage has on pain levels.
+
+-   Let's establish some assumptions and define some notation.
+
+## {{< fa arrow-right >}} Causality
+### Assumptions
+
+- We make the following assumptions:
+    1) **No Interference:** The potential outcomes of unit _i_ are independent of other units' potential outcomes
+    2) **Consistency:** _Y_~_i_~ = _Z_~_i_~ _Y_~_i_~^(1)^ + (1 - _Z_~_i_~ ) _Y_~_i_~^(0)^ where _Y_~_i_~ denotes the _i_^th^ _observed_ response (in other words, each observed response corresponds to either the on-treatment or off-treatment potential outcome).
+    
+-   These two assumptions are collectively referred to as the [**Stable Unit Treatment Value Assumption**]{.alert} ([**SUTVA**]{.alert}).
+
+-   Another assumption we will make is that we are in the context of a [**completely randomized experiment**]{.alert} ([**CRE**]{.alert}).
+
+
+## {{< fa dice >}} Completely Randomized Experiments
+
+-   We've talked briefly about experiments (as opposed to observational studies) before.
+
+-   Essentially, we can think of an experiment as a study in which we (the designers) control who gets and doesn't get treatment.
+    -   In the notation we've established today, this means we explicitly control the _Z_~_i_~ values.
+    
+-   A CRE is one in which the _Z_~_i_~'s are, in a sense, _completely_ random. 
+
+-   Here's a more formal definition:
+
+
+## {{< fa dice >}} Completely Randomized Experiments
+
+::: {.callout-note}
+## **Definition:** Completely Randomized Experiment
+
+Let _Z_~_i_~ denote the allocation indicator for the _i_^th^ unit Let _n_~1~ denote the number of units on treatment and let _n_~0~ denote the number of units off treatment; define _n_ := _n_~1~ + _n_~2~. A **completely randomized experiment** is one for which
+$$ \mathbb{P}(\vect{Z} = \vect{z}) = \frac{1}{\binom{n}{n_1}}$$
+where $\vect{z} = (z_1, \cdots, z_n)$ satisfies $\sum_{i=1}^{n} z_i = n_1$ and $\sum_{i=1}^{n} (1 - z_i) = n_0$.
+
+:::
+
+-   In other words, "every assignment configuration is equally likely."
+    -   Later, we'll discuss some situations in which this assumption may not hold.
+    
+    
+## {{< fa arrow-right >}} Causality
+### Notation
+
+-   Okay, so that takes care of assumptions: we'll assume SUTVA, and that we're in the context of a CRE.
+
+-   Let's now establish some notation.
+
+-   From the population, we define:
+
+::: {.fragment style="font-size:28px"}
+$$ \begin{align*}
+  \textbf{Population Means:} & \qquad \overline{Y^{(1)}} :=  \frac{1}{n} \sum_{i=1}^{n} Y_i^{(1)}; \qquad \overline{Y^{(0)}} := \frac{1}{n} \sum_{i=1}^{n} Y_i^{(0)}  \\
+  \textbf{Population Var's:} & \qquad S^2_{(j)} := \frac{1}{n - 1} \sum_{i=1}^{n} \left[ Y_i^{(j)} - \overline{Y_i^{(j)}} \right]^2, \ j = 0, 1  \\
+  \textbf{Population Cov's:} & \qquad S_{(1)(0)} := \frac{1}{n - 1} \sum_{i=1}^{n} \left[ Y_i^{(1)} - \overline{Y_i^{(1)}} \right] \left[ Y_i^{(0)} - \overline{Y_i^{(0)}} \right] 
+\end{align*} $$
+:::
+
+
+## {{< fa arrow-right >}} Causality
+### Notation
+
+-   With this notation, we can reformulate the ACE as $\tau := \overline{Y^{(1)}} - \overline{Y^{(0)}}$.
+    -   Again, this is the parameter we're interested in estimating.
+
+-   The variance of the ITEs is given by
+$$ S^2_{(\tau)} := \frac{1}{n - 1} \sum_{i=1}^{n} (\tau_i - \tau)^2 $$
+
+::: {.fragment}
+::: {.callout-important}
+## **Lemma 4.1**
+
+$$ 2 S_{(1)(0)} = S^2_{(1)} + S^2_{(2)} - 2 S^2_{(\tau)}$$
+:::
+:::
+
+
+## {{< fa arrow-right >}} Causality
+### Notation
+
+-   Now, remember what we actually observe: for any unit _i_, we only either observe _Y_~_i_~^(1)^ or _Y_~_i_~^(0)^, never both.
+
+-   So, it seems natural to introduce some _sample_ quantities (in contrast to the _population_ quantities we defined above).
+
+-   For example, suppose we want to compute the average observed response value among those on the treatment.
+    -   Using our assignment indicator _Z_~_i_~, we can cleverly define our **sample means** as:
+
+::: {.fragment style="font-size:28px"}
+$$ \widehat{\overline{Y^{(1)}}} := \frac{1}{n_1} \sum_{i=1}^{n} Z_i Y_i ; \qquad \widehat{\overline{Y^{(0)}}} := \frac{1}{n_0} \sum_{i=1}^{n} (1 - Z_i) Y_i $$
+:::
+
+
+## {{< fa arrow-right >}} Causality
+### Notation
+
+-   Allow me to expound upon this a bit further.
+
+-   Recall that _Y_~_i_~ denotes the _observed_ response of the _i_^th^ unit.
+    -   We are encoding information about whether this is an on- or off-treatment measurement using our assignment indicator _Z_~_i_~.
+    
+-   Now, our first sum does technically range over _all_ indices _i_ from 0 to _n_.
+    -   However, for any response values corresponding to an off-treatment observation, the associated indicator will be 0 and our sum effectively only ranges over the indices for on-treatment units.
+    
+-   Though this may seem convoluted at first, it is actually a very neat way to succinctly express our sample averages!
+
+
+## {{< fa arrow-right >}} Causality
+### Notation
+
+-   With this in mind, we can define our **sample variances**:
+
+::: {.fragment style="font-size:28px"}
+\begin{align*}
+  \widehat{S}^2_{(1)} & := \frac{1}{n_1 - 1} \sum_{i=1}^{n} Z_i \left[ Y_i - \widehat{\overline{Y^{(1)}}} \right]^2  \\
+  \widehat{S}^2_{(0)} & := \frac{1}{n_0 - 1} \sum_{i=1}^{n} (1 - Z_i) \left[ Y_i - \widehat{\overline{Y^{(0)}}} \right]^2 
+\end{align*}
+:::
+
+
+::: {.fragment}
+::: {.callout-tip}
+## **Check Your Understanding**
+
+How might we define the sample covariance (if possible)?
+:::
+:::
+
+
+## {{< fa arrow-right >}} Causality
+### Taking Stock
+
+-   Whew, that's a lot of setup! Before we proceed, let's quickly take stock of what we've done.
+
+-   For each unit _i_, we have associated potential outcomes _Y_~_i_~^(1)^ and _Y_~_i_~^(0)^ indicating response values on- and off-treatment, respectively.
+    -   The fundamental problem of causal inference is that, for any _i_, we only observe _one_ of these.
+    
+-   This fundamental problem poses challenges for estimating the individual treatment effects (ITE) 𝜏~_i_~ := _Y_~_i_~^(1)^ - _Y_~_i_~^(0)^ or the average causal effect (ATE) 𝜏.
+    -   Hence, we would like to develop an _estimate_ for 𝜏.
+
+## {{< fa arrow-right >}} Causality
+### Taking Stock
+
+-   (Most) Every estimation problem requires assumptions: our assumptions are SUTVA, and that we are in the context of a CRE.
+
+-   We define the population means, population standard deviations, and population covariance as on a few slides ago.
+    -   We also define sample analogs for some of these, also as outlined a few slides ago.
+    
+-   We are now in a position to posit an estimator for the ATE!
+    -   This particular estimate is due to [**Jerzy Spława-Neyman**]{.alert}, one of the foremost statisticians of the 20^th^ century.
+    
+    
+## {{< fa arrow-right >}} Causality
+### Estimated ATE
+
+::: {.callout-important}
+## **Theorem**
+
+1)    Under a CRE (and assuming SUTVA), an unbiased estimator for the ACE is given by
+$$ \widehat{\tau} := \widehat{\overline{Y^{(1)}}} - \widehat{\overline{Y^{(0)}}} $$
+
+2)    The variance of this estimator is given by
+
+::: {.fragment style="font-size:20px"}
+\begin{align*}
+  \mathrm{Var}(\widehat{\tau})  & = \frac{S_{(1)}^2}{n_1} + \frac{S_{(0)}^2}{n_0} - \frac{S_{(\tau)}^2}{n}  \\
+    & = \frac{n_0}{n_1 n} S_{(1)}^2 + \frac{n_1}{n_0 n} S_{(0)}^2 + \frac{2}{n} S_{(1)(0)}
+\end{align*}
+:::
+
+:::
+
+-   Note that (as is typical with estimators), the variance of our estimator depends on population parameters.
+
+
+## {{< fa arrow-right >}} Causality
+### Estimated Variance of the Estimated ATE
+
+
+::: {.callout-important}
+## **Theorem**
+
+Define the following estimator for the variance of $\widehat{\tau}$:
+$$ \widehat{V} := \frac{\widehat{S}_{(1)}^2}{n_1} + \frac{\widehat{S}_{(0)}^2}{n_0} $$
+This estimate is conservative for estimating $\mathrm{Var}(\widehat{\tau})$ is the sense that
+$$ \mathbb{E}[\widehat{V}] - \mathrm{Var}(\widehat{\tau}) = \frac{S^2_{(\tau)}}{n} \geq 0 $$
+
+:::
+
+
+## {{< fa arrow-right >}} Causality
+### Proofs
+
+-   I think it may be useful to go through the proof of the first part of the theorem.
+    -   Let's do so on the board, together!
+    
+## {{< fa arrow-right >}} Causality
+### Theorem
+
+::: {.callout-important}
+## **Theorem**
+
+$$ \frac{\widehat{\tau} - \tau}{\sqrt{\Var(\widehat{\tau})}} \rightsquigarrow \mathcal{N}(0, 1) $$
+:::
+
+-   This allows us to perform hypothesis testing, construct confidence intervals, etc.
+
+
+
+## {{< fa eye-slash >}} Confounding
+
+-   Let's also quickly discuss how confounding enters our model.
+
+-   Up until now, we've essentially been assuming the absence of confounders.
+    -   Specifically, this is reflected in our CRE assumption; equivalently, in our assumption that the assignment indicators follow i.i.d. Bernoulli distributions.
+    
+:::: {.columns}
+
+::: {.column width="50%"}
+-   We can propose a slightly more causal-inference-specific definition for a [**confounding variable**]{.alert}, as a variable that affects _both_ treatment _and_ the response.
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+```{dot}
+//| fig-width: 4
+//| fig-height: 2
+digraph G {
+    layout = fdp
+    splines = false
+    edge [arrowsize = 1]
+    
+  confounder [pos="0,1!"]
+  treatment [pos="-1,0!"]
+  response [pos="1,0!"]
+  
+  confounder -> {treatment response}
+  treatment -> response
+  
+}
+```
+:::
+:::
+::::
+
+## {{< fa eye-slash >}} Confounding
+
+-   Because the confounder affects the treatment, it will affect our _assignment indicator_ _Z_~_i_~.
+
+-   Perhaps it's useful to (again) think back to our Aspirin/headache example. One possible confounder might be `level of exercise` - heavy exercise will definitely affect pain levels, but it will _also_ affect how likely someone is to take Aspirin.
+    -   Hence, `level of exercise` is likely a confounding variable.
+    
+-   So, here's an idea: given a confounding variable _X_, why don't we run a **logistic regression** of _Z_~_i_~ onto _X_?
+    -   The resulting probability will be an estimate of the true assignment probability _π_~_i_~ := ℙ(_Z_~_i_~ = 1 | _X_), which we sometimes call a [**propensity score**]{.alert}.
+
+
+## {{< fa eye-slash >}} Confounding
+### Propensity Scores
+
+-   There's a lot we can do with propensity scores!
+    -   We can perform [**Inverse-Propensity Weighting**]{.alert}, a form of bias correction (like the Inverse-Probability Weighting scheme we discussed in Lab a few weeks back)
+    -   We can _condition_ on these propensity scores to mitigate the effects of confounders.
+
+-   A popular technique for overcoming the effects of confounding is called [**matching**]{.alert}, in which individuals from the on-treatment group are _matched_ with "similar" individuals from the off-treatment group.
+    -   Similarity is dictated by the confounding values; e.g. we pick someone with the same age, sex, race as, say, John
+    
+    
+## {{< fa eye-slash >}} Confounding
+### Propensity Scores
+
+-   Naturally, when there are many confounders, matching based on the raw confounder values can be very challenging and results in significant data loss.
+
+-   A clever idea is to match based not on the raw values of the confounding variables, but rather the _propensity_ scores.
+
+-   I encourage you to read more in [_A First Course in Causal
+Inference_] by Peng Ding, if you are interested.
+
+-   To close out, I'll briefly outline a relatively famous case study.
+
+## {{< fa train >}} National Supported Work Demonstration
+### A Quick Case Study
+
+-   The [**National Supported Work Demonstration**](https://crimesolutions.ojp.gov/ratedprograms/national-supported-work-demonstration-project-multisite#1-0) (NSW) was a employment program that ran between March 1975 and June 1977.
+
+-   Essentially, the program offered employment training to participants in the hopes of decreasing disparities.
+
+-   Initial findings seemed to indicate that those who underwent the training had _lower_ average incomes than those who did not - as such, on the surface, it seemed like the training actually _hurt_ people's chances of high-level employment later in life.
+
+-   In 1986, Robert J. LaLonde conducted a causal analysis of the findings of the study.
+    -   You can read his full paper [here](https://business.baylor.edu/scott_cunningham/teaching/lalonde-1986.pdf).
+
+    
+## {{< fa train >}} National Supported Work Demonstration
+### A Quick Case Study
+
+    
+-   LaLonde primarily pointed out that the original study was flawed in that it did not appropriately consider confounding variables!
+    -   For example, things like gender, race, and education level are likely confounders in this experiment as they affect both treatment (whether people were administered the training or not) and response (income levels).
+  
+-   Subsequent studies have shown that, after appropriately matching based on propensity scores, it can be shown that the training actually had a net _positive_ causal effect.
+
+
+
+## {{< fa forward-fast >}} Next Time
+
+-   Please fill out Course Evaluations!
+
+-   I'll release the Bonus Lab (Lab 11) sometime today or tomorrow.
+    -   It will be due at 11:59pm on Friday, August 1, 2025.
+    
+-   Tomorrow will be our final lecture (I'll also bring some hex stickers with the PSTAT 100 course logo for everyone tomorrow!)
+
+-   During Section tomorrow, you can either work on the bonus lab or work on the project.
+    -   A friendly reminder that Erika (our TA) is a _great_ resource to talk to! 

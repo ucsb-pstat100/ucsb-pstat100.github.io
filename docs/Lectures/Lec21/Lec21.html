@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../../Images/Logos_Icons/hex.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <meta name="author" content="Ethan P. Marzban">
+  <title>PSTAT 100: Summer 2025 – PSTAT 100: Lecture 21</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ce6bc8a5410e8df11883f060677c6af5.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="Images/100_hex.png" data-background-opacity="0.5" data-background-position="80% 50%" data-background-size="30%" class="quarto-title-block center">
+  <h1 class="title">PSTAT 100: Lecture 21</h1>
+  <p class="subtitle">An Very Brief Introduction to Causal Inference</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Ethan P. Marzban 
+</div>
+        <p class="quarto-title-affiliation">
+            Department of Statistics and Applied Probability; UCSB <br> <br>
+          </p>
+        <p class="quarto-title-affiliation">
+            Summer Session A, 2025
+          </p>
+    </div>
+</div>
+
+</section>
+<section class="slide level2">
+
+<p><span class="math display">\[
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+\]</span></p>
+<div class="cell">
+<style type="text/css">
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+</style>
+</div>
+</section>
+<section id="uc-berkeley-admissions" class="slide level2">
+<h2><i class="fa-solid fa-building-columns" aria-label="building-columns"></i> UC Berkeley Admissions</h2>
+<ul>
+<li class="fragment"><p>In the 1970’s, UC Berkeley conducted an observational study to determine whether or not there was gender bias in the graduate student admittance practices at the university.</p>
+<ul>
+<li class="fragment">A disclaimer: at the time, “gender” was treated as a binary variable with values <code>male</code> and <code>female.</code> I would like to also acknowledge that we now recognize that there are a great deal many more genders than simply “male” and “female”.</li>
+</ul></li>
+<li class="fragment"><p>Overall, the survey included 8,422 men and 4,321 women.</p></li>
+<li class="fragment"><p>Of the men 44% were admitted; of the women only 35% were admitted.</p>
+<ul>
+<li class="fragment">This difference was also deemed statistically significant.</li>
+</ul></li>
+<li class="fragment"><p>So, on the surface, it does appear as though women are being disproportionately denied entry.</p></li>
+</ul>
+</section>
+<section id="uc-berkeley-admissions-1" class="slide level2">
+<h2><i class="fa-solid fa-building-columns" aria-label="building-columns"></i> UC Berkeley Admissions</h2>
+<ul>
+<li class="fragment">But, something puzzling happens when we take a look at the data after grouping by major:</li>
+</ul>
+<div class="fragment">
+<table>
+<thead>
+<tr>
+<td>
+</td>
+<td colspan="2" style="text-align:center">
+<strong>Men</strong>
+</td>
+<td colspan="2" style="text-align:center">
+<strong>Women</strong>
+</td>
+</tr>
+<tr>
+<td style="padding-right:3cm">
+<strong>Major</strong>
+</td>
+<td>
+<strong>Num. Applicants</strong>
+</td>
+<td>
+<strong>% Admitted</strong>
+</td>
+<td>
+<strong>Num. Applicants</strong>
+</td>
+<td>
+<strong>% Admitted</strong>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+A
+</td>
+<td>
+825
+</td>
+<td>
+62
+</td>
+<td>
+108
+</td>
+<td>
+82
+</td>
+</tr>
+<tr>
+<td>
+B
+</td>
+<td>
+560
+</td>
+<td>
+63
+</td>
+<td>
+25
+</td>
+<td>
+68
+</td>
+</tr>
+<tr>
+<td>
+C
+</td>
+<td>
+325
+</td>
+<td>
+37
+</td>
+<td>
+593
+</td>
+<td>
+34
+</td>
+</tr>
+<tr>
+<td>
+D
+</td>
+<td>
+417
+</td>
+<td>
+33
+</td>
+<td>
+375
+</td>
+<td>
+35
+</td>
+</tr>
+<tr>
+<td>
+E
+</td>
+<td>
+191
+</td>
+<td>
+28
+</td>
+<td>
+393
+</td>
+<td>
+24
+</td>
+</tr>
+<tr>
+<td>
+F
+</td>
+<td>
+373
+</td>
+<td>
+6
+</td>
+<td>
+341
+</td>
+<td>
+7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="uc-berkeley-admissions-2" class="slide level2">
+<h2><i class="fa-solid fa-building-columns" aria-label="building-columns"></i> UC Berkeley Admissions</h2>
+<ul>
+<li class="fragment"><p>Nearly none of the majors on their own display this bias against women.</p>
+<ul>
+<li class="fragment">In fact, in Major A there almost appears to be a bias <em>against men</em></li>
+</ul></li>
+<li class="fragment"><p>So, what’s going on? How can it be that none of the majors individually display a discrimination against women, but <em>overall</em> they display discrimination against women?</p></li>
+<li class="fragment"><p>The answer lies in how difficult each major was to get into.</p></li>
+<li class="fragment"><p>For instance, Major A appears to have an overall 64% acceptance rate, whereas Major E appears to have an overall 53.62% acceptance rate.</p>
+<ul>
+<li class="fragment">Major A seems to be harder to get into than, say, Major E.</li>
+<li class="fragment">Majors A and B are easier to get into than majors C through F.</li>
+</ul></li>
+</ul>
+</section>
+<section id="uc-berkeley-admissions-3" class="slide level2">
+<h2><i class="fa-solid fa-building-columns" aria-label="building-columns"></i> UC Berkeley Admissions</h2>
+<ul>
+<li class="fragment"><p>Indeed, if we look at the <code>Num. Applicants</code> column within each gender, we see that, on the aggregate, <em>men were applying to easier majors!</em></p>
+<ul>
+<li class="fragment">Over half of men applied to Majors A and B (the “easy” majors): <span class="math display">\[\frac{825 + 560}{825 + 560 + 325 + 417 + 191 + 373} \approx 51.5\% \]</span> whereas nearly 90% of women applied to Majors C through F (the “hard” majors): <span class="math display">\[ \frac{593 + 375 + 393 + 341}{108 + 25 + 593 + 375 + 393 + 341} \approx 92.8 \]</span></li>
+</ul></li>
+<li class="fragment"><p>In other words, <code>difficulty of major</code> was a <span class="alert"><strong>confounding variable</strong></span> that influenced the acceptance rates.</p></li>
+</ul>
+</section>
+<section id="uc-berkeley-admissions-4" class="slide level2">
+<h2><i class="fa-solid fa-building-columns" aria-label="building-columns"></i> UC Berkeley Admissions</h2>
+<ul>
+<li class="fragment"><p>After controlling for this variable, it was actually found that there was <em>no</em> significant difference in admittance rates between men and women.</p></li>
+<li class="fragment"><p>As an aside, this relates to what is known as <span class="alert"><strong>Simpson’s Paradox</strong></span>, a well-documented statistical phenomenon in which relationships between percentages in subgroups can sometimes be reversed after the subgroups are aggregated.</p></li>
+<li class="fragment"><p>But, for now, I use this example as a way to re-introduce us to the notion of confounding variables.</p></li>
+<li class="fragment"><p>Intuitively, we can think of a confounding variable as a variable that affects a relationship of interest, but that is not explicitly modeled or controlled for.</p></li>
+<li class="fragment"><p>This is a pretty vague definition; we’ll revisit the notion of confounding in a few slides, once we’ve gotten a bit of basics under our belt.</p></li>
+</ul>
+</section>
+<section>
+<section id="causal-inference" class="title-slide slide level1 center" data-background-color="black" data-background-image="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjRqZDFmbGlrZzR0aHBncG1yOWEyYjQwOWlmOGI5YmQ0Z3MxeHRlayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tBxyh2hbwMiqc/giphy.gif" data-background-size="60rem">
+<h1>Causal Inference</h1>
+
+</section>
+<section id="causality" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<ul>
+<li class="fragment"><p>We consider an <span class="alert"><strong>outcome</strong></span> (or <span class="alert"><strong>response</strong></span>) variable, which we denote by <em>Y</em>.</p></li>
+<li class="fragment"><p>We also consider a <span class="alert"><strong>treatment</strong></span>, whose effect on the response is what we are interested in exploring.</p>
+<ul>
+<li class="fragment">Other terms for “treatment” include <span class="alert"><strong>intervention</strong></span> and <span class="alert"><strong>manipulation</strong></span></li>
+</ul></li>
+<li class="fragment"><p>As an example, suppose we let <em>Y</em> denote the pain rating (on a scale from 1 to 10) of a headache.</p></li>
+<li class="fragment"><p>If we’re interested in the effect taking Aspirin has on this pain rating, our treatment is taking Aspirin or not.</p></li>
+<li class="fragment"><p>If we’re interested in the effect a pilot program has on AP Calculus AB scores, our treatment is being a part of the program or not.</p></li>
+</ul>
+</section>
+<section id="causality-1" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<ul>
+<li class="fragment"><p>Now, note one important distinction: we are not, for example, asking “whether or not taking Aspirin causes a decrease in pain levels.”</p>
+<ul>
+<li class="fragment">Rather, we are asking what magnitude of <em>effect</em> taking/not taking Aspirin has on pain levels.</li>
+</ul></li>
+<li class="fragment"><p>So, what do we mean by “effect”?</p></li>
+<li class="fragment"><p>Here’s the general idea. Let <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> denote the response value of the <em>i</em><sup>th</sup> individual, assuming they have undergone treatment.</p>
+<ul>
+<li class="fragment">Analogously, let <em>Y</em><sub><em>i</em></sub><sup>(0)</sup> denote the response value of the <em>i</em><sup>th</sup> individual, assuming they have <em>not</em> undergone treatment.</li>
+</ul></li>
+<li class="fragment"><p>For example, in the context of our headache example, <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> might denote John’s pain level on Aspirin and <em>Y</em><sub><em>i</em></sub><sup>(0)</sup> would denote John’s pain level off of Aspirin.</p></li>
+</ul>
+</section>
+<section id="causality-2" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<ul>
+<li class="fragment">The true effect of treatment on the <em>i</em><sup>th</sup> individual would then just be 𝜏<sub><em>i</em></sub> := <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> - <em>Y</em><sub><em>i</em></sub><sup>(0)</sup>.
+<ul>
+<li class="fragment">Again, this represents, for example, the difference in pain levels John experiences on and off Aspirin; this difference is precisely the <em>effect</em> Aspirin has on reducing John’s pain.</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">w/ Treatment</th>
+<th style="text-align: center;">w/o Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><em>Y</em><sub>1</sub><sup>(1)</sup></td>
+<td style="text-align: center;"><em>Y</em><sub>1</sub><sup>(0)</sup></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><em>Y</em><sub>2</sub><sup>(1)</sup></td>
+<td style="text-align: center;"><em>Y</em><sub>2</sub><sup>(0)</sup></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">⋮</td>
+<td style="text-align: center;">⋮</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><em>Y</em><sub><em>n</em></sub><sup>(1)</sup></td>
+<td style="text-align: center;"><em>Y</em><sub><em>n</em></sub><sup>(0)</sup></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li class="fragment">In practice, however, we have to contend with the <span class="alert"><strong>fundamental problem of causal inference</strong></span>: for each individual, we only get to observe the response on or off treatment - never both.</li>
+</ul>
+</section>
+<section id="causality-3" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<ul>
+<li class="fragment"><p>To stress, in the headache example: <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> and <em>Y</em><sub><em>i</em></sub><sup>(0)</sup> represent John’s pain levels on and off Aspirin <em>at the same time</em>, assuming no changes in John’s status other than his Aspirin usage.</p>
+<ul>
+<li class="fragment">We cannot observe both, because, at any given time, John is either on or off Aspirin.</li>
+</ul></li>
+<li class="fragment"><p>To that end, we call <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> and <em>Y</em><sub><em>i</em></sub><sup>(0)</sup> <span class="alert"><strong>potential outcomes</strong></span>.</p>
+<ul>
+<li class="fragment">We call the 𝜏<sub><em>i</em></sub> <span class="alert"><strong>individual treatment effects</strong></span> (ITE).</li>
+</ul></li>
+<li class="fragment"><p>The ITE are unknown and unknowable, since (again) we never observe both potential outcomes.</p></li>
+<li class="fragment"><p>So, what <em>do</em> we observe?</p></li>
+</ul>
+</section>
+<section id="causality-4" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<ul>
+<li class="fragment">Each individual is either administered treatment or not.
+<ul>
+<li class="fragment">Let <em>Z</em><sub><em>i</em></sub> denote the assignment indicator of the <em>i</em><sup>th</sup> individual; that is (<em>Z</em><sub><em>i</em></sub> = 1) if the <em>i</em><sup>th</sup> individual is administered treatment and (<em>Z</em><sub><em>i</em></sub> = 0) otherwise</li>
+</ul></li>
+<li class="fragment">Then, our observed data might look like:</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><em>Y</em><sub>1</sub><sup>(1)</sup></th>
+<th style="text-align: center;"><em>Y</em><sub>0</sub><sup>(1)</sup></th>
+<th style="text-align: center;">Z<sub><em>i</em></sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;"><code>NA</code></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">⋮</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;"><code>NA</code></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>NA</code></td>
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⋮</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>NA</code></td>
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+<ul>
+<li class="fragment">Again, as much as we would like to be able to determine the 𝜏<sub><em>i</em></sub> := <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> - <em>Y</em><sub><em>i</em></sub><sup>(0)</sup>, we are unable to do so because, for each <em>i</em>, one of these values is missing.
+<ul>
+<li class="fragment">So, in a sense, the fundamental problem of causal inference is one about <em>missing data</em>!</li>
+</ul></li>
+</ul>
+</section>
+<section id="causality-5" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+
+<img data-src="Images/assignment.svg" class="r-stretch"></section>
+<section id="causality-6" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<ul>
+<li class="fragment"><p>We can think of the ITEs (𝜏<sub><em>i</em></sub>) as population parameters. However, they are unestimable.</p></li>
+<li class="fragment"><p>Instead, we can focus on the <span class="alert"><strong>average causal effect</strong></span> (ACE): <span class="math display">\[ \tau := \frac{1}{n} \sum_{i=1}^{n} \tau_i =: \frac{1}{n} \sum_{i=1}^{n} \left[Y_{i}^{(1)} - Y_{i}^{(0)} \right] \]</span></p></li>
+<li class="fragment"><p>Our goal will be to estimate this; that is, we wish to determine an estimate for the <em>average</em> causal effect of treatment on the response.</p>
+<ul>
+<li class="fragment">E.g. the <em>average</em> causal effect Aspirin usage has on pain levels.</li>
+</ul></li>
+<li class="fragment"><p>Let’s establish some assumptions and define some notation.</p></li>
+</ul>
+</section>
+<section id="causality-7" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="assumptions">Assumptions</h3>
+<ul>
+<li class="fragment"><p>We make the following assumptions:</p>
+<ol type="1">
+<li class="fragment"><strong>No Interference:</strong> The potential outcomes of unit <em>i</em> are independent of other units’ potential outcomes</li>
+<li class="fragment"><strong>Consistency:</strong> <em>Y</em><sub><em>i</em></sub> = <em>Z</em><sub><em>i</em></sub> <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> + (1 - <em>Z</em><sub><em>i</em></sub> ) <em>Y</em><sub><em>i</em></sub><sup>(0)</sup> where <em>Y</em><sub><em>i</em></sub> denotes the <em>i</em><sup>th</sup> <em>observed</em> response (in other words, each observed response corresponds to either the on-treatment or off-treatment potential outcome).</li>
+</ol></li>
+<li class="fragment"><p>These two assumptions are collectively referred to as the <span class="alert"><strong>Stable Unit Treatment Value Assumption</strong></span> (<span class="alert"><strong>SUTVA</strong></span>).</p></li>
+<li class="fragment"><p>Another assumption we will make is that we are in the context of a <span class="alert"><strong>completely randomized experiment</strong></span> (<span class="alert"><strong>CRE</strong></span>).</p></li>
+</ul>
+</section>
+<section id="completely-randomized-experiments" class="slide level2">
+<h2><i class="fa-solid fa-dice" aria-label="dice"></i> Completely Randomized Experiments</h2>
+<ul>
+<li class="fragment"><p>We’ve talked briefly about experiments (as opposed to observational studies) before.</p></li>
+<li class="fragment"><p>Essentially, we can think of an experiment as a study in which we (the designers) control who gets and doesn’t get treatment.</p>
+<ul>
+<li class="fragment">In the notation we’ve established today, this means we explicitly control the <em>Z</em><sub><em>i</em></sub> values.</li>
+</ul></li>
+<li class="fragment"><p>A CRE is one in which the <em>Z</em><sub><em>i</em></sub>’s are, in a sense, <em>completely</em> random.</p></li>
+<li class="fragment"><p>Here’s a more formal definition:</p></li>
+</ul>
+</section>
+<section id="completely-randomized-experiments-1" class="slide level2">
+<h2><i class="fa-solid fa-dice" aria-label="dice"></i> Completely Randomized Experiments</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Definition:</strong> Completely Randomized Experiment</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <em>Z</em><sub><em>i</em></sub> denote the allocation indicator for the <em>i</em><sup>th</sup> unit Let <em>n</em><sub>1</sub> denote the number of units on treatment and let <em>n</em><sub>0</sub> denote the number of units off treatment; define <em>n</em> := <em>n</em><sub>1</sub> + <em>n</em><sub>2</sub>. A <strong>completely randomized experiment</strong> is one for which <span class="math display">\[ \mathbb{P}(\vect{Z} = \vect{z}) = \frac{1}{\binom{n}{n_1}}\]</span> where <span class="math inline">\(\vect{z} = (z_1, \cdots, z_n)\)</span> satisfies <span class="math inline">\(\sum_{i=1}^{n} z_i = n_1\)</span> and <span class="math inline">\(\sum_{i=1}^{n} (1 - z_i) = n_0\)</span>.</p>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">In other words, “every assignment configuration is equally likely.”
+<ul>
+<li class="fragment">Later, we’ll discuss some situations in which this assumption may not hold.</li>
+</ul></li>
+</ul>
+</section>
+<section id="causality-8" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="notation">Notation</h3>
+<ul>
+<li class="fragment"><p>Okay, so that takes care of assumptions: we’ll assume SUTVA, and that we’re in the context of a CRE.</p></li>
+<li class="fragment"><p>Let’s now establish some notation.</p></li>
+<li class="fragment"><p>From the population, we define:</p></li>
+</ul>
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[ \begin{align*}
+  \textbf{Population Means:} &amp; \qquad \overline{Y^{(1)}} :=  \frac{1}{n} \sum_{i=1}^{n} Y_i^{(1)}; \qquad \overline{Y^{(0)}} := \frac{1}{n} \sum_{i=1}^{n} Y_i^{(0)}  \\
+  \textbf{Population Var's:} &amp; \qquad S^2_{(j)} := \frac{1}{n - 1} \sum_{i=1}^{n} \left[ Y_i^{(j)} - \overline{Y_i^{(j)}} \right]^2, \ j = 0, 1  \\
+  \textbf{Population Cov's:} &amp; \qquad S_{(1)(0)} := \frac{1}{n - 1} \sum_{i=1}^{n} \left[ Y_i^{(1)} - \overline{Y_i^{(1)}} \right] \left[ Y_i^{(0)} - \overline{Y_i^{(0)}} \right]
+\end{align*} \]</span></p>
+</div>
+</section>
+<section id="causality-9" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="notation-1">Notation</h3>
+<ul>
+<li class="fragment">With this notation, we can reformulate the ACE as <span class="math inline">\(\tau := \overline{Y^{(1)}} - \overline{Y^{(0)}}\)</span>.
+<ul>
+<li class="fragment">Again, this is the parameter we’re interested in estimating.</li>
+</ul></li>
+<li class="fragment">The variance of the ITEs is given by <span class="math display">\[ S^2_{(\tau)} := \frac{1}{n - 1} \sum_{i=1}^{n} (\tau_i - \tau)^2 \]</span></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Lemma 4.1</strong></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[ 2 S_{(1)(0)} = S^2_{(1)} + S^2_{(2)} - 2 S^2_{(\tau)}\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="causality-10" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="notation-2">Notation</h3>
+<ul>
+<li class="fragment"><p>Now, remember what we actually observe: for any unit <em>i</em>, we only either observe <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> or <em>Y</em><sub><em>i</em></sub><sup>(0)</sup>, never both.</p></li>
+<li class="fragment"><p>So, it seems natural to introduce some <em>sample</em> quantities (in contrast to the <em>population</em> quantities we defined above).</p></li>
+<li class="fragment"><p>For example, suppose we want to compute the average observed response value among those on the treatment.</p>
+<ul>
+<li class="fragment">Using our assignment indicator <em>Z</em><sub><em>i</em></sub>, we can cleverly define our <strong>sample means</strong> as:</li>
+</ul></li>
+</ul>
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[ \widehat{\overline{Y^{(1)}}} := \frac{1}{n_1} \sum_{i=1}^{n} Z_i Y_i ; \qquad \widehat{\overline{Y^{(0)}}} := \frac{1}{n_0} \sum_{i=1}^{n} (1 - Z_i) Y_i \]</span></p>
+</div>
+</section>
+<section id="causality-11" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="notation-3">Notation</h3>
+<ul>
+<li class="fragment"><p>Allow me to expound upon this a bit further.</p></li>
+<li class="fragment"><p>Recall that <em>Y</em><sub><em>i</em></sub> denotes the <em>observed</em> response of the <em>i</em><sup>th</sup> unit.</p>
+<ul>
+<li class="fragment">We are encoding information about whether this is an on- or off-treatment measurement using our assignment indicator <em>Z</em><sub><em>i</em></sub>.</li>
+</ul></li>
+<li class="fragment"><p>Now, our first sum does technically range over <em>all</em> indices <em>i</em> from 0 to <em>n</em>.</p>
+<ul>
+<li class="fragment">However, for any response values corresponding to an off-treatment observation, the associated indicator will be 0 and our sum effectively only ranges over the indices for on-treatment units.</li>
+</ul></li>
+<li class="fragment"><p>Though this may seem convoluted at first, it is actually a very neat way to succinctly express our sample averages!</p></li>
+</ul>
+</section>
+<section id="causality-12" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="notation-4">Notation</h3>
+<ul>
+<li class="fragment">With this in mind, we can define our <strong>sample variances</strong>:</li>
+</ul>
+<div class="fragment" style="font-size:28px">
+<p><span class="math display">\[\begin{align*}
+  \widehat{S}^2_{(1)} &amp; := \frac{1}{n_1 - 1} \sum_{i=1}^{n} Z_i \left[ Y_i - \widehat{\overline{Y^{(1)}}} \right]^2  \\
+  \widehat{S}^2_{(0)} &amp; := \frac{1}{n_0 - 1} \sum_{i=1}^{n} (1 - Z_i) \left[ Y_i - \widehat{\overline{Y^{(0)}}} \right]^2
+\end{align*}\]</span></p>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Check Your Understanding</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>How might we define the sample covariance (if possible)?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="causality-13" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="taking-stock">Taking Stock</h3>
+<ul>
+<li class="fragment"><p>Whew, that’s a lot of setup! Before we proceed, let’s quickly take stock of what we’ve done.</p></li>
+<li class="fragment"><p>For each unit <em>i</em>, we have associated potential outcomes <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> and <em>Y</em><sub><em>i</em></sub><sup>(0)</sup> indicating response values on- and off-treatment, respectively.</p>
+<ul>
+<li class="fragment">The fundamental problem of causal inference is that, for any <em>i</em>, we only observe <em>one</em> of these.</li>
+</ul></li>
+<li class="fragment"><p>This fundamental problem poses challenges for estimating the individual treatment effects (ITE) 𝜏<sub><em>i</em></sub> := <em>Y</em><sub><em>i</em></sub><sup>(1)</sup> - <em>Y</em><sub><em>i</em></sub><sup>(0)</sup> or the average causal effect (ATE) 𝜏.</p>
+<ul>
+<li class="fragment">Hence, we would like to develop an <em>estimate</em> for 𝜏.</li>
+</ul></li>
+</ul>
+</section>
+<section id="causality-14" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="taking-stock-1">Taking Stock</h3>
+<ul>
+<li class="fragment"><p>(Most) Every estimation problem requires assumptions: our assumptions are SUTVA, and that we are in the context of a CRE.</p></li>
+<li class="fragment"><p>We define the population means, population standard deviations, and population covariance as on a few slides ago.</p>
+<ul>
+<li class="fragment">We also define sample analogs for some of these, also as outlined a few slides ago.</li>
+</ul></li>
+<li class="fragment"><p>We are now in a position to posit an estimator for the ATE!</p>
+<ul>
+<li class="fragment">This particular estimate is due to <span class="alert"><strong>Jerzy Spława-Neyman</strong></span>, one of the foremost statisticians of the 20<sup>th</sup> century.</li>
+</ul></li>
+</ul>
+</section>
+<section id="causality-15" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="estimated-ate">Estimated ATE</h3>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Theorem</strong></strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li class="fragment"><p>Under a CRE (and assuming SUTVA), an unbiased estimator for the ACE is given by <span class="math display">\[ \widehat{\tau} := \widehat{\overline{Y^{(1)}}} - \widehat{\overline{Y^{(0)}}} \]</span></p></li>
+<li class="fragment"><p>The variance of this estimator is given by</p></li>
+</ol>
+<div class="fragment" style="font-size:20px">
+<p><span class="math display">\[\begin{align*}
+  \mathrm{Var}(\widehat{\tau})  &amp; = \frac{S_{(1)}^2}{n_1} + \frac{S_{(0)}^2}{n_0} - \frac{S_{(\tau)}^2}{n}  \\
+    &amp; = \frac{n_0}{n_1 n} S_{(1)}^2 + \frac{n_1}{n_0 n} S_{(0)}^2 + \frac{2}{n} S_{(1)(0)}
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Note that (as is typical with estimators), the variance of our estimator depends on population parameters.</li>
+</ul>
+</section>
+<section id="causality-16" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="estimated-variance-of-the-estimated-ate">Estimated Variance of the Estimated ATE</h3>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Theorem</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Define the following estimator for the variance of <span class="math inline">\(\widehat{\tau}\)</span>: <span class="math display">\[ \widehat{V} := \frac{\widehat{S}_{(1)}^2}{n_1} + \frac{\widehat{S}_{(0)}^2}{n_0} \]</span> This estimate is conservative for estimating <span class="math inline">\(\mathrm{Var}(\widehat{\tau})\)</span> is the sense that <span class="math display">\[ \mathbb{E}[\widehat{V}] - \mathrm{Var}(\widehat{\tau}) = \frac{S^2_{(\tau)}}{n} \geq 0 \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="causality-17" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="proofs">Proofs</h3>
+<ul>
+<li class="fragment">I think it may be useful to go through the proof of the first part of the theorem.
+<ul>
+<li class="fragment">Let’s do so on the board, together!</li>
+</ul></li>
+</ul>
+</section>
+<section id="causality-18" class="slide level2">
+<h2><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i> Causality</h2>
+<h3 id="theorem-2">Theorem</h3>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Theorem</strong></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[ \frac{\widehat{\tau} - \tau}{\sqrt{\Var(\widehat{\tau})}} \rightsquigarrow \mathcal{N}(0, 1) \]</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">This allows us to perform hypothesis testing, construct confidence intervals, etc.</li>
+</ul>
+</section>
+<section id="confounding" class="slide level2">
+<h2><i class="fa-solid fa-eye-slash" aria-label="eye-slash"></i> Confounding</h2>
+<ul>
+<li class="fragment"><p>Let’s also quickly discuss how confounding enters our model.</p></li>
+<li class="fragment"><p>Up until now, we’ve essentially been assuming the absence of confounders.</p>
+<ul>
+<li class="fragment">Specifically, this is reflected in our CRE assumption; equivalently, in our assumption that the assignment indicators follow i.i.d. Bernoulli distributions.</li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">We can propose a slightly more causal-inference-specific definition for a <span class="alert"><strong>confounding variable</strong></span>, as a variable that affects <em>both</em> treatment <em>and</em> the response.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-fig-width="4" data-fig-height="2" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="384" height="192" viewbox="0.00 0.00 244.00 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 240,-112 240,4 -4,4"></polygon>
+<!-- confounder -->
+<g id="node1" class="node">
+<title>confounder</title>
+<ellipse fill="none" stroke="black" cx="119" cy="-90" rx="55.02" ry="18"></ellipse>
+<text text-anchor="middle" x="119" y="-85.8" font-family="Times,serif" font-size="14.00">confounder</text>
+</g>
+<!-- treatment -->
+<g id="node2" class="node">
+<title>treatment</title>
+<ellipse fill="none" stroke="black" cx="47" cy="-18" rx="47.5" ry="18"></ellipse>
+<text text-anchor="middle" x="47" y="-13.8" font-family="Times,serif" font-size="14.00">treatment</text>
+</g>
+<!-- confounder&#45;&gt;treatment -->
+<g id="edge1" class="edge">
+<title>confounder-&gt;treatment</title>
+<path fill="none" stroke="black" d="M101.57,-72.57C92.55,-63.55 81.39,-52.39 71.51,-42.51"></path>
+<polygon fill="black" stroke="black" points="73.81,-39.86 64.27,-35.27 68.86,-44.81 73.81,-39.86"></polygon>
+</g>
+<!-- response -->
+<g id="node3" class="node">
+<title>response</title>
+<ellipse fill="none" stroke="black" cx="191" cy="-18" rx="44.65" ry="18"></ellipse>
+<text text-anchor="middle" x="191" y="-13.8" font-family="Times,serif" font-size="14.00">response</text>
+</g>
+<!-- confounder&#45;&gt;response -->
+<g id="edge2" class="edge">
+<title>confounder-&gt;response</title>
+<path fill="none" stroke="black" d="M136.43,-72.57C145.58,-63.42 156.94,-52.06 166.92,-42.08"></path>
+<polygon fill="black" stroke="black" points="169.63,-44.32 174.23,-34.77 164.68,-39.37 169.63,-44.32"></polygon>
+</g>
+<!-- treatment&#45;&gt;response -->
+<g id="edge3" class="edge">
+<title>treatment-&gt;response</title>
+<path fill="none" stroke="black" d="M94.55,-18C107.74,-18 122.17,-18 135.75,-18"></path>
+<polygon fill="black" stroke="black" points="135.94,-21.5 145.94,-18 135.94,-14.5 135.94,-21.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="confounding-1" class="slide level2">
+<h2><i class="fa-solid fa-eye-slash" aria-label="eye-slash"></i> Confounding</h2>
+<ul>
+<li class="fragment"><p>Because the confounder affects the treatment, it will affect our <em>assignment indicator</em> <em>Z</em><sub><em>i</em></sub>.</p></li>
+<li class="fragment"><p>Perhaps it’s useful to (again) think back to our Aspirin/headache example. One possible confounder might be <code>level of exercise</code> - heavy exercise will definitely affect pain levels, but it will <em>also</em> affect how likely someone is to take Aspirin.</p>
+<ul>
+<li class="fragment">Hence, <code>level of exercise</code> is likely a confounding variable.</li>
+</ul></li>
+<li class="fragment"><p>So, here’s an idea: given a confounding variable <em>X</em>, why don’t we run a <strong>logistic regression</strong> of <em>Z</em><sub><em>i</em></sub> onto <em>X</em>?</p>
+<ul>
+<li class="fragment">The resulting probability will be an estimate of the true assignment probability <em>π</em><sub><em>i</em></sub> := ℙ(<em>Z</em><sub><em>i</em></sub> = 1 | <em>X</em>), which we sometimes call a <span class="alert"><strong>propensity score</strong></span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="confounding-2" class="slide level2">
+<h2><i class="fa-solid fa-eye-slash" aria-label="eye-slash"></i> Confounding</h2>
+<h3 id="propensity-scores">Propensity Scores</h3>
+<ul>
+<li class="fragment">There’s a lot we can do with propensity scores!
+<ul>
+<li class="fragment">We can perform <span class="alert"><strong>Inverse-Propensity Weighting</strong></span>, a form of bias correction (like the Inverse-Probability Weighting scheme we discussed in Lab a few weeks back)</li>
+<li class="fragment">We can <em>condition</em> on these propensity scores to mitigate the effects of confounders.</li>
+</ul></li>
+<li class="fragment">A popular technique for overcoming the effects of confounding is called <span class="alert"><strong>matching</strong></span>, in which individuals from the on-treatment group are <em>matched</em> with “similar” individuals from the off-treatment group.
+<ul>
+<li class="fragment">Similarity is dictated by the confounding values; e.g.&nbsp;we pick someone with the same age, sex, race as, say, John</li>
+</ul></li>
+</ul>
+</section>
+<section id="confounding-3" class="slide level2">
+<h2><i class="fa-solid fa-eye-slash" aria-label="eye-slash"></i> Confounding</h2>
+<h3 id="propensity-scores-1">Propensity Scores</h3>
+<ul>
+<li class="fragment"><p>Naturally, when there are many confounders, matching based on the raw confounder values can be very challenging and results in significant data loss.</p></li>
+<li class="fragment"><p>A clever idea is to match based not on the raw values of the confounding variables, but rather the <em>propensity</em> scores.</p></li>
+<li class="fragment"><p>I encourage you to read more in [<em>A First Course in Causal Inference</em>] by Peng Ding, if you are interested.</p></li>
+<li class="fragment"><p>To close out, I’ll briefly outline a relatively famous case study.</p></li>
+</ul>
+</section>
+<section id="national-supported-work-demonstration" class="slide level2">
+<h2><i class="fa-solid fa-train" aria-label="train"></i> National Supported Work Demonstration</h2>
+<h3 id="a-quick-case-study">A Quick Case Study</h3>
+<ul>
+<li class="fragment"><p>The <a href="https://crimesolutions.ojp.gov/ratedprograms/national-supported-work-demonstration-project-multisite#1-0"><strong>National Supported Work Demonstration</strong></a> (NSW) was a employment program that ran between March 1975 and June 1977.</p></li>
+<li class="fragment"><p>Essentially, the program offered employment training to participants in the hopes of decreasing disparities.</p></li>
+<li class="fragment"><p>Initial findings seemed to indicate that those who underwent the training had <em>lower</em> average incomes than those who did not - as such, on the surface, it seemed like the training actually <em>hurt</em> people’s chances of high-level employment later in life.</p></li>
+<li class="fragment"><p>In 1986, Robert J. LaLonde conducted a causal analysis of the findings of the study.</p>
+<ul>
+<li class="fragment">You can read his full paper <a href="https://business.baylor.edu/scott_cunningham/teaching/lalonde-1986.pdf">here</a>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="national-supported-work-demonstration-1" class="slide level2">
+<h2><i class="fa-solid fa-train" aria-label="train"></i> National Supported Work Demonstration</h2>
+<h3 id="a-quick-case-study-1">A Quick Case Study</h3>
+<ul>
+<li class="fragment">LaLonde primarily pointed out that the original study was flawed in that it did not appropriately consider confounding variables!
+<ul>
+<li class="fragment">For example, things like gender, race, and education level are likely confounders in this experiment as they affect both treatment (whether people were administered the training or not) and response (income levels).</li>
+</ul></li>
+<li class="fragment">Subsequent studies have shown that, after appropriately matching based on propensity scores, it can be shown that the training actually had a net <em>positive</em> causal effect.</li>
+</ul>
+</section>
+<section id="next-time" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<ul>
+<li class="fragment"><p>Please fill out Course Evaluations!</p></li>
+<li class="fragment"><p>I’ll release the Bonus Lab (Lab 11) sometime today or tomorrow.</p>
+<ul>
+<li class="fragment">It will be due at 11:59pm on Friday, August 1, 2025.</li>
+</ul></li>
+<li class="fragment"><p>Tomorrow will be our final lecture (I’ll also bring some hex stickers with the PSTAT 100 course logo for everyone tomorrow!)</p></li>
+<li class="fragment"><p>During Section tomorrow, you can either work on the bonus lab or work on the project.</p>
+<ul>
+<li class="fragment">A friendly reminder that Erika (our TA) is a <em>great</em> resource to talk to!</li>
+</ul></li>
+</ul>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="Images/100_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+            for (let i=0; i<annoteTargets.length; i++) {
+              const annoteTarget = annoteTargets[i];
+              const targetCell = annoteTarget.getAttribute("data-target-cell");
+              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+              const contentFn = () => {
+                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+                if (content) {
+                  const tipContent = content.cloneNode(true);
+                  tipContent.classList.add("code-annotation-tip-content");
+                  return tipContent.outerHTML;
+                }
+              }
+              const config = {
+                allowHTML: true,
+                content: contentFn,
+                onShow: (instance) => {
+                  selectCodeLines(instance.reference);
+                  instance.reference.classList.add('code-annotation-active');
+                  window.tippy.hideAll();
+                },
+                onHide: (instance) => {
+                  unselectCodeLines();
+                  instance.reference.classList.remove('code-annotation-active');
+                },
+                maxWidth: 300,
+                delay: [50, 0],
+                duration: [200, 0],
+                offset: [5, 10],
+                arrow: true,
+                appendTo: function(el) {
+                  return el.parentElement.parentElement.parentElement;
+                },
+                interactive: true,
+                interactiveBorder: 10,
+                theme: 'light-border',
+                placement: 'right',
+                popperOptions: {
+                  modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      flipVariations: false, // true by default
+                      allowedAutoPlacements: ['right'],
+                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      mainAxis: false,
+                      altAxis: false
+                    }
+                  }
+                  ]        
+                }      
+              };
+              window.tippy(annoteTarget, config); 
+            }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
