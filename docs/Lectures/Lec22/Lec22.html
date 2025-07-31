@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../../Images/Logos_Icons/hex.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <meta name="author" content="Ethan P. Marzban">
+  <title>PSTAT 100: Summer 2025 – PSTAT 100: Lecture 22</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ce6bc8a5410e8df11883f060677c6af5.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="../../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="../../site_libs/countdown-0.4.0/countdown.js"></script>
+</head>
+<body class="quarto-light">
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="Images/100_hex.png" data-background-opacity="0.5" data-background-position="80% 50%" data-background-size="30%" class="quarto-title-block center">
+  <h1 class="title">PSTAT 100: Lecture 22</h1>
+  <p class="subtitle">Data Science Ethics</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Ethan P. Marzban 
+</div>
+        <p class="quarto-title-affiliation">
+            Department of Statistics and Applied Probability; UCSB <br> <br>
+          </p>
+        <p class="quarto-title-affiliation">
+            Summer Session A, 2025
+          </p>
+    </div>
+</div>
+
+</section>
+<section class="slide level2">
+
+<p><span class="math display">\[
+\newcommand\R{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\1}{1\!\!1}
+\newcommand{\comp}[1]{#1^{\complement}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\SD}{\mathrm{SD}}
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\tvect}[1]{\vec{\boldsymbol{#1}}^{\mathsf{T}}}
+\newcommand{\hvect}[1]{\widehat{\boldsymbol{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tmat}[1]{\mathbf{#1}^{\mathsf{T}}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg} \ \min}
+\newcommand{\iid}{\stackrel{\mathrm{i.i.d.}}{\sim}}
+\]</span></p>
+<div class="cell">
+<style type="text/css">
+.hscroll {
+  height: 100%;
+  max-height: 600px;
+  max-width: 2000px;
+  overflow: scroll;
+}
+
+.hscroll2 {
+  height: 100%;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.hscroll3 {
+  max-width: 2rem;
+  overflow: scroll;
+}
+</style>
+</div>
+</section>
+<section id="ethics" class="slide level2">
+<h2><i class="fa-solid fa-people-pulling" aria-label="people-pulling"></i> Ethics</h2>
+<ul>
+<li class="fragment">According to Merriam Webster, <span class="alert"><strong>ethics</strong></span> is defined as:</li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>“a set of moral principles : a theory or system of moral values” (<a href="https://www.merriam-webster.com/dictionary/ethics">source</a>)</p>
+</blockquote>
+</div>
+<ul>
+<li class="fragment">Ethics and ethical guidelines arise in a <em>wide</em> array of disciplines
+<ul>
+<li class="fragment">For example, the <a href="https://www.pbs.org/wgbh/nova/doctors/oath_modern.html">Hippocratic Oath</a> is a code of conduct physicians and doctors swear to act by when practicing medicine</li>
+<li class="fragment">The American Bar Association (in charge of certifying practicing lawyers) establishes a <a href="https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/model_rules_of_professional_conduct_preamble_scope/">code of conduct</a> all certified lawyers are expected to act in accordance with</li>
+</ul></li>
+</ul>
+</section>
+<section id="ethics-1" class="slide level2">
+<h2><i class="fa-solid fa-people-pulling" aria-label="people-pulling"></i> Ethics</h2>
+<h3 id="data-science">Data Science</h3>
+<ul>
+<li class="fragment">Why should we, as Data Scientists, be concerned with Ethics?
+<ul>
+<li class="fragment">Not a rhetorical question - let’s discuss!</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-dark-secret-of-statistics" class="slide level2">
+<h2><i class="fa-solid fa-book-skull" aria-label="book-skull"></i> The Dark Secret of Statistics</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>One of the foremost statisticians of the 1900s was <strong>Ronald Aylmer Fisher</strong>.</p>
+<ul>
+<li class="fragment">His contributions to statistics are undeniable.</li>
+</ul></li>
+<li class="fragment"><p><a href="https://pubmed.ncbi.nlm.nih.gov/34629128/">He was also a <span class="alert"><strong>eugenicist</strong></span>.</a></p></li>
+<li class="fragment"><p>There is some debate surrounding the term “eugenics,” especially in light of it’s usage within the Nazi party.</p></li>
+<li class="fragment"><p>Regardless, it was a purportedly “scientific” field that ultimately lead to the subjugation of many groups.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="fragment">
+<p><img data-src="Images/eugenics.png" style="width:80.0%"></p>
+</div>
+</div></div>
+</section>
+<section id="ethics-2" class="slide level2">
+<h2><i class="fa-solid fa-people-pulling" aria-label="people-pulling"></i> Ethics</h2>
+<h3 id="data-science-1">Data Science</h3>
+<ul>
+<li class="fragment">In today’s lecture, I’d like to set out to do two things:
+<ol type="1">
+<li class="fragment">Make you aware of “bad” statistical practices that are still being carried out</li>
+<li class="fragment">Make you aware of the far-reaching consequences these bad practices have for the world as a whole</li>
+</ol></li>
+</ul>
+</section>
+<section id="misleading-statistics" class="slide level2">
+<h2><i class="fa-solid fa-viruses" aria-label="viruses"></i> Misleading Statistics</h2>
+<h3 id="first-example-p---hacking">First Example: <em>p</em> - Hacking</h3>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><img data-src="images/significant.png"></p>
+</div><div class="column" style="width:10%;">
+<!--spacing-->
+</div><div class="column" style="width:70%;">
+<ul>
+<li class="fragment"><p>This illustrates a variant of something known as <span class="alert"><strong><em>p</em>-hacking</strong></span></p></li>
+<li class="fragment"><p>As we’ve seen, a <em>p</em> value is essentially a measure of evidence against a null and in favor of an alternative.</p></li>
+<li class="fragment"><p>We’ve also seen that they are not immune to the effects of randomness</p>
+<ul>
+<li class="fragment">That is, as we saw with <span class="alert"><strong>multiple testing</strong></span>, the probability of falsely rejecting a null increases with the number of tests we run.</li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="misleading-statistics-1" class="slide level2">
+<h2><i class="fa-solid fa-viruses" aria-label="viruses"></i> Misleading Statistics</h2>
+<h3 id="first-example-p---hacking-1">First Example: <em>p</em> - Hacking</h3>
+<ul>
+<li class="fragment">Loosely speaking, <em>p</em>-hacking refers to the practice of repeatedly running tests until a significant result is obtained.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb1-2"><a></a>pvals <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb1-3"><a></a><span class="cf">repeat</span>{</span>
+<span id="cb1-4"><a></a>  X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb1-5"><a></a>  temp_pval <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">10</span> <span class="sc">*</span> <span class="fu">abs</span>(<span class="fu">mean</span>(X)))</span>
+<span id="cb1-6"><a></a>  pvals <span class="ot">&lt;-</span> <span class="fu">c</span>(pvals, temp_pval)</span>
+<span id="cb1-7"><a></a>  <span class="cf">if</span> (temp_pval <span class="sc">&lt;</span> <span class="fl">0.05</span>) {<span class="cf">break</span>}</span>
+<span id="cb1-8"><a></a>}</span>
+<span id="cb1-9"><a></a></span>
+<span id="cb1-10"><a></a>pvals <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.977 0.911 0.898 0.405 0.188 0.215 0.528 0.091 0.020</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="misleading-statistics-2" class="slide level2">
+<h2><i class="fa-solid fa-viruses" aria-label="viruses"></i> Misleading Statistics</h2>
+<h3 id="first-example-p---hacking-2">First Example: <em>p</em> - Hacking</h3>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Let’s Discuss!</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>What are some potential ramifications of <em>p</em>-hacking? Why might we consider <em>p</em>-hacking “unethical”?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="misleading-statistics-3" class="slide level2">
+<h2><i class="fa-solid fa-viruses" aria-label="viruses"></i> Misleading Statistics</h2>
+<h3 id="second-example-f-screening">Second Example: <em>F</em>-Screening</h3>
+<ul>
+<li class="fragment"><p>As another example of bad (or, at least, needs-improvement) statistical practice, let’s consider a pretty recent set of considerations due to Drs. Olivia McGough, Daniela Witten and Daniel Kessler</p>
+<ul>
+<li class="fragment">Dr.&nbsp;Witten actually gave last year’s Sobel Lecture on this topic; you can read the associated paper (published in 2025!) <a href="https://arxiv.org/pdf/2505.23113">here</a>.</li>
+</ul></li>
+<li class="fragment"><p>Essentially, it is somewhat common statistical practice to only report “interesting” (i.e.&nbsp;significant) results, and to simply <em>not</em> report results that are not significant.</p></li>
+<li class="fragment"><p>In the context of regression (specifically, determining which covariates in an MLR model are statistically significant), the authors call this practice <span class="alert"><strong><em>F</em>-Screening</strong></span>.</p></li>
+</ul>
+</section>
+<section id="misleading-statistics-4" class="slide level2">
+<h2><i class="fa-solid fa-viruses" aria-label="viruses"></i> Misleading Statistics</h2>
+<h3 id="second-example-f-screening-1">Second Example: <em>F</em>-Screening</h3>
+<ul>
+<li class="fragment"><p>The authors point out that <em>F</em>-screening can actually cause us to lose standard theoretical guarantees</p>
+<ul>
+<li class="fragment">For example, we lose Type I error control and coverage interpretations of confidence intervals</li>
+</ul></li>
+<li class="fragment"><p>They propose modified versions of standard statistical tests and practices to mitigate against these negative effects.</p></li>
+<li class="fragment"><p>The paper itself is quite well-written, and I encourage you to read through it (provided you have some 120B and 126 knowledge).</p>
+<ul>
+<li class="fragment">I mainly include it as an example here to illustrate that even now research is still being done into questionable statistical practices!</li>
+</ul></li>
+</ul>
+</section>
+<section id="misleading-statistics-5" class="slide level2">
+<h2><i class="fa-solid fa-viruses" aria-label="viruses"></i> Misleading Statistics</h2>
+<h3 id="third-example-missing-confounders">Third Example: Missing Confounders</h3>
+<ul>
+<li class="fragment">As a third example, I refer us back to yesterday’s lecture: failing to account for confounders.
+<ul>
+<li class="fragment">In the UC Berkeley Admissions case study, we saw that failing to account for <code>difficult of major</code> actually created apparent biases that didn’t actually exist</li>
+<li class="fragment">In the NSW case study, we saw that failing to account for various demographic confounders created the illusion that the training was <em>detrimental</em> when it was, in fact, <em>beneficial</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="data-science-ethics" class="slide level2">
+<h2><i class="fa-solid fa-server" aria-label="server"></i> Data Science Ethics</h2>
+<h3 id="multiple-attempts">Multiple Attempts</h3>
+<ul>
+<li class="fragment"><p>Hopefully these two examples (plus the examples outlined in the assigned reading for today’s lecture) demonstrate the need for a unified set of <span class="alert"><strong>principles of data science ethics</strong></span></p></li>
+<li class="fragment"><p>Indeed, there have been several attempts at producing such a set of principles.</p></li>
+<li class="fragment"><p>Two particularly famous ones (that we will discuss today):</p>
+<ul>
+<li class="fragment">The <a href="https://datapractices.org/manifesto/">Data Values and Principles Manifesto</a>, by DataPractices.org</li>
+<li class="fragment">The <a href="https://www.amstat.org/docs/default-source/amstat-documents/ethicalguidelines.pdf?Status=Master&amp;sfvrsn=bdeeafdd_6/">Ethical Guidelines for Statistical Practices</a>, developed by the American Statistical Association</li>
+</ul></li>
+</ul>
+</section>
+<section id="data-science-ethics-1" class="slide level2">
+<h2><i class="fa-solid fa-server" aria-label="server"></i> Data Science Ethics</h2>
+<h3 id="data-values-and-principles-manifesto">Data Values and Principles Manifesto</h3>
+<ol type="1">
+<li class="fragment"><p>Use data to improve life for our users, customers, organizations, and communities</p></li>
+<li class="fragment"><p>Create reproducible and extensible work</p></li>
+<li class="fragment"><p>Build teams with diverse ideas, backgrouns, and strengths</p></li>
+<li class="fragment"><p>Prioritize the continuous collection and availability of discussions and metadata</p></li>
+<li class="fragment"><p>Clearly identify the questions and objectives that drive each project and use to guide both planning and refinement.</p></li>
+<li class="fragment"><p>Be open to changing our methods and conclusions in response to new knowledge.</p></li>
+</ol>
+</section>
+<section id="data-science-ethics-2" class="slide level2">
+<h2><i class="fa-solid fa-server" aria-label="server"></i> Data Science Ethics</h2>
+<h3 id="data-values-and-principles-manifesto-1">Data Values and Principles Manifesto</h3>
+<ol start="7" type="1">
+<li class="fragment"><p>Recognize and mitigate bias in ourselves and in the data we use.</p></li>
+<li class="fragment"><p>Present our work in ways that empower others to make better-informed decisions.</p></li>
+<li class="fragment"><p>Consider carefully the ethical implications of choices we make when using data, and the impacts of our work on individuals and society.</p></li>
+<li class="fragment"><p>Respect and invite fair criticism while promoting the identification and open discussion of errors, risks, and unintended consequences of our work.</p></li>
+<li class="fragment"><p>Protect the privacy and security of individuals represented in our data.</p></li>
+<li class="fragment"><p>Help others to understand the most useful and appropriate applications of data to solve real-world problems.</p></li>
+</ol>
+</section>
+<section id="your-turn" class="slide level2">
+<h2><i class="fa-solid fa-pencil" aria-label="pencil"></i> Your Turn!</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Your Turn!</strong> (Exercise 1 from Chapter 8 of our Textbook)</strong></p>
+</div>
+<div class="callout-content">
+<p>A researcher is interested in the relationship of weather to sentiment (positivity or negativity of posts) on Twitter. They want to scrape data from https://www.wunderground.com and join that to Tweets in that geographic area at a particular time. One complication is that Weather Underground limits the number of data points that can be downloaded for free using their API (application program interface). The researcher sets up six free accounts to allow them to collect the data they want in a shorter time-frame. What ethical guidelines are violated by this approach to data scraping?</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_8c1d09e9" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:6rem;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="reproducibility" class="slide level2">
+<h2><i class="fa-solid fa-clone" aria-label="clone"></i> Reproducibility</h2>
+<ul>
+<li class="fragment"><p>A term you will hear a <em>lot</em> throughout statistics and datascience is <span class="alert"><strong>reproducibility</strong></span></p></li>
+<li class="fragment"><p>Essentially, reproducibile results are those that can be replicated (i.e.&nbsp;found again) given the same tools used to initially create them.</p>
+<ul>
+<li class="fragment">For example, the results of a clinical trial would be <em>reproducible</em> if a third-party could gain access to the same data and arrive at the same results and conclusions.</li>
+</ul></li>
+<li class="fragment"><p>Part of ensuring your research is reproducible is <strong>documentation</strong>.</p>
+<ul>
+<li class="fragment">Make sure to keep a record of things like: where you originally found a particular dataset, which packages you used (and possibly even which <em>versions</em> of these packages you used), which functions you used, etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="reproducibility-1" class="slide level2">
+<h2><i class="fa-solid fa-clone" aria-label="clone"></i> Reproducibility</h2>
+<h3 id="programming-languages">Programming Languages</h3>
+<ul>
+<li class="fragment"><p>On a related note, as the authors of our textbook point out, “Data science professionals have an ethical obligation to use tools that are reliable, verifiable, and conducive to reproducible data analysis.”</p></li>
+<li class="fragment"><p>As a somewhat extreme example, consider the programming language <span class="alert"><strong>SAS</strong></span>: pharmaceutical researchers almost exclusively program in SAS. Why?</p>
+<ul>
+<li class="fragment">Well, it turns out that SAS is very tightly regulated in terms of what updates can be made, what sorts of new functions can be added, etc.</li>
+<li class="fragment">Indeed, it’s sometimes (colloquially) stated that SAS is “FDA-approved”</li>
+</ul></li>
+</ul>
+</section>
+<section id="reproducibility-2" class="slide level2">
+<h2><i class="fa-solid fa-clone" aria-label="clone"></i> Reproducibility</h2>
+<h3 id="programming-languages-1">Programming Languages</h3>
+<ul>
+<li class="fragment"><p>On the flipside, <code>R</code> is touted (and often <em>celebrated</em>) as being very <strong>open source</strong>.</p></li>
+<li class="fragment"><p>This has the distinct advantage of making <code>R</code> cutting-edge, but has been the source of some criticism against the programming language itself.</p></li>
+<li class="fragment"><p>For those unaware, the <a href="http://cran.r-project.org/"><span class="alert"><strong>Comprehensive <code>R</code> Archive Network</strong></span></a> (CRAN) is the widely-accepted sole database of “approved” <code>R</code> packages</p>
+<ul>
+<li class="fragment">The process of geting an <code>R</code> package uploaded to CRAN is <em>very extensive</em>, involving lots of checks, meaning that packages uploaded to CRAN are often very reliable. (<a href="https://cran.r-project.org/web/packages/policies.html">CRAN Repository Policy</a>)</li>
+<li class="fragment">Be wary of packages not hosted on CRAN (e.g.&nbsp;solely on GitHub)</li>
+</ul></li>
+</ul>
+</section>
+<section id="data-privacy" class="slide level2">
+<h2><i class="fa-solid fa-eye-slash" aria-label="eye-slash"></i> Data Privacy</h2>
+<ul>
+<li class="fragment"><p>Another key concept in the realm of data science ethics is that of <span class="alert"><strong>privacy</strong></span>.</p></li>
+<li class="fragment"><p>In certain cases, the <em>observational units</em> (remember these?) of a particular dataset may not want to be uniquely revealed.</p></li>
+<li class="fragment"><p>As such, you will often encounter data that has been <span class="alert"><strong>privatized</strong></span> in some way (e.g.&nbsp;data that has been stripped of all potentially identifying information like name, gender, address, etc.)</p></li>
+<li class="fragment"><p>Sometimes data is <span class="alert"><strong>aggregated</strong></span> for privacy purposes.</p>
+<ul>
+<li class="fragment">For example, instead of recording whether specific people contracted a particular disease, the dataset may only record the <em>proportion</em> of infected people across different geographic regions (counties, states, etc.)</li>
+</ul></li>
+</ul>
+</section>
+<section id="data-privacy-1" class="slide level2">
+<h2><i class="fa-solid fa-eye-slash" aria-label="eye-slash"></i> Data Privacy</h2>
+<ul>
+<li class="fragment">Data Aggregation often affects the statistical methods you use to analyze the data.
+<ul>
+<li class="fragment">This is another reason it is so important to understand <em>how</em> our data was collected and reported before beginning our analyses!</li>
+</ul></li>
+<li class="fragment">As a very approachable example of how aggregated data can be used in a real-world setting, I encourage you to check out <a href="https://link.springer.com/article/10.1007/s11111-021-00375-9">this article</a> by Dr.&nbsp;Kathryn Grace (who will be joining our department this coming academic year!)</li>
+</ul>
+</section>
+<section id="case-study-compas" class="slide level2">
+<h2><i class="fa-solid fa-compass" aria-label="compass"></i> Case Study: COMPAS</h2>
+<ul>
+<li class="fragment"><p>To close out, I’d like to take a few minutes to explore a fairly famous (infamous?) case study.</p></li>
+<li class="fragment"><p>In recent years, we have observed an increase in the use of machine learning algorithms to aid decisions about individuals in the justice system.</p></li>
+<li class="fragment"><p>A major element of this is modeling <span class="alert"><strong>recidivism rates</strong></span></p>
+<ul>
+<li class="fragment">From <a href="https://www.merriam-webster.com/dictionary/recidivism">Merriam Webster</a>: recivisim = “a tendency to relapse into a previous condition or mode of behavior”</li>
+</ul></li>
+<li class="fragment"><p>One algorithm/software used in this context is the <span class="alert"><strong>Correctional Offender Management Profiling for Alternative Sanctions</strong></span> (<span class="alert"><strong>COMPAS</strong></span>) system.</p>
+<ul>
+<li class="fragment">A lengthy practitioners report, published by the creators of the COMPAS algorithm can be found <a href="https://s3.documentcloud.org/documents/2840784/Practitioner-s-Guide-to-COMPAS-Core.pdf">here</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="case-study-compas-1" class="slide level2">
+<h2><i class="fa-solid fa-compass" aria-label="compass"></i> Case Study: COMPAS</h2>
+<ul>
+<li class="fragment"><p>In 2016, <em>ProPublica</em> published a groundbreaking article highlighting several ways in which the COMPAS algorithm exhibited concerning signs of racial bias.</p></li>
+<li class="fragment"><p>You can read the article <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">here</a>, and a more detailed breakdown of the authors’ analyses <a href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">here</a>.</p></li>
+<li class="fragment"><p>With our PSTAT 100 knowledge, we actually have the tools to explore and replicate some of the authors’ findings; an endeavor we’ll start today in lecture, and you’ll finish on the Bonus Lab (should you choose to complete it).</p></li>
+</ul>
+</section>
+<section id="case-study-compas-2" class="slide level2">
+<h2><i class="fa-solid fa-compass" aria-label="compass"></i> Case Study: COMPAS</h2>
+<h3 id="the-algorithm">The Algorithm</h3>
+<ul>
+<li class="fragment"><p>First, let’s understand what the COMPAS system does.</p></li>
+<li class="fragment"><p>Subjects are administered a 137-question questionnaire; the algorithm then takes their answers an returns a score of 1 - 10, indicating how likely (1 being the most unlikely, 10 being the most likely) to recidivate.</p>
+<ul>
+<li class="fragment">Scores of 1-4 are labelled as “Low”; scores of 5-7 are labelled as “Medium”; scores of 8-10 are labelled as “High”</li>
+</ul></li>
+<li class="fragment"><p>One of the things that <em>ProPublica</em> did was examine the COMPAS ratings of over 10,000 criminals in Broward County (located in Florida), and track how many of them actually recidivated or not.</p></li>
+<li class="fragment"><p>Given that the COMPAS algorithm is essentially a classification model, this leads us naturally into considering our classification <strong>error rates</strong></p></li>
+</ul>
+</section>
+<section id="case-study-compas-3" class="slide level2">
+<h2><i class="fa-solid fa-compass" aria-label="compass"></i> Case Study: COMPAS</h2>
+<h3 id="understanding-rates">Understanding Rates</h3>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Check Your Understanding</strong></strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>In this context, what is the definition of a False Positive Rate (FPR)?</li>
+<li>In this context, what is the definition of a False Negative Rate (FPR)?</li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">What <em>ProPublica</em> found is that “[…] black defendants who did not recidivate over a two-year period were nearly twice as likely to be misclassified as higher risk compared to their white counterparts (45 percent vs.&nbsp;23 percent).” (<em>ProPublica</em>, 2016)
+<ul>
+<li class="fragment">They also “[…] found that white defendants who re-offended within the next two years were mistakenly labeled low risk almost twice as often as black re-offenders (48 percent vs.&nbsp;28 percent).” (<em>ProPublica</em>, 2016)</li>
+</ul></li>
+</ul>
+</section>
+<section id="case-study-compas-4" class="slide level2">
+<h2><i class="fa-solid fa-compass" aria-label="compass"></i> Case Study: COMPAS</h2>
+<h3 id="race">Race</h3>
+<ul>
+<li class="fragment">It is important to note that race is <strong>not</strong> one of the questions asked of subjects.
+<ul>
+<li class="fragment">So, how could the algorithm then determine the race of individuals?</li>
+</ul></li>
+<li class="fragment">The answer lies in what are sometimes known as <span class="alert"><strong>proxy variables</strong></span>.
+<ul>
+<li class="fragment">Loosely speaking, proxy variables are those that can be used to reconstruct a hidden or missing variable.</li>
+</ul></li>
+<li class="fragment">For example, three questions the COMPAS survey <em>does</em> ask are: “Was one of your parents ever sent to jail or prison?”, “How many of your friends/acquaintances are taking drugs illegally?”, “How often did you get in fights while at school?”
+<ul>
+<li class="fragment">The answers to these questions are highly correlated with race.</li>
+</ul></li>
+</ul>
+</section>
+<section id="case-study-compas-5" class="slide level2">
+<h2><i class="fa-solid fa-compass" aria-label="compass"></i> Case Study: COMPAS</h2>
+<h3 id="race-1">Race</h3>
+<ul>
+<li class="fragment"><p>In today’s Lab (the Bonus Lab), I ask you to delve a little deeper into <em>ProPublica</em>’s analysis.</p>
+<ul>
+<li class="fragment">Even if you are not planning on submitting the lab, I highly recommend you take a look through it for your own sakes!</li>
+</ul></li>
+<li class="fragment"><p>One thing to note is that the COMPAS algorithm is considered <span class="alert"><strong>proprietary</strong></span> and therefore is <em>not released to the public</em>.</p>
+<ul>
+<li class="fragment">Nevertheless, one can (and, indeed, the <em>ProPublica</em> authors did!) reconstruct a proxy to the algorithm using <strong>logistic regression</strong>.</li>
+</ul></li>
+<li class="fragment"><p>“Black-box” algorithms like this are <em>very</em> prevalent in our modern-day society.</p></li>
+<li class="fragment"><p>Dr.&nbsp;Cathy O’Neill has coined the term “Weapon of Math Destruction” (WMD) to refer to some of these types of algorithms.</p></li>
+</ul>
+</section>
+<section id="weapons-of-math-destruction" class="slide level2" style="font-size:30px">
+<h2><i class="fa-solid fa-bomb" aria-label="bomb"></i> Weapons of Math Destruction</h2>
+<ul>
+<li class="fragment"><p>In her book titled <em>Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy</em>, Dr.&nbsp;O’Neill proposes three metrics by which an algorithm can be classified as a WMD: <strong>Opacity</strong> (Are details available upon request?), <strong>Scale</strong> (Is the algorithm being used in broad and far-reaching situations?), and <strong>Damage</strong> (Who is hurt by this algorithm, and how?).</p></li>
+<li class="fragment"><p>Let’s see how the COMPAS algorithm fares on this metric:</p>
+<ul>
+<li class="fragment"><strong>Opacity:</strong> as mentioned above, the algorithm is closed-source and not available to the public.</li>
+<li class="fragment"><strong>Scale:</strong> the algorithm is being used in a wide variety of states, and are sometimes even used by Judges to inform sentencing</li>
+<li class="fragment"><strong>Damage:</strong> those incorrectly assigned high recidivism scores are often sentenced harsher, or even just viewed in a more negative light than those who do not.</li>
+</ul></li>
+<li class="fragment"><p>Hence, the COMPAS algorithm would likely count as a WMD.</p></li>
+</ul>
+</section>
+<section id="chatgpt" class="slide level2">
+<h2><i class="fa-solid fa-comment" aria-label="comment"></i> <em>ChatGPT</em></h2>
+<ul>
+<li class="fragment"><p>Finally, I would be remiss to not at least mention <em>ChatGPT</em></p></li>
+<li class="fragment"><p>At its core, <em>ChatGPT</em> utilizes a <em>model</em> (algorithm).</p>
+<ul>
+<li class="fragment">This algorithm (like most algorithms) must be trained on data.</li>
+<li class="fragment">That is, data is needed to find optimal parameter estimates.</li>
+</ul></li>
+<li class="fragment"><p><em>OpenAI</em> (the parent company of <em>ChatGPT</em>) provides <a href="https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-develope%22d">information on how the model is trained</a>.</p>
+<ul>
+<li class="fragment">They say: “OpenAI’s foundation models, including the models that power ChatGPT, are developed using three primary sources of information: (1) information that is publicly available on the internet, (2) information that we partner with third parties to access, and (3) information that our users, human trainers, and researchers provide or generate.” (<em>OpenAi</em>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="chatgpt-1" class="slide level2">
+<h2><i class="fa-solid fa-comment" aria-label="comment"></i> <em>ChatGPT</em></h2>
+<ul>
+<li class="fragment">Recently, some people have brought up the fact that not everyone <em>consented</em> to have their data included in the training of the model.
+<ul>
+<li class="fragment">This is an especially heated discussion in the Arts, in the context of AI Art</li>
+</ul></li>
+<li class="fragment">Some early versions of chatbots were also producing <em>racist</em> and <em>derogatory</em> statements.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Food For Thought</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Is <em>ChatGPT</em> a Weapon of Math Destruction?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="some-takeaways" class="slide level2">
+<h2><i class="fa-solid fa-plane-departure" aria-label="plane-departure"></i> Some Takeaways</h2>
+<ul>
+<li class="fragment"><p>As data scientists, it can be easy for us to mentally remove ourselves from the context in which our research will be applied.</p></li>
+<li class="fragment"><p>I encourage you to combat this - always try and make sure to have a sense on how your research may impact others.</p></li>
+<li class="fragment"><p>A quote from the <em>ProPublica</em> article, from one of COMPAS’ original creators, Tim Brennan:</p></li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>“I wanted to stay away from the courts,” Brennan said, explaining that his focus was on reducing crime rather than punishment. “But as time went on I started realizing that so many decisions are made,you know, in the courts. So I gradually softened on whether this could be used in the courts or not.” (<em>ProPublica</em>, 2016)</p>
+</blockquote>
+</div>
+</section>
+<section id="some-takeaways-1" class="slide level2">
+<h2><i class="fa-solid fa-plane-departure" aria-label="plane-departure"></i> Some Takeaways</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Tip</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Awareness can go a long way.</p>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Nobody is asking you to guess <em>every</em> possible way your work might be used!
+<ul>
+<li class="fragment">Rather, just be aware of the potential implications of your work.</li>
+</ul></li>
+<li class="fragment">Also, keep in mind - we exist within the confines of a system. You have collaborators and supervisors you can use as soundboards for ideas and conversations like this!</li>
+</ul>
+</section>
+<section id="its-not-all-bad" class="slide level2">
+<h2><i class="fa-solid fa-plane-departure" aria-label="plane-departure"></i> It’s Not All Bad</h2>
+
+<img data-src="Images/harvard.png" class="r-stretch"></section>
+<section>
+<section id="next-time" class="title-slide slide level1 center" data-background-color="black" data-background-image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjIxc3RhMDVncTBrNjk3NDBrZjk4eWdpbGp1OXc3bDBjeGJjNGh3biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KFgp3JHaP1BbaGiQWw/200.gif" data-background-size="60rem">
+<h1>Next Time</h1>
+
+</section>
+<section id="next-time-1" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<ul>
+<li class="fragment"><p>So… where do we go from here?</p></li>
+<li class="fragment"><p>Well, as I’ve said a few times, my hope was to structure PSTAT 100 like a “table of contents” of Data Science - giving you a brief introduction to a variety of topics.</p></li>
+<li class="fragment"><p>The good news is that there is a <em>lot more</em> to learn about these topics!</p></li>
+<li class="fragment"><p>Indeed, there exist several classes in our own department that you can look into taking if you’re interested to learn more.</p></li>
+</ul>
+</section>
+<section id="next-time-2" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<h3 id="regression-modeling">Regression / Modeling</h3>
+<ul>
+<li class="fragment">Regression is by far one of the most applicable topics in statistics - it is also one of the deepest!
+<ul>
+<li class="fragment">In <strong>PSTAT 126/127</strong>, you’ll explore the theory behind linear models in greater depth (What does homoskedasticity really mean? What do we do if our response is integer-valued?)</li>
+</ul></li>
+<li class="fragment">Statistical learning is an equally deep field; classes like <strong>PSTAT 131/231</strong> fill in some gaps we left this quarter and introduces you to some more techniques!
+<ul>
+<li class="fragment">For example, there are non-regression classifiers (<strong>Discriminant Analysis</strong> is a popular one)</li>
+</ul></li>
+</ul>
+</section>
+<section id="next-time-3" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<h3 id="sampling-study-design">Sampling / Study Design</h3>
+<ul>
+<li class="fragment">Sampling and study design are another set of very rich subject!
+<ul>
+<li class="fragment"><strong>PSTAT 120B</strong> gives you some more background on estimation and sampling distributions; <strong>PSTAT 120C</strong> continues with some more advanced hypothesis testing (did you know you can statistically <em>test</em> whether you believe two variables to be independent or not?)</li>
+<li class="fragment"><strong>PSTAT 123</strong> gives you a much deeper look into the mechanisms behind sampling, and the analysis of data obtained through non-SRSes (e.g.&nbsp;stratified samples)</li>
+<li class="fragment"><strong>PSTAT 122</strong> walks you through ANOVA in greater details, and how to actually <em>design</em> experiments</li>
+</ul></li>
+</ul>
+</section>
+<section id="next-time-4" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<h3 id="time-series">Time Series</h3>
+<ul>
+<li class="fragment"><strong>Time Series</strong> models are another <em>very applicable</em> set of models.
+<ul>
+<li class="fragment">Loosely speaking, we can think of time series analysis as the analysis of data that is <em>serially correlated</em> (longitudinal data, anyone?)</li>
+</ul></li>
+<li class="fragment"><strong>PSTAT 174/274</strong> walks you through the basics of this style of analysis.
+<ul>
+<li class="fragment">I highly recommend everyone to take this course, since, as you can likely imagine, most real-world data is correlated!</li>
+</ul></li>
+</ul>
+</section>
+<section id="next-time-5" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<h3 id="special-topics">Special Topics</h3>
+<ul>
+<li class="fragment"><strong>PSTAT 105</strong> provides a greater look into <strong>nonparametric</strong> analysis
+<ul>
+<li class="fragment">E.g. KDE; series estimation;</li>
+<li class="fragment">Again, I’m a bit biased - my own research falls into the realm of nonparametric statistics!</li>
+</ul></li>
+<li class="fragment"><strong>PSTAT 115</strong> provides an introduction into a completely different way of thinking about statistics, called the <strong>Bayesian</strong> framework
+<ul>
+<li class="fragment">You’ll talk more about Monte Carlo methods here!</li>
+</ul></li>
+</ul>
+</section>
+<section id="next-time-6" class="slide level2">
+<h2><i class="fa-solid fa-forward-fast" aria-label="forward-fast"></i> Next Time</h2>
+<ul>
+<li class="fragment">I leave you with a (pretty famous) quote from the statistican <span class="alert"><strong>John Tukey</strong></span>:</li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>The best thing about being a statistician is that you get to play in everyone’s backyard.</p>
+</blockquote>
+</div>
+<ul>
+<li class="fragment">I couldn’t agree more!
+<ul>
+<li class="fragment">So now that you have the basics down… <em><strong>it’s time to go play!</strong></em></li>
+</ul></li>
+</ul>
+</section></section>
+<section id="thank-you-for-a-great-quarter" class="title-slide slide level1 center" data-background-color="black" data-background-image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOW8zdXo0b2I2dmFqNmRzZnpocWc5c2lkaGU5YmtwbHI1cmpkYXdwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vFKqnCdLPNOKc/giphy.gif" data-background-size="60rem">
+<h1><strong>Thank You For a Great Quarter!</strong></h1>
+<p><span style="font-size:40px"><strong>Please don’t forget to take a Hex Sticker!</strong></span></p>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="Images/100_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>PSTAT 100 - Data Science: Concepts and Analysis, Summer 2025 with Ethan P. Marzban</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+            for (let i=0; i<annoteTargets.length; i++) {
+              const annoteTarget = annoteTargets[i];
+              const targetCell = annoteTarget.getAttribute("data-target-cell");
+              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+              const contentFn = () => {
+                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+                if (content) {
+                  const tipContent = content.cloneNode(true);
+                  tipContent.classList.add("code-annotation-tip-content");
+                  return tipContent.outerHTML;
+                }
+              }
+              const config = {
+                allowHTML: true,
+                content: contentFn,
+                onShow: (instance) => {
+                  selectCodeLines(instance.reference);
+                  instance.reference.classList.add('code-annotation-active');
+                  window.tippy.hideAll();
+                },
+                onHide: (instance) => {
+                  unselectCodeLines();
+                  instance.reference.classList.remove('code-annotation-active');
+                },
+                maxWidth: 300,
+                delay: [50, 0],
+                duration: [200, 0],
+                offset: [5, 10],
+                arrow: true,
+                appendTo: function(el) {
+                  return el.parentElement.parentElement.parentElement;
+                },
+                interactive: true,
+                interactiveBorder: 10,
+                theme: 'light-border',
+                placement: 'right',
+                popperOptions: {
+                  modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      flipVariations: false, // true by default
+                      allowedAutoPlacements: ['right'],
+                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      mainAxis: false,
+                      altAxis: false
+                    }
+                  }
+                  ]        
+                }      
+              };
+              window.tippy(annoteTarget, config); 
+            }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

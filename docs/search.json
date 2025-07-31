@@ -4,14 +4,14 @@
     "href": "Pages/schedule.html",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design \nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lec15 Slides    Lab07: Rent Due, Lights Due, Mountain Dew (Regression)\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec16 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec17 Slides (PDF Version)    Lab08: Speed Date-Ing (Classification)\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec18 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09: Regular [Expressions] Show (Regular Expressions and Text Wrangling)\n\n\n6\nMon, Jul 28\n MDSR, Chapter 12.1: Clustering   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nClustering / Missing Data\n Lec19 Slides\n\n\n\n\nTue, Jul 29\n Emmert-Streib et al. An Introductory Review of Deep Learning for Prediction Models With Big Data, Front. Artif. Intell. 3:4 (2020)   Selected Portions of Chapters 4 - 8 from Deep Learning: Foundations and Concepts by Bishop and Bishop   AMAW, Chapter 6: Gradient Descent\nNeural Networks / Gradient Descent\n Lec20 Slides    Lab10: Lab-ubu (Clustering)\n\n\n\n\nWed, Jul 30\n A First Course in Causal Inference by Peng Ding   Causal Inference for Statistics, Social, and Biomedical Sciences: An Introduction by Rubin and Imbens\nCausal Inference\n Lec21 Slides\n\n\n\n\nThu, Jul 31\n MDSR, Chapter 8: Data Science Ethics\nData Ethics / Closing Remarks\n Lab11: Bonus Lab\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
+    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design \nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lec15 Slides    Lab07: Rent Due, Lights Due, Mountain Dew (Regression)\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec16 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec17 Slides (PDF Version)    Lab08: Speed Date-Ing (Classification)\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec18 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09: Regular [Expressions] Show (Regular Expressions and Text Wrangling)\n\n\n6\nMon, Jul 28\n MDSR, Chapter 12.1: Clustering   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nClustering / Missing Data\n Lec19 Slides\n\n\n\n\nTue, Jul 29\n Emmert-Streib et al. An Introductory Review of Deep Learning for Prediction Models With Big Data, Front. Artif. Intell. 3:4 (2020)   Selected Portions of Chapters 4 - 8 from Deep Learning: Foundations and Concepts by Bishop and Bishop   AMAW, Chapter 6: Gradient Descent\nNeural Networks / Gradient Descent\n Lec20 Slides    Lab10: Lab-ubu (Clustering)\n\n\n\n\nWed, Jul 30\n A First Course in Causal Inference by Peng Ding   Causal Inference for Statistics, Social, and Biomedical Sciences: An Introduction by Rubin and Imbens\nCausal Inference\n Lec21 Slides\n\n\n\n\nThu, Jul 31\n MDSR, Chapter 8: Data Science Ethics\nData Ethics / Closing Remarks\n Lec22 Slides   Lab11: Bonus Lab\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
   },
   {
     "objectID": "Pages/schedule.html#course-schedule",
     "href": "Pages/schedule.html#course-schedule",
     "title": "PSTAT 100: Data Science Concepts and Analysis",
     "section": "",
-    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design \nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lec15 Slides    Lab07: Rent Due, Lights Due, Mountain Dew (Regression)\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec16 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec17 Slides (PDF Version)    Lab08: Speed Date-Ing (Classification)\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec18 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09: Regular [Expressions] Show (Regular Expressions and Text Wrangling)\n\n\n6\nMon, Jul 28\n MDSR, Chapter 12.1: Clustering   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nClustering / Missing Data\n Lec19 Slides\n\n\n\n\nTue, Jul 29\n Emmert-Streib et al. An Introductory Review of Deep Learning for Prediction Models With Big Data, Front. Artif. Intell. 3:4 (2020)   Selected Portions of Chapters 4 - 8 from Deep Learning: Foundations and Concepts by Bishop and Bishop   AMAW, Chapter 6: Gradient Descent\nNeural Networks / Gradient Descent\n Lec20 Slides    Lab10: Lab-ubu (Clustering)\n\n\n\n\nWed, Jul 30\n A First Course in Causal Inference by Peng Ding   Causal Inference for Statistics, Social, and Biomedical Sciences: An Introduction by Rubin and Imbens\nCausal Inference\n Lec21 Slides\n\n\n\n\nThu, Jul 31\n MDSR, Chapter 8: Data Science Ethics\nData Ethics / Closing Remarks\n Lab11: Bonus Lab\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
+    "text": "Note\n\n\n\nThis page will be updated as we progress through the quarter; please check back regularly for updates!\n\n\n\n\n\n\n\n\nTextbook Abbreviations and Icon Meanings\n\n\n\n\nMDSR = Modern Data Science with R\nIMS = Introduction to Modern Statistics, 2nd Ed.\nR4DS = R for Data Science\nISL = An Introduction to Statistical Learning with Applications in R\nAMAW = All Models are Wrong\n = Lecture\n = Lab\n = Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nREADING\nTOPIC\nMATERIALS\n\n\n\n\n1\nMon, Jun 23\n MSDR, Chapter 1: Prologue: Why Data Science?   IMS, 1.2.2: Types of Variable\nIntroduction to Data\n Lec01 Slides\n\n\n\n\nTue, Jun 24\n R4DS, Chapter 5: Data tidying   R4DS, Chapter 3: Data transformation   Hadley Wichkam Tidy Data, Journal of Statistical Software (2014)\nData Structures and Tidy Data\n Lec02 Slides    Lab01: Welcome to the tidyverse!\n\n\n\n\nWed, Jun 25\n MDSR, Chapter 3: A Grammar for Graphics   R4DS, Chapter 9: Layers   Hadley Wichkam A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics (2010) \nVisualizations, Part I\n Lec03 Slides\n\n\n\n\nThu, Jun 26\n R4DS, Chapter 11: Communication   MDSR, Chapter 2: Data Visualization   IMS, Chapter 6: Applications: Explore\nVisualizations, Part II\n Lec04 Slides    Lab02: Bobabase (Databases and Joins)\n\n\n\n\nSun, Jun 29\n\n\n\n\nHOMEWORK 1 DUE\n\n\n2\nMon, Jun 30\n AMAW, Chapter 3: Geometric Duality   MDSR, Chapter 12.2: Dimension Reduction \nGeometry of Data\n Lec05 Slides\n\n\n\n\nTue, Jul 1\n Chapter 10 (Principal Components Analysis) of Introduction to Statistical Learning with Applications in R\nPCA\n Lec06 Slides    Lab03: Boots the House Down, Mama (PCA)    PCA Addendum\n\n\n\n\nWed, Jul 2\n\n\nReview/Catch-up\n Lec07 Slides\n\n\n\n\nThu, Jul 3\n\n\nIN-CLASS ASSESSMENT 01\nLAB CANCELLED\n\n\n3\nMon, Jul 7\n IMS, Chapter 2: Study Design \nStudy Design / Sampling Techniques\n Lec08 Slides  \n\n\n\n\nTue, Jul 8\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nSampling Distributions\n Lec09 Slides (PDF Version)   Lab04: Care For a Sample? (Sampling Techniques and Distributions)\n\n\n\n\nWed, Jul 9\n MDSR, Chapter 9: Statistical Foundations   IMS, Chapter 12: Confidence Intervals with Bootstrapping\nEstimation / Confidence Intervals\n Lec10 Slides\n\n\n\n\nThu, Jul 10\n IMS, Chapter 13: Inference with Mathematical Models\nHypothesis Testing, I\n Lec11 Slides   Lab05: The Count of Monte Carlo (Simulations and Monte Carlo Methods)\n\n\n\n\nSun, Jul 13\n\n\n\n\nMID-QUARTER PROJECT DUE\n\n\n4\nMon, Jul 14\n Selected Sections from IMS, “Foundations of Inference” and “Statistical Inference”\nHypothesis Testing, II / Introduction to Statistical Modeling\n Lec12 Slides\n\n\n\n\nTue, Jul 15\n Section 2.1 (What is Statistical Learning?) of Introduction to Statistical Learning with Applications in R\nMore Statistical Modeling (KDE, Regression)\n Lec13 Slides    Lab06: Don’t Test Me! (Hypothesis Testing)\n\n\n\n\nWed, Jul 16\n MDSR, Appendix E: Regression Modeling\nRegression, Part I\n Lec14 Slides\n\n\n\n\nThu, Jul 17\n MDSR, Appendix E: Regression Modeling\nRegression, Part II\n Lec15 Slides    Lab07: Rent Due, Lights Due, Mountain Dew (Regression)\n\n\n\n\nSun, Jul 20\n\n\n\n\nHOMEWORK 2 DUE\n\n\n5\nMon, Jul 21\n MDSR, Appendix E: Regression Modeling\nRegression, Part III\n Lec16 Slides\n\n\n\n\nTue, Jul 22\n MDSR, Chapter 10: Predictive Modeling   IMS, Chapter 9: Logistic Regression   MDSR, Chapter 11.1: Non-Regression Classifiers\nClassification\n Lec17 Slides (PDF Version)    Lab08: Speed Date-Ing (Classification)\n\n\n\n\nWed, Jul 23\n\n\nReview/Catch-Up\n Lec18 Slides\n\n\n\n\nThu, Jul 24\n\n\nIN-CLASS ASSESSMENT 02\n Lab09: Regular [Expressions] Show (Regular Expressions and Text Wrangling)\n\n\n6\nMon, Jul 28\n MDSR, Chapter 12.1: Clustering   Bhaskaran and Smeeth What is the difference between missing completely at random and missing at random?, International Journal of Epidemiology (2014)\nClustering / Missing Data\n Lec19 Slides\n\n\n\n\nTue, Jul 29\n Emmert-Streib et al. An Introductory Review of Deep Learning for Prediction Models With Big Data, Front. Artif. Intell. 3:4 (2020)   Selected Portions of Chapters 4 - 8 from Deep Learning: Foundations and Concepts by Bishop and Bishop   AMAW, Chapter 6: Gradient Descent\nNeural Networks / Gradient Descent\n Lec20 Slides    Lab10: Lab-ubu (Clustering)\n\n\n\n\nWed, Jul 30\n A First Course in Causal Inference by Peng Ding   Causal Inference for Statistics, Social, and Biomedical Sciences: An Introduction by Rubin and Imbens\nCausal Inference\n Lec21 Slides\n\n\n\n\nThu, Jul 31\n MDSR, Chapter 8: Data Science Ethics\nData Ethics / Closing Remarks\n Lec22 Slides   Lab11: Bonus Lab\n\n\n\n\nFri, Aug 1\n\n\nFINAL PROJECT DUE"
   },
   {
     "objectID": "Pages/schedule.html#course-calendar",
@@ -2623,6 +2623,265 @@
     "title": "PSTAT 100: Lecture 14",
     "section": " Next Time",
     "text": "Next Time\n\nTomorrow, we’ll start generalizing from only one covariate to multiple covariates.\n\nThis is going to involve some linear algebra!\n\nWe’ll also get some hands-on practice with the R side of regression, and further practice with interpreting results.\nReminder: please don’t forget to turn in HW02 this sunday!"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#ethics",
+    "href": "Lectures/Lec22/Lec22.html#ethics",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Ethics",
+    "text": "Ethics\n\nAccording to Merriam Webster, ethics is defined as:\n\n\n\n“a set of moral principles : a theory or system of moral values” (source)\n\n\n\nEthics and ethical guidelines arise in a wide array of disciplines\n\nFor example, the Hippocratic Oath is a code of conduct physicians and doctors swear to act by when practicing medicine\nThe American Bar Association (in charge of certifying practicing lawyers) establishes a code of conduct all certified lawyers are expected to act in accordance with"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#ethics-1",
+    "href": "Lectures/Lec22/Lec22.html#ethics-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Ethics",
+    "text": "Ethics\nData Science\n\nWhy should we, as Data Scientists, be concerned with Ethics?\n\nNot a rhetorical question - let’s discuss!"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#the-dark-secret-of-statistics",
+    "href": "Lectures/Lec22/Lec22.html#the-dark-secret-of-statistics",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " The Dark Secret of Statistics",
+    "text": "The Dark Secret of Statistics\n\n\n\nOne of the foremost statisticians of the 1900s was Ronald Aylmer Fisher.\n\nHis contributions to statistics are undeniable.\n\nHe was also a eugenicist.\nThere is some debate surrounding the term “eugenics,” especially in light of it’s usage within the Nazi party.\nRegardless, it was a purportedly “scientific” field that ultimately lead to the subjugation of many groups."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#ethics-2",
+    "href": "Lectures/Lec22/Lec22.html#ethics-2",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Ethics",
+    "text": "Ethics\nData Science\n\nIn today’s lecture, I’d like to set out to do two things:\n\nMake you aware of “bad” statistical practices that are still being carried out\nMake you aware of the far-reaching consequences these bad practices have for the world as a whole"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#misleading-statistics",
+    "href": "Lectures/Lec22/Lec22.html#misleading-statistics",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Misleading Statistics",
+    "text": "Misleading Statistics\nFirst Example: p - Hacking\n\n\n\n\n\n\n\nThis illustrates a variant of something known as p-hacking\nAs we’ve seen, a p value is essentially a measure of evidence against a null and in favor of an alternative.\nWe’ve also seen that they are not immune to the effects of randomness\n\nThat is, as we saw with multiple testing, the probability of falsely rejecting a null increases with the number of tests we run."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#misleading-statistics-1",
+    "href": "Lectures/Lec22/Lec22.html#misleading-statistics-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Misleading Statistics",
+    "text": "Misleading Statistics\nFirst Example: p - Hacking\n\nLoosely speaking, p-hacking refers to the practice of repeatedly running tests until a significant result is obtained.\n\n\n\nset.seed(100)\npvals &lt;- c()\nrepeat{\n  X &lt;- rnorm(100)\n  temp_pval &lt;- 2 * pnorm(-10 * abs(mean(X)))\n  pvals &lt;- c(pvals, temp_pval)\n  if (temp_pval &lt; 0.05) {break}\n}\n\npvals %&gt;% round(3)\n\n[1] 0.977 0.911 0.898 0.405 0.188 0.215 0.528 0.091 0.020"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#misleading-statistics-2",
+    "href": "Lectures/Lec22/Lec22.html#misleading-statistics-2",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Misleading Statistics",
+    "text": "Misleading Statistics\nFirst Example: p - Hacking\n\n\n\n\n\n\nLet’s Discuss!\n\n\nWhat are some potential ramifications of p-hacking? Why might we consider p-hacking “unethical”?"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#misleading-statistics-3",
+    "href": "Lectures/Lec22/Lec22.html#misleading-statistics-3",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Misleading Statistics",
+    "text": "Misleading Statistics\nSecond Example: F-Screening\n\nAs another example of bad (or, at least, needs-improvement) statistical practice, let’s consider a pretty recent set of considerations due to Drs. Olivia McGough, Daniela Witten and Daniel Kessler\n\nDr. Witten actually gave last year’s Sobel Lecture on this topic; you can read the associated paper (published in 2025!) here.\n\nEssentially, it is somewhat common statistical practice to only report “interesting” (i.e. significant) results, and to simply not report results that are not significant.\nIn the context of regression (specifically, determining which covariates in an MLR model are statistically significant), the authors call this practice F-Screening."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#misleading-statistics-4",
+    "href": "Lectures/Lec22/Lec22.html#misleading-statistics-4",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Misleading Statistics",
+    "text": "Misleading Statistics\nSecond Example: F-Screening\n\nThe authors point out that F-screening can actually cause us to lose standard theoretical guarantees\n\nFor example, we lose Type I error control and coverage interpretations of confidence intervals\n\nThey propose modified versions of standard statistical tests and practices to mitigate against these negative effects.\nThe paper itself is quite well-written, and I encourage you to read through it (provided you have some 120B and 126 knowledge).\n\nI mainly include it as an example here to illustrate that even now research is still being done into questionable statistical practices!"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#misleading-statistics-5",
+    "href": "Lectures/Lec22/Lec22.html#misleading-statistics-5",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Misleading Statistics",
+    "text": "Misleading Statistics\nThird Example: Missing Confounders\n\nAs a third example, I refer us back to yesterday’s lecture: failing to account for confounders.\n\nIn the UC Berkeley Admissions case study, we saw that failing to account for difficult of major actually created apparent biases that didn’t actually exist\nIn the NSW case study, we saw that failing to account for various demographic confounders created the illusion that the training was detrimental when it was, in fact, beneficial"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#data-science-ethics",
+    "href": "Lectures/Lec22/Lec22.html#data-science-ethics",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Data Science Ethics",
+    "text": "Data Science Ethics\nMultiple Attempts\n\nHopefully these two examples (plus the examples outlined in the assigned reading for today’s lecture) demonstrate the need for a unified set of principles of data science ethics\nIndeed, there have been several attempts at producing such a set of principles.\nTwo particularly famous ones (that we will discuss today):\n\nThe Data Values and Principles Manifesto, by DataPractices.org\nThe Ethical Guidelines for Statistical Practices, developed by the American Statistical Association"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#data-science-ethics-1",
+    "href": "Lectures/Lec22/Lec22.html#data-science-ethics-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Data Science Ethics",
+    "text": "Data Science Ethics\nData Values and Principles Manifesto\n\nUse data to improve life for our users, customers, organizations, and communities\nCreate reproducible and extensible work\nBuild teams with diverse ideas, backgrouns, and strengths\nPrioritize the continuous collection and availability of discussions and metadata\nClearly identify the questions and objectives that drive each project and use to guide both planning and refinement.\nBe open to changing our methods and conclusions in response to new knowledge."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#data-science-ethics-2",
+    "href": "Lectures/Lec22/Lec22.html#data-science-ethics-2",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Data Science Ethics",
+    "text": "Data Science Ethics\nData Values and Principles Manifesto\n\nRecognize and mitigate bias in ourselves and in the data we use.\nPresent our work in ways that empower others to make better-informed decisions.\nConsider carefully the ethical implications of choices we make when using data, and the impacts of our work on individuals and society.\nRespect and invite fair criticism while promoting the identification and open discussion of errors, risks, and unintended consequences of our work.\nProtect the privacy and security of individuals represented in our data.\nHelp others to understand the most useful and appropriate applications of data to solve real-world problems."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#your-turn",
+    "href": "Lectures/Lec22/Lec22.html#your-turn",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Your Turn!",
+    "text": "Your Turn!\n\n\n\n\n\n\nYour Turn! (Exercise 1 from Chapter 8 of our Textbook)\n\n\nA researcher is interested in the relationship of weather to sentiment (positivity or negativity of posts) on Twitter. They want to scrape data from https://www.wunderground.com and join that to Tweets in that geographic area at a particular time. One complication is that Weather Underground limits the number of data points that can be downloaded for free using their API (application program interface). The researcher sets up six free accounts to allow them to collect the data they want in a shorter time-frame. What ethical guidelines are violated by this approach to data scraping?\n\n\n\n\n\n\n−+\n04:00"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#reproducibility",
+    "href": "Lectures/Lec22/Lec22.html#reproducibility",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Reproducibility",
+    "text": "Reproducibility\n\nA term you will hear a lot throughout statistics and datascience is reproducibility\nEssentially, reproducibile results are those that can be replicated (i.e. found again) given the same tools used to initially create them.\n\nFor example, the results of a clinical trial would be reproducible if a third-party could gain access to the same data and arrive at the same results and conclusions.\n\nPart of ensuring your research is reproducible is documentation.\n\nMake sure to keep a record of things like: where you originally found a particular dataset, which packages you used (and possibly even which versions of these packages you used), which functions you used, etc."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#reproducibility-1",
+    "href": "Lectures/Lec22/Lec22.html#reproducibility-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Reproducibility",
+    "text": "Reproducibility\nProgramming Languages\n\nOn a related note, as the authors of our textbook point out, “Data science professionals have an ethical obligation to use tools that are reliable, verifiable, and conducive to reproducible data analysis.”\nAs a somewhat extreme example, consider the programming language SAS: pharmaceutical researchers almost exclusively program in SAS. Why?\n\nWell, it turns out that SAS is very tightly regulated in terms of what updates can be made, what sorts of new functions can be added, etc.\nIndeed, it’s sometimes (colloquially) stated that SAS is “FDA-approved”"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#reproducibility-2",
+    "href": "Lectures/Lec22/Lec22.html#reproducibility-2",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Reproducibility",
+    "text": "Reproducibility\nProgramming Languages\n\nOn the flipside, R is touted (and often celebrated) as being very open source.\nThis has the distinct advantage of making R cutting-edge, but has been the source of some criticism against the programming language itself.\nFor those unaware, the Comprehensive R Archive Network (CRAN) is the widely-accepted sole database of “approved” R packages\n\nThe process of geting an R package uploaded to CRAN is very extensive, involving lots of checks, meaning that packages uploaded to CRAN are often very reliable. (CRAN Repository Policy)\nBe wary of packages not hosted on CRAN (e.g. solely on GitHub)"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#data-privacy",
+    "href": "Lectures/Lec22/Lec22.html#data-privacy",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Data Privacy",
+    "text": "Data Privacy\n\nAnother key concept in the realm of data science ethics is that of privacy.\nIn certain cases, the observational units (remember these?) of a particular dataset may not want to be uniquely revealed.\nAs such, you will often encounter data that has been privatized in some way (e.g. data that has been stripped of all potentially identifying information like name, gender, address, etc.)\nSometimes data is aggregated for privacy purposes.\n\nFor example, instead of recording whether specific people contracted a particular disease, the dataset may only record the proportion of infected people across different geographic regions (counties, states, etc.)"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#data-privacy-1",
+    "href": "Lectures/Lec22/Lec22.html#data-privacy-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Data Privacy",
+    "text": "Data Privacy\n\nData Aggregation often affects the statistical methods you use to analyze the data.\n\nThis is another reason it is so important to understand how our data was collected and reported before beginning our analyses!\n\nAs a very approachable example of how aggregated data can be used in a real-world setting, I encourage you to check out this article by Dr. Kathryn Grace (who will be joining our department this coming academic year!)"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#case-study-compas",
+    "href": "Lectures/Lec22/Lec22.html#case-study-compas",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Case Study: COMPAS",
+    "text": "Case Study: COMPAS\n\nTo close out, I’d like to take a few minutes to explore a fairly famous (infamous?) case study.\nIn recent years, we have observed an increase in the use of machine learning algorithms to aid decisions about individuals in the justice system.\nA major element of this is modeling recidivism rates\n\nFrom Merriam Webster: recivisim = “a tendency to relapse into a previous condition or mode of behavior”\n\nOne algorithm/software used in this context is the Correctional Offender Management Profiling for Alternative Sanctions (COMPAS) system.\n\nA lengthy practitioners report, published by the creators of the COMPAS algorithm can be found here"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#case-study-compas-1",
+    "href": "Lectures/Lec22/Lec22.html#case-study-compas-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Case Study: COMPAS",
+    "text": "Case Study: COMPAS\n\nIn 2016, ProPublica published a groundbreaking article highlighting several ways in which the COMPAS algorithm exhibited concerning signs of racial bias.\nYou can read the article here, and a more detailed breakdown of the authors’ analyses here.\nWith our PSTAT 100 knowledge, we actually have the tools to explore and replicate some of the authors’ findings; an endeavor we’ll start today in lecture, and you’ll finish on the Bonus Lab (should you choose to complete it)."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#case-study-compas-2",
+    "href": "Lectures/Lec22/Lec22.html#case-study-compas-2",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Case Study: COMPAS",
+    "text": "Case Study: COMPAS\nThe Algorithm\n\nFirst, let’s understand what the COMPAS system does.\nSubjects are administered a 137-question questionnaire; the algorithm then takes their answers an returns a score of 1 - 10, indicating how likely (1 being the most unlikely, 10 being the most likely) to recidivate.\n\nScores of 1-4 are labelled as “Low”; scores of 5-7 are labelled as “Medium”; scores of 8-10 are labelled as “High”\n\nOne of the things that ProPublica did was examine the COMPAS ratings of over 10,000 criminals in Broward County (located in Florida), and track how many of them actually recidivated or not.\nGiven that the COMPAS algorithm is essentially a classification model, this leads us naturally into considering our classification error rates"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#case-study-compas-3",
+    "href": "Lectures/Lec22/Lec22.html#case-study-compas-3",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Case Study: COMPAS",
+    "text": "Case Study: COMPAS\nUnderstanding Rates\n\n\n\n\n\n\nCheck Your Understanding\n\n\n\nIn this context, what is the definition of a False Positive Rate (FPR)?\nIn this context, what is the definition of a False Negative Rate (FPR)?\n\n\n\n\n\nWhat ProPublica found is that “[…] black defendants who did not recidivate over a two-year period were nearly twice as likely to be misclassified as higher risk compared to their white counterparts (45 percent vs. 23 percent).” (ProPublica, 2016)\n\nThey also “[…] found that white defendants who re-offended within the next two years were mistakenly labeled low risk almost twice as often as black re-offenders (48 percent vs. 28 percent).” (ProPublica, 2016)"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#case-study-compas-4",
+    "href": "Lectures/Lec22/Lec22.html#case-study-compas-4",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Case Study: COMPAS",
+    "text": "Case Study: COMPAS\nRace\n\nIt is important to note that race is not one of the questions asked of subjects.\n\nSo, how could the algorithm then determine the race of individuals?\n\nThe answer lies in what are sometimes known as proxy variables.\n\nLoosely speaking, proxy variables are those that can be used to reconstruct a hidden or missing variable.\n\nFor example, three questions the COMPAS survey does ask are: “Was one of your parents ever sent to jail or prison?”, “How many of your friends/acquaintances are taking drugs illegally?”, “How often did you get in fights while at school?”\n\nThe answers to these questions are highly correlated with race."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#case-study-compas-5",
+    "href": "Lectures/Lec22/Lec22.html#case-study-compas-5",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Case Study: COMPAS",
+    "text": "Case Study: COMPAS\nRace\n\nIn today’s Lab (the Bonus Lab), I ask you to delve a little deeper into ProPublica’s analysis.\n\nEven if you are not planning on submitting the lab, I highly recommend you take a look through it for your own sakes!\n\nOne thing to note is that the COMPAS algorithm is considered proprietary and therefore is not released to the public.\n\nNevertheless, one can (and, indeed, the ProPublica authors did!) reconstruct a proxy to the algorithm using logistic regression.\n\n“Black-box” algorithms like this are very prevalent in our modern-day society.\nDr. Cathy O’Neill has coined the term “Weapon of Math Destruction” (WMD) to refer to some of these types of algorithms."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#weapons-of-math-destruction",
+    "href": "Lectures/Lec22/Lec22.html#weapons-of-math-destruction",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Weapons of Math Destruction",
+    "text": "Weapons of Math Destruction\n\nIn her book titled Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy, Dr. O’Neill proposes three metrics by which an algorithm can be classified as a WMD: Opacity (Are details available upon request?), Scale (Is the algorithm being used in broad and far-reaching situations?), and Damage (Who is hurt by this algorithm, and how?).\nLet’s see how the COMPAS algorithm fares on this metric:\n\nOpacity: as mentioned above, the algorithm is closed-source and not available to the public.\nScale: the algorithm is being used in a wide variety of states, and are sometimes even used by Judges to inform sentencing\nDamage: those incorrectly assigned high recidivism scores are often sentenced harsher, or even just viewed in a more negative light than those who do not.\n\nHence, the COMPAS algorithm would likely count as a WMD."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#chatgpt",
+    "href": "Lectures/Lec22/Lec22.html#chatgpt",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " ChatGPT",
+    "text": "ChatGPT\n\nFinally, I would be remiss to not at least mention ChatGPT\nAt its core, ChatGPT utilizes a model (algorithm).\n\nThis algorithm (like most algorithms) must be trained on data.\nThat is, data is needed to find optimal parameter estimates.\n\nOpenAI (the parent company of ChatGPT) provides information on how the model is trained.\n\nThey say: “OpenAI’s foundation models, including the models that power ChatGPT, are developed using three primary sources of information: (1) information that is publicly available on the internet, (2) information that we partner with third parties to access, and (3) information that our users, human trainers, and researchers provide or generate.” (OpenAi)"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#chatgpt-1",
+    "href": "Lectures/Lec22/Lec22.html#chatgpt-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " ChatGPT",
+    "text": "ChatGPT\n\nRecently, some people have brought up the fact that not everyone consented to have their data included in the training of the model.\n\nThis is an especially heated discussion in the Arts, in the context of AI Art\n\nSome early versions of chatbots were also producing racist and derogatory statements.\n\n\n\n\n\n\n\n\nFood For Thought\n\n\nIs ChatGPT a Weapon of Math Destruction?"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#some-takeaways",
+    "href": "Lectures/Lec22/Lec22.html#some-takeaways",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Some Takeaways",
+    "text": "Some Takeaways\n\nAs data scientists, it can be easy for us to mentally remove ourselves from the context in which our research will be applied.\nI encourage you to combat this - always try and make sure to have a sense on how your research may impact others.\nA quote from the ProPublica article, from one of COMPAS’ original creators, Tim Brennan:\n\n\n\n“I wanted to stay away from the courts,” Brennan said, explaining that his focus was on reducing crime rather than punishment. “But as time went on I started realizing that so many decisions are made,you know, in the courts. So I gradually softened on whether this could be used in the courts or not.” (ProPublica, 2016)"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#some-takeaways-1",
+    "href": "Lectures/Lec22/Lec22.html#some-takeaways-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Some Takeaways",
+    "text": "Some Takeaways\n\n\n\n\n\n\nTip\n\n\nAwareness can go a long way.\n\n\n\n\nNobody is asking you to guess every possible way your work might be used!\n\nRather, just be aware of the potential implications of your work.\n\nAlso, keep in mind - we exist within the confines of a system. You have collaborators and supervisors you can use as soundboards for ideas and conversations like this!"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#its-not-all-bad",
+    "href": "Lectures/Lec22/Lec22.html#its-not-all-bad",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " It’s Not All Bad",
+    "text": "It’s Not All Bad"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#next-time-1",
+    "href": "Lectures/Lec22/Lec22.html#next-time-1",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Next Time",
+    "text": "Next Time\n\nSo… where do we go from here?\nWell, as I’ve said a few times, my hope was to structure PSTAT 100 like a “table of contents” of Data Science - giving you a brief introduction to a variety of topics.\nThe good news is that there is a lot more to learn about these topics!\nIndeed, there exist several classes in our own department that you can look into taking if you’re interested to learn more."
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#next-time-2",
+    "href": "Lectures/Lec22/Lec22.html#next-time-2",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Next Time",
+    "text": "Next Time\nRegression / Modeling\n\nRegression is by far one of the most applicable topics in statistics - it is also one of the deepest!\n\nIn PSTAT 126/127, you’ll explore the theory behind linear models in greater depth (What does homoskedasticity really mean? What do we do if our response is integer-valued?)\n\nStatistical learning is an equally deep field; classes like PSTAT 131/231 fill in some gaps we left this quarter and introduces you to some more techniques!\n\nFor example, there are non-regression classifiers (Discriminant Analysis is a popular one)"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#next-time-3",
+    "href": "Lectures/Lec22/Lec22.html#next-time-3",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Next Time",
+    "text": "Next Time\nSampling / Study Design\n\nSampling and study design are another set of very rich subject!\n\nPSTAT 120B gives you some more background on estimation and sampling distributions; PSTAT 120C continues with some more advanced hypothesis testing (did you know you can statistically test whether you believe two variables to be independent or not?)\nPSTAT 123 gives you a much deeper look into the mechanisms behind sampling, and the analysis of data obtained through non-SRSes (e.g. stratified samples)\nPSTAT 122 walks you through ANOVA in greater details, and how to actually design experiments"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#next-time-4",
+    "href": "Lectures/Lec22/Lec22.html#next-time-4",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Next Time",
+    "text": "Next Time\nTime Series\n\nTime Series models are another very applicable set of models.\n\nLoosely speaking, we can think of time series analysis as the analysis of data that is serially correlated (longitudinal data, anyone?)\n\nPSTAT 174/274 walks you through the basics of this style of analysis.\n\nI highly recommend everyone to take this course, since, as you can likely imagine, most real-world data is correlated!"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#next-time-5",
+    "href": "Lectures/Lec22/Lec22.html#next-time-5",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Next Time",
+    "text": "Next Time\nSpecial Topics\n\nPSTAT 105 provides a greater look into nonparametric analysis\n\nE.g. KDE; series estimation;\nAgain, I’m a bit biased - my own research falls into the realm of nonparametric statistics!\n\nPSTAT 115 provides an introduction into a completely different way of thinking about statistics, called the Bayesian framework\n\nYou’ll talk more about Monte Carlo methods here!"
+  },
+  {
+    "objectID": "Lectures/Lec22/Lec22.html#next-time-6",
+    "href": "Lectures/Lec22/Lec22.html#next-time-6",
+    "title": "PSTAT 100: Lecture 22",
+    "section": " Next Time",
+    "text": "Next Time\n\nI leave you with a (pretty famous) quote from the statistican John Tukey:\n\n\n\nThe best thing about being a statistician is that you get to play in everyone’s backyard.\n\n\n\nI couldn’t agree more!\n\nSo now that you have the basics down… it’s time to go play!"
   },
   {
     "objectID": "index.html",
