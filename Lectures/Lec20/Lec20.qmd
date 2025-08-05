@@ -872,7 +872,7 @@ $$ \begin{align*}
   \{w_{k0}^{(2)}, \ w_{k1}^{(2)}, \ w_{k3}^{(2)} \}  & \quad k = 1, \cdots, K \\  
 \end{align*} $$
 
--   For (_K_ = 1000) outputs, this is a total of 453 parameters to estimate.
+-   For (_K_ = 1000) outputs, this is a total of 3,153 parameters to estimate.
 
 -   As you can imagine, the number of parameters in an arbitrary NN can be _astronomically_ large.
 

@@ -97,3 +97,11 @@ Lecture slides can be found on the [Schedule](Pages/schedule.qmd); labs and proj
 ## **Important**
 In addition to the above deadlines, there will be two labs every week which you will be asked to turn in. These labs are designed to be completed during our scheduled Discussion Section periods.
 :::
+
+::: {.callout-tip}
+## **Note**
+
+This course has concluded - thank you for a great quarter! For transparency, here is the distribution of final letter grades:
+
+![](Images/Logos_Icons/Final_Grade_Distribution.png){width="50%"}
+:::
