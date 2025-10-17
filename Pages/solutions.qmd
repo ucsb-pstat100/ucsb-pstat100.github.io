@@ -70,6 +70,22 @@ Below are solutions to selected assignment. Some things to keep in mind:
 -   <a href="../Files/Solns/lab08_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab08</button></a>
 :::
 
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab09_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab09</button></a>
+:::
+
+::::
+
+
+:::: {.columns}
+
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab10_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab10</button></a>
+:::
+
+::: {.column width="33.3333%"}
+-   <a href="../Files/Solns/lab11_solns.pdf" target="_blank"><button type="button" class="btn btn-primary">Lab11</button></a>
+:::
 
 ::::
 
@@ -78,6 +94,8 @@ Below are solutions to selected assignment. Some things to keep in mind:
 -   **Lab07 Note:** I know people had some trouble getting Question 6 to work. In a sense, this was to be expected and one of the reasons why multicollinearity is so dangerous!
     -   For the purposes of an ICA, you should just make sure you're comfortable detecting multicollinearity using a correlation matrix, and be generally aware of some of the implications multicollinearity has on a model (if it is present).
 
+
+-   **Lab11 Note:** Lab 11 was a "bonus" lab, and was not required to be turned in. It is more open-ended, so the above-posted solutions are more along the lines of "suggested answers" (though some questions do have correct answers).
 
 ## Homework
 
